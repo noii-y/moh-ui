@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "pagination",
+  "type": "component",
+  "title": "分页",
+  "description": "页码 + 上下页 + 省略号 + 总数标签，当前页 aria-current，边界禁用态",
+  "styleTags": ["基础组件", "导航", "列表"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
