@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-join",
+  "type": "component",
+  "title": "组合容器",
+  "description": "搬运自 daisyUI 的 Join 组合容器：搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/join/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将示例文案替换为电商搜索框 / 邮箱订阅 / 收货地址等真实中文场景，补充 min-w-0 flex-1 窄屏收缩说明与中文教程；未修改组件样式本体。竞品仅借鉴搜索栏布局形态，HTML 一律用 daisyUI 类重写。"
+  },
+  "inspiration": [
+    "https://preline.co/examples/input-group.html",
+    "https://hyperui.dev/components/application-ui/search"
+  ],
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

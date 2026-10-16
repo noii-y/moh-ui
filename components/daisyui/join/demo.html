@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>组合容器 Join · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>组合容器 <span class="en">Join</span></h1>
+  <p>把输入框、下拉框、按钮无缝拼成一条——首尾自动圆角、相邻之间没有间隙。最常见的就是「分类下拉 + 搜索框 + 搜索按钮」这种连体工具栏。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">每个拼进去的元素都加 <code>join-item</code>，首尾圆角由 join 自动处理；中间项想占满剩余宽度就加 <code>min-w-0 flex-1</code>。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>电商搜索框：类别下拉 + 输入框 + 搜索按钮</h2>
+    <p class="desc">左边一个定宽的类别下拉，中间搜索框占满剩余宽度并能随容器收缩，右边一个带放大镜图标的主按钮。三者边缘自动衔接成一整条，没有拼缝。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="join w-full">
+        <select class="select join-item w-32">
+          <option>全部类别</option>
+          <option>商品</option>
+          <option>店铺</option>
+        </select>
+        <input class="input join-item min-w-0 flex-1" placeholder="搜索商品" />
+        <button class="btn btn-primary join-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+          搜索
+        </button>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商搜索框（组合容器）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="组合容器">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 1：邮箱订阅 -->
+  <section class="doc-block">
+    <h2>邮箱订阅：输入框 + 按钮</h2>
+    <p class="desc">最常见的组合：一个邮箱输入框接一个订阅按钮。输入框加 <code>min-w-0 flex-1</code> 占满剩余宽度，首尾圆角由 join 自动处理。</p>
+    <div class="doc-stage">
+      <div class="join w-full">
+        <input class="input join-item min-w-0 flex-1" placeholder="输入邮箱订阅周报" />
+        <button class="btn btn-primary join-item">订阅</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体 2：按钮组 -->
+  <section class="doc-block">
+    <h2>分段按钮组：日 / 周 / 月</h2>
+    <p class="desc">一排等宽按钮无缝连成一组，用 <code>btn-active</code> 标出当前选中的一档，适合「日 / 周 / 月」「最新 / 最热」这类切换。</p>
+    <div class="doc-stage">
+      <div class="join">
+        <button class="btn join-item">日</button>
+        <button class="btn join-item">周</button>
+        <button class="btn join-item btn-active">月</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体 3：竖排 -->
+  <section class="doc-block">
+    <h2>竖排：上下叠进一张卡片</h2>
+    <p class="desc">加 <code>join-vertical</code> 改成纵向拼接，适合塞进卡片或侧栏里，把一组输入和提交按钮上下连成一片。</p>
+    <div class="doc-stage">
+      <div class="join join-vertical w-full">
+        <input class="input join-item" placeholder="收货人姓名" />
+        <input class="input join-item" placeholder="联系电话" />
+        <button class="btn btn-primary join-item">保存地址</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体 4：响应式竖转横 -->
+  <section class="doc-block">
+    <h2>响应式：手机竖排、桌面横排</h2>
+    <p class="desc">同时加 <code>join-vertical lg:join-horizontal</code>：窄屏时上下堆叠不占横向宽度，到大屏（lg）自动变回横向一排。</p>
+    <div class="doc-stage">
+      <div class="join join-vertical lg:join-horizontal">
+        <button class="btn join-item">最新发布</button>
+        <button class="btn join-item">最多点赞</button>
+        <button class="btn join-item">最多评论</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>每个拼进去的元素都要加 join-item</h3>
+    <p>不管是 <code>input</code>、<code>select</code>、<code>button</code> 还是 <code>textarea</code>，加了 <code>join-item</code> 才会自动去掉相邻间隙、只在整组首尾保留圆角。</p>
+    <h3>中间的输入框要能收缩</h3>
+    <p>横排里中间的 <code>input</code> 同时加 <code>min-w-0 flex-1</code>：<code>flex-1</code> 让它占满剩余宽度，<code>min-w-0</code> 允许它在窄屏收缩而不是把整组撑出屏幕。左侧下拉用定宽（如 <code>w-32</code>），右侧按钮用自然宽度。</p>
+    <h3>方向与响应式</h3>
+    <ul>
+      <li>默认横向拼接；纵向加 <code>join-vertical</code>。</li>
+      <li>手机想竖排、桌面想横排：<code>join join-vertical lg:join-horizontal</code>。</li>
+    </ul>
+    <h3>分段切换的选中态</h3>
+    <p>按钮组里用 <code>btn-active</code> 表示当前档；若要随点击真实切换，再用一小段 JS 或 radio 实现，join 本身只负责外观拼接。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/join/" target="_blank" rel="noopener">daisyui.com/components/join</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商商品页顶部的搜索框：左边选类别，中间输关键词，右边点搜索，三者无缝连成一条。
+【怎么排】
+- 外层 <div class="join w-full">；
+- 第一个是定宽下拉 <select class="select join-item w-32">，选项：全部类别、商品、店铺；
+- 中间是输入框 <input class="input join-item min-w-0 flex-1" placeholder="搜索商品">，用 min-w-0 flex-1 占满剩余宽度并能随容器收缩；
+- 最后是主按钮 <button class="btn btn-primary join-item">「搜索」，按钮左侧内联一个放大镜 SVG（h-5 w-5）。
+- 三者首尾自动圆角、相邻无间隙，拼成一整条。
+【精确规格】
+- 下拉宽度固定 w-32，不要让它伸缩；中间输入框必须同时有 min-w-0 和 flex-1，否则窄屏会被内容撑出屏幕。
+- 按钮写真实动作「搜索」，禁止出现颜色名。
+- 放大镜用内联 SVG（stroke 当前色），不要外链图标库。
+- 390px 窄屏：下拉定宽 + 中间框收缩 + 按钮自然宽度，三者一行放下、不横向溢出、不被裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
