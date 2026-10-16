@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 29,
+    "components": 47,
     "rules": 1,
-    "resources": 40
+    "resources": 58
   },
   "themes": [
     {
@@ -725,6 +725,227 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-divider",
+      "title": "分隔线",
+      "description": "搬运自 daisyUI 的分隔线（Divider）组件：登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/divider/",
+      "slug": "daisyui/divider",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-table",
+      "title": "表格",
+      "description": "搬运自 daisyUI 的表格组件：后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/table/",
+      "slug": "daisyui/table",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-card",
+      "title": "卡片",
+      "description": "搬运自 daisyUI 的卡片组件：定价三档（含删除线对比）、电商商品卡、用户资料卡、card-border/card-dash 描边与虚线、card-xs~xl 五档尺寸，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/card/",
+      "slug": "daisyui/card",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-stat",
+      "title": "统计卡",
+      "description": "搬运自 daisyUI 的统计卡组件：电商数据看板（涨跌备注+单色图标）、stats-vertical 垂直排列、place-items-center 居中、stat-actions 带操作按钮，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/stat/",
+      "slug": "daisyui/stat",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-badge",
+      "title": "徽标",
+      "description": "搬运自 daisyUI 的徽标组件：五档尺寸/描边虚线柔和幽灵风格/带图标/按钮数字角标等变体，商品标签与状态标记场景，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/badge/",
+      "slug": "daisyui/badge",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-list",
+      "title": "列表",
+      "description": "搬运自 daisyUI 的列表组件：收货地址单选列表（默认标签+编辑删除）、带图标设置列表、紧凑条目列表（list-col-grow），零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/list/",
+      "slug": "daisyui/list",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-avatar",
+      "title": "头像",
+      "description": "搬运自 daisyUI 的头像组件：在线状态/mask 轮廓形状/文字占位/多人叠放群组等变体，资料页与评论场景，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/avatar/",
+      "slug": "daisyui/avatar",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-radial-progress",
+      "title": "环形进度",
+      "description": "搬运自 daisyUI 的环形进度组件：--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/radial-progress/",
+      "slug": "daisyui/radial-progress",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-skeleton",
+      "title": "骨架屏",
+      "description": "搬运自 daisyUI 的骨架屏组件：文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/skeleton/",
+      "slug": "daisyui/skeleton",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-kbd",
+      "title": "按键",
+      "description": "搬运自 daisyUI 的按键（Kbd）组件：快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/kbd/",
+      "slug": "daisyui/kbd",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-chat",
+      "title": "对话气泡",
+      "description": "搬运自 daisyUI 的对话气泡组件：左右分边/头像时间头尾/气泡语义色等变体，客服对话与留言场景，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/chat/",
+      "slug": "daisyui/chat",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-indicator",
+      "title": "角标",
+      "description": "搬运自 daisyUI 的角标组件：九种贴附位置/数字角标/纯红点/贴输入框与卡片等变体，导航通知与待办提示场景，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/indicator/",
+      "slug": "daisyui/indicator",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-drawer",
       "title": "抽屉侧栏",
       "description": "搬运自 daisyUI 的抽屉侧栏组件：后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
@@ -741,6 +962,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/drawer/",
       "slug": "daisyui/drawer",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-timeline",
+      "title": "时间线",
+      "description": "搬运自 daisyUI 的时间线组件：垂直/双侧交替/紧凑单侧/彩色进度连线等变体，物流跟踪与里程碑场景，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/timeline/",
+      "slug": "daisyui/timeline",
       "entry": "demo.html"
     },
     {
@@ -798,6 +1037,101 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/megamenu/",
       "slug": "daisyui/megamenu",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-mockup-browser",
+      "title": "浏览器样机",
+      "description": "搬运自 daisyUI 的浏览器样机（Mockup Browser）组件：带地址栏的浏览器外壳，框内可放迷你页面或截图，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/mockup-browser/",
+      "slug": "daisyui/mockup-browser",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-mockup-code",
+      "title": "代码窗口样机",
+      "description": "搬运自 daisyUI 的代码窗口样机（Mockup Code）组件：深色代码窗口、行号/符号前缀、高亮行、不带前缀、彩色块，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/mockup-code/",
+      "slug": "daisyui/mockup-code",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-mockup-phone",
+      "title": "手机样机",
+      "description": "搬运自 daisyUI 的手机外框样机：mockup-phone 外壳 + camera 挖孔 + display 屏幕区，屏幕内可放任意 App 界面（外卖首页/信息流/锁屏壁纸），零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/mockup-phone/",
+      "slug": "daisyui/mockup-phone",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-mockup-window",
+      "title": "窗口样机",
+      "description": "搬运自 daisyUI 的操作系统窗口样机：mockup-window 外框 + border/bg 变体，顶栏三圆点标题用零依赖 div 自拼，内容区可放文档/登录框/代码预览，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/mockup-window/",
+      "slug": "daisyui/mockup-window",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-stack",
+      "title": "叠放",
+      "description": "搬运自 daisyUI 的叠放组件：stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "布局",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/stack/",
+      "slug": "daisyui/stack",
       "entry": "demo.html"
     },
     {
