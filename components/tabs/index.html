@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-tabs · 标签页</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-tabs · 标签页（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段 + 底部 <script> 到你的项目
+       形态：下划线式标签页；可选数量徽标（复用 tag）
+       行为标准（Headless 同款）：role=tablist/tab/tabpanel；
+         aria-selected 标记激活项；左右方向键切换、Home/End 跳头尾
+       ============================================================ */
+
+    .moh-tabs {
+      display: flex;
+      gap: var(--moh-space-1);
+      border-bottom: 1px solid var(--moh-border);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .moh-tabs__tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+      padding: var(--moh-space-2) var(--moh-space-3);
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      color: var(--moh-muted);
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      font-family: inherit;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: color var(--moh-transition), border-color var(--moh-transition);
+      margin-bottom: -1px;
+    }
+
+    .moh-tabs__tab:hover {
+      color: var(--moh-ink);
+    }
+
+    .moh-tabs__tab:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: -2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* 激活项：主色下划线 + 主色文字 */
+    .moh-tabs__tab[aria-selected="true"] {
+      color: var(--moh-primary);
+      border-bottom-color: var(--moh-primary);
+    }
+
+    /* 数量徽标（复用 tag 风格，内联实现免依赖） */
+    .moh-tabs__badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 var(--moh-space-1);
+      min-width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+      font-size: var(--moh-text-xs);
+      line-height: 1;
+    }
+    .moh-tabs__tab[aria-selected="true"] .moh-tabs__badge {
+      background: var(--moh-primary-muted);
+      color: var(--moh-primary);
+    }
+
+    .moh-tabs__panel {
+      padding: var(--moh-space-4) 0;
+      font-size: var(--moh-text-sm);
+      line-height: 1.7;
+      color: var(--moh-ink);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <div role="tablist" aria-label="项目详情" class="moh-tabs">
+      <button role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" class="moh-tabs__tab">概览</button>
+      <button role="tab" id="tab-members" aria-controls="panel-members" aria-selected="false" class="moh-tabs__tab">成员 <span class="moh-tabs__badge">8</span></button>
+      <button role="tab" id="tab-logs" aria-controls="panel-logs" aria-selected="false" class="moh-tabs__tab">变更记录</button>
+    </div>
+    <div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" class="moh-tabs__panel">
+      项目概览：主题数量、体检分数与最近提交都会汇总在这里。
+    </div>
+    <div role="tabpanel" id="panel-members" aria-labelledby="tab-members" class="moh-tabs__panel" hidden>
+      成员列表：8 位协作者，可按角色筛选。
+    </div>
+    <div role="tabpanel" id="panel-logs" aria-labelledby="tab-logs" class="moh-tabs__panel" hidden>
+      变更记录：每次独立提交都留痕，方便回退。
+    </div>
+  </div>
+
+  <script>
+    /* 行为标准：点击切换 + 左右方向键 + Home/End */
+    (function () {
+      const tablist = document.querySelector(".moh-tabs");
+      const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+      const panels = tabs.map((t) => document.getElementById(t.getAttribute("aria-controls")));
+
+      function select(tab) {
+        tabs.forEach((t, i) => {
+          const on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          if (panels[i]) panels[i].hidden = !on;
+        });
+        tab.focus();
+      }
+
+      tablist.addEventListener("click", (e) => {
+        const tab = e.target.closest('[role="tab"]');
+        if (tab) select(tab);
+      });
+
+      tablist.addEventListener("keydown", (e) => {
+        const idx = tabs.indexOf(document.activeElement);
+        if (idx < 0) return;
+        let next = -1;
+        if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+        else if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") next = 0;
+        else if (e.key === "End") next = tabs.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          select(tabs[next]);
+        }
+      });
+    })();
+  </script>
+  <p class="demo-note">提示：激活项标 aria-selected；支持 ← → 方向键切换、Home/End 跳头尾；面板用 hidden 切换。</p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "tabs",
+  "type": "component",
+  "title": "标签页",
+  "description": "下划线式切换面板，键盘方向键/Home/End 操作，aria-selected，可带数量徽标",
+  "styleTags": ["基础组件", "导航", "交互"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
