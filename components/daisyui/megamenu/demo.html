@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>大菜单 Megamenu · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>大菜单 <span class="en">Megamenu</span></h1>
+  <p>电商顶部的「全部分类」：一排分类按钮，点开是一大面板多列链接。基于浏览器原生 popover 实现，零 JavaScript。下面先给一个电商成品，再列出简洁版、垂直版等形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">加分类按钮只增删 <code>button[popovertarget]</code> 和对应 <code>div[popover]</code>，id 一一对应即可。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：电商全部分类大菜单（数码面板默认展开演示） -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>电商顶部的「全部分类」大菜单</h2>
+    <p class="desc">一排四个分类按钮，「数码」面板展开演示：四列真实分类链接，右侧配一张限时特惠推荐卡。真实项目里面板默认收起，鼠标移到分类上才弹出；原生 popover 处理开合，不需要任何 JS。</p>
+    <div class="doc-stage col" id="hero-stage" style="padding:0;overflow:hidden;align-items:stretch;">
+      <div class="megamenu megamenu-wide p-2 border-b border-base-300" popover style="position:static!important;display:flex!important;flex-wrap:wrap;opacity:1!important;translate:none!important;scale:1!important;max-block-size:none!important;margin-top:0!important;">
+        <span class="megamenu-active"></span>
+        <button popovertarget="hero-mm-female">女装</button>
+        <button popovertarget="hero-mm-male">男装</button>
+        <button popovertarget="hero-mm-digital">数码</button>
+        <button popovertarget="hero-mm-home">家电</button>
+        <div id="hero-mm-female" popover>
+          <ul class="menu menu-horizontal">
+            <li><a>连衣裙</a></li>
+            <li><a>上衣 T 恤</a></li>
+            <li><a>外套</a></li>
+            <li><a>裤装</a></li>
+          </ul>
+        </div>
+        <div id="hero-mm-male" popover>
+          <ul class="menu menu-horizontal">
+            <li><a>男士 T 恤</a></li>
+            <li><a>休闲裤</a></li>
+            <li><a>夹克</a></li>
+          </ul>
+        </div>
+        <div id="hero-mm-digital" popover style="position:static!important;display:block!important;opacity:100%!important;translate:none!important;scale:1!important;width:100%!important;max-height:none!important;background:transparent!important;border:none!important;">
+          <div class="flex flex-wrap items-start gap-6 p-4">
+            <ul class="menu">
+              <li class="menu-title">手机通讯</li>
+              <li><a>智能手机</a></li>
+              <li><a>手机配件</a></li>
+              <li><a>摄影摄像</a></li>
+            </ul>
+            <ul class="menu">
+              <li class="menu-title">电脑办公</li>
+              <li><a>笔记本</a></li>
+              <li><a>显示器</a></li>
+              <li><a>外设配件</a></li>
+            </ul>
+            <ul class="menu">
+              <li class="menu-title">智能设备</li>
+              <li><a>智能手表</a></li>
+              <li><a>耳机音响</a></li>
+              <li><a>智能家居</a></li>
+            </ul>
+            <ul class="menu">
+              <li class="menu-title">影音文娱</li>
+              <li><a>数码相机</a></li>
+              <li><a>游戏机</a></li>
+              <li><a>影音设备</a></li>
+            </ul>
+            <div class="rounded-box border border-base-300 p-4 max-w-xs">
+              <p class="font-semibold">限时特惠</p>
+              <p class="text-sm opacity-60 mt-1">蓝牙耳机 5 折起，今晚 24 点截止</p>
+              <button class="btn btn-sm btn-primary mt-2">去看看</button>
+            </div>
+          </div>
+        </div>
+        <div id="hero-mm-home" popover>
+          <ul class="menu menu-horizontal">
+            <li><a>大家电</a></li>
+            <li><a>厨房小电</a></li>
+            <li><a>生活电器</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商顶部的「全部分类」大菜单（大菜单）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="大菜单">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>简洁版：每个分类一列链接</h2>
+    <p class="desc">分类较少时，面板里每列直接放一行 <code>menu-horizontal</code> 链接即可，不必堆成四列。</p>
+    <div class="doc-stage col" style="padding:0;overflow:hidden;align-items:stretch;">
+      <div class="megamenu megamenu-wide p-2 border border-base-300" popover style="position:static!important;display:flex!important;flex-wrap:wrap;opacity:1!important;translate:none!important;scale:1!important;max-block-size:none!important;margin-top:0!important;">
+        <span class="megamenu-active"></span>
+        <button popovertarget="v1-mm-design">设计</button>
+        <button popovertarget="v1-mm-dev">开发</button>
+        <div id="v1-mm-design" popover style="position:static!important;display:block!important;opacity:100%!important;translate:none!important;scale:1!important;width:100%!important;max-height:none!important;background:transparent!important;border:none!important;">
+          <ul class="menu menu-horizontal">
+            <li><a>UI 套件</a></li>
+            <li><a>图标库</a></li>
+            <li><a>配色方案</a></li>
+            <li><a>字体排印</a></li>
+          </ul>
+        </div>
+        <div id="v1-mm-dev" popover>
+          <ul class="menu menu-horizontal">
+            <li><a>前端组件</a></li>
+            <li><a>开发文档</a></li>
+            <li><a>更新日志</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>垂直版（小屏形态）</h2>
+    <p class="desc">加 <code>megamenu-vertical</code>，按钮纵向堆叠，面板直接排在按钮下方，适合窄屏抽屉里的分类导航；真实项目中配合小屏触发按钮一起使用。</p>
+    <div class="doc-stage col" style="padding:0;overflow:hidden;align-items:stretch;">
+      <div class="megamenu megamenu-vertical megamenu-wide p-2 border border-base-300" style="max-width:280px;flex-wrap:wrap;display:flex !important;opacity:1 !important;translate:0;scale:1;">
+        <span class="megamenu-active"></span>
+        <button popovertarget="v2-mm-female">女装</button>
+        <button popovertarget="v2-mm-male">男装</button>
+        <div id="v2-mm-female" style="width:100%;">
+          <ul class="menu">
+            <li><a>连衣裙</a></li>
+            <li><a>上衣 T 恤</a></li>
+            <li><a>外套</a></li>
+          </ul>
+        </div>
+        <div id="v2-mm-male" popover>
+          <ul class="menu">
+            <li><a>男士 T 恤</a></li>
+            <li><a>休闲裤</a></li>
+            <li><a>夹克</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>结构一一对应</h3>
+    <p>外层是 <code>div.megamenu</code>（真实项目里带 <code>popover</code> 属性）：里面每一个 <code>button[popovertarget="id"]</code>，紧跟一个 <code>div[id]</code> 的 <code>popover</code> 面板。id 唯一且对应，最多十个面板。</p>
+    <h3>只在大屏顶部用</h3>
+    <p>大菜单是桌面端顶部导航；手机上请隐藏它，换成一个触发按钮 + 抽屉（drawer）或下拉。面板内容用真实分类链接，不要放占位文案。</p>
+    <h3>零 JavaScript</h3>
+    <p>开合由浏览器原生 popover 完成（现代浏览器），<code>button</code> 自带 <code>popovertarget</code> 属性，不需要写任何 JS。</p>
+    <h3>关于本页的默认展开演示</h3>
+    <p>详情页保留官方 <code>popover</code> 结构不变，只给外层和「数码」面板加了一行演示用的内联重置（<code>position:static</code>、<code>display:flex/block</code>、<code>opacity:1</code> 等），让面板直接落在带边框的舞台里完整展开。复制到真实项目时：去掉这一行内联 <code>style</code>，面板就恢复成「悬停 / 点击按钮时锚定弹出」的默认行为；面板内容、列数、链接写法完全不变。</p>
+    <h3>可访问性</h3>
+    <p>分类按钮要带真实文字（不要只用图标）；面板内链接用语义化 <code>a</code>；原生 popover 自带 Esc 关闭与焦点管理，不要额外覆盖。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/megamenu/" target="_blank" rel="noopener">daisyui.com/components/megamenu</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商网站顶部的「全部分类」大菜单：一排分类按钮（女装 / 男装 / 数码 / 家电），点开任意一个，下方弹出一大块多列分类链接面板，面板一侧可放一张限时特惠推荐卡。
+【怎么排】
+- 外层用 div.megamenu.megamenu-wide（带 popover 属性），里面先放 span.megamenu-active 指示器，再依次放分类按钮与对应面板；
+- 每个分类按钮写 <button popovertarget="唯一id">分类名</button>，紧跟 <div id="相同id" popover>面板内容</div>，id 一一对应，不要写错；
+- 展开的「数码」面板里用 flex flex-wrap 排四列 menu：每列一个 ul.menu，首项 li.menu-title 写列名（手机通讯 / 电脑办公 / 智能设备 / 影音文娱），下面 3 个真实链接；
+- 面板尾部放一张推荐卡（rounded-box border border-base-300 p-4）：标题「限时特惠」、一行小号说明（text-sm opacity-60）、主色小按钮「去看看」。
+【精确规格】
+- 分类名与链接写真实电商文案（连衣裙 / 笔记本 / 智能手表…），禁止出现 Primary / 主要 这类颜色名当文案。
+- 开合用浏览器原生 popover（popovertarget / popover 属性），零 JavaScript；不要自己写 fixed 定位或 JS 弹层逻辑。
+- 参考结构里那一行 position:static / display / opacity 演示内联 style 只用于详情页让面板静态展开，复制后删除。
+- 大菜单只用于桌面端顶部；面板多列在宽屏并排，窄屏自动换行，任何一列链接都不能溢出容器。
+- 用到的类全部真实存在：megamenu、megamenu-wide、megamenu-vertical、megamenu-active、menu、menu-horizontal、menu-title、border-base-300、rounded-box、text-sm、opacity-60、btn、btn-sm、btn-primary。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色、不要外链图片。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

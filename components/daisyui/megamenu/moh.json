@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-megamenu",
+  "type": "component",
+  "title": "大菜单",
+  "description": "搬运自 daisyUI 的大菜单组件：电商顶部全部分类导航，覆盖多列链接面板、推荐卡、简洁横向列、垂直版等形态，基于原生 popover 零 JS。",
+  "styleTags": ["基础组件", "导航", "布局"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/megamenu/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），保留官方 popover 结构（外层 megamenu 与面板均带 popover 属性、按钮 popovertarget 一一对应），分类链接改为真实电商文案，推荐卡改为纯 CSS 色块（不外链图片）；仅给外层与展开面板加一行演示内联重置（position:static / display / opacity）让面板在详情页带边框舞台内静态展开，指南中已注明真实项目去掉该行内联，未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
