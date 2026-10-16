@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-slate",
+  "type": "theme",
+  "title": "纯净灰阶（浅色）",
+  "description": "无彩色零色相灰阶，深炭文字，适合写作 / 效率 / 文档类产品与中性商务后台。",
+  "styleTags": ["灰阶", "极简", "无彩色", "专注"],
+  "inspiration": ["https://www.shadcn.io/theme/clean-slate"],
+  "base": "mo-slate",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
