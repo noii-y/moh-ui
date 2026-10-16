@@ -13,7 +13,8 @@
   "title": "墨夜（深色）",               // 必填，中文名
   "description": "近黑底 + 冷灰 + 克制主色，适合数据看板。", // 必填，一句话说明
   "styleTags": ["深色", "数据看板"],     // 风格标签数组，用于集市浏览与检索
-  "base": "mo-dark",                     // 仅 theme 类：基于哪个基底主题（自研为自身，二创标基底）
+  "inspiration": null,                 // 可选：风格参考来源 URL 数组（色板自研但风格受开源项目启发时填）
+  "base": "mo-dark",                   // 仅 theme 类：基于哪个基底主题（自研为自身，二创标基底）
   "source": {                            // 必填，素材溯源（本项目硬约束）
     "origin": "original",                // 必填，"original" 自研 | "third-party" 二创
     "upstream": null,                    // 二创时：原项目名（自研为 null）
