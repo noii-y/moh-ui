@@ -39,6 +39,7 @@
 .col-span-3 { grid-column: span 3 / span 3; }
 .col-span-full { grid-column: 1 / -1; }
 .place-items-center { place-items: center; }
+.place-content-center { place-content: center; }
 
 /* ---------- Gap ---------- */
 .gap-0 { gap: 0; }
@@ -67,6 +68,7 @@
 .w-16 { width: 4rem; }
 .w-20 { width: 5rem; }
 .w-24 { width: 6rem; }
+.w-28 { width: 7rem; }
 .w-32 { width: 8rem; }
 .w-40 { width: 10rem; }
 .w-44 { width: 11rem; }
@@ -88,6 +90,7 @@
 .max-w-2xl { max-width: 42rem; }
 .max-w-prose { max-width: 65ch; }
 .max-w-full { max-width: 100%; }
+.max-w-3xl { max-width: 48rem; }
 
 /* ---------- 高度 ---------- */
 .h-3 { height: 0.75rem; }
@@ -104,6 +107,7 @@
 .h-24 { height: 6rem; }
 .h-32 { height: 8rem; }
 .h-40 { height: 10rem; }
+.h-44 { height: 11rem; }
 .h-48 { height: 12rem; }
 .h-64 { height: 16rem; }
 .h-full { height: 100%; }
@@ -156,6 +160,7 @@
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.line-through { text-decoration: line-through; }
 .whitespace-nowrap { white-space: nowrap; }
 
 /* ---------- 内边距 ---------- */
@@ -181,11 +186,15 @@
 .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
 .py-10 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.pt-1 { padding-top: 0.25rem; }
 .pt-2 { padding-top: 0.5rem; }
 .pt-4 { padding-top: 1rem; }
 .pt-6 { padding-top: 1.5rem; }
+.pt-12 { padding-top: 3rem; }
+.pt-14 { padding-top: 3.5rem; }
 .pb-2 { padding-bottom: 0.5rem; }
 .pb-4 { padding-bottom: 1rem; }
+.pb-6 { padding-bottom: 1.5rem; }
 
 /* ---------- 外边距 ---------- */
 .m-0 { margin: 0; }
@@ -209,6 +218,7 @@
 .mr-1 { margin-right: 0.25rem; }
 .mr-2 { margin-right: 0.5rem; }
 .mr-auto { margin-right: auto; }
+.mt-auto { margin-top: auto; }
 .my-2 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
 .my-4 { margin-top: 1rem; margin-bottom: 1rem; }
 .my-6 { margin-top: 1.5rem; margin-bottom: 1.5rem; }
@@ -303,6 +313,9 @@
 .cursor-pointer { cursor: pointer; }
 .cursor-not-allowed { cursor: not-allowed; }
 .select-none { user-select: none; }
+
+/* ---------- DaisyUI 组合辅助（官方 demo 用 Tailwind -space-x-* 实现，此处补等价） ---------- */
+.avatar-group .avatar + .avatar { margin-left: -1.25rem; }
 
 /* ---------- Tailwind 常用调色板（少量：评分/图标等 demo 用到） ---------- */
 .bg-orange-400 { background-color: #fb923c; }
