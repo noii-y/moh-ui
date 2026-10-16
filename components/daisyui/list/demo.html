@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>列表 List · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>列表 <span class="en">List</span></h1>
+  <p>纵向排列的条目容器：地址簿、播放列表、设置项都用它。下面先给一个收货地址选择的成品，再列出图标列表等形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">加图标、改间距只改 <code>class</code> 即可；切换主题后，列表颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>结算页的收货地址列表</h2>
+    <p class="desc">单选决定本次寄到哪：当前选中项打勾并标出「默认」，其余项保留「编辑 / 删除」两个弱化操作。每行是一个 <code>list-row</code>，中间信息块自动撑开，操作按钮排在末尾。</p>
+    <div class="doc-stage" id="hero-stage">
+      <ul class="list bg-base-100 rounded-box shadow-md">
+        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">选择收货地址</li>
+
+        <li class="list-row">
+          <input type="radio" name="address" class="radio" checked aria-label="选择默认地址" />
+          <div>
+            <div class="font-medium">
+              张伟 138 2716 8842
+              <span class="badge badge-sm badge-soft badge-primary ml-1">默认</span>
+            </div>
+            <div class="text-xs opacity-60">湖北省武汉市洪山区光谷大道 100 号，步行街 B 座 1203</div>
+          </div>
+          <div class="flex gap-1">
+            <button class="btn btn-xs btn-ghost">编辑</button>
+            <button class="btn btn-xs btn-ghost text-error">删除</button>
+          </div>
+        </li>
+
+        <li class="list-row">
+          <input type="radio" name="address" class="radio" aria-label="选择深圳地址" />
+          <div>
+            <div class="font-medium">李娜 139 0710 2266</div>
+            <div class="text-xs opacity-60">广东省深圳市南山区科技园南路 88 号 3 栋 502</div>
+          </div>
+          <div class="flex gap-1">
+            <button class="btn btn-xs btn-ghost">编辑</button>
+            <button class="btn btn-xs btn-ghost text-error">删除</button>
+          </div>
+        </li>
+
+        <li class="list-row">
+          <input type="radio" name="address" class="radio" aria-label="选择北京地址" />
+          <div>
+            <div class="font-medium">王强 136 9990 1122</div>
+            <div class="text-xs opacity-60">北京市朝阳区望京 SOHO T3 座 1806</div>
+          </div>
+          <div class="flex gap-1">
+            <button class="btn btn-xs btn-ghost">编辑</button>
+            <button class="btn btn-xs btn-ghost text-error">删除</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="结算页收货地址列表（列表）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="列表">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：图标列表 -->
+  <section class="doc-block">
+    <h2>带图标的设置列表</h2>
+    <p class="desc">每行开头放一个语义图标块（<code>h-10 w-10</code> 灰底方块 + 单色 SVG），中间是标题加一行副标题，末尾一个指向箭头。设置页、个人中心最常用这个结构。</p>
+    <div class="doc-stage">
+      <ul class="list bg-base-100 rounded-box shadow-md">
+        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">账号设置</li>
+        <li class="list-row">
+          <div class="flex h-10 w-10 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5 text-neutral"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
+          </div>
+          <div>
+            <div>账号安全</div>
+            <div class="text-xs opacity-60">登录密码、绑定手机、两步验证</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 opacity-40"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        </li>
+        <li class="list-row">
+          <div class="flex h-10 w-10 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5 text-neutral"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>
+          </div>
+          <div>
+            <div>消息通知</div>
+            <div class="text-xs opacity-60">订单状态、促销推送、邮件摘要</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 opacity-40"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        </li>
+        <li class="list-row">
+          <div class="flex h-10 w-10 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5 text-neutral"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+          </div>
+          <div>
+            <div>隐私设置</div>
+            <div class="text-xs opacity-60">个性化推荐、浏览记录、授权管理</div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5 opacity-40"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 变体：紧凑列表 -->
+  <section class="doc-block">
+    <h2>紧凑条目列表</h2>
+    <p class="desc">没有卡片底色、没有阴影，直接用 <code>&lt;ul class="list"&gt;</code> 放在页面背景上；中间信息块用 <code>list-col-grow</code> 强制撑开，末尾放小按钮。适合「最近浏览」「播放队列」这类密度优先的场景。</p>
+    <div class="doc-stage">
+      <ul class="list">
+        <li class="list-row">
+          <div class="text-sm font-thin opacity-40 tabular-nums">01</div>
+          <div class="flex h-8 w-8 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-neutral"><path d="M6 3 20 12 6 21 6 3Z" /></svg>
+          </div>
+          <div class="list-col-grow">
+            <div class="text-sm">晚风叙事</div>
+            <div class="text-xs opacity-60">陈婧霏 · 城市印象</div>
+          </div>
+          <button class="btn btn-xs btn-ghost">试听</button>
+        </li>
+        <li class="list-row">
+          <div class="text-sm font-thin opacity-40 tabular-nums">02</div>
+          <div class="flex h-8 w-8 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-neutral"><path d="M6 3 20 12 6 21 6 3Z" /></svg>
+          </div>
+          <div class="list-col-grow">
+            <div class="text-sm">过江</div>
+            <div class="text-xs opacity-60">苏慧伦 · 来往</div>
+          </div>
+          <button class="btn btn-xs btn-ghost">试听</button>
+        </li>
+        <li class="list-row">
+          <div class="text-sm font-thin opacity-40 tabular-nums">03</div>
+          <div class="flex h-8 w-8 items-center justify-center rounded-box bg-base-200">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4 text-neutral"><path d="M6 3 20 12 6 21 6 3Z" /></svg>
+          </div>
+          <div class="list-col-grow">
+            <div class="text-sm">海岸线</div>
+            <div class="text-xs opacity-60">虎耳草 · 北纬 30 度</div>
+          </div>
+          <button class="btn btn-xs btn-ghost">试听</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>list-row 的网格规律</h3>
+    <p><code>list-row</code> 内部是一个网格：默认第二个子元素自动填满剩余宽度。所以标准写法是「小图标 + 信息块 + 末尾按钮」；想让别的块撑开，给它加 <code>list-col-grow</code>；想让一段长文字换到下一行，给它加 <code>list-col-wrap</code>。</p>
+    <h3>语义化</h3>
+    <p>列表用 <code>&lt;ul&gt; / &lt;li&gt;</code>，不要用 <code>&lt;div&gt;</code> 硬拼；单行里的单选（如收货地址）用 <code>&lt;input type="radio"&gt;</code> 并加 <code>aria-label</code>，保证键盘和读屏可用。</p>
+    <h3>操作按钮</h3>
+    <p>每行末尾的操作统一用 <code>btn btn-xs btn-ghost</code>；删除这类危险动作加 <code>text-error</code> 提示，但不要用实心红按钮吓人。</p>
+    <h3>卡片外壳</h3>
+    <p>需要从页面背景里浮出来时，外层加 <code>bg-base-100 rounded-box shadow-md</code>；嵌进白色页面容器里时直接裸用 <code>list</code> 即可，不要到处套卡片。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/list/" target="_blank" rel="noopener">daisyui.com/components/list</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商结算页的收货地址选择列表：单选决定本次商品寄到哪个地址，当前选中项标出「默认」，其余项可编辑或删除。
+【怎么排】
+- 外层 <ul class="list bg-base-100 rounded-box shadow-md">，第一行是小标题（p-4 pb-2 text-xs opacity-60 tracking-wide），之后每个地址是一个 <li class="list-row">。
+- 每行内部顺序：圆形单选 radio → 中间信息块（姓名电话一行 font-medium，地址一行 text-xs opacity-60）→ 末尾操作按钮组 flex gap-1。
+- 中间信息块是第二个子元素，会自动撑开剩余宽度；末尾按钮不挤压它。
+- 单选 input 必须加 aria-label（如「选择默认地址」），保证键盘和读屏可用。
+- 选中行旁边加 badge badge-sm badge-soft badge-primary「默认」；未选中行不加。
+【精确规格】
+- 单选框用 <input type="radio" name="address" class="radio" checked>（同一 name 组互斥）。
+- 操作按钮用 btn btn-xs btn-ghost：「编辑」默认幽灵，「删除」加 text-error 但不要用实心红。
+- 所有文案写真实中文：收货人姓名、手机号、详细地址；不要用颜色名当按钮文字。
+- 手机 390px 下地址文字可以折行，但整行不溢出、按钮不被裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
