@@ -12,105 +12,171 @@
 <body>
 <header class="doc-head">
   <h1>表单校验 <span class="en">Validator</span></h1>
-  <p>纯 CSS、无需 JS：根据输入框的 required / pattern / minlength 等规则，合法变绿、非法变红，并可用 validator-hint 显示提示。</p>
-  <p>来源：<a href="https://daisyui.com/components/validator/" target="_blank" rel="noopener">daisyui.com/components/validator</a>（MIT）。在下方输入框中输入非法内容即可看到变红与提示。</p>
+  <p>纯 CSS、零 JS：给输入框加 validator，配合原生 required / pattern / minlength，填对变绿、填错变红，下方 validator-hint 写清规则。下面先给一个修改密码的成品，再列出常见规则供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改校验规则只改 <code>required</code> / <code>pattern</code> / <code>minlength</code> 这些原生属性即可；切换主题后，成功绿与错误红会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：修改密码 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>账号设置里的修改密码区</h2>
+    <p class="desc">两个密码字段各自用 fieldset 包起，输入框加 validator，规则靠原生 required、minlength、pattern 声明；下方 validator-hint 把规则说成人话，失焦或提交时自动变绿/变红。底部放确认修改按钮。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="flex flex-col gap-3 w-full max-w-md">
+        <fieldset class="fieldset w-full">
+          <legend class="fieldset-legend">设置新密码</legend>
+          <input type="password" class="input validator w-full" required minlength="8"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            placeholder="请输入新密码" autocomplete="new-password"
+            title="至少 8 位，含数字、小写和大写字母" />
+          <p class="validator-hint">至少 8 位，且同时包含数字、小写字母和大写字母</p>
+        </fieldset>
+        <fieldset class="fieldset w-full">
+          <legend class="fieldset-legend">确认新密码</legend>
+          <input type="password" class="input validator w-full" required minlength="8"
+            placeholder="请再次输入新密码" autocomplete="new-password" />
+          <p class="validator-hint">两次输入需要完全一致（一致性比对需一行脚本，此处仅占位提示）</p>
+        </fieldset>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary" type="submit">确认修改</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="账号设置里的修改密码区（表单校验）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049.11.184 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="表单校验">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>邮箱校验</h2>
-    <p class="desc">type="email" + required。试着输入一个非法邮箱（如 abc）。</p>
+    <h2>邮箱格式校验</h2>
+    <p class="desc">用 <code>type="email"</code> 加 <code>required</code>：浏览器自带邮箱格式判断，输入非法（如只打 <code>abc</code>）失焦后框变红，提示写在下方 validator-hint。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <input class="input validator w-full" type="email" required placeholder="mail@site.com" />
-        <p class="validator-hint">请输入有效的邮箱地址</p>
+      <fieldset class="fieldset w-full max-w-md">
+        <input type="email" class="input validator w-full" required placeholder="请输入常用邮箱" autocomplete="email" />
+        <p class="validator-hint">请输入有效的邮箱地址，例如 name@site.com</p>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>密码强度</h2>
+    <h2>用户名规则校验</h2>
+    <p class="desc">用 <code>pattern</code> 写正则、<code>minlength</code> / <code>maxlength</code> 限长，规则逐条写进 validator-hint，比弹一次浏览器提示清楚得多。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <input type="password" class="input validator w-full" required placeholder="密码"
-          minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          title="至少 8 位，含数字、小写、大写字母" />
-        <p class="validator-hint">
-          至少 8 位，并包含：<br />一个数字<br />一个小写字母<br />一个大写字母
-        </p>
+      <fieldset class="fieldset w-full max-w-md">
+        <input type="text" class="input validator w-full" required
+          pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"
+          placeholder="设置用户名" title="仅支持字母、数字或连字符" />
+        <p class="validator-hint">3–30 个字符，只能包含字母、数字或连字符，且以字母开头</p>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>用户名规则</h2>
+    <h2>手机号 11 位</h2>
+    <p class="desc"><code>type="tel"</code> 调出数字键盘，<code>minlength</code> / <code>maxlength</code> 锁 11 位；数字用 <code>tabular-nums</code> 等宽对齐，观感更稳。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <input type="text" class="input validator w-full" required placeholder="用户名"
-          pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" title="仅字母、数字或连字符" />
-        <p class="validator-hint">
-          3–30 个字符<br />只能包含字母、数字或连字符
-        </p>
+      <fieldset class="fieldset w-full max-w-md">
+        <input type="tel" class="input validator tabular-nums w-full" required
+          minlength="11" maxlength="11" placeholder="请输入 11 位手机号" title="必须为 11 位数字" />
+        <p class="validator-hint">请输入 11 位手机号，用于接收登录验证码</p>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>手机号（11 位）</h2>
+    <h2>必勾协议校验</h2>
+    <p class="desc">checkbox 也能加 <code>validator</code> 配 <code>required</code>：未勾选就提交时，这一项会标出错误；validator-hint 说明必须勾选才能继续。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <input type="tel" class="input validator tabular-nums w-full" required placeholder="手机号"
-          pattern="[0-9]*" minlength="11" maxlength="11" title="必须为 11 位数字" />
-        <p class="validator-hint">请输入 11 位手机号</p>
-      </fieldset>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>数值范围</h2>
-    <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <input type="number" class="input validator w-full" required placeholder="输入 1–10 之间的数字"
-          min="1" max="10" title="必须在 1 到 10 之间" />
-        <p class="validator-hint">数字必须在 1 到 10 之间</p>
-      </fieldset>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>必勾协议</h2>
-    <div class="doc-stage">
-      <fieldset class="fieldset w-72">
-        <label class="flex items-center gap-2">
-          <input type="checkbox" class="checkbox validator" required title="请勾选" />
-          <span>我已阅读并同意《用户协议》</span>
+      <fieldset class="fieldset w-full max-w-md">
+        <label class="fieldset-label justify-start gap-2">
+          <input type="checkbox" class="checkbox validator" required title="请先阅读并同意协议" />
+          <span>我已阅读并同意《用户协议》和《隐私政策》</span>
         </label>
-        <p class="validator-hint">必须勾选才能继续</p>
+        <p class="validator-hint">勾选后才能继续注册</p>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>完整登录表单</h2>
-    <p class="desc">每个字段用 fieldset 独立包裹，提示只作用于自己；点提交触发校验。</p>
+    <h2>内嵌图标的校验输入</h2>
+    <p class="desc">图标放进外层 <code>label.input.validator</code>，真正的输入框加 <code>grow</code>；校验样式同样生效，适合带前缀图标的搜索、卡号等字段。</p>
     <div class="doc-stage">
-      <form class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4" onsubmit="return false;">
-        <fieldset class="fieldset">
-          <label class="label">邮箱</label>
-          <input type="email" class="input validator w-full" placeholder="Email" required />
-          <p class="validator-hint hidden">请输入邮箱</p>
-        </fieldset>
-        <fieldset class="fieldset">
-          <label class="label">密码</label>
-          <input type="password" class="input validator w-full" placeholder="密码" required minlength="6" />
-          <p class="validator-hint hidden">密码至少 6 位</p>
-        </fieldset>
-        <button class="btn btn-neutral mt-4" type="submit">登录</button>
-      </form>
+      <fieldset class="fieldset w-full max-w-md">
+        <label class="input validator w-full">
+          <svg class="h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
+          <input type="text" class="grow" required placeholder="设置用户名"
+            pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" />
+        </label>
+        <p class="validator-hint">3–30 个字符，以字母开头，可含数字或连字符</p>
+      </fieldset>
     </div>
   </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>校验靠原生属性，不写 JS</h3>
+    <p>给控件加 <code>validator</code> 类，规则写在原生 <code>required</code>、<code>type</code>（email/tel/url/number）、<code>pattern</code>、<code>minlength</code>、<code>maxlength</code>、<code>min</code> / <code>max</code> 上。daisyUI 据此在用户触碰并离开（或提交）时自动把合法项变绿、非法项变红，不需要任何脚本。</p>
+    <h3>每个字段独立成组</h3>
+    <p>一个字段 = 一个 <code>fieldset</code>，里面放控件和它自己的 <code>validator-hint</code>。多个字段别共用一层容器，否则错误提示容易串到别的字段上。</p>
+    <h3>提示要写人话</h3>
+    <p><code>validator-hint</code> 始终占位显示规则，不要只让框变红却不写清错在哪、怎么改。把规则拆成短句（长度、字符类型、格式），比一句话正则好懂。</p>
+    <h3>纯 CSS 做不到的，别硬凑</h3>
+    <ul>
+      <li>「两次密码一致」属于跨字段比对，原生 CSS 做不到，需要一行脚本；本页只放占位提示，不要假装它能自动校验。</li>
+      <li>实时强度条、异步查重（用户名是否已被注册）都需要 JS，不属于本组件范围。</li>
+      <li>前端校验只是体验优化，最终合法性必须在服务端再验一遍，不能只靠它。</li>
+    </ul>
+    <h3>常见坑</h3>
+    <ul>
+      <li><code>pattern</code> 用正则，注意转义；同时配 <code>title</code>，浏览器原生提示会用到它。</li>
+      <li>错误红 / 成功绿只在用户触碰后出现，这是 :user-invalid 行为，不是 bug；想让首次进入就标红需要自己加状态类。</li>
+      <li>不要为了醒目给每个输入都加状态色，只在校验结果明确时才用。</li>
+    </ul>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/validator/" target="_blank" rel="noopener">daisyui.com/components/validator</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
 
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】账号设置里的修改密码区：两个密码字段竖向排列，下方一个确认修改按钮。
+【怎么排】
+- 每个字段用 <fieldset class="fieldset w-full"> 包起，<legend class="fieldset-legend"> 写中文标签（设置新密码 / 确认新密码）；
+- 输入框用 <input type="password" class="input validator w-full">，规则写原生属性：required、minlength="8"、pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"，加 autocomplete="new-password"；
+- 每个输入框下方紧跟 <p class="validator-hint"> 用中文写清规则（至少 8 位、含数字和大小写字母）；
+- 两个字段下方放主按钮「确认修改」（btn btn-primary），整组 flex flex-col gap-3、最大宽度 max-w-md、左对齐；
+- 不要写任何 JS 校验逻辑，颜色变化由 daisyUI validator 配合原生约束自动完成。
+【精确规格】
+- 第二个「确认新密码」只做 required + minlength 占位提示，不要假装做了两次一致比对（跨字段比对需一行脚本，此处仅文案说明）。
+- 文案写真实业务动作与规则，禁止出现 Primary / 成功 / 失败 这类颜色名当提示。
+- 用到的类全部真实存在：input、validator、validator-hint、fieldset、fieldset-legend、w-full、max-w-md、flex-col、gap-3、btn-primary。
+- 颜色全部走 daisyUI 主题变量；成功绿与错误红只在用户触碰字段后出现，不要额外强制首屏标红。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>

@@ -1,40 +1,48 @@
 # 表单校验 Validator
 
-> 搬运自 **daisyUI**（<https://daisyui.com/components/validator/>），MIT，© 2020 Pouya Saadeghi。
+> 搬运自 **daisyUI**（<https://daisyui.com/components/validator/>），许可证 MIT，© 2020 Pouya Saadeghi。
+> 灰墨仅做零依赖改造与中文教程，组件样式与版权归属原作者。
 
 ## 它是什么
 
-**纯 CSS、零 JS** 的表单校验：给控件加 `validator`，浏览器依据 `required` / `pattern` / `minlength` / `min` / `max` 等原生约束，合法时显示绿色、非法时显示红色；配套 `validator-hint` 在校验失败时显示提示文字。
+纯 CSS、零 JS 的表单校验提示：给输入控件加 `validator` 类，浏览器依据原生 `required` / `type` / `pattern` / `minlength` / `maxlength` / `min` / `max` 判断合法与否，用户触碰并离开或提交时，合法项变绿、非法项变红；配套 `validator-hint` 把规则写成人话。它聚焦「校验后的提示样式与文案」，不重复 input 控件本身。
 
-## 怎么用（零依赖）
+## 怎么用（三步，零依赖）
 
-1. 引入 `vendor/daisyui.css` 与 `assets/utilities-patch.css`；
-2. 控件加 `validator` 类，并用原生属性写明规则；
-3. 紧跟一个 `<p class="validator-hint">` 写错误提示；
-4. 建议用 `<fieldset class="fieldset">` 把控件和提示包成一组，避免提示串到别的字段。
+1. 在页面 `<head>` 引入两个文件（仓库自带，不需要 npm、不需要构建）：
 
-## 常用校验规则
+```html
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+```
 
-| 场景 | 关键属性 |
+2. 打开 [demo.html](./demo.html)，首选「复制 AI 提示词」整段发给你的 AI；想自己粘贴代码，复制对应字段那一段 `<fieldset>` 到自己的页面即可。
+3. 改校验规则只改 `required` / `pattern` / `minlength` 等原生属性；切换主题时，成功绿与错误红自动跟随主题变量。
+
+## 常用写法速查
+
+| 场景 | 关键写法 |
 |---|---|
-| 必填 | `required` |
-| 邮箱 | `type="email"` |
-| 网址 | `type="url"` |
-| 密码强度 | `pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"` |
+| 必填输入 | `<input class="input validator" required />` |
+| 邮箱格式 | `type="email" required` |
+| 密码强度 | `minlength="8"` + `pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"` |
 | 用户名 | `pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30"` |
-| 手机号 | `type="tel" pattern="[0-9]*" minlength="11" maxlength="11"` |
+| 手机号 11 位 | `type="tel" minlength="11" maxlength="11"` |
 | 数值范围 | `type="number" min="1" max="10"` |
-| 日期范围 | `type="date" min="…" max="…"` |
-| 必勾协议 | `type="checkbox" required` |
+| 必勾协议 | `<input type="checkbox" class="checkbox validator" required />` |
+| 提示文字 | 紧跟控件的 `<p class="validator-hint">规则说明</p>` |
+| 内嵌图标 | 外层 `<label class="input validator">`，内部 `<input class="grow">` |
 
-## 使用要点（重要）
+## 使用要点（给 AI 与新手的提醒）
 
-- **纯 CSS 校验只能做格式初筛，不能替代后端校验**：用户可绕过前端，最终合法性必须在服务端再验一遍。
-- `validator-hint` 默认会占位（防止提示出现时布局跳动）；若想隐藏时不占空间，加 `hidden` 类（校验失败会自动显示）。
-- **多个校验字段务必各自用 fieldset 包裹**，否则一个非法输入可能让同层级所有提示都显示。
-- `pattern` 用的是正则，注意转义；同时配 `title` 属性，浏览器原生提示也会用到它。
-- 提交前再统一滚动到第一个出错的字段，避免用户不知道哪里没填。
+- **每个字段独立成组**：一个字段包在一个 `fieldset` 里，控件和它自己的 `validator-hint` 放一起，避免错误提示串到别的字段。
+- **提示要写人话**：把规则拆成短句（长度、字符类型、格式），不要只让框变红却不告诉用户怎么改。
+- **纯 CSS 做不到的别硬凑**：「两次密码一致」这类跨字段比对、实时强度条、异步查重都需要 JS，前端校验也不能替代服务端校验。
+- 错误红 / 成功绿只在用户触碰字段后出现（`:user-invalid` 行为），首次进入不标红是正常的。
+- `pattern` 用正则注意转义，同时配 `title`，浏览器原生提示会用到它。
 
 ## 兼容性
 
-纯 CSS 利用原生 `:invalid` / `:valid` 伪类，现代浏览器全支持；无需 JS。
+- 纯 CSS + 原生约束校验，无 JavaScript、无框架依赖，HTML 直接可用。
+- 颜色全部走 `--color-*` 主题变量，深浅色主题、灰墨 10 套主题均自动适配。
+- 各浏览器对 `:user-invalid` 的触发时机略有差异，但视觉样式与提示一致。
