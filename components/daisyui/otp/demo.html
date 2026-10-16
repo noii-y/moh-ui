@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>验证码 OTP · 灰墨组件</title>
+<title>验证码输入 OTP · 灰墨组件</title>
 <link rel="stylesheet" href="../../../vendor/daisyui.css" />
 <link rel="stylesheet" href="../../../assets/utilities-patch.css" />
 <link rel="stylesheet" href="../../../assets/demo-page.css" />
@@ -12,15 +12,57 @@
 <body>
 <header class="doc-head">
   <h1>验证码输入 <span class="en">OTP</span></h1>
-  <p>输入一次性验证码（通常 4–6 位），用于短信验证、两步登录。示例结构搬运自 daisyUI 官方文档。</p>
-  <p>来源：<a href="https://daisyui.com/components/otp/" target="_blank" rel="noopener">daisyui.com/components/otp</a>（MIT）</p>
+  <p>一次性验证码输入框（通常 4–6 位数字），用于短信验证、两步登录、免密登录。下面先给一个登录页可以直接拿走的短信验证码成品，再列出位数、连接样式、尺寸和状态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改位数、尺寸、状态只改 <code>class</code> 与 span 数量即可；切换主题后，验证码框颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：短信 6 位验证码 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>登录页的短信验证码输入</h2>
+    <p class="desc">6 位数字用 <code>otp-joined</code> 连成一排，输入框带 <code>inputmode="numeric"</code> 弹数字键盘、<code>autocomplete="one-time-code"</code> 支持 iOS 自动填短信验证码；下面一行写明发到哪个手机号与重发倒计时，最后放「确认」主按钮。倒计时、跳格自动聚焦属于业务增强，本成品不写 JS。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <fieldset class="fieldset w-full max-w-md">
+        <legend class="fieldset-legend">短信验证码</legend>
+        <label class="otp otp-joined">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <input type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required />
+        </label>
+        <p class="fieldset-label">验证码已发送至 138****0000 · 重新发送（60s）</p>
+      </fieldset>
+      <div class="flex flex-wrap gap-2">
+        <button class="btn btn-primary">确认</button>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="登录页短信验证码输入（OTP）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="验证码输入">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
     <h2>4 位验证码</h2>
-    <p class="desc">span 数量必须与 maxlength、pattern 一致（4 个 span 对应 4 位）。</p>
+    <p class="desc">最关键的一条：<code>span</code> 数量必须与 <code>maxlength</code>、<code>pattern</code> 一致。4 位就放 4 个 <code>&lt;span&gt;</span>，否则格子和字符会错位。</p>
     <div class="doc-stage">
       <label class="otp">
         <span></span><span></span><span></span><span></span>
@@ -30,7 +72,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>6 位验证码</h2>
+    <h2>6 位验证码（分离样式）</h2>
+    <p class="desc">6 位是国内短信验证码最常见的长度；不加 <code>otp-joined</code> 就是分离的独立格子，加了就是连成一排（见成品）。</p>
     <div class="doc-stage">
       <label class="otp">
         <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -40,7 +83,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>连接样式（joined）</h2>
+    <h2>连接样式（otp-joined）</h2>
+    <p class="desc">加 <code>otp-joined</code> 把相邻格子的边框合并成一体，视觉上是一整条输入槽，移动端更常用。</p>
     <div class="doc-stage">
       <label class="otp otp-joined">
         <span></span><span></span><span></span><span></span>
@@ -50,7 +94,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>尺寸</h2>
+    <h2>尺寸五档</h2>
+    <p class="desc">从 xs 到 xl 共五档，默认 md 最通用；小尺寸适合内嵌两步验证弹窗，大尺寸给移动端全屏登录页。6 位大尺寸在窄屏上可能偏宽，移动端建议用默认或 sm。</p>
     <div class="doc-stage col">
       <label class="otp otp-xs"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
       <label class="otp otp-sm"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
@@ -61,7 +106,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
+    <h2>语义状态色</h2>
+    <p class="desc">主色、成功、错误三态：只有在「校验通过」「验证码错误需重填」这类结果明确时才用，并且旁边要写清结果，不要默认给验证码框涂颜色。</p>
     <div class="doc-stage">
       <label class="otp otp-primary"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
       <label class="otp otp-success"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
@@ -71,6 +117,7 @@
 
   <section class="doc-block">
     <h2>禁用</h2>
+    <p class="desc">倒计时未结束、或校验流程未到时用 <code>disabled</code> 置灰，浏览器会同时禁止点击和输入。</p>
     <div class="doc-stage">
       <label class="otp">
         <span></span><span></span><span></span><span></span>
@@ -79,6 +126,49 @@
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>span 数量必须等于位数</h3>
+    <p>这是最容易踩的坑：6 位验证码却只放 4 个 <code>&lt;span&gt;</code>，格子和字符就会错位。放几个 span 就配几个字符的 <code>maxlength</code> 与 <code>pattern="[0-9]{N}"</code>。</p>
+    <h3>三个属性一定要加</h3>
+    <ul>
+      <li><code>inputmode="numeric"</code>：手机弹出数字键盘，而不是全键盘。</li>
+      <li><code>autocomplete="one-time-code"</code>：iOS / Safari 才能在输入法上方自动填短信验证码。</li>
+      <li><code>pattern="[0-9]{N}"</code>：从输入层限制只能是数字。</li>
+    </ul>
+    <h3>配一行发送说明</h3>
+    <p>用 <code>fieldset-label</code> 写「验证码已发送至 138****0000 · 重新发送（60s）」，让用户知道发去哪、多久能重发；倒计时数字和重发按钮是 JS 增强，本组件不含。</p>
+    <h3>状态色要配文字</h3>
+    <p><code>otp-error</code> 红框只在验证码错误时用，并写清「验证码不正确，请重新输入」；输错后通常允许一键清空。</p>
+    <h3>常见坑</h3>
+    <ul>
+      <li>6 位大尺寸（otp-lg / otp-xl）在 390px 窄屏可能偏宽，移动端优先用默认或 sm，或用 <code>otp-joined</code> 让格子更紧凑。</li>
+      <li>「输一位自动跳到下一格」「粘贴自动填满」是常见增强，需要少量 JS，不属于纯 CSS 范围，按项目需要自行添加。</li>
+      <li>禁用优先用 <code>disabled</code> 属性，它会同时阻止点击和聚焦。</li>
+    </ul>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/otp/" target="_blank" rel="noopener">daisyui.com/components/otp</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】登录页里的短信验证码输入区：6 位数字连成一排，下面一行写明发到哪个手机号与重发倒计时，最后放一个「确认」主按钮。
+【怎么排】
+- 用 fieldset.fieldset（w-full max-w-md）包住验证码，legend（fieldset-legend）写「短信验证码」；
+- 外层 <label class="otp otp-joined"> 内先放 6 个空 <span></span>，再放一个 input（autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required）；span 数量必须等于 6；
+- 验证码下方一行 fieldset-label 写「验证码已发送至 138****0000 · 重新发送（60s）」；
+- 最下方 flex flex-wrap gap-2 放主按钮「确认」（btn btn-primary），整组竖向堆叠、左对齐；倒计时、跳格自动聚焦属于业务增强，本场景不要写任何 JS。
+【精确规格】
+- 三个 input 属性缺一不可：inputmode="numeric"（弹数字键盘）、autocomplete="one-time-code"（支持 iOS 自动填）、pattern="[0-9]{6}"（限数字）。
+- 用到的类全部真实存在：otp、otp-joined、fieldset、fieldset-legend、fieldset-label、flex-wrap、gap-2、btn-primary。
+- 文案写真实业务动作（确认、短信验证码、重新发送），禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 6 位在 390px 窄屏上用 otp-joined 紧凑排列，不要用超大尺寸（otp-lg/xl）导致横向溢出；颜色全部走主题变量，不写死颜色。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
