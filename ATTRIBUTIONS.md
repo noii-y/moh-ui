@@ -21,6 +21,7 @@
 | button / input / select / table / card / form / navbar / sidebar / tag / modal | 组件 | 自研（noii-y） | MIT | — | 全部原创，零依赖，类名 moh- 前缀 |
 | breadcrumb / pagination / empty / skeleton / tabs / drawer / toast / stat-card | 组件 | 自研（noii-y） | MIT | — | 阶段 C 基础组件，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
 | chart-card / code-block / drag-sort | 组件 | 自研（noii-y） | MIT | — | 阶段 C 增强组件；chart-card 依赖 ECharts（CDN）、code-block 依赖 highlight.js（CDN）、drag-sort 零依赖 |
+| checkbox / switch / date-range / alert / tooltip / avatar / progress / badge / spinner | 组件 | 自研（noii-y） | MIT | — | 阶段 C 补充轮，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
 
 ## 引入外部素材时的登记模板
 
@@ -40,4 +41,4 @@
 
 ## 校验状态
 
-- 最近校验：2026-10-16，`node scripts/check-attributions.mjs` 全过（32 个 moh.json 合规）
+- 最近校验：2026-10-16，`node scripts/check-attributions.mjs` 全过（41 个 moh.json 合规）
