@@ -21,6 +21,14 @@
       animation: moh-skeleton-breathe 1.6s ease-in-out infinite;
     }
 
+    /* 可访问性：骨架屏容器内若出现可交互元素，焦点必须可见 */
+    .moh-skeleton a:focus-visible,
+    .moh-skeleton button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
     @keyframes moh-skeleton-breathe {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.55; }
