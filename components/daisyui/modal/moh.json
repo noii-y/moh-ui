@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-modal",
+  "type": "component",
+  "title": "对话框",
+  "description": "搬运自 daisyUI 的对话框组件：删除确认、右上角关闭、底部抽屉、自定义宽度、纯信息提示等形态，推荐 dialog+showModal 用法，零依赖纯 CSS。",
+  "styleTags": ["反馈", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/modal/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），文案改为真实中文业务场景；详情页为在小舞台内静态展示给 .modal 临时加 position:static 与 pointer-events:none（指南与提示词均注明真实项目需删除）；指南补充官方推荐的 dialog+showModal() 用法；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
