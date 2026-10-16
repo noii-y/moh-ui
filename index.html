@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>灰墨 MoH_UI · 给 AI 搭出来的后台做审美急救</title>
-  <meta name="description" content="灰墨 MoH_UI：现成主题包 + 单文件后台组件，让 AI 一句话完成换肤。零门槛、中文优先、体检闭环。" />
+  <title>灰墨 MoH_UI · AI 编程审美插件 / 皮肤包资源库</title>
+  <meta name="description" content="灰墨 MoH_UI：规则边界包 + 视觉主题库 + 组件插件库。给 AI 搭出来的项目做审美急救：AI 不易察觉的整容规则、丰富主题、可搬进自己项目的组件。中文优先、开源 MIT、素材可溯源。" />
+  <link rel="stylesheet" href="themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="site/assets/site.css" />
 </head>
 <body>
@@ -18,10 +19,11 @@
         <a class="site-nav__link site-nav__link--active" href="index.html">首页</a>
         <a class="site-nav__link" href="site/themes.html">主题</a>
         <a class="site-nav__link" href="site/components.html">组件</a>
-        <a class="site-nav__link" href="site/generator.html">主题生成器</a>
+        <a class="site-nav__link" href="site/rules.html">规则</a>
+        <a class="site-nav__link" href="site/generator.html">选择器</a>
       </div>
       <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.68 5.38-5.24 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.68 5.38-5.24 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
         GitHub
       </a>
     </div>
@@ -29,45 +31,47 @@
 
   <header class="site-hero">
     <div class="site-container">
-      <span class="site-hero__badge">现成主题包 · 单文件组件 · AI 一句话换肤</span>
-      <h1 class="site-hero__title">给 AI 搭出来的后台做「审美急救」</h1>
+      <span class="site-hero__badge">规则边界 · 视觉主题 · 组件插件 · 全部可溯源</span>
+      <h1 class="site-hero__title">给 AI 搭出来的项目做「审美急救」</h1>
       <p class="site-hero__desc">
-        不会设计、也不想学设计？用 AI 搭后台 / SaaS / 内部工具时，把主题丢给 AI，
-        AI 自己完成换肤。灰墨提供<b>实体主题包</b>（不是抽象规则），主攻中文与零门槛。
+        换皮谁都会，灰墨做的是 AI <b>不容易察觉</b>的整容：字号不许过大过小、表格不许溢出、排列整齐、符合美观条件——
+        这是附带服务。真正的主打是<b>丰富视觉主题</b>和<b>能搬进自己项目的组件插件</b>：内容多、使用率高、二创专业（附原组件名与出处、教程转中文）。
       </p>
       <div class="site-hero__actions">
         <a class="site-btn site-btn--primary" href="site/themes.html">挑选主题</a>
-        <a class="site-btn site-btn--secondary" href="site/components.html">浏览组件</a>
-        <a class="site-btn site-btn--secondary" href="site/generator.html">自定义生成</a>
+        <a class="site-btn site-btn--secondary" href="site/components.html">搬组件</a>
+        <a class="site-btn site-btn--secondary" href="site/rules.html">规则边界</a>
       </div>
+      <div class="site-stats" id="stats"></div>
     </div>
   </header>
 
-  <section class="site-section">
+  <section class="site-section" style="padding-top: 0">
     <div class="site-container">
-      <h2 class="site-section__title">两套主题 · 体检 100 分</h2>
-      <p class="site-section__desc">每套主题独立目录：tokens.css（设计变量）+ base.css（基础样式）+ preview.html（基准页）。发布门槛：体检 &lt;90 分不许发布。</p>
+      <h2 class="site-section__title">三大资源</h2>
+      <p class="site-section__desc">每类资源都有独立目录、moh.json 元数据与体检门槛；素材来源、许可证全部可溯源。</p>
       <div class="site-grid">
-        <div class="site-card">
-          <iframe class="site-card__frame" src="themes/mo-dark/preview.html" loading="lazy" title="mo-dark 预览"></iframe>
+        <a class="site-card" href="site/themes.html" style="text-decoration:none; color:inherit">
           <div class="site-card__body">
-            <p class="site-card__title">mo-dark · 墨夜 <span class="site-chip site-chip--dark">深色</span></p>
-            <p class="site-card__desc">近黑底 + 冷灰 + 克制主色，适合数据看板 / 监控类后台。</p>
-            <div class="site-card__actions">
-              <a class="site-btn site-btn--secondary" href="site/themes.html#mo-dark">查看详情</a>
-            </div>
+            <p class="site-card__title">🎨 主题库 <span class="site-chip">统一 --moh-* 变量</span></p>
+            <p class="site-card__desc">10 套真实色板主题：墨夜 / 宣纸 / 纯净灰阶 / 商务灰 / 粉彩 / 开发者暗黑 / 粗野 / 霓虹 / 新中式 / 经典后台。每套都过体检 100 分、附中文教程与灵感来源。</p>
+            <div class="site-card__meta"><span class="site-chip site-chip--ok">audit 100</span><span class="site-chip">MIT</span></div>
           </div>
-        </div>
-        <div class="site-card">
-          <iframe class="site-card__frame" src="themes/mo-light/preview.html" loading="lazy" title="mo-light 预览"></iframe>
+        </a>
+        <a class="site-card" href="site/components.html" style="text-decoration:none; color:inherit">
           <div class="site-card__body">
-            <p class="site-card__title">mo-light · 宣纸 <span class="site-chip">浅色</span></p>
-            <p class="site-card__desc">浅灰底 + 白卡 + 蓝色主色，适合 SaaS 控制台 / 表单密集型后台。</p>
-            <div class="site-card__actions">
-              <a class="site-btn site-btn--secondary" href="site/themes.html#mo-light">查看详情</a>
-            </div>
+            <p class="site-card__title">🧩 组件库 <span class="site-chip">单文件零依赖</span></p>
+            <p class="site-card__desc">30 个组件：基础 4 + 表单 7 + 反馈 10 + 导航 5 + 浮层 1 + 数据展示 3。样式全走 --moh-* 变量，换主题自动适配；带依赖的增强组件（图表/代码高亮）标注 CDN 来源。</p>
+            <div class="site-card__meta"><span class="site-chip site-chip--ok">30 组件</span><span class="site-chip">行为标准合规</span></div>
           </div>
-        </div>
+        </a>
+        <a class="site-card" href="site/rules.html" style="text-decoration:none; color:inherit">
+          <div class="site-card__body">
+            <p class="site-card__title">📏 规则边界包 <span class="site-chip">AI 不易察觉的整容</span></p>
+            <p class="site-card__desc">8 类硬边界 + 10 条禁则一票否决 + 26 项自检清单。把规则丢给 AI，让它按美学边界改你的项目——不换皮、做整容。</p>
+            <div class="site-card__meta"><span class="site-chip site-chip--ok">可复制</span><span class="site-chip">含自查闭环</span></div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -75,30 +79,24 @@
   <section class="site-section" style="padding-top: 0">
     <div class="site-container">
       <h2 class="site-section__title">怎么用</h2>
-      <p class="site-section__desc">三条路径，从零门槛到开发者全流程。</p>
+      <p class="site-section__desc">三种姿势，从零门槛到开发者全流程。</p>
       <div class="site-grid">
-        <div class="site-card">
+        <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">① 丢链接给 AI</p>
-            <p class="site-card__desc">打开 AI 链接页，把"纯文本版"复制给豆包 / Cursor，AI 自己完成换肤。含应用后自检清单。</p>
-            <div class="site-card__actions">
-              <a class="site-btn site-btn--secondary" href="site/ai/mo-light.html">AI 链接页</a>
-            </div>
+            <p class="site-card__title">① 丢规则给 AI</p>
+            <p class="site-card__desc">把规则边界包或 AI 指令复制给豆包 / Cursor，AI 按硬边界+自检清单改你的项目——字号、表格、间距、美观条件一次到位。</p>
           </div>
         </div>
-        <div class="site-card">
+        <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">② 手动引入</p>
-            <p class="site-card__desc">下载主题目录，引入 tokens.css + base.css 即可，组件类名统一 moh- 前缀，全部走 CSS 变量。</p>
+            <p class="site-card__title">② 换主题 / 搬组件</p>
+            <p class="site-card__desc">主题卡一键复制 tokens.css 变量、组件卡复制单文件代码；或用可视化选择器实时换肤再复制。类名统一 moh- 前缀，全部走 CSS 变量。</p>
           </div>
         </div>
-        <div class="site-card">
+        <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">③ 自定义生成</p>
-            <p class="site-card__desc">用主题生成器调主色 / 圆角，实时预览，一键生成 tokens.css 复制或下载。</p>
-            <div class="site-card__actions">
-              <a class="site-btn site-btn--secondary" href="site/generator.html">打开生成器</a>
-            </div>
+            <p class="site-card__title">③ 查溯源</p>
+            <p class="site-card__desc">每个资源卡都显示来源与许可证：自研标 original、二创附原组件名与地址、教程转中文。开源非商用，二次开发放心用。</p>
           </div>
         </div>
       </div>
@@ -107,8 +105,27 @@
 
   <footer class="site-footer">
     <div class="site-container">
-      灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
+      灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a> · 素材溯源见 <a href="site/attributions.html">ATTRIBUTIONS</a>
     </div>
   </footer>
+
+  <script src="site/data.js"></script>
+  <script>
+    var stats = document.getElementById("stats");
+    if (window.MOH_DATA) {
+      var d = window.MOH_DATA.stats;
+      var items = [
+        { n: d.themes, label: "套主题 · 全部体检 100" },
+        { n: d.components, label: "个组件 · 单文件" },
+        { n: d.rules, label: "套规则包 · 硬边界+禁则" },
+        { n: d.resources, label: "个资源 · 全部可溯源" }
+      ];
+      stats.innerHTML = items.map(function (it) {
+        return '<div class="site-stat"><div class="site-stat__num">' + it.n + '</div><div class="site-stat__label">' + it.label + '</div></div>';
+      }).join("");
+    } else {
+      stats.innerHTML = '<div class="site-stat"><div class="site-stat__num">10</div><div class="site-stat__label">套主题</div></div>';
+    }
+  </script>
 </body>
 </html>
