@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-skeleton · 骨架屏</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-skeleton · 骨架屏（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：文本行 / 卡片 / 表格行三种变体
+       行为标准：占位容器 aria-hidden="true"（屏读跳过）；
+         真实内容加载后移除，禁止用骨架屏代替正文
+       ============================================================ */
+
+    .moh-skeleton {
+      background: var(--moh-surface-2);
+      border-radius: var(--moh-radius-sm);
+      animation: moh-skeleton-breathe 1.6s ease-in-out infinite;
+    }
+
+    @keyframes moh-skeleton-breathe {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+
+    /* 文本行变体：按行宽比例 */
+    .moh-skeleton--text {
+      height: var(--moh-text-sm);
+      margin: var(--moh-space-2) 0;
+    }
+    .moh-skeleton--text-w80 { width: 80%; }
+    .moh-skeleton--text-w60 { width: 60%; }
+    .moh-skeleton--text-w40 { width: 40%; }
+
+    /* 卡片变体：标题行 + 两行正文 */
+    .moh-skeleton--card {
+      width: 100%;
+      max-width: 320px;
+      padding: var(--moh-space-4);
+      border-radius: var(--moh-radius-lg);
+      background: var(--moh-surface);
+      border: 1px solid var(--moh-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-2);
+    }
+    .moh-skeleton--card .moh-skeleton {
+      margin: 0;
+    }
+
+    /* 表格行变体：模拟 th/td 布局 */
+    .moh-skeleton--table {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+    }
+    .moh-skeleton--table .moh-skeleton--row {
+      display: flex;
+      gap: var(--moh-space-4);
+      padding: var(--moh-space-3) 0;
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .moh-skeleton--table .moh-skeleton--cell {
+      height: var(--moh-text-sm);
+      background: var(--moh-surface-2);
+      border-radius: var(--moh-radius-sm);
+      animation: moh-skeleton-breathe 1.6s ease-in-out infinite;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <!-- 文本行变体 -->
+  <div class="demo-wrap" aria-hidden="true">
+    <div class="moh-skeleton moh-skeleton--text moh-skeleton--text-w80"></div>
+    <div class="moh-skeleton moh-skeleton--text moh-skeleton--text-w60"></div>
+    <div class="moh-skeleton moh-skeleton--text moh-skeleton--text-w40"></div>
+  </div>
+
+  <!-- 卡片变体 -->
+  <div class="demo-wrap" aria-hidden="true">
+    <div class="moh-skeleton moh-skeleton--card">
+      <div class="moh-skeleton moh-skeleton--text moh-skeleton--text-w40" style="height:16px"></div>
+      <div class="moh-skeleton moh-skeleton--text"></div>
+      <div class="moh-skeleton moh-skeleton--text moh-skeleton--text-w60"></div>
+    </div>
+  </div>
+
+  <!-- 表格行变体 -->
+  <div class="demo-wrap" aria-hidden="true">
+    <div class="moh-skeleton moh-skeleton--table">
+      <div class="moh-skeleton--row">
+        <div class="moh-skeleton--cell" style="width:30%"></div>
+        <div class="moh-skeleton--cell" style="width:20%"></div>
+        <div class="moh-skeleton--cell" style="width:25%"></div>
+        <div class="moh-skeleton--cell" style="width:15%"></div>
+      </div>
+      <div class="moh-skeleton--row">
+        <div class="moh-skeleton--cell" style="width:35%"></div>
+        <div class="moh-skeleton--cell" style="width:15%"></div>
+        <div class="moh-skeleton--cell" style="width:20%"></div>
+        <div class="moh-skeleton--cell" style="width:20%"></div>
+      </div>
+      <div class="moh-skeleton--row">
+        <div class="moh-skeleton--cell" style="width:25%"></div>
+        <div class="moh-skeleton--cell" style="width:25%"></div>
+        <div class="moh-skeleton--cell" style="width:15%"></div>
+        <div class="moh-skeleton--cell" style="width:25%"></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">提示：占位容器加 aria-hidden，加载完成后必须移除；卡片变体建议配合真实标题骨架使用。</p>
+</body>
+</html>

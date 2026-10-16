@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "skeleton",
+  "type": "component",
+  "title": "骨架屏",
+  "description": "文本行 / 卡片 / 表格行变体，aria-hidden 占位，呼吸动效",
+  "styleTags": ["基础组件", "加载", "反馈"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
