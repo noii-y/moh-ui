@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>规则边界包 · 灰墨 MoH_UI</title>
+  <meta name="description" content="灰墨规则边界包：8 类硬边界 + 10 条禁则 + 26 项自检清单。把规则丢给 AI，让 AI 做用户不易察觉的审美整容——不换皮、守边界、可自查。" />
+  <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-container site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">
+        <span class="site-nav__logo"></span>
+        灰墨 MoH_UI
+      </a>
+      <div class="site-nav__links">
+        <a class="site-nav__link" href="../index.html">首页</a>
+        <a class="site-nav__link" href="themes.html">主题</a>
+        <a class="site-nav__link" href="components.html">组件</a>
+        <a class="site-nav__link site-nav__link--active" href="rules.html">规则</a>
+        <a class="site-nav__link" href="generator.html">选择器</a>
+      </div>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.68 5.38-5.24 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <div class="site-pagehead">
+      <h1>规则边界包</h1>
+      <p>给 AI 的「审美整容」规则：<b>8 类硬边界 + 10 条禁则一票否决 + 26 项自检清单</b>。把它丢给豆包 / Cursor，AI 按美学边界改你的项目——字号不许过大过小、表格不许溢出、排列整齐、符合美观条件，改完按清单自查闭环。</p>
+    </div>
+
+    <div class="site-note">
+      <span>📏</span>
+      <span>这不是换皮：换皮（黑白两色）你跟 AI 说一声就行。规则包管的是 AI 容易忽略的「整容级」细节，是灰墨的附带服务——主打的丰富主题和组件在隔壁两个集市。</span>
+    </div>
+
+    <div class="site-section" style="padding-top: 8px">
+      <h2 class="site-section__title">快速开始</h2>
+      <p class="site-section__desc">三种姿势，任选其一。</p>
+      <div class="site-grid">
+        <div class="site-card" style="cursor:default">
+          <div class="site-card__body">
+            <p class="site-card__title">① 复制完整规则包</p>
+            <p class="site-card__desc">把主规则文件（8 类硬边界 + 10 条禁则）整段复制给 AI，让 AI 按边界整改你的项目。</p>
+            <div class="site-card__actions">
+              <button class="site-btn site-btn--primary site-btn--sm" id="copy-main">复制规则包</button>
+              <a class="site-btn site-btn--secondary site-btn--sm" href="https://github.com/noii-y/moh-ui/blob/master/rules/mo-rules-zh.md" target="_blank" rel="noopener">看原文</a>
+            </div>
+          </div>
+        </div>
+        <div class="site-card" style="cursor:default">
+          <div class="site-card__body">
+            <p class="site-card__title">② 分场景规则</p>
+            <p class="site-card__desc">表格页 / 表单页 / 数据看板三种场景各有细化规则，按你当前的页面类型取一份。</p>
+            <div class="site-card__actions">
+              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-table">表格场景</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-form">表单场景</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-dashboard">看板场景</button>
+            </div>
+          </div>
+        </div>
+        <div class="site-card" style="cursor:default">
+          <div class="site-card__body">
+            <p class="site-card__title">③ 自检清单</p>
+            <p class="site-card__desc">26 项勾选清单，AI 应用规则后逐项自查，达标才算交付。你也可自己拿着逐项核对。</p>
+            <div class="site-card__actions">
+              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-selfcheck">复制自检清单</button>
+              <a class="site-btn site-btn--secondary site-btn--sm" href="https://github.com/noii-y/moh-ui/blob/master/rules/selfcheck.md" target="_blank" rel="noopener">看原文</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section" style="padding-top: 0">
+      <h2 class="site-section__title">规则预览</h2>
+      <p class="site-section__desc">主规则文件节选：边界类别与禁则总览。</p>
+      <div class="site-details">
+        <summary>8 类硬边界（节选）</summary>
+        <pre class="site-pre" id="rules-preview">灰墨规则边界包（mo-rules-zh）· 8 类硬边界概览：
+1. 字号边界：仅用 12/13/14/16/20/24px 字号阶，禁止过大过小（如标题 96px、正文 9px）
+2. 间距边界：间距为 4 的倍数（8px 网格），禁止随机间距
+3. 表格边界：禁止溢出容器，列宽合理分配，数字列右对齐，表头与内容对齐
+4. 控件边界：控件最小高度 32px，触控友好，点击区域不小于 28×28
+5. 颜色边界：全部走 --moh-* 变量，禁止硬编码色值，正文对比度 ≥ 4.5:1
+6. 对齐边界：同类元素纵向对齐，卡片内容留白一致
+7. 圆角边界：圆角走变量阶（sm/md/lg），禁止混用不统一
+8. 动效边界：动效 ≤ 200ms，禁止无意义弹跳与长时间加载动画
+
+10 条禁则（一票否决）节选：禁止文字溢出裁切、禁止表格错位、禁止无焦点态、禁止对比度不足、禁止遮挡内容、禁止只改不改查……</pre>
+      </div>
+      <div class="site-note site-note--warn">
+        <span>⚠️</span>
+        <span>规则包给 AI 后必须带「自检」指令：应用完逐项自查、未达标继续修复（最多 3 轮），达标才交付——这是规则包闭环的关键，别只给规则不给自查。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-toast" id="toast" role="status">已复制 ✓</div>
+
+  <footer class="site-footer">
+    <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
+  </footer>
+
+  <script>
+    var toast = document.getElementById("toast");
+    var toastTimer;
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("site-toast--show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1500);
+    }
+    function copyText(text, okText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { showToast(okText); });
+      } else {
+        showToast("复制失败：请手动选择复制");
+      }
+    }
+    function fetchCopy(path, okText, prefix) {
+      fetch(path)
+        .then(function (r) { return r.text(); })
+        .then(function (md) { copyText((prefix || "") + md, okText); })
+        .catch(function () { showToast("复制失败：请到仓库取文件（rules/" + path.split("/").pop() + "）"); });
+    }
+
+    document.getElementById("copy-main").addEventListener("click", function () {
+      fetchCopy("../rules/mo-rules-zh.md", "规则包已复制 ✓", "请按以下规则整改当前项目，应用后逐项自检、未达标继续修复（最多 3 轮）：\n\n");
+    });
+    document.getElementById("copy-table").addEventListener("click", function () {
+      fetchCopy("../rules/scenarios/table.md", "表格场景规则已复制 ✓", "当前页面含表格，请按此规则整改并自查：\n\n");
+    });
+    document.getElementById("copy-form").addEventListener("click", function () {
+      fetchCopy("../rules/scenarios/form.md", "表单场景规则已复制 ✓", "当前页面含表单，请按此规则整改并自查：\n\n");
+    });
+    document.getElementById("copy-dashboard").addEventListener("click", function () {
+      fetchCopy("../rules/scenarios/dashboard.md", "看板场景规则已复制 ✓", "当前页面为数据看板，请按此规则整改并自查：\n\n");
+    });
+    document.getElementById("copy-selfcheck").addEventListener("click", function () {
+      fetchCopy("../rules/selfcheck.md", "自检清单已复制 ✓", "请按以下 26 项自检清单逐项核对当前项目，全部达标才算交付：\n\n");
+    });
+  </script>
+</body>
+</html>

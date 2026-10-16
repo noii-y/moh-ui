@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>素材溯源 · 灰墨 MoH_UI</title>
+  <meta name="description" content="灰墨素材溯源：每个主题/组件都标注来源与许可证——自研标 original、二创附原组件名与地址、教程转中文。开源非商用，二次开发放心用。" />
+  <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-container site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">
+        <span class="site-nav__logo"></span>
+        灰墨 MoH_UI
+      </a>
+      <div class="site-nav__links">
+        <a class="site-nav__link" href="../index.html">首页</a>
+        <a class="site-nav__link" href="themes.html">主题</a>
+        <a class="site-nav__link" href="components.html">组件</a>
+        <a class="site-nav__link" href="rules.html">规则</a>
+        <a class="site-nav__link" href="generator.html">选择器</a>
+      </div>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.68 5.38-5.24 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <div class="site-container">
+    <div class="site-pagehead">
+      <h1>素材溯源</h1>
+      <p>每个主题 / 组件都标注来源与许可证。<b>自研</b>标 <code>original</code>（色板按官方/社区风格描述自研，灵感来源单独标注）；<b>二创</b>附原组件名与地址、教程转中文。开源非商用，二次开发放心用。</p>
+    </div>
+
+    <div class="site-note">
+      <span>📜</span>
+      <span>全部资源 MIT 许可；引入外部素材的流程、许可证对照与版权边界见 <a href="https://github.com/noii-y/moh-ui/blob/master/docs/license-policy.md" target="_blank" rel="noopener">docs/license-policy.md</a>。本地校验脚本：<code>node scripts/check-attributions.mjs</code>（41 个 moh.json 合规）。</span>
+    </div>
+
+    <div class="site-section" style="padding-top: 8px">
+      <h2 class="site-section__title">主题溯源（10 套）</h2>
+      <div class="site-table-wrap">
+        <table class="site-table">
+          <thead>
+            <tr><th>主题</th><th>风格</th><th>来源类型</th><th>灵感 / 上游</th><th>许可证</th></tr>
+          </thead>
+          <tbody id="theme-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="site-section" style="padding-top: 8px">
+      <h2 class="site-section__title">组件溯源（30 个）</h2>
+      <div class="site-table-wrap">
+        <table class="site-table">
+          <thead>
+            <tr><th>组件</th><th>分类</th><th>来源类型</th><th>说明</th><th>许可证</th></tr>
+          </thead>
+          <tbody id="comp-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a> · 完整清单见 <a href="https://github.com/noii-y/moh-ui/blob/master/ATTRIBUTIONS.md" target="_blank" rel="noopener">ATTRIBUTIONS.md</a></div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+    var DATA = window.MOH_DATA;
+
+    function originText(item) {
+      if (item.origin === "original") {
+        if (item.inspiration && item.inspiration.length) {
+          return '<span class="site-chip">灵感：' + item.inspiration.join(" / ") + "</span>";
+        }
+        return '<span class="site-chip">自研</span>';
+      }
+      var link = item.url ? '<a href="' + item.url + '" target="_blank" rel="noopener">' + (item.url.replace(/^https?:\/\//, "").slice(0, 40)) + "</a>" : "—";
+      return '<span class="site-chip site-chip--warn">二创</span> ' + link;
+    }
+
+    document.getElementById("theme-rows").innerHTML = DATA.themes.map(function (t) {
+      return "<tr><td><strong>" + t.title + "</strong><br><code>" + t.name + "</code></td>" +
+        "<td>" + t.styleTags.join(" / ") + "</td>" +
+        "<td>" + (t.origin === "original" ? '<span class="site-chip site-chip--ok">original</span>' : '<span class="site-chip site-chip--warn">derived</span>') + "</td>" +
+        "<td>" + originText(t) + "</td>" +
+        "<td>" + t.license + "</td></tr>";
+    }).join("");
+
+    document.getElementById("comp-rows").innerHTML = DATA.components.map(function (c) {
+      var dep = c.hasDeps ? "（依赖 " + c.dependencies.join(", ") + "）" : "（零依赖）";
+      return "<tr><td><strong>" + c.title + "</strong><br><code>" + c.name + "</code></td>" +
+        "<td>" + c.category + "</td>" +
+        "<td>" + (c.origin === "original" ? '<span class="site-chip site-chip--ok">original</span>' : '<span class="site-chip site-chip--warn">derived</span>') + "</td>" +
+        "<td>" + c.description + dep + "</td>" +
+        "<td>" + c.license + "</td></tr>";
+    }).join("");
+  </script>
+</body>
+</html>
