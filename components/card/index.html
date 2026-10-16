@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-card · 卡片</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-card · 卡片（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：普通卡（标题+正文）/ KPI 统计卡（大数字+变化率）
+       要点：卡片不投影（只有浮动元素才有阴影，见 tokens --moh-shadow-*）
+       ============================================================ */
+
+    .moh-card {
+      background: var(--moh-surface);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-lg);
+      padding: var(--moh-space-4);
+    }
+
+    .moh-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--moh-space-2);
+      margin-bottom: var(--moh-space-3);
+    }
+
+    .moh-card__title {
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      color: var(--moh-muted);
+      margin: 0;
+    }
+
+    .moh-card__body {
+      font-size: var(--moh-text-sm);
+      color: var(--moh-ink);
+      line-height: 1.6;
+    }
+
+    /* 卡片内可交互元素的焦点态（可访问性） */
+    .moh-card a:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    /* KPI 统计卡 */
+    .moh-card--stat {
+      padding: var(--moh-space-4);
+    }
+
+    .moh-card--stat .moh-card__title {
+      margin-bottom: var(--moh-space-3);
+    }
+
+    .moh-stat__value {
+      font-size: var(--moh-text-xl);
+      font-weight: 600;
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    .moh-stat__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      margin-top: var(--moh-space-2);
+      font-size: var(--moh-text-xs);
+    }
+
+    .moh-stat__delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      font-weight: 500;
+    }
+
+    .moh-stat__delta--up {
+      color: var(--moh-success);
+    }
+
+    .moh-stat__delta--down {
+      color: var(--moh-danger);
+    }
+
+    .moh-stat__delta--flat {
+      color: var(--moh-muted);
+    }
+
+    .moh-stat__caption {
+      color: var(--moh-muted);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--moh-space-4);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: 0 var(--moh-space-6) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <!-- KPI 统计卡 × 3 -->
+    <div class="moh-card moh-card--stat">
+      <p class="moh-card__title">本月新增用户</p>
+      <div class="moh-stat__value">1,284</div>
+      <div class="moh-stat__meta">
+        <span class="moh-stat__delta moh-stat__delta--up">↑ 12.4%</span>
+        <span class="moh-stat__caption">较上月</span>
+      </div>
+    </div>
+
+    <div class="moh-card moh-card--stat">
+      <p class="moh-card__title">本月营收</p>
+      <div class="moh-stat__value">¥86,420</div>
+      <div class="moh-stat__meta">
+        <span class="moh-stat__delta moh-stat__delta--up">↑ 8.2%</span>
+        <span class="moh-stat__caption">较上月</span>
+      </div>
+    </div>
+
+    <div class="moh-card moh-card--stat">
+      <p class="moh-card__title">转化率</p>
+      <div class="moh-stat__value">3.6%</div>
+      <div class="moh-stat__meta">
+        <span class="moh-stat__delta moh-stat__delta--down">↓ 1.1%</span>
+        <span class="moh-stat__caption">较上月</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-wrap">
+    <!-- 普通卡 -->
+    <div class="moh-card">
+      <div class="moh-card__header">
+        <p class="moh-card__title">项目说明</p>
+        <span style="font-size:var(--moh-text-xs);color:var(--moh-muted)">更新于今天</span>
+      </div>
+      <div class="moh-card__body">
+        灰墨（MoH_UI）提供现成主题包与单文件后台组件，让 AI 一句话完成换肤。每套主题独立目录，引入 tokens.css 与 base.css 即可使用。
+      </div>
+    </div>
+
+    <div class="moh-card">
+      <div class="moh-card__header">
+        <p class="moh-card__title">设计规范</p>
+        <span style="font-size:var(--moh-text-xs);color:var(--moh-muted)">8px 网格</span>
+      </div>
+      <div class="moh-card__body">
+        字号阶 12/13/14/16/20/24，一页不超过 5 级；间距 4 的倍数；圆角 4–8px；阴影只给浮动元素。
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">提示：普通卡如需强调可改用浮层样式（--moh-shadow-md，仅用于弹窗/下拉等浮动场景）。</p>
+</body>
+</html>
