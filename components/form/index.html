@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-form · 表单</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-form · 表单（灰墨 MoH_UI 单文件组件·组合）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       要点：字段间距 8px 网格；必填标记；错误态 + 提示；操作区底部
+       说明：内部复用 input/select 样式，表单场景一次搞定
+       ============================================================ */
+
+    .moh-form {
+      max-width: 480px;
+    }
+
+    .moh-form__title {
+      font-size: var(--moh-text-lg);
+      font-weight: 600;
+      margin: 0 0 var(--moh-space-2);
+    }
+
+    .moh-form__desc {
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+      margin: 0 0 var(--moh-space-6);
+    }
+
+    .moh-field {
+      display: grid;
+      gap: var(--moh-space-1);
+      margin-bottom: var(--moh-space-4);
+    }
+
+    .moh-label {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+    }
+
+    .moh-label__req {
+      color: var(--moh-danger);
+      font-weight: 600;
+    }
+
+    /* 输入（文本 / 下拉 / 多行） */
+    .moh-input,
+    .moh-select select,
+    .moh-textarea {
+      width: 100%;
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-surface);
+      color: var(--moh-ink);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      transition: var(--moh-transition);
+    }
+
+    .moh-input,
+    .moh-select select {
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-3);
+    }
+
+    .moh-textarea {
+      padding: var(--moh-space-2) var(--moh-space-3);
+      min-height: 88px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .moh-input::placeholder,
+    .moh-textarea::placeholder {
+      color: var(--moh-muted);
+      opacity: 0.7;
+    }
+
+    .moh-input:hover:not(:disabled),
+    .moh-select select:hover:not(:disabled),
+    .moh-textarea:hover:not(:disabled) {
+      border-color: var(--moh-border-strong);
+    }
+
+    .moh-input:focus,
+    .moh-select select:focus,
+    .moh-textarea:focus {
+      outline: none;
+      border-color: var(--moh-primary);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-input:disabled,
+    .moh-select select:disabled,
+    .moh-textarea:disabled {
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+      cursor: not-allowed;
+    }
+
+    /* 错误态 */
+    .moh-field--error .moh-input,
+    .moh-field--error .moh-select select,
+    .moh-field--error .moh-textarea {
+      border-color: var(--moh-danger);
+    }
+    .moh-field--error .moh-input:focus,
+    .moh-field--error .moh-select select:focus,
+    .moh-field--error .moh-textarea:focus {
+      border-color: var(--moh-danger);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-help {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+    }
+    .moh-help--error {
+      color: var(--moh-danger);
+    }
+
+    /* 下拉箭头（currentColor，无硬编码） */
+    .moh-select {
+      position: relative;
+      display: block;
+    }
+    .moh-select select {
+      appearance: none;
+      -webkit-appearance: none;
+      padding-right: var(--moh-space-6);
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--moh-space-2) center;
+    }
+
+    /* 操作区 */
+    .moh-form__actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--moh-space-2);
+      margin-top: var(--moh-space-6);
+      padding-top: var(--moh-space-4);
+      border-top: 1px solid var(--moh-border);
+    }
+
+    .moh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid transparent;
+      border-radius: var(--moh-radius-md);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-btn:active {
+      transform: translateY(1px);
+    }
+    .moh-btn:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+    .moh-btn--primary {
+      background: var(--moh-primary);
+      color: #fff;
+    }
+    .moh-btn--primary:hover {
+      background: var(--moh-primary-hover);
+    }
+    .moh-btn--secondary {
+      background: transparent;
+      border-color: var(--moh-border);
+      color: var(--moh-ink);
+    }
+    .moh-btn--secondary:hover {
+      border-color: var(--moh-border-strong);
+      background: var(--moh-surface-2);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <form class="moh-form" novalidate>
+      <h2 class="moh-form__title">新建项目</h2>
+      <p class="moh-form__desc">填写项目基本信息，创建后可在「项目管理」中继续配置。</p>
+
+      <div class="moh-field">
+        <label class="moh-label" for="f-name">项目名称 <span class="moh-label__req">*</span></label>
+        <input class="moh-input" id="f-name" type="text" placeholder="如：内容运营后台" />
+        <span class="moh-help">建议 2–20 个字符</span>
+      </div>
+
+      <div class="moh-field">
+        <label class="moh-label" for="f-owner">负责人 <span class="moh-label__req">*</span></label>
+        <div class="moh-select">
+          <select id="f-owner">
+            <option value="">请选择负责人</option>
+            <option value="noii">noii-y</option>
+            <option value="team-a">A 团队</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="moh-field moh-field--error">
+        <label class="moh-label" for="f-budget">预算金额 <span class="moh-label__req">*</span></label>
+        <input class="moh-input" id="f-budget" type="text" value="abc" />
+        <span class="moh-help moh-help--error">请输入数字，如 12000</span>
+      </div>
+
+      <div class="moh-field">
+        <label class="moh-label" for="f-desc">项目描述</label>
+        <textarea class="moh-textarea" id="f-desc" placeholder="简要描述项目目标与范围（选填）"></textarea>
+      </div>
+
+      <div class="moh-form__actions">
+        <button class="moh-btn moh-btn--secondary" type="button">取消</button>
+        <button class="moh-btn moh-btn--primary" type="submit">创建项目</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
