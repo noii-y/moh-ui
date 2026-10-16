@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>分隔线 Divider · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>分隔线 <span class="en">Divider</span></h1>
+  <p>在两组内容之间画一条带文字的分隔线，常见于登录页「或」、设置项分组、步骤边界。下面先给一个可以直接拿走的成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">默认在纵向堆叠的内容之间画横线；加 <code>divider-horizontal</code> 在横向并排的内容之间画竖线。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>登录卡片里的「或」</h2>
+    <p class="desc">账号密码表单和另一种登录方式之间，用一条带「或」字的分隔线断开，告诉用户这是两条并列的路径；分隔线上下间距均匀，文字居中。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="card bg-base-100 border border-base-300 max-w-sm">
+        <div class="card-body p-6">
+          <h2 class="card-title">登录你的账号</h2>
+          <input type="email" placeholder="请输入邮箱" class="input w-full" />
+          <input type="password" placeholder="请输入密码" class="input w-full" />
+          <button class="btn btn-primary w-full">登录</button>
+          <div class="divider">或</div>
+          <div class="flex flex-wrap gap-2">
+            <button class="btn flex-1">扫码登录</button>
+            <button class="btn flex-1">手机验证码登录</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="登录卡片里的「或」分隔线">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="分隔线">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：带文字 / 无文字 -->
+  <section class="doc-block">
+    <h2>带文字与不带文字</h2>
+    <p class="desc">默认在横线中间放一行小字；不要文字时留空即可，就是一条纯分隔线。</p>
+    <div class="doc-stage">
+      <div class="flex flex-col">
+        <div class="divider">或</div>
+        <div class="divider"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：位置 -->
+  <section class="doc-block">
+    <h2>文字位置</h2>
+    <p class="desc">默认文字居中；用 <code>divider-start</code> 或 <code>divider-end</code> 把文字推到左 / 右，适合小标题式分组。</p>
+    <div class="doc-stage">
+      <div class="flex flex-col">
+        <div class="divider divider-start">收货地址</div>
+        <div class="divider">默认居中</div>
+        <div class="divider divider-end">其他</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：彩色 -->
+  <section class="doc-block">
+    <h2>彩色分隔线</h2>
+    <p class="desc">加语义色类可改变横线与文字颜色，一般只用默认灰色；需要强调某个分组时才用主色。</p>
+    <div class="doc-stage">
+      <div class="flex flex-col">
+        <div class="divider divider-neutral">默认中性</div>
+        <div class="divider divider-primary">主色分组</div>
+        <div class="divider divider-error">危险操作区</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：横向并排内容之间的竖线 -->
+  <section class="doc-block">
+    <h2>并排内容之间的竖线</h2>
+    <p class="desc">内容左右并排时，在 flex-row 容器里加 <code>divider-horizontal</code>，分隔线会变成竖线，文字仍可读。</p>
+    <div class="doc-stage">
+      <div class="flex w-full flex-wrap">
+        <div class="card bg-base-200 rounded-box grid h-20 grow place-items-center p-4">左侧内容</div>
+        <div class="divider divider-horizontal">或</div>
+        <div class="card bg-base-200 rounded-box grid h-20 grow place-items-center p-4">右侧内容</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>什么时候用分隔线</h3>
+    <p>当两组内容在语义上并列、但又需要视觉断开时用 divider，比如登录页的「或」、设置页的分组标题。不要用它装饰空白区域。</p>
+    <h3>方向别搞反</h3>
+    <ul>
+      <li>内容纵向堆叠（上下排列）：直接用 <code>&lt;div class="divider"&gt;</code>，横线画在两组之间。</li>
+      <li>内容横向并排（左右排列）：外层用 <code>flex</code>，分隔线加 <code>divider-horizontal</code>，横线变成竖线。</li>
+    </ul>
+    <h3>文案怎么写</h3>
+    <p>分隔线中间的文字是连接两组内容的一句话，登录页用「或」，分组标题用名词（如「收货地址」）；不要写长句。</p>
+    <h3>可访问性</h3>
+    <p>分隔线只是视觉分隔，屏幕阅读器会读出中间文字；空的分隔线不要塞装饰字符。颜色全部走主题变量，切换主题自动跟随。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/divider/" target="_blank" rel="noopener">daisyui.com/components/divider</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一张登录卡片里，账号密码表单和另一种登录方式之间的分隔。
+【怎么排】卡片从上到下：标题 → 邮箱输入框 → 密码输入框 → 主色「登录」按钮 → 一条带「或」字的分隔线 → 下方两个并列的次级登录按钮。
+- 分隔线 <div class="divider">或</div> 上下自动留均匀间距，文字居中；
+- 下方两个按钮用 flex 并排、各占一半，窄屏自动换行。
+【精确规格】
+- 卡片：<div class="card bg-base-100 border border-base-300 max-w-sm">，内容包 <div class="card-body p-6">。
+- 输入框：<input class="input w-full" />，placeholder 写「请输入邮箱」「请输入密码」。
+- 主按钮：<button class="btn btn-primary w-full">登录</button>；分隔线后次级按钮 <button class="btn flex-1">扫码登录</button>，不要套第三方品牌图标。
+- 分隔线文字写「或」，不要写颜色名；颜色全部走 daisyUI 主题变量，切换主题自动跟随。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
