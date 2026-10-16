@@ -12,78 +12,191 @@
 <body>
 <header class="doc-head">
   <h1>字段分组 <span class="en">Fieldset</span></h1>
-  <p>表单布局的骨架：用 fieldset 分组、fieldset-legend 放标题、label 放字段名或提示。示例结构搬运自 daisyUI 官方文档。</p>
-  <p>来源：<a href="https://daisyui.com/components/fieldset/" target="_blank" rel="noopener">daisyui.com/components/fieldset</a>（MIT）</p>
+  <p>表单布局的骨架：用 fieldset 给一组相关控件加标题 legend、用 fieldset-label 放字段名或说明，还能整组禁用。下面先给一个设置页里可以直接拿走的通知分组，再列出各种排法供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改分组、标签、禁用只改 <code>class</code> 或加 <code>disabled</code> 即可；切换主题后，整组配色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：通知偏好设置分组 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>设置页里的通知偏好分组</h2>
+    <p class="desc">一张设置卡片用 fieldset 包起一组开关，legend 作组标题，每一行用 fieldset-label 把说明文字和开关排到同一行；下方再放一组整组禁用的「会员专属」开关，说明为什么不能改；底部放保存按钮。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="flex flex-col gap-4 w-full max-w-md">
+        <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4">
+          <legend class="fieldset-legend">通知设置</legend>
+          <label class="fieldset-label justify-between gap-3">
+            <span>订单物流更新</span>
+            <input type="checkbox" class="toggle toggle-primary" checked="checked" />
+          </label>
+          <label class="fieldset-label justify-between gap-3">
+            <span>每周产品动态</span>
+            <input type="checkbox" class="toggle" />
+          </label>
+          <label class="fieldset-label justify-between gap-3">
+            <span>营销活动推送</span>
+            <input type="checkbox" class="toggle" />
+          </label>
+        </fieldset>
+        <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4" disabled>
+          <legend class="fieldset-legend">会员专属设置</legend>
+          <label class="fieldset-label justify-between gap-3">
+            <span>专属客服优先接入</span>
+            <input type="checkbox" class="toggle" checked="checked" />
+          </label>
+          <p class="fieldset-label">开通会员后可自定义这一组通知</p>
+        </fieldset>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary">保存设置</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="设置页里的通知偏好分组（字段分组容器）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049.11.184 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="字段分组">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础：标题 + 输入 + 提示</h2>
+    <h2>单个字段：标题 + 输入框 + 说明</h2>
+    <p class="desc">最基础的用法：<code>fieldset-legend</code> 当字段标题，下面跟输入控件，再用 <code>fieldset-label</code> 写一行辅助说明。比只放 placeholder 稳——输入后占位符会消失，标题和说明不会。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset w-72">
+      <fieldset class="fieldset w-full max-w-md">
         <legend class="fieldset-legend">页面标题</legend>
-        <input type="text" class="input" placeholder="我的页面" />
+        <input type="text" class="input w-full" placeholder="我的页面" />
         <p class="fieldset-label">之后可在设置中修改</p>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>带卡片背景</h2>
+    <h2>一组多个字段：label 与控件成对绑定</h2>
+    <p class="desc">多个相关字段放进同一个 fieldset，legend 作整组标题；每个字段用 <code>label</code> 配 <code>for</code>、输入控件配同值 <code>id</code>，点文字就能聚焦到对应输入框，读屏软件也会正确朗读。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
-        <legend class="fieldset-legend">页面标题</legend>
-        <input type="text" class="input" placeholder="我的页面" />
-        <p class="fieldset-label">之后可在设置中修改</p>
-      </fieldset>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>多个字段</h2>
-    <p class="desc">每个字段用 label 标注名称，可加 id / for 提升可访问性。</p>
-    <div class="doc-stage">
-      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
+      <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4 w-full max-w-md">
         <legend class="fieldset-legend">页面详情</legend>
-        <label class="label" for="t">标题</label>
-        <input type="text" id="t" class="input" placeholder="我的页面" />
-        <label class="label" for="s">别名（Slug）</label>
-        <input type="text" id="s" class="input" placeholder="my-awesome-page" />
-        <label class="label" for="a">作者</label>
-        <input type="text" id="a" class="input" placeholder="姓名" />
+        <label class="label" for="page-title">标题</label>
+        <input type="text" id="page-title" class="input w-full" placeholder="我的页面" />
+        <label class="label" for="page-slug">别名（Slug）</label>
+        <input type="text" id="page-slug" class="input w-full" placeholder="my-awesome-page" />
+        <label class="label" for="page-author">作者</label>
+        <input type="text" id="page-author" class="input w-full" placeholder="请输入作者姓名" />
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>完整登录表单</h2>
-    <div class="doc-stage">
-      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
-        <legend class="fieldset-legend">登录</legend>
-        <label class="label" for="em">邮箱</label>
-        <input type="email" id="em" class="input" placeholder="you@example.com" />
-        <label class="label" for="pw">密码</label>
-        <input type="password" id="pw" class="input" placeholder="请输入密码" />
-        <label class="label cursor-pointer mt-2"><span>记住我</span><input type="checkbox" class="checkbox checkbox-sm" /></label>
-        <button class="btn btn-primary mt-4">登录</button>
+    <h2>标题同一行放控件</h2>
+    <p class="desc"><code>fieldset-legend</code> 本身是两端对齐的 flex 行：左边写组标题，右边直接放一个下拉或开关，省掉单独一行。适合每项一个轻量设置。</p>
+    <div class="doc-stage col">
+      <fieldset class="fieldset w-full max-w-md">
+        <legend class="fieldset-legend">
+          <span>默认收货地址</span>
+          <select class="select select-sm">
+            <option>公司：光谷步行街</option>
+            <option>家：武昌水果湖</option>
+            <option>学校：珞喻路 1037 号</option>
+          </select>
+        </legend>
+      </fieldset>
+      <fieldset class="fieldset w-full max-w-md">
+        <legend class="fieldset-legend">
+          <span>付款前短信确认</span>
+          <input type="checkbox" class="toggle toggle-sm" />
+        </legend>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>输入 + 按钮组合（join）</h2>
+    <h2>整组禁用</h2>
+    <p class="desc">给 <code>fieldset</code> 加 <code>disabled</code> 属性，里面所有控件一次性置灰、不可聚焦也不可改；再用一行 <code>fieldset-label</code> 说明什么时候才能改，比逐个禁用清楚得多。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
-        <legend class="fieldset-legend">设置</legend>
+      <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4 w-full max-w-md" disabled>
+        <legend class="fieldset-legend">企业认证信息</legend>
+        <label class="label" for="org-name">企业名称</label>
+        <input type="text" id="org-name" class="input w-full" value="灰墨科技有限公司" />
+        <p class="fieldset-label">认证提交后不可修改，如需变更请联系客服</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>输入框 + 保存按钮连成一行</h2>
+    <p class="desc">字段内需要即时保存时，用 <code>join</code> 把输入框和按钮拼成一整行，视觉上是一个整体，适合「改名」这类轻操作。</p>
+    <div class="doc-stage">
+      <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4 w-full max-w-md">
+        <legend class="fieldset-legend">产品名称</legend>
         <div class="join w-full">
-          <input type="text" class="input join-item" placeholder="产品名称" />
+          <input type="text" class="input join-item grow" placeholder="请输入产品名称" />
           <button class="btn btn-primary join-item">保存</button>
         </div>
       </fieldset>
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>fieldset 管分组，不代替控件本身</h3>
+    <p><code>fieldset</code> + <code>legend</code> 是语义容器，用来给一组相关输入加标题、统一布局和整组禁用；里面放的还是 <code>input</code>、<code>select</code>、<code>checkbox</code> 这些原生控件，各自有自己的样式类。</p>
+    <h3>标题和标签要成对</h3>
+    <p>整组标题用 <code>fieldset-legend</code>；单个字段名用 <code>label</code> 配 <code>for</code>、控件配 <code>id</code>。辅助说明用 <code>fieldset-label</code>，它会自动弱化成次要文字。不要把说明只写在 placeholder 里。</p>
+    <h3>什么时候用整组禁用</h3>
+    <p>权限或条件不满足时（未开通会员、认证已提交），整组加 <code>disabled</code>，并配一句说明原因；不要只把控件置灰却不告诉用户为什么。</p>
+    <h3>可访问性</h3>
+    <ul>
+      <li>屏幕阅读器会把 <code>legend</code> 读作这一组的标题，分组越清晰越好。</li>
+      <li>点 <code>label</code> 要能聚焦到对应控件：务必让 <code>for</code> 与 <code>id</code> 一致。</li>
+      <li>焦点描边不要去掉，键盘用户靠它判断当前在哪一个字段。</li>
+    </ul>
+    <h3>常见坑</h3>
+    <ul>
+      <li>手机窄屏上，标题行右侧的下拉/开关别再用 <code>ml-auto</code> 硬推，容易被挤出屏；用 <code>fieldset-legend</code> 自带的两端对齐即可。</li>
+      <li>不要为 fieldset 写死颜色或大段渐变，分组背景用 <code>bg-base-200</code>、边框用 <code>border-base-300</code> 这类主题色，深浅色都适配。</li>
+    </ul>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/fieldset/" target="_blank" rel="noopener">daisyui.com/components/fieldset</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】设置页里的一组通知偏好：一张卡片里列几个通知开关，下面再放一组当前不可改的会员专属开关，底部一个保存按钮。
+【怎么排】
+- 每张卡片用 <fieldset class="fieldset rounded-box border border-base-300 bg-base-200 p-4"> 包起，<legend class="fieldset-legend"> 写组标题（如「通知设置」）；
+- 每一行用 <label class="fieldset-label justify-between gap-3">，左边 <span> 写中文说明，右边放 <input type="checkbox" class="toggle toggle-primary">（默认开）或 class="toggle"（默认关），点整行都能切换；
+- 不可改的那一组在 fieldset 上加 disabled，里面开关自动置灰，组尾加一行 <p class="fieldset-label"> 说明什么时候才能改（如「开通会员后可自定义」）；
+- 两组卡片纵向排列（flex flex-col gap-4，最大宽度 max-w-md），底部放主按钮「保存设置」（btn btn-primary），不写任何交互 JS。
+【精确规格】
+- 组标题字重加粗、次要说明用 fieldset-label 自动弱化；行间距 gap-3、卡片间距 gap-4，全部走 8px 网格。
+- 文案写真实业务动作与内容（订单物流更新、每周产品动态、营销活动推送），禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：fieldset、fieldset-legend、fieldset-label、toggle、toggle-primary、rounded-box、border-base-300、bg-base-200、p-4、justify-between、gap-3、gap-4、max-w-md、btn-primary。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色；手机窄屏上右侧开关不得溢出或被裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
