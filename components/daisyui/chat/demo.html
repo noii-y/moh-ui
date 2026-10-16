@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>对话气泡 Chat · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>对话气泡 <span class="en">Chat</span></h1>
+  <p>把一段段对话按「谁说的、什么时候、读到没」排出来，客服窗口、留言板、评论区都用它。下面先给一个客服对话的成品，再看简化形态和气泡配色。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改左右位置加 <code>chat-start</code> / <code>chat-end</code>，改气泡颜色加 <code>chat-bubble-*</code>，切换主题后自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一个电商客服对话窗口</h2>
+    <p class="desc">买家消息靠右、客服消息靠左，各自带头像和时间；客服头像用文字占位（不依赖任何图片），每句下面用小字标注「已读 / 已送达」。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="chat chat-end">
+        <div class="chat-image avatar">
+          <div class="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">我</span></div>
+        </div>
+        <div class="chat-header">我 <time class="text-xs opacity-50">14:01</time></div>
+        <div class="chat-bubble">你好，我的订单怎么还没发货？</div>
+        <div class="chat-footer opacity-50">已读</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-image avatar">
+          <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">客</span></div>
+        </div>
+        <div class="chat-header">客服小助手 <time class="text-xs opacity-50">14:02</time></div>
+        <div class="chat-bubble">您好，已帮您催单，仓库今天会发出，请稍等。</div>
+      </div>
+      <div class="chat chat-end">
+        <div class="chat-image avatar">
+          <div class="bg-primary text-primary-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">我</span></div>
+        </div>
+        <div class="chat-header">我 <time class="text-xs opacity-50">14:03</time></div>
+        <div class="chat-bubble">好的，大概几天能到武汉？</div>
+        <div class="chat-footer opacity-50">已读</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-image avatar">
+          <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">客</span></div>
+        </div>
+        <div class="chat-header">客服小助手 <time class="text-xs opacity-50">14:03</time></div>
+        <div class="chat-bubble">顺利的话明天送达，物流单号稍后短信发给您。</div>
+        <div class="chat-footer opacity-50">已送达</div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商客服对话窗口（对话气泡）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="对话气泡">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>最简气泡：只有左右两堆话</h2>
+    <p class="desc">不需要头像和时间时，一个 <code>.chat</code> 里只放一个 <code>.chat-bubble</code>：我方用 <code>chat-end</code> 靠右，对方用 <code>chat-start</code> 靠左，交替堆叠就是一段对话。</p>
+    <div class="doc-stage">
+      <div class="chat chat-start">
+        <div class="chat-bubble">请问这份报表什么时候能出？</div>
+      </div>
+      <div class="chat chat-end">
+        <div class="chat-bubble">今天下班前发你邮箱。</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-bubble">好的，麻烦顺便导出 Excel 版。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>无头像的完整消息流</h2>
+    <p class="desc">不要头像，但保留「谁说的 + 几点发的 + 读到没」：去掉 <code>chat-image</code>，保留 <code>chat-header</code> 和 <code>chat-footer</code>，适合留言板、团队群公告。</p>
+    <div class="doc-stage">
+      <div class="chat chat-start">
+        <div class="chat-header">产品小周 <time class="text-xs opacity-50">昨天 18:20</time></div>
+        <div class="chat-bubble">明天下午三点的需求评审改到会议室 B 了。</div>
+        <div class="chat-footer opacity-50">3 人已读</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-header">产品小周 <time class="text-xs opacity-50">昨天 18:21</time></div>
+        <div class="chat-bubble">记得带上最新版原型链接。</div>
+        <div class="chat-footer opacity-50">已读</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>气泡配色：只在需要强调时用</h2>
+    <p class="desc">气泡默认中性底色。特殊含义的消息才上颜色：成功结果用 <code>chat-bubble-success</code>、提醒用 <code>chat-bubble-warning</code>、报错用 <code>chat-bubble-error</code>、系统提示用 <code>chat-bubble-info</code>；不要整屏彩色气泡。</p>
+    <div class="doc-stage">
+      <div class="chat chat-start">
+        <div class="chat-bubble chat-bubble-success">退款已原路退回，1-3 个工作日到账。</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-bubble chat-bubble-warning">您还有 1 天会员到期，续费可享 9 折。</div>
+      </div>
+      <div class="chat chat-start">
+        <div class="chat-bubble chat-bubble-error">支付失败：银行卡余额不足，请更换支付方式。</div>
+      </div>
+      <div class="chat chat-end">
+        <div class="chat-bubble chat-bubble-info">系统消息：您的密码已于今天 09:15 修改。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>结构固定为四件</h3>
+    <p>一条消息就是一个 <code>.chat</code>：左右位置由 <code>chat-start</code>（对方）或 <code>chat-end</code>（我方）决定；里面按需放 <code>chat-image</code>（头像）、<code>chat-header</code>（名字 + 时间）、<code>chat-bubble</code>（气泡正文）、<code>chat-footer</code>（已读状态）。气泡正文一个都不能少，其余三件按场景取舍。</p>
+    <h3>头像不要外链图</h3>
+    <p>没有真实用户头像照片时，用文字占位：一个 <code>bg-neutral text-neutral-content</code> 的圆形容器里放一到两个汉字，整段对话零图片依赖。</p>
+    <h3>配色语义化</h3>
+    <ul>
+      <li>普通对话气泡用默认色，双方都如此。</li>
+      <li><code>chat-bubble-success</code> / <code>warning</code> / <code>error</code> / <code>info</code> 只用于结果明确的系统类消息，别为了好看给每句话上色。</li>
+    </ul>
+    <h3>窄屏注意</h3>
+    <p>气泡宽度会随内容收缩换行，390px 下不会超宽；单条消息别超过三行，太长的消息拆成两条发。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/chat/" target="_blank" rel="noopener">daisyui.com/components/chat</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】一个电商 App 里的客服对话窗口，买家和客服小助手交替发言。
+【怎么排】
+- 我方（买家）消息靠右，容器加 chat chat-end；对方（客服）消息靠左，容器加 chat chat-start。
+- 每条消息结构：chat-image（头像）→ chat-header（名字 + 灰色时间）→ chat-bubble（气泡正文）→ chat-footer（已读/已送达，小字灰色）。
+- 头像用文字占位圆块（bg-primary text-primary-content 表示我方、bg-neutral text-neutral-content 表示对方），块里放一个汉字，不引用任何外部图片。
+【精确规格】
+- 头像外层：<div class="chat-image avatar"><div class="w-10 rounded-full">…</div></div>。
+- 时间小字：<time class="text-xs opacity-50">14:02</time>；底部状态：<div class="chat-footer opacity-50">已读</div>。
+- 对话内容用真实客服语境，如"我的订单怎么还没发货？""已帮您催单，仓库今天会发出"。
+- 普通气泡不涂颜色；只有结果类系统消息才用 chat-bubble-success / warning / error。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
