@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-toast · 轻提示</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-toast · 轻提示（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段 + 底部 <script> 到你的项目
+       形态：右下角堆叠 + 图标 + 文案 + 关闭按钮
+       行为标准（Sonner 理念）：自动消失（4s）+ 手动关闭；
+         aria-live=polite（错误用 assertive）；动效 ≤200ms
+       ============================================================ */
+
+    /* 容器：右下角堆叠 */
+    .moh-toast {
+      position: fixed;
+      right: var(--moh-space-4);
+      bottom: var(--moh-space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-2);
+      z-index: 60;
+    }
+
+    /* 单条 toast */
+    .moh-toast__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--moh-space-2);
+      min-width: 240px;
+      max-width: 360px;
+      padding: var(--moh-space-3) var(--moh-space-4);
+      background: var(--moh-surface);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      box-shadow: var(--moh-shadow-md);
+      font-size: var(--moh-text-sm);
+      line-height: 1.6;
+      color: var(--moh-ink);
+      animation: moh-toast-in 200ms ease;
+    }
+
+    @keyframes moh-toast-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 状态色：左边条用语义变量 */
+    .moh-toast__item--success { border-left: 3px solid var(--moh-success); }
+    .moh-toast__item--error { border-left: 3px solid var(--moh-danger); }
+    .moh-toast__item--warning { border-left: 3px solid var(--moh-warning); }
+    .moh-toast__item--info { border-left: 3px solid var(--moh-primary); }
+
+    .moh-toast__msg {
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .moh-toast__close {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: none;
+      color: var(--moh-muted);
+      font-size: var(--moh-text-sm);
+      line-height: 1;
+      cursor: pointer;
+      border-radius: var(--moh-radius-sm);
+      transition: var(--moh-transition);
+    }
+    .moh-toast__close:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+    .moh-toast__close:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    /* 演示触发按钮 */
+    .moh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid transparent;
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-primary);
+      color: #ffffff;
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      font-family: inherit;
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-btn:hover { background: var(--moh-primary-hover); }
+    .moh-btn:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+    .moh-btn--secondary {
+      background: var(--moh-surface);
+      border-color: var(--moh-border);
+      color: var(--moh-ink);
+    }
+    .moh-btn--secondary:hover { background: var(--moh-surface-2); }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      gap: var(--moh-space-2);
+      flex-wrap: wrap;
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <button class="moh-btn" data-toast="success">成功</button>
+    <button class="moh-btn moh-btn--secondary" data-toast="error">错误</button>
+    <button class="moh-btn moh-btn--secondary" data-toast="warning">警告</button>
+    <button class="moh-btn moh-btn--secondary" data-toast="info">信息</button>
+  </div>
+
+  <!-- 容器：屏读监听 polite；错误场景改为 assertive -->
+  <div class="moh-toast" aria-live="polite" id="demo-toast-root"></div>
+
+  <script>
+    /* 行为标准：自动消失 4s + 手动关闭 + aria-live */
+    (function () {
+      const root = document.getElementById("demo-toast-root");
+      const msgs = {
+        success: "保存成功，改动已生效。",
+        error: "保存失败：网络不可用，请稍后重试。",
+        warning: "即将到期：还有 2 天续费。",
+        info: "新版本已发布：v0.3.0",
+      };
+
+      function show(type) {
+        const item = document.createElement("div");
+        item.className = "moh-toast__item moh-toast__item--" + type;
+        item.innerHTML =
+          '<span class="moh-toast__msg"></span>' +
+          '<button class="moh-toast__close" aria-label="关闭提示">✕</button>';
+        item.querySelector(".moh-toast__msg").textContent = msgs[type];
+        root.appendChild(item);
+
+        // 手动关闭
+        item.querySelector(".moh-toast__close").addEventListener("click", () => item.remove());
+
+        // 自动消失
+        setTimeout(() => item.remove(), 4000);
+      }
+
+      document.querySelectorAll("[data-toast]").forEach((btn) => {
+        btn.addEventListener("click", () => show(btn.dataset.toast));
+      });
+    })();
+  </script>
+  <p class="demo-note">提示：容器 aria-live=polite；错误提示可改为 assertive；自动消失 4s + 手动关闭；状态用左边条语义色。</p>
+</body>
+</html>

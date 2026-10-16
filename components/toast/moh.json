@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "toast",
+  "type": "component",
+  "title": "轻提示",
+  "description": "右下角堆叠，自动消失+手动关闭，aria-live，成功/错误/警告/信息四态",
+  "styleTags": ["基础组件", "反馈", "浮层"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
