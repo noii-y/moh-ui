@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 30,
+    "components": 43,
     "rules": 1,
-    "resources": 41
+    "resources": 54
   },
   "themes": [
     {
@@ -366,6 +366,254 @@ window.MOH_DATA = {
   ],
   "components": [
     {
+      "name": "daisyui-button",
+      "title": "按钮",
+      "description": "搬运自 daisyUI 的按钮组件：颜色/尺寸/描边/虚线/激活/禁用/图标/加载/玻璃等全部变体，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "操作"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/button/",
+      "slug": "daisyui/button",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-input",
+      "title": "文本输入框",
+      "description": "搬运自 daisyUI 的输入框：基础/内嵌图标/幽灵/fieldset/语义色/尺寸/禁用/datalist/校验，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "输入"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/input/",
+      "slug": "daisyui/input",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-select",
+      "title": "下拉选择",
+      "description": "搬运自 daisyUI 的下拉选择：基础/幽灵/fieldset/语义色/尺寸/禁用，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/select/",
+      "slug": "daisyui/select",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-textarea",
+      "title": "多行文本域",
+      "description": "搬运自 daisyUI 的多行文本域：基础/固定高度/幽灵/fieldset/语义色/尺寸/禁用，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "输入"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/textarea/",
+      "slug": "daisyui/textarea",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-checkbox",
+      "title": "复选框",
+      "description": "搬运自 daisyUI 的复选框：基础/标签分组/尺寸/语义色/禁用/半选，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/checkbox/",
+      "slug": "daisyui/checkbox",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-radio",
+      "title": "单选框",
+      "description": "搬运自 daisyUI 的单选框：基础/选项组/尺寸/语义色/禁用，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/radio/",
+      "slug": "daisyui/radio",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-toggle",
+      "title": "开关",
+      "description": "搬运自 daisyUI 的开关：基础/设置项/尺寸/语义色/禁用/图标开关，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "开关"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/toggle/",
+      "slug": "daisyui/toggle",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-range",
+      "title": "滑块",
+      "description": "搬运自 daisyUI 的滑块：基础/刻度/语义色/尺寸/竖向，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/range/",
+      "slug": "daisyui/range",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-file-input",
+      "title": "文件上传",
+      "description": "搬运自 daisyUI 的文件上传控件：基础/幽灵/多选/限定类型/尺寸/颜色/禁用，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "上传"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/file-input/",
+      "slug": "daisyui/file-input",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-fieldset",
+      "title": "字段分组",
+      "description": "搬运自 daisyUI 的表单布局骨架：fieldset/legend/label/卡片分组/登录表单/join 组合，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "布局"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/fieldset/",
+      "slug": "daisyui/fieldset",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-rating",
+      "title": "评分",
+      "description": "搬运自 daisyUI 的评分组件：五星/心形/尺寸/半星/可清除，纯 CSS mask 图形，零依赖。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "评分"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/rating/",
+      "slug": "daisyui/rating",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-otp",
+      "title": "验证码输入",
+      "description": "搬运自 daisyUI 的验证码输入框：4/6 位、连接样式、尺寸、颜色、禁用，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "验证码"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/otp/",
+      "slug": "daisyui/otp",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-validator",
+      "title": "表单校验",
+      "description": "搬运自 daisyUI 的纯 CSS 表单校验：邮箱/密码/用户名/手机号/数值范围/必勾/完整表单，零 JS，基于原生约束与 :invalid 伪类。",
+      "styleTags": [
+        "基础组件",
+        "表单",
+        "校验",
+        "零JS"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/validator/",
+      "slug": "daisyui/validator",
+      "entry": "demo.html"
+    },
+    {
       "name": "alert",
       "title": "警告条",
       "description": "信息/成功/警告/危险四态，语义色边条+图标，可关闭，role=alert",
@@ -378,7 +626,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "alert"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "alert",
+      "entry": "index.html"
     },
     {
       "name": "avatar",
@@ -394,7 +645,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "avatar"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "avatar",
+      "entry": "index.html"
     },
     {
       "name": "badge",
@@ -410,7 +664,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "badge"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "badge",
+      "entry": "index.html"
     },
     {
       "name": "breadcrumb",
@@ -425,7 +682,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "breadcrumb"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "breadcrumb",
+      "entry": "index.html"
     },
     {
       "name": "button",
@@ -440,7 +700,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "button"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "button",
+      "entry": "index.html"
     },
     {
       "name": "card",
@@ -455,7 +718,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "card"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "card",
+      "entry": "index.html"
     },
     {
       "name": "chart-card",
@@ -473,7 +739,10 @@ window.MOH_DATA = {
       "hasDeps": true,
       "license": "MIT",
       "origin": "original",
-      "slug": "chart-card"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "chart-card",
+      "entry": "index.html"
     },
     {
       "name": "checkbox",
@@ -488,7 +757,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "checkbox"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "checkbox",
+      "entry": "index.html"
     },
     {
       "name": "code-block",
@@ -506,7 +778,10 @@ window.MOH_DATA = {
       "hasDeps": true,
       "license": "MIT",
       "origin": "original",
-      "slug": "code-block"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "code-block",
+      "entry": "index.html"
     },
     {
       "name": "date-range",
@@ -522,7 +797,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "date-range"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "date-range",
+      "entry": "index.html"
     },
     {
       "name": "drag-sort",
@@ -538,7 +816,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "drag-sort"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "drag-sort",
+      "entry": "index.html"
     },
     {
       "name": "drawer",
@@ -554,7 +835,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "drawer"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "drawer",
+      "entry": "index.html"
     },
     {
       "name": "empty",
@@ -570,7 +854,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "empty"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "empty",
+      "entry": "index.html"
     },
     {
       "name": "form",
@@ -585,7 +872,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "form"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "form",
+      "entry": "index.html"
     },
     {
       "name": "input",
@@ -600,7 +890,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "input"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "input",
+      "entry": "index.html"
     },
     {
       "name": "modal",
@@ -615,7 +908,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "modal"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "modal",
+      "entry": "index.html"
     },
     {
       "name": "navbar",
@@ -630,7 +926,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "navbar"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "navbar",
+      "entry": "index.html"
     },
     {
       "name": "pagination",
@@ -646,7 +945,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "pagination"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "pagination",
+      "entry": "index.html"
     },
     {
       "name": "progress",
@@ -662,7 +964,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "progress"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "progress",
+      "entry": "index.html"
     },
     {
       "name": "select",
@@ -677,7 +982,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "select"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "select",
+      "entry": "index.html"
     },
     {
       "name": "sidebar",
@@ -692,7 +1000,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "sidebar"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "sidebar",
+      "entry": "index.html"
     },
     {
       "name": "skeleton",
@@ -708,7 +1019,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "skeleton"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "skeleton",
+      "entry": "index.html"
     },
     {
       "name": "spinner",
@@ -724,7 +1038,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "spinner"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "spinner",
+      "entry": "index.html"
     },
     {
       "name": "stat-card",
@@ -740,7 +1057,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "stat-card"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "stat-card",
+      "entry": "index.html"
     },
     {
       "name": "switch",
@@ -756,7 +1076,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "switch"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "switch",
+      "entry": "index.html"
     },
     {
       "name": "table",
@@ -771,7 +1094,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "table"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "table",
+      "entry": "index.html"
     },
     {
       "name": "tabs",
@@ -787,7 +1113,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "tabs"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "tabs",
+      "entry": "index.html"
     },
     {
       "name": "tag",
@@ -802,7 +1131,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "tag"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "tag",
+      "entry": "index.html"
     },
     {
       "name": "toast",
@@ -818,7 +1150,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "toast"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "toast",
+      "entry": "index.html"
     },
     {
       "name": "tooltip",
@@ -834,7 +1169,10 @@ window.MOH_DATA = {
       "hasDeps": false,
       "license": "MIT",
       "origin": "original",
-      "slug": "tooltip"
+      "upstream": null,
+      "upstreamUrl": null,
+      "slug": "tooltip",
+      "entry": "index.html"
     }
   ],
   "rules": {

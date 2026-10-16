@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>组件库 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨组件库：30 个单文件组件，样式全走 --moh-* 变量换主题自适应。按分类筛选，点击预览，一键复制代码 / AI 指令。" />
+  <meta name="description" content="灰墨组件库：可直接搬进自己项目的真实组件（daisyUI 官方 demo 零依赖搬运 + 中文教程与溯源），按分类筛选，点击预览，一键复制代码。" />
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
 </head>
@@ -32,7 +32,7 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>组件库 <span id="comp-count" style="font-size:16px;color:var(--moh-muted)"></span></h1>
-      <p>单文件组件：结构 + 样式 + 说明注释一个文件搞定，复制进任意项目即可用。类名统一 <code>moh-</code> 前缀，全部走 <code>var(--moh-*)</code>，换主题自动适配。</p>
+      <p>真实可用的组件，不是色块玩具。<b>搬运组件</b>来自 daisyUI 官方 demo（MIT，零依赖纯 CSS），附中文教程与原组件地址；点卡片预览，可复制整页 demo 或打开教程。</p>
     </div>
 
     <div class="site-toolbar">
@@ -86,6 +86,12 @@
     var cat = new URLSearchParams(location.search).get("cat") || "全部";
     var q = new URLSearchParams(location.search).get("q") || "";
 
+    // 新搬运组件入口是 demo.html（components/daisyui/...），老自研组件是 index.html
+    function previewPath(c) { return "../components/" + c.slug + "/" + (c.entry || "index.html"); }
+    // 卡片缩略图：demo 文档页加 ?embed=1 只展示组件本体
+    function thumbPath(c) { return previewPath(c) + (c.entry === "demo.html" ? "?embed=1" : ""); }
+    function srcDir(c) { return "https://github.com/noii-y/moh-ui/tree/master/components/" + c.slug; }
+
     document.getElementById("comp-count").textContent = "· " + DATA.stats.components + " 个";
 
     var cats = ["全部"].concat(DATA.categories);
@@ -111,14 +117,18 @@
         var dep = c.hasDeps
           ? '<span class="site-chip site-chip--warn" title="需要 CDN 依赖">带依赖：' + c.dependencies.join(", ") + "</span>"
           : '<span class="site-chip site-chip--ok">零依赖</span>';
+        var srcChip = c.origin === "third-party"
+          ? '<a class="site-chip site-chip--ext" href="' + c.upstreamUrl + '" target="_blank" rel="noopener" title="原组件来源与地址">📦 搬运自 ' + c.upstream + "</a>"
+          : '<span class="site-chip">自研</span>';
         return (
           '<div class="site-card" data-name="' + c.name + '" tabindex="0" role="button" aria-label="预览组件 ' + c.title + '">' +
-          '<iframe class="site-card__frame" src="../components/' + c.slug + '/index.html" loading="lazy" title="' + c.title + ' 预览"></iframe>' +
+          '<iframe class="site-card__frame" src="' + thumbPath(c) + '" loading="lazy" title="' + c.title + ' 预览"></iframe>' +
           '<div class="site-card__body">' +
           '<p class="site-card__title">' + c.title + "</p>" +
           '<p class="site-card__desc">' + c.description + "</p>" +
           '<div class="site-card__meta">' +
           '<span class="site-chip">' + c.category + "</span>" +
+          srcChip +
           dep +
           '<span class="site-chip">' + c.license + "</span>" +
           "</div></div></div>"
@@ -162,8 +172,12 @@
       var c = DATA.components.filter(function (x) { return x.name === name; })[0];
       current = c;
       modalTitle.textContent = c.title + " · " + c.name;
-      modalFrame.src = "../components/" + c.slug + "/index.html";
-      document.getElementById("src-link").href = "https://github.com/noii-y/moh-ui/tree/master/components/" + c.slug;
+      modalFrame.src = previewPath(c);
+      document.getElementById("src-link").href = srcDir(c);
+      // 搬运组件：第三个按钮改为"中文教程"；自研组件保持"复制 AI 指令"
+      var aiBtn = document.getElementById("copy-ai");
+      var isDai = c.origin === "third-party";
+      aiBtn.textContent = isDai ? "中文教程" : "复制 AI 指令";
       modal.classList.add("site-modal--open");
       document.body.style.overflow = "hidden";
       modalFrame.focus();
@@ -225,7 +239,7 @@
 
     document.getElementById("copy-code").addEventListener("click", function () {
       if (!current) return;
-      fetch("../components/" + current.slug + "/index.html")
+      fetch(previewPath(current))
         .then(function (r) { return r.text(); })
         .then(function (html) { copyText(html, "组件代码已复制 ✓"); })
         .catch(function () { showToast("复制失败：请到仓库取文件"); });
@@ -233,6 +247,11 @@
 
     document.getElementById("copy-ai").addEventListener("click", function () {
       if (!current) return;
+      // 搬运组件：打开中文教程 README（GitHub）
+      if (current.origin === "third-party") {
+        window.open("https://github.com/noii-y/moh-ui/blob/master/components/" + current.slug + "/README.md", "_blank", "noopener");
+        return;
+      }
       var deps = current.hasDeps ? "（需要 CDN 依赖：" + current.dependencies.join(", ") + "）" : "（零依赖）";
       var cmd =
         "请在当前项目里实现「" + current.title + "（" + current.name + "）」组件" + deps + "。\n" +
@@ -244,7 +263,7 @@
 
     document.getElementById("download-code").addEventListener("click", function () {
       if (!current) return;
-      fetch("../components/" + current.slug + "/index.html")
+      fetch(previewPath(current))
         .then(function (r) { return r.text(); })
         .then(function (html) {
           var blob = new Blob([html], { type: "text/html" });

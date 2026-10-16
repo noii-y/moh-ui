@@ -44,3 +44,12 @@ body {
   white-space: pre;
   color: var(--color-base-content);
 }
+
+/* ---------- 卡片缩略图模式（?embed=1）：只展示组件本体，隐藏文档头 ---------- */
+html.embed body { padding: 8px; }
+html.embed .doc-head { display: none; }
+html.embed .doc-wrap { gap: 6px; }
+html.embed .doc-block { padding: 10px 12px; border-radius: 10px; }
+html.embed .doc-block h2 { font-size: 10px; margin: 0 0 6px; opacity: 0.45; font-weight: 500; }
+html.embed .doc-block .desc { display: none; }
+html.embed .doc-stage { gap: 8px; }

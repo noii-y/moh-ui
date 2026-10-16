@@ -375,6 +375,13 @@ a:hover {
   color: var(--moh-warning, #fbbf24);
 }
 
+.site-chip--ext {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--moh-primary, #5e6ad2) 16%, transparent);
+  color: var(--moh-primary, #5e6ad2);
+}
+.site-chip--ext:hover { text-decoration: underline; }
+
 /* ---------- 色板条（主题卡） ---------- */
 .site-swatch {
   display: flex;

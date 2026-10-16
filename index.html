@@ -60,9 +60,9 @@
         </a>
         <a class="site-card" href="site/components.html" style="text-decoration:none; color:inherit">
           <div class="site-card__body">
-            <p class="site-card__title">🧩 组件库 <span class="site-chip">单文件零依赖</span></p>
-            <p class="site-card__desc">30 个组件：基础 4 + 表单 7 + 反馈 10 + 导航 5 + 浮层 1 + 数据展示 3。样式全走 --moh-* 变量，换主题自动适配；带依赖的增强组件（图表/代码高亮）标注 CDN 来源。</p>
-            <div class="site-card__meta"><span class="site-chip site-chip--ok">30 组件</span><span class="site-chip">行为标准合规</span></div>
+            <p class="site-card__title">🧩 组件库 <span class="site-chip">真实组件 · 零依赖</span></p>
+            <p class="site-card__desc">搬运 daisyUI 官方 demo 的真实组件：表单、导航、数据展示、反馈弹层，官网原版结构 + 中文教程 + 原组件名与地址，复制进自己项目即可用；另含自研组件，全部 MIT 可溯源。</p>
+            <div class="site-card__meta"><span class="site-chip site-chip--ok" id="home-comp-n">真实组件</span><span class="site-chip">MIT 可溯源</span></div>
           </div>
         </a>
         <a class="site-card" href="site/rules.html" style="text-decoration:none; color:inherit">
@@ -114,9 +114,11 @@
     var stats = document.getElementById("stats");
     if (window.MOH_DATA) {
       var d = window.MOH_DATA.stats;
+      var compN = document.getElementById("home-comp-n");
+      if (compN) compN.textContent = d.components + " 个组件";
       var items = [
         { n: d.themes, label: "套主题 · 全部体检 100" },
-        { n: d.components, label: "个组件 · 单文件" },
+        { n: d.components, label: "个组件 · 可直接搬运" },
         { n: d.rules, label: "套规则包 · 硬边界+禁则" },
         { n: d.resources, label: "个资源 · 全部可溯源" }
       ];

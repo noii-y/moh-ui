@@ -80,28 +80,59 @@ for (const slug of fs.readdirSync(path.join(root, "themes"))) {
 }
 themes.sort((a, b) => a.name.localeCompare(b.name, "zh"));
 
-/* ---------- 扫描组件 ---------- */
+/* ---------- 扫描组件（递归，支持 components/daisyui/<name> 命名空间） ---------- */
 const components = [];
-for (const slug of fs.readdirSync(path.join(root, "components"))) {
-  const dir = path.join(root, "components", slug);
-  if (!fs.statSync(dir).isDirectory()) continue;
-  const mj = readJson(path.join(dir, "moh.json"));
-  if (!mj || mj.type !== "component") continue;
-  const deps = Array.isArray(mj.dependencies) ? mj.dependencies : [];
-  components.push({
-    name: mj.name,
-    title: mj.title,
-    description: mj.description,
-    styleTags: mj.styleTags || [],
-    category: categorize(mj.styleTags),
-    dependencies: deps,
-    hasDeps: deps.length > 0,
-    license: mj.source?.license || "MIT",
-    origin: mj.source?.origin || "original",
-    slug
-  });
+function walkComponents(dir, rel) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const abs = path.join(dir, entry.name);
+    const relDir = rel ? rel + "/" + entry.name : entry.name;
+    const mjPath = path.join(abs, "moh.json");
+    if (fs.existsSync(mjPath)) {
+      const mj = readJson(mjPath);
+      if (mj && mj.type === "component") {
+        const deps = Array.isArray(mj.dependencies) ? mj.dependencies : [];
+        // 新搬运组件入口是 demo.html；老自研组件入口是 index.html
+        const entryFile = fs.existsSync(path.join(abs, "demo.html")) ? "demo.html" : "index.html";
+        components.push({
+          name: mj.name,
+          title: mj.title,
+          description: mj.description,
+          styleTags: mj.styleTags || [],
+          category: categorize(mj.styleTags),
+          dependencies: deps,
+          hasDeps: deps.length > 0,
+          license: mj.source?.license || "MIT",
+          origin: mj.source?.origin || "original",
+          upstream: mj.source?.upstream || null,
+          upstreamUrl: mj.source?.url || null,
+          slug: relDir,
+          entry: entryFile
+        });
+      }
+    }
+    walkComponents(abs, relDir); // 递归发现命名空间下的组件
+  }
 }
-components.sort((a, b) => a.name.localeCompare(b.name, "zh"));
+walkComponents(path.join(root, "components"), "");
+
+/* daisyUI 搬运组件按表单逻辑顺序排，其余按名称；搬运组件始终排在自研前面 */
+const DAI_ORDER = ["button", "input", "select", "textarea", "checkbox", "radio", "toggle", "range",
+  "file-input", "fieldset", "rating", "otp", "validator",
+  "navbar", "menu", "dropdown", "tabs", "breadcrumbs", "pagination", "link", "steps", "divider", "join",
+  "table", "card", "stat", "badge", "list", "avatar", "progress", "radial-progress", "loading",
+  "skeleton", "countdown", "kbd", "tooltip", "chat",
+  "alert", "modal", "toast", "collapse", "indicator", "swap", "carousel", "hero", "drawer",
+  "footer", "timeline", "accordion", "mockup"];
+function orderKey(c) {
+  if (c.slug.startsWith("daisyui/")) {
+    const n = c.slug.split("/")[1];
+    const i = DAI_ORDER.indexOf(n);
+    return "0/" + String(i < 0 ? 99 : i).padStart(2, "0") + n;
+  }
+  return "1/" + c.name;
+}
+components.sort((a, b) => orderKey(a).localeCompare(orderKey(b)));
 
 /* ---------- 规则包 ---------- */
 const rulesMeta = readJson(path.join(root, "rules", "moh.json"));
