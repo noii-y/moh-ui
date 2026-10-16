@@ -677,7 +677,7 @@ window.MOH_DATA = {
         "导航",
         "选择"
       ],
-      "category": "表单",
+      "category": "导航",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -752,7 +752,7 @@ window.MOH_DATA = {
         "导航",
         "选择"
       ],
-      "category": "表单",
+      "category": "导航",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -809,7 +809,7 @@ window.MOH_DATA = {
         "导航",
         "选择"
       ],
-      "category": "表单",
+      "category": "导航",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",

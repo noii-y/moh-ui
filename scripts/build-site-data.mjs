@@ -50,8 +50,11 @@ const CAT_RULES = [
 ];
 function categorize(styleTags) {
   if (!Array.isArray(styleTags) || styleTags.length === 0) return "基础";
-  for (const rule of CAT_RULES) {
-    if (styleTags.some((t) => rule.tags.includes(t))) return rule.cat;
+  /* 按组件声明的标签先后顺序归类（组件最显著的分类写在前面），
+     避免「导航」组件带了次要标签「选择」时被更早的「表单」规则误判。*/
+  for (const t of styleTags) {
+    const rule = CAT_RULES.find((r) => r.tags.includes(t));
+    if (rule) return rule.cat;
   }
   return "基础";
 }
