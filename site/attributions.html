@@ -76,7 +76,11 @@
     function originText(item) {
       if (item.origin === "original") {
         if (item.inspiration && item.inspiration.length) {
-          return '<span class="site-chip">灵感：' + item.inspiration.join(" / ") + "</span>";
+          var links = item.inspiration.map(function (u) {
+            var label = u.replace(/^https?:\/\//, "").slice(0, 44);
+            return '<a href="' + u + '" target="_blank" rel="noopener">' + label + "</a>";
+          });
+          return '<span class="site-chip">灵感：</span> ' + links.join(" / ");
         }
         return '<span class="site-chip">自研</span>';
       }

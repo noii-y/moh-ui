@@ -108,7 +108,8 @@
     /* 灵感来源小字 */
     function originLabel(t) {
       if (t.origin === "original" && t.inspiration && t.inspiration.length) {
-        return "灵感：" + t.inspiration.join(" / ");
+        var src = t.inspiration.map(function (u) { return u.replace(/^https?:\/\//, "").slice(0, 36); }).join(" / ");
+        return "灵感：" + src;
       }
       return t.origin === "original" ? "自研色板" : "二创（见溯源）";
     }

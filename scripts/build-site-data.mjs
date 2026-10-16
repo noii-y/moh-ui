@@ -73,7 +73,7 @@ for (const slug of fs.readdirSync(path.join(root, "themes"))) {
     license: mj.source?.license || "MIT",
     origin: mj.source?.origin || "original",
     url: mj.source?.url || null,
-    inspiration: mj.source?.inspiration || [],
+    inspiration: mj.inspiration || mj.source?.inspiration || [],
     palette,
     slug
   });

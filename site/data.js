@@ -22,7 +22,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/neo-brutalism"
+      ],
       "palette": {
         "canvas": "#f7f7f7",
         "surface": "#ffffff",
@@ -56,7 +58,10 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://github.com/tabler/tabler",
+        "https://github.com/ColorlibHQ/AdminLTE"
+      ],
       "palette": {
         "canvas": "#f5f7fa",
         "surface": "#ffffff",
@@ -123,7 +128,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/graphite"
+      ],
       "palette": {
         "canvas": "#f4f4f6",
         "surface": "#ffffff",
@@ -190,7 +197,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/cosmic-night"
+      ],
       "palette": {
         "canvas": "#0f1117",
         "surface": "#151822",
@@ -224,7 +233,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/cyberpunk"
+      ],
       "palette": {
         "canvas": "#0a0e14",
         "surface": "#111722",
@@ -258,7 +269,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/marshmallow"
+      ],
       "palette": {
         "canvas": "#faf7f8",
         "surface": "#ffffff",
@@ -292,7 +305,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme/clean-slate"
+      ],
       "palette": {
         "canvas": "#f8f8f8",
         "surface": "#ffffff",
@@ -326,7 +341,9 @@ window.MOH_DATA = {
       "license": "MIT",
       "origin": "original",
       "url": null,
-      "inspiration": [],
+      "inspiration": [
+        "https://www.shadcn.io/theme"
+      ],
       "palette": {
         "canvas": "#f6f3ec",
         "surface": "#fffdf8",
