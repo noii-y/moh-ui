@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 47,
+    "components": 58,
     "rules": 1,
-    "resources": 58
+    "resources": 69
   },
   "themes": [
     {
@@ -651,6 +651,24 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-dropdown",
+      "title": "下拉菜单",
+      "description": "搬运自 daisyUI 的下拉组件：头像下拉菜单、卡片式弹层、上/左/右弹出方向、菜单分组与分隔线，零依赖纯 CSS（CSS focus 写法）。",
+      "styleTags": [
+        "反馈",
+        "导航"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/dropdown/",
+      "slug": "daisyui/dropdown",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-breadcrumbs",
       "title": "面包屑",
       "description": "搬运自 daisyUI 的面包屑组件：层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
@@ -856,6 +874,24 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-progress",
+      "title": "进度条",
+      "description": "搬运自 daisyUI 的横条进度：确定/不确定进度、primary/secondary/success 等语义色、数值标签与完成态写法，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "数据展示"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/progress/",
+      "slug": "daisyui/progress",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-radial-progress",
       "title": "环形进度",
       "description": "搬运自 daisyUI 的环形进度组件：--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
@@ -871,6 +907,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/radial-progress/",
       "slug": "daisyui/radial-progress",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-loading",
+      "title": "加载动画",
+      "description": "搬运自 daisyUI 的加载动画：spinner/dots/ring/ball/bars/infinity 六种形态、xs~xl 五档尺寸，按钮内嵌与卡片整块加载写法，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/loading/",
+      "slug": "daisyui/loading",
       "entry": "demo.html"
     },
     {
@@ -892,6 +946,24 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-countdown",
+      "title": "倒计时",
+      "description": "搬运自 daisyUI 的 countdown 纯 CSS 数字块组件：--value/--digits 变量驱动数字渲染，覆盖秒杀盒装、冒号时钟、大号带标签、促销卡、句内嵌数字等真实场景，零 JS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/countdown/",
+      "slug": "daisyui/countdown",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-kbd",
       "title": "按键",
       "description": "搬运自 daisyUI 的按键（Kbd）组件：快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。",
@@ -907,6 +979,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/kbd/",
       "slug": "daisyui/kbd",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-tooltip",
+      "title": "悬浮提示",
+      "description": "搬运自 daisyUI 的悬浮提示组件：工具栏图标按钮提示、四个弹出方向、语义色、带图标内容（tooltip-content），零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/tooltip/",
+      "slug": "daisyui/tooltip",
       "entry": "demo.html"
     },
     {
@@ -928,6 +1018,78 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-alert",
+      "title": "提示条",
+      "description": "搬运自 daisyUI 的提示条组件：info/success/warning/error 四种语义色、带操作按钮、柔和轻提示、可关闭等形态，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/alert/",
+      "slug": "daisyui/alert",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-modal",
+      "title": "对话框",
+      "description": "搬运自 daisyUI 的对话框组件：删除确认、右上角关闭、底部抽屉、自定义宽度、纯信息提示等形态，推荐 dialog+showModal 用法，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/modal/",
+      "slug": "daisyui/modal",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-toast",
+      "title": "通知浮层",
+      "description": "搬运自 daisyUI 的通知浮层组件：九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/toast/",
+      "slug": "daisyui/toast",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-collapse",
+      "title": "折叠面板",
+      "description": "搬运自 daisyUI 的折叠面板组件：FAQ 手风琴、箭头/加号图标、默认展开、纯文字折叠等形态，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/collapse/",
+      "slug": "daisyui/collapse",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-indicator",
       "title": "角标",
       "description": "搬运自 daisyUI 的角标组件：九种贴附位置/数字角标/纯红点/贴输入框与卡片等变体，导航通知与待办提示场景，零依赖纯 CSS。",
@@ -943,6 +1105,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/indicator/",
       "slug": "daisyui/indicator",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-swap",
+      "title": "切换状态",
+      "description": "搬运自 daisyUI 的 swap 组件：纯 CSS label+checkbox 双图标切换，覆盖旋转/翻转/默认选中/swap-active 强制 on 态，内联 SVG 收藏、显隐密码、昼夜、静音等真实场景。",
+      "styleTags": [
+        "反馈",
+        "基础组件"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/swap/",
+      "slug": "daisyui/swap",
       "entry": "demo.html"
     },
     {
@@ -1132,6 +1312,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/stack/",
       "slug": "daisyui/stack",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-status",
+      "title": "状态点",
+      "description": "搬运自 daisyUI 的状态圆点：success/error/warning/info/neutral 等八色、xs~xl 五档尺寸，ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。",
+      "styleTags": [
+        "反馈",
+        "数据展示"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/status/",
+      "slug": "daisyui/status",
       "entry": "demo.html"
     },
     {
