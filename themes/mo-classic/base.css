@@ -1,0 +1,199 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-classic（经典 Bootstrap 后台风 · 浅色）基础样式
+   规则：全部走 CSS 变量，禁止硬编码颜色 / 字号 / 间距
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--moh-canvas);
+  color: var(--moh-ink);
+  font-family: var(--moh-font-sans);
+  font-size: var(--moh-text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 var(--moh-space-3);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: var(--moh-text-xl); }
+h2 { font-size: var(--moh-text-lg); }
+h3 { font-size: var(--moh-text-md); }
+
+a {
+  color: var(--moh-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--moh-primary-hover);
+}
+
+/* 所有可交互元素必须有可见 focus 态（可访问性） */
+:focus-visible {
+  outline: 2px solid var(--moh-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- 按钮 ---------- */
+.moh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--moh-space-1);
+  height: var(--moh-control-height);
+  padding: 0 var(--moh-space-4);
+  border: var(--moh-border-width, 1px) solid transparent;
+  border-radius: var(--moh-radius-md);
+  font-size: var(--moh-text-sm);
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: var(--moh-transition);
+  white-space: nowrap;
+}
+
+.moh-btn--primary {
+  background: var(--moh-primary);
+  color: #ffffff;
+}
+
+.moh-btn--primary:hover {
+  background: var(--moh-primary-hover);
+}
+
+.moh-btn--secondary {
+  background: transparent;
+  border-color: var(--moh-border);
+  color: var(--moh-ink);
+}
+
+.moh-btn--secondary:hover {
+  border-color: var(--moh-border-strong);
+  background: var(--moh-surface-2);
+}
+
+.moh-btn--ghost {
+  background: transparent;
+  color: var(--moh-muted);
+}
+
+.moh-btn--ghost:hover {
+  color: var(--moh-ink);
+  background: var(--moh-surface-2);
+}
+
+.moh-btn--danger {
+  background: transparent;
+  color: var(--moh-danger);
+  border-color: var(--moh-border);
+}
+
+.moh-btn--danger:hover {
+  border-color: var(--moh-danger);
+  background: rgba(220, 38, 38, 0.06);
+}
+
+.moh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- 输入 ---------- */
+.moh-input {
+  width: 100%;
+  height: var(--moh-control-height);
+  padding: 0 var(--moh-space-3);
+  border: var(--moh-border-width, 1px) solid var(--moh-border);
+  border-radius: var(--moh-radius-md);
+  background: var(--moh-surface);
+  color: var(--moh-ink);
+  font-size: var(--moh-text-sm);
+  font-family: inherit;
+  transition: var(--moh-transition);
+}
+
+.moh-input::placeholder {
+  color: var(--moh-muted);
+}
+
+.moh-input:hover {
+  border-color: var(--moh-border-strong);
+}
+
+.moh-input:focus {
+  border-color: var(--moh-primary);
+  box-shadow: 0 0 0 3px var(--moh-primary-muted);
+}
+
+.moh-input--error {
+  border-color: var(--moh-danger);
+}
+
+.moh-label {
+  display: block;
+  margin-bottom: var(--moh-space-1);
+  font-size: var(--moh-text-sm);
+  color: var(--moh-muted);
+}
+
+/* ---------- 表格 ---------- */
+.moh-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--moh-text-sm);
+}
+
+.moh-table th {
+  text-align: left;
+  padding: var(--moh-space-2) var(--moh-space-3);
+  border-bottom: var(--moh-border-width, 1px) solid var(--moh-border);
+  color: var(--moh-muted);
+  font-weight: 500;
+}
+
+.moh-table td {
+  padding: var(--moh-space-2) var(--moh-space-3);
+  border-bottom: var(--moh-border-width, 1px) solid var(--moh-border);
+}
+
+.moh-table tr:last-child td {
+  border-bottom: none;
+}
+
+.moh-table tbody tr:hover {
+  background: var(--moh-surface-2);
+}
+
+/* ---------- 卡片 ---------- */
+.moh-card {
+  background: var(--moh-surface);
+  border: var(--moh-border-width, 1px) solid var(--moh-border);
+  border-radius: var(--moh-radius-lg);
+  padding: var(--moh-space-4);
+}
+
+.moh-card__title {
+  margin-bottom: var(--moh-space-2);
+  font-size: var(--moh-text-md);
+  font-weight: 600;
+}
+
+/* ---------- 文本工具类 ---------- */
+.moh-text-muted { color: var(--moh-muted); }
+.moh-text-sm { font-size: var(--moh-text-sm); }
+.moh-text-xs { font-size: var(--moh-text-xs); }

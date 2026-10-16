@@ -1,0 +1,60 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-classic（经典 Bootstrap 后台风 · 浅色）
+   风格参考：Tabler / AdminLTE（Bootstrap 经典后台，经典蓝）
+   https://github.com/tabler/tabler（MIT）· https://github.com/ColorlibHQ/AdminLTE（MIT）
+   特征：经典 Bootstrap 蓝、灰蓝白底、人人熟悉的后台节奏
+   ============================================================ */
+
+:root {
+  /* ---------- 色彩语义（经典 Bootstrap） ---------- */
+  --moh-canvas: #f5f7fa;          /* 页面底（经典灰蓝白） */
+  --moh-surface: #ffffff;         /* 卡片 / 面板 */
+  --moh-surface-2: #eef1f5;       /* 悬浮 / 次级底 */
+  --moh-border: #dbe2ea;          /* 常规描边 */
+  --moh-border-strong: #c3ccd9;   /* 强调描边 */
+  --moh-border-width: 1px;
+  --moh-ink: #212a35;             /* 主文字（蓝黑） */
+  --moh-muted: #5a6675;           /* 次级文字（体检校准 4.95） */
+  --moh-primary: #0b5ed7;         /* 主色（Bootstrap 经典深蓝，白字 5.4） */
+  --moh-primary-hover: #0a58ca;
+  --moh-primary-muted: #e7f0fe;   /* 主色浅底 */
+  --moh-success: #16a34a;
+  --moh-warning: #d97706;
+  --moh-danger: #dc2626;
+
+  /* ---------- 字体 ---------- */
+  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
+    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
+  --moh-text-xs: 12px;
+  --moh-text-sm: 13px;
+  --moh-text-base: 14px;   /* 正文默认 */
+  --moh-text-md: 16px;
+  --moh-text-lg: 20px;
+  --moh-text-xl: 24px;
+
+  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
+  --moh-space-1: 4px;
+  --moh-space-2: 8px;
+  --moh-space-3: 12px;
+  --moh-space-4: 16px;
+  --moh-space-6: 24px;
+  --moh-space-8: 32px;
+
+  /* ---------- 圆角（Bootstrap 经典 4px 系） ---------- */
+  --moh-radius-sm: 3px;
+  --moh-radius-md: 4px;
+  --moh-radius-lg: 6px;
+
+  /* ---------- 阴影（经典轻投影） ---------- */
+  --moh-shadow-sm: 0 1px 2px rgba(33, 42, 53, 0.06);
+  --moh-shadow-md: 0 4px 12px rgba(33, 42, 53, 0.08);
+  --moh-shadow-lg: 0 8px 24px rgba(33, 42, 53, 0.10);
+
+  /* ---------- 控件与动效 ---------- */
+  --moh-control-height: 32px;
+  --moh-transition: 150ms ease;
+}

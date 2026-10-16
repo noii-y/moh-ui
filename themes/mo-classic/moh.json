@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-classic",
+  "type": "theme",
+  "title": "经典 Bootstrap 后台风（浅色）",
+  "description": "经典 Bootstrap 蓝、灰蓝白底，人人熟悉的后台节奏，适合存量项目迁移。",
+  "styleTags": ["经典", "Bootstrap", "蓝", "通用后台"],
+  "inspiration": ["https://github.com/tabler/tabler", "https://github.com/ColorlibHQ/AdminLTE"],
+  "base": "mo-classic",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
