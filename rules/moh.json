@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-rules",
+  "type": "rule",
+  "title": "灰墨规则边界包",
+  "description": "给 AI 的审美整容指令：字号/表格/间距/对齐/对比度硬边界 + 表格/表单/看板场景规则 + 自检清单，形成指令+自查闭环。",
+  "styleTags": ["规则", "审美边界", "整容"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["mo-rules-zh.md", "scenarios/table.md", "scenarios/form.md", "scenarios/dashboard.md", "selfcheck.md"],
+  "verified": false
+}

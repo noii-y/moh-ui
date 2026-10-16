@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-dark",
+  "type": "theme",
+  "title": "墨夜（深色）",
+  "description": "近黑底 + 冷灰 + 克制主色，Linear 风格取向，适合数据看板 / 监控类后台。",
+  "styleTags": ["深色", "数据看板", "Linear 风格"],
+  "base": "mo-dark",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

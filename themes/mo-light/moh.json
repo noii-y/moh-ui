@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-light",
+  "type": "theme",
+  "title": "宣纸（浅色）",
+  "description": "浅灰底 + 白卡 + 蓝色主色，Stripe 风格取向，适合 SaaS 控制台 / 表单密集型后台。",
+  "styleTags": ["浅色", "SaaS 控制台", "Stripe 风格"],
+  "base": "mo-light",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

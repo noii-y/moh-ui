@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "form",
+  "type": "component",
+  "title": "表单",
+  "description": "字段布局 / 必填标记 / 校验错误态 / 操作区",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

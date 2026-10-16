@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "select",
+  "type": "component",
+  "title": "下拉选择",
+  "description": "原生 select 美化，零 JS，错误态 / 禁用",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

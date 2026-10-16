@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "button",
+  "type": "component",
+  "title": "按钮",
+  "description": "4 变体（主/次/幽灵/危险）+ 3 尺寸 + 图标 + 禁用态，零依赖",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

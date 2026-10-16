@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "modal",
+  "type": "component",
+  "title": "模态框",
+  "description": "原生 dialog / 遮罩 / 标题 / 操作区，零依赖",
+  "styleTags": ["基础组件", "反馈"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

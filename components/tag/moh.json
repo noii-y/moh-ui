@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "tag",
+  "type": "component",
+  "title": "标签",
+  "description": "中性 / 成功 / 警告 / 危险 + 状态圆点",
+  "styleTags": ["基础组件", "反馈"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

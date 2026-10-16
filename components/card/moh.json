@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "card",
+  "type": "component",
+  "title": "卡片",
+  "description": "普通卡 + KPI 统计卡（大数字 / 变化率）",
+  "styleTags": ["基础组件", "数据展示"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

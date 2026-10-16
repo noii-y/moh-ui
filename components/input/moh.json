@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "input",
+  "type": "component",
+  "title": "输入框",
+  "description": "错误态 / 禁用 / 前后缀（货币等）/ 提示文字，零依赖",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

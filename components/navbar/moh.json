@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "navbar",
+  "type": "component",
+  "title": "顶栏",
+  "description": "品牌 / 导航链接 / 通知红点 / 用户区",
+  "styleTags": ["基础组件", "导航"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
