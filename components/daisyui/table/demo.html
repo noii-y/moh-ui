@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>表格 Table · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>表格 <span class="en">Table</span></h1>
+  <p>用行列结构展示一批同构数据：订单、用户、库存都适合表格。下面先给一个后台订单管理的成品，再列出斑马纹、悬停、粘性表头/首列等形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">加斑马纹、粘性表头只改 <code>class</code> 即可；切换主题后，表格颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>后台订单管理表格</h2>
+    <p class="desc">订单号、商品、金额、状态、操作五列：状态用语义徽章一眼区分，操作列只放「查看」和对应状态的主动作；表外套 <code>overflow-x-auto</code>，窄屏时表内横向滑动，页面本身不溢出。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>订单号</th>
+              <th>商品</th>
+              <th class="text-right">金额</th>
+              <th>状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DD-1001</td>
+              <td>云感无线耳机</td>
+              <td class="text-right tabular-nums">¥299.00</td>
+              <td><span class="badge badge-sm badge-success">已付</span></td>
+              <td>
+                <div class="flex flex-wrap gap-1">
+                  <button class="btn btn-xs btn-ghost">查看</button>
+                  <button class="btn btn-xs btn-primary">发货</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>DD-1002</td>
+              <td>便携咖啡杯 500ml</td>
+              <td class="text-right tabular-nums">¥89.00</td>
+              <td><span class="badge badge-sm badge-warning">待发</span></td>
+              <td>
+                <div class="flex flex-wrap gap-1">
+                  <button class="btn btn-xs btn-ghost">查看</button>
+                  <button class="btn btn-xs btn-primary">发货</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>DD-1003</td>
+              <td>机械键盘 87 键</td>
+              <td class="text-right tabular-nums">¥459.00</td>
+              <td><span class="badge badge-sm badge-info">已发</span></td>
+              <td>
+                <div class="flex flex-wrap gap-1">
+                  <button class="btn btn-xs btn-ghost">查看</button>
+                  <button class="btn btn-xs btn-soft">跟踪</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>DD-1004</td>
+              <td>护眼台灯</td>
+              <td class="text-right tabular-nums">¥199.00</td>
+              <td><span class="badge badge-sm badge-neutral">完成</span></td>
+              <td>
+                <div class="flex gap-1">
+                  <button class="btn btn-xs btn-ghost">查看</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>DD-1005</td>
+              <td>收纳箱三件套</td>
+              <td class="text-right tabular-nums">¥129.00</td>
+              <td><span class="badge badge-sm badge-error">取消</span></td>
+              <td>
+                <div class="flex gap-1">
+                  <button class="btn btn-xs btn-ghost">查看</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="后台订单管理表格（表格）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="表格">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：带边框背景 -->
+  <section class="doc-block">
+    <h2>带边框和背景的表</h2>
+    <p class="desc">页面背景浅时，给表外套一层 <code>rounded-box border border-base-300 bg-base-100</code>，表格从背景里「浮」出来，和卡片风格统一。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full rounded-box border border-base-300 bg-base-100">
+        <table class="table">
+          <thead>
+            <tr><th>员工</th><th>部门</th><th>入职时间</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>张伟</td><td>产品部</td><td>2023-03</td></tr>
+            <tr><td>李娜</td><td>设计部</td><td>2022-07</td></tr>
+            <tr><td>王强</td><td>研发部</td><td>2024-01</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：斑马纹 -->
+  <section class="doc-block">
+    <h2>斑马纹</h2>
+    <p class="desc">加 <code>table-zebra</code> 给偶数行交替底色，行数多、需要跨行对照时（比如库存清单）更不容易看串行。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table table-zebra">
+          <thead>
+            <tr><th>SKU</th><th>商品</th><th>库存</th><th>单价</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SKU-1001</td><td>云感无线耳机</td><td>320</td><td>¥299</td></tr>
+            <tr><td>SKU-1002</td><td>便携咖啡杯</td><td>15</td><td>¥89</td></tr>
+            <tr><td>SKU-1003</td><td>机械键盘</td><td>86</td><td>¥459</td></tr>
+            <tr><td>SKU-1004</td><td>护眼台灯</td><td>0</td><td>¥199</td></tr>
+            <tr><td>SKU-1005</td><td>收纳箱三件套</td><td>204</td><td>¥129</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：高亮当前行 -->
+  <section class="doc-block">
+    <h2>高亮当前行</h2>
+    <p class="desc">列表里需要标出「当前选中」的那一行时，给该行 <code>&lt;tr&gt;</code> 加 <code>bg-base-200</code>（5.7 版未提供独立的行高亮类，直接用这个语义底色即可）。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table">
+          <thead>
+            <tr><th>仓库</th><th>位置</th><th>管理员</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>华东仓</td><td>上海青浦</td><td>李娜</td></tr>
+            <tr class="bg-base-200"><td>华南仓</td><td>广州黄埔</td><td>王强</td></tr>
+            <tr><td>华北仓</td><td>北京通州</td><td>赵敏</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：悬停高亮 -->
+  <section class="doc-block">
+    <h2>悬停高亮行</h2>
+    <p class="desc">给行加 <code>row-hover</code>，鼠标移上去整行浮起底色，配合可点击行（整行跳转详情）使用。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table">
+          <thead>
+            <tr><th>报表</th><th>更新时间</th><th>负责人</th></tr>
+          </thead>
+          <tbody>
+            <tr class="row-hover"><td>每日销售汇总</td><td>今天 09:30</td><td>张伟</td></tr>
+            <tr class="row-hover"><td>库存周转月报</td><td>昨天 18:00</td><td>李娜</td></tr>
+            <tr class="row-hover"><td>退款分析周报</td><td>周一 10:00</td><td>王强</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：粘性表头 -->
+  <section class="doc-block">
+    <h2>粘性表头（表内滚动）</h2>
+    <p class="desc">数据行很多时，给表加 <code>table-pin-rows</code>，再把表放进一个定高 <code>overflow-y-auto</code> 容器：纵向滚动时表头始终吸在顶部。注意是「表内滚动」，不是让整个页面滚动。</p>
+    <div class="doc-stage">
+      <div class="h-64 overflow-y-auto w-full">
+        <table class="table table-pin-rows">
+          <thead>
+            <tr><th>订单号</th><th>商品</th><th>金额</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>DD-2609-101</td><td>耳机</td><td>¥299</td></tr>
+            <tr><td>DD-2609-102</td><td>咖啡杯</td><td>¥89</td></tr>
+            <tr><td>DD-2609-103</td><td>键盘</td><td>¥459</td></tr>
+            <tr><td>DD-2609-104</td><td>台灯</td><td>¥199</td></tr>
+            <tr><td>DD-2609-105</td><td>收纳箱</td><td>¥129</td></tr>
+            <tr><td>DD-2609-106</td><td>鼠标垫</td><td>¥49</td></tr>
+            <tr><td>DD-2609-107</td><td>数据线</td><td>¥39</td></tr>
+            <tr><td>DD-2609-108</td><td>支架</td><td>¥79</td></tr>
+            <tr><td>DD-2609-109</td><td>音箱</td><td>¥599</td></tr>
+            <tr><td>DD-2609-110</td><td>显示器</td><td>¥1299</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：粘性首列 + 复选 + 头像 -->
+  <section class="doc-block">
+    <h2>粘性首列：复选 + 用户列表</h2>
+    <p class="desc">列很多时用 <code>table-pin-cols</code> 把首列（这里是复选框 + 用户）吸在左侧，横向滑动时人不会丢。头像是文字占位，接图时换成 <code>&lt;img&gt;</code>。窄屏下操作按钮自动折成两排，表格整体不溢出。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table table-pin-cols table-sm">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" class="checkbox" aria-label="全选" />
+              </th>
+              <th>用户</th>
+              <th>部门</th>
+              <th>最近登录</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><input type="checkbox" class="checkbox" aria-label="选择张伟" /></th>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-placeholder">
+                    <div class="bg-neutral text-neutral-content w-10"><span>张</span></div>
+                  </div>
+                  <div class="font-medium">张伟</div>
+                </div>
+              </td>
+              <td>产品部</td>
+              <td>今天 09:12</td>
+              <td><span class="badge badge-sm badge-success">在职</span></td>
+            </tr>
+            <tr>
+              <th><input type="checkbox" class="checkbox" aria-label="选择李娜" /></th>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-placeholder">
+                    <div class="bg-neutral text-neutral-content w-10"><span>李</span></div>
+                  </div>
+                  <div class="font-medium">李娜</div>
+                </div>
+              </td>
+              <td>设计部</td>
+              <td>昨天 17:40</td>
+              <td><span class="badge badge-sm badge-success">在职</span></td>
+            </tr>
+            <tr>
+              <th><input type="checkbox" class="checkbox" aria-label="选择王强" /></th>
+              <td>
+                <div class="flex items-center gap-3">
+                  <div class="avatar avatar-placeholder">
+                    <div class="bg-neutral text-neutral-content w-10"><span>王</span></div>
+                  </div>
+                  <div class="font-medium">王强</div>
+                </div>
+              </td>
+              <td>研发部</td>
+              <td>3 天前</td>
+              <td><span class="badge badge-sm badge-warning">待激活</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：紧凑尺寸 -->
+  <section class="doc-block">
+    <h2>紧凑尺寸</h2>
+    <p class="desc">数据密、要一屏看更多行时用 <code>table-xs</code> / <code>table-sm</code>（默认 md）；后台管理系统推荐 <code>table-sm</code>。</p>
+    <div class="doc-stage">
+      <div class="overflow-x-auto w-full">
+        <table class="table table-xs">
+          <thead>
+            <tr><th>日期</th><th>浏览量</th><th>访客数</th><th>转化率</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>10-12</td><td>12,400</td><td>3,210</td><td>2.6%</td></tr>
+            <tr><td>10-13</td><td>11,870</td><td>3,054</td><td>2.4%</td></tr>
+            <tr><td>10-14</td><td>13,250</td><td>3,480</td><td>2.8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>永远先包 overflow-x-auto</h3>
+    <p>表格列多时一定会在窄屏溢出。正确做法是表外套 <code>&lt;div class="overflow-x-auto"&gt;</code>：表内横向滑动，页面本身不出现横向滚动条。不要为了塞下所有列去缩小字号。</p>
+    <h3>粘性表头 / 首列</h3>
+    <p><code>table-pin-rows</code>（表头吸顶）和 <code>table-pin-cols</code>（首列吸左）都要求外层有独立滚动容器：纵向滚动用 <code>height + overflow-y-auto</code>，横向滚动用 <code>overflow-x-auto</code>。没有定高容器时加 pin 类不会有任何效果。</p>
+    <h3>状态用徽章，别用文字颜色</h3>
+    <p>订单状态、审批状态这类枚举值用 <code>badge badge-sm</code> + 语义色（success / warning / info / error），不要只靠红绿字体——色盲和打印环境都会丢信息。</p>
+    <h3>操作列</h3>
+    <p>操作按钮放最后一列，用 <code>btn btn-xs btn-ghost</code> 弱化次要动作，当前状态对应的主动作（如「发货」）才用 <code>btn-primary</code>；没有该状态的动作就不渲染，别放一个禁用按钮占位。</p>
+    <h3>数字对齐</h3>
+    <p>金额、数量这类数字列建议右对齐（<code>text-right</code>）并使用等宽数字，方便逐位比较；表格默认左对齐，只对数字列单独加。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/table/" target="_blank" rel="noopener">daisyui.com/components/table</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商后台的订单管理表格：一列订单号、商品、金额、状态、操作，运营人员每天在这里看单、点发货。
+【怎么排】
+- 表外套 <div class="overflow-x-auto">：列多窄屏时表内横向滑动，页面本身不溢出。
+- 状态列用语义徽章（badge badge-sm + badge-success / badge-warning / badge-info / badge-error），不要只用红绿字体。
+- 操作列放最后：次要动作用 btn btn-xs btn-ghost「查看」，当前状态对应的主动作（待付款→收款、待发货→发货、已发货→跟踪物流）才用 btn-primary；没有该状态动作就留空。
+- 金额列右对齐、等宽数字，方便逐位比较。
+【精确规格】
+- 表格本体：<table class="table">，thead 一行 th，tbody 每单一行 tr；不要给表格设死宽，让它在容器里自然撑开。
+- 行内按钮用 div class="flex flex-wrap gap-1" 排列（窄屏自动折成两排，不挤溢出）；手机 390px 下表格允许表内横向滚动，但页面 scrollWidth 必须等于视口宽。
+- 如果行数多、需要纵向滚动：把表放进定高容器（如 height 16rem + overflow-y-auto）并给 table 加 table-pin-rows，表头吸顶；列很多需要横向滚动时加 table-pin-cols 让首列吸左。没有定高容器时不要加 pin 类。
+- 状态文案写真实中文（已付款 / 待发货 / 已发货 / 已完成 / 已取消），按钮写真实动作，禁止出现颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
