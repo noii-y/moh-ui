@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-zhongshi",
+  "type": "theme",
+  "title": "新中式（后台版浅色）",
+  "description": "米宣纸底、朱砂主色、墨褐文字，东方留白气质的中式后台。",
+  "styleTags": ["新中式", "东方", "米宣纸", "朱砂"],
+  "inspiration": ["https://www.shadcn.io/theme"],
+  "base": "mo-zhongshi",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

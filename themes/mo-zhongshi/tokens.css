@@ -1,0 +1,59 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-zhongshi（新中式 · 后台版浅色）
+   风格参考：中国风设计理念（Han Design / 宋明美学，配色自研）
+   特征：米宣纸底、朱砂主色、墨褐文字、东方留白气质
+   ============================================================ */
+
+:root {
+  /* ---------- 色彩语义（东方色） ---------- */
+  --moh-canvas: #f6f3ec;          /* 页面底（米宣纸） */
+  --moh-surface: #fffdf8;         /* 卡片 / 面板（暖白） */
+  --moh-surface-2: #efe9dd;       /* 悬浮 / 次级底（浅米） */
+  --moh-border: #e0d8c6;          /* 常规描边（米棕） */
+  --moh-border-strong: #c9bda3;   /* 强调描边 */
+  --moh-border-width: 1px;
+  --moh-ink: #3f3730;             /* 主文字（墨褐） */
+  --moh-muted: #756a58;           /* 次级文字（体检校准 4.69） */
+  --moh-primary: #c23b22;         /* 主色（朱砂红，白字 5.1） */
+  --moh-primary-hover: #d6492e;
+  --moh-primary-muted: #f4e3da;   /* 主色浅底（浅赭） */
+  --moh-success: #16a34a;
+  --moh-warning: #d97706;
+  --moh-danger: #dc2626;
+
+  /* ---------- 字体 ---------- */
+  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
+    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
+  --moh-text-xs: 12px;
+  --moh-text-sm: 13px;
+  --moh-text-base: 14px;   /* 正文默认 */
+  --moh-text-md: 16px;
+  --moh-text-lg: 20px;
+  --moh-text-xl: 24px;
+
+  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
+  --moh-space-1: 4px;
+  --moh-space-2: 8px;
+  --moh-space-3: 12px;
+  --moh-space-4: 16px;
+  --moh-space-6: 24px;
+  --moh-space-8: 32px;
+
+  /* ---------- 圆角（端正） ---------- */
+  --moh-radius-sm: 4px;
+  --moh-radius-md: 6px;
+  --moh-radius-lg: 8px;
+
+  /* ---------- 阴影（轻柔） ---------- */
+  --moh-shadow-sm: 0 1px 3px rgba(63, 55, 48, 0.06);
+  --moh-shadow-md: 0 6px 16px rgba(63, 55, 48, 0.08);
+  --moh-shadow-lg: 0 12px 32px rgba(63, 55, 48, 0.10);
+
+  /* ---------- 控件与动效 ---------- */
+  --moh-control-height: 32px;
+  --moh-transition: 150ms ease;
+}
