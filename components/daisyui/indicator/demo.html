@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>角标 Indicator · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>角标 <span class="en">Indicator</span></h1>
+  <p>把一个小元素贴在另一个元素的角上：铃铛上的未读数、头像上的在线点、按钮上的待办数。下面先给导航栏里两个真实角标的成品，再看九种位置和红点写法。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">角标位置由 <code>indicator-start</code> / <code>center</code> / <code>end</code> 与 <code>indicator-top</code> / <code>middle</code> / <code>bottom</code> 组合控制，切换主题后颜色自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>导航栏上的通知与购物车角标</h2>
+    <p class="desc">铃铛按钮右上角挂着未读消息数「3」，购物车按钮右上角挂着商品数「12」——数字一眼可见，又不抢按钮本身的视觉。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="indicator">
+          <span class="indicator-item badge badge-secondary badge-sm">3</span>
+          <button class="btn btn-soft btn-circle" aria-label="通知">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3.75c0 1.86.28 3.68.82 5.41a1.125 1.125 0 0 1-1.06 1.49H5.24a1.125 1.125 0 0 1-1.06-1.49A23.2 23.2 0 0 0 5 11.25V7.5a7 7 0 1 1 14 0ZM9.75 19.5a2.25 2.25 0 0 0 4.5 0" /></svg>
+          </button>
+        </div>
+        <div class="indicator">
+          <span class="indicator-item badge badge-primary badge-sm">12</span>
+          <button class="btn">
+            购物车
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.5-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="导航栏通知与购物车角标">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="角标">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>九种角标位置</h2>
+    <p class="desc">横向用 <code>indicator-start</code> / <code>indicator-center</code> / <code>indicator-end</code>（默认 end），纵向用 <code>indicator-top</code>（默认）/ <code>indicator-middle</code> / <code>indicator-bottom</code>。导航角标绝大多数用默认的「右上角」。</p>
+    <div class="doc-stage">
+      <div class="indicator">
+        <span class="indicator-item indicator-start badge badge-secondary">左上</span>
+        <span class="indicator-item indicator-center badge badge-secondary">中上</span>
+        <span class="indicator-item badge badge-secondary">右上</span>
+        <div class="bg-base-300 grid h-24 w-48 place-items-center">卡片内容</div>
+      </div>
+      <div class="indicator">
+        <span class="indicator-item indicator-middle indicator-start badge badge-secondary">左中</span>
+        <span class="indicator-item indicator-middle indicator-center badge badge-secondary">正中</span>
+        <span class="indicator-item indicator-middle badge badge-secondary">右中</span>
+        <div class="bg-base-300 grid h-24 w-48 place-items-center">卡片内容</div>
+      </div>
+      <div class="indicator">
+        <span class="indicator-item indicator-bottom indicator-start badge badge-secondary">左下</span>
+        <span class="indicator-item indicator-bottom indicator-center badge badge-secondary">中下</span>
+        <span class="indicator-item indicator-bottom badge badge-secondary">右下</span>
+        <div class="bg-base-300 grid h-24 w-48 place-items-center">卡片内容</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>纯红点：只有提示没有数字</h2>
+    <p class="desc">不需要写数字时，用一个空的小圆点表示「有新东西」：消息列表里朋友头像上的红点、「新功能」入口。空徽章就是一个 <code>badge</code> 不放文字。</p>
+    <div class="doc-stage">
+      <div class="indicator">
+        <span class="indicator-item badge badge-primary badge-xs"></span>
+        <button class="btn btn-soft btn-circle" aria-label="更新日志">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg>
+        </button>
+      </div>
+      <div class="indicator">
+        <span class="indicator-item badge badge-secondary badge-xs"></span>
+        <div class="avatar">
+          <div class="bg-neutral text-neutral-content w-12 rounded-full flex items-center justify-center"><span class="text-xs">客</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>贴在输入框与卡片上</h2>
+    <p class="desc">角标不止贴按钮：贴在输入框右上角表示「必填」，贴在卡片侧边放一个主操作按钮，都比堆在正文里更省空间。</p>
+    <div class="doc-stage">
+      <div class="indicator">
+        <span class="indicator-item indicator-start badge badge-error badge-xs">必填</span>
+        <input type="text" placeholder="手机号" class="input" />
+      </div>
+      <div class="indicator mt-4">
+        <div class="indicator-item indicator-bottom">
+          <button class="btn btn-primary btn-sm">立即报名</button>
+        </div>
+        <div class="card border border-base-300 shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">周末用户访谈</h2>
+            <p class="text-sm opacity-60">本周六下午 2 点，线上会议，名额 8 人。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>结构是「父子」两件</h3>
+    <p>角标组件外层是 <code>.indicator</code>，里面先放一个 <code>.indicator-item</code>（要贴上去的小东西），再放被贴的本体（按钮、卡片、头像、输入框）。顺序不能反：item 在前，本体在后。</p>
+    <h3>数字角标</h3>
+    <ul>
+      <li>item 里放一个小徽章：<code>&lt;span class="indicator-item badge badge-secondary badge-sm"&gt;3&lt;/span&gt;</code>。</li>
+      <li>数字超过 99 一律显示 <code>99+</code>；没有未读数就不要渲染这个角标，别留一个 0。</li>
+    </ul>
+    <h3>红点</h3>
+    <p>不需要数字时放一个空徽章（<code>&lt;span class="indicator-item badge badge-primary badge-xs"&gt;&lt;/span&gt;</code>），就是一个小圆点，适合「有新内容」的轻提示。</p>
+    <h3>注意</h3>
+    <p>角标会盖住本体一角，别把它压在按钮文字上——贴在图标按钮角落最稳妥；390px 窄屏下默认右上角角标不会遮挡本体。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/indicator/" target="_blank" rel="noopener">daisyui.com/components/indicator</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】App 顶部导航栏右侧的两个角标：铃铛通知按钮上挂未读数 3，购物车按钮上挂商品数 12。
+【怎么排】每个角标是一对「父子」结构：
+- 外层 <div class="indicator">；
+- 先写 <span class="indicator-item badge badge-secondary badge-sm">3</span>（要贴上去的小徽章）；
+- 再写被贴的本体：铃铛用 btn btn-soft btn-circle 圆形图标按钮，购物车用普通按钮带购物车 SVG。
+【精确规格】
+- 角标默认贴在右上角；铃铛按钮必须加 aria-label="通知"。
+- 徽章数字超过 99 写 99+，没有未读数就不渲染角标，不要留 0。
+- 角标小而醒目：数字用 badge-sm，红点用 badge-xs 空徽章。
+- 文案写真实业务词（通知/购物车），不要写颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
