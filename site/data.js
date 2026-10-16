@@ -387,7 +387,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-input",
       "title": "文本输入框",
-      "description": "搬运自 daisyUI 的输入框：基础/内嵌图标/幽灵/fieldset/语义色/尺寸/禁用/datalist/校验，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的文本输入框：覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -444,7 +444,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-checkbox",
       "title": "复选框",
-      "description": "搬运自 daisyUI 的复选框：基础/标签分组/尺寸/语义色/禁用/半选，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的复选框：基础勾选态、label 包裹点文字、fieldset 分组多选、半选 indeterminate、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（半选仅一行 JS）。",
       "styleTags": [
         "基础组件",
         "表单",

@@ -12,14 +12,68 @@
 <body>
 <header class="doc-head">
   <h1>复选框 <span class="en">Checkbox</span></h1>
-  <p>勾选或取消一个或多个选项。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
-  <p>来源：<a href="https://daisyui.com/components/checkbox/" target="_blank" rel="noopener">daisyui.com/components/checkbox</a>（MIT）</p>
+  <p>勾选或取消一个或多个独立选项，可多选、互不影响。下面先给一个注册流程里可以直接拿走的勾选区，再列出各种尺寸、分组和状态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色、尺寸只改 <code>class</code> 即可；切换主题后，整套勾选框颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：注册确认勾选区 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>注册流程里的协议与偏好勾选区</h2>
+    <p class="desc">提交前必须勾选「同意协议」，用主色标出但不默认勾选、让用户主动同意；可选偏好保持中性；每一项都用 label 包住，点文字也能勾，组尾放注册按钮收尾。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-3 w-full">
+      <fieldset class="fieldset rounded-box border border-base-300 p-4 max-w-md">
+        <legend class="fieldset-legend">注册确认</legend>
+        <div class="flex flex-col gap-2">
+          <label class="label cursor-pointer justify-start gap-3">
+            <input type="checkbox" class="checkbox checkbox-primary" />
+            <span>我已阅读并同意《用户协议》和《隐私政策》</span>
+          </label>
+          <label class="label cursor-pointer justify-start gap-3">
+            <input type="checkbox" class="checkbox" />
+            <span>记住我，下次自动登录</span>
+          </label>
+          <label class="label cursor-pointer justify-start gap-3">
+            <input type="checkbox" checked="checked" class="checkbox" />
+            <span>订阅产品更新和优惠邮件</span>
+          </label>
+        </div>
+      </fieldset>
+      <div class="flex flex-wrap gap-2">
+        <button class="btn btn-primary">注册账号</button>
+      </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="注册协议与偏好勾选区（复选框）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="复选框">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础</h2>
+    <h2>基础勾选态</h2>
+    <p class="desc">最朴素的两种状态：勾选（带 checked）和未勾选。单独使用时旁边一定要配文字说明是勾什么。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="checkbox" />
       <input type="checkbox" class="checkbox" />
@@ -27,34 +81,46 @@
   </section>
 
   <section class="doc-block">
-    <h2>带文字标签</h2>
-    <p class="desc">用 label 包裹，点文字也能勾选；多选项放 fieldset 分组。</p>
+    <h2>点文字也能选</h2>
+    <p class="desc">用 label 把勾选框和文字包在一起，整行都可点，比只有小方框好操作得多；想默认勾上哪项就加 checked。</p>
+    <div class="doc-stage col">
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked="checked" class="checkbox" /><span>我已完成本期学习目标</span></label>
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" class="checkbox" /><span>接收每周学习报告</span></label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>分组：设置页里的多选清单</h2>
+    <p class="desc">一组相关选项放进 fieldset 并写 legend，屏幕阅读器会把它读作这一组的标题；适合通知渠道、权限清单这类设置项。</p>
     <div class="doc-stage">
-      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
-        <legend class="fieldset-legend">登录选项</legend>
-        <label class="label cursor-pointer">
-          <span>记住我</span>
-          <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
-        </label>
-        <label class="label cursor-pointer">
-          <span>自动登录</span>
-          <input type="checkbox" class="checkbox" />
-        </label>
+      <fieldset class="fieldset rounded-box border border-base-300 p-4 max-w-md">
+        <legend class="fieldset-legend">通知方式</legend>
+        <div class="flex flex-col gap-2">
+          <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked="checked" class="checkbox" /><span>邮件通知</span></label>
+          <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked="checked" class="checkbox" /><span>短信通知</span></label>
+          <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" class="checkbox" /><span>站内信</span></label>
+        </div>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>多选列表</h2>
-    <div class="doc-stage col">
-      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked class="checkbox checkbox-success" /><span class="label-text">邮件通知</span></label>
-      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked class="checkbox checkbox-success" /><span class="label-text">短信通知</span></label>
-      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" class="checkbox checkbox-success" /><span class="label-text">站内信</span></label>
+    <h2>半选状态（indeterminate）</h2>
+    <p class="desc">父级勾选框用于「全选」：子项只勾了一部分时显示横线半选。半选状态需用 JS 设置 indeterminate 属性（本页仅此处用一行 JS），刷新后会消失。</p>
+    <div class="doc-stage">
+      <label class="label cursor-pointer justify-start gap-3">
+        <input type="checkbox" class="checkbox" id="indeterminate-demo" />
+        <span>全选通知渠道（部分子项已选）</span>
+      </label>
     </div>
+    <script>
+      document.getElementById("indeterminate-demo").indeterminate = true;
+    </script>
   </section>
 
   <section class="doc-block">
     <h2>尺寸</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合紧凑表格行，大尺寸适合移动端设置页。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
       <input type="checkbox" checked="checked" class="checkbox checkbox-sm" />
@@ -65,7 +131,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
+    <h2>语义状态色</h2>
+    <p class="desc">这一排是 daisyUI 的语义状态色：从主色到错误色，分别对应主操作、强调、成功、警告、错误等含义。实际使用时按需取用，不要为了好看全用醒目颜色。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
       <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" />
@@ -80,23 +147,49 @@
 
   <section class="doc-block">
     <h2>禁用</h2>
-    <div class="doc-stage">
-      <input type="checkbox" class="checkbox" disabled />
-      <input type="checkbox" class="checkbox" disabled checked="checked" />
+    <p class="desc">条件不满足或权限不足时禁用；禁用且选中表示「这项已经由系统设定好、用户不能改」。用 disabled 属性。</p>
+    <div class="doc-stage col">
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" disabled class="checkbox" /><span>老用户专享权益（当前不可改）</span></label>
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" disabled checked="checked" class="checkbox" /><span>已锁定的默认订阅项</span></label>
     </div>
   </section>
 
-  <section class="doc-block">
-    <h2>半选状态（indeterminate）</h2>
-    <p class="desc">表示"部分子项被选中"，需要用 JS 设置 indeterminate 属性。</p>
-    <div class="doc-stage">
-      <input type="checkbox" class="checkbox" id="indeterminate-demo" />
-    </div>
-    <script>
-      document.getElementById("indeterminate-demo").indeterminate = true;
-    </script>
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>复选框还是单选框</h3>
+    <p>各选项互相独立、可同时多选（通知渠道、偏好设置）用复选框；互斥只能选一个（性别、付款方式）用单选框 Radio。</p>
+    <h3>一定让文字可点</h3>
+    <p>每一项都用 <code>label.label.cursor-pointer</code> 包住 <code>input</code> 和文字，点击区域从方框扩大到整行，手机上尤其重要。</p>
+    <h3>分组用 fieldset</h3>
+    <p>一组相关选项用 <code>fieldset.fieldset</code> 加 <code>legend</code> 包起来，读屏软件会自动把 legend 读作组标题。</p>
+    <h3>半选只用于父子全选</h3>
+    <p><code>indeterminate</code> 只在「父框控制一组子框」时出现（子项部分选中），且必须由 JS 设置；不要用它表达普通状态。</p>
+    <h3>可访问性与禁用</h3>
+    <p>键盘 Tab 聚焦勾选框后用空格切换选中，焦点描边不要去掉；禁用优先用 <code>disabled</code> 属性，它会同时阻止点击和聚焦。</p>
   </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/checkbox/" target="_blank" rel="noopener">daisyui.com/components/checkbox</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
 
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个注册 / 开通流程里的协议与偏好勾选区：先让用户主动勾选同意协议，再顺手勾选几个可选偏好，最后点注册按钮。
+【怎么排】
+- 用 fieldset.fieldset（rounded-box border border-base-300 p-4 max-w-md）把勾选项包成一组，legend 写「注册确认」；
+- 提交前必须勾选的主项「我已阅读并同意《用户协议》和《隐私政策》」用 checkbox checkbox-primary，但不要默认勾选，让用户主动同意；
+- 可选偏好（记住我、订阅产品更新和优惠邮件）用默认 checkbox，想默认选中哪项就加 checked；
+- 每一项用 <label class="label cursor-pointer justify-start gap-3"> 包住 input 和文字，点文字也能勾；各项纵向排列（flex flex-col gap-2）；
+- 组尾放一个仅展示的主按钮「注册账号」（btn btn-primary），不要为它写任何 JS。
+【精确规格】
+- 勾选框尺寸默认即可，不要每一项都换尺寸。
+- 文字写真实业务内容，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：checkbox、checkbox-primary、fieldset、fieldset-legend、label、cursor-pointer、justify-start、flex-col、gap-2、gap-3、w-full、max-w-md。
+- 除「半选全选」场景外不要加任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
