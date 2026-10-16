@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "switch",
+  "type": "component",
+  "title": "开关",
+  "description": "轨道滑块式开关，role=switch，checked 主色，键盘空格切换，禁用态",
+  "styleTags": ["基础组件", "表单", "交互"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
