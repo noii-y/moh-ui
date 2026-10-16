@@ -249,15 +249,23 @@ git rev-list --count origin/master..HEAD   # 必须为 0
    - 子智能体**不得代写 AGENTS.md 的进度/踩坑/收尾文档**——技术教训只能写进"自检报告"，由 PM 复核后决定是否入档、如何定性；踩坑 19 的技术内容是 PM 事后核对保留的，不等于子智能体可以自行定档。
    - 发现公共层/脚本确实必须改，只能在交付报告里"**提请 PM 处理**"，由 PM 自己改、自己 commit（如本批 3a0b394）。
    - **PM 验收第一步先查越权**：`git fetch origin` 后 `git log --oneline origin/master..HEAD`、`git rev-list --count origin/master..HEAD`、`git status`，确认是否已有越权提交/推送；发现越权先停下逐件复核内容，再决定保留或 revert，并向用户**显式上报**，不得静默接受。
+21. **批次⑤ 区块组件的具体坑（hero/footer/carousel/filter/join）**：
+   ① 公共层缺类**按 Tailwind 标准档位整组补**：批次⑤ 暴露 `lg:text-lg~5xl` 响应式字号整组缺失（hero 桌面标题因此停在 24px、比变体还小、层级倒挂），定位类只有 0 档（left-2/right-2/top-2/bottom-2 全缺）、gap-1.5、leading-tight、items-baseline 也缺。缺类不要只补工程师报的单个孤类，要一次把该系列档位补全，否则下一批组件还会卡在同一档位。
+   ② **carousel 等横向滚动容器会被 qa-mobile 误报 OVERFLOW**：`.carousel` 自带 `overflow-x:scroll`，卡片在容器内横滑，探针把越界元素记为 offender。判定口径：页面级 `scrollWidth≤390` **且**越界元素全部在 overflow 祖先内（outsideScrollAncestor=0）= **PASS**；不改脚本。商品图区要加内联产品图标（半透明白色线性 SVG、flex items-center justify-center 居中），否则纯渐变块像"占位色块"不像真实商品。
+   ③ **类名核验必须 PowerShell `.Contains`，禁止 grep 判"类不存在"**：QC 用 grep 在压缩 CSS 里没匹配到 `items-baseline/left-2/top-2` 就打成"编造类"，实际这三类都在补丁里。压缩 CSS 的 grep 误报率高，一律用 PowerShell `.Contains` 对 vendor 与 utilities-patch.css 核实。
+   ④ **响应式分数宽 `sm:w-1/2`/`lg:w-1/3` 补丁未补**：carousel 主成品按静态 `w-1/2` + 三张档变体兜底，指南如实说明；日后补类后把 item 改 `w-1/2 lg:w-1/3` 即实现"手机两张、桌面三张"。
+   ⑤ **Lucide 图标网络 502 预案**：内联图标优先取 Lucide（ISC），拿不到网络就手绘同轮廓 path（简洁几何线条、stroke 当前色、零外链），moh.json inspiration 注明借鉴来源；纯图标按钮必须带 aria-label 且语义对得上用途（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡）。
+   ⑥ **filter 选中态是官方机制不是 bug**：单选（radio）选中后其它项自动折叠、选中项呈中性白底标签；多选（checkbox）选中项用主题色实心高亮。指南里要写清，避免用户误以为单选没生效。filter 纯 CSS 只做选中态，真实过滤必须 JS，指南要诚实写。join 输入框必须 `min-w-0 flex-1` 才在窄屏收缩（本次补丁已补 min-w-0）。
 
 ---
 
 ## 11. 当前进度
 
-- 已完成：vendor 底座；**13 个 daisyUI 表单组件 v3「提示词三件套」**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator）；**批次② 11 个导航布局组件完成并推送**（navbar/menu/drawer/megamenu/breadcrumbs/tab/steps/dock/pagination/link/fab）；**批次③ 18 个数据展示组件完成并推送**（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/divider/mockup-browser/mockup-code/mockup-phone/mockup-window/radial-progress/skeleton/stack）；**批次④ 11 个反馈覆盖层组件完成并推送**（alert/toast/modal/collapse/dropdown/tooltip/loading/progress/status/swap/countdown）；站点共 **58 个 daisyUI 组件**、5 分类（基础/表单/反馈/导航/数据展示）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（w-5/gap-0、border 单边、max-w-3xl/mt-auto/place-content-center/line-through/h-44/w-28/pt-1/pt-12/pt-14/pb-6/avatar-group 负边距、grid-flow-col/auto-cols-max/animate-ping/animate-bounce 等）。
+- 已完成：vendor 底座；**13 个 daisyUI 表单组件 v3「提示词三件套」**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator）；**批次② 11 个导航布局组件完成并推送**（navbar/menu/drawer/megamenu/breadcrumbs/tab/steps/dock/pagination/link/fab）；**批次③ 18 个数据展示组件完成并推送**（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/divider/mockup-browser/mockup-code/mockup-phone/mockup-window/radial-progress/skeleton/stack）；**批次④ 11 个反馈覆盖层组件完成并推送**（alert/toast/modal/collapse/dropdown/tooltip/loading/progress/status/swap/countdown）；**批次⑤ 5 个区块组件完成并推送**（hero/footer/carousel/filter/join，成品：SaaS 首屏+电商页脚+商品横滑卡+电商筛选条+电商搜索框，全部 5 变体+中文教程+提示词）；站点共 **63 个 daisyUI 组件**、5 分类（基础/表单/反馈/导航/数据展示）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（w-5/gap-0、border 单边、max-w-3xl/mt-auto/place-content-center/line-through/h-44/w-28/pt-1/pt-12/pt-14/pb-6/avatar-group 负边距、grid-flow-col/auto-cols-max/animate-ping/animate-bounce、批次⑤ 分数宽/大容器/响应式字号 lg:text-lg~5xl/定位 left-2 right-2 top-2 bottom-2/gap-1.5/leading-tight/items-baseline/min-w-0/truncate 等）。
 - 批次④ 关键教训（已入踩坑 19）：① toast 九宫格 middle/center 的 `--toast-x/y:-50%` 位移变量在静态流里致重叠，position:static 之外还要清零位移；② modal 静态展开 checkbox 法 + `position:static;pointer-events:none`，真实用法指南推荐 `<dialog>`+showModal；③ countdown 纯 CSS 只渲染（--value/--digits，span 文本隐藏），真倒计时必须 JS；④ status ping/bounce 双点用 `.grid`+内联 grid-area 叠放（补丁无 inline-grid/任意值变体）；⑤ COMMON_RULES 禁弹跳与官方功能性动画冲突，已加"功能性状态动画除外"豁免。
 - **批次④ 流程教训（已入踩坑 20）**：子智能体在 PM 终验前越权 commit+push 16 个 commit、改公共层、代写收尾文档；内容经 PM 逐件复核全部合格故保留上线，但红线重犯，后续派工必须逐字点名"禁 push/禁改 AGENTS、公共层/禁跑 build-site-data"，PM 验收先查 git log 越权。
-- 待办（PM 已规划，按批次推进）：⑤ 区块（hero/footer/carousel/filter/join）；⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。**每批开工前先翻竞品，按 §8 多智能体流程做。**
+- **批次⑤ 教训（已入踩坑 21）**：公共层缺类要按 Tailwind 标准档位整组补（本次响应式字号 lg:text-lg~5xl 一组全缺）；carousel 等横向滚动容器会被 qa-mobile 误报 OVERFLOW（scrollWidth≤390 且越界元素全在 overflow 祖先内即 PASS，不改脚本）；类名核验必须 PowerShell `.Contains`，grep 压缩 CSS 会误判"类不存在"（QC 曾把 3 个真实存在的类误打回）；响应式分数宽 sm:w-1/2/lg:w-1/3 未补，carousel 用静态 w-1/2 兜底、日后补类升级；Lucide 图标网络 502 时按预案手绘同轮廓并注明 inspiration。
+- 待办（PM 已规划，按批次推进）：⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。**每批开工前先翻竞品，按 §8 多智能体流程做。**
 
 ---
 
