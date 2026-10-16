@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-alert · 警告条</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-alert · 警告条（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：信息 / 成功 / 警告 / 危险 + 图标 + 标题 + 内容 + 可选关闭
+       要点：危险/警告场景 role="alert"（即时播报）；关闭按钮焦点可见；
+         图标用 currentColor 跟随语义色
+       ============================================================ */
+
+    .moh-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-3) var(--moh-space-4);
+      border: 1px solid var(--moh-border);
+      border-left: 3px solid var(--moh-border-strong);
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-surface);
+      font-size: var(--moh-text-sm);
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    .moh-alert--info { border-left-color: var(--moh-primary); }
+    .moh-alert--success { border-left-color: var(--moh-success); }
+    .moh-alert--warning { border-left-color: var(--moh-warning); }
+    .moh-alert--danger { border-left-color: var(--moh-danger); }
+
+    .moh-alert__icon {
+      width: 18px;
+      height: 18px;
+      color: var(--moh-muted);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .moh-alert--info .moh-alert__icon { color: var(--moh-primary); }
+    .moh-alert--success .moh-alert__icon { color: var(--moh-success); }
+    .moh-alert--warning .moh-alert__icon { color: var(--moh-warning); }
+    .moh-alert--danger .moh-alert__icon { color: var(--moh-danger); }
+
+    .moh-alert__icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .moh-alert__body {
+      flex: 1;
+    }
+
+    .moh-alert__title {
+      font-weight: 600;
+      color: var(--moh-ink);
+      margin-bottom: 2px;
+    }
+
+    .moh-alert__msg {
+      color: var(--moh-muted);
+    }
+
+    .moh-alert__close {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border: none;
+      background: none;
+      color: var(--moh-muted);
+      font-size: var(--moh-text-sm);
+      line-height: 1;
+      cursor: pointer;
+      border-radius: var(--moh-radius-sm);
+      transition: var(--moh-transition);
+    }
+    .moh-alert__close:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+    .moh-alert__close:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <div class="moh-alert moh-alert--info">
+      <span class="moh-alert__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 8v5" /><path d="M12 16.5h.01" /></svg>
+      </span>
+      <div class="moh-alert__body">
+        <div class="moh-alert__title">新版本已发布</div>
+        <div class="moh-alert__msg">v0.3.0 已上线，含 8 套新主题与 11 个新组件。</div>
+      </div>
+      <button class="moh-alert__close" aria-label="关闭提示">✕</button>
+    </div>
+
+    <div class="moh-alert moh-alert--success">
+      <span class="moh-alert__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m8.5 12.5 2.5 2.5 4.5-5" /></svg>
+      </span>
+      <div class="moh-alert__body">
+        <div class="moh-alert__title">部署成功</div>
+        <div class="moh-alert__msg">站点已更新，Pages 构建通过。</div>
+      </div>
+    </div>
+
+    <div class="moh-alert moh-alert--warning" role="alert">
+      <span class="moh-alert__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3 2.5 20h19Z" /><path d="M12 9.5v4" /><path d="M12 16.5h.01" /></svg>
+      </span>
+      <div class="moh-alert__body">
+        <div class="moh-alert__title">即将到期</div>
+        <div class="moh-alert__msg">域名证书将于 2 天后过期，请及时续期。</div>
+      </div>
+    </div>
+
+    <div class="moh-alert moh-alert--danger" role="alert">
+      <span class="moh-alert__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m9 9 6 6" /><path d="m15 9-6 6" /></svg>
+      </span>
+      <div class="moh-alert__body">
+        <div class="moh-alert__title">构建失败</div>
+        <div class="moh-alert__msg">check-audit 未通过（1 套主题对比度不足），已阻止发布。</div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">提示：警告/危险场景加 role="alert" 让屏读即时播报；左侧 3px 色条 + 图标用语义变量；可关闭变体给 aria-label。</p>
+</body>
+</html>

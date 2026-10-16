@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "alert",
+  "type": "component",
+  "title": "警告条",
+  "description": "信息/成功/警告/危险四态，语义色边条+图标，可关闭，role=alert",
+  "styleTags": ["基础组件", "反馈"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
