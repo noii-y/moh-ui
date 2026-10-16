@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-modal · 模态框</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-modal · 模态框（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与 <dialog> 结构到你的项目
+       打开：dialogEl.showModal()；关闭：dialogEl.close()（或点击遮罩）
+       要点：居中；遮罩用 ::backdrop；阴影用 --moh-shadow-lg（浮动元素）
+       说明：演示页用 open 属性静态展示；实际使用请用 showModal()
+       ============================================================ */
+
+    .moh-modal {
+      width: min(480px, calc(100vw - var(--moh-space-8)));
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-lg);
+      background: var(--moh-surface);
+      color: var(--moh-ink);
+      padding: 0;
+      box-shadow: var(--moh-shadow-lg);
+    }
+
+    .moh-modal::backdrop {
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .moh-modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--moh-space-2);
+      padding: var(--moh-space-4);
+      border-bottom: 1px solid var(--moh-border);
+    }
+
+    .moh-modal__title {
+      font-size: var(--moh-text-md);
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .moh-modal__close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: var(--moh-radius-md);
+      background: transparent;
+      color: var(--moh-muted);
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-modal__close:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+    .moh-modal__close svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .moh-modal__body {
+      padding: var(--moh-space-4);
+      font-size: var(--moh-text-sm);
+      line-height: 1.6;
+      color: var(--moh-muted);
+    }
+
+    .moh-modal__footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--moh-space-2);
+      padding: var(--moh-space-3) var(--moh-space-4) var(--moh-space-4);
+    }
+
+    .moh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid transparent;
+      border-radius: var(--moh-radius-md);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-btn:focus-visible,
+    .moh-modal__close:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+    .moh-btn--primary {
+      background: var(--moh-primary);
+      color: #fff;
+    }
+    .moh-btn--primary:hover {
+      background: var(--moh-primary-hover);
+    }
+    .moh-btn--secondary {
+      background: transparent;
+      border-color: var(--moh-border);
+      color: var(--moh-ink);
+    }
+    .moh-btn--secondary:hover {
+      border-color: var(--moh-border-strong);
+      background: var(--moh-surface-2);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      margin-top: var(--moh-space-3);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <dialog class="moh-modal" open>
+      <div class="moh-modal__header">
+        <h3 class="moh-modal__title">删除项目</h3>
+        <button class="moh-modal__close" aria-label="关闭">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="moh-modal__body">
+        确定要删除「内容运营后台」吗？该操作不可恢复，项目下的全部数据将被永久删除。
+      </div>
+      <div class="moh-modal__footer">
+        <button class="moh-btn moh-btn--secondary">取消</button>
+        <button class="moh-btn moh-btn--primary">确认删除</button>
+      </div>
+    </dialog>
+    <p class="demo-note">演示为静态展示（open 属性）。实际使用：<code>dialog.showModal()</code> 打开、<code>dialog.close()</code> 关闭；遮罩点击可用 <code>click</code> 事件判断关闭。</p>
+  </div>
+</body>
+</html>
