@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>按键 Kbd · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>按键 <span class="en">Kbd</span></h1>
+  <p>用一块键帽的样子展示键盘按键或快捷键，常见于快捷键说明、操作提示和帮助文档。下面先给一个可以直接拿走的成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改尺寸只改 <code>class</code>（<code>kbd-xs</code> 到 <code>kbd-xl</code>）；切换主题后，键帽颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一张快捷键说明卡</h2>
+    <p class="desc">帮助弹窗或设置页里列出常用快捷键：左边写动作，右边用键帽拼出组合键，一行一条、右对齐，扫一眼就知道按什么。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="card bg-base-100 border border-base-300 max-w-md">
+        <div class="card-body p-5">
+          <h2 class="card-title">常用快捷键</h2>
+          <div class="flex flex-wrap items-center justify-between gap-2 mt-2">
+            <span>保存修改</span>
+            <span class="flex items-center gap-1">
+              <kbd class="kbd kbd-sm">Ctrl</kbd>
+              <kbd class="kbd kbd-sm">S</kbd>
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span>全局搜索</span>
+            <span class="flex items-center gap-1">
+              <kbd class="kbd kbd-sm">Ctrl</kbd>
+              <kbd class="kbd kbd-sm">K</kbd>
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span>撤销</span>
+            <span class="flex items-center gap-1">
+              <kbd class="kbd kbd-sm">Ctrl</kbd>
+              <kbd class="kbd kbd-sm">Z</kbd>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="快捷键说明卡（按键）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="按键">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：尺寸 -->
+  <section class="doc-block">
+    <h2>五档尺寸</h2>
+    <p class="desc">默认中等大小最通用；说明卡里常用 sm 让它更紧凑，正文行内用 sm 或 xs 避免键帽过大打断阅读。</p>
+    <div class="doc-stage">
+      <kbd class="kbd kbd-xs">xs</kbd>
+      <kbd class="kbd kbd-sm">sm</kbd>
+      <kbd class="kbd">md</kbd>
+      <kbd class="kbd kbd-lg">lg</kbd>
+      <kbd class="kbd kbd-xl">xl</kbd>
+    </div>
+  </section>
+
+  <!-- 变体：组合键 -->
+  <section class="doc-block">
+    <h2>组合键</h2>
+    <p class="desc">一个组合键由多块键帽组成，键帽之间用小间距排开，加号可以省略；在中文界面里直接写「Ctrl」「Shift」这类通用名即可。</p>
+    <div class="doc-stage">
+      <kbd class="kbd">Ctrl</kbd>
+      <span class="opacity-60">+</span>
+      <kbd class="kbd">Shift</kbd>
+      <span class="opacity-60">+</span>
+      <kbd class="kbd">Esc</kbd>
+    </div>
+  </section>
+
+  <!-- 变体：正文中的键帽 -->
+  <section class="doc-block">
+    <h2>嵌在正文里</h2>
+    <p class="desc">行内提示时，键帽用 sm 尺寸嵌进句子，和文字基线对齐，读起来像一句完整的话。</p>
+    <div class="doc-stage">
+      <p class="leading-relaxed">按 <kbd class="kbd kbd-sm">Enter</kbd> 确认提交，按 <kbd class="kbd kbd-sm">Esc</kbd> 关闭当前弹窗。</p>
+    </div>
+  </section>
+
+  <!-- 变体：功能键 -->
+  <section class="doc-block">
+    <h2>修饰键与符号键</h2>
+    <p class="desc">Mac 上的修饰键也用键帽表示，字符直接放进 <code>&lt;kbd&gt;</code> 标签里即可。</p>
+    <div class="doc-stage">
+      <kbd class="kbd">⌘</kbd>
+      <kbd class="kbd">⌥</kbd>
+      <kbd class="kbd">⇧</kbd>
+      <kbd class="kbd">⌃</kbd>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>什么时候用键帽</h3>
+    <p>当你想告诉用户「按哪个键」时用 <code>kbd</code>，比如快捷键表、操作提示、文档里的步骤说明。普通按钮文字不要套键帽样式。</p>
+    <h3>组合键怎么排</h3>
+    <p>每个按键单独一个 <code>&lt;kbd&gt;</code>，外层用 <code>flex items-center gap-1</code> 排开；中间的加号用 <code>opacity-60</code> 弱化，避免抢戏。</p>
+    <h3>尺寸选择</h3>
+    <ul>
+      <li>快捷键说明卡：用 <code>kbd-sm</code>，和正文行高匹配。</li>
+      <li>嵌在句子里：用 <code>kbd-sm</code> 或 <code>kbd-xs</code>。</li>
+      <li>单独展示、桌面帮助弹窗：默认 <code>kbd</code> 即可。</li>
+    </ul>
+    <h3>可访问性</h3>
+    <p>键帽只是视觉呈现，读屏软件会读出里面的字符；中文界面里用「Ctrl」「Shift」这类通用英文名，不要自造中文键名。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/kbd/" target="_blank" rel="noopener">daisyui.com/components/kbd</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】产品帮助弹窗或设置页里的一张「常用快捷键」说明卡。
+【怎么排】一张带边框的卡片，标题写「常用快捷键」，下面一行一条：
+- 左边是动作名（保存修改 / 全局搜索 / 撤销），右边用键帽拼出组合键；
+- 组合键由多块 kbd 组成，键帽之间留小间距，右对齐；
+- 窄屏下动作名和键帽允许折行，但键帽组不能被拆开或裁切。
+【精确规格】
+- 卡片：<div class="card bg-base-100 border border-base-300 max-w-md">，内容包一层 <div class="card-body p-5">。
+- 每一行：<div class="flex flex-wrap items-center justify-between gap-2">，键帽外层再套 <span class="flex items-center gap-1">。
+- 键帽统一用 kbd-sm：<kbd class="kbd kbd-sm">Ctrl</kbd> <kbd class="kbd kbd-sm">S</kbd>。
+- 动作名写真实中文动作，键帽字符用 Ctrl / Shift / Enter 等通用名，不要写颜色名。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色，切换主题时自动跟随。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

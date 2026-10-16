@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-kbd",
+  "type": "component",
+  "title": "按键",
+  "description": "搬运自 daisyUI 的按键（Kbd）组件：快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。",
+  "styleTags": ["数据展示", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/kbd/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将示例文案改为中文快捷键说明卡（保存 Ctrl+S / 搜索 Ctrl+K / 撤销 Ctrl+Z），新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
