@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-table · 表格</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-table · 表格（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       要点：表头 muted、悬浮行、行分隔 1px、可配合 moh-tag 做状态列
+       ============================================================ */
+
+    .moh-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--moh-text-sm);
+      background: var(--moh-surface);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-lg);
+      overflow: hidden;
+    }
+
+    .moh-table th {
+      text-align: left;
+      padding: var(--moh-space-2) var(--moh-space-4);
+      border-bottom: 1px solid var(--moh-border);
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .moh-table td {
+      padding: var(--moh-space-2) var(--moh-space-4);
+      border-bottom: 1px solid var(--moh-border);
+    }
+
+    .moh-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .moh-table tbody tr {
+      transition: var(--moh-transition);
+    }
+
+    .moh-table tbody tr:hover {
+      background: var(--moh-surface-2);
+    }
+
+    /* 数字列右对齐 */
+    .moh-table td.moh-num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 表头排序箭头占位（视觉提示，非组件） */
+    .moh-table th.moh-sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* 可交互表头的焦点态（可访问性） */
+    .moh-table th.moh-sortable:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: -2px;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      overflow-x: auto;
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      margin: var(--moh-space-3) 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <table class="moh-table">
+      <thead>
+        <tr>
+          <th>项目</th>
+          <th>负责人</th>
+          <th>状态</th>
+          <th class="moh-num">预算</th>
+          <th tabindex="0" class="moh-sortable">更新时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>灰墨主题包 v1</td>
+          <td>noii-y</td>
+          <td>进行中</td>
+          <td class="moh-num">¥12,000</td>
+          <td>2026-10-16</td>
+        </tr>
+        <tr>
+          <td>展示站</td>
+          <td>noii-y</td>
+          <td>规划中</td>
+          <td class="moh-num">¥8,500</td>
+          <td>2026-10-15</td>
+        </tr>
+        <tr>
+          <td>MCP Server</td>
+          <td>noii-y</td>
+          <td>已暂停</td>
+          <td class="moh-num">¥3,200</td>
+          <td>2026-10-10</td>
+        </tr>
+        <tr>
+          <td>集成测试矩阵</td>
+          <td>noii-y</td>
+          <td>已完成</td>
+          <td class="moh-num">¥6,000</td>
+          <td>2026-10-08</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="demo-note">提示：状态列可配合 moh-tag 使用（见 tag 组件）；数字列加 moh-num 右对齐。</p>
+  </div>
+</body>
+</html>
