@@ -766,17 +766,34 @@ a:hover {
   font-size: 13px;
 }
 
+/* 品牌副名（手机隐藏，只留"灰墨"） */
+.site-nav__brand-sub {
+  display: inline;
+}
+
 /* ---------- 响应式 ---------- */
 @media (max-width: 760px) {
   .site-container {
     padding: 0 16px;
+  }
+  /* 导航：品牌只留"灰墨"，链接紧凑 */
+  .site-nav__brand {
+    font-size: 15px;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .site-nav__brand-sub {
+    display: none;
+  }
+  .site-nav__inner {
+    gap: 8px;
   }
   .site-nav__links {
     gap: 0;
     margin-left: 0;
   }
   .site-nav__link {
-    padding: 6px 8px;
+    padding: 6px 7px;
     font-size: 13px;
   }
   .site-nav__gh {
@@ -787,34 +804,167 @@ a:hover {
     width: 18px;
     height: 18px;
   }
+
+  /* Hero：收紧、按钮全宽竖排（触控友好） */
   .site-hero {
-    padding: 48px 0 32px;
+    padding: 40px 0 28px;
   }
-  .site-toolbar {
-    position: static;
-    gap: 8px;
+  .site-hero__badge {
+    font-size: 12px;
+    padding: 3px 12px;
   }
-  .site-search {
-    min-width: 100%;
+  .site-hero__title {
+    margin: 16px 0 10px;
+  }
+  .site-hero__desc {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .site-hero__actions {
+    flex-direction: column;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  .site-hero__actions .site-btn {
+    width: 100%;
+    height: 44px;
+  }
+
+  /* 统计条：2 列网格，卡片紧凑 */
+  .site-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 24px;
+  }
+  .site-stat {
+    min-width: 0;
+    padding: 12px 8px;
+  }
+  .site-stat__num {
+    font-size: 24px;
   }
   .site-stat__label {
     font-size: 12px;
     line-height: 1.5;
     text-align: center;
+    word-break: break-all;
+  }
+
+  /* 区块与页头收紧 */
+  .site-section {
+    padding: 32px 0;
+  }
+  .site-section__title {
+    font-size: 20px;
+  }
+  .site-pagehead {
+    padding: 28px 0 4px;
+  }
+  .site-pagehead h1 {
+    font-size: 24px;
+  }
+
+  /* 卡片：预览更矮、间距更紧、按钮自适应 */
+  .site-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px 0 40px;
+  }
+  .site-card__frame {
+    height: 160px;
+  }
+  .site-card__body {
+    padding: 12px 14px;
+    gap: 6px;
+  }
+  .site-card__actions {
+    gap: 6px;
+  }
+  .site-card__actions .site-btn {
+    flex: 1;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  /* 工具栏：筛选横滚、chips 触控加大 */
+  .site-toolbar {
+    position: static;
+    gap: 8px;
+    padding: 12px 0 4px;
+  }
+  .site-search {
+    min-width: 100%;
+    height: 38px;
   }
   .site-filters {
     flex-wrap: nowrap;
     overflow-x: auto;
     padding-bottom: 4px;
     -webkit-overflow-scrolling: touch;
+    gap: 8px;
   }
+  .site-filter {
+    height: 36px;
+    padding: 0 14px;
+    flex-shrink: 0;
+  }
+
+  /* 弹层：手机全屏 */
   .site-modal {
-    padding: 12px;
+    padding: 0;
+    align-items: stretch;
+  }
+  .site-modal__panel {
+    width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+  .site-modal__head {
+    padding: 12px 14px;
+  }
+  .site-modal__body {
+    min-height: 0;
   }
   .site-modal__body iframe {
-    height: 420px;
+    height: calc(100vh - 140px);
   }
-  .site-grid {
-    grid-template-columns: 1fr;
+  .site-modal__foot {
+    padding: 10px 14px;
+  }
+  .site-modal__foot .site-btn {
+    flex: 1;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  /* 选择器选项触控加大 */
+  .site-theme-option {
+    padding: 10px 12px;
+  }
+  .site-theme-option__swatch {
+    width: 64px;
+    height: 20px;
+  }
+
+  /* 表格与页脚 */
+  .site-table {
+    font-size: 12px;
+  }
+  .site-table th,
+  .site-table td {
+    padding: 8px 10px;
+  }
+  .site-footer {
+    padding: 24px 0;
+    font-size: 12px;
+  }
+  .site-toast {
+    bottom: 16px;
   }
 }
