@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-alert",
+  "type": "component",
+  "title": "提示条",
+  "description": "搬运自 daisyUI 的提示条组件：info/success/warning/error 四种语义色、带操作按钮、柔和轻提示、可关闭等形态，零依赖纯 CSS。",
+  "styleTags": ["反馈", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/alert/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），图标保留官方 heroicons 同款路径，文案改为真实中文业务场景；新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

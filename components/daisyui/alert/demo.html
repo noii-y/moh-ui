@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>提示条 Alert · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>提示条 <span class="en">Alert</span></h1>
+  <p>出现在页面里的一条横向提示：保存成功、库存不足、支付失败。它不打断操作，只把结果告诉用户。下面先给一个表单保存后的成品，再看四种语义色、带按钮和可关闭的写法。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">换语义只改 <code>alert-info</code> / <code>alert-success</code> / <code>alert-warning</code> / <code>alert-error</code>，切换主题后颜色自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>表单保存后的成功提示条</h2>
+    <p class="desc">资料改完点保存，页面顶部出现一条绿色提示：左侧勾选图标说明"成功了"，中间一句话说清结果，右侧留一个「查看」让想继续的人能点进去。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div role="alert" class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>修改已保存，可在「账号资料」里继续编辑。</span>
+        <div>
+          <button class="btn btn-sm">查看</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="表单保存后的成功提示条（提示条）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="提示条">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>四种语义色：颜色只表达含义</h2>
+    <p class="desc">蓝色是中性告知，绿色是成功结果，橙色是需要注意，红色是出错了。一条提示用哪种颜色，取决于事情本身的性质，不取决于好不好看。</p>
+    <div class="doc-stage col">
+      <div role="alert" class="alert alert-info">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>系统将于今晚 24:00 升级维护，期间暂停下单。</span>
+      </div>
+      <div role="alert" class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>订单已发货，预计明天 18:00 前送达。</span>
+      </div>
+      <div role="alert" class="alert alert-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        <span>库存不足 5 件，即将售罄。</span>
+      </div>
+      <div role="alert" class="alert alert-error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>支付失败，请更换支付方式后重试。</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带操作按钮</h2>
+    <p class="desc">提示不只是"告诉你"，有时还要"让你选"：右侧放两个小按钮，一个稍后、一个立即处理。按钮用 <code>btn-sm</code>，别和提示条一样高。</p>
+    <div class="doc-stage">
+      <div role="alert" class="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>检测到新版本 v2.4，更新后可体验批量导出。</span>
+        <div>
+          <button class="btn btn-sm">稍后再说</button>
+          <button class="btn btn-sm btn-primary">立即更新</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>柔和轻提示</h2>
+    <p class="desc">加 <code>alert-soft</code> 得到浅色弱提示，适合草稿已保存、网络状态这类不需要用户注意一眼的小事，挂在页面顶部也不抢视觉。</p>
+    <div class="doc-stage col">
+      <div role="alert" class="alert alert-soft alert-info">
+        <span>草稿已自动保存</span>
+      </div>
+      <div role="alert" class="alert alert-soft alert-success">
+        <span>商品已成功加入购物车</span>
+      </div>
+      <div role="alert" class="alert alert-soft alert-warning">
+        <span>会员将于 7 天后到期</span>
+      </div>
+      <div role="alert" class="alert alert-soft alert-error">
+        <span>网络连接不稳定，提交可能失败</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>可关闭的提示条</h2>
+    <p class="desc">右侧放一个圆形幽灵按钮写 ✕，让用户能手动关掉。这里是纯静态展示；真实项目里点 ✕ 后，用一行 JavaScript 把整条提示条移除即可。</p>
+    <div class="doc-stage">
+      <div role="alert" class="alert alert-info">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>订单状态变更时，我们会通过短信通知你。</span>
+        <div>
+          <button class="btn btn-sm btn-circle btn-ghost" aria-label="关闭提示">✕</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>提示条、通知、弹窗怎么选</h3>
+    <ul>
+      <li><strong>提示条（Alert）</strong>：结果已经发生、用户正看着这块区域——表单保存后、列表加载出错，就地说明。</li>
+      <li><strong>通知浮层（Toast）</strong>：操作发生在别处，自动弹出几秒后消失，不打断当前页面。</li>
+      <li><strong>对话框（Modal）</strong>：要用户做决定——删除确认、填写必要信息，必须处理才能继续。</li>
+    </ul>
+    <h3>颜色与图标</h3>
+    <p><code>alert-info</code> 中性告知、<code>alert-success</code> 成功、<code>alert-warning</code> 需注意、<code>alert-error</code> 出错。图标统一 <code>h-6 w-6</code> 单色 SVG，和文字同色（<code>stroke-current</code>），不要另起颜色。</p>
+    <h3>可访问性与文案</h3>
+    <p>根元素加 <code>role="alert"</code>，读屏软件会自动播报。一条提示只说一件事，文案写结果和下一步（"修改已保存，可在账号资料继续编辑"），不写"操作成功"这种空话；按钮上写真实动作（查看、立即更新），不写颜色名。</p>
+    <h3>出现与消失</h3>
+    <p>成功类提示停留 3~5 秒后自动消失；错误类建议保留到用户手动关闭，免得没看到。同一块区域一次只放一条，别叠一长条。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/alert/" target="_blank" rel="noopener">daisyui.com/components/alert</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】一张编辑资料表单保存成功后，页面顶部出现的一条横向提示条。
+【怎么排】成功结果用 alert-success：左侧一个圆形勾选图标，中间一句中文说明结果，右侧放一个次要小按钮「查看」；整条提示条横向排列，窄屏自动折行，任何内容不被挤出屏幕。
+【精确规格】
+- 结构：<div role="alert" class="alert alert-success">，内部依次放 SVG 图标、<span>说明文字、<div>包裹的按钮组。
+- 图标用官方 heroicons 同款单色 SVG：stroke="currentColor"、fill="none"、class="h-6 w-6 shrink-0 stroke-current"，路径为勾选圆环（M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z）。
+- 文案写真实业务结果（如「修改已保存，可在『账号资料』里继续编辑」），按钮写真实动作（查看），禁止出现 Success / 绿色 这类颜色名。
+- 按钮用 btn btn-sm；同一提示条按钮最多两个，主操作用 btn-primary，次要操作用默认样式。
+- 真实交互：成功提示停留 3~5 秒后自动消失，错误类保留到用户手动关闭；本页为静态展示全部形态。
+- 颜色全部走 daisyUI 主题变量，不要写死。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
