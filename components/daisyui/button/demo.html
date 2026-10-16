@@ -12,152 +12,220 @@
 <body>
 <header class="doc-head">
   <h1>按钮 <span class="en">Button</span></h1>
-  <p>用于触发动作或选择。以下示例结构搬运自 daisyUI 官方文档，已做零依赖改造，可直接复制使用。</p>
-  <p>来源：<a href="https://daisyui.com/components/button/" target="_blank" rel="noopener">daisyui.com/components/button</a>（MIT）</p>
+  <p>点击后触发一个动作或提交一张表单，是界面里最常用的操作入口。下面先给一个可以直接拿走的成品，再列出各种配色、尺寸和状态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">点下方<strong>「复制组件」</strong>，拿到的是一个完整可打开的示例，保存成 <code>.html</code> 双击就能看，也可以整段发给 AI。</li>
+      <li data-n="3">改颜色、尺寸只改 <code>class</code> 即可；切换主题后，整套按钮颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一张表单底部的操作栏</h2>
+    <p class="desc">一个操作区只放一个主按钮：实心的「保存修改」是主操作，其余用默认或纯文字弱化；最后的「删除」用红色提示风险。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="btn btn-primary">保存修改</button>
+        <button class="btn">存为草稿</button>
+        <button class="btn btn-ghost">预览</button>
+        <button class="btn btn-soft btn-error">删除</button>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <button class="btn btn-primary btn-wide" data-copy-hero data-component="按钮">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+        复制组件
+      </button>
+      <span class="hint">复制出的代码保存为 .html 即可打开，人和 AI 都能直接用</span>
+    </div>
+    <p class="doc-hero-note">下面这些是配色、尺寸、状态的参考，需要某种样式时再展开「查看代码」复制对应片段，不用自己拼。</p>
+  </section>
+
+  <!-- 变体：配色 -->
   <section class="doc-block">
-    <h2>颜色</h2>
-    <p class="desc">默认 / 主 / 次 / 强调 / 中性，以及信息、成功、警告、错误语义色；幽灵按钮与链接按钮。</p>
+    <h2>配色：按钮上写的是动作</h2>
+    <p class="desc">颜色用来表达动作的轻重与含义，按钮文字仍写具体动作。主色用于主操作；中性色用于次要操作；成功 / 警告 / 错误只在结果含义明确时使用。</p>
     <div class="doc-stage">
-      <button class="btn">默认</button>
-      <button class="btn btn-primary">主要</button>
-      <button class="btn btn-secondary">次要</button>
-      <button class="btn btn-accent">强调</button>
-      <button class="btn btn-neutral">中性</button>
-      <button class="btn btn-info">信息</button>
-      <button class="btn btn-success">成功</button>
-      <button class="btn btn-warning">警告</button>
-      <button class="btn btn-error">错误</button>
-      <button class="btn btn-ghost">幽灵</button>
-      <button class="btn btn-link">链接</button>
+      <button class="btn btn-primary">提交</button>
+      <button class="btn btn-secondary">发送</button>
+      <button class="btn btn-accent">收藏</button>
+      <button class="btn btn-neutral">存草稿</button>
+      <button class="btn btn-info">查看详情</button>
+      <button class="btn btn-success">已完成</button>
+      <button class="btn btn-warning">待审核</button>
+      <button class="btn btn-error">拒绝</button>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>纯文字按钮和链接按钮</h2>
+    <p class="desc">无底框（ghost）弱化成一行文字，用于最不显眼的操作；链接（link）样式用于看起来像链接的操作。</p>
+    <div class="doc-stage">
+      <button class="btn btn-ghost">取消</button>
+      <button class="btn btn-link">忘记密码？</button>
+      <button class="btn btn-link">还没有账号？立即注册</button>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>尺寸</h2>
-    <p class="desc">btn-xs / btn-sm / 默认 / btn-lg / btn-xl。</p>
+    <p class="desc">共五档，默认大小最通用；小按钮适合紧凑的工具条，超大按钮适合移动端的关键转化。</p>
     <div class="doc-stage">
-      <button class="btn btn-xs">超小</button>
-      <button class="btn btn-sm">小</button>
-      <button class="btn">中（默认）</button>
-      <button class="btn btn-lg">大</button>
-      <button class="btn btn-xl">超大</button>
+      <button class="btn btn-xs">立即购买</button>
+      <button class="btn btn-sm">加入购物车</button>
+      <button class="btn">加入购物车</button>
+      <button class="btn btn-lg">加入购物车</button>
+      <button class="btn btn-xl">立即注册</button>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>描边按钮</h2>
-    <p class="desc">btn-outline：透明底 + 彩色描边，适合次要操作。</p>
+    <p class="desc">透明底加一圈描边，适合一排并列的次要操作，视觉上比实心按钮更轻。</p>
     <div class="doc-stage">
-      <button class="btn btn-outline">默认</button>
-      <button class="btn btn-outline btn-primary">主要</button>
-      <button class="btn btn-outline btn-secondary">次要</button>
-      <button class="btn btn-outline btn-accent">强调</button>
-      <button class="btn btn-outline btn-info">信息</button>
-      <button class="btn btn-outline btn-success">成功</button>
-      <button class="btn btn-outline btn-warning">警告</button>
-      <button class="btn btn-outline btn-error">错误</button>
+      <button class="btn btn-outline btn-primary">导出报表</button>
+      <button class="btn btn-outline btn-secondary">分享</button>
+      <button class="btn btn-outline btn-accent">复制链接</button>
+      <button class="btn btn-outline btn-warning">撤回</button>
+      <button class="btn btn-outline btn-error">拒绝</button>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>虚线按钮</h2>
-    <p class="desc">btn-dash：虚线描边，常用于"新增一项"。</p>
+    <p class="desc">虚线描边专门用来表示「新增一项」，例如新增成员、添加分组。</p>
     <div class="doc-stage">
-      <button class="btn btn-dash">默认</button>
-      <button class="btn btn-dash btn-primary">主要</button>
-      <button class="btn btn-dash btn-secondary">次要</button>
-      <button class="btn btn-dash btn-accent">强调</button>
-      <button class="btn btn-dash btn-info">信息</button>
-      <button class="btn btn-dash btn-success">成功</button>
-      <button class="btn btn-dash btn-warning">警告</button>
-      <button class="btn btn-dash btn-error">错误</button>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>激活状态</h2>
-    <p class="desc">btn-active：表现为被按下的样式，用于导航中当前项等。</p>
-    <div class="doc-stage">
-      <button class="btn btn-active">默认</button>
-      <button class="btn btn-active btn-primary">主要</button>
-      <button class="btn btn-active btn-secondary">次要</button>
-      <button class="btn btn-active btn-accent">强调</button>
-      <button class="btn btn-active btn-info">信息</button>
-      <button class="btn btn-active btn-success">成功</button>
-      <button class="btn btn-active btn-warning">警告</button>
-      <button class="btn btn-active btn-error">错误</button>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>禁用</h2>
-    <p class="desc">推荐用 disabled 属性；也可用 btn-disabled 类（需配合 aria-disabled）。</p>
-    <div class="doc-stage">
-      <button class="btn" disabled="disabled">disabled 属性</button>
-      <button class="btn btn-disabled" tabindex="-1" role="button" aria-disabled="true">disabled 类</button>
-    </div>
-  </section>
-
-  <section class="doc-block">
-    <h2>方形与圆形（图标按钮）</h2>
-    <p class="desc">btn-square 为正方形，btn-circle 为圆形，内部放图标。</p>
-    <div class="doc-stage">
-      <button class="btn btn-square" aria-label="喜欢">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      <button class="btn btn-dash btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        新增一位成员
       </button>
-      <button class="btn btn-circle btn-primary" aria-label="喜欢">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      <button class="btn btn-dash">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        新建分组
       </button>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>带图标</h2>
-    <p class="desc">图标可放在文字前或后，使用 h-5 w-5 控制大小。</p>
+    <h2>当前选中项</h2>
+    <p class="desc">加 active 表示被按下 / 选中，常用于「日 / 周 / 月」这一类分段切换。</p>
+    <div class="doc-stage">
+      <div class="join">
+        <input type="radio" name="view" class="btn btn-sm" aria-label="日" />
+        <input type="radio" name="view" class="btn btn-sm" checked aria-label="周" />
+        <input type="radio" name="view" class="btn btn-sm" aria-label="月" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>方形与圆形图标按钮</h2>
+    <p class="desc">只有图标、没有文字时使用，方形适合工具条，圆形适合头像区或悬浮操作；记得用 aria-label 说明用途。</p>
+    <div class="doc-stage">
+      <button class="btn btn-square" aria-label="设置">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+      </button>
+      <button class="btn btn-circle btn-primary" aria-label="收藏">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      </button>
+      <button class="btn btn-circle btn-outline btn-error" aria-label="删除">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带图标的文字按钮</h2>
+    <p class="desc">图标放在文字前或后，统一用 h-5 w-5 控制大小，能帮用户更快认出动作。</p>
     <div class="doc-stage">
       <button class="btn btn-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
-        喜欢
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+        导出 CSV
       </button>
       <button class="btn">
-        喜欢
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        新建项目
+      </button>
+      <button class="btn">
+        下一步
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
       </button>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>加载中</h2>
-    <p class="desc">配合 loading 组件，表示提交中。</p>
+    <h2>提交中（加载状态）</h2>
+    <p class="desc">点击提交后显示加载圈，并禁用按钮防止重复提交。</p>
     <div class="doc-stage">
-      <button class="btn"><span class="loading loading-spinner"></span>提交中</button>
-      <button class="btn btn-primary"><span class="loading loading-spinner loading-sm"></span>保存</button>
-      <button class="btn btn-neutral"><span class="loading loading-ring loading-md"></span>加载</button>
+      <button class="btn btn-primary" disabled><span class="loading loading-spinner loading-xs"></span>提交中</button>
+      <button class="btn" disabled><span class="loading loading-spinner loading-sm"></span>保存中</button>
+      <button class="btn btn-neutral" disabled><span class="loading loading-ring loading-sm"></span>加载中</button>
+      <button class="btn btn-accent" disabled><span class="loading loading-dots loading-sm"></span>发送中</button>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>加宽与整行</h2>
-    <p class="desc">btn-wide 增大水平内边距；btn-block 占满容器宽度。</p>
+    <p class="desc">加宽让按钮更舒展；整行占满容器宽度，适合手机端登录、提交表单。</p>
     <div class="doc-stage col">
-      <button class="btn btn-wide">加宽</button>
-      <button class="btn btn-block btn-primary">整行按钮（btn-block）</button>
+      <button class="btn btn-wide">登录</button>
+      <button class="btn btn-block btn-primary">注册账号</button>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>玻璃拟态（置于深色背景上）</h2>
-    <p class="desc">btn glass：半透明毛玻璃效果，适合放在图片或深色背景上。</p>
-    <div class="doc-stage on-dark">
-      <button class="btn btn-glass">玻璃按钮</button>
-      <button class="btn btn-glass btn-active">激活玻璃</button>
+    <h2>禁用</h2>
+    <p class="desc">条件不满足时禁用，比如表单没填完不能提交。推荐直接用 disabled 属性。</p>
+    <div class="doc-stage">
+      <button class="btn btn-primary" disabled>提交</button>
+      <button class="btn" disabled>确认删除</button>
+      <button class="btn btn-ghost" disabled>稍后再说</button>
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>毛玻璃（放在图片或深色背景上）</h2>
+    <p class="desc">加 glass 得到半透明毛玻璃效果，适合叠在图片、视频或彩色背景上。</p>
+    <div class="doc-stage on-dark">
+      <button class="btn glass">开启高级模式</button>
+      <button class="btn glass btn-active">立即升级</button>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>一个区域只放一个主按钮</h3>
+    <p>实心主色按钮在一个操作区里只出现一个，其余操作改用默认、描边或纯文字按钮，否则用户找不到重点。</p>
+    <h3>颜色怎么选</h3>
+    <ul>
+      <li><code>btn-primary</code>：保存、提交、确认这类主操作。</li>
+      <li><code>btn-secondary</code> / <code>btn-neutral</code>：次要操作。</li>
+      <li><code>btn-accent</code>：需要强调、带一点鼓励意味的动作。</li>
+      <li><code>btn-success</code> / <code>btn-warning</code> / <code>btn-error</code>：仅用于成功、警告、错误含义明确的动作，别为了好看乱用红色。</li>
+      <li><code>btn-ghost</code>（无底框）、<code>btn-link</code>（链接式）：最弱化的操作。</li>
+    </ul>
+    <h3>危险动作</h3>
+    <p>删除、清空等不可恢复操作使用 <code>btn-error</code>，建议配合弹窗二次确认，避免误触。</p>
+    <h3>图标与可访问性</h3>
+    <p>纯图标按钮必须加 <code>aria-label</code>；加载期间用 <code>loading</code> 并禁用按钮；禁用优先用 <code>disabled</code> 属性。键盘焦点自带高亮描边，不要去掉。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/button/" target="_blank" rel="noopener">daisyui.com/components/button</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>

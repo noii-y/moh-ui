@@ -32,7 +32,8 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>组件库 <span id="comp-count" style="font-size:16px;color:var(--moh-muted)"></span></h1>
-      <p>真实可用的组件，不是色块玩具。<b>搬运组件</b>来自 daisyUI 官方 demo（MIT，零依赖纯 CSS），附中文教程与原组件地址；点卡片预览，可复制整页 demo 或打开教程。</p>
+      <p>可以直接复制到自己项目里的前端组件。每个组件都有一个「拿来即用」的成品示例，点页面里的「复制组件」就能得到可直接打开的代码；下面还附了各种配色、尺寸、中文用法和源码。</p>
+      <p class="site-pagehead__note">本页大部分组件搬运自 <a href="https://daisyui.com" target="_blank" rel="noopener">daisyUI</a> 等开源项目（MIT 许可），灰墨做了零依赖适配与中文教程；每个组件页面底部都标注了原作者与来源地址，完整清单见 <a href="https://github.com/noii-y/moh-ui/blob/master/ATTRIBUTIONS.md" target="_blank" rel="noopener">ATTRIBUTIONS</a>。</p>
     </div>
 
     <div class="site-toolbar">
@@ -59,10 +60,9 @@
       </div>
       <div class="site-modal__body"><iframe id="modal-frame" title="组件预览"></iframe></div>
       <div class="site-modal__foot">
-        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-code">复制代码</button>
-        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-ai">复制 AI 指令</button>
-        <button class="site-btn site-btn--secondary site-btn--sm" id="download-code">下载 index.html</button>
-        <a class="site-btn site-btn--primary site-btn--sm" id="src-link" target="_blank" rel="noopener">查看源码</a>
+        <button class="site-btn site-btn--secondary site-btn--sm" id="download-code" style="display:none">下载 index.html</button>
+        <a class="site-btn site-btn--secondary site-btn--sm" id="upstream-link" target="_blank" rel="noopener" style="display:none">查看原版</a>
+        <a class="site-btn site-btn--primary site-btn--sm" id="open-new" target="_blank" rel="noopener">在新窗口打开</a>
       </div>
     </div>
   </div>
@@ -117,9 +117,6 @@
         var dep = c.hasDeps
           ? '<span class="site-chip site-chip--warn" title="需要 CDN 依赖">带依赖：' + c.dependencies.join(", ") + "</span>"
           : '<span class="site-chip site-chip--ok">零依赖</span>';
-        var srcChip = c.origin === "third-party"
-          ? '<a class="site-chip site-chip--ext" href="' + c.upstreamUrl + '" target="_blank" rel="noopener" title="原组件来源与地址">📦 搬运自 ' + c.upstream + "</a>"
-          : '<span class="site-chip">自研</span>';
         return (
           '<div class="site-card" data-name="' + c.name + '" tabindex="0" role="button" aria-label="预览组件 ' + c.title + '">' +
           '<iframe class="site-card__frame" src="' + thumbPath(c) + '" loading="lazy" title="' + c.title + ' 预览"></iframe>' +
@@ -128,7 +125,6 @@
           '<p class="site-card__desc">' + c.description + "</p>" +
           '<div class="site-card__meta">' +
           '<span class="site-chip">' + c.category + "</span>" +
-          srcChip +
           dep +
           '<span class="site-chip">' + c.license + "</span>" +
           "</div></div></div>"
@@ -173,11 +169,21 @@
       current = c;
       modalTitle.textContent = c.title + " · " + c.name;
       modalFrame.src = previewPath(c);
-      document.getElementById("src-link").href = srcDir(c);
-      // 搬运组件：第三个按钮改为"中文教程"；自研组件保持"复制 AI 指令"
-      var aiBtn = document.getElementById("copy-ai");
       var isDai = c.origin === "third-party";
-      aiBtn.textContent = isDai ? "中文教程" : "复制 AI 指令";
+      var dl = document.getElementById("download-code");
+      var up = document.getElementById("upstream-link");
+      document.getElementById("open-new").href = previewPath(c);
+      if (isDai) {
+        // 搬运组件：详情页内已含复制与教程，无需下载；提供原版入口
+        dl.style.display = "none";
+        up.style.display = "";
+        up.href = c.upstreamUrl || "#";
+        up.textContent = "查看原版（" + (c.upstream || "daisyUI") + "）";
+      } else {
+        // 自研单文件组件：可独立下载
+        dl.style.display = "";
+        up.style.display = "none";
+      }
       modal.classList.add("site-modal--open");
       document.body.style.overflow = "hidden";
       modalFrame.focus();
@@ -236,30 +242,6 @@
         showToast("复制失败：请手动选择复制");
       }
     }
-
-    document.getElementById("copy-code").addEventListener("click", function () {
-      if (!current) return;
-      fetch(previewPath(current))
-        .then(function (r) { return r.text(); })
-        .then(function (html) { copyText(html, "组件代码已复制 ✓"); })
-        .catch(function () { showToast("复制失败：请到仓库取文件"); });
-    });
-
-    document.getElementById("copy-ai").addEventListener("click", function () {
-      if (!current) return;
-      // 搬运组件：打开中文教程 README（GitHub）
-      if (current.origin === "third-party") {
-        window.open("https://github.com/noii-y/moh-ui/blob/master/components/" + current.slug + "/README.md", "_blank", "noopener");
-        return;
-      }
-      var deps = current.hasDeps ? "（需要 CDN 依赖：" + current.dependencies.join(", ") + "）" : "（零依赖）";
-      var cmd =
-        "请在当前项目里实现「" + current.title + "（" + current.name + "）」组件" + deps + "。\n" +
-        "功能：'" + current.description + "'\n" +
-        "做法：读取 https://noii-y.github.io/moh-ui/components/" + current.slug + "/index.html 的单文件实现作参考：结构 + 样式 + 说明注释在一个文件里，类名统一 moh- 前缀，全部样式走 var(--moh-*) 变量（颜色/间距/圆角/字号都由主题变量控制，不许写死）。\n" +
-        "行为标准：可访问性对齐灰墨组件规格（焦点可见、键盘可用、aria 语义正确），动效 ≤200ms，字号阶 12/13/14/16/20/24、间距 4 的倍数、控件 32px。实现后自查一遍再交付。";
-      copyText(cmd, "AI 指令已复制 ✓");
-    });
 
     document.getElementById("download-code").addEventListener("click", function () {
       if (!current) return;

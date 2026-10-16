@@ -53,3 +53,186 @@ html.embed .doc-block { padding: 10px 12px; border-radius: 10px; }
 html.embed .doc-block h2 { font-size: 10px; margin: 0 0 6px; opacity: 0.45; font-weight: 500; }
 html.embed .doc-block .desc { display: none; }
 html.embed .doc-stage { gap: 8px; }
+
+/* ============================================================
+   成品优先详情页（demo-doc.js 配套）
+   ============================================================ */
+
+/* 怎么用：三步 */
+.doc-steps {
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.doc-steps li {
+  position: relative;
+  padding-left: 40px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-base-content);
+}
+.doc-steps li::before {
+  content: attr(data-n);
+  position: absolute;
+  left: 0; top: 0;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.doc-steps code {
+  background: var(--color-base-200);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+}
+
+/* 成品区：最显眼 */
+.doc-hero {
+  border: 1.5px solid color-mix(in oklab, var(--color-primary) 35%, transparent);
+  background: color-mix(in oklab, var(--color-primary) 5%, var(--color-base-100));
+  box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+.doc-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  letter-spacing: .02em;
+}
+.doc-hero-badge::before {
+  content: "★";
+  font-size: 12px;
+}
+.doc-hero-note {
+  font-size: 13px;
+  color: var(--color-neutral-content, #555);
+  opacity: .72;
+  margin: 12px 0 0;
+}
+.doc-hero-action {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.doc-hero-action .hint { font-size: 12px; opacity: .6; }
+
+/* 变体代码折叠块 */
+.doc-codewrap {
+  margin: 10px 0 0;
+  border: 1px solid var(--color-base-200);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-base-100);
+}
+.doc-codewrap > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  color: var(--color-base-content);
+  opacity: .66;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.doc-codewrap > summary::-webkit-details-marker { display: none; }
+.doc-codewrap > summary::before {
+  content: "▸";
+  margin-right: 8px;
+  font-size: 10px;
+  transition: transform .15s;
+}
+.doc-codewrap[open] > summary::before { transform: rotate(90deg); }
+.doc-codewrap[open] > summary { border-bottom: 1px solid var(--color-base-200); }
+.doc-codebar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px 0;
+}
+.doc-code {
+  margin: 8px 12px 12px;
+  padding: 12px 14px;
+  background: color-mix(in oklab, var(--color-base-content) 6%, var(--color-base-100));
+  border: 1px solid var(--color-base-200);
+  border-radius: 8px;
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* 使用指南 */
+.doc-guide {
+  margin-top: 10px;
+  background: var(--color-base-100);
+  border: 1px solid var(--color-base-200);
+  border-radius: var(--radius-box, 12px);
+  padding: 18px 20px;
+}
+.doc-guide h2 { margin: 0 0 10px; font-size: 17px; }
+.doc-guide h3 { font-size: 14px; margin: 16px 0 4px; }
+.doc-guide p, .doc-guide li { font-size: 13.5px; line-height: 1.75; color: var(--color-base-content); opacity: .88; }
+.doc-guide ul { padding-left: 20px; margin: 4px 0; }
+.doc-guide code {
+  background: var(--color-base-200);
+  padding: 1px 6px; border-radius: 5px; font-size: 12.5px;
+}
+
+/* 页脚来源（每组件仅在此声明一次） */
+.doc-source {
+  margin-top: 12px;
+  padding: 14px 20px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-base-content);
+  opacity: .58;
+  border-top: 1px solid var(--color-base-200);
+}
+.doc-source a { word-break: break-all; }
+
+/* 复制提示 toast */
+.doc-toast {
+  position: fixed;
+  left: 50%; bottom: 28px;
+  transform: translate(-50%, 12px);
+  background: var(--color-neutral, #222);
+  color: var(--color-neutral-content, #fff);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  box-shadow: 0 10px 30px -8px rgba(0,0,0,.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s, transform .25s;
+  z-index: 999;
+}
+.doc-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 560px) {
+  .doc-steps li { padding-left: 34px; font-size: 13px; }
+  .doc-guide, .doc-source { padding: 14px; }
+}
+
+/* 卡片缩略图（embed）：隐藏教程/步骤/代码/来源/按钮，只留成品与变体预览 */
+html.embed .doc-howto,
+html.embed .doc-hero-note,
+html.embed .doc-hero-action,
+html.embed .doc-codewrap,
+html.embed .doc-guide,
+html.embed .doc-source { display: none; }
+html.embed .doc-hero { box-shadow: none; }
+html.embed .doc-hero-badge { display: none; }
+html.embed .doc-hero h2 { font-size: 10px; margin: 0 0 6px; opacity: .55; font-weight: 600; }
+

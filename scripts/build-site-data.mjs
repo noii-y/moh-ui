@@ -84,7 +84,7 @@ themes.sort((a, b) => a.name.localeCompare(b.name, "zh"));
 const components = [];
 function walkComponents(dir, rel) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
+    if (!entry.isDirectory() || entry.name.startsWith("_")) continue; // _legacy 归档目录跳过
     const abs = path.join(dir, entry.name);
     const relDir = rel ? rel + "/" + entry.name : entry.name;
     const mjPath = path.join(abs, "moh.json");

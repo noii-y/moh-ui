@@ -25,7 +25,7 @@ function collectJson(dir) {
   // 递归收集任意层级的 moh.json（支持 components/daisyui/<name>/ 等命名空间）
   const walk = (d) => {
     for (const e of readdirSync(d, { withFileTypes: true })) {
-      if (!e.isDirectory()) continue;
+      if (!e.isDirectory() || e.name.startsWith("_")) continue; // _legacy 归档目录跳过
       const sub = join(d, e.name);
       const p = join(sub, "moh.json");
       if (existsSync(p)) out.push(p);
