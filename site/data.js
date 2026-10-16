@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 63,
+    "components": 68,
     "rules": 1,
-    "resources": 74
+    "resources": 79
   },
   "themes": [
     {
@@ -1235,6 +1235,42 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-aura",
+      "title": "光晕",
+      "description": "搬运自 daisyUI 的光晕特效：给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/aura/",
+      "slug": "daisyui/aura",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-diff",
+      "title": "对比",
+      "description": "搬运自 daisyUI 的图片/文字对比组件：左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "反馈"
+      ],
+      "category": "反馈",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/diff/",
+      "slug": "daisyui/diff",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-dock",
       "title": "底部停靠导航",
       "description": "搬运自 daisyUI 的底部停靠导航组件：带文字标签/纯图标紧凑/大号等形态，附电商 App 底部导航（含中间凸起圆形购物车主按钮与徽标）成品。",
@@ -1288,6 +1324,42 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/filter/",
       "slug": "daisyui/filter",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-hover-gallery",
+      "title": "悬停画廊",
+      "description": "搬运自 daisyUI 的悬停画廊：默认露第一张图，鼠标横向滑过图位逐张切换多角度图；覆盖纯画廊、卡片内商品画廊、max-w-60 紧凑商品卡等形态，零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "商务"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/hover-gallery/",
+      "slug": "daisyui/hover-gallery",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-mask",
+      "title": "形状蒙版",
+      "description": "搬运自 daisyUI 的形状蒙版：把图片或色块裁成 circle/squircle/heart/hexagon/diamond/star/triangle 等全部 14 种形状，团队头像与勋章点缀场景，纯 CSS 零依赖。",
+      "styleTags": [
+        "数据展示",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/mask/",
+      "slug": "daisyui/mask",
       "entry": "demo.html"
     },
     {
@@ -1439,6 +1511,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/tab/",
       "slug": "daisyui/tab",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-text-rotate",
+      "title": "文字轮转",
+      "description": "搬运自 daisyUI 的文字轮转组件：一句话里的关键词自动循环轮换（最多 6 词、默认 10 秒一轮），覆盖基础三词、六词大字居中、句子混排彩底、自定义行高与速度等用法，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "数据展示"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/text-rotate/",
+      "slug": "daisyui/text-rotate",
       "entry": "demo.html"
     },
     {

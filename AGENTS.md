@@ -256,6 +256,14 @@ git rev-list --count origin/master..HEAD   # 必须为 0
    ④ **响应式分数宽 `sm:w-1/2`/`lg:w-1/3` 补丁未补**：carousel 主成品按静态 `w-1/2` + 三张档变体兜底，指南如实说明；日后补类后把 item 改 `w-1/2 lg:w-1/3` 即实现"手机两张、桌面三张"。
    ⑤ **Lucide 图标网络 502 预案**：内联图标优先取 Lucide（ISC），拿不到网络就手绘同轮廓 path（简洁几何线条、stroke 当前色、零外链），moh.json inspiration 注明借鉴来源；纯图标按钮必须带 aria-label 且语义对得上用途（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡）。
    ⑥ **filter 选中态是官方机制不是 bug**：单选（radio）选中后其它项自动折叠、选中项呈中性白底标签；多选（checkbox）选中项用主题色实心高亮。指南里要写清，避免用户误以为单选没生效。filter 纯 CSS 只做选中态，真实过滤必须 JS，指南要诚实写。join 输入框必须 `min-w-0 flex-1` 才在窄屏收缩（本次补丁已补 min-w-0）。
+22. **批次⑥ 特效组件的具体坑（aura/diff/hover-gallery/mask/text-rotate）**：
+   ① **`duration-*` 动画时长类一律内联，不补类**：Tailwind 3 的 `duration-*` 语义是 transition-duration，与 daisyUI 的 animation-duration 语义易混淆；aura/text-rotate 想调速度写 `style="animation-duration:6s"`，指南里写清"不要去找 duration-* 类"。行高同理：`leading-[2]` 任意值写内联 `style="line-height:2"`，不补 leading 档位。
+   ② **text-rotate / hover-gallery 静态截图只能看到第一个词 / 第一张图是正常的**（前者是轮换动画瞬间、后者是 hover 切换），成品 desc 要如实写明"静态截图只见首词/首图"，避免用户误以为没生效；这是组件特性不是 bug。
+   ③ **margin 档位按需补齐**：批次⑥ 卡在 `mt-5`，已补 mt-0/5/10、mx-2（44ec822）。后续组件再缺 margin 档位照此补。
+   ④ **hover-gallery 是 N 张图 = N−1 条感应列**：悬停第几条感应列切到第几张图，最多 10 张，3~6 张手感最好；静态展示必须能直接看到第一张（图区要 aspect-square/video 定高，否则占位块塌成一条线）；触屏无持续 hover，重要角度不能只靠 hover 展示。
+   ⑤ **diff-resizer 自带 `resize:horizontal`**（vendor 压缩 CSS 里无空格，PowerShell 搜 `"resize: horizontal"` 带空格会找不到——用 `.Contains("resize:horizontal")`）。纯 CSS 下 diff 静态停在 50%，拖动需 JS，指南诚实写"补一小段 JS"，不内置。
+   ⑥ **styleTags 不造孤立标签**：批次⑥ hover-gallery 原写「电商」全站唯一（站点筛选 chip 不显示），PM 改为已有词「商务」；新组件 styleTags 一律用全站已有标签词。
+   ⑦ **text-rotate 词数 3~6、每词 2~4 字真实中文动作词**；轮换词是装饰性强调，页面关键信息不能只放在轮换词里（读屏会连读），指南写清。成品大字号用补丁档位 text-5xl/7xl，禁止更大字号窄屏溢出。
 
 ---
 
@@ -265,7 +273,8 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 - 批次④ 关键教训（已入踩坑 19）：① toast 九宫格 middle/center 的 `--toast-x/y:-50%` 位移变量在静态流里致重叠，position:static 之外还要清零位移；② modal 静态展开 checkbox 法 + `position:static;pointer-events:none`，真实用法指南推荐 `<dialog>`+showModal；③ countdown 纯 CSS 只渲染（--value/--digits，span 文本隐藏），真倒计时必须 JS；④ status ping/bounce 双点用 `.grid`+内联 grid-area 叠放（补丁无 inline-grid/任意值变体）；⑤ COMMON_RULES 禁弹跳与官方功能性动画冲突，已加"功能性状态动画除外"豁免。
 - **批次④ 流程教训（已入踩坑 20）**：子智能体在 PM 终验前越权 commit+push 16 个 commit、改公共层、代写收尾文档；内容经 PM 逐件复核全部合格故保留上线，但红线重犯，后续派工必须逐字点名"禁 push/禁改 AGENTS、公共层/禁跑 build-site-data"，PM 验收先查 git log 越权。
 - **批次⑤ 教训（已入踩坑 21）**：公共层缺类要按 Tailwind 标准档位整组补（本次响应式字号 lg:text-lg~5xl 一组全缺）；carousel 等横向滚动容器会被 qa-mobile 误报 OVERFLOW（scrollWidth≤390 且越界元素全在 overflow 祖先内即 PASS，不改脚本）；类名核验必须 PowerShell `.Contains`，grep 压缩 CSS 会误判"类不存在"（QC 曾把 3 个真实存在的类误打回）；响应式分数宽 sm:w-1/2/lg:w-1/3 未补，carousel 用静态 w-1/2 兜底、日后补类升级；Lucide 图标网络 502 时按预案手绘同轮廓并注明 inspiration。
-- 待办（PM 已规划，按批次推进）：⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。**每批开工前先翻竞品，按 §8 多智能体流程做。**
+- **批次⑥ 已完整闭环并推送**：**daisyUI 官方 68 个组件全量搬运完成**（本批 5 个特效 aura/diff/hover-gallery/mask/text-rotate，成品：定价卡光晕+改版前后对比+电商商品卡多角度图+团队头像形状+ SaaS 首屏标语轮换，各含多变体+中文教程+提示词），经 4 工程师+2 QC 制作、PM 逐件终验后逐个 commit 并整批推送；站点 **68 组件/10 主题/5 分类**。公共层补丁三次：38c23d4（text-7xl/8xl/9xl、w-60/max-w-60、justify-items-center、teal/blue 调色、orange500/600、red800）、44ec822（margin mt-0/5/10、mx-2）。教训已入踩坑 22。
+- 待办（PM 已规划，按批次推进）：**daisyUI 官方组件已全量搬完**；后续按主题与分发推进——主题改完整页面案例替换色块 preview（#46）、组件 AI 指令分发（形态 A，见开发计划 4.1）、theme-controller 随主题层、calendar 走「带依赖」标签、5 个自研增强组件迁移 daisyUI 变量。**每批开工前先翻竞品，按 §8 多智能体流程做。**
 
 ---
 
