@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>骨架屏 Skeleton · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>骨架屏 <span class="en">Skeleton</span></h1>
+  <p>数据加载时用灰色块占位，让页面先有「形状」，用户就不会盯着空白发呆。下面先给一个可以直接拿走的文章列表加载态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把内容区块换成 <code>skeleton</code> 块，尺寸用 <code>h-*</code> / <code>w-*</code> 模拟真实排版。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>文章列表加载占位</h2>
+    <p>两条文章记录：圆形头像占位 + 两行文字条 + 一个封面图块，形状和真实文章条目一致；顶部一行小字说明正在加载。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="max-w-xl mx-auto">
+        <div class="mb-3 flex items-center gap-2 text-sm opacity-60">
+          <span class="loading loading-spinner loading-xs"></span>
+          正在加载文章列表…
+        </div>
+        <div class="flex flex-col gap-5">
+          <div class="flex items-start gap-4">
+            <div class="skeleton h-12 w-12 shrink-0 rounded-full"></div>
+            <div class="flex flex-1 flex-col gap-2 pt-1">
+              <div class="skeleton h-4 w-32"></div>
+              <div class="skeleton h-4 w-full"></div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="skeleton h-12 w-12 shrink-0 rounded-full"></div>
+            <div class="flex flex-1 flex-col gap-2 pt-1">
+              <div class="skeleton h-4 w-40"></div>
+              <div class="skeleton h-4 w-full"></div>
+              <div class="skeleton h-24 w-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="文章列表加载骨架屏">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="骨架屏">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>卡片骨架</h2>
+    <p class="desc">整张内容卡的加载态：大图块、标题条、两行正文条、按钮条，和成品卡的结构一一对应。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 border border-base-300 max-w-sm">
+        <div class="card-body gap-4">
+          <div class="skeleton h-32 w-full rounded-box"></div>
+          <div class="skeleton h-5 w-40"></div>
+          <div class="skeleton h-4 w-full"></div>
+          <div class="skeleton h-4 w-40"></div>
+          <div class="skeleton h-8 w-24 rounded-box"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>资料行骨架</h2>
+    <p class="desc">头像加两行文字的紧凑结构，适合评论列表、收货地址这类小条目。</p>
+    <div class="doc-stage">
+      <div class="flex w-52 flex-col gap-4">
+        <div class="flex items-center gap-4">
+          <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+          <div class="flex flex-col gap-2">
+            <div class="skeleton h-4 w-20"></div>
+            <div class="skeleton h-4 w-28"></div>
+          </div>
+        </div>
+        <div class="skeleton h-32 w-full"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>渐变文字（skeleton-text）</h2>
+    <p class="desc">让文字本身带加载动画，适合「AI 正在思考…」这类一句话等待态。</p>
+    <div class="doc-stage">
+      <span class="skeleton skeleton-text">AI 正在生成回复…</span>
+    </div>
+  </section>
+
+  <section class="doc-block doc-guide">
+    <h2>使用指南</h2>
+    <h3>形状要和真实内容一致</h3>
+    <p>骨架块的大小、圆角、排列要模仿加载完的真实内容：头像就 <code>rounded-full</code>，按钮就用小矩形，不要随便画几个方块。</p>
+    <h3>用 h-* w-* 控制尺寸</h3>
+    <p>文字条细一点（<code>h-4</code>），图块大一点（<code>h-24</code> / <code>h-32</code>），最后一行故意短一截，更像真实排版。</p>
+    <h3>加载完就替换</h3>
+    <p>骨架屏只是加载态：数据到了就整块换成真实内容，不要永远留在页面上。</p>
+    <h3>注意</h3>
+    <p>本库补丁未提供 <code>space-y-*</code> 这类间距工具类，条目间纵向间距请用 <code>flex flex-col gap-*</code> 实现；宽度用 <code>w-*</code> 标准档（w-32 / w-40 / w-full），不写分数宽。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/skeleton/" target="_blank" rel="noopener">daisyui.com/components/skeleton</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】文章列表数据加载时，用灰色骨架块占位，让页面先有形状，用户不看空白屏。
+【怎么排】
+- 顶部一行小字加载说明：flex items-center gap-2，左边一个 loading loading-spinner loading-xs 小转圈，文字「正在加载文章列表…」，text-sm opacity-60。
+- 每条记录用 flex items-start gap-4：左边圆形头像占位（skeleton h-12 w-12 shrink-0 rounded-full），右边 flex-1 flex flex-col gap-2 放文字条。
+- 文字条用 skeleton h-4，宽度错落：标题条 w-32 / w-40，正文条 w-full；带封面的条目末尾加一个 skeleton h-24 w-full。
+- 条目之间用 flex flex-col gap-5 排列，整体 max-w-xl mx-auto 居中。
+【精确规格】
+- 骨架块尺寸模仿真实内容：头像 rounded-full，文字条 h-4，图块 h-24 / h-32，最后一行故意短一截。
+- 本库无 w-2/3、space-y-* 类，间距一律用 flex gap-*。
+- 加载完后整块替换为真实内容，骨架屏只作加载态。
+- 文案写真实中文，不出现颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
