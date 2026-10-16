@@ -9,6 +9,14 @@
 |---|---|---|---|---|---|
 | mo-dark（墨夜） | 主题 | 自研（noii-y） | MIT | — | 风格取向参考 Linear 公开 token（见 themes/mo-dark/tokens.css 头注释） |
 | mo-light（宣纸） | 主题 | 自研（noii-y） | MIT | — | 风格取向参考 Stripe 公开 token（见 themes/mo-light/tokens.css 头注释） |
+| mo-slate（纯净灰阶） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Clean Slate（色板自研，见 moh.json inspiration） |
+| mo-gray（灰阶中性商务） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Graphite（色板自研，见 moh.json inspiration） |
+| mo-pastel（粉彩） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Marshmallow（色板自研，见 moh.json inspiration） |
+| mo-mood（暗黑开发者） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Cosmic Night（色板自研，见 moh.json inspiration） |
+| mo-brutal（粗野主义） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Neo Brutalism（色板自研，见 moh.json inspiration） |
+| mo-neon（霓虹） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Cyberpunk（色板自研，见 moh.json inspiration） |
+| mo-zhongshi（新中式后台） | 主题 | 自研（noii-y） | MIT | — | 中国风设计理念（配色自研，见 moh.json inspiration） |
+| mo-classic（经典Bootstrap） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 Tabler/AdminLTE（色板自研，见 moh.json inspiration） |
 | mo-rules（规则边界包） | 规则 | 自研（noii-y） | MIT | — | 方法论参考 Taste Skill（规则化审美），已中文化并改写为后台场景 |
 | button / input / select / table / card / form / navbar / sidebar / tag / modal | 组件 | 自研（noii-y） | MIT | — | 全部原创，零依赖，类名 moh- 前缀 |
 
@@ -26,7 +34,8 @@
 - shadcn/ui registry（<https://ui.shadcn.com/docs/registry>，MIT）：`moh.json` 元数据机制参照
 - Aceternity UI（<https://ui.aceternity.com>）："基础组件 vs 区块"分层思路参照
 - StyleSeed（<https://github.com/bitjaru/styleseed>）：`themes/<name>/` 目录架构参照
+- shadcn.io 主题页（<https://www.shadcn.io/theme>，MIT 社区主题站）：阶段 B 首批 8 套主题的风格描述来源（色板均为灰墨自研）
 
 ## 校验状态
 
-- 最近校验：2026-10-16，`node scripts/check-attributions.mjs` 全过（13 个 moh.json 合规）
+- 最近校验：2026-10-16，`node scripts/check-attributions.mjs` 全过（22 个 moh.json 合规）
