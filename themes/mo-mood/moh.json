@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-mood",
+  "type": "theme",
+  "title": "暗黑开发者（深色）",
+  "description": "深空底、宇宙蓝主色、低光害，适合开发者工具与数据产品夜间工作。",
+  "styleTags": ["深色", "暗黑", "开发者", "宇宙蓝"],
+  "inspiration": ["https://www.shadcn.io/theme/cosmic-night"],
+  "base": "mo-mood",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

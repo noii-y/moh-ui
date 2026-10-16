@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>灰墨 · mo-mood（暗黑开发者）预览基准页</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <style>
+    body { padding: var(--moh-space-8); }
+    .section { margin-bottom: var(--moh-space-8); }
+    .section-title {
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--moh-space-3);
+    }
+    .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--moh-space-3); }
+    .swatch { border: 1px solid var(--moh-border); border-radius: var(--moh-radius-md); overflow: hidden; }
+    .swatch__color { height: 56px; }
+    .swatch__label { padding: var(--moh-space-2) var(--moh-space-3); font-size: var(--moh-text-xs); color: var(--moh-muted); }
+    .type-row { display: flex; align-items: baseline; gap: var(--moh-space-4); padding: var(--moh-space-2) 0; border-bottom: 1px dashed var(--moh-border); }
+    .type-row .name { width: 120px; font-size: var(--moh-text-xs); color: var(--moh-muted); }
+    .row { display: flex; gap: var(--moh-space-2); flex-wrap: wrap; align-items: center; }
+    .space-2 { width: var(--moh-space-2); height: var(--moh-space-2); background: var(--moh-primary); border-radius: 2px; }
+    .space-4 { width: var(--moh-space-4); height: var(--moh-space-4); background: var(--moh-primary); border-radius: 4px; }
+    .space-6 { width: var(--moh-space-6); height: var(--moh-space-6); background: var(--moh-primary); border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>灰墨 · mo-mood（暗黑开发者）</h1>
+  <p class="moh-text-muted">本页是主题基准页：体检对照、AI 应用后自检均以此为准。深空底、宇宙蓝主色、低光害，适合开发者工具与夜间数据工作。</p>
+
+  <div class="section">
+    <div class="section-title">色板</div>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-canvas)"></div><div class="swatch__label">--moh-canvas</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-surface)"></div><div class="swatch__label">--moh-surface</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-surface-2)"></div><div class="swatch__label">--moh-surface-2</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-border)"></div><div class="swatch__label">--moh-border</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-ink)"></div><div class="swatch__label">--moh-ink</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-muted)"></div><div class="swatch__label">--moh-muted</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-primary)"></div><div class="swatch__label">--moh-primary</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-primary-muted)"></div><div class="swatch__label">--moh-primary-muted</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-success)"></div><div class="swatch__label">--moh-success</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-warning)"></div><div class="swatch__label">--moh-warning</div></div>
+      <div class="swatch"><div class="swatch__color" style="background:var(--moh-danger)"></div><div class="swatch__label">--moh-danger</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">字号阶（一页 ≤5 级）</div>
+    <div class="type-row"><span class="name">--moh-text-xs 12</span><span style="font-size:var(--moh-text-xs)">小标签：创建时间</span></div>
+    <div class="type-row"><span class="name">--moh-text-sm 13</span><span style="font-size:var(--moh-text-sm)">表格正文 / 按钮</span></div>
+    <div class="type-row"><span class="name">--moh-text-base 14</span><span style="font-size:var(--moh-text-base)">正文默认</span></div>
+    <div class="type-row"><span class="name">--moh-text-md 16</span><span style="font-size:var(--moh-text-md)">卡片标题</span></div>
+    <div class="type-row"><span class="name">--moh-text-lg 20</span><span style="font-size:var(--moh-text-lg)">页面标题</span></div>
+    <div class="type-row"><span class="name">--moh-text-xl 24</span><span style="font-size:var(--moh-text-xl)">仪表盘大数字</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">间距（8px 网格）</div>
+    <div class="row">
+      <div class="space-2"></div><span class="moh-text-xs moh-text-muted">8px</span>
+      <div class="space-4"></div><span class="moh-text-xs moh-text-muted">16px</span>
+      <div class="space-6"></div><span class="moh-text-xs moh-text-muted">24px</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">按钮</div>
+    <div class="row">
+      <button class="moh-btn moh-btn--primary">主要操作</button>
+      <button class="moh-btn moh-btn--secondary">次要操作</button>
+      <button class="moh-btn moh-btn--ghost">幽灵按钮</button>
+      <button class="moh-btn moh-btn--danger">危险操作</button>
+      <button class="moh-btn moh-btn--primary" disabled>禁用</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">输入</div>
+    <div style="max-width:320px; display:grid; gap:var(--moh-space-3)">
+      <div>
+        <label class="moh-label" for="demo-name">用户名</label>
+        <input class="moh-input" id="demo-name" type="text" placeholder="请输入用户名" />
+      </div>
+      <div>
+        <label class="moh-label" for="demo-err">邮箱（错误态）</label>
+        <input class="moh-input moh-input--error" id="demo-err" type="text" value="not-an-email" />
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">表格</div>
+    <table class="moh-table">
+      <thead>
+        <tr><th>项目</th><th>负责人</th><th>状态</th><th>更新时间</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>灰墨主题包 v1</td><td>noii-y</td><td>进行中</td><td>2026-10-16</td></tr>
+        <tr><td>展示站</td><td>noii-y</td><td>规划中</td><td>—</td></tr>
+        <tr><td>MCP Server</td><td>noii-y</td><td>后置</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">卡片</div>
+    <div style="max-width:320px">
+      <div class="moh-card">
+        <div class="moh-card__title">本月新增用户</div>
+        <div style="font-size:var(--moh-text-xl); font-weight:600; margin-bottom:var(--moh-space-2)">1,284</div>
+        <div class="moh-text-sm moh-text-muted">较上月 +12.4%</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

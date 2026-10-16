@@ -1,0 +1,60 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-mood（暗黑开发者 · 深色）
+   风格参考：shadcn.io 主题 "Cosmic Night"（深空氛围、宇宙蓝）
+   https://www.shadcn.io/theme/cosmic-night（MIT 社区主题站，色板为自研）
+   特征：深空底、宇宙蓝主色、低光害，适合开发者工具 / 数据产品夜间工作
+   ============================================================ */
+
+:root {
+  /* ---------- 色彩语义（深空） ---------- */
+  --moh-canvas: #0f1117;          /* 页面底（深空近黑） */
+  --moh-surface: #151822;         /* 卡片 / 面板 */
+  --moh-surface-2: #1b1f2b;       /* 悬浮 / 次级底 */
+  --moh-border: #262b3a;          /* 常规描边 */
+  --moh-border-strong: #333a4d;   /* 强调描边 */
+  --moh-border-width: 1px;
+  --moh-ink: #e6e8ee;             /* 主文字（近白微蓝） */
+  --moh-muted: #8b93a8;           /* 次级文字（体检校准 6.1） */
+  --moh-primary: #4a63e0;         /* 主色（宇宙蓝，白字 5.1） */
+  --moh-primary-hover: #5d74e8;
+  --moh-primary-muted: #232a44;   /* 主色浅底 */
+  --moh-success: #34d399;
+  --moh-warning: #fbbf24;
+  --moh-danger: #f87171;
+
+  /* ---------- 字体 ---------- */
+  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
+    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
+  --moh-text-xs: 12px;
+  --moh-text-sm: 13px;
+  --moh-text-base: 14px;   /* 正文默认 */
+  --moh-text-md: 16px;
+  --moh-text-lg: 20px;
+  --moh-text-xl: 24px;
+
+  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
+  --moh-space-1: 4px;
+  --moh-space-2: 8px;
+  --moh-space-3: 12px;
+  --moh-space-4: 16px;
+  --moh-space-6: 24px;
+  --moh-space-8: 32px;
+
+  /* ---------- 圆角 ---------- */
+  --moh-radius-sm: 4px;
+  --moh-radius-md: 6px;
+  --moh-radius-lg: 8px;
+
+  /* ---------- 阴影（深色下偏柔） ---------- */
+  --moh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --moh-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --moh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.50);
+
+  /* ---------- 控件与动效 ---------- */
+  --moh-control-height: 32px;
+  --moh-transition: 150ms ease;
+}
