@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>悬浮动作按钮 FAB · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+<style>
+/* 仅为本详情页演示用：无头截图触发不了 hover/focus，强制展开所有 FAB 的 speed-dial，
+   让成品区直接看到子按钮。此样式不在 #hero-stage 内，不会随「复制成品 HTML」一起出去；
+   真实项目里 speed-dial 由主按钮 focus/hover 自动展开，无需这段。 */
+.doc-stage .fab>:nth-child(n+2){visibility:visible!important;opacity:1!important;scale:1!important;pointer-events:auto!important}
+</style>
+</head>
+<body>
+<header class="doc-head">
+  <h1>悬浮动作按钮 <span class="en">FAB / Speed Dial</span></h1>
+  <p>一个钉在屏幕角落的主按钮，聚焦或悬停时展开一圈常用动作（Speed Dial）。下面先给一个内容平台右下角「新建」展开三个动作的成品，再列出纯图标、花瓣形、单个按钮等形态。本页为了不遮挡文档，已把固定定位的 FAB 放进带边框的舞台里。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">真实项目里 <code>.fab</code> 默认就钉在视口右下角（fixed）；本详情页为了不盖住正文才改成 static 放进舞台，记得在你的页面里去掉那个 static。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：右下角新建 + speed dial -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>内容平台右下角的「新建」按钮与展开动作</h2>
+    <p class="desc">主按钮是带加号的圆形主色按钮，聚焦或悬停后向上依次展开「写文章 / 传图片 / 发视频」三个带文字标签的圆形动作。为演示展开效果，本页强制显示了子按钮；真实使用时它们平时收起，聚焦主按钮才弹出。</p>
+    <div class="doc-stage" id="hero-stage" style="min-height:300px;justify-content:flex-end;align-items:flex-end">
+      <div class="fab static">
+        <div tabindex="0" role="button" aria-label="新建" class="btn btn-circle btn-lg btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm">写文章</span>
+          <button class="btn btn-circle btn-lg" aria-label="写文章">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.25 2.25 0 1 1 3.182 3.182L7.74 19.993a2.25 2.25 0 0 1-.97.56l-3.278.868a.563.563 0 0 1-.694-.694l.868-3.278a2.25 2.25 0 0 1 .56-.97L16.862 4.487Z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm">传图片</span>
+          <button class="btn btn-circle btn-lg" aria-label="传图片">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm">发视频</span>
+          <button class="btn btn-circle btn-lg" aria-label="发视频">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="内容平台右下角「新建」按钮与展开动作（悬浮动作按钮）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="悬浮动作按钮">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>纯图标垂直 Speed Dial</h2>
+    <p class="desc">不带文字标签、只放单色图标，更省地方；靠 <code>aria-label</code> 说明每个动作。图标统一 <code>h-6 w-6</code>。</p>
+    <div class="doc-stage" style="min-height:260px;justify-content:flex-end;align-items:flex-end">
+      <div class="fab static">
+        <div tabindex="0" role="button" aria-label="新建" class="btn btn-circle btn-lg btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <button class="btn btn-circle btn-lg" aria-label="写文章">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.25 2.25 0 1 1 3.182 3.182L7.74 19.993a2.25 2.25 0 0 1-.97.56l-3.278.868a.563.563 0 0 1-.694-.694l.868-3.278a2.25 2.25 0 0 1 .56-.97L16.862 4.487Z"/></svg>
+        </button>
+        <button class="btn btn-circle btn-lg" aria-label="传图片">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+        </button>
+        <button class="btn btn-circle btn-lg" aria-label="发视频">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>花瓣形（fab-flower）</h2>
+    <p class="desc">加 <code>fab-flower</code>，子按钮沿四分之一圆弧形展开，适合动作稍多、又不想占满一竖列的场景；同样用 <code>aria-label</code> 标注每个图标。</p>
+    <div class="doc-stage" style="min-height:240px;justify-content:flex-end;align-items:flex-end">
+      <div class="fab fab-flower static">
+        <div tabindex="0" role="button" aria-label="新建" class="btn btn-circle btn-lg btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <button class="btn btn-circle btn-lg" aria-label="写文章">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.25 2.25 0 1 1 3.182 3.182L7.74 19.993a2.25 2.25 0 0 1-.97.56l-3.278.868a.563.563 0 0 1-.694-.694l.868-3.278a2.25 2.25 0 0 1 .56-.97L16.862 4.487Z"/></svg>
+        </button>
+        <button class="btn btn-circle btn-lg" aria-label="传图片">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/></svg>
+        </button>
+        <button class="btn btn-circle btn-lg" aria-label="发视频">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+        </button>
+        <button class="btn btn-circle btn-lg" aria-label="开直播">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h-.75m18 0a1.125 1.125 0 0 0 1.125-1.125m-1.125 1.125h.75M5.25 15.75v-7.5m13.5 7.5v-7.5M5.25 15.75a2.25 2.25 0 0 1-2.25-2.25v-3a2.25 2.25 0 0 1 2.25-2.25m13.5 7.5a2.25 2.25 0 0 0 2.25-2.25v-3a2.25 2.25 0 0 0-2.25-2.25M5.25 5.25h13.5m-13.5 0a2.25 2.25 0 0 1-2.122-1.5M5.25 5.25A2.25 2.25 0 0 0 7.372 3.75m11.378 1.5a2.25 2.25 0 0 0 2.122-1.5M18.75 5.25A2.25 2.25 0 0 1 16.628 3.75m-5.878 3h.008v.008h-.008V6.75Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>单个悬浮按钮（没有 Speed Dial）</h2>
+    <p class="desc">角落只放一个主按钮、不展开任何动作时，直接在 <code>.fab</code> 里放一个圆形按钮即可。</p>
+    <div class="doc-stage" style="min-height:140px;justify-content:flex-end;align-items:flex-end">
+      <div class="fab static">
+        <button class="btn btn-circle btn-lg btn-primary" aria-label="回到顶部">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>主按钮为什么用 div 而不是 button</h3>
+    <p>daisyUI 用 <code>&lt;div tabindex="0" role="button"&gt;</code> 做主按钮，是为了绕开 Safari 一个历史上 button 难以聚焦的 CSS bug；<code>tabindex="0"</code> 让它能被 Tab 聚焦，<code>role="button"</code> 让读屏软件知道这是个按钮。直接照抄即可。</p>
+    <h3>展开靠 focus / hover，不需要写 JS</h3>
+    <p>speed-dial 子按钮平时是隐藏的，当主按钮被键盘聚焦或鼠标悬停（<code>:focus-within</code>）时自动展开，纯 CSS 实现。本详情页为了在静态截图里也能看到子按钮，才额外加了一段演示样式强制展开——<strong>真实项目不要复制那段，也不要为此写任何展开 JS</strong>。</p>
+    <h3>本页为什么把它放进舞台</h3>
+    <p>真实 <code>.fab</code> 默认是 <code>position:fixed</code>、钉在视口右下角。组件详情页如果也让它钉住，会盖住正文和「复制」按钮，所以本页给它加了 <code>static</code> 取消固定、放进带边框的舞台。<strong>你在自己页面里使用时，去掉这个 <code>static</code>，让它回到视口右下角即可。</strong></p>
+    <h3>图标与可访问性</h3>
+    <ul>
+      <li>纯图标按钮必须加 <code>aria-label</code>（如 <code>aria-label="写文章"</code>），标签文字也可以同时放在旁边。</li>
+      <li>图标统一 <code>h-6 w-6</code>，用 <code>stroke="currentColor"</code> 的单色 SVG，不要用 emoji。</li>
+      <li>一个页面通常只保留一个 FAB；它是高频主操作的快捷入口，不要和主按钮、底部导航重复职责。</li>
+    </ul>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/fab/" target="_blank" rel="noopener">daisyui.com/components/fab</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个内容平台右下角的悬浮动作按钮：主按钮是带加号的圆形主色「新建」，聚焦或悬停后向上依次展开三个动作——写文章、传图片、发视频。
+【怎么排】
+- 外层容器用 <div class="fab">（真实项目里它默认固定在视口右下角，本详情页为了不遮正文才临时加 static，你的页面不要加 static）；
+- 第一个子元素必须是 <div tabindex="0" role="button" aria-label="新建" class="btn btn-circle btn-lg btn-primary">，里面放一个加号 SVG（h-6 w-6）；这是 daisyUI 为兼容 Safari 的标准写法，不要换成普通 button；
+- 后面每个动作一行：<div class="flex items-center gap-2">，左边文字标签（text-sm），右边圆形按钮 <button class="btn btn-circle btn-lg" aria-label="..."> 配单色 SVG 图标（h-6 w-6，stroke=currentColor）；
+- 三个动作依次是：写文章（铅笔图标）、传图片（图片图标）、发视频（视频图标）。
+【精确规格】
+- 纯 CSS 即可：speed-dial 子按钮平时隐藏，主按钮 focus/hover 时由 daisyUI 自动展开，不要为展开写任何 JS，也不要复制详情页那段强制展开的演示样式。
+- 圆形按钮用 btn btn-circle btn-lg；主按钮加 btn-primary；图标统一 h-6 w-6；纯图标按钮必须带 aria-label。
+- 文字写真实动作（新建 / 写文章 / 传图片 / 发视频），禁止出现颜色名当文案。
+- 用到的类全部真实存在：fab、static（仅详情页演示用，真实项目去掉）、btn、btn-circle、btn-lg、btn-primary、flex、items-center、gap-2、text-sm、h-6、w-6。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

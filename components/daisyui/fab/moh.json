@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-fab",
+  "type": "component",
+  "title": "悬浮动作按钮",
+  "description": "搬运自 daisyUI 的 FAB / Speed Dial：右下角新建主按钮展开写文章/传图片/发视频等动作，覆盖带标签与纯图标垂直排列、fab-flower 花瓣形、单个悬浮按钮，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "操作", "导航"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/fab/",
+    "license": "MIT",
+    "changes": "新建搬运官网 class 版 demo，将 size-6 等 Tailwind 任意值类替换为 h-6 w-6；为详情页截图取消 .fab 的 fixed 固定定位、放进带边框舞台，并加一段仅演示用的样式强制展开 speed-dial；示例文案改为真实中文动作；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
