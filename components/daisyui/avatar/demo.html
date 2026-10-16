@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>头像 Avatar · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>头像 <span class="en">Avatar</span></h1>
+  <p>代表一个人或一个团队的小图：个人资料页、评论区、群成员列表都离不开它。下面先给一个资料页成品（带头像、在线状态和团队头像组），再看形状、尺寸和文字占位。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改大小加 <code>w-*</code>，改形状加 <code>mask-*</code>，加在线状态加 <code>avatar-online</code>，切换主题后自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>团队成员资料卡：本人头像 + 在线状态 + 同组同事</h2>
+    <p class="desc">左边一个大头像并挂绿色在线点，旁边是姓名和职位；右边三个小头像叠在一起表示同组同事，末尾用「+5」表示还有更多人。全程文字占位，零图片依赖。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="avatar avatar-online">
+          <div class="bg-primary text-primary-content w-24 rounded-full flex items-center justify-center"><span class="text-3xl">张</span></div>
+        </div>
+        <div>
+          <div class="text-lg font-semibold">张明</div>
+          <div class="text-sm opacity-60">产品设计师 · 刚刚在线</div>
+        </div>
+        <div class="avatar-group ml-4">
+          <div class="avatar">
+            <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">李</span></div>
+          </div>
+          <div class="avatar" style="margin-left:-1.25rem">
+            <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">王</span></div>
+          </div>
+          <div class="avatar" style="margin-left:-1.25rem">
+            <div class="bg-neutral text-neutral-content w-10 rounded-full flex items-center justify-center"><span class="text-xs">陈</span></div>
+          </div>
+          <div class="avatar avatar-placeholder" style="margin-left:-1.25rem">
+            <div class="bg-neutral text-neutral-content w-10 rounded-full"><span class="text-xs">+5</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="团队成员资料卡头像区">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="头像">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>四种轮廓形状</h2>
+    <p class="desc">除了默认圆角，还能用 <code>mask</code> 把头像切成圆形、方圆形、六边形和三角形：装饰性场合选一个统一用，别混用。</p>
+    <div class="doc-stage">
+      <div class="avatar">
+        <div class="mask mask-squircle w-24 bg-neutral text-neutral-content flex items-center justify-center"><span class="text-2xl">方</span></div>
+      </div>
+      <div class="avatar">
+        <div class="mask mask-circle w-24 bg-neutral text-neutral-content flex items-center justify-center"><span class="text-2xl">圆</span></div>
+      </div>
+      <div class="avatar">
+        <div class="mask mask-hexagon w-24 bg-neutral text-neutral-content flex items-center justify-center"><span class="text-2xl">六</span></div>
+      </div>
+      <div class="avatar">
+        <div class="mask mask-triangle w-24 bg-neutral text-neutral-content flex items-center justify-center"><span class="text-2xl">三</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>文字占位头像：没有照片时</h2>
+    <p class="desc">用 <code>avatar-placeholder</code> 把一两个字排成头像底色块，按头像大小选字号；从 96px 到 32px 四档，群聊列表里的小头像就用最小档。</p>
+    <div class="doc-stage">
+      <div class="avatar avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-24 rounded-full"><span class="text-3xl">张</span></div>
+      </div>
+      <div class="avatar avatar-online avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-16 rounded-full"><span class="text-xl">李</span></div>
+      </div>
+      <div class="avatar avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-12 rounded-full"><span>王</span></div>
+      </div>
+      <div class="avatar avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-8 rounded-full"><span class="text-xs">陈</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>在线 / 离线状态点</h2>
+    <p class="desc">在 <code>avatar</code> 上加 <code>avatar-online</code>（绿点）或 <code>avatar-offline</code>（灰点），头像右下角会出现一个状态角标，客服系统、团队通讯录常用。</p>
+    <div class="doc-stage">
+      <div class="avatar avatar-online">
+        <div class="bg-primary text-primary-content w-20 rounded-full flex items-center justify-center"><span class="text-xl">赵</span></div>
+      </div>
+      <div class="avatar avatar-offline">
+        <div class="bg-neutral text-neutral-content w-20 rounded-full flex items-center justify-center"><span class="text-xl">钱</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>两层结构，色块直接放进去</h3>
+    <p>一个头像就两层：最外 <code>.avatar</code>，里面唯一的子元素决定大小与底色——有照片时是 <code>w-24</code> 包一个 <code>&lt;img&gt;</code>，没照片时直接是一个 <code>bg-neutral text-neutral-content</code> 的圆块（<code>w-8</code> 到 <code>w-24</code>）。子元素自带正方形比例，不要再多加一层 div。</p>
+    <h3>群头像叠放</h3>
+    <p>多个头像叠成一组时用 <code>.avatar-group</code>，它会自动给每个头像加一圈底色描边；头像之间需要重叠时，从第二个起给 <code>.avatar</code> 加负的左边距。组末尾放一个「+N」占位块表示还有更多人，别把人全铺开。</p>
+    <h3>形状与状态</h3>
+    <ul>
+      <li>形状：默认圆角最通用；<code>mask mask-circle</code> 圆形、<code>mask-squircle</code> 方圆、<code>mask-hexagon</code> 六边形、<code>mask-triangle</code> 三角形，选一个全站统一。</li>
+      <li>状态：<code>avatar-online</code> 绿点表示在线，<code>avatar-offline</code> 灰点表示离开；不需要状态就不要加。</li>
+    </ul>
+    <h3>不要外链图</h3>
+    <p>演示或没有真实照片时，一律用文字占位块；真实项目里再把占位块换成 <code>&lt;img&gt;</code>。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/avatar/" target="_blank" rel="noopener">daisyui.com/components/avatar</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】团队协作产品里的成员资料卡：左边大头像，旁边姓名职位，右边同组同事的叠放小头像组。
+【怎么排】
+- 大头像用文字占位：bg-primary text-primary-content 的圆形块，中间放一个大字"张"，挂 avatar-online 在线绿点。
+- 旁边两行：名字（text-lg font-semibold）+ 职位状态（text-sm opacity-60）。
+- 同组同事用 avatar-group 叠放：三个 w-10 的小头像依次重叠，末尾放一个"+5"占位块表示还有更多人；小头像用 bg-neutral text-neutral-content 文字占位。
+【精确规格】
+- 头像就两层：外层 <div class="avatar avatar-online">，直接子元素即色块 <div class="bg-primary text-primary-content w-24 rounded-full flex items-center justify-center">；不要再多加一层 div（直接子元素才有正方形比例）。
+- 群组：<div class="avatar-group">，从第二个头像起每个 <div class="avatar"> 加 style="margin-left:-1.25rem" 形成重叠（灰墨补丁层暂缺 -space-x 工具类）。
+- 群末"+5"块：<div class="avatar avatar-placeholder"><div class="bg-neutral text-neutral-content w-10 rounded-full"><span class="text-xs">+5</span></div></div>。
+- 头像一律文字占位、零外部图片；文案写真实姓名职位，不要写颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
