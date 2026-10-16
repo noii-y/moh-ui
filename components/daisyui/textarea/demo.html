@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>文本域 Textarea · 灰墨组件</title>
+<title>多行文本域 Textarea · 灰墨组件</title>
 <link rel="stylesheet" href="../../../vendor/daisyui.css" />
 <link rel="stylesheet" href="../../../assets/utilities-patch.css" />
 <link rel="stylesheet" href="../../../assets/demo-page.css" />
@@ -12,73 +12,163 @@
 <body>
 <header class="doc-head">
   <h1>多行文本域 <span class="en">Textarea</span></h1>
-  <p>让用户输入多行文本。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
-  <p>来源：<a href="https://daisyui.com/components/textarea/" target="_blank" rel="noopener">daisyui.com/components/textarea</a>（MIT）</p>
+  <p>让用户输入多行文本，适合备注、意见反馈、个人简介这类内容较长的场景。下面先给一个意见反馈输入区的成品，再列出固定高度、幽灵、尺寸和状态色等形态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改高度、尺寸、状态只改 <code>class</code> 即可；切换主题后，文本域颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：意见反馈输入区 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>意见反馈输入区</h2>
+    <p class="desc">标签在上、文本域占满宽度，设了 200 字上限并用一行小字实时显示已填字数；主按钮「提交反馈」收尾，旁边留一个弱化的「保存草稿」。字数统计只用到下面这一小段 JS，复制后可直接用。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <fieldset class="fieldset w-full max-w-lg">
+        <legend class="fieldset-legend">意见反馈</legend>
+        <textarea id="feedback-text" class="textarea w-full h-24" maxlength="200" placeholder="请描述你遇到的问题或具体建议，我们会尽快处理"></textarea>
+        <span class="fieldset-label">已填 <span id="feedback-count">0</span>/200 字</span>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary">提交反馈</button>
+          <button class="btn btn-ghost">保存草稿</button>
+        </div>
+      </fieldset>
+      <script>
+        (function () {
+          var t = document.getElementById("feedback-text"), n = document.getElementById("feedback-count");
+          function up() { n.textContent = t.value.length; }
+          t.addEventListener("input", up); up();
+        })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="意见反馈输入区（多行文本域）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="多行文本域">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础</h2>
+    <h2>基础多行输入</h2>
+    <p class="desc">最朴素的写法，给 <code>textarea</code> 加 <code>w-full</code> 占满宽度。placeholder 写引导性内容，不要把字段名塞进去。</p>
     <div class="doc-stage col w-full">
-      <textarea class="textarea w-full" placeholder="写点什么…"></textarea>
+      <textarea class="textarea w-full" placeholder="请输入订单备注，例如：工作日白天派送"></textarea>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>固定高度</h2>
-    <p class="desc">用 h-24、h-32 等工具类控制高度。</p>
+    <p class="desc">默认高度偏矮，看不出是多行输入。用 <code>h-24</code>、<code>h-32</code> 这类标准高度类给足输入空间；浏览器仍可拖拽右下角调大小。</p>
     <div class="doc-stage col w-full">
-      <textarea class="textarea h-24 w-full" placeholder="h-24 固定高度"></textarea>
+      <textarea class="textarea h-24 w-full" placeholder="h-24：一段中等长度的备注"></textarea>
+      <textarea class="textarea h-32 w-full" placeholder="h-32：更长的意见描述"></textarea>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>幽灵</h2>
+    <h2>幽灵文本域（无外框）</h2>
+    <p class="desc">加 <code>textarea-ghost</code> 去掉描边，只保留下划线感，适合嵌在卡片、评论流里做轻量输入，不抢视觉。</p>
     <div class="doc-stage col w-full">
-      <textarea class="textarea textarea-ghost w-full" placeholder="无边框文本域"></textarea>
+      <textarea class="textarea textarea-ghost w-full" placeholder="补充一条评论…"></textarea>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>字段标签</h2>
+    <h2>字段标签 fieldset</h2>
+    <p class="desc">推荐用 <code>fieldset</code> + <code>fieldset-legend</code> 组织「标签 + 文本域 + 字数说明」，比只放 placeholder 更稳——一打字占位符就没了，标签不会。</p>
     <div class="doc-stage col w-full">
       <fieldset class="fieldset w-full">
         <legend class="fieldset-legend">个人简介</legend>
-        <textarea class="textarea h-24" placeholder="介绍一下自己"></textarea>
-        <div class="fieldset-label">选填，最多 200 字</div>
+        <textarea class="textarea h-24 w-full" placeholder="介绍一下自己，让别人更快了解你"></textarea>
+        <span class="fieldset-label">选填，最多 200 字</span>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
-    <div class="doc-stage">
-      <textarea placeholder="主要" class="textarea textarea-primary"></textarea>
-      <textarea placeholder="成功" class="textarea textarea-success"></textarea>
-      <textarea placeholder="警告" class="textarea textarea-warning"></textarea>
-      <textarea placeholder="错误" class="textarea textarea-error"></textarea>
+    <h2>语义状态色边框</h2>
+    <p class="desc">前几个是强调边框；后面是语义状态色，只有在校验结果明确时才用，并且像下面这样把结果写成人话，不能只是框变色。</p>
+    <div class="doc-stage col w-full">
+      <textarea placeholder="请重点填写这一栏的补充说明" class="textarea textarea-primary w-full"></textarea>
+      <textarea placeholder="输入你对新版本的期待或建议" class="textarea textarea-accent w-full"></textarea>
+      <textarea placeholder="提交成功，我们会在 3 个工作日内回复" class="textarea textarea-success w-full"></textarea>
+      <textarea placeholder="内容可能含有敏感词，请检查后再提交" class="textarea textarea-warning w-full"></textarea>
+      <textarea placeholder="内容不能为空，请填写反馈后再提交" class="textarea textarea-error w-full"></textarea>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>尺寸</h2>
-    <div class="doc-stage">
-      <textarea placeholder="超小" class="textarea textarea-xs"></textarea>
-      <textarea placeholder="小" class="textarea textarea-sm"></textarea>
-      <textarea placeholder="中（默认）" class="textarea textarea-md"></textarea>
-      <textarea placeholder="大" class="textarea textarea-lg"></textarea>
-      <textarea placeholder="超大" class="textarea textarea-xl"></textarea>
+    <h2>尺寸五档</h2>
+    <p class="desc">从 xs 到 xl 共五档，默认大小最通用；小尺寸适合评论回复框，大尺寸适合发帖、写正文。</p>
+    <div class="doc-stage col w-full">
+      <textarea placeholder="超小：评论快速回复" class="textarea textarea-xs w-full"></textarea>
+      <textarea placeholder="小：评论回复框" class="textarea textarea-sm w-full"></textarea>
+      <textarea placeholder="默认：通用表单备注" class="textarea w-full"></textarea>
+      <textarea placeholder="大：发帖、写正文" class="textarea textarea-lg w-full"></textarea>
+      <textarea placeholder="超大：长文档输入" class="textarea textarea-xl w-full"></textarea>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>禁用</h2>
+    <p class="desc">条件不满足时用 <code>disabled</code> 置灰；已经锁定、不可再改的内容也用它，旁边说明原因。</p>
     <div class="doc-stage col w-full">
-      <textarea class="textarea w-full" placeholder="不可编辑" disabled></textarea>
+      <textarea class="textarea w-full" disabled>该订单已完成评价，不可再修改</textarea>
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>单行还是多行</h3>
+    <p>一两个词、一行能写完（姓名、邮箱、地址）用单行 <code>input</code>；一段话、可能换行（备注、反馈、简介）用 <code>textarea</code>。</p>
+    <h3>给足高度</h3>
+    <p>默认高度偏矮，加 <code>h-24</code> / <code>h-32</code> 让用户一眼知道能写多行；别让它看起来像个单行输入框。</p>
+    <h3>字数上限配实时计数</h3>
+    <p>有 <code>maxlength</code> 时，在 <code>fieldset-label</code> 旁放一行「已填 X/N 字」，用一小段 JS 监听 <code>input</code> 事件更新数字（本页成品即此写法）；不要只限制不提示，用户打到上限被截断会莫名其妙。</p>
+    <h3>每个文本域都要有标签</h3>
+    <p>优先用 <code>fieldset + fieldset-legend</code>，或成对的 <code>&lt;label for="id"&gt;</code>；不要只靠 placeholder——一打字占位符就消失。</p>
+    <h3>状态色必须配文字</h3>
+    <p><code>textarea-error</code>、<code>textarea-warning</code> 只在校验结果明确时用，并且要说清楚错在哪、怎么改；禁用优先用 <code>disabled</code> 属性。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/textarea/" target="_blank" rel="noopener">daisyui.com/components/textarea</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】产品里的意见反馈 / 备注输入区：一个多行文本框让用户写问题或建议，有 200 字上限，下方显示已填字数，最后提交反馈。
+【怎么排】
+- 用 fieldset.fieldset（w-full max-w-lg）把这一栏包起来，legend 写「意见反馈」；
+- 文本域用 <textarea class="textarea w-full h-24" maxlength="200" placeholder="…">，placeholder 写引导语，不写字段名；
+- 文本域下面一行 <span class="fieldset-label">已填 X/200 字</span>，X 随输入实时更新（监听 input 事件，取 textarea.value.length）；
+- 最下面一行放主操作「提交反馈」（btn btn-primary），旁边一个弱化的「保存草稿」（btn btn-ghost），用 flex flex-wrap gap-2 自然排列，不要用 ml-auto 推到右边。
+【精确规格】
+- 高度用标准类 h-24（约 6 行），不要用 Tailwind 任意值 h-[Npx]。
+- 标签、placeholder、按钮写真实中文业务文案，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：textarea、w-full、h-24、fieldset、fieldset-legend、fieldset-label、flex、flex-wrap、gap-2、max-w-lg、btn、btn-primary、btn-ghost。
+- 字数统计是本组件唯一允许的一小段 JS（监听 input 更新数字），除此之外不要加别的交互；颜色全部走 daisyUI 主题变量，不要写死颜色。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
