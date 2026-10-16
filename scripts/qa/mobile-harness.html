@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  灰墨 · 移动端 390px 自检探针（仓库内置，只读）
+  用法：mobile-harness.html?p=components/daisyui/<name>/demo.html
+  可选 &w=390（默认 390）、在 p 末尾加 ?dump-prompt=1 可同时核对提示词。
+  原理：把目标页放进真实 390px 的 iframe（比无头整窗截图更准——后者会出现
+  右侧文字被裁的假象），测量 iframe 内 document.scrollWidth 是否超出，
+  并列出撑宽的元素，顶部绿色 OK / 红色 OVERFLOW 横幅即结论。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>moh-mobile-check</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #e9eaee; font-family: Consolas, monospace; }
+  #banner { width: 390px; box-sizing: border-box; padding: 8px 10px;
+            font-size: 12px; line-height: 1.55; white-space: pre-wrap; word-break: break-all; }
+  #banner.ok  { background: #11402b; color: #7cfc8a; }
+  #banner.bad { background: #4a1010; color: #ffb3b3; }
+  #f { width: 390px; border: 0; display: block; background: #fff; }
+</style>
+</head>
+<body>
+  <div id="banner" class="ok">…</div>
+  <iframe id="f"></iframe>
+  <script>
+    const VW = Number(new URLSearchParams(location.search).get("w") || 390);
+    const p = new URLSearchParams(location.search).get("p") || "";
+    const repoRoot = new URL("../../", location.href);
+    const target = new URL(p, repoRoot).href;
+    const f = document.getElementById("f"), ban = document.getElementById("banner");
+    f.style.width = VW + "px";
+    f.src = target;
+    f.onload = function () {
+      setTimeout(function () {
+        const d = f.contentDocument, w = f.contentWindow;
+        const offenders = [];
+        d.querySelectorAll("*").forEach(function (el) {
+          const r = el.getBoundingClientRect();
+          if (r.right > VW + 0.5 || r.width > VW + 0.5) {
+            const cls = (typeof el.className === "string") ? el.className : (el.className.baseVal || "");
+            offenders.push(el.tagName.toLowerCase() + "." + String(cls).replace(/\s+/g, ".") +
+              " W=" + Math.round(r.width) + " R=" + Math.round(r.right));
+          }
+        });
+        const sw = d.documentElement.scrollWidth;
+        const h = d.documentElement.scrollHeight;
+        f.style.height = h + "px";
+        if (sw <= VW && offenders.length === 0) {
+          ban.className = "ok";
+          ban.textContent = "MOBILE " + VW + " OK  innerWidth=" + w.innerWidth +
+            " scrollWidth=" + sw + " height=" + h + "  target=" + p;
+        } else {
+          ban.className = "bad";
+          ban.textContent = "MOBILE " + VW + " OVERFLOW  scrollWidth=" + sw + "  target=" + p +
+            "\n" + offenders.slice(0, 15).join("\n");
+        }
+        document.title = offenders.length === 0 && sw <= VW ? "MOBILE_OK" : "MOBILE_OVERFLOW";
+      }, 600);
+    };
+  </script>
+</body>
+</html>

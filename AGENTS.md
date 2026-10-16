@@ -153,7 +153,7 @@ themes/                      旧色板（待重做为页面案例；预览文件
 
 **B. 三视口截图（Edge headless，生成后必须 Read 图片真看，不能只生成不看）**
 - 桌面：`demo.html`，宽 1280。
-- 手机：`demo.html`，宽 390，重点查换行、横向溢出、按钮被挤没。
+- **手机（以 390px 自检脚本为准，别用整窗 `--window-size=390`）**：`node scripts/qa-mobile.mjs components/daisyui/<name>/demo.html`，脚本用真实 390px iframe 测量并出图，必须打印 `MOBILE 390 OK scrollWidth=390`、退出码 0。注意：无头整窗截 390 会出现"右侧文字被裁"的**假象**（截图宽度与布局视口不一致），那不是页面 bug，以脚本结果为准。
 - 卡片缩略图：`demo.html?embed=1`，约 900×380，确认只留成品与变体预览、无代码按钮/教程残留。
 - 代码面板：`demo.html?open=1`，确认深色面板正常、能复制。
 
@@ -195,12 +195,16 @@ themes/                      旧色板（待重做为页面案例；预览文件
 node scripts/build-site-data.mjs
 node scripts/check-attributions.mjs
 
-# Edge 无头截图（固定用 Edge，不用 Chrome）
+# Edge 无头截图（固定用 Edge，不用 Chrome）。常驻 Edge 时旧 --headless 可能静默失败
+# （退出码 0 但不出图），用 --headless=new 并给独立 --user-data-dir 更稳。
 & "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" `
-  --headless --disable-gpu --hide-scrollbars --virtual-time-budget=1200 `
+  --headless=new --disable-gpu --hide-scrollbars --no-first-run `
+  --user-data-dir="$env:TEMP\moh-edge" --virtual-time-budget=1200 `
   --window-size=1280,1000 --screenshot=D:\Temp\out.png "file:///绝对路径/demo.html"
-# 手机：--window-size=390,900；缩略图：URL 加 ?embed=1；展开代码：?open=1
+# 手机 390 自检（权威，别用整窗 390）：node scripts/qa-mobile.mjs components/daisyui/<name>/demo.html
+# 缩略图：URL 加 ?embed=1；展开代码：?open=1
 # 逐字核对提示词：URL 加 ?dump-prompt=1，配合 --dump-dom 导出后读 #moh-prompt-dump
+# 真点复制按钮：file:// 同源 iframe 探针在 scripts/qa/（自动化 bu.js 隔离世界点不动主世界监听）
 
 # 提交（只 add 本批次，禁止 git add -A / .）
 git add components/daisyui/<name>
@@ -230,13 +234,15 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 9. 主题 `preview.html` 是被否定的旧方向（色块），不提交、不参考。
 10. 主路径是给 AI 的**提示词**（受众把提示词发给自己的 AI），不是让人自己复制 HTML 再删变体；HTML 复制只是进阶辅助。这是开发计划 1.5 / 4.1 定的主路径，不要再做回 shadcn 式"复制代码片段"。
 11. 提示词的【参考结构】只放一个最常用成品，不要把全部变体塞进去，否则用户和 AI 还要自己删。
+12. 无头整窗 `--window-size=390` 截图右侧文字被裁是**假象**，不代表页面有横向溢出；用 `node scripts/qa-mobile.mjs`（真实 390px iframe 测 scrollWidth）下结论，别据此乱改公共层。
+13. 自动化浏览器（bu.js）运行在隔离世界，直接 `.click()` 触发不了页面主世界里 `demo-doc.js` 注册的复制监听；要真点复制按钮，用 `scripts/qa/` 下的同源 iframe 探针（父页桩接 iframe 的 `navigator.clipboard.writeText`）。
 
 ---
 
 ## 11. 当前进度
 
-- 已完成：vendor 底座；13 个 daisyUI 表单组件采集并入站；button 详情页**提示词样板（v3：主按钮复制 AI 提示词，含审美硬边界+交付自查，成品 HTML 降级）**；25 个重复旧组件下线；展示站三入口与全局来源声明。
-- 进行中：以 button（v3）为样板，把其余 12 个 daisyui 组件（input/select/textarea/checkbox/radio/toggle/range/file-input/fieldset/rating/otp/validator）重做为含提示词的新三件套。
+- 已完成：vendor 底座；13 个 daisyUI 表单组件采集并入站；button / input / checkbox 三个详情页**提示词样板（v3：主按钮复制 AI 提示词，含审美硬边界+交付自查，成品 HTML 降级，已真点验证）**；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本 `scripts/qa-mobile.mjs` + `scripts/qa/mobile-harness.html`。
+- 进行中：以 button（v3）为样板，把其余 10 个 daisyui 组件（select/textarea/radio/toggle/range/file-input/fieldset/rating/otp/validator）重做为含提示词的新三件套。
 - 待办（需 PM 批准）：组件 AI 指令分发（形态 A，组件 AI 友好页/纯文本，见开发计划 4.1）；主题改**完整页面案例**替换色块 preview；引入 Preline/Flowbite/HyperUI/Meraki 补复杂交互与区块；5 个自研增强组件迁移到 daisyui 变量。
 
 ---
