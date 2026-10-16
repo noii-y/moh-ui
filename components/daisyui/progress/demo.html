@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>进度条 Progress · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>进度条 <span class="en">Progress</span></h1>
+  <p>告诉用户「事情走到哪一步了」：上传文件、保存导出、任务排队都用它。下面先给一个文件上传成品，再看语义色、不确定进度和完成态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">进度写在 <code>value</code> 和 <code>max</code> 属性里，颜色加 <code>progress-primary</code> 等语义类，切换主题后自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>上传附件时的进度条</h2>
+    <p class="desc">文件名在上方，进度条居中，右侧实时百分比；上传未完成时留一个「取消」出口。知道具体走到哪就填 value，不知道就留空（见变体）。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-2 w-full max-w-sm mx-auto">
+        <div class="flex justify-between text-sm">
+          <span>营业执照.pdf</span>
+          <span>上传中 45%</span>
+        </div>
+        <progress class="progress progress-primary w-full" value="45" max="100"></progress>
+        <div class="flex justify-end">
+          <button class="btn btn-soft btn-sm">取消</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="文件上传进度条（进度条）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="进度条">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>语义色</h2>
+    <p class="desc">进度条颜色就是状态色：主色表示正在进行，次色表示次要任务，绿 / 橙 / 红只在含义明确时用。颜色走主题变量，不写死色值。</p>
+    <div class="doc-stage col">
+      <progress class="progress progress-primary w-full" value="45" max="100"></progress>
+      <progress class="progress progress-secondary w-full" value="60" max="100"></progress>
+      <progress class="progress progress-accent w-full" value="30" max="100"></progress>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>不确定进度（不知道走到哪）</h2>
+    <p class="desc">拿不到真实百分比时（比如等待队列、首次加载），<strong>不要</strong>硬填一个假数字——去掉 <code>value</code> 属性，浏览器会自己跑一段来回移动的动画，表示「在走，但不知道走多远」。</p>
+    <div class="doc-stage col">
+      <progress class="progress w-full"></progress>
+      <progress class="progress progress-primary w-full"></progress>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>进度条加数值标签</h2>
+    <p class="desc">长任务一定要把数字写出来，用户才知道还要等多久：条上方一行左名字右百分比，数字和 <code>value</code> 保持一致。</p>
+    <div class="doc-stage col">
+      <div class="flex justify-between text-sm">
+        <span>导出 2026 年 Q3 报表</span>
+        <span>72%</span>
+      </div>
+      <progress class="progress progress-primary w-full" value="72" max="100"></progress>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>完成态</h2>
+    <p class="desc">走到 100% 换成功色，旁边把文案从「上传中」改成结果（上传完成 / 已保存），别让条停在 99% 一直转圈。</p>
+    <div class="doc-stage col">
+      <div class="flex justify-between text-sm">
+        <span>营业执照.pdf</span>
+        <span>上传完成</span>
+      </div>
+      <progress class="progress progress-success w-full" value="100" max="100"></progress>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>细线小号</h2>
+    <p class="desc">顶栏下载、后台任务这类不打扰的位置，把条压细一点（高度用内联 <code>style</code> 调到 6px），视觉重量立刻降下来。</p>
+    <div class="doc-stage col">
+      <progress class="progress progress-primary w-full" value="45" max="100" style="height:6px"></progress>
+      <progress class="progress progress-success w-full" value="100" max="100" style="height:6px"></progress>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>知道多少填多少，不知道就留空</h3>
+    <p>有真实进度（上传、下载）就填 <code>value="45" max="100"</code>；拿不到进度就<strong>去掉 value 属性</strong>用不确定动画，不要伪造一个慢慢涨的假数字骗用户。</p>
+    <h3>数字要和条对上</h3>
+    <p>显示「72%」时 <code>value</code> 就必须是 72；进度条更新时百分比文案同步更新，对不上比没有数字更糟糕。</p>
+    <h3>颜色语义</h3>
+    <ul>
+      <li><code>progress-primary</code>：主任务正在进行。</li>
+      <li><code>progress-secondary</code> / <code>accent</code>：次要任务。</li>
+      <li><code>progress-success</code>：100% 完成态。</li>
+      <li><code>progress-warning</code> / <code>progress-error</code>：预计超时、失败兜底。</li>
+    </ul>
+    <h3>可访问性</h3>
+    <p>进度条用原生 <code>&lt;progress&gt;</code> 标签，读屏天然认识它；纯展示用 <code>div</code> 时补 <code>role="progressbar"</code>、<code>aria-valuenow</code>、<code>aria-valuemin/max</code>。不确定进度不要写 <code>aria-valuenow</code>。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/progress/" target="_blank" rel="noopener">daisyui.com/components/progress</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】上传一个附件（如营业执照.pdf）时的进度提示：文件名 + 实时进度条 + 百分比 + 取消按钮。
+【怎么排】
+- 外层纵向容器：<div class="flex flex-col gap-2 w-full max-w-sm mx-auto">。
+- 第一行左右分布：左边文件名（营业执照.pdf），右边「上传中 45%」（text-sm）。
+- 中间是本体：<progress class="progress progress-primary w-full" value="45" max="100"></progress>。
+- 底部一行靠右放一个取消出口：<div class="flex justify-end"><button class="btn btn-soft btn-sm">取消</button></div>。
+【精确规格】
+- 用原生 <progress> 标签；value 是当前进度（0–100），max 固定 100。
+- 知道真实进度才填 value；拿不到进度就去掉 value 属性，让浏览器跑不确定动画，禁止伪造假数字。
+- 显示的百分比文字必须与 value 一致；100% 时换 progress-success，文案改为「上传完成」。
+- 颜色走 progress-primary 等语义类，不要写死色值。
+- 文案写真实业务动作（上传中 45% / 取消），禁止颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
