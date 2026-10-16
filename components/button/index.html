@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-button · 按钮</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-button · 按钮（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量（引入任一主题包即可）
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       变体：primary / secondary / ghost / danger
+       状态：hover / active / focus-visible / disabled
+       尺寸：sm / md（默认）/ lg
+       ============================================================ */
+
+    .moh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--moh-space-1);
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid transparent;
+      border-radius: var(--moh-radius-md);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: var(--moh-transition);
+      user-select: none;
+    }
+
+    .moh-btn:active {
+      transform: translateY(1px);
+    }
+
+    .moh-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* 主要 */
+    .moh-btn--primary {
+      background: var(--moh-primary);
+      color: #fff;
+    }
+    .moh-btn--primary:hover:not(:disabled) {
+      background: var(--moh-primary-hover);
+    }
+    .moh-btn--primary:active:not(:disabled) {
+      background: var(--moh-primary-hover);
+    }
+
+    /* 次要 */
+    .moh-btn--secondary {
+      background: transparent;
+      border-color: var(--moh-border);
+      color: var(--moh-ink);
+    }
+    .moh-btn--secondary:hover:not(:disabled) {
+      border-color: var(--moh-border-strong);
+      background: var(--moh-surface-2);
+    }
+
+    /* 幽灵 */
+    .moh-btn--ghost {
+      background: transparent;
+      color: var(--moh-muted);
+    }
+    .moh-btn--ghost:hover:not(:disabled) {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+
+    /* 危险 */
+    .moh-btn--danger {
+      background: transparent;
+      color: var(--moh-danger);
+      border-color: var(--moh-border);
+    }
+    .moh-btn--danger:hover:not(:disabled) {
+      border-color: var(--moh-danger);
+      background: var(--moh-primary-muted);
+    }
+
+    /* 尺寸 */
+    .moh-btn--sm {
+      height: 24px;
+      padding: 0 var(--moh-space-2);
+      font-size: var(--moh-text-xs);
+      border-radius: var(--moh-radius-sm);
+    }
+    .moh-btn--lg {
+      height: 40px;
+      padding: 0 var(--moh-space-6);
+      font-size: var(--moh-text-md);
+    }
+
+    /* 图标（可选，内联 SVG 尺寸随文字） */
+    .moh-btn svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .moh-btn--lg svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* 焦点态（可访问性） */
+    .moh-btn:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-wrap + .demo-wrap {
+      border-top: 1px solid var(--moh-border);
+    }
+    .demo-label {
+      width: 72px;
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 变体 -->
+  <div class="demo-wrap">
+    <span class="demo-label">变体</span>
+    <button class="moh-btn moh-btn--primary">主要操作</button>
+    <button class="moh-btn moh-btn--secondary">次要操作</button>
+    <button class="moh-btn moh-btn--ghost">幽灵按钮</button>
+    <button class="moh-btn moh-btn--danger">危险操作</button>
+  </div>
+
+  <!-- 尺寸 -->
+  <div class="demo-wrap">
+    <span class="demo-label">尺寸</span>
+    <button class="moh-btn moh-btn--secondary moh-btn--sm">小号</button>
+    <button class="moh-btn moh-btn--secondary">中号</button>
+    <button class="moh-btn moh-btn--secondary moh-btn--lg">大号</button>
+  </div>
+
+  <!-- 带图标 -->
+  <div class="demo-wrap">
+    <span class="demo-label">带图标</span>
+    <button class="moh-btn moh-btn--primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12h14" />
+      </svg>
+      新建项目
+    </button>
+    <button class="moh-btn moh-btn--secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      返回
+    </button>
+  </div>
+
+  <!-- 状态 -->
+  <div class="demo-wrap">
+    <span class="demo-label">状态</span>
+    <button class="moh-btn moh-btn--primary" disabled>禁用</button>
+    <button class="moh-btn moh-btn--secondary" disabled>禁用</button>
+    <button class="moh-btn moh-btn--danger" disabled>禁用</button>
+  </div>
+</body>
+</html>
