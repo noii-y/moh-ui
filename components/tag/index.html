@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-tag · 标签</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-tag · 标签 / 状态徽章（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：中性 / 成功 / 警告 / 危险；可选前置状态圆点
+       要点：小字号 + 浅底 + 语义色文字；适合表格状态列
+       ============================================================ */
+
+    .moh-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+      padding: 1px var(--moh-space-2);
+      border-radius: var(--moh-radius-sm);
+      font-size: var(--moh-text-xs);
+      font-weight: 500;
+      line-height: 1.6;
+      white-space: nowrap;
+    }
+
+    .moh-tag--neutral {
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+    }
+
+    .moh-tag--success {
+      background: var(--moh-primary-muted);
+      color: var(--moh-success);
+    }
+
+    .moh-tag--warning {
+      background: var(--moh-primary-muted);
+      color: var(--moh-warning);
+    }
+
+    .moh-tag--danger {
+      background: var(--moh-primary-muted);
+      color: var(--moh-danger);
+    }
+
+    /* 状态圆点 */
+    .moh-tag__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* 可交互标签（链接 / 可关闭）的焦点态（可访问性） */
+    .moh-tag a:focus-visible,
+    .moh-tag button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: 0 var(--moh-space-6) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <span class="moh-tag moh-tag--neutral">规划中</span>
+    <span class="moh-tag moh-tag--success">已完成</span>
+    <span class="moh-tag moh-tag--warning">进行中</span>
+    <span class="moh-tag moh-tag--danger">已逾期</span>
+  </div>
+
+  <div class="demo-wrap">
+    <span class="moh-tag moh-tag--success"><span class="moh-tag__dot"></span>运行正常</span>
+    <span class="moh-tag moh-tag--warning"><span class="moh-tag__dot"></span>待确认</span>
+    <span class="moh-tag moh-tag--danger"><span class="moh-tag__dot"></span>服务中断</span>
+    <span class="moh-tag moh-tag--neutral"><span class="moh-tag__dot"></span>已下线</span>
+  </div>
+  <p class="demo-note">提示：常用于表格状态列（table 组件）、通知列表等场景。</p>
+</body>
+</html>
