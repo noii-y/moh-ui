@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>页脚 Footer · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>页脚 <span class="en">Footer</span></h1>
+  <p>落在页面最底部的一条信息区，左边放品牌简介，右边放按类分组的帮助与导航链接，最下面一行版权。下面先给一个电商站可以直接拿走的完整页脚，再列出多列链接、订阅表单、深色版权条等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改分组标题、链接文字只改 <code>&lt;nav&gt;</code> 内容即可；手机自动纵排、宽屏自动横排，无需写媒体查询。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：电商完整页脚 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一个电商网站的完整页脚</h2>
+    <p class="desc">左边是品牌名「灰墨商城」加一句简介和四个圆形服务入口（客服、邮箱、电话、反馈）；右边四列分组链接——购物指南、配送与售后、关于我们、联系客服；最底部一条分隔线后是版权。手机上各列自动纵向堆叠，宽屏才横向铺开。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <footer class="footer sm:footer-horizontal text-base-content">
+        <aside>
+          <span class="text-xl font-bold">灰墨商城</span>
+          <p>甄选好物，正品保障。<br />下单后 48 小时内发货，七天无理由退换。</p>
+          <div class="flex gap-2">
+            <button class="btn btn-ghost btn-circle btn-sm" aria-label="联系客服">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-circle btn-sm" aria-label="发送邮件">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-circle btn-sm" aria-label="拨打客服电话">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.382-1.21l1.294-.97c.362-.271.526-.734.417-1.173L6.313 2.852a1.125 1.125 0 00-1.091-.852H3.75A2.25 2.25 0 001.5 4.25v2.5z"/></svg>
+            </button>
+            <button class="btn btn-ghost btn-circle btn-sm" aria-label="意见反馈">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 9h8M8 13h6"/></svg>
+            </button>
+          </div>
+        </aside>
+        <nav>
+          <h6 class="footer-title">购物指南</h6>
+          <a class="link link-hover">新手指南</a>
+          <a class="link link-hover">如何下单</a>
+          <a class="link link-hover">支付方式</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">配送与售后</h6>
+          <a class="link link-hover">配送说明</a>
+          <a class="link link-hover">退换货政策</a>
+          <a class="link link-hover">发票服务</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">关于我们</h6>
+          <a class="link link-hover">商家入驻</a>
+          <a class="link link-hover">加入我们</a>
+          <a class="link link-hover">联系方式</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">联系客服</h6>
+          <a class="link link-hover">在线客服</a>
+          <a class="link link-hover">常见问题</a>
+          <a class="link link-hover">意见反馈</a>
+        </nav>
+      </footer>
+      <div class="border-t pt-4 text-sm text-base-content/60">© 2026 灰墨商城 保留所有权利</div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商网站完整页脚">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="页脚">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>基础多列链接</h2>
+    <p class="desc">没有品牌区，只放几列分组链接，是最简单的页脚形态。每列一个 <code>&lt;nav&gt;</code>，列标题用 <code>footer-title</code>，链接用 <code>link link-hover</code>。</p>
+    <div class="doc-stage col">
+      <footer class="footer sm:footer-horizontal text-base-content">
+        <nav>
+          <h6 class="footer-title">产品</h6>
+          <a class="link link-hover">功能介绍</a>
+          <a class="link link-hover">定价方案</a>
+          <a class="link link-hover">更新日志</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">支持</h6>
+          <a class="link link-hover">帮助中心</a>
+          <a class="link link-hover">开发者文档</a>
+          <a class="link link-hover">服务状态</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">公司</h6>
+          <a class="link link-hover">关于我们</a>
+          <a class="link link-hover">加入我们</a>
+          <a class="link link-hover">媒体资料</a>
+        </nav>
+      </footer>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带品牌区的页脚</h2>
+    <p class="desc">最左边一个 <code>&lt;aside&gt;</code> 放品牌名和一句话简介，右边再排链接列。品牌区用 <code>text-xl font-bold</code> 突出名字，简介用普通小字。</p>
+    <div class="doc-stage col">
+      <footer class="footer sm:footer-horizontal text-base-content">
+        <aside>
+          <span class="text-xl font-bold">墨白文档</span>
+          <p>把团队的知识写成可读的文档。<br />免费起步，随时可升级。</p>
+        </aside>
+        <nav>
+          <h6 class="footer-title">产品</h6>
+          <a class="link link-hover">功能</a>
+          <a class="link link-hover">模板库</a>
+          <a class="link link-hover">价格</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">资源</h6>
+          <a class="link link-hover">新手教程</a>
+          <a class="link link-hover">API 文档</a>
+        </nav>
+      </footer>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带邮件订阅表单</h2>
+    <p class="desc">品牌区下方加一行订阅：用 <code>join</code> 把输入框和按钮拼在一起，左边邮箱输入、右边「订阅」主按钮。订阅动作需在真实项目里接后端，这里只展示排版。</p>
+    <div class="doc-stage col">
+      <footer class="footer sm:footer-horizontal text-base-content">
+        <aside>
+          <span class="text-xl font-bold">灰墨商城</span>
+          <p>订阅邮件，第一时间收到新品与折扣。</p>
+          <div class="join">
+            <input type="email" placeholder="输入你的邮箱" class="input join-item" />
+            <button class="btn btn-primary join-item">订阅</button>
+          </div>
+        </aside>
+        <nav>
+          <h6 class="footer-title">购物指南</h6>
+          <a class="link link-hover">新手指南</a>
+          <a class="link link-hover">配送说明</a>
+          <a class="link link-hover">退换货政策</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">联系客服</h6>
+          <a class="link link-hover">在线客服</a>
+          <a class="link link-hover">常见问题</a>
+        </nav>
+      </footer>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>居中深色版权条</h2>
+    <p class="desc">用 <code>footer-center</code> 让内容居中，配 <code>bg-neutral text-neutral-content</code> 做深色底，适合只放一行版权和几个图标的极简收尾。</p>
+    <div class="doc-stage col on-dark">
+      <footer class="footer footer-center bg-neutral text-neutral-content rounded-box p-4">
+        <div class="flex gap-2">
+          <button class="btn btn-ghost btn-circle btn-sm" aria-label="联系客服">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg>
+          </button>
+          <button class="btn btn-ghost btn-circle btn-sm" aria-label="发送邮件">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          </button>
+          <button class="btn btn-ghost btn-circle btn-sm" aria-label="拨打客服电话">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.382-1.21l1.294-.97c.362-.271.526-.734.417-1.173L6.313 2.852a1.125 1.125 0 00-1.091-.852H3.75A2.25 2.25 0 001.5 4.25v2.5z"/></svg>
+          </button>
+        </div>
+        <p>© 2026 灰墨商城 保留所有权利</p>
+      </footer>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>两行式：链接区加独立版权行</h2>
+    <p class="desc">上面一行是品牌加分组链接，下面用一条 <code>border-t</code> 分隔出独立版权行，版权文字用弱化色。这是大多数电商站的实际做法，版权不和链接挤在同一格里。</p>
+    <div class="doc-stage col">
+      <footer class="footer sm:footer-horizontal text-base-content">
+        <aside>
+          <span class="text-xl font-bold">灰墨商城</span>
+          <p>甄选好物，正品保障。</p>
+        </aside>
+        <nav>
+          <h6 class="footer-title">购物指南</h6>
+          <a class="link link-hover">新手指南</a>
+          <a class="link link-hover">配送说明</a>
+        </nav>
+        <nav>
+          <h6 class="footer-title">联系客服</h6>
+          <a class="link link-hover">在线客服</a>
+          <a class="link link-hover">常见问题</a>
+        </nav>
+      </footer>
+      <div class="border-t pt-4 text-sm text-base-content/60">© 2026 灰墨商城 · 京ICP备00000000号 · 保留所有权利</div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>用 aside 放品牌、nav 放链接列</h3>
+    <p>一个页脚由两部分组成：最左边一个 <code>&lt;aside&gt;</code> 放品牌名和简介，其余每个分组用一个 <code>&lt;nav&gt;</code>，列标题加 <code>footer-title</code>，下面的链接用 <code>link link-hover</code>。分组按用户找东西的习惯命名：购物指南、配送与售后、关于我们、联系客服。</p>
+    <h3>手机纵排、宽屏横排</h3>
+    <p>外层写 <code>footer sm:footer-horizontal</code>：默认（手机）各列纵向堆叠，≥640px 才横向铺开，不用自己写媒体查询。想强制一直横排就写 <code>footer-horizontal</code>，想居中就加 <code>footer-center</code>。</p>
+    <h3>版权单独成行</h3>
+    <p>版权行不要塞进链接格里，放在 <code>&lt;footer&gt;</code> 外面、用 <code>border-t</code> 顶一条分隔线，文字用弱化色（<code>text-base-content/60</code>），能备案号就一并写上。</p>
+    <h3>深色底配对应文字色</h3>
+    <p>用 <code>bg-neutral</code> 等深色底时，文字必须配 <code>text-neutral-content</code>，否则深色字压在深底上看不清。颜色全走主题变量，切换主题自动跟随。</p>
+    <h3>服务入口图标与可访问性</h3>
+    <p>客服、邮箱、电话、反馈这类服务入口用圆形幽灵按钮（<code>btn btn-ghost btn-circle btn-sm</code>）配单色内联 SVG，语义要对得上：客服画对话气泡、邮箱画信封、电话画听筒、反馈画留言气泡；纯图标按钮必须加 <code>aria-label</code>（如 <code>aria-label="联系客服"</code>）。用通用图标即可，不要画可识别的第三方品牌 logo。页脚是普通文档流，不要加 fixed 定位——它本来就该跟在页面内容后面。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/footer/" target="_blank" rel="noopener">daisyui.com/components/footer</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个电商网站落在页面最底部的完整页脚：左边品牌名加简介和四个服务入口（客服、邮箱、电话、反馈），右边四列分组帮助链接，最下面一行版权。
+【怎么排】
+- 外层用 <footer class="footer sm:footer-horizontal text-base-content">，默认手机纵排、≥640px 自动横排，不要写 fixed 固定，让它跟在页面内容后面；
+- 最左边一个 <aside>：品牌名用 <span class="text-xl font-bold">灰墨商城</span>，下面一句简介，再下面一排四个圆形服务图标按钮（btn btn-ghost btn-circle btn-sm，单色内联 SVG，每个都带 aria-label）：客服画对话气泡（aria-label="联系客服"）、邮箱画信封（aria-label="发送邮件"）、电话画听筒（aria-label="拨打客服电话"）、反馈画留言气泡（aria-label="意见反馈"）；
+- 右边每个分组一个 <nav>，列标题写 <h6 class="footer-title">购物指南</h6>，下面一组 <a class="link link-hover">新手指南</a>，分组用真实业务名（购物指南 / 配送与售后 / 关于我们 / 联系客服）；
+- footer 之外、下面单独一行版权：<div class="border-t pt-4 text-sm text-base-content/60">© 2026 灰墨商城 保留所有权利</div>，用 border-t 顶一条分隔线；
+- 手机窄屏（约 390px）下各列自动纵向堆叠，链接和简介都不能横向溢出或被裁切。
+【精确规格】
+- 文案写真实业务名与动作（新手指南 / 配送说明 / 退换货政策 / 在线客服 / 意见反馈），禁止出现 Primary / 成功 这类颜色名当文案。
+- 纯图标按钮必须带 aria-label；图标语义要对得上入口用途（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡），不画可识别的第三方品牌 logo。
+- 用到的类全部真实存在：footer、sm:footer-horizontal、footer-title、link、link-hover、aside、nav、text-xl、font-bold、text-base-content、btn、btn-ghost、btn-circle、btn-sm、flex、gap-2、border-t、pt-4、text-sm、text-base-content/60、h-5、w-5。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色；除订阅/客服跳转外不要加业务 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

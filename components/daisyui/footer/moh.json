@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-footer",
+  "type": "component",
+  "title": "页脚",
+  "description": "搬运自 daisyUI 的页脚组件：电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。",
+  "styleTags": ["导航", "基础组件"],
+  "inspiration": [
+    "https://preline.co/docs/footers.html",
+    "https://flowbite.com/docs/components/footer/",
+    "https://www.hyperui.dev/components/marketing/footers"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/footer/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），Tailwind 任意值类替换为标准工具类；服务图标改用内联通用 SVG（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡，不引图标库、不画第三方品牌 logo）并全部补 aria-label；电商成品页脚结构（品牌简介+四服务入口+四列链接+border-t 版权行）参考 Preline/Flowbite/HyperUI 的 footer 布局后用 daisyUI 类重写；文案改为真实电商中文，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
