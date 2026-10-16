@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-diff",
+  "type": "component",
+  "title": "对比",
+  "description": "搬运自 daisyUI 的图片/文字对比组件：左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
+  "styleTags": ["数据展示", "反馈"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/diff/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将 Tailwind 任意值类 aspect-16/9 替换为标准类 aspect-video，外链图片改为内联渐变+手绘线框 SVG 占位，新增设计改版成品页与中文教程；未修改组件样式本体"
+  },
+  "inspiration": [
+    "Aceternity UI Compare（React+Framer Motion 拖动对比，仅借鉴左右对照的成品场景思路，HTML 一律用 daisyUI 类重写）"
+  ],
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

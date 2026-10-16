@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>对比 Diff · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>对比 <span class="en">Diff</span></h1>
+  <p>左右并排展示两张图的差别——设计改版前后、照片两种调色、两张稿图，中间一条分隔线左右拖动即可对照。下面先给一个可以直接拿走的成品，再看图片与文字两种用法。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把占位的渐变 SVG 换成你自己的两张 <code>&lt;img&gt;</code>；想要分隔线真能拖动，再补一小段 JS（指南里有说明）。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>设计改版「优化前 / 优化后」</h2>
+    <p class="desc">给客户看改版效果最直观的方式：左半边是拥挤、低饱和的旧稿，右半边是留白充足、主按钮醒目的新稿，中间白色分隔线一压，差别一眼可见。两张稿这里用内联渐变加手绘线框示意，换成你的真实设计稿 <code>&lt;img&gt;</code> 即可。</p>
+    <div class="doc-stage" id="hero-stage">
+      <figure class="diff aspect-video" tabindex="0" aria-label="设计改版前后对比">
+        <div class="diff-item-1" role="img" tabindex="0" aria-label="优化前：拥挤灰暗的旧版界面">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" style="background:linear-gradient(160deg,#9aa5b1 0%,#6b7684 100%)" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="14" width="300" height="10" fill="#55606e"/>
+            <rect x="10" y="44" width="180" height="12" fill="#c3ccd6"/>
+            <rect x="10" y="64" width="120" height="7" fill="#aeb8c4"/>
+            <rect x="10" y="84" width="300" height="72" fill="#7e8a97"/>
+            <rect x="20" y="96" width="70" height="16" fill="#4b5563"/>
+            <rect x="20" y="122" width="110" height="5" fill="#9aa5b1"/>
+            <rect x="20" y="134" width="140" height="5" fill="#9aa5b1"/>
+            <rect x="12" y="162" width="56" height="16" fill="#1f2937"/>
+            <text x="40" y="173" text-anchor="middle" font-size="9" fill="#d1d5db" font-family="sans-serif">优化前</text>
+          </svg>
+        </div>
+        <div class="diff-item-2" role="img" aria-label="优化后：留白充足的新版界面">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" style="background:linear-gradient(160deg,#4f46e5 0%,#7c3aed 100%)" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="14" width="300" height="10" fill="rgba(255,255,255,0.25)"/>
+            <rect x="10" y="44" width="180" height="12" fill="#ffffff"/>
+            <rect x="10" y="64" width="120" height="7" fill="rgba(255,255,255,0.7)"/>
+            <rect x="10" y="84" width="300" height="72" rx="6" fill="#ffffff"/>
+            <rect x="20" y="96" width="70" height="18" rx="9" fill="#4f46e5"/>
+            <rect x="20" y="124" width="120" height="5" fill="#e0e7ff"/>
+            <rect x="20" y="136" width="90" height="5" fill="#eef2ff"/>
+            <rect x="252" y="162" width="56" height="16" rx="8" fill="#ffffff"/>
+            <text x="280" y="173" text-anchor="middle" font-size="9" fill="#4f46e5" font-family="sans-serif">优化后</text>
+          </svg>
+        </div>
+        <div class="diff-resizer"></div>
+      </figure>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="设计改版前后对比（对比 Diff）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="对比 Diff">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：图片对比 -->
+  <section class="doc-block">
+    <h2>图片对比：同一张照片的两种调色</h2>
+    <p class="desc">同一个山景轮廓，左边暖黄黄昏、右边蓝紫夜幕，中间分隔线压在正中。这就是最经典的用法——两张等大的图叠在一起，拖动分隔线看差别。真实项目把两个 <code>diff-item</code> 里的渐变换成你的 <code>&lt;img&gt;</code>。</p>
+    <div class="doc-stage">
+      <figure class="diff aspect-video" tabindex="0" aria-label="同一张山景照片的两种调色对比">
+        <div class="diff-item-1" role="img" tabindex="0" aria-label="暖黄黄昏调色">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" style="background:linear-gradient(180deg,#fcd34d 0%,#f97316 100%)" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="230" cy="48" r="22" fill="#fff7ed"/>
+            <path d="M0,180 L0,138 L80,88 L150,128 L220,78 L320,118 L320,180 Z" fill="#9a3412"/>
+          </svg>
+        </div>
+        <div class="diff-item-2" role="img" aria-label="蓝紫夜幕调色">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" style="background:linear-gradient(180deg,#312e81 0%,#0f172a 100%)" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="30" r="1.6" fill="#ffffff"/>
+            <circle cx="90" cy="52" r="1.2" fill="#ffffff"/>
+            <circle cx="150" cy="24" r="1.6" fill="#ffffff"/>
+            <circle cx="260" cy="40" r="1.4" fill="#ffffff"/>
+            <path d="M0,180 L0,138 L80,88 L150,128 L220,78 L320,118 L320,180 Z" fill="#1e1b4b"/>
+          </svg>
+        </div>
+        <div class="diff-resizer"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 变体：文字对比 -->
+  <section class="doc-block">
+    <h2>文字对比：一个大字从中间劈开</h2>
+    <p class="desc">不只是图，文字也能对比：同一个超大字，左边是主色实心、右边是浅灰底，分隔线正好从笔画中间切过去，做标题、Logo 双方案对照很出效果。</p>
+    <div class="doc-stage">
+      <figure class="diff aspect-video" tabindex="0" aria-label="同一个大字的两种配色对比">
+        <div class="diff-item-1" role="img" tabindex="0" aria-label="主色实心字">
+          <div class="bg-primary text-primary-content grid place-content-center text-9xl font-bold">墨</div>
+        </div>
+        <div class="diff-item-2" role="img" aria-label="浅灰底字">
+          <div class="bg-base-200 grid place-content-center text-9xl font-bold">墨</div>
+        </div>
+        <div class="diff-resizer"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>三段结构，缺一不可</h3>
+    <p>外层 <code>figure.diff</code>，里面依次是 <code>diff-item-1</code>（左半边内容）、<code>diff-item-2</code>（右半边内容）、最后一个空的 <code>diff-resizer</code>。顺序不能换，<code>diff-resizer</code> 必须在最后。</p>
+    <h3>静态展示就是 50%</h3>
+    <p>纯 CSS 下分隔线默认停在正中间，左右各占一半，截图、卡片预览都能直接看到效果，不需要任何脚本。两个 <code>diff-item</code> 里放什么由你定：图片、渐变、整段大字都行。</p>
+    <h3>想要分隔线真能拖动，补一小段 JS</h3>
+    <p>daisyUI 的 <code>diff-resizer</code> 自带 <code>resize: horizontal</code>，但要让它在鼠标 / 触屏下顺畅拖动，真实项目里通常再补一段几十行的 JS（监听拖动、改分隔位置）。本组件保持零依赖零 JS，只做静态对比；需要可拖动版本时，按官方文档加这段脚本即可。</p>
+    <h3>换成你的真实图片</h3>
+    <p>把两个 <code>diff-item</code> 里的 SVG / 渐变占位换成 <code>&lt;img&gt;</code>，两张图一定要等大同比例（都用 <code>aspect-video</code> 这种容器比例约束），否则左右对不齐。</p>
+    <h3>可访问性</h3>
+    <p>外层 <code>figure</code> 加 <code>tabindex="0"</code> 可以用键盘聚焦；两个 <code>diff-item</code> 加 <code>role="img"</code> 和 <code>aria-label</code>，读屏才能说出左右分别是什么。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/diff/" target="_blank" rel="noopener">daisyui.com/components/diff</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个设计改版展示页，需要让客户直观看到「优化前」和「优化后」两张设计稿的差别（同样的用法也适合照片两种调色、Logo 双方案对照）。
+【怎么排】
+- 外层用 <figure class="diff aspect-video"> 做 16:9 的左右对比容器，加 tabindex="0" 可键盘聚焦；
+- diff-item-1 放「优化前」稿，diff-item-2 放「优化后」稿，最后放一个空的 <div class="diff-resizer"></div>（顺序固定，resizer 必须在最后）；
+- 两个 item 都加 role="img"，分别用 aria-label 写清「优化前」「优化后」；
+- 纯 CSS 下分隔线默认停在正中（左右各一半），自带白色分隔线和圆形把手，静态即见效果，不需要 JS。
+【精确规格】
+- 容器：<figure class="diff aspect-video" tabindex="0">；不要固定死高度，靠 aspect-video 定比例。
+- 左右两张稿要等大同比例，否则对不齐；占位用内联渐变加手绘线框 SVG，真实项目换成两张等大的 <img>，不要外链图片。
+- 文字对比变体：同一个超大字，左边 bg-primary text-primary-content，右边 bg-base-200，grid place-content-center 居中，字号 text-9xl font-bold，分隔线从笔画中间切过。
+- 底色全部走主题变量（bg-primary / bg-base-200），不要写死十六进制颜色，切主题时自动跟随。
+- 想要分隔线真的能拖动，需在真实项目里另补一小段 JS；本组件保持零依赖，不内置脚本。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
