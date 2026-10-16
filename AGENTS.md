@@ -242,13 +242,14 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 15. **整页级组件（navbar、hero、footer、drawer、megamenu、dock）放进 `doc-stage` 时**：不要让它们撑满整个视口或带 `fixed` 定位（会盖住文档页/复制按钮）；用 `relative` + 去掉 fixed/absolute 固定定位，在一个带边框的舞台容器里呈现完整结构，保证 390px 与 embed 卡片里不溢出、不遮挡。
 16. **radio 标签页（`.tabs` + `.tab-content`）在窄屏靠 `flex-wrap` 把选中的内容块挤到标签行下一行**，不能给 `.tabs` 加 `flex-nowrap`，否则内容面板会跟标签排到同一行。标签排不下时让它自然折成两行、全部可见即可；只有「纯标签、不带 `.tab-content` 的链接式标签」才用 `overflow-x-auto` + `shrink-0` 做单行横滑。文案和提示词要如实写实际呈现，不能写"横滑"页面却是折行。
 17. **成品菜单同一时刻只允许一个 `menu-active` 当前项**（不要父项和子项同时高亮，复制出去会变成两个"当前页"）；要展示展开用 `<details open>`，当前页落在叶子项。**站点分类按组件 styleTags 的声明先后归类**（`build-site-data.mjs`），所以组件最显著的分类要写在前面；`选择` 是弱标签，tab/dock/pagination 这类导航件要把 `导航` 放在 `选择` 前。
+18. **提交与验收权专属 PM**：即使产出内容全部合格，子智能体与编排者也**不得自行 `git add/commit/push`**，不得改动 `scripts/` 与 `AGENTS.md`（发现必须修的问题，报 PM 处理），更不得代替 PM 宣布"已终验/已线上验证"。批次② 出现过编排者代 PM 提交推送 + 代宣布验收，属违规：内容事后经 PM 独立复核成立，但流程红线不可破。编排者只交付"文件 + 自检/QC 报告 + 问题清单"。
 
 ---
 
 ## 11. 当前进度
 
-- 已完成：vendor 底座；**13 个 daisyUI 表单组件 v3「提示词三件套」**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator）；**批次② 11 个导航布局组件全部完成并推送**（navbar/menu/drawer/megamenu/breadcrumbs/tab/steps/dock/pagination/link/fab，站点共 29 组件，导航分类 11 个，HEAD `b6a37e7`）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（w-5/gap-0、border 单边 border-t/r/b/l/x/y 等）。
-- 进行中：无（批次② 已闭环，含 PM 终验与线上验证）。
+- 已完成：vendor 底座；**13 个 daisyUI 表单组件 v3「提示词三件套」**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator）；**批次② 11 个导航布局组件完成并推送**（navbar/menu/drawer/megamenu/breadcrumbs/tab/steps/dock/pagination/link/fab，站点共 29 组件，导航分类 11 个，HEAD `e7de774`）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（w-5/gap-0、border 单边 border-t/r/b/l/x/y 等）。
+- 进行中：无（批次② 已闭环；⚠️ 本批由编排者代 PM 提交推送、并代 PM 宣布"终验与线上验证"，属流程违规，PM 已事后独立完成全部终验（40 合规/11 件 390 OK/类名全绿/提示词逐字/三视口真看）并核实线上 200，事实成立但纪律已强化，见踩坑 18）。
 - 待办（PM 已规划，按批次推进）：③ 数据展示（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/mockup/divider/radial-progress/skeleton/stack）；④ 反馈覆盖层（alert/loading/progress/status/toast/tooltip/modal/collapse/dropdown/swap/countdown）；⑤ 区块（hero/footer/carousel/filter/join）；⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。**每批开工前先翻竞品，按 §8 多智能体流程做。**
 
 ---
