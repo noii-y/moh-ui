@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>折叠面板 Collapse · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>折叠面板 <span class="en">Collapse</span></h1>
+  <p>把一大段答案收进一行标题里，点击标题再展开——最常见的是帮助中心的 FAQ 手风琴。下面先给一个可以直接拿走的客服 FAQ 成品，再列出图标与纯文字等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">换箭头 / 加号图标只改 <code>class</code>；某一条默认展开，给 <code>&lt;details&gt;</code> 加 <code>open</code> 属性即可。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：客服 FAQ 手风琴 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>帮助中心的常见问题列表</h2>
+    <p class="desc">三条问题叠成一张卡片：第一条默认展开给出完整答案，其余收起，用户点哪条看哪条。用原生 <code>&lt;details&gt;</code> 实现，点击标题切换，键盘和读屏都能用，不需要任何 JavaScript。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-2 w-full">
+        <details class="collapse collapse-arrow bg-base-100 border border-base-300" open>
+          <summary class="collapse-title font-semibold">怎么修改登录密码？</summary>
+          <div class="collapse-content text-sm">
+            <p>打开「我的 → 账号安全 → 修改密码」，输入当前密码后设置新密码（8-20 位，需同时包含字母和数字）。修改成功后，其它设备上的登录状态会自动退出，需要用新密码重新登录。</p>
+          </div>
+        </details>
+        <details class="collapse collapse-arrow bg-base-100 border border-base-300">
+          <summary class="collapse-title font-semibold">如何申请退款？</summary>
+          <div class="collapse-content text-sm">
+            <p>自订单签收日起 7 天内，在「我的订单 → 申请售后」中选择退款原因并提交凭证；审核通过后，退款将在 1-3 个工作日内原路退回你的支付账户。</p>
+          </div>
+        </details>
+        <details class="collapse collapse-arrow bg-base-100 border border-base-300">
+          <summary class="collapse-title font-semibold">电子发票怎么开？</summary>
+          <div class="collapse-content text-sm">
+            <p>订单完成后，在「我的订单 → 发票中心」填写发票抬头和税号并提交；电子普通发票将在 1 个工作日内发送到你预留的邮箱。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="帮助中心常见问题折叠面板（折叠面板）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="折叠面板">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>基础样式：一条边框卡片</h2>
+    <p class="desc">不加任何图标修饰的默认形态：每条问题是一张带边框的浅色卡片，标题加粗、答案正文用 <code>text-sm</code>。FAQ 之外，设置项、协议条款也常用它。</p>
+    <div class="doc-stage col">
+      <div class="flex flex-col gap-2 w-full">
+        <div tabindex="0" class="collapse bg-base-100 border border-base-300">
+          <div class="collapse-title font-semibold">如何修改绑定的手机号？</div>
+          <div class="collapse-content text-sm"><p>在「账号安全」中验证原手机号后即可换绑；原号已停用的，请联系客服人工审核。</p></div>
+        </div>
+        <div tabindex="0" class="collapse bg-base-100 border border-base-300">
+          <div class="collapse-title font-semibold">收货地址最多可以保存几个？</div>
+          <div class="collapse-content text-sm"><p>普通会员可保存 5 个常用地址，其中一个设为默认；默认地址下单时自动带出。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>箭头与加号两种图标</h2>
+    <p class="desc"><code>collapse-arrow</code> 在右侧加一个上下翻转的箭头（成品区已用）；<code>collapse-plus</code> 加一个横竖旋转的加号，视觉更轻，适合文档、设置页。下面这条用加号演示收起态。</p>
+    <div class="doc-stage col">
+      <div class="flex flex-col gap-2 w-full">
+        <details class="collapse collapse-plus bg-base-100 border border-base-300">
+          <summary class="collapse-title font-semibold">订单签收后还能申请换货吗？</summary>
+          <div class="collapse-content text-sm"><p>7 天内、商品未拆封或未损坏的，可以在「申请售后」中选择换货；超出 7 天只能维修。</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>纯文字折叠：无边框、无底色</h2>
+    <p class="desc">去掉边框和背景后，折叠项直接融入正文，适合页面内长文展开、注册协议阅读：用户默认只看一句「展开全部条款」。</p>
+    <div class="doc-stage col">
+      <div class="flex flex-col w-full">
+        <details class="collapse">
+          <summary class="collapse-title">展开完整服务协议</summary>
+          <div class="collapse-content text-sm"><p>本协议自你注册账号之日起生效……使用服务即表示你同意平台按隐私政策处理你的订单与收货信息。</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>FAQ 用 details，焦点面板用 div</h3>
+    <p>帮助中心 FAQ 优先用 <code>&lt;details&gt;&lt;summary&gt;</code>：原生支持点击切换、键盘操作和浏览器搜索展开的文字；某一条默认展开就给它加 <code>open</code> 属性。焦点驱动的临时面板（点一下展开、失焦自动收起）则用 <code>&lt;div tabindex="0" class="collapse"&gt;</code>。</p>
+    <h3>一次只展开一条</h3>
+    <p>手风琴场景建议同一时刻只展开一条，其余收起；想默认展示哪条，就给哪条的 <code>&lt;details&gt;</code> 加 <code>open</code>。标题写完整问题，别只写「点击展开」。</p>
+    <h3>图标怎么选</h3>
+    <p><code>collapse-arrow</code>（箭头）适合正式的 FAQ；<code>collapse-plus</code>（加号）更轻，适合文档和设置；不需要图标的纯净场景就不加修饰类。</p>
+    <h3>内容与可访问性</h3>
+    <p>答案正文用 <code>text-sm</code>，标题用 <code>font-semibold</code>；每条之间留 8px 间距。<code>details</code> 原生带键盘焦点，不要给 <code>summary</code> 加 <code>cursor:pointer</code> 以外的特效，也不要去掉默认焦点描边。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/collapse/" target="_blank" rel="noopener">daisyui.com/components/collapse</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个帮助中心（常见问题 / FAQ）页面的折叠问题列表：三条真实问题，第一条默认展开给出完整答案，其余收起，用户点标题才展开。
+【怎么排】
+- 三条折叠项竖向排列，互相之间间距 8px（flex flex-col gap-2）；
+- 每一条是原生 details（零依赖、点击标题即切换、键盘可用）：外层 <details class="collapse collapse-arrow bg-base-100 border border-base-300">，标题是 <summary class="collapse-title font-semibold">真实问题</summary>，答案是 <div class="collapse-content text-sm"><p>……</p></div>；
+- 第一条 details 加 open 属性，默认展开含完整答案；后两条不加 open，保持收起；
+- 标题写完整的真实问题（如「怎么修改登录密码？」），禁止只写「问题一 / 点击展开」。
+【精确规格】
+- 交互方式：用户点击标题（summary）展开或收起；静态预览时给要展示答案的那条 details 加 open 属性强制展开，不要为展开写任何 JavaScript。
+- 用到的类全部真实存在：collapse、collapse-arrow、collapse-title、collapse-content、bg-base-100、border、border-base-300、font-semibold、text-sm、flex、flex-col、gap-2、w-full；不要用 collapse-open / collapse-close 作用在 details 上（它们只对 div 焦点式折叠生效）。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色，切换主题自动跟随。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
