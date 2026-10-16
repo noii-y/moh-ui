@@ -3,41 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>组件 · 灰墨 MoH_UI</title>
+  <title>组件库 · 灰墨 MoH_UI</title>
+  <meta name="description" content="灰墨组件库：30 个单文件组件，样式全走 --moh-* 变量换主题自适应。按分类筛选，点击预览，一键复制代码 / AI 指令。" />
+  <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
-  <style>
-    .site-card__frame {
-      height: 220px;
-    }
-    .site-copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      height: 30px;
-      padding: 0 12px;
-      border: 1px solid #e4e7ec;
-      border-radius: 8px;
-      background: #fff;
-      color: #1a202c;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .site-copy-btn:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-    }
-    .site-copy-btn--ok {
-      border-color: #16a34a;
-      color: #16a34a;
-    }
-    .site-card__path {
-      font-size: 12px;
-      color: #94a3b8;
-      font-family: Consolas, monospace;
-    }
-  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -50,73 +19,247 @@
         <a class="site-nav__link" href="../index.html">首页</a>
         <a class="site-nav__link" href="themes.html">主题</a>
         <a class="site-nav__link site-nav__link--active" href="components.html">组件</a>
-        <a class="site-nav__link" href="generator.html">主题生成器</a>
+        <a class="site-nav__link" href="rules.html">规则</a>
+        <a class="site-nav__link" href="generator.html">选择器</a>
       </div>
-      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.68 5.38-5.24 5.67.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        GitHub
+      </a>
     </div>
   </nav>
 
-  <div class="site-container" style="padding-top: 40px">
-    <h1 style="font-size: 28px; margin: 0 0 6px">单文件组件（10）</h1>
-    <p style="color: #64748b; margin: 0 0 32px">每个组件一个独立 .html：结构 + 样式 + 说明注释，可单独复制进任意项目。类名统一 <code>moh-</code> 前缀，全部走 <code>var(--moh-*)</code>，零 JS 依赖（除模态框用原生 dialog）。</p>
+  <div class="site-container">
+    <div class="site-pagehead">
+      <h1>组件库 <span id="comp-count" style="font-size:16px;color:var(--moh-muted)"></span></h1>
+      <p>单文件组件：结构 + 样式 + 说明注释一个文件搞定，复制进任意项目即可用。类名统一 <code>moh-</code> 前缀，全部走 <code>var(--moh-*)</code>，换主题自动适配。</p>
+    </div>
 
-    <div class="site-grid" id="comp-grid"></div>
+    <div class="site-toolbar">
+      <label class="site-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4-4" /></svg>
+        <input id="search" type="search" placeholder="搜索组件名 / 功能…" aria-label="搜索组件" />
+      </label>
+      <div class="site-filters" id="filters"></div>
+    </div>
+
+    <div class="site-grid" id="grid"></div>
   </div>
+
+  <!-- 预览弹层 -->
+  <div class="site-modal" id="modal" role="dialog" aria-modal="true" aria-label="组件预览">
+    <div class="site-modal__panel">
+      <div class="site-modal__head">
+        <p class="site-modal__title" id="modal-title"></p>
+        <div class="site-modal__nav">
+          <button class="site-modal__close" id="prev-btn" aria-label="上一个组件">←</button>
+          <button class="site-modal__close" id="next-btn" aria-label="下一个组件">→</button>
+          <button class="site-modal__close" id="close-btn" aria-label="关闭">✕</button>
+        </div>
+      </div>
+      <div class="site-modal__body"><iframe id="modal-frame" title="组件预览"></iframe></div>
+      <div class="site-modal__foot">
+        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-code">复制代码</button>
+        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-ai">复制 AI 指令</button>
+        <button class="site-btn site-btn--secondary site-btn--sm" id="download-code">下载 index.html</button>
+        <a class="site-btn site-btn--primary site-btn--sm" id="src-link" target="_blank" rel="noopener">查看源码</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-toast" id="toast" role="status">已复制 ✓</div>
 
   <footer class="site-footer">
     <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
   </footer>
 
+  <script src="data.js"></script>
   <script>
-    var COMPONENTS = [
-      { name: "button", title: "moh-button · 按钮", desc: "4 变体（主/次/幽灵/危险）+ 3 尺寸 + 图标 + 禁用态", path: "../components/button/index.html" },
-      { name: "input", title: "moh-input · 输入框", desc: "错误态 / 禁用 / 前后缀（货币等）/ 提示文字", path: "../components/input/index.html" },
-      { name: "select", title: "moh-select · 下拉选择", desc: "原生 select 美化，零 JS，错误态 / 禁用", path: "../components/select/index.html" },
-      { name: "table", title: "moh-table · 表格", desc: "表头 / 悬浮行 / 数字列 / 可排序表头", path: "../components/table/index.html" },
-      { name: "card", title: "moh-card · 卡片", desc: "普通卡 + KPI 统计卡（大数字 / 变化率）", path: "../components/card/index.html" },
-      { name: "form", title: "moh-form · 表单", desc: "字段布局 / 必填标记 / 校验错误态 / 操作区", path: "../components/form/index.html" },
-      { name: "navbar", title: "moh-navbar · 顶栏", desc: "品牌 / 导航链接 / 通知红点 / 用户区", path: "../components/navbar/index.html" },
-      { name: "sidebar", title: "moh-sidebar · 侧边栏", desc: "分组标题 / 菜单项 / 激活态 / 悬浮", path: "../components/sidebar/index.html" },
-      { name: "tag", title: "moh-tag · 标签", desc: "中性 / 成功 / 警告 / 危险 + 状态圆点", path: "../components/tag/index.html" },
-      { name: "modal", title: "moh-modal · 模态框", desc: "原生 dialog / 遮罩 / 标题 / 操作区，零依赖", path: "../components/modal/index.html" }
-    ];
+    var DATA = window.MOH_DATA;
+    var grid = document.getElementById("grid");
+    var filters = document.getElementById("filters");
+    var search = document.getElementById("search");
+    var modal = document.getElementById("modal");
+    var modalFrame = document.getElementById("modal-frame");
+    var modalTitle = document.getElementById("modal-title");
 
-    var grid = document.getElementById("comp-grid");
-    COMPONENTS.forEach(function (c) {
-      var card = document.createElement("div");
-      card.className = "site-card";
-      card.innerHTML =
-        '<iframe class="site-card__frame" src="' + c.path + '" loading="lazy" title="' + c.name + ' 预览"></iframe>' +
-        '<div class="site-card__body">' +
-        '<p class="site-card__title">' + c.title + '</p>' +
-        '<p class="site-card__desc">' + c.desc + '</p>' +
-        '<p class="site-card__path">' + c.path + '</p>' +
-        '<div class="site-card__actions">' +
-        '<button class="site-copy-btn" data-path="' + c.path + '">复制代码</button>' +
-        '</div></div>';
-      grid.appendChild(card);
+    var cat = new URLSearchParams(location.search).get("cat") || "全部";
+    var q = new URLSearchParams(location.search).get("q") || "";
+
+    document.getElementById("comp-count").textContent = "· " + DATA.stats.components + " 个";
+
+    var cats = ["全部"].concat(DATA.categories);
+    filters.innerHTML = cats.map(function (c) {
+      var n = c === "全部" ? "" : "（" + DATA.components.filter(function (x) { return x.category === c; }).length + "）";
+      return '<button class="site-filter' + (c === cat ? " site-filter--active" : "") + '" data-cat="' + c + '">' + c + n + "</button>";
+    }).join("");
+
+    function render() {
+      var list = DATA.components.filter(function (c) {
+        var okCat = cat === "全部" || c.category === cat;
+        var hay = (c.name + " " + c.title + " " + c.description + " " + c.styleTags.join(" ") + " " + c.category).toLowerCase();
+        var okQ = !q || hay.indexOf(q.toLowerCase()) !== -1;
+        return okCat && okQ;
+      });
+
+      if (!list.length) {
+        grid.innerHTML = '<div class="site-empty"><div class="site-empty__icon">🫥</div><p>没有匹配的组件，换个分类或关键词试试。</p></div>';
+        return;
+      }
+
+      grid.innerHTML = list.map(function (c) {
+        var dep = c.hasDeps
+          ? '<span class="site-chip site-chip--warn" title="需要 CDN 依赖">带依赖：' + c.dependencies.join(", ") + "</span>"
+          : '<span class="site-chip site-chip--ok">零依赖</span>';
+        return (
+          '<div class="site-card" data-name="' + c.name + '" tabindex="0" role="button" aria-label="预览组件 ' + c.title + '">' +
+          '<iframe class="site-card__frame" src="../components/' + c.slug + '/index.html" loading="lazy" title="' + c.title + ' 预览"></iframe>' +
+          '<div class="site-card__body">' +
+          '<p class="site-card__title">' + c.title + "</p>" +
+          '<p class="site-card__desc">' + c.description + "</p>" +
+          '<div class="site-card__meta">' +
+          '<span class="site-chip">' + c.category + "</span>" +
+          dep +
+          '<span class="site-chip">' + c.license + "</span>" +
+          "</div></div></div>"
+        );
+      }).join("");
+    }
+
+    function syncUrl() {
+      var u = new URLSearchParams();
+      if (cat !== "全部") u.set("cat", cat);
+      if (q) u.set("q", q);
+      history.replaceState(null, "", location.pathname + (u.toString() ? "?" + u.toString() : ""));
+    }
+
+    filters.addEventListener("click", function (e) {
+      var b = e.target.closest(".site-filter");
+      if (!b) return;
+      cat = b.dataset.cat;
+      filters.querySelectorAll(".site-filter").forEach(function (x) { x.classList.toggle("site-filter--active", x === b); });
+      syncUrl();
+      render();
     });
 
-    function copyText(text, btn, label) {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () {
-          btn.textContent = "已复制 ✓";
-          btn.classList.add("site-copy-btn--ok");
-          setTimeout(function () { btn.textContent = label; btn.classList.remove("site-copy-btn--ok"); }, 1500);
-        });
-      } else {
-        btn.textContent = "复制失败";
-      }
+    var searchTimer;
+    search.addEventListener("input", function () {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        q = search.value.trim();
+        syncUrl();
+        render();
+      }, 200);
+    });
+
+    /* 弹层 */
+    var current = null;
+    var listOrder = [];
+
+    function openModal(name) {
+      var idx = listOrder.indexOf(name);
+      if (idx === -1) return;
+      var c = DATA.components.filter(function (x) { return x.name === name; })[0];
+      current = c;
+      modalTitle.textContent = c.title + " · " + c.name;
+      modalFrame.src = "../components/" + c.slug + "/index.html";
+      document.getElementById("src-link").href = "https://github.com/noii-y/moh-ui/tree/master/components/" + c.slug;
+      modal.classList.add("site-modal--open");
+      document.body.style.overflow = "hidden";
+      modalFrame.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("site-modal--open");
+      document.body.style.overflow = "";
+      modalFrame.src = "about:blank";
+      current = null;
+    }
+
+    function stepModal(dir) {
+      var idx = listOrder.indexOf(current.name);
+      var next = listOrder[(idx + dir + listOrder.length) % listOrder.length];
+      openModal(next);
     }
 
     grid.addEventListener("click", function (e) {
-      var btn = e.target.closest(".site-copy-btn");
-      if (!btn) return;
-      fetch(btn.dataset.path)
-        .then(function (r) { return r.text(); })
-        .then(function (html) { copyText(html, btn, "复制代码"); })
-        .catch(function () { btn.textContent = "复制失败：请到仓库取文件"; });
+      var card = e.target.closest(".site-card");
+      if (!card) return;
+      listOrder = DATA.components.map(function (c) { return c.name; });
+      openModal(card.dataset.name);
     });
+    grid.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        var card = e.target.closest(".site-card");
+        if (card) { e.preventDefault(); listOrder = DATA.components.map(function (c) { return c.name; }); openModal(card.dataset.name); }
+      }
+    });
+
+    document.getElementById("close-btn").addEventListener("click", closeModal);
+    document.getElementById("prev-btn").addEventListener("click", function () { if (current) stepModal(-1); });
+    document.getElementById("next-btn").addEventListener("click", function () { if (current) stepModal(1); });
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("site-modal--open")) closeModal();
+      if (modal.classList.contains("site-modal--open") && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+        stepModal(e.key === "ArrowLeft" ? -1 : 1);
+      }
+    });
+
+    /* 复制 / 下载 */
+    var toast = document.getElementById("toast");
+    var toastTimer;
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add("site-toast--show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1500);
+    }
+    function copyText(text, okText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { showToast(okText); });
+      } else {
+        showToast("复制失败：请手动选择复制");
+      }
+    }
+
+    document.getElementById("copy-code").addEventListener("click", function () {
+      if (!current) return;
+      fetch("../components/" + current.slug + "/index.html")
+        .then(function (r) { return r.text(); })
+        .then(function (html) { copyText(html, "组件代码已复制 ✓"); })
+        .catch(function () { showToast("复制失败：请到仓库取文件"); });
+    });
+
+    document.getElementById("copy-ai").addEventListener("click", function () {
+      if (!current) return;
+      var deps = current.hasDeps ? "（需要 CDN 依赖：" + current.dependencies.join(", ") + "）" : "（零依赖）";
+      var cmd =
+        "请在当前项目里实现「" + current.title + "（" + current.name + "）」组件" + deps + "。\n" +
+        "功能：'" + current.description + "'\n" +
+        "做法：读取 https://noii-y.github.io/moh-ui/components/" + current.slug + "/index.html 的单文件实现作参考：结构 + 样式 + 说明注释在一个文件里，类名统一 moh- 前缀，全部样式走 var(--moh-*) 变量（颜色/间距/圆角/字号都由主题变量控制，不许写死）。\n" +
+        "行为标准：可访问性对齐灰墨组件规格（焦点可见、键盘可用、aria 语义正确），动效 ≤200ms，字号阶 12/13/14/16/20/24、间距 4 的倍数、控件 32px。实现后自查一遍再交付。";
+      copyText(cmd, "AI 指令已复制 ✓");
+    });
+
+    document.getElementById("download-code").addEventListener("click", function () {
+      if (!current) return;
+      fetch("../components/" + current.slug + "/index.html")
+        .then(function (r) { return r.text(); })
+        .then(function (html) {
+          var blob = new Blob([html], { type: "text/html" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "moh-" + current.name + ".html";
+          a.click();
+          URL.revokeObjectURL(a.href);
+          showToast("已下载 ✓");
+        })
+        .catch(function () { showToast("下载失败：请到仓库取文件"); });
+    });
+
+    search.value = q;
+    render();
   </script>
 </body>
 </html>
