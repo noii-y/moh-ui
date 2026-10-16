@@ -148,8 +148,9 @@ themes/                      旧色板（待重做为页面案例；预览文件
 ## 7. 验收关卡（最重要：没逐项过，不许说"完成"）
 
 **A. 静态校验**
-- `node scripts/build-site-data.mjs`：组件数正确增加、无"色板缺失"等警告。
-- `node scripts/check-attributions.mjs`：全部 moh.json 合规。
+- `node scripts/check-attributions.mjs`：全部 moh.json 合规（只读，工程师可跑）。
+- `node scripts/check-components.mjs`：组件结构检查（只读，工程师可跑）。
+- `node scripts/build-site-data.mjs`：组件数正确增加、无"色板缺失"等警告。**它会写 `site/data.js`，只由 PM 在整批完成后统一跑；工程师不要跑——多个工程师并发会互相覆盖。**
 
 **B. 三视口截图（Edge headless，生成后必须 Read 图片真看，不能只生成不看）**
 - 桌面：`demo.html`，宽 1280。
@@ -181,7 +182,8 @@ themes/                      旧色板（待重做为页面案例；预览文件
 | **组件工程师（子智能体）** | 对分到的若干组件端到端负责：采集→翻译→三件套→自检 | 不碰 git、不改公共层/脚本/别人的目录 |
 | **QC 验收员（子智能体，独立于工程师）** | 对照第 7 节横切复查所有组件，专门挑错 | 不自己改组件，只产出问题清单 |
 
-- 子智能体**禁止 `git add/commit/push`**，只产出文件 + 自检报告。
+- 子智能体**禁止 `git add/commit/push`**，只产出文件 + 自检报告。（灰度批出现过 QC 自行 commit + push，属于违规，下不为例；提交推送一律由 PM 统一做。）
+- 子智能体**不要运行 `node scripts/build-site-data.mjs`**（它会写 `site/data.js`，多个工程师并发会互相覆盖）；该脚本只由 PM 在整批完成后统一跑。只读校验 `check-attributions.mjs` / `check-components.mjs` 与 `qa-mobile.mjs` 可自行运行。
 - 提交推送由 PM 验收通过后统一做，原则上**一个组件一个 commit**，便于回退。
 - 最终验收权在 PM：**工程师自检 + QC 复查都过了，PM 仍必须自己 Read 改动文件、Read 三视口截图**，确认无问题才算通过；不合格打回对应工程师。
 - 子智能体看不到历史对话，需要的背景、规范、命令都在本文件与样板里，以文件为准。
