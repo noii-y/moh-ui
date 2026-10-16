@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-tooltip",
+  "type": "component",
+  "title": "悬浮提示",
+  "description": "搬运自 daisyUI 的悬浮提示组件：工具栏图标按钮提示、四个弹出方向、语义色、带图标内容（tooltip-content），零依赖纯 CSS。",
+  "styleTags": ["反馈", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/tooltip/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），统一使用中文业务文案（工具栏/快捷键说明），新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
