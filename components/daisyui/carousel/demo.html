@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>轮播 Carousel · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>轮播 <span class="en">Carousel</span></h1>
+  <p>在一条横向轨道上并排展示多张卡片，用户左右滑动翻看，常见于商品推荐、Banner 广告。下面先给一个拿来即用的商品推荐横滑成品，再列出横幅、居中吸附、垂直轮播等形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改卡片数量、一屏几张只改 <code>carousel-item</code> 的宽度类（<code>w-1/2</code>、<code>w-1/3</code>、<code>w-full</code>）；切换主题后颜色自动跟随。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>商品推荐区的横滑卡</h2>
+    <p class="desc">一屏并排两张商品卡，手指或鼠标可以在卡片轨道内左右滑动，滚动停止时自动吸附对齐；左右圆形箭头用锚点跳到相邻一组。原生滚动加 scroll-snap，整个过程不需要 JavaScript。图区用内联渐变占位，换成你的真实商品图即可。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="relative w-full">
+        <div class="carousel flex w-full">
+          <div id="h1" class="carousel-item w-1/2">
+            <div class="card bg-base-100 shadow-sm w-full">
+              <div class="h-40 rounded-t-box relative flex items-center justify-center" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+                <svg class="h-16 w-16 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 1 2-2h1v5H6a2 2 0 0 1-2-2Z"/><path d="M20 15a2 2 0 0 0-2-2h-1v5h1a2 2 0 0 0 2-2Z"/></svg>
+                <span class="badge badge-primary absolute left-2 top-2">热卖</span>
+              </div>
+              <div class="card-body p-3">
+                <h3 class="card-title text-base truncate">无线降噪耳机</h3>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-primary font-bold">¥399</span>
+                  <span class="text-xs opacity-60 line-through">¥599</span>
+                </div>
+                <button class="btn btn-primary btn-sm w-full mt-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z"/></svg>
+                  加入购物车
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="h2" class="carousel-item w-1/2">
+            <div class="card bg-base-100 shadow-sm w-full">
+              <div class="h-40 rounded-t-box relative flex items-center justify-center" style="background:linear-gradient(135deg,#10b981,#14b8a6)">
+                <svg class="h-16 w-16 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01"/><path d="M10 10h.01"/><path d="M14 10h.01"/><path d="M18 10h.01"/><path d="M7 14h10"/></svg>
+                <span class="badge badge-secondary absolute left-2 top-2">新品</span>
+              </div>
+              <div class="card-body p-3">
+                <h3 class="card-title text-base truncate">机械键盘</h3>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-primary font-bold">¥249</span>
+                  <span class="text-xs opacity-60 line-through">¥329</span>
+                </div>
+                <button class="btn btn-primary btn-sm w-full mt-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z"/></svg>
+                  加入购物车
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="h3" class="carousel-item w-1/2">
+            <div class="card bg-base-100 shadow-sm w-full">
+              <div class="h-40 rounded-t-box relative flex items-center justify-center" style="background:linear-gradient(135deg,#f59e0b,#f97316)">
+                <svg class="h-16 w-16 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4"/><path d="M11 9l-2.5 3.5h3L10 16"/></svg>
+                <span class="badge badge-neutral absolute left-2 top-2">热销</span>
+              </div>
+              <div class="card-body p-3">
+                <h3 class="card-title text-base truncate">便携充电宝</h3>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-primary font-bold">¥129</span>
+                  <span class="text-xs opacity-60 line-through">¥179</span>
+                </div>
+                <button class="btn btn-primary btn-sm w-full mt-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z"/></svg>
+                  加入购物车
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="h4" class="carousel-item w-1/2">
+            <div class="card bg-base-100 shadow-sm w-full">
+              <div class="h-40 rounded-t-box relative flex items-center justify-center" style="background:linear-gradient(135deg,#f43f5e,#ec4899)">
+                <svg class="h-16 w-16 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><path d="M12 10v2l1.5 1.5"/><path d="M9 6l.5-3h5L15 6"/><path d="M9 18l.5 3h5l.5-3"/></svg>
+                <span class="badge badge-primary absolute left-2 top-2">直降</span>
+              </div>
+              <div class="card-body p-3">
+                <h3 class="card-title text-base truncate">智能手表</h3>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-primary font-bold">¥899</span>
+                  <span class="text-xs opacity-60 line-through">¥1099</span>
+                </div>
+                <button class="btn btn-primary btn-sm w-full mt-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z"/></svg>
+                  加入购物车
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#h1" class="btn btn-circle btn-ghost absolute" style="left:0.25rem;top:50%;transform:translateY(-50%)" aria-label="回到开头的商品">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+        </a>
+        <a href="#h3" class="btn btn-circle btn-ghost absolute" style="right:0.25rem;top:50%;transform:translateY(-50%)" aria-label="后面的商品">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品推荐横滑卡（轮播）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="轮播">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。箭头与数字指示器的跳转是锚点定位，自动播放、无限循环需要额外加 JavaScript。</span>
+    </div>
+  </section>
+
+  <!-- 变体：一屏一张大横幅 -->
+  <section class="doc-block">
+    <h2>一屏一张大横幅</h2>
+    <p class="desc">每张 item 占满整屏宽度（w-full），做成深色促销横幅，常用于活动广告位。从左侧吸附对齐（carousel-start），左右滑动切换活动。</p>
+    <div class="doc-stage">
+      <div class="carousel carousel-start flex w-full">
+        <div id="b1" class="carousel-item w-full">
+          <div class="w-full rounded-xl p-8 text-white" style="background:linear-gradient(120deg,#1e1b4b,#4338ca)">
+            <h3 class="text-2xl font-bold">秋季数码节</h3>
+            <p class="mt-2 opacity-90">全场数码配件满 500 减 100，会员再享 9 折。</p>
+            <button class="btn btn-sm mt-4 bg-white text-neutral">立即抢购</button>
+          </div>
+        </div>
+        <div id="b2" class="carousel-item w-full">
+          <div class="w-full rounded-xl p-8 text-white" style="background:linear-gradient(120deg,#134e4a,#0d9488)">
+            <h3 class="text-2xl font-bold">办公装备焕新</h3>
+            <p class="mt-2 opacity-90">显示器、键鼠、升降桌套装一口价。</p>
+            <button class="btn btn-sm mt-4 bg-white text-neutral">查看套装</button>
+          </div>
+        </div>
+        <div id="b3" class="carousel-item w-full">
+          <div class="w-full rounded-xl p-8 text-white" style="background:linear-gradient(120deg,#7c2d12,#ea580c)">
+            <h3 class="text-2xl font-bold">新品首发</h3>
+            <p class="mt-2 opacity-90">智能手表预售付定金立减 200，前 500 名送表带。</p>
+            <button class="btn btn-sm mt-4 bg-white text-neutral">立即预约</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：一屏多张商品卡（三张档） -->
+  <section class="doc-block">
+    <h2>一屏多张小卡：三张档</h2>
+    <p class="desc">item 用 w-1/3，一屏并排放三张紧凑小卡，适合浏览型商品列表。手机上卡片会偏窄，要在桌面做到一屏三张、手机一屏两张，需要响应式分数宽类（见文末指南的说明）。</p>
+    <div class="doc-stage">
+      <div class="carousel flex w-full gap-1">
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 1 2-2h1v5H6a2 2 0 0 1-2-2Z"/><path d="M20 15a2 2 0 0 0-2-2h-1v5h1a2 2 0 0 0 2-2Z"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">蓝牙耳机</p>
+              <p class="text-primary text-sm font-bold">¥199</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#10b981,#14b8a6)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">无线鼠标</p>
+              <p class="text-primary text-sm font-bold">¥89</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.2"/><path d="M12 9.8V5"/><path d="M13.9 11l4.5-2.6"/><path d="M10.1 13l-4.5 2.6"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">桌面风扇</p>
+              <p class="text-primary text-sm font-bold">¥119</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#f43f5e,#ec4899)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h11v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V8Z"/><path d="M16 10h2a2 2 0 0 1 0 4h-2"/><path d="M8 3v2"/><path d="M12 3v2"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">保温杯</p>
+              <p class="text-primary text-sm font-bold">¥69</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="14" r="4"/><circle cx="12" cy="6" r="1"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">便携音箱</p>
+              <p class="text-primary text-sm font-bold">¥159</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item w-1/3">
+          <div class="bg-base-100 rounded-xl shadow-sm w-full overflow-hidden">
+            <div class="h-20 flex items-center justify-center" style="background:linear-gradient(135deg,#8b5cf6,#d946ef)"><svg class="h-12 w-12 text-white opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg></div>
+            <div class="p-2">
+              <p class="text-sm font-medium truncate">快充充电器</p>
+              <p class="text-primary text-sm font-bold">¥79</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：居中吸附 -->
+  <section class="doc-block">
+    <h2>居中吸附</h2>
+    <p class="desc">外层加 carousel-center，滚动停止时当前卡片吸附到视口正中间，两侧自然露出下一张的边缘，像相册一样。</p>
+    <div class="doc-stage">
+      <div class="carousel carousel-center flex w-full gap-2">
+        <div id="z1" class="carousel-item w-1/2">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"></div>
+        </div>
+        <div id="z2" class="carousel-item w-1/2">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(135deg,#10b981,#14b8a6)"></div>
+        </div>
+        <div id="z3" class="carousel-item w-1/2">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(135deg,#f59e0b,#f97316)"></div>
+        </div>
+        <div id="z4" class="carousel-item w-1/2">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(135deg,#f43f5e,#ec4899)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：垂直轮播 -->
+  <section class="doc-block">
+    <h2>垂直轮播</h2>
+    <p class="desc">加 carousel-vertical 变成纵向轨道，给容器一个固定高度（h-48），item 保持 w-full，常见于聊天记录、订单流这种竖向列表。</p>
+    <div class="doc-stage">
+      <div class="carousel carousel-vertical h-48 w-full">
+        <div class="carousel-item w-full">
+          <div class="flex w-full items-center gap-3 py-2 border-b border-base-300">
+            <div class="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)"><svg class="h-5 w-5 text-white opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15a2 2 0 0 1 2-2h1v5H6a2 2 0 0 1-2-2Z"/><path d="M20 15a2 2 0 0 0-2-2h-1v5h1a2 2 0 0 0 2-2Z"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">无线降噪耳机 · 待发货</p>
+            </div>
+            <span class="text-primary font-bold text-sm">¥399</span>
+          </div>
+        </div>
+        <div class="carousel-item w-full">
+          <div class="flex w-full items-center gap-3 py-2 border-b border-base-300">
+            <div class="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,#10b981,#14b8a6)"><svg class="h-5 w-5 text-white opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M7 14h10"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">机械键盘 · 已签收</p>
+            </div>
+            <span class="text-primary font-bold text-sm">¥249</span>
+          </div>
+        </div>
+        <div class="carousel-item w-full">
+          <div class="flex w-full items-center gap-3 py-2 border-b border-base-300">
+            <div class="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><svg class="h-5 w-5 text-white opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4"/><path d="M11 9l-2.5 3.5h3L10 16"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">便携充电宝 · 配送中</p>
+            </div>
+            <span class="text-primary font-bold text-sm">¥129</span>
+          </div>
+        </div>
+        <div class="carousel-item w-full">
+          <div class="flex w-full items-center gap-3 py-2">
+            <div class="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,#f43f5e,#ec4899)"><svg class="h-5 w-5 text-white opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><path d="M12 10v2l1.5 1.5"/><path d="M9 6l.5-3h5L15 6"/><path d="M9 18l.5 3h5l.5-3"/></svg></div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-medium truncate">智能手表 · 已完成</p>
+            </div>
+            <span class="text-primary font-bold text-sm">¥899</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：数字指示器 -->
+  <section class="doc-block">
+    <h2>数字指示器</h2>
+    <p class="desc">轮播下方放一排小圆按钮，每个按钮用锚点跳到对应 item，告诉用户当前是第几张、一共几张。</p>
+    <div class="doc-stage">
+      <div class="carousel flex w-full">
+        <div id="n1" class="carousel-item w-full">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(120deg,#0f766e,#14b8a6)"></div>
+        </div>
+        <div id="n2" class="carousel-item w-full">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(120deg,#b45309,#f59e0b)"></div>
+        </div>
+        <div id="n3" class="carousel-item w-full">
+          <div class="h-24 rounded-xl w-full" style="background:linear-gradient(120deg,#be123c,#fb7185)"></div>
+        </div>
+      </div>
+      <div class="flex justify-center gap-2 mt-3 w-full">
+        <a href="#n1" class="btn btn-circle btn-xs" aria-label="第 1 张">1</a>
+        <a href="#n2" class="btn btn-circle btn-xs" aria-label="第 2 张">2</a>
+        <a href="#n3" class="btn btn-circle btn-xs" aria-label="第 3 张">3</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>纯 CSS 能做什么</h3>
+    <p>本成品的滑动靠浏览器原生触摸与滚轮横向滚动，吸附靠 scroll-snap，箭头和数字指示器靠锚点（href 指向对应 item 的 id）跳转——全程零 JavaScript，复制过去就能滑。</p>
+    <h3>哪些功能必须加 JavaScript</h3>
+    <ul>
+      <li>自动播放（定时切换下一张）；</li>
+      <li>无限循环（滑到最后一张后回到第一张的无缝衔接）；</li>
+      <li>拖拽跟手（鼠标按住卡片拖动，松手回弹）；</li>
+      <li>根据滚动位置高亮当前箭头 / 当前数字。</li>
+    </ul>
+    <p>需要这些效果时，在自己的项目里引入一个轮播库或手写几十行 JS；本组件不内置，保持零依赖。</p>
+    <h3>图片怎么换成真实商品图</h3>
+    <p>成品里图区是一个内联渐变占位块，替换成你的图片时，把图区 div 换成 <code>&lt;img&gt;</code>（加 <code>w-full h-40 object-cover rounded-t-box</code>），商品卡其余结构不用动。</p>
+    <h3>手机端两条红线</h3>
+    <ul>
+      <li>横滑只允许发生在 carousel 容器内部，不要给整页加横向滚动，也不要给 carousel 加 fixed 定位；</li>
+      <li>一屏几张由 item 宽度决定：w-1/2 两张、w-1/3 三张、w-full 整屏一张。</li>
+    </ul>
+    <h3>关于「手机两张、桌面三张」</h3>
+    <p>要在手机上一屏两张、桌面上自动变成一屏三张，需要响应式分数宽类（如 <code>lg:w-1/3</code>）。当前补丁层只提供静态分数宽，本版先用 w-1/2 做主成品、w-1/3 做变体演示；补齐响应式类后，把主成品 item 改为 <code>w-1/2 lg:w-1/3</code> 即可。</p>
+    <h3>可访问性</h3>
+    <p>箭头是纯图标按钮，必须加 <code>aria-label</code>；数字指示器同样加 aria-label 说明第几张。键盘用户可以用 Tab 聚焦箭头后回车跳转。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/carousel/" target="_blank" rel="noopener">daisyui.com/components/carousel</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商商品列表里的「猜你喜欢」横滑推荐区：一屏并排展示两张商品卡，用户可左右滑动翻看，左右两侧各有一个圆形箭头跳到相邻一组。
+【怎么排】
+- 外层用 relative 包裹；内部是 carousel flex w-full，它自带横向滚动与滚动吸附，不要额外加 overflow 类；
+- 每个 carousel-item 用 w-1/2（一屏两张），item 内部是一张商品卡：上部图区用内联 linear-gradient 渐变占位（后续换成真实商品图），图区左上角放 badge 角标（如「热卖」「新品」）；下部依次是商品名、价格（价格用 text-primary，可加一条划线原价）、一个「加入购物车」小按钮（btn btn-primary btn-sm）；
+- 左右箭头是 a 标签：href 指向相邻 item 的 id（如 #h3），样式 btn btn-circle btn-ghost，绝对定位在轮播左右两侧垂直居中，定位范围只在轮播舞台内，不遮挡页面其它内容；箭头必须加 aria-label 说明用途。
+【精确规格】
+- 纯 CSS 能力边界：原生触摸横滑、scroll-snap 吸附、锚点箭头与数字指示器跳转都是纯 CSS 实现；自动播放、无限循环、拖拽跟手、到边界后循环这些必须用 JavaScript，本成品不内置。
+- 商品图一律用内联渐变或内联 SVG 占位，禁止外链图片与 CDN；按钮写真实中文动作（加入购物车），禁止出现 Primary 这类颜色名。
+- 横滑只允许发生在 carousel 容器内部，整个页面不得出现横向滚动；carousel 不要加 fixed 定位。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
