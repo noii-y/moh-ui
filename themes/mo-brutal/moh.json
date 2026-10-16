@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-brutal",
+  "type": "theme",
+  "title": "粗野主义（浅色）",
+  "description": "3px 厚黑边、直角、硬阴影、蓝红撞色，个性与品牌向界面。",
+  "styleTags": ["粗野", "撞色", "硬朗", "品牌"],
+  "inspiration": ["https://www.shadcn.io/theme/neo-brutalism"],
+  "base": "mo-brutal",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
