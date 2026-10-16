@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "badge",
+  "type": "component",
+  "title": "徽章",
+  "description": "计数徽章/圆点/附着角标，99+ 封顶，危险/中性/主色变体",
+  "styleTags": ["基础组件", "反馈", "导航"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
