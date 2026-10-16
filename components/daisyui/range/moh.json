@@ -3,14 +3,14 @@
   "name": "daisyui-range",
   "type": "component",
   "title": "滑块",
-  "description": "搬运自 daisyUI 的滑块：基础/刻度/语义色/尺寸/竖向，零依赖纯 CSS。",
+  "description": "搬运自 daisyUI 的滑块：基础滑杆、带刻度档位、尺寸 xs~xl、语义状态色、竖向 range-vertical，零依赖纯 CSS（实时读数仅一行 JS）。",
   "styleTags": ["基础组件", "表单", "选择"],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
     "url": "https://daisyui.com/components/range/",
     "license": "MIT",
-    "changes": "搬运官网 demo HTML 为中文，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+    "changes": "搬运官网 demo HTML（class 版）为中文，按筛选栏预算上限滑块重排成成品示例与变体，补充零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
   "files": ["demo.html", "README.md"],

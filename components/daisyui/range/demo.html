@@ -12,14 +12,66 @@
 <body>
 <header class="doc-head">
   <h1>滑块 <span class="en">Range</span></h1>
-  <p>通过拖动滑块选择一个数值。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
-  <p>来源：<a href="https://daisyui.com/components/range/" target="_blank" rel="noopener">daisyui.com/components/range</a>（MIT）</p>
+  <p>通过拖动滑杆在一个连续区间里选数值，如价格上限、音量、透明度。下面先给一个筛选栏可以直接拿走的预算滑块，再列出带刻度、尺寸、颜色和竖向等形态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色、尺寸只改 <code>class</code> 或 <code>min / max / step</code> 即可；切换主题后，整套滑块颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：筛选栏预算滑块 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>筛选栏里的预算上限滑块</h2>
+    <p class="desc">顶部标出字段名和当前选中值，滑杆下方写明两端范围（¥0 到 ¥5000），拖动时实时更新金额；组尾放应用筛选按钮。实时读数用一行极小 JS 回显，除此之外不写交互。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-3 w-full max-w-md">
+        <div>
+          <div class="flex justify-between mb-2">
+            <span class="text-sm">预算上限</span>
+            <span class="text-sm font-semibold" id="range-value">¥3000</span>
+          </div>
+          <input type="range" min="0" max="5000" step="100" value="3000" class="range range-primary w-full" id="range-input" />
+          <div class="flex justify-between mt-1 text-xs opacity-60"><span>¥0</span><span>¥5000</span></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-primary">应用筛选</button>
+        </div>
+      </div>
+      <script>
+        (function () {
+          var input = document.getElementById('range-input');
+          var out = document.getElementById('range-value');
+          input.addEventListener('input', function () { out.textContent = '¥' + input.value; });
+        })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="筛选栏预算上限滑块（滑块）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="滑块">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础</h2>
+    <h2>基础滑杆</h2>
+    <p class="desc">最朴素的形态：用 <code>min / max</code> 定区间、<code>value</code> 定初始位置；占满容器宽度，两侧留出文字边距。</p>
     <div class="doc-stage col w-full">
       <input type="range" min="0" max="100" value="40" class="range w-full max-w-md" />
     </div>
@@ -27,16 +79,29 @@
 
   <section class="doc-block">
     <h2>带刻度</h2>
-    <p class="desc">用 step 设定步长，下方用 flex 均布刻度线与数字。</p>
+    <p class="desc">用 <code>step</code> 设定步长，下方用 flex 均布刻度线与数字，让用户知道每一档对应什么值。</p>
     <div class="doc-stage col w-full max-w-xs">
       <input type="range" min="0" max="100" value="25" class="range" step="25" />
-      <div class="flex justify-between px-3 mt-2 text-xs w-full"><span>|</span><span>|</span><span>|</span><span>|</span><span>|</span></div>
-      <div class="flex justify-between px-3 mt-2 text-xs w-full"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+      <div class="flex justify-between mt-2 text-xs w-full"><span>|</span><span>|</span><span>|</span><span>|</span><span>|</span></div>
+      <div class="flex justify-between text-xs w-full"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
+    <h2>尺寸</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合紧凑面板，大尺寸适合移动端大字大按钮区。</p>
+    <div class="doc-stage col w-full">
+      <input type="range" min="0" max="100" value="30" class="range range-xs" />
+      <input type="range" min="0" max="100" value="40" class="range range-sm" />
+      <input type="range" min="0" max="100" value="50" class="range range-md" />
+      <input type="range" min="0" max="100" value="60" class="range range-lg" />
+      <input type="range" min="0" max="100" value="70" class="range range-xl" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>语义状态色</h2>
+    <p class="desc">这一排是 daisyUI 的语义状态色：从主色到错误色，分别对应主操作、强调、成功、警告、错误等含义。多数场景用默认色或主色即可。</p>
     <div class="doc-stage col w-full">
       <input type="range" min="0" max="100" value="40" class="range range-neutral" />
       <input type="range" min="0" max="100" value="40" class="range range-primary" />
@@ -50,23 +115,47 @@
   </section>
 
   <section class="doc-block">
-    <h2>尺寸</h2>
-    <div class="doc-stage col w-full">
-      <input type="range" min="0" max="100" value="30" class="range range-xs" />
-      <input type="range" min="0" max="100" value="40" class="range range-sm" />
-      <input type="range" min="0" max="100" value="50" class="range range-md" />
-      <input type="range" min="0" max="100" value="60" class="range range-lg" />
-      <input type="range" min="0" max="100" value="70" class="range range-xl" />
-    </div>
-  </section>
-
-  <section class="doc-block">
     <h2>竖向</h2>
+    <p class="desc">加 <code>range-vertical</code> 并给一个固定高度（<code>h-40</code>），适合混音器、亮度面板这类竖排布局。</p>
     <div class="doc-stage">
       <input type="range" min="0" max="100" value="40" class="range range-vertical h-40" />
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>什么时候用滑块</h3>
+    <p>连续、近似的数值调节（价格区间、音量、亮度、透明度）用滑块；如果选项离散且需要精确列举（配送方式、付款方式），改用单选框或下拉。</p>
+    <h3>一定标清区间和当前值</h3>
+    <p>用 <code>min / max</code> 写明两端范围，最好在旁边实时显示当前值；纯 CSS 无法回显拖动中的数值，本成品用一行极小 JS 监听 <code>input</code> 事件更新金额——除此之外不要写别的交互。</p>
+    <h3>步长符合业务</h3>
+    <p>用 <code>step</code> 限制可选档位（价格每次 100 元、评分每次 0.5 分），避免用户拖出无意义的中间值。</p>
+    <h3>可访问性</h3>
+    <p>原生滑块支持键盘方向键微调，焦点描边不要去掉；不要用自定义 div 拖块替换原生 <code>input type="range"</code>，那会丢掉键盘和读屏支持。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/range/" target="_blank" rel="noopener">daisyui.com/components/range</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个筛选栏里的预算上限滑块：顶部写字段名和当前选中金额，拖动滑杆实时更新金额，滑杆下方标出 ¥0 到 ¥5000 的范围，最后点应用筛选按钮。
+【怎么排】
+- 一行 <div class="flex justify-between mb-2">：左侧「预算上限」（text-sm），右侧实时金额（text-sm font-semibold，初始 ¥3000）；
+- 下面是 <input type="range" min="0" max="5000" step="100" value="3000" class="range range-primary w-full" />，占满容器（max-w-md）；
+- 滑杆下方 <div class="flex justify-between mt-1 text-xs opacity-60"> 放两端标签「¥0」「¥5000」；
+- 用一行极小 JS 监听 input 的 input 事件，把当前值拼成「¥3000」更新到右侧金额；除此之外不写任何交互；
+- 组尾放一个仅展示的主按钮「应用筛选」（btn btn-primary）。
+【精确规格】
+- 滑块尺寸默认即可，主色用 range-primary 标出当前值填充。
+- 文字写真实业务内容，禁止出现 Primary / 成功 / 主要 这类颜色名当文案；金额用等宽数字观感，区间是 0–5000、步长 100。
+- 用到的类全部真实存在：range、range-primary、range-vertical、w-full、max-w-md、justify-between、mb-2、mt-1、text-sm、text-xs、font-semibold、opacity-60、h-40。
+- 除一行回显当前值的极小 JS 外，不要加其它交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
