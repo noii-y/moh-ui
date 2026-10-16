@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-input · 输入框</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-input · 输入框（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量（引入任一主题包即可）
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：普通 / 错误态 / 禁用 / 带前后缀 / 带提示文字
+       说明：组合使用 .moh-field（容器）+ .moh-label + .moh-input
+       ============================================================ */
+
+    .moh-field {
+      display: grid;
+      gap: var(--moh-space-1);
+    }
+
+    .moh-label {
+      display: block;
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+    }
+
+    .moh-input {
+      width: 100%;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-3);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-surface);
+      color: var(--moh-ink);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      transition: var(--moh-transition);
+    }
+
+    .moh-input::placeholder {
+      color: var(--moh-muted);
+      opacity: 0.7;
+    }
+
+    .moh-input:hover:not(:disabled) {
+      border-color: var(--moh-border-strong);
+    }
+
+    .moh-input:focus {
+      outline: none;
+      border-color: var(--moh-primary);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-input:disabled {
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+      cursor: not-allowed;
+    }
+
+    /* 错误态 */
+    .moh-input--error {
+      border-color: var(--moh-danger);
+    }
+    .moh-input--error:focus {
+      border-color: var(--moh-danger);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-help {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+    }
+    .moh-help--error {
+      color: var(--moh-danger);
+    }
+
+    /* 带前后缀（如货币、单位） */
+    .moh-input-group {
+      display: flex;
+      align-items: stretch;
+    }
+    .moh-input-group .moh-input {
+      border-radius: 0;
+      flex: 1;
+      min-width: 0;
+    }
+    .moh-input-group .moh-input:first-child {
+      border-radius: var(--moh-radius-md) 0 0 var(--moh-radius-md);
+    }
+    .moh-input-group .moh-input:last-child {
+      border-radius: 0 var(--moh-radius-md) var(--moh-radius-md) 0;
+    }
+    .moh-input-addon {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 var(--moh-space-3);
+      border: 1px solid var(--moh-border);
+      background: var(--moh-surface-2);
+      color: var(--moh-muted);
+      font-size: var(--moh-text-sm);
+      white-space: nowrap;
+    }
+    .moh-input-group .moh-input-addon:first-child {
+      border-radius: var(--moh-radius-md) 0 0 var(--moh-radius-md);
+      border-right: none;
+    }
+    .moh-input-group .moh-input-addon:last-child {
+      border-radius: 0 var(--moh-radius-md) var(--moh-radius-md) 0;
+      border-left: none;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--moh-space-6);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-wrap + .demo-wrap {
+      border-top: 1px solid var(--moh-border);
+    }
+    .demo-block {
+      display: grid;
+      gap: var(--moh-space-4);
+    }
+    .demo-title {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <div class="demo-block">
+      <p class="demo-title">基础用法</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-name">项目名称</label>
+        <input class="moh-input" id="demo-name" type="text" placeholder="请输入项目名称" />
+        <span class="moh-help">建议 2–20 个字符</span>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <p class="demo-title">错误态</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-err">邮箱地址</label>
+        <input class="moh-input moh-input--error" id="demo-err" type="text" value="not-an-email" />
+        <span class="moh-help moh-help--error">邮箱格式不正确，请检查</span>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <p class="demo-title">禁用</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-dis">只读字段</label>
+        <input class="moh-input" id="demo-dis" type="text" value="系统自动生成" disabled />
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-wrap">
+    <div class="demo-block">
+      <p class="demo-title">带前后缀</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-money">预算金额</label>
+        <div class="moh-input-group">
+          <span class="moh-input-addon">¥</span>
+          <input class="moh-input" id="demo-money" type="text" placeholder="0.00" />
+          <span class="moh-input-addon">元</span>
+        </div>
+      </div>
+    </div>
+    <div class="demo-block">
+      <p class="demo-title">密码输入</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-pwd">登录密码</label>
+        <input class="moh-input" id="demo-pwd" type="password" placeholder="请输入密码" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>
