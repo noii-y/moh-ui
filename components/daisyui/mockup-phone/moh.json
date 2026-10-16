@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-mockup-phone",
+  "type": "component",
+  "title": "手机样机",
+  "description": "搬运自 daisyUI 的手机外框样机：mockup-phone 外壳 + camera 挖孔 + display 屏幕区，屏幕内可放任意 App 界面（外卖首页/信息流/锁屏壁纸），零依赖纯 CSS。",
+  "styleTags": ["数据展示", "布局", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/mockup-phone/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），官方在线壁纸图替换为 daisyUI 类拼的零依赖 App 界面与纯色占位块，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
