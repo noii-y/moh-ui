@@ -40,6 +40,7 @@
 .col-span-full { grid-column: 1 / -1; }
 .place-items-center { place-items: center; }
 .place-content-center { place-content: center; }
+.justify-items-center { justify-items: center; }
 
 /* ---------- Gap ---------- */
 .gap-0 { gap: 0; }
@@ -75,6 +76,7 @@
 .w-48 { width: 12rem; }
 .w-52 { width: 13rem; }
 .w-56 { width: 14rem; }
+.w-60 { width: 15rem; }
 .w-64 { width: 16rem; }
 .w-72 { width: 18rem; }
 .w-80 { width: 20rem; }
@@ -91,6 +93,7 @@
 .max-w-prose { max-width: 65ch; }
 .max-w-full { max-width: 100%; }
 .max-w-3xl { max-width: 48rem; }
+.max-w-60 { max-width: 15rem; }
 
 /* ---------- 高度 ---------- */
 .h-3 { height: 0.75rem; }
@@ -143,6 +146,9 @@
 .text-4xl { font-size: 2.25rem; }
 .text-5xl { font-size: 3rem; }
 .text-6xl { font-size: 3.75rem; }
+.text-7xl { font-size: 4.5rem; }
+.text-8xl { font-size: 6rem; }
+.text-9xl { font-size: 8rem; }
 .font-thin { font-weight: 100; }
 .font-light { font-weight: 300; }
 .font-normal { font-weight: 400; }
@@ -325,9 +331,16 @@
 .bg-green-400 { background-color: #4ade80; }
 .bg-green-500 { background-color: #22c55e; }
 .text-orange-400 { color: #fb923c; }
+.text-orange-500 { color: #f97316; }
+.text-orange-600 { color: #ea580c; }
 .text-yellow-400 { color: #facc15; }
 .text-red-400 { color: #f87171; }
+.text-red-800 { color: #991b1b; }
 .text-green-500 { color: #22c55e; }
+.text-teal-800 { color: #115e59; }
+.text-blue-800 { color: #1e40af; }
+.bg-teal-400 { background-color: #2dd4bf; }
+.bg-blue-400 { background-color: #60a5fa; }
 
 /* ---------- 响应式（示例页常见：小屏隐藏、大屏展开） ---------- */
 @media (min-width: 1024px) {
