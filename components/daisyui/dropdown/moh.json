@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-dropdown",
+  "type": "component",
+  "title": "下拉菜单",
+  "description": "搬运自 daisyUI 的下拉组件：头像下拉菜单、卡片式弹层、上/左/右弹出方向、菜单分组与分隔线，零依赖纯 CSS（CSS focus 写法）。",
+  "styleTags": ["反馈", "导航"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/dropdown/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版，采用零 JS 的 CSS focus 写法），剔除 vendor 未打包的 z-1/shadow-sm 类、改用 border 描边；统一中文业务文案（头像菜单/通知卡片）；新增零依赖 demo 合集页与中文教程"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
