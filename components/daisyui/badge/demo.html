@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>徽标 Badge · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>徽标 <span class="en">Badge</span></h1>
+  <p>一个小圆角的小标签，用来给商品、状态、数字打标记：新品、热卖、包邮、未读数都是它。下面先给一个商品标签组成品，再看尺寸、风格和带图标的写法。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色加 <code>badge-*</code>，改大小加 <code>badge-xs</code> 到 <code>badge-xl</code>，切换主题后自动跟随。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一张商品卡片上的标签组</h2>
+    <p class="desc">商品名旁边一排小标签：主色标「新品」、强调色标「热卖」、灰色标「售罄」、绿色标「包邮」。颜色只表达含义，不写「主色标签」这种废话。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-wrap gap-2">
+        <span class="badge badge-primary">新品</span>
+        <span class="badge badge-secondary">热卖</span>
+        <span class="badge badge-neutral">售罄</span>
+        <span class="badge badge-success">包邮</span>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品卡片标签组（徽标）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="徽标">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>五档尺寸</h2>
+    <p class="desc">默认大小最通用；放导航、按钮里用 <code>badge-sm</code> 或 <code>badge-xs</code>，大标题旁才用 <code>badge-lg</code> 以上。</p>
+    <div class="doc-stage">
+      <span class="badge badge-primary badge-xs">极小</span>
+      <span class="badge badge-primary badge-sm">小</span>
+      <span class="badge badge-primary badge-md">默认</span>
+      <span class="badge badge-primary badge-lg">大</span>
+      <span class="badge badge-primary badge-xl">超大</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>描边、虚线、柔和三种风格</h2>
+    <p class="desc">实心标签最抢眼；一排次要标签多时改用描边（<code>badge-outline</code>）或柔和（<code>badge-soft</code>）降低视觉重量；<code>badge-dash</code> 虚线描边专门表示「等待中、待处理」。</p>
+    <div class="doc-stage">
+      <span class="badge badge-outline badge-primary">描边</span>
+      <span class="badge badge-soft badge-success">柔和</span>
+      <span class="badge badge-dash badge-warning">待审核</span>
+      <span class="badge badge-ghost">幽灵</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带图标的标签</h2>
+    <p class="desc">标签里放一个小 SVG 图标，能让人在扫一眼列表时更快认出含义，比如「已发货」配对勾、「退款中」配警告三角。</p>
+    <div class="doc-stage">
+      <span class="badge badge-success">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle><polyline points="7 13 10 16 17 8" fill="none" stroke="currentColor" stroke-width="2"></polyline></g></svg>
+        已发货
+      </span>
+      <span class="badge badge-warning">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path fill="currentColor" d="M7.638,3.495L2.213,12.891c-.605,1.048,.151,2.359,1.362,2.359H14.425c1.211,0,1.967-1.31,1.362-2.359L10.362,3.495c-.605-1.048-2.119-1.048-2.724,0Z" /></svg>
+        退款审核中
+      </span>
+      <span class="badge badge-error">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" /></svg>
+        支付失败
+      </span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>嵌在按钮里的数字角标</h2>
+    <p class="desc">把小徽章放进按钮、标签页里，表示「还有这么多件事等着你」：新消息、待办数量，数字超过 99 就写 99+。</p>
+    <div class="doc-stage">
+      <button class="btn">
+        未读消息 <span class="badge badge-sm">3</span>
+      </button>
+      <button class="btn">
+        购物车 <span class="badge badge-sm badge-secondary">12</span>
+      </button>
+      <button class="btn">
+        待处理工单 <span class="badge badge-sm badge-error">99+</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>标签上写的是含义</h3>
+    <p>徽章里永远写真实业务词：新品、热卖、售罄、包邮、待审核；不要写颜色名，也不要写 Primary 这种类名当文案。</p>
+    <h3>颜色怎么选</h3>
+    <ul>
+      <li><code>badge-primary</code>：最重要的新标记（新品、新上线）。</li>
+      <li><code>badge-secondary</code>：强调但不紧急（热卖、热门）。</li>
+      <li><code>badge-neutral</code> / <code>badge-ghost</code>：中性状态（售罄、已归档）。</li>
+      <li><code>badge-success</code> / <code>warning</code> / <code>error</code> / <code>info</code>：只在结果含义明确时用。</li>
+    </ul>
+    <h3>密度控制</h3>
+    <p>一排标签最多四五个，多了用描边或柔和风格；一个商品身上同时挂「新品 + 热卖 + 包邮 + 8 折 + 会员专享」五个实心彩色标签等于没有标签。</p>
+    <h3>图标与数字</h3>
+    <p>标签里的小图标统一 <code>h-4 w-4</code>；数字角标超过 99 一律显示 <code>99+</code>，不要让它撑宽布局。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/badge/" target="_blank" rel="noopener">daisyui.com/components/badge</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】电商商品卡片标题旁的一排小标签：新品 / 热卖 / 售罄 / 包邮。
+【怎么排】标签横向一排、自动换行，标签之间 gap-2；颜色只表达含义：主色标"新品"，强调色标"热卖"，中性灰标"售罄"，成功绿标"包邮"。
+【精确规格】
+- 外层：<div class="flex flex-wrap gap-2">；标签用 <span class="badge badge-*">。
+- 标签文案写真实业务词（新品/热卖/售罄/包邮），禁止出现 Primary / 绿色 这类颜色名。
+- 一排标签最多四五个，全是实心彩色时等于没有标签；次要标签改用 badge-outline 或 badge-soft。
+- 数字角标超过 99 写 99+。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
