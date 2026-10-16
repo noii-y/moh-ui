@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>组件 · 灰墨 MoH_UI</title>
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    .site-card__frame {
+      height: 220px;
+    }
+    .site-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 30px;
+      padding: 0 12px;
+      border: 1px solid #e4e7ec;
+      border-radius: 8px;
+      background: #fff;
+      color: #1a202c;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .site-copy-btn:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+    .site-copy-btn--ok {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .site-card__path {
+      font-size: 12px;
+      color: #94a3b8;
+      font-family: Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-container site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">
+        <span class="site-nav__logo"></span>
+        灰墨 MoH_UI
+      </a>
+      <div class="site-nav__links">
+        <a class="site-nav__link" href="../index.html">首页</a>
+        <a class="site-nav__link" href="themes.html">主题</a>
+        <a class="site-nav__link site-nav__link--active" href="components.html">组件</a>
+        <a class="site-nav__link" href="generator.html">主题生成器</a>
+      </div>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="site-container" style="padding-top: 40px">
+    <h1 style="font-size: 28px; margin: 0 0 6px">单文件组件（10）</h1>
+    <p style="color: #64748b; margin: 0 0 32px">每个组件一个独立 .html：结构 + 样式 + 说明注释，可单独复制进任意项目。类名统一 <code>moh-</code> 前缀，全部走 <code>var(--moh-*)</code>，零 JS 依赖（除模态框用原生 dialog）。</p>
+
+    <div class="site-grid" id="comp-grid"></div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
+  </footer>
+
+  <script>
+    var COMPONENTS = [
+      { name: "button", title: "moh-button · 按钮", desc: "4 变体（主/次/幽灵/危险）+ 3 尺寸 + 图标 + 禁用态", path: "../components/button/index.html" },
+      { name: "input", title: "moh-input · 输入框", desc: "错误态 / 禁用 / 前后缀（货币等）/ 提示文字", path: "../components/input/index.html" },
+      { name: "select", title: "moh-select · 下拉选择", desc: "原生 select 美化，零 JS，错误态 / 禁用", path: "../components/select/index.html" },
+      { name: "table", title: "moh-table · 表格", desc: "表头 / 悬浮行 / 数字列 / 可排序表头", path: "../components/table/index.html" },
+      { name: "card", title: "moh-card · 卡片", desc: "普通卡 + KPI 统计卡（大数字 / 变化率）", path: "../components/card/index.html" },
+      { name: "form", title: "moh-form · 表单", desc: "字段布局 / 必填标记 / 校验错误态 / 操作区", path: "../components/form/index.html" },
+      { name: "navbar", title: "moh-navbar · 顶栏", desc: "品牌 / 导航链接 / 通知红点 / 用户区", path: "../components/navbar/index.html" },
+      { name: "sidebar", title: "moh-sidebar · 侧边栏", desc: "分组标题 / 菜单项 / 激活态 / 悬浮", path: "../components/sidebar/index.html" },
+      { name: "tag", title: "moh-tag · 标签", desc: "中性 / 成功 / 警告 / 危险 + 状态圆点", path: "../components/tag/index.html" },
+      { name: "modal", title: "moh-modal · 模态框", desc: "原生 dialog / 遮罩 / 标题 / 操作区，零依赖", path: "../components/modal/index.html" }
+    ];
+
+    var grid = document.getElementById("comp-grid");
+    COMPONENTS.forEach(function (c) {
+      var card = document.createElement("div");
+      card.className = "site-card";
+      card.innerHTML =
+        '<iframe class="site-card__frame" src="' + c.path + '" loading="lazy" title="' + c.name + ' 预览"></iframe>' +
+        '<div class="site-card__body">' +
+        '<p class="site-card__title">' + c.title + '</p>' +
+        '<p class="site-card__desc">' + c.desc + '</p>' +
+        '<p class="site-card__path">' + c.path + '</p>' +
+        '<div class="site-card__actions">' +
+        '<button class="site-copy-btn" data-path="' + c.path + '">复制代码</button>' +
+        '</div></div>';
+      grid.appendChild(card);
+    });
+
+    function copyText(text, btn, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = "已复制 ✓";
+          btn.classList.add("site-copy-btn--ok");
+          setTimeout(function () { btn.textContent = label; btn.classList.remove("site-copy-btn--ok"); }, 1500);
+        });
+      } else {
+        btn.textContent = "复制失败";
+      }
+    }
+
+    grid.addEventListener("click", function (e) {
+      var btn = e.target.closest(".site-copy-btn");
+      if (!btn) return;
+      fetch(btn.dataset.path)
+        .then(function (r) { return r.text(); })
+        .then(function (html) { copyText(html, btn, "复制代码"); })
+        .catch(function () { btn.textContent = "复制失败：请到仓库取文件"; });
+    });
+  </script>
+</body>
+</html>

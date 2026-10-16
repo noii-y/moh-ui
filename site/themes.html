@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>主题 · 灰墨 MoH_UI</title>
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    .site-theme {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+      align-items: start;
+    }
+    .site-theme__preview {
+      border: 1px solid #e4e7ec;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .site-theme__preview iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      display: block;
+    }
+    .site-theme__info {
+      background: #fff;
+      border: 1px solid #e4e7ec;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .site-theme__name {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .site-theme__files {
+      font-size: 13px;
+      color: #64748b;
+      margin: 0 0 16px;
+    }
+    .site-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 32px;
+      padding: 0 14px;
+      border: 1px solid #e4e7ec;
+      border-radius: 8px;
+      background: #fff;
+      color: #1a202c;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .site-copy-btn:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+    .site-copy-btn--ok {
+      border-color: #16a34a;
+      color: #16a34a;
+    }
+    .site-ai-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .site-ai-link:hover {
+      background: #1d4ed8;
+    }
+    @media (max-width: 760px) {
+      .site-theme { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-container site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">
+        <span class="site-nav__logo"></span>
+        灰墨 MoH_UI
+      </a>
+      <div class="site-nav__links">
+        <a class="site-nav__link" href="../index.html">首页</a>
+        <a class="site-nav__link site-nav__link--active" href="themes.html">主题</a>
+        <a class="site-nav__link" href="components.html">组件</a>
+        <a class="site-nav__link" href="generator.html">主题生成器</a>
+      </div>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="site-container" style="padding-top: 40px">
+    <h1 style="font-size: 28px; margin: 0 0 6px">主题包</h1>
+    <p style="color: #64748b; margin: 0 0 32px">每套主题 = tokens.css（设计变量）+ base.css（基础样式）+ preview.html（基准页）。均通过体检 100/100。</p>
+
+    <section id="mo-dark">
+      <h2 style="font-size: 20px; margin: 0 0 16px">mo-dark · 墨夜（深色）</h2>
+      <div class="site-theme">
+        <div class="site-theme__preview">
+          <iframe src="../themes/mo-dark/preview.html" title="mo-dark 预览" loading="lazy"></iframe>
+        </div>
+        <div class="site-theme__info">
+          <p class="site-theme__name">mo-dark <span class="site-chip site-chip--dark">Linear 锚点</span></p>
+          <p class="site-theme__files">tokens.css · base.css · preview.html</p>
+          <div style="display: flex; gap: 10px; margin-bottom: 16px">
+            <button class="site-copy-btn" data-copy="ai-dark">复制 AI 指令</button>
+            <a class="site-ai-link" href="ai/mo-dark.html" target="_blank" rel="noopener">打开 AI 链接页</a>
+          </div>
+          <details class="site-details">
+            <summary>纯文本版（AI 不抓链接时复制粘贴这段）</summary>
+            <textarea id="txt-dark" readonly style="width:100%; height:200px; font-size:13px; border:1px solid #e4e7ec; border-radius:8px; padding:12px; box-sizing:border-box">灰墨 MoH_UI 主题包 mo-dark（墨夜·深色）。请将以下两个文件应用到目标后台项目：
+1. tokens.css：定义 --moh-* 设计变量。关键值：canvas #0f0f0f、surface #1b1b1f、surface-2 #232328、border #2a2a30、ink #f7f8f8、muted #9ca3af、primary #5e6ad2、primary-hover #7b84e0、primary-muted #262a4d。字号阶 12/13/14/16/20/24px，间距 4 的倍数（8px 网格），圆角 4/6/8px，字体栈含 Inter 与中文（HarmonyOS Sans SC / MiSans / Source Han Sans SC / PingFang SC / Microsoft YaHei）。
+2. base.css：按钮（moh-btn 及 --primary/--secondary/--ghost/--danger 变体）、输入框（moh-input，含错误态 moh-input--error）、表格（moh-table）、卡片（moh-card）基础样式，全部走 var(--moh-*)。
+应用后自检：文件已引入；页面变深色；组件渲染与 preview.html 一致；正文对比度≥4.5；无报错。未达标修复最多 3 轮。</textarea>
+          </details>
+          <details class="site-details">
+            <summary>AI 指令（复制后粘贴给 AI，含链接）</summary>
+            <pre class="site-pre" id="cmd-dark">请把灰墨 MoH_UI 的 mo-dark（墨夜·深色）后台主题应用到当前项目。读取 https://noii-y.github.io/moh-ui/site/ai/mo-dark.html 的说明：引入 tokens.css 与 base.css，清理硬编码颜色，组件类名统一 moh- 前缀，应用后按页内自检清单逐项自查，达标再交付。</pre>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="mo-light">
+      <h2 style="font-size: 20px; margin: 0 0 16px">mo-light · 宣纸（浅色）</h2>
+      <div class="site-theme">
+        <div class="site-theme__preview">
+          <iframe src="../themes/mo-light/preview.html" title="mo-light 预览" loading="lazy"></iframe>
+        </div>
+        <div class="site-theme__info">
+          <p class="site-theme__name">mo-light <span class="site-chip">Stripe 锚点</span></p>
+          <p class="site-theme__files">tokens.css · base.css · preview.html</p>
+          <div style="display: flex; gap: 10px; margin-bottom: 16px">
+            <button class="site-copy-btn" data-copy="ai-light">复制 AI 指令</button>
+            <a class="site-ai-link" href="ai/mo-light.html" target="_blank" rel="noopener">打开 AI 链接页</a>
+          </div>
+          <details class="site-details">
+            <summary>纯文本版（AI 不抓链接时复制粘贴这段）</summary>
+            <textarea id="txt-light" readonly style="width:100%; height:200px; font-size:13px; border:1px solid #e4e7ec; border-radius:8px; padding:12px; box-sizing:border-box">灰墨 MoH_UI 主题包 mo-light（宣纸·浅色）。请将以下两个文件应用到目标后台项目：
+1. tokens.css：定义 --moh-* 设计变量。关键值：canvas #f6f8fa、surface #ffffff、surface-2 #f1f3f5、border #e4e7ec、ink #1a202c、muted #60698a、primary #2563eb、primary-hover #1d4ed8、primary-muted #eff6ff。字号阶 12/13/14/16/20/24px，间距 4 的倍数（8px 网格），圆角 4/6/8px，字体栈含 Inter 与中文（HarmonyOS Sans SC / MiSans / Source Han Sans SC / PingFang SC / Microsoft YaHei）。
+2. base.css：按钮（moh-btn 及 --primary/--secondary/--ghost/--danger 变体）、输入框（moh-input，含错误态 moh-input--error）、表格（moh-table）、卡片（moh-card）基础样式，全部走 var(--moh-*)。
+应用后自检：文件已引入；页面变浅色；组件渲染与 preview.html 一致；正文对比度≥4.5；无报错。未达标修复最多 3 轮。</textarea>
+          </details>
+          <details class="site-details">
+            <summary>AI 指令（复制后粘贴给 AI，含链接）</summary>
+            <pre class="site-pre" id="cmd-light">请把灰墨 MoH_UI 的 mo-light（宣纸·浅色）后台主题应用到当前项目。读取 https://noii-y.github.io/moh-ui/site/ai/mo-light.html 的说明：引入 tokens.css 与 base.css，清理硬编码颜色，组件类名统一 moh- 前缀，应用后按页内自检清单逐项自查，达标再交付。</pre>
+          </details>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
+  </footer>
+
+  <script>
+    function copyText(text, btn) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = "已复制 ✓";
+          btn.classList.add("site-copy-btn--ok");
+          setTimeout(function () { btn.textContent = "复制 AI 指令"; btn.classList.remove("site-copy-btn--ok"); }, 1500);
+        });
+      } else {
+        btn.textContent = "复制失败：请手动选择复制";
+      }
+    }
+    var darkBtn = document.querySelector('[data-copy="ai-dark"]');
+    var lightBtn = document.querySelector('[data-copy="ai-light"]');
+    darkBtn.addEventListener("click", function () { copyText(document.getElementById("cmd-dark").textContent, darkBtn); });
+    lightBtn.addEventListener("click", function () { copyText(document.getElementById("cmd-light").textContent, lightBtn); });
+  </script>
+</body>
+</html>

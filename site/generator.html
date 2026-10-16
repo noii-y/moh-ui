@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>主题生成器 · 灰墨 MoH_UI</title>
+  <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    .gen-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .gen-preview {
+      border: 1px solid #e4e7ec;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .gen-demo {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+    .gen-demo__row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .gen-demo table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .gen-demo th,
+    .gen-demo td {
+      text-align: left;
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .gen-tag {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .gen-output textarea {
+      width: 100%;
+      height: 300px;
+      font-size: 12px;
+      font-family: Consolas, monospace;
+      border: 1px solid #e4e7ec;
+      border-radius: 10px;
+      padding: 12px;
+      box-sizing: border-box;
+      background: #0f0f0f;
+      color: #f7f8f8;
+    }
+    .gen-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    @media (max-width: 860px) {
+      .gen-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-container site-nav__inner">
+      <a class="site-nav__brand" href="../index.html">
+        <span class="site-nav__logo"></span>
+        灰墨 MoH_UI
+      </a>
+      <div class="site-nav__links">
+        <a class="site-nav__link" href="../index.html">首页</a>
+        <a class="site-nav__link" href="themes.html">主题</a>
+        <a class="site-nav__link" href="components.html">组件</a>
+        <a class="site-nav__link site-nav__link--active" href="generator.html">主题生成器</a>
+      </div>
+      <a class="site-nav__gh" href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="site-container" style="padding-top: 40px">
+    <h1 style="font-size: 28px; margin: 0 0 6px">主题生成器</h1>
+    <p style="color: #64748b; margin: 0 0 32px">选基础主题 → 调主色 / 圆角 → 实时预览 → 生成 tokens.css 复制或下载。生成结果基于灰墨设计规范（8px 网格、字号阶、对比度校验在体检脚本）。</p>
+
+    <div class="gen-layout">
+      <div class="site-panel">
+        <label class="site-panel__label">基础主题</label>
+        <select id="gen-base">
+          <option value="dark">mo-dark · 墨夜（深色）</option>
+          <option value="light">mo-light · 宣纸（浅色）</option>
+        </select>
+
+        <label class="site-panel__label">主色</label>
+        <input type="color" id="gen-primary" value="#5e6ad2" />
+
+        <label class="site-panel__label">圆角半径 <span id="gen-radius-val">6px</span></label>
+        <input type="range" id="gen-radius" min="2" max="16" step="1" value="6" />
+      </div>
+
+      <div>
+        <div class="gen-preview">
+          <div class="gen-demo" id="gen-demo"></div>
+        </div>
+        <div class="gen-actions">
+          <button class="site-btn site-btn--primary" id="gen-copy">复制 tokens.css</button>
+          <button class="site-btn site-btn--secondary" id="gen-download">下载 tokens.css</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="gen-output" style="margin-top: 24px">
+      <textarea id="gen-output" readonly></textarea>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
+  </footer>
+
+  <script>
+    /* 基础主题默认 token */
+    var BASES = {
+      dark: {
+        canvas: "#0f0f0f", surface: "#1b1b1f", surface2: "#232328",
+        border: "#2a2a30", borderStrong: "#3a3a42",
+        ink: "#f7f8f8", muted: "#9ca3af",
+        primary: "#5e6ad2", inkOnPrimary: "#ffffff",
+        success: "#34d399", warning: "#fbbf24", danger: "#f87171",
+        shadow: "rgba(0,0,0,0.5)"
+      },
+      light: {
+        canvas: "#f6f8fa", surface: "#ffffff", surface2: "#f1f3f5",
+        border: "#e4e7ec", borderStrong: "#c9cfd8",
+        ink: "#1a202c", muted: "#60698a",
+        primary: "#2563eb", inkOnPrimary: "#ffffff",
+        success: "#16a34a", warning: "#d97706", danger: "#dc2626",
+        shadow: "rgba(16,24,40,0.08)"
+      }
+    };
+
+    /* 颜色工具 */
+    function hexToRgb(hex) {
+      var m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+      if (!m) return null;
+      var n = parseInt(m[1], 16);
+      return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+    }
+    function rgbToHex(r, g, b) {
+      function c(v) { var s = Math.max(0, Math.min(255, Math.round(v))).toString(16); return s.length === 1 ? "0" + s : s; }
+      return "#" + c(r) + c(g) + c(b);
+    }
+    function mix(hex, target, t) {
+      var a = hexToRgb(hex), b = hexToRgb(target);
+      return rgbToHex(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t);
+    }
+    function lum(hex) {
+      var { r, g, b } = hexToRgb(hex);
+      var f = function (c) { var s = c / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
+      return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+    }
+    function contrast(a, b) {
+      var la = lum(a), lb = lum(b);
+      return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+    }
+
+    var baseSel = document.getElementById("gen-base");
+    var primaryInput = document.getElementById("gen-primary");
+    var radiusInput = document.getElementById("gen-radius");
+    var radiusVal = document.getElementById("gen-radius-val");
+    var demo = document.getElementById("gen-demo");
+    var output = document.getElementById("gen-output");
+
+    function primaryHover(base, primary) {
+      var white = "#ffffff", black = "#000000";
+      return base === "dark" ? mix(primary, white, 0.14) : mix(primary, black, 0.12);
+    }
+    function primaryMuted(base, primary) {
+      var target = base === "dark" ? "#1b1b1f" : "#ffffff";
+      return mix(primary, target, 0.86);
+    }
+    function inkOnPrimary(base, primary) {
+      return contrast(primary, "#ffffff") >= 4.5 ? "#ffffff" : (base === "dark" ? "#f7f8f8" : "#1a202c");
+    }
+
+    function render() {
+      var base = baseSel.value;
+      var b = BASES[base];
+      var primary = primaryInput.value;
+      var r = Number(radiusInput.value);
+      radiusVal.textContent = r + "px";
+
+      var primaryH = primaryHover(base, primary);
+      var primaryM = primaryMuted(base, primary);
+      var inkOnP = inkOnPrimary(base, primary);
+      var canvas = base === "dark" ? b.canvas : b.canvas;
+
+      /* 实时预览：demo 根元素注入变量 */
+      demo.style.setProperty("--moh-canvas", canvas);
+      demo.style.setProperty("--moh-surface", b.surface);
+      demo.style.setProperty("--moh-surface-2", b.surface2);
+      demo.style.setProperty("--moh-border", b.border);
+      demo.style.setProperty("--moh-ink", b.ink);
+      demo.style.setProperty("--moh-muted", b.muted);
+      demo.style.setProperty("--moh-primary", primary);
+      demo.style.setProperty("--moh-primary-hover", primaryH);
+      demo.style.setProperty("--moh-primary-muted", primaryM);
+      demo.style.setProperty("--moh-radius-sm", (r - 2) + "px");
+      demo.style.setProperty("--moh-radius-md", r + "px");
+      demo.style.setProperty("--moh-radius-lg", (r + 2) + "px");
+      demo.style.background = canvas;
+      demo.style.color = b.ink;
+
+      demo.innerHTML =
+        '<div class="gen-demo__row" style="gap:8px">' +
+        '<span style="font-weight:600">灰墨生成预览</span>' +
+        '<span class="gen-tag" style="background:' + primaryM + ';color:' + primary + '">主色 ' + primary + '</span>' +
+        '<span class="gen-tag" style="background:' + primaryM + ';color:' + primary + '">对比度 ' + contrast(primary, b.surface).toFixed(2) + ':1</span>' +
+        '</div>' +
+        '<div class="gen-demo__row">' +
+        '<button style="height:32px;padding:0 16px;border:none;border-radius:var(--moh-radius-md);background:' + primary + ';color:' + inkOnP + ';font-size:13px;font-weight:500;cursor:pointer">主要操作</button>' +
+        '<button style="height:32px;padding:0 16px;border:1px solid var(--moh-border);border-radius:var(--moh-radius-md);background:transparent;color:var(--moh-ink);font-size:13px;cursor:pointer">次要操作</button>' +
+        '<input style="height:32px;padding:0 10px;border:1px solid var(--moh-border);border-radius:var(--moh-radius-md);background:var(--moh-surface);color:var(--moh-ink);font-size:13px" placeholder="输入框" />' +
+        '</div>' +
+        '<table><thead><tr><th>项目</th><th>状态</th></tr></thead><tbody>' +
+        '<tr><td>灰墨主题生成器</td><td><span class="gen-tag" style="background:' + primaryM + ';color:' + primary + '">运行中</span></td></tr>' +
+        '<tr><td>展示站</td><td><span class="gen-tag" style="background:' + primaryM + ';color:' + b.success + '">已完成</span></td></tr>' +
+        '</tbody></table>' +
+        '<div style="padding:16px;border:1px solid var(--moh-border);border-radius:var(--moh-radius-lg);background:var(--moh-surface)">' +
+        '<div style="font-weight:600;margin-bottom:4px">本月新增用户</div>' +
+        '<div style="font-size:24px;font-weight:700">1,284</div>' +
+        '<div style="font-size:12px;color:var(--moh-muted)">较上月 +12.4%</div></div>';
+
+      /* 生成 tokens.css */
+      var css =
+        "/* 灰墨 MoH_UI · 主题生成器输出（基础：" + (base === "dark" ? "mo-dark 墨夜" : "mo-light 宣纸") + "） */\n" +
+        ":root {\n" +
+        "  --moh-canvas: " + canvas + ";\n" +
+        "  --moh-surface: " + b.surface + ";\n" +
+        "  --moh-surface-2: " + b.surface2 + ";\n" +
+        "  --moh-border: " + b.border + ";\n" +
+        "  --moh-border-strong: " + b.borderStrong + ";\n" +
+        "  --moh-ink: " + b.ink + ";\n" +
+        "  --moh-muted: " + b.muted + ";\n" +
+        "  --moh-primary: " + primary + ";\n" +
+        "  --moh-primary-hover: " + primaryH + ";\n" +
+        "  --moh-primary-muted: " + primaryM + ";\n" +
+        "  --moh-success: " + b.success + ";\n" +
+        "  --moh-warning: " + b.warning + ";\n" +
+        "  --moh-danger: " + b.danger + ";\n" +
+        '  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;\n' +
+        "  --moh-text-xs: 12px; --moh-text-sm: 13px; --moh-text-base: 14px; --moh-text-md: 16px; --moh-text-lg: 20px; --moh-text-xl: 24px;\n" +
+        "  --moh-space-1: 4px; --moh-space-2: 8px; --moh-space-3: 12px; --moh-space-4: 16px; --moh-space-6: 24px; --moh-space-8: 32px;\n" +
+        "  --moh-radius-sm: " + (r - 2) + "px; --moh-radius-md: " + r + "px; --moh-radius-lg: " + (r + 2) + "px;\n" +
+        "  --moh-control-height: 32px;\n" +
+        "  --moh-transition: 150ms ease;\n" +
+        "}\n" +
+        "\n/* 提示：生成后请运行体检脚本确认 ≥90 分（node scripts/check-audit.mjs themes/你的主题） */\n";
+      output.value = css;
+    }
+
+    baseSel.addEventListener("change", function () {
+      primaryInput.value = BASES[baseSel.value].primary;
+      render();
+    });
+    primaryInput.addEventListener("input", render);
+    radiusInput.addEventListener("input", render);
+
+    document.getElementById("gen-copy").addEventListener("click", function () {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(output.value).then(function () {
+          var btn = document.getElementById("gen-copy");
+          btn.textContent = "已复制 ✓";
+          setTimeout(function () { btn.textContent = "复制 tokens.css"; }, 1500);
+        });
+      }
+    });
+
+    document.getElementById("gen-download").addEventListener("click", function () {
+      var blob = new Blob([output.value], { type: "text/css" });
+      var a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "tokens.css";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    render();
+  </script>
+</body>
+</html>

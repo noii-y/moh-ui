@@ -1,0 +1,356 @@
+/* ============================================================
+   灰墨 MoH_UI · 展示站公共样式（site- 前缀，与组件 moh- 区分）
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "HarmonyOS Sans SC", "MiSans", "Source Han Sans SC",
+    "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #f6f8fa;
+  color: #1a202c;
+  line-height: 1.7;
+}
+
+.site-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- 顶栏 ---------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e4e7ec;
+}
+
+.site-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+}
+
+.site-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1a202c;
+  text-decoration: none;
+}
+
+.site-nav__logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #2563eb, #5e6ad2);
+}
+
+.site-nav__links {
+  display: flex;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.site-nav__link {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.site-nav__link:hover {
+  color: #1a202c;
+  background: #f1f3f5;
+}
+
+.site-nav__link--active {
+  color: #2563eb;
+  background: #eff6ff;
+  font-weight: 500;
+}
+
+.site-nav__gh {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #64748b;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #e4e7ec;
+  transition: all 0.15s ease;
+}
+
+.site-nav__gh:hover {
+  color: #1a202c;
+  border-color: #c9cfd8;
+}
+
+/* ---------- Hero ---------- */
+.site-hero {
+  padding: 72px 0 48px;
+  text-align: center;
+}
+
+.site-hero__badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.site-hero__title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 20px 0 12px;
+}
+
+.site-hero__desc {
+  max-width: 640px;
+  margin: 0 auto 28px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+.site-hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.site-btn--primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.site-btn--primary:hover {
+  background: #1d4ed8;
+}
+
+.site-btn--secondary {
+  background: #fff;
+  border-color: #e4e7ec;
+  color: #1a202c;
+}
+
+.site-btn--secondary:hover {
+  border-color: #c9cfd8;
+  background: #f1f3f5;
+}
+
+/* ---------- 区块 ---------- */
+.site-section {
+  padding: 48px 0;
+}
+
+.site-section__title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+
+.site-section__desc {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+/* ---------- 卡片网格 ---------- */
+.site-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.site-card {
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.15s ease;
+}
+
+.site-card:hover {
+  border-color: #c9cfd8;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+}
+
+.site-card__frame {
+  width: 100%;
+  height: 260px;
+  border: none;
+  background: #f6f8fa;
+}
+
+.site-card__body {
+  padding: 16px;
+  border-top: 1px solid #e4e7ec;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.site-card__title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.site-card__desc {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  flex: 1;
+}
+
+.site-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.site-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 6px;
+  background: #f1f3f5;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.site-chip--dark {
+  background: #0f0f0f;
+  color: #f7f8f8;
+}
+
+/* ---------- 提示条 ---------- */
+.site-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #1e40af;
+  font-size: 14px;
+  margin: 24px 0;
+}
+
+.site-note--warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+/* ---------- 页脚 ---------- */
+.site-footer {
+  border-top: 1px solid #e4e7ec;
+  padding: 32px 0;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.site-footer a {
+  color: #64748b;
+}
+
+/* ---------- 代码块 ---------- */
+.site-pre {
+  background: #0f0f0f;
+  color: #f7f8f8;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}
+
+/* ---------- 折叠区 ---------- */
+.site-details {
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  background: #fff;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.site-details summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a202c;
+}
+
+/* ---------- 选择器控件 ---------- */
+.site-panel {
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.site-panel__label {
+  display: block;
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.site-panel input[type="color"],
+.site-panel input[type="range"],
+.site-panel select {
+  width: 100%;
+  height: 32px;
+  border: 1px solid #e4e7ec;
+  border-radius: 6px;
+  background: #fff;
+  margin-bottom: 12px;
+}
