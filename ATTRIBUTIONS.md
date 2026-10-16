@@ -22,6 +22,8 @@
 | breadcrumb / pagination / empty / skeleton / tabs / drawer / toast / stat-card | 组件 | 自研（noii-y） | MIT | — | 阶段 C 基础组件，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
 | chart-card / code-block / drag-sort | 组件 | 自研（noii-y） | MIT | — | 阶段 C 增强组件；chart-card 依赖 ECharts（CDN）、code-block 依赖 highlight.js（CDN）、drag-sort 零依赖 |
 | checkbox / switch / date-range / alert / tooltip / avatar / progress / badge / spinner | 组件 | 自研（noii-y） | MIT | — | 阶段 C 补充轮，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
+| daisyui.css / daisyui-themes.css（vendor 运行时底座） | 运行时 | daisyUI（Pouya Saadeghi） | MIT | https://github.com/saadeghi/daisyui | 从 npm 包 daisyui@5.7.50 原样复制，未修改；详见 vendor/README.md |
+| components/daisyui/* 各组件 demo HTML | 组件 | daisyUI（Pouya Saadeghi） | MIT | https://daisyui.com/components/ | 搬运官网 demo HTML，补零依赖工具类、中文教程；各组件 moh.json 逐项标注来源与改动 |
 
 ## 引入外部素材时的登记模板
 
