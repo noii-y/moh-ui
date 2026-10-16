@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>光晕 Aura · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>光晕 <span class="en">Aura</span></h1>
+  <p>给页面里最重要的那一个卡片或按钮，套上一圈缓慢旋转的彩色光边，让用户一眼就看到重点。纯 CSS 实现，不需要 JavaScript。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">光晕是一个外壳：用 <code>aura</code> 包住要强调的卡片或按钮即可；换颜色、换光效只改 <code>class</code>。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>定价页里「最受欢迎」的套餐卡</h2>
+    <p class="desc">定价页通常并列几张套餐卡，给主推的那一张整卡套一圈彩虹光晕——用户不用读价格，视线先落在它身上。光晕缓慢旋转，是组件自带的动效。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="aura aura-rainbow w-full max-w-sm">
+        <div class="card w-full bg-base-100 shadow-sm">
+          <div class="card-body">
+            <span class="badge badge-xs badge-warning">最受欢迎</span>
+            <div class="flex justify-between">
+              <h2 class="text-3xl font-bold">专业版</h2>
+              <span class="text-xl">¥199/月</span>
+            </div>
+            <ul class="mt-6 flex flex-col gap-2 text-xs">
+              <li><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>不限项目数量</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>每月 100 次 AI 生成额度</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>团队协作与权限管理</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>优先工单响应</li>
+              <li class="opacity-50"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="line-through">私有化部署</span></li>
+            </ul>
+            <div class="mt-6">
+              <button class="btn btn-primary btn-block">立即订阅</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="定价页最受欢迎套餐卡（光晕）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="光晕">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：卡片光晕 -->
+  <section class="doc-block">
+    <h2>卡片光晕</h2>
+    <p class="desc">默认光效是一圈缓慢旋转的单色光边，套在任意卡片外面即可，卡片自身内容完全不变。</p>
+    <div class="doc-stage">
+      <div class="aura">
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body">
+            <p>这是一张被光晕包住的普通卡片</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：按钮光晕 -->
+  <section class="doc-block">
+    <h2>按钮光晕</h2>
+    <p class="desc">光晕也能直接套在按钮外面，落地页的主行动按钮用它，比单纯放大按钮更抢眼。</p>
+    <div class="doc-stage">
+      <div class="aura">
+        <button class="btn btn-primary">免费开始使用</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：双色光 -->
+  <section class="doc-block">
+    <h2>双光 aura-dual</h2>
+    <p class="desc">加 <code>aura-dual</code> 后变成两道不同颜色的光边，层次比单色更丰富，适合深色背景上的重点卡片。</p>
+    <div class="doc-stage on-dark">
+      <div class="aura aura-dual">
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body">
+            <p>两道不同颜色的光边</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：辉光 -->
+  <section class="doc-block">
+    <h2>辉光 aura-glow</h2>
+    <p class="desc">加 <code>aura-glow</code> 后不再是旋转边框，而是一团向外漫开的柔光，气质更柔和，适合产品发布、获奖这类庆祝场景。</p>
+    <div class="doc-stage on-dark">
+      <div class="aura aura-glow">
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body">
+            <p>向外漫开的柔光</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：自定义颜色 -->
+  <section class="doc-block">
+    <h2>自定义颜色</h2>
+    <p class="desc">光晕的颜色跟随外壳的文字颜色（currentColor），给 <code>aura</code> 外壳加一个 <code>text-orange-600</code> 这类文字色即可，卡片内部文字仍保持正常。</p>
+    <div class="doc-stage">
+      <div class="aura text-orange-600">
+        <div class="card bg-base-100 text-base-content shadow-sm">
+          <div class="card-body">
+            <p>橙色的光边，文字颜色不变</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：尺寸 -->
+  <section class="doc-block">
+    <h2>尺寸：光边的粗细</h2>
+    <p class="desc">共五档，默认 md 最常用；卡片光晕一般用默认尺寸，按钮图标这类小元素再按 <code>aura-xs</code> 到 <code>aura-xl</code> 调粗细。</p>
+    <div class="doc-stage">
+      <div class="aura aura-xs"><button class="btn btn-xs">立即注册</button></div>
+      <div class="aura aura-sm"><button class="btn btn-sm">立即注册</button></div>
+      <div class="aura"><button class="btn">立即注册</button></div>
+      <div class="aura aura-lg"><button class="btn btn-lg">立即注册</button></div>
+      <div class="aura aura-xl"><button class="btn btn-xl">立即注册</button></div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>光晕是外壳，必须包住一个真实元素</h3>
+    <p>结构永远是 <code>&lt;div class="aura"&gt;</code> 包住 <code>card</code>、<code>btn</code> 等真实元素；光边的圆角会自动按被包元素的圆角适配，不要自己再套一层边框。</p>
+    <h3>一个页面只给一个重点加光晕</h3>
+    <p>光晕的作用是把视线引向「最该点的那一个」。如果三张卡都发光，就等于没有重点。定价页只给主推套餐、落地页只给主行动按钮。</p>
+    <h3>光的颜色怎么来</h3>
+    <ul>
+      <li><code>aura-rainbow</code>：彩虹色，最抓眼，适合主推套餐。</li>
+      <li><code>aura-dual</code>：双色光边，适合深色背景。</li>
+      <li><code>aura-glow</code>：不旋转的漫射辉光，气质更柔和。</li>
+      <li>自定义色：外壳加 <code>text-orange-600</code> 这类文字色，光边颜色跟着变。</li>
+    </ul>
+    <h3>旋转速度想调慢</h3>
+    <p>在光晕外壳加内联 <code>style="animation-duration:8s"</code> 即可（数字越大转得越慢），不需要引入额外的动画时长类。系统开启「减弱动态效果」时，光晕会自动放慢。</p>
+    <h3>纯 CSS，零依赖</h3>
+    <p>整个光晕效果由 CSS 动画完成，不需要一行 JavaScript；复制出去到任何项目都能直接跑。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/aura/" target="_blank" rel="noopener">daisyui.com/components/aura</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】SaaS 定价页里并列几张套餐卡，把「最受欢迎」的那一张整卡套一圈旋转的彩虹光晕，让访客不读价格就知道主推哪一档。
+【怎么排】
+- 外层 <div class="aura aura-rainbow"> 包住整张卡片（card），光晕是组件自带的旋转动画，不需要写 JS；
+- 卡内顶部放 badge-warning「最受欢迎」标签；标题行左侧套餐名（text-3xl font-bold）、右侧价格（text-xl，如 ¥199/月）；
+- 功能列表用 ul，每项前面一个 h-4 w-4 的对勾 SVG（text-success）；本档不含的功能整行 opacity-50，并给文字加 line-through；
+- 底部一个 btn btn-primary btn-block「立即订阅」主按钮，整卡只此一个主操作。
+【精确规格】
+- 光晕外壳：<div class="aura aura-rainbow w-full max-w-sm">；卡片用 card w-full bg-base-100 shadow-sm（手机窄屏不要写死 w-96，用 w-full max-w-sm 自适应）。
+- 按钮、标签上写真实中文动作与状态，禁止出现 Primary / Rainbow 这类颜色名。
+- 想让光晕转慢一点，在外壳加内联 style="animation-duration:8s"；彩虹光晕的颜色由 aura-rainbow 自带，不要写死颜色。
+- 一个定价区里只给主推的那一张卡加光晕，其余卡保持素净——光晕是用来突出唯一重点的。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
