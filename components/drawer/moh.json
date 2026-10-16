@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "drawer",
+  "type": "component",
+  "title": "抽屉",
+  "description": "右侧滑出面板，遮罩/ESC/按钮关闭，焦点陷阱，role=dialog+aria-modal",
+  "styleTags": ["基础组件", "浮层", "交互"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

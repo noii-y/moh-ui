@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-drawer · 抽屉</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-drawer · 抽屉（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段 + 底部 <script> 到你的项目
+       形态：右侧滑出面板 + 遮罩 + 标题 + 关闭按钮
+       行为标准（Headless 同款）：role=dialog + aria-modal；
+         ESC 关闭、遮罩点击关闭、焦点陷阱（Tab 循环在面板内）；
+         打开时焦点移入面板
+       ============================================================ */
+
+    /* 遮罩 */
+    .moh-drawer__overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 200ms ease, visibility 200ms ease;
+      z-index: 50;
+    }
+    .moh-drawer--open .moh-drawer__overlay {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 面板：右侧滑出 */
+    .moh-drawer__panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(360px, 90vw);
+      background: var(--moh-surface);
+      border-left: 1px solid var(--moh-border);
+      box-shadow: var(--moh-shadow-lg);
+      transform: translateX(100%);
+      transition: transform 200ms ease;
+      z-index: 51;
+      display: flex;
+      flex-direction: column;
+      padding: var(--moh-space-4);
+      gap: var(--moh-space-3);
+    }
+    .moh-drawer--open .moh-drawer__panel {
+      transform: translateX(0);
+    }
+
+    .moh-drawer__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--moh-space-3);
+      padding-bottom: var(--moh-space-3);
+      border-bottom: 1px solid var(--moh-border);
+    }
+
+    .moh-drawer__title {
+      font-size: var(--moh-text-md);
+      font-weight: 600;
+      color: var(--moh-ink);
+      margin: 0;
+    }
+
+    .moh-drawer__close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-sm);
+      background: var(--moh-surface);
+      color: var(--moh-muted);
+      font-size: var(--moh-text-md);
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-drawer__close:hover {
+      color: var(--moh-ink);
+      border-color: var(--moh-border-strong);
+    }
+    .moh-drawer__close:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    .moh-drawer__body {
+      flex: 1;
+      overflow-y: auto;
+      font-size: var(--moh-text-sm);
+      line-height: 1.7;
+      color: var(--moh-ink);
+    }
+
+    .moh-drawer__footer {
+      padding-top: var(--moh-space-3);
+      border-top: 1px solid var(--moh-border);
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--moh-space-2);
+    }
+
+    /* 演示触发按钮 */
+    .moh-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid transparent;
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-primary);
+      color: #ffffff;
+      font-size: var(--moh-text-sm);
+      font-weight: 500;
+      font-family: inherit;
+      line-height: 1;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-btn:hover { background: var(--moh-primary-hover); }
+    .moh-btn:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+    .moh-btn--secondary {
+      background: var(--moh-surface);
+      border-color: var(--moh-border);
+      color: var(--moh-ink);
+    }
+    .moh-btn--secondary:hover {
+      background: var(--moh-surface-2);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <button class="moh-btn" id="demo-open-drawer">打开抽屉</button>
+  </div>
+
+  <div class="moh-drawer" id="demo-drawer" hidden>
+    <div class="moh-drawer__overlay"></div>
+    <div class="moh-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="moh-drawer__header">
+        <h2 class="moh-drawer__title" id="drawer-title">编辑项目设置</h2>
+        <button class="moh-drawer__close" aria-label="关闭抽屉">✕</button>
+      </div>
+      <div class="moh-drawer__body">
+        这里放表单或详情内容。抽屉适合承载"不打断主流程"的次要操作——比如快速编辑、查看详情、配置筛选。
+        面板宽度默认 360px（移动端 90vw），可随内容调整。
+      </div>
+      <div class="moh-drawer__footer">
+        <button class="moh-btn moh-btn--secondary" id="demo-cancel">取消</button>
+        <button class="moh-btn" id="demo-save">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* 行为标准：ESC 关闭、遮罩点击关闭、焦点陷阱、打开时焦点入面板 */
+    (function () {
+      const root = document.getElementById("demo-drawer");
+      const panel = root.querySelector(".moh-drawer__panel");
+      const openBtn = document.getElementById("demo-open-drawer");
+      const closeBtn = root.querySelector(".moh-drawer__close");
+      const overlay = root.querySelector(".moh-drawer__overlay");
+
+      const focusables = () =>
+        Array.from(panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+          .filter((el) => !el.disabled);
+
+      function open() {
+        root.hidden = false;
+        requestAnimationFrame(() => root.classList.add("moh-drawer--open"));
+        const first = focusables()[0];
+        if (first) first.focus();
+      }
+
+      function close() {
+        root.classList.remove("moh-drawer--open");
+        setTimeout(() => { root.hidden = true; }, 200); // 等待滑出动画
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener("click", open);
+      closeBtn.addEventListener("click", close);
+      document.getElementById("demo-cancel").addEventListener("click", close);
+      document.getElementById("demo-save").addEventListener("click", close);
+      overlay.addEventListener("click", close);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape" || root.hidden) return;
+        close();
+      });
+
+      // 焦点陷阱：Tab 循环在面板内
+      panel.addEventListener("keydown", (e) => {
+        if (e.key !== "Tab") return;
+        const items = focusables();
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+    })();
+  </script>
+  <p class="demo-note">提示：角色 role=dialog + aria-modal；ESC / 遮罩点击 / 关闭按钮均可关闭；Tab 焦点循环在面板内，关闭后焦点归还触发按钮。</p>
+</body>
+</html>
