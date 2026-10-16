@@ -238,14 +238,16 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 11. 提示词的【参考结构】只放一个最常用成品，不要把全部变体塞进去，否则用户和 AI 还要自己删。
 12. 无头整窗 `--window-size=390` 截图右侧文字被裁是**假象**，不代表页面有横向溢出；用 `node scripts/qa-mobile.mjs`（真实 390px iframe 测 scrollWidth）下结论，别据此乱改公共层。
 13. 自动化浏览器（bu.js）运行在隔离世界，直接 `.click()` 触发不了页面主世界里 `demo-doc.js` 注册的复制监听；要真点复制按钮，用 `scripts/qa/` 下的同源 iframe 探针（父页桩接 iframe 的 `navigator.clipboard.writeText`）。
+14. **覆盖层/展开类组件（dropdown、drawer、megamenu、modal、collapse、tabs、fab speed-dial、filter）**：默认是收起的，静态截图/embed 卡片会只看到一个按钮、看不到内容。成品区必须**强制展示展开态**——优先用原生 `<details open>`、popover 的 `open` 属性、或官方提供的 `xxx-open` 类（如 `dropdown-open`、`drawer-open`）；drawer 用一个可见的侧栏面板成品（不依赖遮罩点击）。hero 截图要能直接看到菜单/侧栏/弹层内容；折叠态/触发态放到变体。凡是纯 CSS 无法默认展开的，在成品里加一行"仅为演示默认展开"的最小内联样式，不要为了展开写 JS。
+15. **整页级组件（navbar、hero、footer、drawer、megamenu、dock）放进 `doc-stage` 时**：不要让它们撑满整个视口或带 `fixed` 定位（会盖住文档页/复制按钮）；用 `relative` + 去掉 fixed/absolute 固定定位，在一个带边框的舞台容器里呈现完整结构，保证 390px 与 embed 卡片里不溢出、不遮挡。
 
 ---
 
 ## 11. 当前进度
 
-- 已完成：vendor 底座；13 个 daisyUI 表单组件采集并入站；button / input / checkbox 三个详情页**提示词样板（v3：主按钮复制 AI 提示词，含审美硬边界+交付自查，成品 HTML 降级，已真点验证）**；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本 `scripts/qa-mobile.mjs` + `scripts/qa/mobile-harness.html`。
-- 进行中：以 button（v3）为样板，把其余 10 个 daisyui 组件（select/textarea/radio/toggle/range/file-input/fieldset/rating/otp/validator）重做为含提示词的新三件套。
-- 待办（需 PM 批准）：组件 AI 指令分发（形态 A，组件 AI 友好页/纯文本，见开发计划 4.1）；主题改**完整页面案例**替换色块 preview；引入 Preline/Flowbite/HyperUI/Meraki 补复杂交互与区块；5 个自研增强组件迁移到 daisyui 变量。
+- 已完成：vendor 底座；**13 个 daisyUI 表单组件全部升级为 v3「提示词三件套」并推送**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator，各含真实业务场景成品+复制 AI 提示词+站内教程）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（含 w-5/gap-0 等）。
+- 进行中（PM 批准）：**批次② 导航布局 11 个**——navbar、menu、breadcrumbs、steps、tabs、dock、drawer、megamenu、pagination、link、fab。覆盖层/整页级组件按踩坑 14/15 处理（默认展开、去 fixed、在舞台容器内呈现）。
+- 待办（PM 已规划，按批次推进）：③ 数据展示（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/mockup/divider/radial-progress/skeleton/stack）；④ 反馈覆盖层（alert/loading/progress/status/toast/tooltip/modal/collapse/dropdown/swap/countdown）；⑤ 区块（hero/footer/carousel/filter/join）；⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。
 
 ---
 
