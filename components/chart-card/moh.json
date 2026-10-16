@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "chart-card",
+  "type": "component",
+  "title": "图表卡（ECharts）",
+  "description": "折线/柱状/环形图表卡，颜色从 --moh-* 变量读取，换主题自动适配",
+  "styleTags": ["增强组件", "数据", "图表"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": ["echarts@5 (CDN)"],
+  "files": ["index.html"],
+  "verified": false
+}
