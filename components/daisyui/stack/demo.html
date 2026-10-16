@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>叠放 Stack · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>叠放 <span class="en">Stack</span></h1>
+  <p>把几张卡片或图片叠成一摞：图册、通知堆、头像组都适用。下面先给一个可以直接拿走的产品图册成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把要叠的卡片放进 <code>stack</code> 容器，第一个子元素在最上层。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>商品图册叠放</h2>
+    <p>三张商品卡错位叠成一摞：鼠标居中在上层，双肩包和保温杯分别露出下半部分。为了在静态页面里看清三张卡，后两张用最小内联偏移演示展开效果。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="stack w-64 mx-auto">
+        <div class="card bg-base-100 border border-base-300 shadow-md">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">无线鼠标</h3>
+            <p class="text-sm opacity-70">静音双模 · 可充电</p>
+            <p class="font-semibold">¥129</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 border border-base-300 shadow-md" style="transform:translate(1.5rem,1.2rem);">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">帆布双肩包</h3>
+            <p class="text-sm opacity-70">通勤电脑仓 · 15.6 英寸</p>
+            <p class="font-semibold">¥199</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 border border-base-300 shadow-md" style="transform:translate(-1.2rem,-0.6rem);">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">保温杯</h3>
+            <p class="text-sm opacity-70">316 不锈钢 · 500ml</p>
+            <p class="font-semibold">¥89</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品图册叠放堆叠">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="叠放 Stack">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>叠放方向</h2>
+    <p class="desc">默认向下对齐（stack-bottom）；<code>stack-top</code> 向上、<code>stack-start</code> 向左、<code>stack-end</code> 向右错开子元素。</p>
+    <div class="doc-stage">
+      <div class="flex flex-wrap items-start gap-8">
+        <div class="stack w-24">
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">A</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">B</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">C</span></div>
+        </div>
+        <div class="stack stack-top w-24">
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">A</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">B</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">C</span></div>
+        </div>
+        <div class="stack stack-start w-24">
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">A</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">B</span></div>
+          <div class="card bg-base-100 border border-base-300 p-3 text-center"><span class="text-sm">C</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>通知堆</h2>
+    <p class="desc">三张通知卡整摞重叠，阴影递减暗示层级：最上面是当前通知。</p>
+    <div class="doc-stage">
+      <div class="stack w-80 max-w-full">
+        <div class="card bg-base-100 shadow-md">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">通知 1</h3>
+            <p class="text-sm opacity-70">您有 3 条未读消息，点击查看。</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">通知 2</h3>
+            <p class="text-sm opacity-70">订单已发货，预计明天送达。</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="card-title text-base">通知 3</h3>
+            <p class="text-sm opacity-70">您收藏的商品降价了。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>色块叠放（代替外链图）</h2>
+    <p class="desc">官方示例用在线图片；零依赖场景下用主题色圆角色块代替，展示图册效果。</p>
+    <div class="doc-stage">
+      <div class="stack w-48">
+        <div class="h-32 w-full rounded-box bg-primary"></div>
+        <div class="h-32 w-full rounded-box bg-secondary"></div>
+        <div class="h-32 w-full rounded-box bg-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block doc-guide">
+    <h2>使用指南</h2>
+    <h3>第一个子元素在最上层</h3>
+    <p><code>stack</code> 把所有子元素放进同一格子重叠：第一张卡在最上层（z-index 最高），后面的卡片依次压在下层并略微透明。想让哪张卡在最前面，就把它放第一个。</p>
+    <h3>hover 展开怎么做</h3>
+    <p>本库工具类补丁未提供 <code>hover:</code> 前缀类，静态演示里用最小内联 <code>transform</code> 把后面的卡片错开；真实项目里的 hover 展开，请用内联 hover CSS 或你项目里的 Tailwind hover 类（如 <code>hover:-translate-x-4</code>），不要为本库写 JS。</p>
+    <h3>限宽防溢出</h3>
+    <p>整个叠摞用 <code>w-*</code> / <code>max-w-full</code> 限宽，手机窄屏不会横向溢出。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/stack/" target="_blank" rel="noopener">daisyui.com/components/stack</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】商品详情页的图册或消息中心的通知堆，把几张卡片叠成一摞，第一张卡在最上层。
+【怎么排】
+- 外层 <div class="stack w-64 mx-auto">：子元素全部重叠在同一格，第一个子元素在最上层（后面的卡片略微透明压在下层）。
+- 每张卡是 <div class="card bg-base-100 border border-base-300 shadow-md">，body p-4：商品名（card-title text-base）+ 一行说明（text-sm opacity-70）+ 价格（font-semibold）。
+- 静态演示用最小内联 transform 把后两张错开（如 style="transform:translate(1.5rem,1.2rem)"），让三张卡的边缘都可见；居中在上层的那张不要偏移。
+【精确规格】
+- 真实 hover 展开：本库补丁没有 hover: 前缀类，请用内联 hover CSS 或你项目里的 Tailwind hover 类（如 hover:-translate-x-4）实现，不要为展开写 JS。
+- 叠摞整体用 w-* / max-w-full 限宽，窄屏不溢出。
+- 方向修饰：stack-top / stack-start / stack-end 分别向上、向左、向右错开。
+- 文案写真实中文（商品名、价格、通知内容），不出现颜色名；代替图片的色块用 bg-primary 等主题色，禁止外链图。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
