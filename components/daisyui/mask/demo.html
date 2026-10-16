@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>形状蒙版 Mask · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>形状蒙版 <span class="en">Mask</span></h1>
+  <p>把图片或色块裁成圆形、心形、六边形、星形等常见形状，团队头像、商品图、勋章点缀都用得上。加一个 <code>mask</code> 类和一个形状类即可，纯 CSS。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把下面占位的渐变块换成你的真实照片：<code>&lt;img class="mask mask-circle h-20 w-20" src="照片地址" alt="姓名"&gt;</code>，裁切形状不变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>团队页上的成员头像排</h2>
+    <p class="desc">团队介绍页常见一排成员头像：正圆形最通用，旁边混用圆角方块和竖六边形，比清一色圆形多一点设计感；头像下方一行姓名。这里用渐变块加人形简影占位，换成真实照片即可。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <div class="flex flex-col items-center gap-2">
+          <div class="mask mask-circle h-20 w-20 flex items-center justify-center" style="background:linear-gradient(135deg,#67e8f9,#3b82f6)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-10 w-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0h-15Z"/></svg>
+          </div>
+          <span class="text-sm">张伟</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="mask mask-squircle h-20 w-20 flex items-center justify-center" style="background:linear-gradient(135deg,#fde68a,#f59e0b)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-10 w-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0h-15Z"/></svg>
+          </div>
+          <span class="text-sm">李娜</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="mask mask-hexagon h-20 w-20 flex items-center justify-center" style="background:linear-gradient(135deg,#86efac,#22c55e)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-10 w-10 text-white"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.25a7.5 7.5 0 0 1 15 0h-15Z"/></svg>
+          </div>
+          <span class="text-sm">王强</span>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="团队页成员头像排（形状蒙版）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="形状蒙版">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：全部 14 种形状 -->
+  <section class="doc-block">
+    <h2>全部 14 种形状</h2>
+    <p class="desc">在 <code>mask</code> 后面加一个形状类即可。圆形最常用；心形、星形这类只在活动页、勋章上少量点缀，别整页都用。</p>
+    <div class="doc-stage">
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-circle h-20 w-20" style="background:linear-gradient(135deg,#67e8f9,#3b82f6)"></div>
+        <span class="text-xs">圆形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-squircle h-20 w-20" style="background:linear-gradient(135deg,#fde68a,#f59e0b)"></div>
+        <span class="text-xs">圆角方块</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-heart h-20 w-20" style="background:linear-gradient(135deg,#fda4af,#e11d48)"></div>
+        <span class="text-xs">心形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-hexagon h-20 w-20" style="background:linear-gradient(135deg,#86efac,#22c55e)"></div>
+        <span class="text-xs">竖六边形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-hexagon-2 h-20 w-20" style="background:linear-gradient(135deg,#5eead4,#14b8a6)"></div>
+        <span class="text-xs">横六边形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-decagon h-20 w-20" style="background:linear-gradient(135deg,#93c5fd,#2563eb)"></div>
+        <span class="text-xs">十边形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-pentagon h-20 w-20" style="background:linear-gradient(135deg,#c4b5fd,#7c3aed)"></div>
+        <span class="text-xs">五边形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-diamond h-20 w-20" style="background:linear-gradient(135deg,#f9a8d4,#db2777)"></div>
+        <span class="text-xs">菱形</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-star h-20 w-20" style="background:linear-gradient(135deg,#fcd34d,#d97706)"></div>
+        <span class="text-xs">五角星</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-star-2 h-20 w-20" style="background:linear-gradient(135deg,#fdba74,#ea580c)"></div>
+        <span class="text-xs">粗五角星</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-triangle h-20 w-20" style="background:linear-gradient(135deg,#86efac,#16a34a)"></div>
+        <span class="text-xs">正三角</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-triangle-2 h-20 w-20" style="background:linear-gradient(135deg,#93c5fd,#1d4ed8)"></div>
+        <span class="text-xs">倒三角</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-triangle-3 h-20 w-20" style="background:linear-gradient(135deg,#5eead4,#0d9488)"></div>
+        <span class="text-xs">左三角</span>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="mask mask-triangle-4 h-20 w-20" style="background:linear-gradient(135deg,#fda4af,#be123c)"></div>
+        <span class="text-xs">右三角</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>怎么用：两个类</h3>
+    <p>任何图片或色块，加 <code>mask</code> 再加一个形状类（如 <code>mask-circle</code>）即可按形状裁切，不需要自己写 <code>border-radius</code>。尺寸用 <code>h-20 w-20</code> 这类宽高类控制。</p>
+    <h3>换成真实照片</h3>
+    <p>本页为了零外链，头像用渐变块加人形简影占位。换成真实照片时，直接写：<code>&lt;img class="mask mask-circle h-20 w-20" src="照片地址" alt="张伟"&gt;</code>，形状类原样保留；<code>img</code> 记得写 <code>alt</code>。</p>
+    <h3>形状怎么选</h3>
+    <ul>
+      <li><code>mask-circle</code> 圆形：最通用，头像默认用它。</li>
+      <li><code>mask-squircle</code> 圆角方块：比圆形略正式，适合产品团队、运营团队。</li>
+      <li><code>mask-hexagon</code> / <code>mask-hexagon-2</code> 六边形：科技感，适合技术团队、芯片类产品。</li>
+      <li>心形、星形、三角形：只在活动页、勋章、标签里少量点缀，头像区不要混用。</li>
+    </ul>
+    <h3>纯 CSS，零依赖</h3>
+    <p>裁切由 CSS mask 完成，不需要 JavaScript、不需要图片处理库；复制出去到任何项目都能直接跑。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/mask/" target="_blank" rel="noopener">daisyui.com/components/mask</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】团队介绍页上一排成员头像，用裁切形状展示，比清一色正圆头像多一点设计感。
+【怎么排】
+- 一排头像用 flex flex-wrap items-center justify-center gap-4；
+- 每张头像是一个固定尺寸的块（h-20 w-20），底色用内联 linear-gradient 渐变；外层套 mask + 形状类（mask-circle / mask-squircle / mask-hexagon）把方块裁成指定形状；
+- 头像中央放一个白色人形简影 SVG 居中（flex items-center justify-center）；
+- 头像下方一行 text-sm 的成员姓名。
+【精确规格】
+- 结构：<div class="mask mask-circle h-20 w-20 flex items-center justify-center" style="background:linear-gradient(135deg,#67e8f9,#3b82f6)">…人形 SVG…</div>；mask 类负责裁切，不要再写 border-radius。
+- 头像先用内联渐变 + SVG 占位即可；换成真实照片时改成 <img class="mask mask-circle h-20 w-20" src="照片地址" alt="姓名">，形状类保留，img 必须写 alt。
+- 一排里形状不要乱用：正圆形最通用，squircle 适合产品团队，心形/星形这类只在活动页少量点缀。
+- 颜色全部用一组克制的浅→深渐变，不要高饱和撞色；头像文字用中文真实姓名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
