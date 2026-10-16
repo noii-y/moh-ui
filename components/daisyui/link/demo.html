@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>链接 Link · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>链接 <span class="en">Link</span></h1>
+  <p>网页里指向另一个页面或位置的跳转。daisyUI 的 link 把被 Tailwind 重置掉的下划线加回来，并提供一套语义色。下面先给一个登录 / 注册卡片底部的链接区成品，再列出颜色、下划线等写法供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色、下划线只改 <code>class</code> 即可；切换主题后，链接颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：登录/注册卡片底部链接区 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>登录卡片底部的协议与辅助链接区</h2>
+    <p class="desc">正文协议句里嵌几处主色链接（《用户服务协议》《隐私政策》），邮箱地址只用颜色不画下划线（hover 才出现）；底部一行左右分开，左边「忘记密码？」是低频辅助操作，右边「立即注册」是引导新用户的主跳转。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="rounded-box border border-base-300 p-5 max-w-lg w-full">
+        <p class="text-sm leading-relaxed">
+          登录即代表你已阅读并同意
+          <a class="link link-primary" href="#">《用户服务协议》</a>、
+          <a class="link link-primary" href="#">《隐私政策》</a>
+          与 <a class="link link-primary" href="#">《儿童个人信息保护规则》</a>；
+          遇到账号问题可发邮件到
+          <a class="link link-hover" href="mailto:support@example.cn">support@example.cn</a>，
+          或访问
+          <span class="inline-flex items-center gap-1">
+            <a class="link" href="https://example.cn" target="_blank" rel="noopener">帮助中心</a>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+          </span>。
+        </p>
+        <div class="flex justify-between mt-4 text-sm">
+          <a class="link link-hover" href="#">忘记密码？</a>
+          <a class="link link-primary" href="#">还没有账号？立即注册</a>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="登录卡片底部的协议与辅助链接区（链接）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="链接">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>基础链接：带下划线</h2>
+    <p class="desc">加 <code>link</code> 把下划线加回来，最适合正文段落里嵌的链接——用户能一眼认出「这是可以点的」。</p>
+    <div class="doc-stage">
+      <p class="text-sm">看完了这份
+        <a class="link" href="#">会员服务说明</a>，还可以查看
+        <a class="link" href="#">常见问题</a> 或
+        <a class="link" href="#">联系在线客服</a>。</p>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>语义色链接：颜色表达轻重</h2>
+    <p class="desc">在 <code>link</code> 后面接语义色，链接文字仍写真实动作。主色用于最想引导的跳转，错误 / 警告只在含义明确时用。</p>
+    <div class="doc-stage col">
+      <a class="link link-primary" href="#">提交申请</a>
+      <a class="link link-secondary" href="#">联系客服</a>
+      <a class="link link-accent" href="#">收藏本页</a>
+      <a class="link link-neutral" href="#">回到首页</a>
+      <a class="link link-info" href="#">了解配送说明</a>
+      <a class="link link-success" href="#">查看已发货订单</a>
+      <a class="link link-warning" href="#">该优惠即将到期</a>
+      <a class="link link-error" href="#">申请已被驳回</a>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>只有 hover 才显示下划线</h2>
+    <p class="desc">加 <code>link-hover</code>：平时是一行干净的彩色文字，鼠标移上去才出现下划线。适合导航、辅助操作这类不想让下划线打断排版的地方。</p>
+    <div class="doc-stage col">
+      <a class="link link-hover" href="#">忘记密码？</a>
+      <a class="link link-hover" href="#">找回账号</a>
+      <a class="link link-hover" href="#">切换到企业账户</a>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>无下划线的彩色链接</h2>
+    <p class="desc">只加颜色类（如 <code>link-primary</code>）、不加 <code>link</code>，就得到「有颜色、没下划线」的链接。这也是正文里最常见的写法：靠颜色区分，不靠下划线。</p>
+    <div class="doc-stage col">
+      <p class="text-sm">新用户完成首单立减 20 元，
+        <a class="link-primary" href="#">查看活动详情</a>。</p>
+      <p class="text-sm">发货后可在
+        <a class="link-secondary" href="#">订单中心</a> 查看物流进度。</p>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>外链与新窗口打开</h2>
+    <p class="desc">指向站外地址用真实 <code>&lt;a&gt;</code>；新窗口打开要同时写 <code>target="_blank"</code> 和 <code>rel="noopener"</code>（安全要求）。后面跟一个外链小图标，让用户知道会跳到站外。</p>
+    <div class="doc-stage col">
+      <a class="link" href="https://daisyui.com" target="_blank" rel="noopener">daisyUI 官方文档
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+      </a>
+      <a class="link link-hover" href="mailto:support@example.cn">发送邮件给客服</a>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>链接还是按钮</h3>
+    <p><strong>跳转、看详情、到另一个页面</strong>用 <code>&lt;a class="link"&gt;</code>；<strong>提交、保存、删除、弹出框</strong>这类动作依旧用 <code>&lt;button&gt;</code>。不要用链接去假装执行动作，也不要用按钮去做页面跳转。</p>
+    <h3>下划线要不要画</h3>
+    <ul>
+      <li><code>link</code>：带下划线，正文段落里最稳，一眼能点。</li>
+      <li><code>link link-hover</code>：平时干净、hover 才出下划线，适合导航与辅助操作。</li>
+      <li>只写 <code>link-primary</code> 不写 <code>link</code>：纯彩色无下划线，适合已经很明确的跳转语境。</li>
+    </ul>
+    <h3>颜色是有含义的</h3>
+    <p>主色只留给最想引导用户走的那一个跳转；<code>link-error</code>、<code>link-warning</code> 只有在「被驳回」「即将到期」这类含义明确时才用，不要为了好看把链接染成红色。</p>
+    <h3>外链与安全</h3>
+    <p>新窗口打开外链必须成对写 <code>target="_blank"</code> 与 <code>rel="noopener"</code>，否则新页面能通过 <code>window.opener</code> 反向操作你的页面。站内跳转不要随意开新窗口。</p>
+    <h3>可访问性</h3>
+    <p>链接要有足够的颜色对比（正文 ≥ 4.5:1）；不要只靠颜色区分可点与不可点，正文里的链接保留下划线或 hover 反馈；键盘 Tab 焦点描边不要去掉。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/link/" target="_blank" rel="noopener">daisyui.com/components/link</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一张登录 / 注册卡片底部的链接区：正文是一句登录协议说明，里面嵌「用户服务协议」「隐私政策」几处跳转；底部一行左右分开，左边是低频辅助操作「忘记密码？」，右边是引导新用户的主跳转「立即注册」。
+【怎么排】
+- 用一个带细边框的浅容器（rounded-box border border-base-300 p-5 max-w-lg w-full）把链接区包起来；
+- 协议正文用 text-sm leading-relaxed，正文里的协议名链接用 link link-primary（带下划线的主色）；
+- 邮箱地址用 link link-hover（只有 hover 才显示下划线），正文里保持干净；
+- 外链「帮助中心」用 link 并跟一个外链小图标（h-4 w-4 的 arrow-up-right SVG）；
+- 底部一行用 flex justify-between mt-4 text-sm 左右分开：左边「忘记密码？」用 link link-hover，右边「立即注册」用 link link-primary。
+【精确规格】
+- 是跳转就用真实 <a>，href 写 # 或真实地址；外链新窗口打开必须同时写 target="_blank" 和 rel="noopener"。
+- 链接文字写真实动作，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：link、link-primary、link-secondary、link-hover、rounded-box、border-base-300、p-5、max-w-lg、w-full、text-sm、leading-relaxed、flex、justify-between、mt-4、inline-flex、items-center、gap-1、h-4、w-4。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色；除展示外不要加任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

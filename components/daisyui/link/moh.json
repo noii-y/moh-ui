@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-link",
+  "type": "component",
+  "title": "链接",
+  "description": "搬运自 daisyUI 的链接组件：基础下划线链接、全套语义色、hover 才显示下划线、无下划线彩色链接、外链新窗口写法，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "导航"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/link/",
+    "license": "MIT",
+    "changes": "新建搬运官网 class 版 demo，将示例文案改为真实中文业务动作，补充登录卡片协议链接区成品与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
