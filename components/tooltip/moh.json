@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "tooltip",
+  "type": "component",
+  "title": "提示",
+  "description": "纯 CSS hover+focus 显示，上下位置，aria-describedby 关联，零依赖",
+  "styleTags": ["基础组件", "反馈", "浮层"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

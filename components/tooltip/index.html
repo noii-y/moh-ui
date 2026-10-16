@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-tooltip · 提示</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-tooltip · 提示（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量（纯 CSS，零 JS）
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：hover 与键盘 focus 都显示；上/下两种位置
+       要点：tip 用 pointer-events:none 不挡交互；触发元素
+          aria-describedby 关联 tip；动效 ≤150ms
+       ============================================================ */
+
+    .moh-tooltip {
+      position: relative;
+      display: inline-flex;
+    }
+
+    /* tip 默认隐藏 */
+    .moh-tooltip__tip {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      bottom: calc(100% + 6px);
+      padding: 4px var(--moh-space-2);
+      background: var(--moh-ink);
+      color: var(--moh-surface);
+      border-radius: var(--moh-radius-sm);
+      font-size: var(--moh-text-xs);
+      line-height: 1.4;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 150ms ease, transform 150ms ease;
+      z-index: 10;
+    }
+
+    /* 下方位置 */
+    .moh-tooltip__tip--bottom {
+      top: calc(100% + 6px);
+      bottom: auto;
+      transform: translateX(-50%) translateY(-4px);
+    }
+
+    /* hover 与键盘 focus 都显示 */
+    .moh-tooltip:hover .moh-tooltip__tip,
+    .moh-tooltip:focus-within .moh-tooltip__tip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* 触发元素焦点可见 */
+    .moh-tooltip__trigger:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* 演示触发元素 */
+    .demo-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-4);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-surface);
+      color: var(--moh-ink);
+      font-size: var(--moh-text-sm);
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .demo-trigger:hover { border-color: var(--moh-border-strong); background: var(--moh-surface-2); }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      gap: var(--moh-space-6);
+      padding: var(--moh-space-8) var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <!-- 上方提示 -->
+    <span class="moh-tooltip">
+      <button class="moh-tooltip__trigger demo-trigger" aria-describedby="tip-save">保存</button>
+      <span class="moh-tooltip__tip" id="tip-save" role="tooltip">快捷键 Ctrl+S</span>
+    </span>
+
+    <!-- 下方提示 -->
+    <span class="moh-tooltip">
+      <button class="moh-tooltip__trigger demo-trigger" aria-describedby="tip-del">删除</button>
+      <span class="moh-tooltip__tip moh-tooltip__tip--bottom" id="tip-del" role="tooltip">删除后不可恢复</span>
+    </span>
+  </div>
+  <p class="demo-note">提示：hover 与 Tab 聚焦都显示（focus-within）；tip 用 pointer-events:none 不挡点击；触发元素 aria-describedby 关联。</p>
+</body>
+</html>
