@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>标签页 Tab · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>标签页 <span class="en">Tab</span></h1>
+  <p>把同一层级的几类内容收进一排标签，点哪个就显示哪块，不用翻页。下面先给一个订单中心的成品，再列出下划线、提升、盒装等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">换形态只改容器 class（<code>tabs-border</code> / <code>tabs-lift</code> / <code>tabs-box</code>）即可；切换主题后，整套标签颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：订单中心标签 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>订单中心按状态切换的标签页</h2>
+    <p class="desc">订单按状态分成六类，用同名 radio 纯 CSS 实现切换、零 JS；默认落在「待发货」，下面直接显示这两笔订单和各自的操作按钮。标签行在手机宽度放不下时自然折成两行，六个标签都看得到，整页不会被横向撑宽。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="w-full">
+        <div class="tabs tabs-border w-full">
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="全部" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <span class="text-sm">全部订单共 12 笔，按最近下单时间排列。</span>
+          </div>
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="待付款" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <span class="text-sm">待付款 1 单：请在今天 23:59 前完成支付，超时自动取消。</span>
+          </div>
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="待发货" checked="checked" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <div class="flex flex-col gap-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-sm">慕思双人床架 1.8m · ¥2,399.00</span>
+                <button class="btn btn-sm btn-primary">提醒发货</button>
+              </div>
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-sm">全棉四件套 高级灰 · ¥329.00</span>
+                <button class="btn btn-sm btn-primary">提醒发货</button>
+              </div>
+            </div>
+          </div>
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="待收货" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <span class="text-sm">待收货 3 单：物流均已更新，预计明天送达。</span>
+          </div>
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="已完成" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <span class="text-sm">已完成订单 6 笔，交易关闭后 15 天内可申请售后。</span>
+          </div>
+          <input type="radio" name="order_status" class="tab shrink-0" aria-label="售后" />
+          <div class="tab-content border-base-300 bg-base-100 p-4">
+            <span class="text-sm">售后 0 笔：暂无进行中的工单。</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="订单中心按状态切换的标签页（标签页 Tab）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="标签页">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>下划线标签（最常用）</h2>
+    <p class="desc">加 <code>tabs-border</code>，当前标签底部一条主色下划线，是内容站、订单中心最常用的形态。标签可以用 <code>&lt;a&gt;</code> 写，当前项加 <code>tab-active</code>。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-border w-full">
+        <a role="tab" class="tab">商品</a>
+        <a role="tab" class="tab tab-active">评价</a>
+        <a role="tab" class="tab">详情</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>提升式标签</h2>
+    <p class="desc">加 <code>tabs-lift</code>，当前标签像被抬起来、与下方内容连成一块，适合后台面板里的子区域切换。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-lift w-full">
+        <input type="radio" name="panel_tab" class="tab" aria-label="账户设置" />
+        <div class="tab-content bg-base-100 border-base-300 p-4">账户设置：修改头像、手机号与登录密码。</div>
+        <input type="radio" name="panel_tab" class="tab" aria-label="通知偏好" checked="checked" />
+        <div class="tab-content bg-base-100 border-base-300 p-4">通知偏好：订单动态开推送，营销活动不推送。</div>
+        <input type="radio" name="panel_tab" class="tab" aria-label="隐私" />
+        <div class="tab-content bg-base-100 border-base-300 p-4">隐私：收货地址仅本设备可见。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>盒装标签</h2>
+    <p class="desc">加 <code>tabs-box</code>，一排连在一起像分段控制器，当前项是实心主色块，适合数量少、并列的视图切换。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-box">
+        <input type="radio" name="view_box" class="tab" aria-label="月视图" />
+        <input type="radio" name="view_box" class="tab" aria-label="周视图" checked="checked" />
+        <input type="radio" name="view_box" class="tab" aria-label="日视图" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>标签在内容下方</h2>
+    <p class="desc">加 <code>tabs-bottom</code>，标签排到内容下面，适合底部弹窗里的少量分类切换。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-lift tabs-bottom w-full">
+        <input type="radio" name="bottom_tab" class="tab" aria-label="热门" />
+        <div class="tab-content bg-base-100 border-base-300 p-4">热门内容：本周收藏最多的 10 篇。</div>
+        <input type="radio" name="bottom_tab" class="tab" aria-label="最新" checked="checked" />
+        <div class="tab-content bg-base-100 border-base-300 p-4">最新内容：今天凌晨更新的 3 篇。</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用标签</h2>
+    <p class="desc">加 <code>tab-disabled</code> 表示这个分类暂未开放，置灰且点不动；旁边最好放一句说明为什么不可用。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-border w-full">
+        <a role="tab" class="tab">通用设置</a>
+        <a role="tab" class="tab tab-active">安全设置</a>
+        <a role="tab" class="tab tab-disabled">发票管理（企业认证后开放）</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合表格上方的筛选条，大尺寸适合页面顶部主导航。</p>
+    <div class="doc-stage col">
+      <div class="tabs tabs-lift tabs-sm w-full">
+        <a role="tab" class="tab tab-active">全部</a>
+        <a role="tab" class="tab">进行中</a>
+        <a role="tab" class="tab">已归档</a>
+      </div>
+      <div class="tabs tabs-lift tabs-lg w-full">
+        <a role="tab" class="tab">简介</a>
+        <a role="tab" class="tab tab-active">评价 328</a>
+        <a role="tab" class="tab">售后</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>标签页不是表单单选</h3>
+    <p>标签页用来切换<strong>可见的内容区块</strong>（订单状态、商品详情页的几个区块）；表单里「选一个付款方式」那类才是单选框 Radio。两者都用同名 <code>name</code>，别混用。</p>
+    <h3>纯 CSS 切换：radio 加紧跟的内容块</h3>
+    <p>零 JS 写法是一组同名 <code>&lt;input type="radio" class="tab"&gt;</code>，每选一个，它后面紧跟的那块 <code>.tab-content</code> 才显示。想默认打开哪一类，就给那个 radio 加 <code>checked</code>，它的内容会自动露出来——截图前务必确认当前项的内容是可见的。</p>
+    <h3>每组标签 name 唯一</h3>
+    <p>同一个页面里有多组标签时，每组 radio 的 <code>name</code> 必须不同（如 <code>order_status</code>、<code>panel_tab</code>），否则会互相串台、一起取消选中。</p>
+    <h3>标签太多：折行还是横滑</h3>
+    <p>带 <code>tab-content</code> 的 radio 标签（如本页成品）要靠标签自动换行，把内容块挤到标签行下方，所以窄屏放不下时让它自然折成两行、别强行 <code>flex-nowrap</code>；只有<strong>纯标签、不带内容块</strong>的链接式标签（如下划线、提升、盒装那几个），才适合在窄屏外层包 <code>overflow-x-auto</code>、每项加 <code>shrink-0</code> 做成单行横向滑动。无论哪种，都不能把整页撑出横向滚动条。</p>
+    <h3>可访问性</h3>
+    <p>用 <code>&lt;a&gt;</code> 做标签时加 <code>role="tab"</code>；用 radio 做标签时用 <code>aria-label</code> 写出中文标签名，读屏软件才能念出来。键盘方向键可在 radio 组间切换，焦点描边不要去掉。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/tab/" target="_blank" rel="noopener">daisyui.com/components/tab</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商订单中心：订单按状态分成 全部 / 待付款 / 待发货 / 待收货 / 已完成 / 售后 六类，点标签切换下方订单列表，默认选中并显示「待发货」。
+【怎么排】
+- 容器用 <div class="tabs tabs-border">，六个标签是一组同名 radio（name="order_status"），class 写 "tab"，用 aria-label 写中文标签名；
+- 每个 radio 后面紧跟一块 <div class="tab-content border-base-300 bg-base-100 p-4">，只显示当前选中项对应的那块内容；
+- 「待发货」radio 加 checked 默认选中，内容里列出 2 笔订单（商品名 + 金额用 text-sm），每笔右侧一个 btn btn-sm btn-primary「提醒发货」，整行用 flex flex-wrap items-center justify-between gap-2；
+- 其它标签内容也写真实短句（如「待付款 1 单：请在今天 23:59 前完成支付」），不要留空；
+- 标签行在手机宽度放不下时允许自然折成两行（六个标签都看得到，不能被截断），整页不允许出现横向滚动条；不要为了单行把标签缩得很窄。
+【精确规格】
+- 六组标签 name 必须全部相同（order_status）；同一页面若还有别的标签组，name 要另起一个。
+- 文案写真实订单业务内容，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：tabs、tabs-border、tab、tab-content、tab-active、border-base-300、bg-base-100、p-4、w-full、shrink-0、flex、flex-wrap、flex-col、items-center、justify-between、gap-2、gap-3、text-sm、btn、btn-sm、btn-primary。
+- 纯 CSS 即可，切换靠 radio checked，不要写任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
