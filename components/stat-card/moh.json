@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "stat-card",
+  "type": "component",
+  "title": "统计卡",
+  "description": "标签 + 大数字 + 涨跌趋势 + 可选脚注/图标，tabular-nums 防跳动",
+  "styleTags": ["基础组件", "数据", "看板"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

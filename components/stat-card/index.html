@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-stat-card · 统计卡</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-stat-card · 统计卡（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：标签 + 大数字 + 趋势（涨跌箭头+百分比）+ 可选脚注
+       要点：数字 tabular-nums 防跳动；趋势色用语义变量；
+         图标用 currentColor 跟随 muted
+       ============================================================ */
+
+    .moh-stat-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-1);
+      padding: var(--moh-space-4);
+      background: var(--moh-surface);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-lg);
+      box-shadow: var(--moh-shadow-sm);
+      min-width: 180px;
+    }
+
+    .moh-stat-card__label {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--moh-space-2);
+    }
+
+    /* 右侧大图标（可选）：颜色 muted */
+    .moh-stat-card__icon {
+      width: 20px;
+      height: 20px;
+      color: var(--moh-border-strong);
+    }
+    .moh-stat-card__icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .moh-stat-card__value {
+      font-size: var(--moh-text-xl);
+      font-weight: 600;
+      color: var(--moh-ink);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.2;
+    }
+
+    .moh-stat-card__trend {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: var(--moh-text-xs);
+      font-weight: 500;
+    }
+
+    .moh-stat-card__trend--up { color: var(--moh-success); }
+    .moh-stat-card__trend--down { color: var(--moh-danger); }
+    .moh-stat-card__trend--flat { color: var(--moh-muted); }
+
+    .moh-stat-card__trend svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .moh-stat-card__foot {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding-top: var(--moh-space-2);
+      border-top: 1px solid var(--moh-border);
+    }
+
+    /* 可访问性：统计卡内若出现链接/按钮（如点击跳转），焦点必须可见 */
+    .moh-stat-card a:focus-visible,
+    .moh-stat-card button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <!-- 上升 -->
+    <div class="moh-stat-card">
+      <div class="moh-stat-card__label">本月新增用户</div>
+      <div class="moh-stat-card__value">1,284</div>
+      <div>
+        <span class="moh-stat-card__trend moh-stat-card__trend--up">
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 9 6 5l2 2 2-2.5" /><path d="M8 4h2v2" /></svg>
+          +12.4%
+        </span>
+      </div>
+      <div class="moh-stat-card__foot">较上月</div>
+    </div>
+
+    <!-- 下降 -->
+    <div class="moh-stat-card">
+      <div class="moh-stat-card__label">转化率</div>
+      <div class="moh-stat-card__value">3.2%</div>
+      <div>
+        <span class="moh-stat-card__trend moh-stat-card__trend--down">
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 3 6 7l2-2 2 2.5" /><path d="M8 8h2V6" /></svg>
+          -0.8%
+        </span>
+      </div>
+      <div class="moh-stat-card__foot">较上月</div>
+    </div>
+
+    <!-- 持平 + 右侧图标 -->
+    <div class="moh-stat-card">
+      <div class="moh-stat-card__label">
+        在线设备
+        <span class="moh-stat-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2" /><path d="M9 6h6" /><path d="M12 6v4" /></svg>
+        </span>
+      </div>
+      <div class="moh-stat-card__value">96</div>
+      <div>
+        <span class="moh-stat-card__trend moh-stat-card__trend--flat">
+          <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h8" /></svg>
+          持平
+        </span>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">提示：大数字用 tabular-nums 防止宽度跳动；涨跌箭头用语义色（绿涨红跌），图标 currentColor 跟随主题。</p>
+</body>
+</html>
