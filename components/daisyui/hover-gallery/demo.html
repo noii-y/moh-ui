@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>悬停画廊 Hover Gallery · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>悬停画廊 <span class="en">Hover Gallery</span></h1>
+  <p>一个图位默认只露第一张图，鼠标在图上左右滑过，就逐张切换到下一个角度。电商商品卡的多角度展示常用它，纯 CSS、不需要轮播组件。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">加几张图就自动切出几列感应区；把占位块换成自己的 <code>&lt;img&gt;</code>，图片想换几张就放几张（最多 10 张）。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>电商商品卡的多角度图</h2>
+    <p class="desc">同一个商品的正面、充电盒、佩戴三张图叠在一个图位里：平时只露正面图，鼠标从左到右滑过图片区，感应列会逐张切到对应角度。这里图区用渐变加线性图标占位，换成你的真实商品图即可。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="card bg-base-100 shadow-sm w-full max-w-md">
+        <figure class="hover-gallery aspect-square">
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#64748b,#94a3b8)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-20 w-20 text-white opacity-70"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+          </div>
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#475569,#64748b)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-20 w-20 text-white opacity-70"><rect x="3.5" y="8" width="17" height="11" rx="3"/><line x1="3.5" y1="12.5" x2="20.5" y2="12.5"/><circle cx="17" cy="16.5" r="0.8" fill="currentColor"/></svg>
+          </div>
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#52657a,#7d8ca3)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-20 w-20 text-white opacity-70"><path d="M5.5 18.5a9 9 0 0 1 0-13"/><path d="M8.5 15.5a5 5 0 0 1 0-7"/><circle cx="12" cy="12" r="1.1" fill="currentColor"/></svg>
+          </div>
+        </figure>
+        <div class="card-body">
+          <div class="flex items-center justify-between gap-2">
+            <h2 class="card-title">云感无线耳机 Pro</h2>
+            <span class="badge badge-warning">新品</span>
+          </div>
+          <p class="text-2xl font-bold">¥329 <span class="text-sm font-normal opacity-50 line-through">¥399</span></p>
+          <p class="text-sm opacity-70">主动降噪 · 30 小时续航 · 支持双设备连接</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-circle btn-ghost" aria-label="收藏">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            </button>
+            <button class="btn btn-primary">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商商品卡多角度图（悬停画廊）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="悬停画廊">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：纯画廊 4 图 -->
+  <section class="doc-block">
+    <h2>纯画廊（不套卡片）</h2>
+    <p class="desc">直接用 <code>figure.hover-gallery</code>：放几张图就自动切出几列感应区，第一张铺满可见，其余图藏在感应列里。这里放了 4 张，鼠标在图上从左往右滑，会依次切到第 2、3、4 张；用 <code>max-w-60</code> 限定图位宽度。</p>
+    <div class="doc-stage">
+      <figure class="hover-gallery max-w-60 aspect-square">
+        <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#64748b,#94a3b8)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-70"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+        </div>
+        <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#475569,#64748b)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-70"><rect x="3.5" y="8" width="17" height="11" rx="3"/><line x1="3.5" y1="12.5" x2="20.5" y2="12.5"/><circle cx="17" cy="16.5" r="0.8" fill="currentColor"/></svg>
+        </div>
+        <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#52657a,#7d8ca3)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-70"><path d="M5.5 18.5a9 9 0 0 1 0-13"/><path d="M8.5 15.5a5 5 0 0 1 0-7"/><circle cx="12" cy="12" r="1.1" fill="currentColor"/></svg>
+        </div>
+        <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#5b6b7f,#8b9bb0)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-70"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M3.5 9h17"/><path d="M3.5 15h17"/></svg>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 变体：卡片内商品画廊（max-w-60 紧凑卡） -->
+  <section class="doc-block">
+    <h2>紧凑商品卡（一行摆好几张）</h2>
+    <p class="desc">目录页、推荐位的小卡：<code>card-sm</code> 收紧内边距，<code>max-w-60</code> 限定宽度，图在上、名称价格在下，底部一个小按钮。适合一排并排多个商品。</p>
+    <div class="doc-stage">
+      <div class="card card-sm bg-base-200 max-w-60 shadow-sm">
+        <figure class="hover-gallery aspect-square">
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#94a3b8,#cbd5e1)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-80"><path d="M5 8h14l-1.4 10.5a2 2 0 0 1-2 1.5H8.4a2 2 0 0 1-2-1.5Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+          </div>
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#7d8ca3,#a8b8cc)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-80"><path d="M5 8h14l-1.4 10.5a2 2 0 0 1-2 1.5H8.4a2 2 0 0 1-2-1.5Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M9 13h6"/></svg>
+          </div>
+          <div class="flex items-center justify-center" style="background:linear-gradient(135deg,#64748b,#94a3b8)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-16 w-16 text-white opacity-80"><path d="M5 8h14l-1.4 10.5a2 2 0 0 1-2 1.5H8.4a2 2 0 0 1-2-1.5Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M8 17l2.5-3 2 1.5L16 13"/></svg>
+          </div>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title flex justify-between">
+            通勤帆布托特包
+            <span class="font-normal">¥129</span>
+          </h2>
+          <p class="text-sm opacity-70">16 安棉质帆布 · 可放 14 寸电脑</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary btn-sm">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>怎么把占位换成真实商品图</h3>
+    <p>本页为零外链演示，图区用渐变加线性图标占位。正式项目里，把每个 <code>&lt;div&gt;</code> 占位块换成 <code>&lt;img src="..." alt="…" /&gt;</code> 即可——官方原生用法就是 <code>figure.hover-gallery</code> 里直接叠若干 <code>&lt;img&gt;</code>。第一张是默认展示图，其余按前后顺序藏进感应列。</p>
+    <h3>图越多，感应列越多</h3>
+    <p>画廊里放 N 张图，就自动切成 N−1 条感应列：鼠标悬停第几条感应列，就切到第几张图。最多支持 10 张；实际用 3～6 张手感最好，列太窄反而不好对准。</p>
+    <h3>静态截图里为什么只看到一张</h3>
+    <p>切换只发生在鼠标悬停的瞬间，所以静态截图、卡片缩略图只能看到默认的第一张——这是正常的，不是 bug。桌面鼠标体验最完整；触屏手机上没有持续的 hover，点按图片对应区域可短暂切换，重要角度不要只靠 hover 才能看到。</p>
+    <h3>图区高度怎么定</h3>
+    <p>放真实 <code>&lt;img&gt;</code> 时，图片自身比例会撑开图位高度。本页用 <code>aspect-square</code>（正方形 1:1）给占位块定高；想要 16:9 宽幅就换 <code>aspect-video</code>。不要不给高度，否则占位块会塌成一条线。</p>
+    <h3>可访问性</h3>
+    <p>每张图都要写 <code>alt</code>；悬停切换不能成为看商品细节的唯一途径，关键信息（颜色、尺寸）仍要在文字里写清楚。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/hover-gallery/" target="_blank" rel="noopener">daisyui.com/components/hover-gallery</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商列表里的一张商品卡：同一个商品的 3 张角度图（正面、配件、佩戴）叠在同一个图位里，平时只露第一张，鼠标左右滑过图位就逐张切换，下方是名称、价格和「加入购物车」按钮。
+【怎么排】
+- 外层是一张商品卡：div class="card bg-base-100 shadow-sm w-full max-w-md"。
+- 图位用 figure class="hover-gallery aspect-square"：里面叠 3 个等大的块（正式项目用 <img>，这里演示用渐变+居中线性 SVG 占位）；默认只显示第 1 张，鼠标滑过图位左半切到第 2 张、右半切到第 3 张，这是组件自带的 hover 横滑效果，不用写 JS。
+- 卡身 card-body 从上到下：商品名 + 「新品」徽标一行（flex justify-between）→ 大价格 + 划线原价一行 → 一行卖点小字 → 底部操作行（收藏图标按钮 + 主按钮「加入购物车」，靠右 justify-end）。
+【精确规格】
+- 画廊本体：<figure class="hover-gallery aspect-square">，子元素直接平铺即可，不要额外定位；放几张图就自动出几列感应区。
+- 图区用渐变背景 + 居中的白色线性 SVG 图标（h-20 w-20、opacity-70、stroke-current）占位，不要外链图片；正式项目换成 <img src> 并写 alt。
+- 按钮写真实动作「加入购物车」，禁止出现 Primary 这类颜色名；收藏是纯图标按钮，必须带 aria-label="收藏"。
+- 价格用 text-2xl font-bold，原价用 text-sm + opacity-50 + 删除线弱化；卖点小字 text-sm opacity-70。
+- 颜色全部走 daisyUI 主题变量，不写死颜色；手机 390px 下卡片不溢出、按钮不被裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

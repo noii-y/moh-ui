@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-hover-gallery",
+  "type": "component",
+  "title": "悬停画廊",
+  "description": "搬运自 daisyUI 的悬停画廊：默认露第一张图，鼠标横向滑过图位逐张切换多角度图；覆盖纯画廊、卡片内商品画廊、max-w-60 紧凑商品卡等形态，零依赖纯 CSS。",
+  "styleTags": ["数据展示", "商务"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/hover-gallery/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），外链商品图替换为内联渐变+线性 SVG 占位（教程教换 <img> 真图），新增电商商品卡成品与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
