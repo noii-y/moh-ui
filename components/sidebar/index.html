@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-sidebar · 侧边栏</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-sidebar · 侧边栏（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       结构：分组标题 + 菜单项（图标 + 文字），激活项 primary 色
+       要点：宽 224px；激活项浅底 + 主色文字；悬浮浅灰底
+       ============================================================ */
+
+    .moh-sidebar {
+      width: 224px;
+      padding: var(--moh-space-3);
+      background: var(--moh-surface);
+      border-right: 1px solid var(--moh-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-2);
+    }
+
+    /* 分组标题 */
+    .moh-sidebar__group {
+      margin-top: var(--moh-space-3);
+    }
+    .moh-sidebar__group:first-child {
+      margin-top: 0;
+    }
+
+    .moh-sidebar__group-title {
+      padding: var(--moh-space-1) var(--moh-space-2);
+      font-size: var(--moh-text-xs);
+      font-weight: 500;
+      color: var(--moh-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .moh-sidebar__items {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    /* 菜单项 */
+    .moh-sidebar__item {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      padding: var(--moh-space-2) var(--moh-space-3);
+      border-radius: var(--moh-radius-md);
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+      text-decoration: none;
+      transition: var(--moh-transition);
+    }
+
+    .moh-sidebar__item:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+
+    .moh-sidebar__item--active {
+      color: var(--moh-primary);
+      background: var(--moh-primary-muted);
+      font-weight: 500;
+    }
+
+    .moh-sidebar__item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* 焦点态（可访问性） */
+    .moh-sidebar a:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: -2px;
+      border-radius: var(--moh-radius-md);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      min-height: 420px;
+      background: var(--moh-canvas);
+      padding: var(--moh-space-6);
+      gap: var(--moh-space-4);
+    }
+    .demo-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed var(--moh-border);
+      border-radius: var(--moh-radius-lg);
+      color: var(--moh-muted);
+      font-size: var(--moh-text-sm);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <aside class="moh-sidebar">
+      <div class="moh-sidebar__group">
+        <p class="moh-sidebar__group-title">工作台</p>
+        <div class="moh-sidebar__items">
+          <a class="moh-sidebar__item" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /></svg>
+            概览
+          </a>
+          <a class="moh-sidebar__item moh-sidebar__item--active" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
+            项目管理
+          </a>
+          <a class="moh-sidebar__item" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            团队成员
+          </a>
+        </div>
+      </div>
+
+      <div class="moh-sidebar__group">
+        <p class="moh-sidebar__group-title">配置</p>
+        <div class="moh-sidebar__items">
+          <a class="moh-sidebar__item" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16" /><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
+            系统设置
+          </a>
+          <a class="moh-sidebar__item" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><path d="M12 17h.01" /></svg>
+            帮助中心
+          </a>
+        </div>
+      </div>
+    </aside>
+    <div class="demo-content">内容区（配合 navbar / table / card 使用）</div>
+  </div>
+</body>
+</html>
