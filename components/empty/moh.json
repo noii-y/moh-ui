@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "empty",
+  "type": "component",
+  "title": "空状态",
+  "description": "图标 + 标题 + 说明 + 可选操作按钮，紧凑变体供表格内嵌，文案鼓励下一步",
+  "styleTags": ["基础组件", "反馈", "列表"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
