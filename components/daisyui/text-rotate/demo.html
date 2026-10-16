@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>文字轮转 Text Rotate · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>文字轮转 <span class="en">Text Rotate</span></h1>
+  <p>一句话里的关键词自动轮换：把「写文案 / 做设计 / 写代码」这类词组放在一个只显示一行高的窗口里循环滚动，适合官网首屏大标语。下面先给一个可以直接拿走的成品，再列出各种用法供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">轮换词换成你自己的业务词组；想改速度、行距，直接写内联 <code>style</code>，不用找类名。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>SaaS 官网首屏一句会轮换的大标语</h2>
+    <p class="desc">大标语里只让中间那个关键词动：主色高亮的「写文案 / 做设计 / 写代码」每 3 秒左右轮换一个，其余文字稳住不动，首屏既有记忆点又不吵。轮换效果在浏览器里实时播放，静态截图只能看到第一个词「写文案」。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="w-full py-12 text-center">
+        <p class="mb-4 font-bold text-primary">智能工作台 · 新发布</p>
+        <h2 class="text-5xl font-bold leading-tight">
+          一个人也能把产品
+          <br />
+          <span class="text-primary">
+            <span class="text-rotate">
+              <span>
+                <span>写文案</span>
+                <span>做设计</span>
+                <span>写代码</span>
+              </span>
+            </span>
+          </span>
+          全部上线
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl">文案、设计与代码在同一个工作台上流转，每次打开都有新的关键词被点亮；鼠标悬停在轮换词上时自动暂停。</p>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="SaaS 首屏会轮换的大标语（文字轮转）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="文字轮转">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：基础三词 -->
+  <section class="doc-block">
+    <h2>基础三词轮换（默认 10 秒一轮）</h2>
+    <p class="desc">最精简的用法：<code>text-rotate</code> 直接套在一句普通的话里，内层放几个词。默认 3 个词时整轮 10 秒，词与词之间自动滚动衔接，不需要写任何 JS。</p>
+    <div class="doc-stage center">
+      <p class="text-xl">
+        好工具让
+        <span class="text-primary">
+          <span class="text-rotate">
+            <span>
+              <span>日常</span>
+              <span>重复</span>
+              <span>繁琐</span>
+            </span>
+          </span>
+        </span>
+        的工作变简单
+      </p>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>六个词、超大号、水平居中</h2>
+    <p class="desc">最多可以轮换 6 个词。词数变多、字号变大时，给内层容器加 <code>justify-items-center</code>，让每个长短不一的词在轮转窗口里水平居中，而不是左对齐参差。</p>
+    <div class="doc-stage center">
+      <div class="py-4 text-7xl font-bold">
+        <span class="text-rotate">
+          <span class="justify-items-center">
+            <span>写文案</span>
+            <span>做设计</span>
+            <span>写代码</span>
+            <span>画原型</span>
+            <span>排版本</span>
+            <span>看数据</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>混在句子里的彩色词组</h2>
+    <p class="desc">把轮换词做成彩底色块嵌进一行正常句子里，每个词一个语义色，适合「我们为文案 / 设计 / 研发三类角色提供工作台」这类按角色介绍的文案。</p>
+    <div class="doc-stage center">
+      <p class="text-xl">
+        一套工作台，服务
+        <span class="text-rotate">
+          <span>
+            <span class="bg-teal-400 text-teal-800 px-2">文案</span>
+            <span class="bg-red-400 text-red-800 px-2">设计</span>
+            <span class="bg-blue-400 text-blue-800 px-2">研发</span>
+          </span>
+        </span>
+        三类角色
+      </p>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>自定义行高与轮换速度</h2>
+    <p class="desc">大字号标语建议拉大行距，避免词与词滚动时相碰：在外层 <code>text-rotate</code> 上内联 <code>line-height</code>；想让轮换慢一点，在内层容器内联 <code>animation-duration</code>（这里改成 6 秒一轮）。</p>
+    <div class="doc-stage center">
+      <p class="text-2xl" style="line-height:2">
+        大字号标语建议
+        <span class="text-primary">
+          <span class="text-rotate" style="line-height:2">
+            <span style="animation-duration:6s">
+              <span>放慢节奏</span>
+              <span>加大行距</span>
+            </span>
+          </span>
+        </span>
+        更耐看
+      </p>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>只让关键词动，别整句都动</h3>
+    <p>一个标语里只有一个 <code>text-rotate</code>，套在主色高亮的关键词上；整句其余文字保持静止。动得越多越廉价，首屏大字标语尤其要克制。</p>
+    <h3>两层结构记清楚</h3>
+    <ul>
+      <li>外层 <code>text-rotate</code>：内联块、高度只有一行、自动裁掉溢出的词；</li>
+      <li>内层一个普通 <code>span</code>：装各个轮换词（grid 布局），长短不一的词要加 <code>justify-items-center</code>；</li>
+      <li>每个轮换词是一个独立 <code>span</code>，3 个词默认 10 秒一轮，最多放 6 个。</li>
+    </ul>
+    <h3>速度与行高怎么改</h3>
+    <ul>
+      <li>轮换速度：在内层容器上写 <code>style="animation-duration:6s"</code>，数字越小转得越快；不要去找 <code>duration-*</code> 类。</li>
+      <li>行高：在外层 <code>text-rotate</code> 上写 <code>style="line-height:2"</code>，大字号或字重很粗时必加，否则滚动时上下行字会相碰。</li>
+    </ul>
+    <h3>自带的两个行为</h3>
+    <p>鼠标悬停在轮换词上时动画自动暂停；用户系统开启「减少动态效果」时，轮换自动变成逐词跳变。这两条是纯 CSS 内置的，不需要写 JS。</p>
+    <h3>可访问性</h3>
+    <p>轮换词只是装饰性强调：页面真正要传达的关键信息不能只放在轮换词里，否则读屏软件会把 3~6 个词连读一遍。每个轮换词控制在 2~4 个字以内，别塞长句。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/text-rotate/" target="_blank" rel="noopener">daisyui.com/components/text-rotate</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】SaaS 产品官网首屏（hero）里一句居中的大标语：句子中间的关键词会自动轮换 3 组词「写文案 / 做设计 / 写代码」，用主色高亮，体现"一个人也能把产品做完"。
+【怎么排】
+- 一句完整中文标语，中间关键词用 text-primary 主色包起来，里面再套 text-rotate 轮换词组，其余文字保持静止；
+- 外层 text-rotate 是内联块、高度只有一行、自动裁掉溢出的词；内层一个普通 span 装各个轮换词，每个词一个 span；
+- 3 个词默认 10 秒一轮、自动循环；鼠标悬停在轮换词上自动暂停；
+- 整句居中、大字号 font-bold + leading-tight，窄屏让句子自然换行，不要给轮换词写死宽度。
+【精确规格】
+- 结构：<span class="text-primary"><span class="text-rotate"><span><span>写文案</span><span>做设计</span><span>写代码</span></span></span></span>。
+- 轮换词为 3~6 个、每个 2~4 字的真实中文动作词，禁止用颜色名当文案。
+- 大字号标语用 text-5xl / text-7xl（补丁档位），不要用更大的字号，避免窄屏溢出。
+- 自定义轮换速度在内层 span 上写 style="animation-duration:6s"；自定义行高在外层写 style="line-height:2"；不要用 duration-* 类。
+- 轮换词只是装饰性强调：页面关键信息不能只放在轮换词里。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

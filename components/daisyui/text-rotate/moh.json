@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-text-rotate",
+  "type": "component",
+  "title": "文字轮转",
+  "description": "搬运自 daisyUI 的文字轮转组件：一句话里的关键词自动循环轮换（最多 6 词、默认 10 秒一轮），覆盖基础三词、六词大字居中、句子混排彩底、自定义行高与速度等用法，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "数据展示"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/text-rotate/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将 Tailwind duration-6000 / leading-[2] 任意值改为内联 style（animation-duration / line-height），文案改为真实中文业务场景，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
