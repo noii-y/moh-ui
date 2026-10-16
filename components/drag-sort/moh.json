@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "drag-sort",
+  "type": "component",
+  "title": "拖拽排序",
+  "description": "原生 HTML5 drag 换序 + 键盘↑↓替代 + aria-live 播报，目标位高亮",
+  "styleTags": ["增强组件", "交互", "列表"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
