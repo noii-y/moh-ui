@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>筛选条 Filter · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>筛选条 <span class="en">Filter</span></h1>
+  <p>把一组单选 / 多选做成一排按钮式筛选器，放在商品列表、文章列表顶部，让用户按条件过滤内容。选中后自动收起其余选项并露出重置按钮，窄屏自动换行。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改分类、改多选项只改 <code>aria-label</code> 和 <code>name</code>；同一组单选必须共用一个 <code>name</code>。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>电商商品列表上方的筛选条</h2>
+    <p class="desc">上面一排是单选分类（同一时刻只能选一个），下面一排是多选标签（可叠加）。选中某一项后，其余单选项会自动收窄、并在末尾露出重置按钮，让当前筛选一目了然。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-4">
+        <form class="filter flex-wrap">
+          <input class="btn" type="radio" name="cat" aria-label="全部" />
+          <input class="btn" type="radio" name="cat" aria-label="数码家电" checked />
+          <input class="btn" type="radio" name="cat" aria-label="服饰鞋包" />
+          <input class="btn" type="radio" name="cat" aria-label="家居生活" />
+          <input class="btn" type="radio" name="cat" aria-label="美妆个护" />
+          <input class="btn btn-square" type="reset" value="×" aria-label="清除筛选" />
+        </form>
+        <form class="filter flex-wrap">
+          <input class="btn" type="checkbox" name="tag" aria-label="包邮" checked />
+          <input class="btn" type="checkbox" name="tag" aria-label="促销" />
+          <input class="btn" type="checkbox" name="tag" aria-label="新品" />
+          <input class="btn" type="checkbox" name="tag" aria-label="旗舰店" />
+          <input class="btn btn-square" type="reset" value="×" aria-label="清除筛选" />
+        </form>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商商品列表筛选条（筛选条）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="筛选条">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 1：单选 + 表单重置 -->
+  <section class="doc-block">
+    <h2>单选分类：一次只选一个</h2>
+    <p class="desc">用一个 <code>&lt;form class="filter"&gt;</code> 包住一组 <code>type="radio"</code>，同一组 radio 共用一个 <code>name</code>。末尾的 <code>type="reset"</code> 按钮平时隐藏，一旦选中某项就露出；点它可一键清空回「全部」。</p>
+    <div class="doc-stage">
+      <form class="filter flex-wrap">
+        <input class="btn btn-square" type="reset" value="×" aria-label="清除筛选" />
+        <input class="btn" type="radio" name="status" aria-label="待审核" />
+        <input class="btn" type="radio" name="status" aria-label="已发布" checked />
+        <input class="btn" type="radio" name="status" aria-label="已下线" />
+      </form>
+    </div>
+  </section>
+
+  <!-- 变体 2：多选 checkbox -->
+  <section class="doc-block">
+    <h2>多选标签：可叠加多个条件</h2>
+    <p class="desc">把 input 换成 <code>type="checkbox"</code> 就是多选。与单选不同，选中某一项时其余选项不会收起，方便用户同时勾上多个标签；末尾的重置按钮会在任意一项勾选后出现。</p>
+    <div class="doc-stage">
+      <form class="filter flex-wrap">
+        <input class="btn" type="checkbox" name="promise" aria-label="可开发票" checked />
+        <input class="btn" type="checkbox" name="promise" aria-label="随时退款" />
+        <input class="btn" type="checkbox" name="promise" aria-label="次日达" />
+        <input class="btn" type="checkbox" name="promise" aria-label="官方补贴" />
+        <input class="btn btn-square" type="reset" value="×" aria-label="清除筛选" />
+      </form>
+    </div>
+  </section>
+
+  <!-- 变体 3：无 form，filter-reset 当全部 -->
+  <section class="doc-block">
+    <h2>不用表单：第一项即「全部」</h2>
+    <p class="desc">不方便用 <code>&lt;form&gt;</code> 时，把外层换成 <code>&lt;div class="filter"&gt;</code>，并给第一项加上 <code>filter-reset</code>。它本身就是「全部 / 不限」，选中它等于清除筛选，不需要额外的重置按钮。</p>
+    <div class="doc-stage">
+      <div class="filter flex-wrap">
+        <input class="btn filter-reset" type="radio" name="theme" aria-label="全部" />
+        <input class="btn" type="radio" name="theme" aria-label="春季新款" checked />
+        <input class="btn" type="radio" name="theme" aria-label="夏季清仓" />
+        <input class="btn" type="radio" name="theme" aria-label="秋冬预售" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>纯 CSS 只管「选中长什么样」，不管「真的过滤」</h3>
+    <p>daisyUI 的 filter 用纯 CSS 实现了两件事：选中项高亮、选中后收起其余单选并露出重置按钮。但<strong>它本身不会去过滤下方的商品列表</strong>——真正按条件隐藏 / 显示列表项，需要你自己写一点 JavaScript（监听 change，按选中的 name 控制列表元素的显示）。别以为套上这个组件列表就会自动变。</p>
+    <h3>单选与多选怎么选</h3>
+    <ul>
+      <li>分类、状态这类「互斥」条件用 <code>radio</code>（如：数码家电 / 服饰鞋包）。</li>
+      <li>标签、服务承诺这类「可叠加」条件用 <code>checkbox</code>（如：包邮 / 促销 / 新品）。</li>
+      <li>同一组单选必须共用同一个 <code>name</code>，否则能同时选中多项。</li>
+    </ul>
+    <h3>为什么单选和多选的选中色不一样</h3>
+    <p>注意两者的高亮方式：单选组选中某项后，其余选项会自动收起、只留下一个<strong>中性白底标签</strong>（这是 daisyUI 的收起机制，不是没生效）；多选组里选中的项则用<strong>主题色（主色）实心高亮</strong>。所以你看到单选是白底、多选是主色，不一样是正常的。</p>
+    <h3>按钮文字与可访问性</h3>
+    <p><code>radio</code> / <code>checkbox</code> 套 <code>btn</code> 后，按钮上显示的文字来自 <code>aria-label</code>，不要漏写；重置的 <code>×</code> 按钮也建议补一个 <code>aria-label="清除筛选"</code>。</p>
+    <h3>窄屏</h3>
+    <p><code>.filter</code> 自带 <code>flex-wrap</code>，选项多时会自动折行，不会把按钮挤出屏幕；手机上排不下就自然换成两行。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/filter/" target="_blank" rel="noopener">daisyui.com/components/filter</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商商品列表（或文章列表、内容流）顶部的筛选条：上面一排单选分类，下面一排多选标签。
+【怎么排】
+- 外层一个 <div class="flex flex-col gap-4"> 把两行隔开；
+- 每行是一个 <form class="filter flex-wrap">：单选行里是一组 <input type="radio" name="cat" class="btn" aria-label="…">，多选行里是一组 <input type="checkbox" name="tag" class="btn" aria-label="…">；
+- 每行末尾放一个 <input type="reset" class="btn btn-square" value="×"> 作为清除；
+- 选中的分类按钮高亮，其余单选项自动收窄，重置按钮自动出现；多选行各项始终并列可见。
+【精确规格】
+- 单选项：全部、数码家电、服饰鞋包、家居生活、美妆个护，name 统一为 cat；其中「数码家电」默认 checked。
+- 多选项：包邮、促销、新品、旗舰店，name 统一为 tag；其中「包邮」默认 checked。
+- 每个 radio / checkbox 都要写 aria-label（按钮文字就显示在这里）；重置按钮补 aria-label="清除筛选"。
+- 诚实边界：filter 这套类只做「选中高亮 + 露出重置按钮」的纯 CSS 外观，真正按选中条件过滤下方列表项必须另外写 JS（监听 change 控制列表显隐），不要声称纯 CSS 就能过滤列表。
+- 窄屏选项多时自动 flex-wrap 换行，任何按钮不得被挤出屏幕或裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
