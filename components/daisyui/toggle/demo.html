@@ -12,14 +12,77 @@
 <body>
 <header class="doc-head">
   <h1>开关 <span class="en">Toggle</span></h1>
-  <p>本质是被样式化成开关的复选框，用于开/关两种状态。示例结构搬运自 daisyUI 官方文档。</p>
-  <p>来源：<a href="https://daisyui.com/components/toggle/" target="_blank" rel="noopener">daisyui.com/components/toggle</a>（MIT）</p>
+  <p>本质是被样式化成拨杆的复选框，用于「开 / 关」两种状态的即时切换。下面先给一个设置页可以直接拿走的通知开关列表，再列出各种尺寸、颜色和状态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色、尺寸只改 <code>class</code> 即可；切换主题后，整套开关颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：通知设置开关列表 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>设置页里的通知开关列表</h2>
+    <p class="desc">一行一个开关：左侧是开关名称和说明，右侧是拨杆；默认值符合常识——用户需要的通知默认开，营销类默认关。每一行用 label 包住，点整行都能拨。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-3 w-full">
+      <fieldset class="fieldset rounded-box border border-base-300 p-4 max-w-md">
+        <legend class="fieldset-legend">通知设置</legend>
+        <div class="flex flex-col gap-2">
+          <label class="label cursor-pointer justify-between gap-3">
+            <span class="flex flex-col gap-0">
+              <span>推送通知</span>
+              <span class="text-xs opacity-60">订单与物流实时提醒</span>
+            </span>
+            <input type="checkbox" checked="checked" class="toggle toggle-primary" />
+          </label>
+          <label class="label cursor-pointer justify-between gap-3">
+            <span class="flex flex-col gap-0">
+              <span>邮件提醒</span>
+              <span class="text-xs opacity-60">每周账单与服务通知</span>
+            </span>
+            <input type="checkbox" checked="checked" class="toggle" />
+          </label>
+          <label class="label cursor-pointer justify-between gap-3">
+            <span class="flex flex-col gap-0">
+              <span>营销短信</span>
+              <span class="text-xs opacity-60">活动与优惠推送，默认关闭</span>
+            </span>
+            <input type="checkbox" class="toggle" />
+          </label>
+        </div>
+      </fieldset>
+      <div class="flex flex-wrap gap-2">
+        <button class="btn btn-primary">保存设置</button>
+      </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="设置页通知开关列表（开关）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="开关">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础</h2>
+    <h2>基础开关态</h2>
+    <p class="desc">最朴素的两种状态：开（带 checked）和关。开关本质是 <code>type="checkbox"</code>，选中即「开」。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="toggle" />
       <input type="checkbox" class="toggle" />
@@ -27,19 +90,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>设置项</h2>
-    <div class="doc-stage">
-      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-72 border p-4">
-        <legend class="fieldset-legend">偏好设置</legend>
-        <label class="label cursor-pointer"><span>深色模式</span><input type="checkbox" checked="checked" class="toggle toggle-primary" /></label>
-        <label class="label cursor-pointer"><span>消息推送</span><input type="checkbox" checked="checked" class="toggle toggle-success" /></label>
-        <label class="label cursor-pointer"><span>自动更新</span><input type="checkbox" class="toggle" /></label>
-      </fieldset>
-    </div>
-  </section>
-
-  <section class="doc-block">
     <h2>尺寸</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合紧凑设置行，大尺寸适合移动端大按钮区。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="toggle toggle-xs" />
       <input type="checkbox" checked="checked" class="toggle toggle-sm" />
@@ -50,7 +102,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
+    <h2>语义状态色</h2>
+    <p class="desc">这一排是 daisyUI 的语义状态色：从主色到错误色，分别对应主操作、强调、成功、警告、错误等含义。设置页里多数开关用默认色或主色即可，不要每行都涂成醒目颜色。</p>
     <div class="doc-stage">
       <input type="checkbox" checked="checked" class="toggle toggle-neutral" />
       <input type="checkbox" checked="checked" class="toggle toggle-primary" />
@@ -65,24 +118,59 @@
 
   <section class="doc-block">
     <h2>禁用</h2>
-    <div class="doc-stage">
-      <input type="checkbox" class="toggle" disabled />
-      <input type="checkbox" class="toggle" disabled checked="checked" />
+    <p class="desc">条件不满足或权限不足时禁用；禁用且打开表示「这项已由系统设定好、用户不能改」。用 disabled 属性。</p>
+    <div class="doc-stage col">
+      <label class="label cursor-pointer justify-between gap-3"><span>访客模式下的推送通知</span><input type="checkbox" class="toggle" disabled /></label>
+      <label class="label cursor-pointer justify-between gap-3"><span>已锁定的系统更新</span><input type="checkbox" checked="checked" class="toggle" disabled /></label>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>带图标</h2>
-    <p class="desc">在 label.toggle 内放 checkbox 与两个图标（开/关），适合显示状态含义。</p>
+    <h2>开关上带图标</h2>
+    <p class="desc">在 <code>label.toggle</code> 内放 checkbox 和两个单色小图标（开/关），用图标强化状态含义；图标用 <code>w-3 h-3</code> 的 SVG，不要用 emoji。</p>
     <div class="doc-stage">
-      <label class="toggle text-base-content">
-        <input type="checkbox" />
+      <label class="toggle text-base-content cursor-pointer">
+        <input type="checkbox" checked="checked" />
         <svg aria-label="开" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3 h-3"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="4" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5"></path></g></svg>
         <svg aria-label="关" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </label>
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>开关还是复选框</h3>
+    <p>「即时生效的开 / 关」（推送通知、深色模式）用开关 Toggle，拨动即生效、不需要再点保存按钮；「提交时统一处理的一组独立勾选项」用复选框 Checkbox。</p>
+    <h3>一行一个、文字可点</h3>
+    <p>用 <code>label.label.cursor-pointer.justify-between</code> 包住文字块和开关，文字在左、拨杆在右，点整行都能拨；不要用 <code>ml-auto</code> 去推拨杆，窄屏容易溢出。</p>
+    <h3>默认值符合常识</h3>
+    <p>用户需要的功能默认开（订单提醒），营销类、有打扰风险的默认关；不要默认勾选营销短信。</p>
+    <h3>可访问性与禁用</h3>
+    <p>键盘 Tab 聚焦后用空格切换，焦点描边不要去掉；禁用优先用 <code>disabled</code> 属性，它会同时阻止点击和聚焦。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/toggle/" target="_blank" rel="noopener">daisyui.com/components/toggle</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个设置页里的通知开关列表：一行一个开关，左侧是名称和说明，右侧是拨杆，默认值符合常识，最后点保存设置。
+【怎么排】
+- 用 fieldset.fieldset（rounded-box border border-base-300 p-4 max-w-md）把开关包成一组，legend 写「通知设置」；
+- 每一行用 <label class="label cursor-pointer justify-between gap-3"> 包住：左侧是名称 + 一行小号说明（text-xs opacity-60），右侧是 <input type="checkbox" class="toggle">；
+- 「推送通知」「邮件提醒」默认开（checked，主色用 toggle-primary 标出主项），「营销短信」默认关；
+- 各行纵向排列（flex flex-col gap-2）；
+- 组尾放一个仅展示的主按钮「保存设置」（btn btn-primary），不要为它写任何 JS。
+【精确规格】
+- 开关尺寸默认即可，不要每一行都换尺寸。
+- 文字写真实业务内容，禁止出现 Primary / 成功 / 主要 这类颜色名当文案；营销类默认关闭，不要默认勾选。
+- 用到的类全部真实存在：toggle、toggle-primary、fieldset、fieldset-legend、label、cursor-pointer、justify-between、justify-start、flex-col、gap-2、gap-3、w-full、max-w-md、text-xs、opacity-60。
+- 纯 CSS 即可，不要加任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>
