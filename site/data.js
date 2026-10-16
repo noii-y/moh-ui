@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 58,
+    "components": 63,
     "rules": 1,
-    "resources": 69
+    "resources": 74
   },
   "themes": [
     {
@@ -762,6 +762,24 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-join",
+      "title": "组合容器",
+      "description": "搬运自 daisyUI 的 Join 组合容器：搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "表单"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/join/",
+      "slug": "daisyui/join",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-table",
       "title": "表格",
       "description": "搬运自 daisyUI 的表格组件：后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
@@ -1126,6 +1144,42 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-carousel",
+      "title": "轮播",
+      "description": "搬运自 daisyUI 的轮播组件：商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。",
+      "styleTags": [
+        "数据展示",
+        "基础组件"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/carousel/",
+      "slug": "daisyui/carousel",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-hero",
+      "title": "首屏横幅",
+      "description": "搬运自 daisyUI 的首屏横幅组件：SaaS 左文右图成品（公告胶囊+大标题+双按钮+星级评分+产品界面缩略卡）、居中纯文字、图文左右、图文反向（lg:flex-row-reverse）、带登录表单卡、内联渐变背景，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "布局"
+      ],
+      "category": "基础",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/hero/",
+      "slug": "daisyui/hero",
+      "entry": "demo.html"
+    },
+    {
       "name": "daisyui-drawer",
       "title": "抽屉侧栏",
       "description": "搬运自 daisyUI 的抽屉侧栏组件：后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
@@ -1142,6 +1196,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/drawer/",
       "slug": "daisyui/drawer",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-footer",
+      "title": "页脚",
+      "description": "搬运自 daisyUI 的页脚组件：电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。",
+      "styleTags": [
+        "导航",
+        "基础组件"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/footer/",
+      "slug": "daisyui/footer",
       "entry": "demo.html"
     },
     {
@@ -1198,6 +1270,24 @@ window.MOH_DATA = {
       "upstream": "daisyUI",
       "upstreamUrl": "https://daisyui.com/components/fab/",
       "slug": "daisyui/fab",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-filter",
+      "title": "筛选条",
+      "description": "搬运自 daisyUI 的筛选条：form+radio 单选分类、checkbox 多选标签、无 form 用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。",
+      "styleTags": [
+        "表单",
+        "导航"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/filter/",
+      "slug": "daisyui/filter",
       "entry": "demo.html"
     },
     {
