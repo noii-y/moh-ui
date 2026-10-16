@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>通知浮层 Toast · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>通知浮层 <span class="en">Toast</span></h1>
+  <p>操作完成后自动弹在屏幕角落的小通知：保存成功、收到新消息。它几秒后自己消失，不打断用户正在做的事。下面先给一个右下角堆叠成品，再看九个位置和带按钮的写法。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">换位置只改外层 <code>toast-*</code> 类组合；多条通知往 <code>toast</code> 里继续加 <code>alert</code> 即可，自动纵向堆叠。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>操作后右下角的通知堆叠</h2>
+    <p class="desc">刚点完保存，右下角浮出一条绿色成功通知；同时后台又来一条新消息。多条通知自动往下叠，谁都不挤谁。本页为了在小舞台里展示，给外层加了 <code>position:static</code>（真实项目删掉这行就自动贴到屏幕角落）。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="toast" style="position:static">
+        <div role="alert" class="alert alert-success">
+          <span>保存成功，可在「订单列表」查看</span>
+        </div>
+        <div role="alert" class="alert alert-info">
+          <span>收到 3 条新消息</span>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="操作后右下角的通知堆叠（通知浮层）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="通知浮层">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>九个弹出位置</h2>
+    <p class="desc">外层 <code>toast</code> 组合两类类名：垂直位置 <code>toast-top</code> / <code>toast-middle</code> / <code>toast-bottom</code>（默认底部），水平对齐 <code>toast-start</code> / <code>toast-center</code> / <code>toast-end</code>（默认居右）。桌面端最常用右下角，手机端通常顶部居中，避免被手势遮挡。</p>
+    <div class="doc-stage w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 w-full">
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">顶部居左</div>
+          <div class="toast toast-top toast-start" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>顶部居左</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">顶部居中</div>
+          <div class="toast toast-top toast-center" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>顶部居中</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">顶部居右</div>
+          <div class="toast toast-top toast-end" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>顶部居右</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">居中靠左侧</div>
+          <div class="toast toast-start toast-middle" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>居中靠左侧</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">屏幕正中间</div>
+          <div class="toast toast-center toast-middle" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>屏幕正中间</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">居中靠右侧</div>
+          <div class="toast toast-end toast-middle" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>居中靠右侧</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">底部居左</div>
+          <div class="toast toast-start" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>底部居左</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">底部居中</div>
+          <div class="toast toast-center" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>底部居中</span></div>
+          </div>
+        </div>
+        <div class="border border-base-300 rounded p-3">
+          <div class="text-xs opacity-60 mb-2">底部居右（默认，最常用）</div>
+          <div class="toast" style="position:static;--toast-x:0;--toast-y:0">
+            <div role="alert" class="alert"><span>底部居右</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带图标的单条通知</h2>
+    <p class="desc">通知里放一个小图标，用户扫一眼列表就知道是系统消息还是物流更新；图标 <code>h-6 w-6</code> 单色，和文字同色。</p>
+    <div class="doc-stage">
+      <div class="toast" style="position:static">
+        <div role="alert" class="alert alert-info">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>系统将于今晚 24:00 升级维护</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带操作按钮的通知</h2>
+    <p class="desc">通知里给一个"下一步"入口：按钮用 <code>btn-sm</code>，让想跟进的人能直接点进去，不用自己找入口。</p>
+    <div class="doc-stage">
+      <div class="toast" style="position:static">
+        <div role="alert" class="alert alert-success">
+          <span>订单已发货</span>
+          <div>
+            <button class="btn btn-sm">查看物流</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>关于本页的 position:static</h3>
+    <p><code>toast</code> 本体是 <code>position:fixed</code>，真实项目里挂在 <code>&lt;body&gt;</code> 末尾、自动贴在屏幕角落；本详情页把它放进小舞台，只能临时加内联 <code>style="position:static"</code> 才能铺开展示。复制到真实项目后删掉这行内联样式，它会自动回到 fixed 定位。</p>
+    <h3>真实交互怎么接</h3>
+    <p>Toast 不是写死在页面上的，而是由 JavaScript 动态创建：操作成功后往 <code>.toast</code> 里插一条 <code>alert</code>，停留 3~5 秒后再移除。纯静态写死一条通知在页面里，等于一条不会消失的提示条，那就直接用 Alert 组件。</p>
+    <h3>位置怎么选</h3>
+    <p>桌面端默认底部居右即可；手机端建议顶部居中（<code>toast-top toast-center</code>），避开底部手势区。整页通知位置全站统一，别一个模块一个角落。</p>
+    <h3>密度与文案</h3>
+    <p>一次最多堆两三条通知，成串弹出等于没有通知。文案写真实事件（保存成功、收到 3 条新消息、订单已发货），别写"操作成功"这种空话；错误类通知停留久一点，成功类快闪即可。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/toast/" target="_blank" rel="noopener">daisyui.com/components/toast</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】用户在系统里做完一个操作后，屏幕右下角自动弹出的通知浮层，多条通知自动纵向堆叠。
+【怎么排】外层 div.toast（真实项目里它是 position:fixed，自动贴在屏幕角落；详情页静态展示才加 position:static），里面放一条或多条 div[role=alert].alert：成功结果用 alert-success，普通告知用 alert-info；每条写清发生了什么事。
+【精确规格】
+- 位置由外层类组合决定：垂直 toast-top / toast-middle / toast-bottom（默认底部）× 水平 toast-start / toast-center / toast-end（默认居右）。
+- 本页所有 .toast 加了内联 style="position:static;--toast-x:0;--toast-y:0" 仅为在小舞台里排开展示（中/居位置类自带的位移变量在静态流里会造成重叠，故一并清零）；复制进真实项目后删掉这整行内联样式，它会自动 fixed 贴到对应角落。
+- 多条通知：往 .toast 里继续加 .alert，自动纵向堆叠、间距 8px，不要自己写 margin。
+- 文案写真实事件（如「保存成功，可在订单列表查看」「收到 3 条新消息」），禁止出现 Success 这类颜色名；带按钮时按钮写真实动作（查看物流）。
+- 真实交互：toast 由 JS 动态创建、停留 3~5 秒后自动移除；本页为静态展示形态。一次最多两三条。
+- 颜色全部走 daisyUI 主题变量，不要写死。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
