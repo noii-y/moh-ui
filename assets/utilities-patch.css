@@ -344,3 +344,16 @@
   .lg\:flex { display: none; }
   .lg\:grid { display: none; }
 }
+
+/* ---------- 批次④：grid 流式列 / 脉冲动画（countdown 横排、status ping/bounce 用） ---------- */
+.grid-flow-col { grid-auto-flow: column; }
+.auto-cols-max { grid-auto-columns: max-content; }
+.animate-ping { animation: moh-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.animate-bounce { animation: moh-bounce 1s infinite; }
+@keyframes moh-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+@keyframes moh-bounce {
+  0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+  50% { transform: none; animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+}
