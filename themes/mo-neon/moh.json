@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-neon",
+  "type": "theme",
+  "title": "霓虹（深色）",
+  "description": "深空底、深青主色、hover 亮青霓虹，赛博未来科技向。",
+  "styleTags": ["霓虹", "深色", "赛博", "科技"],
+  "inspiration": ["https://www.shadcn.io/theme/cyberpunk"],
+  "base": "mo-neon",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
