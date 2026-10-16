@@ -240,14 +240,16 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 13. 自动化浏览器（bu.js）运行在隔离世界，直接 `.click()` 触发不了页面主世界里 `demo-doc.js` 注册的复制监听；要真点复制按钮，用 `scripts/qa/` 下的同源 iframe 探针（父页桩接 iframe 的 `navigator.clipboard.writeText`）。
 14. **覆盖层/展开类组件（dropdown、drawer、megamenu、modal、collapse、tabs、fab speed-dial、filter）**：默认是收起的，静态截图/embed 卡片会只看到一个按钮、看不到内容。成品区必须**强制展示展开态**——优先用原生 `<details open>`、popover 的 `open` 属性、或官方提供的 `xxx-open` 类（如 `dropdown-open`、`drawer-open`）；drawer 用一个可见的侧栏面板成品（不依赖遮罩点击）。hero 截图要能直接看到菜单/侧栏/弹层内容；折叠态/触发态放到变体。凡是纯 CSS 无法默认展开的，在成品里加一行"仅为演示默认展开"的最小内联样式，不要为了展开写 JS。
 15. **整页级组件（navbar、hero、footer、drawer、megamenu、dock）放进 `doc-stage` 时**：不要让它们撑满整个视口或带 `fixed` 定位（会盖住文档页/复制按钮）；用 `relative` + 去掉 fixed/absolute 固定定位，在一个带边框的舞台容器里呈现完整结构，保证 390px 与 embed 卡片里不溢出、不遮挡。
+16. **radio 标签页（`.tabs` + `.tab-content`）在窄屏靠 `flex-wrap` 把选中的内容块挤到标签行下一行**，不能给 `.tabs` 加 `flex-nowrap`，否则内容面板会跟标签排到同一行。标签排不下时让它自然折成两行、全部可见即可；只有「纯标签、不带 `.tab-content` 的链接式标签」才用 `overflow-x-auto` + `shrink-0` 做单行横滑。文案和提示词要如实写实际呈现，不能写"横滑"页面却是折行。
+17. **成品菜单同一时刻只允许一个 `menu-active` 当前项**（不要父项和子项同时高亮，复制出去会变成两个"当前页"）；要展示展开用 `<details open>`，当前页落在叶子项。**站点分类按组件 styleTags 的声明先后归类**（`build-site-data.mjs`），所以组件最显著的分类要写在前面；`选择` 是弱标签，tab/dock/pagination 这类导航件要把 `导航` 放在 `选择` 前。
 
 ---
 
 ## 11. 当前进度
 
-- 已完成：vendor 底座；**13 个 daisyUI 表单组件全部升级为 v3「提示词三件套」并推送**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator，各含真实业务场景成品+复制 AI 提示词+站内教程）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（含 w-5/gap-0 等）。
-- 进行中（PM 批准）：**批次② 导航布局 11 个**——navbar、menu、breadcrumbs、steps、tabs、dock、drawer、megamenu、pagination、link、fab。覆盖层/整页级组件按踩坑 14/15 处理（默认展开、去 fixed、在舞台容器内呈现）。
-- 待办（PM 已规划，按批次推进）：③ 数据展示（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/mockup/divider/radial-progress/skeleton/stack）；④ 反馈覆盖层（alert/loading/progress/status/toast/tooltip/modal/collapse/dropdown/swap/countdown）；⑤ 区块（hero/footer/carousel/filter/join）；⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。
+- 已完成：vendor 底座；**13 个 daisyUI 表单组件 v3「提示词三件套」**（button/input/checkbox/select/textarea/radio/toggle/range/file-input/rating/otp/fieldset/validator）；**批次② 11 个导航布局组件全部完成并推送**（navbar/menu/drawer/megamenu/breadcrumbs/tab/steps/dock/pagination/link/fab，站点共 29 组件，导航分类 11 个，HEAD `b6a37e7`）；25 个重复旧组件下线；展示站三入口与全局来源声明；移动端 390 自检脚本；公共层补丁 `assets/utilities-patch.css`（w-5/gap-0、border 单边 border-t/r/b/l/x/y 等）。
+- 进行中：无（批次② 已闭环，含 PM 终验与线上验证）。
+- 待办（PM 已规划，按批次推进）：③ 数据展示（card/table/list/stat/timeline/chat/avatar/badge/indicator/kbd/mockup/divider/radial-progress/skeleton/stack）；④ 反馈覆盖层（alert/loading/progress/status/toast/tooltip/modal/collapse/dropdown/swap/countdown）；⑤ 区块（hero/footer/carousel/filter/join）；⑥ 特效（aura/diff/hover-gallery/text-rotate/mask 等，低优先，hover-3d 需 JS 暂缓）；calendar 依赖日历库走「带依赖」标签；theme-controller 随主题层做；5 个自研增强组件迁移 daisyUI 变量；组件 AI 指令分发（形态 A，见开发计划 4.1）；主题改完整页面案例替换色块 preview。**每批开工前先翻竞品，按 §8 多智能体流程做。**
 
 ---
 
