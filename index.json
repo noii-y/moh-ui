@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-10-16T02:53:24.329Z",
+  "project": "moh-ui",
+  "themes": [
+    {
+      "name": "mo-dark",
+      "display": "墨夜 · 深色（mo-dark）",
+      "files": {
+        "tokens": true,
+        "preview": true
+      }
+    },
+    {
+      "name": "mo-light",
+      "display": "宣纸 · 浅色（mo-light）",
+      "files": {
+        "tokens": true,
+        "preview": true
+      }
+    }
+  ],
+  "components": []
+}

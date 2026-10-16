@@ -1,0 +1,59 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-dark（墨夜 · 深色）
+   风格锚点：Linear（公开 token 参考 awesome-design-md，MIT）
+   参数初稿：见《开发计划》6.1；阶段 1 用体检脚本 + 人工校准后定稿
+   使用：引入本文件即完成主题变量定义
+   ============================================================ */
+
+:root {
+  /* ---------- 色彩语义 ---------- */
+  --moh-canvas: #0f0f0f;          /* 页面底 */
+  --moh-surface: #1b1b1f;         /* 卡片 / 面板 */
+  --moh-surface-2: #232328;       /* 悬浮 / 次级底 */
+  --moh-border: #2a2a30;          /* 常规描边 */
+  --moh-border-strong: #3a3a42;   /* 强调描边 */
+  --moh-ink: #f7f8f8;             /* 主文字 */
+  --moh-muted: #9ca3af;           /* 次级文字 */
+  --moh-primary: #5e6ad2;         /* 主色 */
+  --moh-primary-hover: #7b84e0;   /* 主色悬浮 */
+  --moh-primary-muted: #262a4d;   /* 主色浅底（选中态底） */
+  --moh-success: #34d399;
+  --moh-warning: #fbbf24;
+  --moh-danger: #f87171;
+
+  /* ---------- 字体 ---------- */
+  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
+    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
+  --moh-text-xs: 12px;
+  --moh-text-sm: 13px;
+  --moh-text-base: 14px;   /* 正文默认 */
+  --moh-text-md: 16px;
+  --moh-text-lg: 20px;
+  --moh-text-xl: 24px;
+
+  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
+  --moh-space-1: 4px;
+  --moh-space-2: 8px;
+  --moh-space-3: 12px;
+  --moh-space-4: 16px;
+  --moh-space-6: 24px;
+  --moh-space-8: 32px;
+
+  /* ---------- 圆角（4–8px） ---------- */
+  --moh-radius-sm: 4px;
+  --moh-radius-md: 6px;
+  --moh-radius-lg: 8px;
+
+  /* ---------- 阴影（只给浮动元素：弹窗 / 下拉 / 悬浮卡） ---------- */
+  --moh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --moh-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --moh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+
+  /* ---------- 控件与动效 ---------- */
+  --moh-control-height: 32px;
+  --moh-transition: 150ms ease;
+}

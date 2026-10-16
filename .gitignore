@@ -1,0 +1,12 @@
+# 内部规划文档（不进仓库，如需公开再移入 docs/）
+开发计划.md
+
+# Node
+node_modules/
+*.log
+
+# 编辑器
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
