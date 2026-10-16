@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-code-block · 代码块（highlight.js）</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <!-- 依赖：highlight.js 核心（CDN；也可下载到本地 vendor/）。不用其默认主题 CSS，
+       配色由下方 --moh-* 变量定义，换主题自动适配 -->
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js"></script>
+  <style>
+    /* ============================================================
+       moh-code-block · 代码块（灰墨 MoH_UI 增强组件）
+       依赖：highlight.js 11（CDN 或本地 vendor），tokens.css 变量
+       用法：复制 <style> + HTML 片段 + <script>；高亮配色全走变量，
+         任意主题（浅/深）都协调
+       要点：语言标签 + 复制按钮；hljs 默认主题 CSS 不引入，
+         用下方 --moh-* 配色保证主题化
+       ============================================================ */
+
+    .moh-code-block {
+      position: relative;
+      margin: 0;
+      background: var(--moh-surface-2);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      overflow: hidden;
+      max-width: 640px;
+    }
+
+    .moh-code-block__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--moh-space-2) var(--moh-space-3);
+      background: var(--moh-surface);
+      border-bottom: 1px solid var(--moh-border);
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+    }
+
+    .moh-code-block__copy {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-sm);
+      background: var(--moh-surface);
+      color: var(--moh-muted);
+      font-size: var(--moh-text-xs);
+      font-family: inherit;
+      padding: 2px var(--moh-space-2);
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+    .moh-code-block__copy:hover {
+      color: var(--moh-ink);
+      border-color: var(--moh-border-strong);
+    }
+    .moh-code-block__copy:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    .moh-code-block pre {
+      margin: 0;
+      padding: var(--moh-space-3);
+      overflow-x: auto;
+      font-family: var(--moh-font-mono);
+      font-size: var(--moh-text-sm);
+      line-height: 1.7;
+    }
+
+    .moh-code-block code {
+      font-family: inherit;
+      color: var(--moh-ink);
+      background: none;
+    }
+
+    /* 高亮 token 配色：全走 --moh-* 变量（换主题自适应） */
+    .hljs-keyword, .hljs-selector-tag, .hljs-built_in { color: var(--moh-primary); font-weight: 500; }
+    .hljs-string, .hljs-attr, .hljs-template-tag { color: var(--moh-success); }
+    .hljs-comment, .hljs-quote { color: var(--moh-muted); font-style: italic; }
+    .hljs-number, .hljs-literal { color: var(--moh-warning); }
+    .hljs-title, .hljs-function, .hljs-section, .hljs-name { color: var(--moh-primary-hover); font-weight: 500; }
+    .hljs-type, .hljs-class .hljs-title { color: var(--moh-danger); }
+    .hljs-variable, .hljs-params, .hljs-property { color: var(--moh-ink); }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <div class="moh-code-block">
+      <div class="moh-code-block__bar">
+        <span>JavaScript</span>
+        <button class="moh-code-block__copy" aria-label="复制代码">复制</button>
+      </div>
+      <pre><code class="language-javascript">// 从 --moh-* 变量读取主题色（浅色 / 深色都正确）
+const css = getComputedStyle(document.documentElement);
+const primary = css.getPropertyValue("--moh-primary").trim();
+
+function buildOption(data) {
+  return {
+    grid: { left: 40, right: 16, top: 24, bottom: 28 },
+    xAxis: {
+      type: "category",
+      data: data.map((d) => d.label),
+      axisLabel: { color: css.getPropertyValue("--moh-muted").trim() }
+    },
+    series: [
+      {
+        type: "line",
+        data: data.map((d) => d.value),
+        lineStyle: { color: primary, width: 2 },
+        itemStyle: { color: primary }
+      }
+    ]
+  };
+}</code></pre>
+    </div>
+  </div>
+
+  <script>
+    /* 行为：代码高亮 + 复制反馈 */
+    (function () {
+      if (window.hljs) {
+        document.querySelectorAll(".moh-code-block code").forEach((el) => hljs.highlightElement(el));
+      }
+      document.querySelectorAll(".moh-code-block__copy").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const code = btn.closest(".moh-code-block").querySelector("code");
+          const text = code.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            const old = btn.textContent;
+            btn.textContent = "已复制";
+            setTimeout(() => { btn.textContent = old; }, 1500);
+          });
+        });
+      });
+    })();
+  </script>
+  <p class="demo-note">提示：高亮 token 配色全部用 --moh-* 语义变量（主色=关键词、成功色=字符串、警告色=数字…），任意主题下都协调；复制按钮给 aria-label 并反馈"已复制"。</p>
+</body>
+</html>

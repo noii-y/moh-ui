@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "code-block",
+  "type": "component",
+  "title": "代码块（highlight.js）",
+  "description": "代码高亮 + 语言标签 + 复制按钮，token 配色走 --moh-* 变量换主题自适应",
+  "styleTags": ["增强组件", "代码", "开发"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": ["highlight.js@11 (CDN)"],
+  "files": ["index.html"],
+  "verified": false
+}

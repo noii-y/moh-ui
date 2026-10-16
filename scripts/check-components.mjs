@@ -35,12 +35,20 @@ function checkOne(name) {
     issues.push(`样式含硬编码颜色 ${[...new Set(hardColors)].join(", ")}（应改用 var(--moh-*)）`);
   }
 
-  // 2. 类名前缀（moh- 与 demo 豁免）
+  // 2. 类名前缀（moh- 与 demo/md- 豁免；language-*、hljs-* 为第三方库约定类名）
   const classes = [
     ...new Set(
       [...html.matchAll(/class="([^"]+)"/g)]
         .flatMap((m) => m[1].split(/\s+/))
-        .filter((c) => c && !c.startsWith("moh-") && !c.startsWith("demo") && !c.startsWith("md-"))
+        .filter(
+          (c) =>
+            c &&
+            !c.startsWith("moh-") &&
+            !c.startsWith("demo") &&
+            !c.startsWith("md-") &&
+            !c.startsWith("language-") &&
+            !c.startsWith("hljs-")
+        )
     ),
   ];
   if (classes.length) issues.push(`类名未用 moh- 前缀: ${classes.join(", ")}`);
