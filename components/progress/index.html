@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-progress · 进度条</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-progress · 进度条（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：轨道 + 填充（宽度由数据驱动，内联 style）；
+         默认 / 成功 / 危险（阈值变体）三种颜色态
+       要点：role="progressbar" + aria-valuenow/min/max；
+         填充宽度禁用硬编码色，颜色走语义变量
+       ============================================================ */
+
+    .moh-progress {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-3);
+      max-width: 360px;
+    }
+
+    .moh-progress__track {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--moh-surface-2);
+      overflow: hidden;
+    }
+
+    .moh-progress__bar {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--moh-primary);
+      transition: width 200ms ease;
+    }
+
+    /* 成功态 */
+    .moh-progress--success .moh-progress__bar {
+      background: var(--moh-success);
+    }
+
+    /* 危险态（阈值变体：低于阈值用红） */
+    .moh-progress--danger .moh-progress__bar {
+      background: var(--moh-danger);
+    }
+
+    .moh-progress__value {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      font-variant-numeric: tabular-nums;
+      min-width: 36px;
+      text-align: right;
+    }
+
+    /* 可访问性：进度条容器内若出现可交互元素，焦点必须可见 */
+    .moh-progress a:focus-visible,
+    .moh-progress button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--moh-space-3);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <!-- 默认态：进行中 -->
+    <div class="moh-progress" role="progressbar" aria-label="导出进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+      <div class="moh-progress__track">
+        <div class="moh-progress__bar" style="width:72%"></div>
+      </div>
+      <span class="moh-progress__value">72%</span>
+    </div>
+
+    <!-- 成功态 -->
+    <div class="moh-progress moh-progress--success" role="progressbar" aria-label="构建进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+      <div class="moh-progress__track">
+        <div class="moh-progress__bar" style="width:100%"></div>
+      </div>
+      <span class="moh-progress__value">100%</span>
+    </div>
+
+    <!-- 危险态（阈值变体） -->
+    <div class="moh-progress moh-progress--danger" role="progressbar" aria-label="存储使用率" aria-valuemin="0" aria-valuemax="100" aria-valuenow="86">
+      <div class="moh-progress__track">
+        <div class="moh-progress__bar" style="width:86%"></div>
+      </div>
+      <span class="moh-progress__value">86%</span>
+    </div>
+  </div>
+  <p class="demo-note">提示：宽度用内联 style 由数据驱动；role=progressbar + aria-valuenow 让屏读播报进度；颜色走语义变量（绿=完成、红=超阈值）。</p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "progress",
+  "type": "component",
+  "title": "进度条",
+  "description": "轨道+填充，默认/成功/危险阈值变体，role=progressbar+aria-valuenow",
+  "styleTags": ["基础组件", "反馈", "加载"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
