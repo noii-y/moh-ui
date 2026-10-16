@@ -263,6 +263,12 @@
 .border-black { border-color: #000; }
 .border-transparent { border-color: transparent; }
 .border-dashed { border-style: dashed; }
+.border-t { border-top-width: 1px; border-top-style: solid; }
+.border-r { border-right-width: 1px; border-right-style: solid; }
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; }
+.border-l { border-left-width: 1px; border-left-style: solid; }
+.border-x { border-left-width: 1px; border-right-width: 1px; border-style: solid; }
+.border-y { border-top-width: 1px; border-bottom-width: 1px; border-style: solid; }
 
 /* ---------- 背景 / 文字语义色 ---------- */
 .bg-base-100 { background-color: var(--color-base-100); }
