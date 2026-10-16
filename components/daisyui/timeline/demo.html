@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>时间线 Timeline · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>时间线 <span class="en">Timeline</span></h1>
+  <p>按时间顺序把一系列事件串起来，物流轨迹、项目里程碑、操作记录都用它。下面先给一个订单物流跟踪的成品，再看其它排布方式。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改方向（垂直 / 水平）、改内容只改 <code>class</code> 与文案即可；切换主题后，连线和节点颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一张订单详情页的物流跟踪</h2>
+    <p class="desc">五个节点从上到下排：已完成的打绿勾，正在进行的用主色徽标突出，还没到的置灰；时间在左、事件说明在右，用户一眼看到「现在到哪一步了」。</p>
+    <div class="doc-stage" id="hero-stage">
+      <ul class="timeline timeline-vertical">
+        <li>
+          <div class="timeline-start">10-16 09:20</div>
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">下单成功：订单已提交，等待支付</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">10-16 09:21</div>
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">支付成功：微信支付 ¥299.00</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">10-16 14:05</div>
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">仓库已发货：快递员已揽收包裹</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">预计今天送达</div>
+          <div class="timeline-middle"><span class="badge badge-primary badge-sm">派送中</span></div>
+          <div class="timeline-end timeline-box">已到武汉武昌区网点，派送员李师傅正在上门</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">待收货</div>
+          <div class="timeline-middle">
+            <span class="opacity-40"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box opacity-60">请保持电话畅通，签收后订单完成</div>
+        </li>
+      </ul>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="订单物流跟踪时间线">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="时间线">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>双侧交替：公司发展历程</h2>
+    <p class="desc">时间（timeline-start）和内容（timeline-end timeline-box）分置中线两侧，节点多时不显长，适合放产品里程碑、大事记这类回顾页。</p>
+    <div class="doc-stage">
+      <ul class="timeline timeline-vertical">
+        <li>
+          <div class="timeline-start">2022</div>
+          <div class="timeline-middle">
+            <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">产品正式上线，首批 200 位内测用户</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">2023</div>
+          <div class="timeline-middle">
+            <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">注册用户突破 10 万</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">2024</div>
+          <div class="timeline-middle">
+            <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">移动端 App 上架各大应用商店</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-start">2025</div>
+          <div class="timeline-middle"><span class="badge badge-primary badge-sm">进行中</span></div>
+          <div class="timeline-end timeline-box">开放开发者 API，接入第三方应用</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>用主色连线标出已完成进度</h2>
+    <p class="desc">连接线是一个 <code>&lt;hr&gt;</code>，给已完成段的 <code>&lt;hr&gt;</code> 加上主色背景类，就能把「已走完的路」高亮出来，常见于项目进度、订单进度条。</p>
+    <div class="doc-stage">
+      <ul class="timeline timeline-vertical">
+        <li>
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">需求评审通过</div>
+          <hr class="bg-primary" />
+        </li>
+        <li>
+          <hr class="bg-primary" />
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">开发完成，已提测</div>
+          <hr class="bg-primary" />
+        </li>
+        <li>
+          <hr class="bg-primary" />
+          <div class="timeline-middle"><span class="badge badge-primary badge-sm">测试中</span></div>
+          <div class="timeline-end timeline-box">测试同学正在回归，预计明天出报告</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <span class="opacity-40"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box opacity-60">灰度发布，全量上线</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>单侧紧凑：只在右边放记录</h2>
+    <p class="desc">内容少、不需要时间对照时，用 <code>timeline-compact</code> 让所有内容挤在中线一侧，省掉另一半空间，像一个操作日志列表。</p>
+    <div class="doc-stage">
+      <ul class="timeline timeline-vertical timeline-compact">
+        <li>
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">系统已自动备份数据库（03:00）</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <span class="text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">张经理导出了上月销售报表（10:24）</div>
+          <hr />
+        </li>
+        <li>
+          <hr />
+          <div class="timeline-middle">
+            <span class="text-warning"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126z" /></svg></span>
+          </div>
+          <div class="timeline-end timeline-box">磁盘用量达到 85%，请清理（16:02）</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>结构别摆错</h3>
+    <p>时间线是一个 <code>&lt;ul class="timeline"&gt;</code>，每个节点是一个 <code>&lt;li&gt;</code>；<code>timeline-start</code>、<code>timeline-middle</code>、<code>timeline-end</code> 三个块的顺序不能乱。节点之间的连接线是 <code>&lt;hr&gt;</code>：第一个 <code>&lt;li&gt;</code> 在结尾放一个，中间每个 <code>&lt;li&gt;</code> 开头、结尾各放一个，最后一个 <code>&lt;li&gt;</code> 只在开头放一个、结尾不放，缺了线会断。</p>
+    <h3>垂直还是水平</h3>
+    <p>默认是水平一排，订单跟踪、操作日志这类「往下看」的场景都加 <code>timeline-vertical</code>；放在横向横幅里才用默认水平。</p>
+    <h3>怎么表达进度</h3>
+    <ul>
+      <li>已完成的节点：中间放 <code>text-success</code> 的对勾图标。</li>
+      <li>正在进行的节点：中间放 <code>badge badge-primary</code> 徽标，让用户一眼定位当前位置。</li>
+      <li>还没到的节点：图标加 <code>opacity-40</code>，文字块加 <code>opacity-60</code>，暗示「以后才发生」。</li>
+    </ul>
+    <h3>注意</h3>
+    <p>节点内容别放太长段落，时间线的每个节点只写一句话事件；要写大段说明时换成左右交替的双侧版式，并控制在 5 到 7 个节点以内。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/timeline/" target="_blank" rel="noopener">daisyui.com/components/timeline</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】电商订单详情页底部的物流跟踪时间线，五个节点：下单成功 → 支付成功 → 仓库发货 → 派送中 → 已签收。
+【怎么排】从上到下垂直排列：
+- 已完成的节点（下单成功、支付成功、仓库发货）中间放绿色对勾图标；
+- 当前进行的节点（派送中）中间放主色小徽标，让用户一眼看到"现在到哪了"；
+- 还没到的节点（已签收）图标和文字用 opacity-40/60 置灰；
+- 时间放在中线左侧（timeline-start），事件说明放在右侧卡片（timeline-end timeline-box）。
+【精确规格】
+- 外层：<ul class="timeline timeline-vertical">，每个节点是一个 <li>。
+- 每个 <li> 内顺序固定：timeline-start（时间）→ timeline-middle（图标或徽标）→ timeline-end timeline-box（说明）。
+- 连接线是 <hr />：第一个 <li> 在结尾放一个，中间每个 <li> 开头、结尾各放一个，最后一个 <li> 只在开头放一个、结尾不放，缺了线会断。
+- 对勾 SVG 用 text-success 着色，当前徽标用 badge badge-primary badge-sm，未到节点 SVG 外套 span opacity-40。
+- 文案写真实物流事件与时间（如"10-16 14:05 仓库已发货"），不要写颜色名。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
