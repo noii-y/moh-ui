@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-status",
+  "type": "component",
+  "title": "状态点",
+  "description": "搬运自 daisyUI 的状态圆点：success/error/warning/info/neutral 等八色、xs~xl 五档尺寸，ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。",
+  "styleTags": ["反馈", "数据展示"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/status/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），补充服务状态列表真实场景与 animate-ping/bounce 双点叠放写法，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
