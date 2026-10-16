@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>环形进度 Radial Progress · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>环形进度 <span class="en">Radial Progress</span></h1>
+  <p>用一个圆环表示完成度：目标达成率、任务进度、倒计时都适合。下面先给一个可以直接拿走的数据看板成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">进度值、大小、环厚都写在 <code>style</code> 里的三个 CSS 变量上，不改类。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>数据看板里的本月目标完成环</h2>
+    <p>一张统计卡：标题、大环居中显示 75%、下方一行差距说明和查看明细按钮。环的颜色自动跟随主题主色。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="card bg-base-100 border border-base-300 max-w-sm mx-auto">
+        <div class="card-body items-center text-center">
+          <h3 class="card-title">本月销售目标</h3>
+          <div class="radial-progress my-4" style="--value:75;--size:9rem;--thickness:8px;" role="progressbar" aria-valuenow="75">75%</div>
+          <p class="text-sm opacity-70">已完成 75%，还差 3.75 万元达标</p>
+          <button class="btn btn-primary btn-sm">查看明细</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="数据看板本月目标完成环形进度">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="环形进度">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>不同的完成度</h2>
+    <p class="desc">一排对照：0%、20%、60%、100%。只改 <code>--value</code> 变量（0–100），并同步写 <code>aria-valuenow</code> 方便读屏。</p>
+    <div class="doc-stage">
+      <div class="radial-progress" style="--value:0;" role="progressbar" aria-valuenow="0">0%</div>
+      <div class="radial-progress" style="--value:20;" role="progressbar" aria-valuenow="20">20%</div>
+      <div class="radial-progress" style="--value:60;" role="progressbar" aria-valuenow="60">60%</div>
+      <div class="radial-progress" style="--value:100;" role="progressbar" aria-valuenow="100">100%</div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>语义色环</h2>
+    <p class="desc">环的颜色就是文字颜色：加 <code>text-success</code> 表示达标、<code>text-warning</code> 表示临期、<code>text-error</code> 表示告警。颜色仍走主题变量。</p>
+    <div class="doc-stage">
+      <div class="radial-progress text-success" style="--value:92;" role="progressbar" aria-valuenow="92">92%</div>
+      <div class="radial-progress text-warning" style="--value:45;" role="progressbar" aria-valuenow="45">45%</div>
+      <div class="radial-progress text-error" style="--value:15;" role="progressbar" aria-valuenow="15">15%</div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸与环厚</h2>
+    <p class="desc"><code>--size</code> 控直径（默认 5rem），<code>--thickness</code> 控环厚。小环放表格单元格，大环放看板主视觉。</p>
+    <div class="doc-stage">
+      <div class="radial-progress" style="--value:70;--size:4rem;--thickness:6px;" role="progressbar" aria-valuenow="70">70%</div>
+      <div class="radial-progress" style="--value:70;--size:10rem;--thickness:2px;" role="progressbar" aria-valuenow="70">70%</div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带底色的实心环</h2>
+    <p class="desc">给圆环加主色填充和描边，适合深色背景上的重点数据。</p>
+    <div class="doc-stage bg-base-300">
+      <div class="radial-progress bg-primary text-primary-content border-primary border-4" style="--value:75;--size:8rem;" role="progressbar" aria-valuenow="75">75%</div>
+    </div>
+  </section>
+
+  <section class="doc-block doc-guide">
+    <h2>使用指南</h2>
+    <h3>三个 CSS 变量是本体</h3>
+    <p><code>radial-progress</code> 靠 <code>--value</code>（0–100）显示进度，<code>--size</code> 控直径，<code>--thickness</code> 控环厚；改数字只动 <code>style</code>，不加新类。</p>
+    <h3>用 div，别用 progress 标签</h3>
+    <p>官方说明：环内要显示文字，且部分浏览器不渲染 <code>progress</code> 标签里的伪元素，所以一律用 <code>div</code> + <code>role="progressbar"</code> + <code>aria-valuenow</code>。</p>
+    <h3>颜色就是文字色</h3>
+    <p>环条颜色取元素的文字颜色：<code>text-primary</code> / <code>text-success</code> 等，不要写死色值。</p>
+    <h3>什么时候用它</h3>
+    <p>单个百分比、一眼能看完的完成度用环；多指标横向比较请用横条进度，环不要并列超过四个。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/radial-progress/" target="_blank" rel="noopener">daisyui.com/components/radial-progress</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】数据看板上的一张统计卡，用一个大圆环表示本月目标完成度，环中央显示百分比，下方一句差距说明和操作按钮。
+【怎么排】
+- 外层卡片：<div class="card bg-base-100 border border-base-300 max-w-sm mx-auto">，body 居中（items-center text-center）。
+- 环是本体：<div class="radial-progress" style="--value:75;--size:9rem;--thickness:8px;" role="progressbar" aria-valuenow="75">75%</div>。
+- 三个 CSS 变量必须写明：--value 是进度值（0–100）、--size 是圆环直径（默认 5rem）、--thickness 是环厚。
+- 环下面一行小字说明（如「已完成 75%，还差 3.75 万元达标」），再一个 btn btn-primary btn-sm 的「查看明细」。
+【精确规格】
+- 用 div 不用 progress 标签：环内要放文字，必须带 role="progressbar" 和 aria-valuenow。
+- 环的颜色 = 文字颜色，默认跟随主题主色；要语义色就加 text-success / text-warning / text-error，禁止写死色值。
+- 文案写真实中文业务数据，不出现颜色名。
+- 整卡不写死像素宽，max-w-sm 限宽，窄屏居中不溢出。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
