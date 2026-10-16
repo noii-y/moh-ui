@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>滑块 Range · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>滑块 <span class="en">Range</span></h1>
+  <p>通过拖动滑块选择一个数值。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/range/" target="_blank" rel="noopener">daisyui.com/components/range</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <div class="doc-stage col w-full">
+      <input type="range" min="0" max="100" value="40" class="range w-full max-w-md" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带刻度</h2>
+    <p class="desc">用 step 设定步长，下方用 flex 均布刻度线与数字。</p>
+    <div class="doc-stage col w-full max-w-xs">
+      <input type="range" min="0" max="100" value="25" class="range" step="25" />
+      <div class="flex justify-between px-3 mt-2 text-xs w-full"><span>|</span><span>|</span><span>|</span><span>|</span><span>|</span></div>
+      <div class="flex justify-between px-3 mt-2 text-xs w-full"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <div class="doc-stage col w-full">
+      <input type="range" min="0" max="100" value="40" class="range range-neutral" />
+      <input type="range" min="0" max="100" value="40" class="range range-primary" />
+      <input type="range" min="0" max="100" value="40" class="range range-secondary" />
+      <input type="range" min="0" max="100" value="40" class="range range-accent" />
+      <input type="range" min="0" max="100" value="40" class="range range-success" />
+      <input type="range" min="0" max="100" value="40" class="range range-warning" />
+      <input type="range" min="0" max="100" value="40" class="range range-info" />
+      <input type="range" min="0" max="100" value="40" class="range range-error" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage col w-full">
+      <input type="range" min="0" max="100" value="30" class="range range-xs" />
+      <input type="range" min="0" max="100" value="40" class="range range-sm" />
+      <input type="range" min="0" max="100" value="50" class="range range-md" />
+      <input type="range" min="0" max="100" value="60" class="range range-lg" />
+      <input type="range" min="0" max="100" value="70" class="range range-xl" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>竖向</h2>
+    <div class="doc-stage">
+      <input type="range" min="0" max="100" value="40" class="range range-vertical h-40" />
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

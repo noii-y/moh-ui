@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-button",
+  "type": "component",
+  "title": "按钮",
+  "description": "搬运自 daisyUI 的按钮组件：颜色/尺寸/描边/虚线/激活/禁用/图标/加载/玻璃等全部变体，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "表单", "操作"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/button/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将 Tailwind 任意值图标类替换为标准工具类，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

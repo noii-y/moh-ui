@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-checkbox",
+  "type": "component",
+  "title": "复选框",
+  "description": "搬运自 daisyUI 的复选框：基础/标签分组/尺寸/语义色/禁用/半选，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "表单", "选择"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/checkbox/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML 为中文，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

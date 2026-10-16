@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>输入框 Input · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>文本输入框 <span class="en">Input</span></h1>
+  <p>单行文本输入。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/input/" target="_blank" rel="noopener">daisyui.com/components/input</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <p class="desc">适用于 text、password、email、number、date、tel、url、search 等任意单行类型。</p>
+    <div class="doc-stage col">
+      <input type="text" placeholder="请输入内容" class="input" />
+      <input type="email" placeholder="邮箱 email" class="input" />
+      <input type="password" placeholder="密码 password" class="input" />
+      <input type="number" placeholder="数字 number" class="input" />
+      <div class="flex gap-2 w-full">
+        <input type="date" class="input" />
+        <input type="time" class="input" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>内嵌图标 / 文字</h2>
+    <p class="desc">把 input 类放在外层 label 上，内部可放图标、快捷键、徽标，真正的 input 加 grow 撑满。</p>
+    <div class="doc-stage col">
+      <label class="input w-full">
+        <svg class="h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+        <input type="search" class="grow" placeholder="搜索…" />
+        <kbd class="kbd kbd-sm">⌘</kbd>
+        <kbd class="kbd kbd-sm">K</kbd>
+      </label>
+      <label class="input w-full">
+        <svg class="h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path></g></svg>
+        <input type="text" class="grow" placeholder="文件名 index.php" />
+      </label>
+      <label class="input w-full">
+        <span class="opacity-60">路径</span>
+        <input type="text" class="grow" placeholder="src/app/" />
+        <span class="badge badge-neutral badge-xs">可选</span>
+      </label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>幽灵样式</h2>
+    <p class="desc">input-ghost：无外框，嵌入卡片、工具栏时使用。</p>
+    <div class="doc-stage col w-full">
+      <input type="text" placeholder="无边框输入" class="input input-ghost w-full" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>字段标签（fieldset）</h2>
+    <p class="desc">官方推荐用 fieldset + fieldset-legend 组织"标题 + 输入框 + 提示"。</p>
+    <div class="doc-stage col">
+      <fieldset class="fieldset w-full">
+        <legend class="fieldset-legend">你的名字？</legend>
+        <input type="text" class="input" placeholder="请输入" />
+        <p class="fieldset-label">选填</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <p class="desc">语义色边框，通常用于状态提示（错误、警告、成功）。</p>
+    <div class="doc-stage">
+      <input type="text" placeholder="中性" class="input input-neutral" />
+      <input type="text" placeholder="主要" class="input input-primary" />
+      <input type="text" placeholder="次要" class="input input-secondary" />
+      <input type="text" placeholder="强调" class="input input-accent" />
+      <input type="text" placeholder="信息" class="input input-info" />
+      <input type="text" placeholder="成功" class="input input-success" />
+      <input type="text" placeholder="警告" class="input input-warning" />
+      <input type="text" placeholder="错误" class="input input-error" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <p class="desc">input-xs / input-sm / 默认 md / input-lg / input-xl。</p>
+    <div class="doc-stage">
+      <input type="text" placeholder="超小" class="input input-xs" />
+      <input type="text" placeholder="小" class="input input-sm" />
+      <input type="text" placeholder="中（默认）" class="input input-md" />
+      <input type="text" placeholder="大" class="input input-lg" />
+      <input type="text" placeholder="超大" class="input input-xl" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage col w-full">
+      <input type="text" placeholder="不可编辑" class="input" disabled />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带输入建议（datalist）</h2>
+    <p class="desc">原生 datalist，输入时给出候选，无需 JS。</p>
+    <div class="doc-stage col w-full">
+      <input type="text" class="input w-full" placeholder="你常用哪个浏览器？" list="browsers" />
+      <datalist id="browsers">
+        <option value="Chrome"></option>
+        <option value="Firefox"></option>
+        <option value="Safari"></option>
+        <option value="Edge"></option>
+      </datalist>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带校验（validator）</h2>
+    <p class="desc">配合原生 required / pattern / minlength，失焦后自动显示成功或错误色，详见"校验"组件。</p>
+    <div class="doc-stage col">
+      <label class="input validator w-full">
+        <svg class="h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></g></svg>
+        <input type="text" required placeholder="用户名" pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" title="仅支持字母、数字或连字符" />
+      </label>
+      <p class="validator-hint">3 到 30 个字符，只能含字母、数字或连字符</p>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>下拉选择 Select · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>下拉选择 <span class="en">Select</span></h1>
+  <p>从一组选项中选择一个值。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/select/" target="_blank" rel="noopener">daisyui.com/components/select</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <p class="desc">第一项通常设为禁用并选中，作为占位提示。</p>
+    <div class="doc-stage">
+      <select class="select">
+        <option disabled selected>请选择颜色</option>
+        <option>绯红</option>
+        <option>琥珀</option>
+        <option>绛紫</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>幽灵</h2>
+    <p class="desc">select-ghost：无背景，嵌入工具栏时使用。</p>
+    <div class="doc-stage">
+      <select class="select select-ghost">
+        <option disabled selected>请选择字体</option>
+        <option>Inter</option>
+        <option>Poppins</option>
+        <option>思源黑体</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>字段标签</h2>
+    <div class="doc-stage col w-full">
+      <fieldset class="fieldset max-w-sm">
+        <legend class="fieldset-legend">浏览器</legend>
+        <select class="select">
+          <option disabled selected>请选择浏览器</option>
+          <option>Chrome</option>
+          <option>Firefox</option>
+          <option>Safari</option>
+          <option>Edge</option>
+        </select>
+        <span class="fieldset-label">选填</span>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <p class="desc">语义色边框，用于状态提示。</p>
+    <div class="doc-stage">
+      <select class="select select-primary"><option disabled selected>主要</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-secondary"><option disabled selected>次要</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-accent"><option disabled selected>强调</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-info"><option disabled selected>信息</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-success"><option disabled selected>成功</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-warning"><option disabled selected>警告</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-error"><option disabled selected>错误</option><option>选项一</option><option>选项二</option></select>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage">
+      <select class="select select-xs"><option disabled selected>超小</option><option>苹果</option></select>
+      <select class="select select-sm"><option disabled selected>小</option><option>苹果</option></select>
+      <select class="select select-md"><option disabled selected>中（默认）</option><option>苹果</option></select>
+      <select class="select select-lg"><option disabled selected>大</option><option>苹果</option></select>
+      <select class="select select-xl"><option disabled selected>超大</option><option>苹果</option></select>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage">
+      <select class="select" disabled><option>不可选择</option></select>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-select",
+  "type": "component",
+  "title": "下拉选择",
+  "description": "搬运自 daisyUI 的下拉选择：基础/幽灵/fieldset/语义色/尺寸/禁用，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "表单", "选择"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/select/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML 为中文选项，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>文本域 Textarea · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>多行文本域 <span class="en">Textarea</span></h1>
+  <p>让用户输入多行文本。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/textarea/" target="_blank" rel="noopener">daisyui.com/components/textarea</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <div class="doc-stage col w-full">
+      <textarea class="textarea w-full" placeholder="写点什么…"></textarea>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>固定高度</h2>
+    <p class="desc">用 h-24、h-32 等工具类控制高度。</p>
+    <div class="doc-stage col w-full">
+      <textarea class="textarea h-24 w-full" placeholder="h-24 固定高度"></textarea>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>幽灵</h2>
+    <div class="doc-stage col w-full">
+      <textarea class="textarea textarea-ghost w-full" placeholder="无边框文本域"></textarea>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>字段标签</h2>
+    <div class="doc-stage col w-full">
+      <fieldset class="fieldset w-full">
+        <legend class="fieldset-legend">个人简介</legend>
+        <textarea class="textarea h-24" placeholder="介绍一下自己"></textarea>
+        <div class="fieldset-label">选填，最多 200 字</div>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <div class="doc-stage">
+      <textarea placeholder="主要" class="textarea textarea-primary"></textarea>
+      <textarea placeholder="成功" class="textarea textarea-success"></textarea>
+      <textarea placeholder="警告" class="textarea textarea-warning"></textarea>
+      <textarea placeholder="错误" class="textarea textarea-error"></textarea>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage">
+      <textarea placeholder="超小" class="textarea textarea-xs"></textarea>
+      <textarea placeholder="小" class="textarea textarea-sm"></textarea>
+      <textarea placeholder="中（默认）" class="textarea textarea-md"></textarea>
+      <textarea placeholder="大" class="textarea textarea-lg"></textarea>
+      <textarea placeholder="超大" class="textarea textarea-xl"></textarea>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage col w-full">
+      <textarea class="textarea w-full" placeholder="不可编辑" disabled></textarea>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

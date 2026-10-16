@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>复选框 Checkbox · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>复选框 <span class="en">Checkbox</span></h1>
+  <p>勾选或取消一个或多个选项。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/checkbox/" target="_blank" rel="noopener">daisyui.com/components/checkbox</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <div class="doc-stage">
+      <input type="checkbox" checked="checked" class="checkbox" />
+      <input type="checkbox" class="checkbox" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带文字标签</h2>
+    <p class="desc">用 label 包裹，点文字也能勾选；多选项放 fieldset 分组。</p>
+    <div class="doc-stage">
+      <fieldset class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4">
+        <legend class="fieldset-legend">登录选项</legend>
+        <label class="label cursor-pointer">
+          <span>记住我</span>
+          <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+        </label>
+        <label class="label cursor-pointer">
+          <span>自动登录</span>
+          <input type="checkbox" class="checkbox" />
+        </label>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>多选列表</h2>
+    <div class="doc-stage col">
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked class="checkbox checkbox-success" /><span class="label-text">邮件通知</span></label>
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" checked class="checkbox checkbox-success" /><span class="label-text">短信通知</span></label>
+      <label class="label cursor-pointer justify-start gap-3"><input type="checkbox" class="checkbox checkbox-success" /><span class="label-text">站内信</span></label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage">
+      <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-sm" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-md" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-lg" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-xl" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <div class="doc-stage">
+      <input type="checkbox" checked="checked" class="checkbox checkbox-primary" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-secondary" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-accent" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-neutral" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-info" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-success" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-warning" />
+      <input type="checkbox" checked="checked" class="checkbox checkbox-error" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage">
+      <input type="checkbox" class="checkbox" disabled />
+      <input type="checkbox" class="checkbox" disabled checked="checked" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>半选状态（indeterminate）</h2>
+    <p class="desc">表示"部分子项被选中"，需要用 JS 设置 indeterminate 属性。</p>
+    <div class="doc-stage">
+      <input type="checkbox" class="checkbox" id="indeterminate-demo" />
+    </div>
+    <script>
+      document.getElementById("indeterminate-demo").indeterminate = true;
+    </script>
+  </section>
+
+</main>
+</body>
+</html>

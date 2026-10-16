@@ -22,12 +22,17 @@ let count = 0;
 function collectJson(dir) {
   const out = [];
   if (!existsSync(dir)) return out;
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
-    if (e.isDirectory()) {
-      const p = join(dir, e.name, "moh.json");
+  // 递归收集任意层级的 moh.json（支持 components/daisyui/<name>/ 等命名空间）
+  const walk = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      if (!e.isDirectory()) continue;
+      const sub = join(d, e.name);
+      const p = join(sub, "moh.json");
       if (existsSync(p)) out.push(p);
+      walk(sub);
     }
-  }
+  };
+  walk(dir);
   return out;
 }
 
