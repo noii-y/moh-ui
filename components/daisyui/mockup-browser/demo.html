@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>浏览器样机 Mockup Browser · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>浏览器样机 <span class="en">Mockup Browser</span></h1>
+  <p>画一个带地址栏的浏览器窗口，把你的页面预览放进框里，常用于产品介绍文档、功能截图和演示稿。下面先给一个可以直接拿走的成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把 <code>mockup-browser-toolbar</code> 里地址栏文字换成你的网址，框里换成你的页面内容即可。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>产品官网首页预览</h2>
+    <p class="desc">一个浏览器窗口：顶栏是三色圆点和地址栏，框里放一段用 daisyUI 拼的迷你官网——顶部导航、主标题区、一行特性卡片。用来在文档里展示「产品在浏览器里长什么样」。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="mockup-browser border border-base-300 max-w-3xl mx-auto">
+        <div class="mockup-browser-toolbar">
+          <div class="input">https://www.huimo.example</div>
+        </div>
+        <div class="border-t border-base-300 bg-base-100">
+          <div class="navbar bg-base-200 px-4">
+            <div class="navbar-start">
+              <span class="font-bold">灰墨云</span>
+            </div>
+            <div class="navbar-end flex gap-4 text-sm">
+              <span>产品</span>
+              <span>定价</span>
+              <span>文档</span>
+              <button class="btn btn-primary btn-xs">登录</button>
+            </div>
+          </div>
+          <div class="px-6 py-8 text-center">
+            <h2 class="text-2xl font-bold">让团队更快交付</h2>
+            <p class="opacity-70 mt-2 text-sm">零依赖组件库，复制提示词即可生成界面</p>
+            <button class="btn btn-primary mt-4">免费开始</button>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 px-6 pb-6">
+            <div class="card bg-base-200 p-4"><div class="font-semibold text-sm">提示词驱动</div><p class="text-xs opacity-70 mt-1">把规格发给 AI</p></div>
+            <div class="card bg-base-200 p-4"><div class="font-semibold text-sm">零依赖</div><p class="text-xs opacity-70 mt-1">纯 HTML/CSS</p></div>
+            <div class="card bg-base-200 p-4"><div class="font-semibold text-sm">多主题</div><p class="text-xs opacity-70 mt-1">切换即跟随</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="产品官网首页的浏览器样机">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="浏览器样机">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：带边框 -->
+  <section class="doc-block">
+    <h2>带边框与纯色底</h2>
+    <p class="desc">加 <code>border border-base-300</code> 让样机在浅色背景上更清晰；框内可放任意内容，这里放一个简洁页面示意。</p>
+    <div class="doc-stage">
+      <div class="mockup-browser border border-base-300 max-w-2xl mx-auto">
+        <div class="mockup-browser-toolbar">
+          <div class="input">https://docs.example/start</div>
+        </div>
+        <div class="border-t border-base-300 p-6">
+          <h3 class="font-bold">快速开始</h3>
+          <p class="text-sm opacity-70 mt-1">三步把组件用到你的项目里：引两行 CSS、复制提示词、改 class。</p>
+          <button class="btn btn-soft btn-sm mt-3">查看文档</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：暗色内容 -->
+  <section class="doc-block">
+    <h2>框内放暗色页面</h2>
+    <p class="desc">框里内容自己控制背景色，把它换成深色，就能预览深色模式下的页面效果；样机外壳保持不变。</p>
+    <div class="doc-stage">
+      <div class="mockup-browser bg-base-300 max-w-2xl mx-auto">
+        <div class="mockup-browser-toolbar">
+          <div class="input">https://app.example</div>
+        </div>
+        <div class="border-t border-base-300 bg-base-100 p-6">
+          <div class="flex items-center justify-between">
+            <span class="font-semibold">数据看板</span>
+            <span class="badge badge-primary">实时</span>
+          </div>
+          <p class="text-sm opacity-70 mt-2">今日订单 128 笔，销售额 ¥8,640，较昨日上涨 12%。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>它是样机，不是真浏览器</h3>
+    <p><code>mockup-browser</code> 只画外壳和地址栏样子，里面放你的页面截图或一段 HTML；它不具备前进后退、刷新等真实功能。</p>
+    <h3>框里放什么</h3>
+    <ul>
+      <li>可以放一段用 daisyUI 拼的迷你页面（导航 + 标题 + 卡片），零图片依赖。</li>
+      <li>也可以放一张截图 <code>&lt;img&gt;</code>；文档里展示真实页面效果时用截图更省事。</li>
+      <li>地址栏文字写真实网址或示意网址，不要写「https://example.com」这类占位词。</li>
+    </ul>
+    <h3>尺寸与宽度</h3>
+    <p>样机宽度用 <code>max-w-*</code> 限制（如 max-w-3xl），不要让它撑满整个视口；窄屏下框内内容自然换行即可，不要横向溢出。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/mockup-browser/" target="_blank" rel="noopener">daisyui.com/components/mockup-browser</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】产品介绍文档里，一个模拟浏览器窗口展示产品官网首页的样子。
+【怎么排】外层是浏览器样机外壳，顶栏三色圆点 + 地址栏，框里是一段迷你官网：
+- 顶部一条导航（左品牌名，右导航链接和一个「登录」小按钮）；
+- 中间居中主标题「让团队更快交付」+ 一行副标题 + 主色按钮「免费开始」；
+- 底部三张等宽特性小卡片。
+【精确规格】
+- 外壳：<div class="mockup-browser border border-base-300 max-w-3xl mx-auto">；地址栏 <div class="mockup-browser-toolbar"><div class="input">https://你的产品官网</div></div>。
+- 框内内容包一层 <div class="border-t border-base-300 bg-base-100">；导航用 navbar bg-base-200，卡片用 card bg-base-200。
+- 框内不要外链图片，全部用 daisyUI 类拼；宽度用 max-w 限制，不要撑满视口、不要 fixed 定位。
+- 文案写真实中文动作（登录 / 免费开始 / 查看文档），不要写颜色名；颜色走主题变量。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
