@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-breadcrumb · 面包屑</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-breadcrumb · 面包屑（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：语义化 ol/li 导航 + > 分隔符 + 当前页 aria-current
+       行为标准（shadcn 同款）：nav[aria-label] + ol/li 列表；
+         分隔符 aria-hidden；末项非链接并标 aria-current="page"
+       ============================================================ */
+
+    .moh-breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--moh-space-1);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: var(--moh-text-sm);
+    }
+
+    .moh-breadcrumb__item {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+    }
+
+    .moh-breadcrumb__link {
+      color: var(--moh-muted);
+      text-decoration: none;
+      border-radius: var(--moh-radius-sm);
+      padding: 2px 2px;
+      transition: color var(--moh-transition);
+    }
+
+    .moh-breadcrumb__link:hover {
+      color: var(--moh-ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .moh-breadcrumb__link:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+    }
+
+    /* 当前页：非链接、主文字色、不可点击 */
+    .moh-breadcrumb__current {
+      color: var(--moh-ink);
+      font-weight: 500;
+    }
+
+    /* 分隔符：屏读跳过 */
+    .moh-breadcrumb__sep {
+      color: var(--moh-border-strong);
+      user-select: none;
+    }
+
+    /* 首页图标（可选） */
+    .moh-breadcrumb__home {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <nav aria-label="面包屑">
+      <ol class="moh-breadcrumb">
+        <li class="moh-breadcrumb__item">
+          <span class="moh-breadcrumb__home moh-breadcrumb__link" aria-hidden="true">⌂</span>
+          <a class="moh-breadcrumb__link" href="#">工作台</a>
+        </li>
+        <li class="moh-breadcrumb__item">
+          <span class="moh-breadcrumb__sep" aria-hidden="true">/</span>
+          <a class="moh-breadcrumb__link" href="#">项目管理</a>
+        </li>
+        <li class="moh-breadcrumb__item">
+          <span class="moh-breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="moh-breadcrumb__current" aria-current="page">灰墨主题包 v1</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="demo-wrap">
+    <nav aria-label="面包屑（简洁版）">
+      <ol class="moh-breadcrumb">
+        <li class="moh-breadcrumb__item">
+          <a class="moh-breadcrumb__link" href="#">用户</a>
+        </li>
+        <li class="moh-breadcrumb__item">
+          <span class="moh-breadcrumb__sep" aria-hidden="true">/</span>
+          <span class="moh-breadcrumb__current" aria-current="page">角色与权限</span>
+        </li>
+      </ol>
+    </nav>
+  </div>
+  <p class="demo-note">提示：常用于列表页→详情页的层级导航；当前页不可点击并标 aria-current="page"，分隔符对屏读隐藏。</p>
+</body>
+</html>

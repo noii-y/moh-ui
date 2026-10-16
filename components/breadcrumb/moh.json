@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "breadcrumb",
+  "type": "component",
+  "title": "面包屑",
+  "description": "语义化导航层级，分隔符隐藏，当前页 aria-current，带首页图标变体",
+  "styleTags": ["基础组件", "导航"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
