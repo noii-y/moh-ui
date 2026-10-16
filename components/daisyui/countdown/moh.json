@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-countdown",
+  "type": "component",
+  "title": "倒计时",
+  "description": "搬运自 daisyUI 的 countdown 纯 CSS 数字块组件：--value/--digits 变量驱动数字渲染，覆盖秒杀盒装、冒号时钟、大号带标签、促销卡、句内嵌数字等真实场景，零 JS。",
+  "styleTags": ["数据展示", "反馈"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/countdown/",
+    "license": "MIT",
+    "changes": "搬运官网 demo 结构（countdown + span --value），将示例数字改为真实中文秒杀/促销场景文案，盒装改用主题语义色（bg-neutral/text-neutral-content），并新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
