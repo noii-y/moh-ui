@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-pastel",
+  "type": "theme",
+  "title": "粉彩（柔和浅色）",
+  "description": "暖粉底、莓果主色、亲和圆润，适合教育 / 生活服务 / 健康类产品后台。",
+  "styleTags": ["粉彩", "柔和", "亲和", "圆润"],
+  "inspiration": ["https://www.shadcn.io/theme/marshmallow"],
+  "base": "mo-pastel",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
