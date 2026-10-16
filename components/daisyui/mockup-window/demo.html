@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>窗口样机 Mockup Window · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>窗口样机 <span class="en">Mockup Window</span></h1>
+  <p>画一个操作系统窗口的轮廓，把文档、登录框或代码预览放进窗口里，适合放在产品文档和宣传页中。下面先给一个可以直接拿走的成品。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">窗口只负责「像桌面窗口」，内容区放任意 daisyUI 组件或文档片段。</li>
+    </ol>
+  </section>
+
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>灰墨组件库的快速开始文档窗</h2>
+    <p>窗口自带一行灰色圆点标题栏，下面一行窗口标题；内容区是一段接入文档：标题、说明段落和一段代码引用。整窗用 daisyUI 类拼，没有截图、没有外链资源。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="mockup-window border border-base-300 max-w-2xl mx-auto bg-base-100">
+        <div class="border-t border-base-300 px-4 py-2 text-sm opacity-60">快速开始 · 灰墨组件库</div>
+        <div class="border-t border-base-300 p-6">
+          <h3 class="font-semibold">三步接入你的项目</h3>
+          <p class="mt-2 text-sm leading-relaxed opacity-80">灰墨是零依赖的中文组件库：复制两个 CSS 文件，粘贴一个组件片段，就能在任意页面里使用。切换主题时，整站颜色自动跟随。</p>
+          <div class="mt-4 rounded-box bg-base-200 p-3 text-sm">
+            <code>&lt;link rel="stylesheet" href="daisyui.css" /&gt;</code>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="组件库快速开始文档窗口样机">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="窗口样机">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>登录窗口</h2>
+    <p class="desc">内容区换成一个登录表单：两个输入框占位加主按钮，适合展示 SaaS 产品的登录页预览。</p>
+    <div class="doc-stage">
+      <div class="mockup-window border border-base-300 max-w-md mx-auto bg-base-100">
+        <div class="border-t border-base-300 px-4 py-2 text-sm opacity-60">登录 · 云工作台</div>
+        <div class="border-t border-base-300 p-6">
+          <h3 class="font-semibold">欢迎回来</h3>
+          <div class="mt-4 flex flex-col gap-3">
+            <div class="rounded-box bg-base-200 px-3 py-2 text-sm opacity-70">邮箱地址</div>
+            <div class="rounded-box bg-base-200 px-3 py-2 text-sm opacity-70">登录密码</div>
+            <button class="btn btn-primary btn-sm">登录</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带边框与背景的两种窗口</h2>
+    <p class="desc">外框加 <code>border border-base-300</code> 得到描边窗口；再加 <code>bg-base-100</code> 让内容区和外框层次更清楚。</p>
+    <div class="doc-stage">
+      <div class="mockup-window border border-base-300">
+        <div class="grid place-content-center h-24">无边框内容区，靠外层 border 勾勒窗口</div>
+      </div>
+      <div class="mockup-window bg-base-100 border border-base-300 mt-4">
+        <div class="grid place-content-center h-24">bg-base-100 填充后更像真实桌面窗口</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block doc-guide">
+    <h2>使用指南</h2>
+    <h3>圆点是自动画的</h3>
+    <p><code>mockup-window</code> 自带一行灰色圆点（CSS 伪元素绘制），不要再加圆点；窗口标题作为内容区第一行，用 <code>border-t border-base-300</code> 和正文隔开。</p>
+    <h3>窗口宽度</h3>
+    <p>用 <code>max-w-*</code> 限制整窗宽度（文档窗 <code>max-w-2xl</code>、登录窗 <code>max-w-md</code>），不要写死像素宽度。</p>
+    <h3>内容区随便放</h3>
+    <p>窗口里可以放文档段落、表单、代码块、甚至再套一个浏览器样机；内容用 daisyUI 组件拼即可。</p>
+  </section>
+
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/mockup-window/" target="_blank" rel="noopener">daisyui.com/components/mockup-window</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<script type="text/plain" id="moh-prompt">【场景】在产品文档或宣传页里，画一个桌面窗口轮廓，把一段接入文档（或登录框、代码预览）放进窗口中展示。
+【怎么排】
+- 外层是 <div class="mockup-window border border-base-300 bg-base-100">，用 max-w-* 限宽（文档窗 max-w-2xl，登录窗 max-w-md）。
+- 窗口的灰色圆点由 mockup-window 自动绘制（CSS 伪元素），不要重复加圆点。
+- 标题行是内容区第一行：border-t border-base-300 px-4 py-2 text-sm opacity-60，如「快速开始 · 灰墨组件库」；正文区再 border-t border-base-300 p-6：标题 h3 + 段落（text-sm leading-relaxed opacity-80）+ 代码引用块（rounded-box bg-base-200 p-3）。
+【精确规格】
+- daisyUI 没有 mockup-window-toolbar 类，也不要自己加彩色圆点行，否则会和自带圆点重复。
+- 文案写真实中文（如「快速开始 · 灰墨组件库」「欢迎回来」），不出现颜色名。
+- 整窗不设固定像素宽高，内容自然撑开；窄屏不溢出。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

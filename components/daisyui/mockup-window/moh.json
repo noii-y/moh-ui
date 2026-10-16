@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-mockup-window",
+  "type": "component",
+  "title": "窗口样机",
+  "description": "搬运自 daisyUI 的操作系统窗口样机：mockup-window 外框 + border/bg 变体，顶栏三圆点标题用零依赖 div 自拼，内容区可放文档/登录框/代码预览，零依赖纯 CSS。",
+  "styleTags": ["数据展示", "布局", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/mockup-window/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），新增中文文档窗与登录窗实战内容（官方仅空容器示例），顶栏圆点标题为零依赖自拼；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
