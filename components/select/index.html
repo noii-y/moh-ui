@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-select · 下拉选择</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-select · 下拉选择（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       说明：基于原生 <select> 美化（零 JS），箭头用 currentColor 内联 SVG
+       形态：普通 / 错误态 / 禁用
+       ============================================================ */
+
+    .moh-field {
+      display: grid;
+      gap: var(--moh-space-1);
+    }
+
+    .moh-label {
+      display: block;
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+    }
+
+    .moh-select {
+      position: relative;
+      display: block;
+    }
+
+    .moh-select select {
+      width: 100%;
+      height: var(--moh-control-height);
+      padding: 0 var(--moh-space-6) 0 var(--moh-space-3);
+      border: 1px solid var(--moh-border);
+      border-radius: var(--moh-radius-md);
+      background: var(--moh-surface);
+      color: var(--moh-ink);
+      font-family: var(--moh-font-sans);
+      font-size: var(--moh-text-sm);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: var(--moh-transition);
+      /* 自定义箭头：currentColor 跟随文字色，无需硬编码颜色 */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right var(--moh-space-2) center;
+    }
+
+    .moh-select select:hover:not(:disabled) {
+      border-color: var(--moh-border-strong);
+    }
+
+    .moh-select select:focus {
+      outline: none;
+      border-color: var(--moh-primary);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-select select:disabled {
+      background-color: var(--moh-surface-2);
+      color: var(--moh-muted);
+      cursor: not-allowed;
+    }
+
+    /* 错误态 */
+    .moh-select--error select {
+      border-color: var(--moh-danger);
+    }
+    .moh-select--error select:focus {
+      border-color: var(--moh-danger);
+      box-shadow: 0 0 0 3px var(--moh-primary-muted);
+    }
+
+    .moh-help {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+    }
+    .moh-help--error {
+      color: var(--moh-danger);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--moh-space-6);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+    }
+    .demo-wrap + .demo-wrap {
+      border-top: 1px solid var(--moh-border);
+    }
+    .demo-block {
+      display: grid;
+      gap: var(--moh-space-4);
+    }
+    .demo-title {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <div class="demo-block">
+      <p class="demo-title">基础用法</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-status">项目状态</label>
+        <div class="moh-select">
+          <select id="demo-status">
+            <option value="">请选择状态</option>
+            <option value="active">进行中</option>
+            <option value="paused">已暂停</option>
+            <option value="done">已完成</option>
+            <option value="archived">已归档</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <p class="demo-title">错误态</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-plan">套餐选择</label>
+        <div class="moh-select moh-select--error">
+          <select id="demo-plan">
+            <option value="">请选择套餐</option>
+            <option value="free">免费版</option>
+            <option value="pro">专业版</option>
+          </select>
+        </div>
+        <span class="moh-help moh-help--error">套餐为必选项</span>
+      </div>
+    </div>
+
+    <div class="demo-block">
+      <p class="demo-title">禁用</p>
+      <div class="moh-field">
+        <label class="moh-label" for="demo-lock">已锁定配置</label>
+        <div class="moh-select">
+          <select id="demo-lock" disabled>
+            <option>默认环境（不可更改）</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
