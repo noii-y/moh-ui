@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-hero",
+  "type": "component",
+  "title": "首屏横幅",
+  "description": "搬运自 daisyUI 的首屏横幅组件：SaaS 左文右图成品（公告胶囊+大标题+双按钮+星级评分+产品界面缩略卡）、居中纯文字、图文左右、图文反向（lg:flex-row-reverse）、带登录表单卡、内联渐变背景，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "布局"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/hero/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），去掉 min-h-screen 改用 py-20 留白以适配组件舞台；成品按 §6.6 规格重写为 SaaS 左文右图（公告胶囊+大标题+双按钮+只读星级+真实产品界面缩略卡，缩略卡用 card/menu/stat/progress/checkbox/avatar 真实类拼）；图片一律内联 linear-gradient/SVG 占位不引外链图；布局形态参考 Preline/Flowbite/HyperUI 的 hero（见 inspiration），HTML 一律用 daisyUI 类重写；新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "inspiration": [
+    "https://preline.co/",
+    "https://flowbite.com/blocks/marketing-ui/hero/",
+    "https://www.hyperui.dev/components/marketing/hero-sections"
+  ],
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

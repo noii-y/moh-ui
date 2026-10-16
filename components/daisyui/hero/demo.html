@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>首屏横幅 Hero · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>首屏横幅 <span class="en">Hero</span></h1>
+  <p>落地页最顶上那一块：一句大标题讲清你是谁，旁边一张产品图或登录卡。下面先给一个 SaaS 首页首屏的成品，再列出居中、图文左右、反向、登录卡和渐变背景等形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改标题、按钮、图片只改 <code>class</code> 和文案即可；切换主题后，整屏颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>SaaS 项目管理工具的首页首屏</h2>
+    <p class="desc">左文右图：顶部一行公告胶囊说「有新版本」，大标题一句话讲清产品价值，下面双按钮加一行星级评分建立信任；右边不是空框，而是一张能看见菜单、指标、进度和任务清单的产品界面缩略卡，让访客一眼知道产品长什么样。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="hero py-20">
+        <div class="hero-content flex-col gap-12 lg:flex-row w-full">
+
+          <!-- 左列：文案 -->
+          <div class="min-w-0 max-w-xl">
+            <span class="badge badge-soft badge-primary inline-flex items-center gap-2 px-4 py-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg>
+              全新 2.0 版本已发布，立即体验
+            </span>
+            <h1 class="mt-6 text-2xl font-bold leading-tight lg:text-5xl">让团队协作更高效<br />的项目管理工具</h1>
+            <p class="mt-4 text-base opacity-70 lg:text-lg">看板、任务、进度一页看全：谁在做什么、做到哪一步，团队不用再靠开会对齐。</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <button class="btn btn-primary">免费开始使用</button>
+              <button class="btn btn-soft">查看演示</button>
+            </div>
+            <div class="mt-8 flex items-center gap-2">
+              <div class="rating rating-sm">
+                <input type="radio" disabled="disabled" checked="checked" name="hero-star" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+                <input type="radio" disabled="disabled" checked="checked" name="hero-star" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+                <input type="radio" disabled="disabled" checked="checked" name="hero-star" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+                <input type="radio" disabled="disabled" checked="checked" name="hero-star" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+                <input type="radio" disabled="disabled" checked="checked" name="hero-star" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+              </div>
+              <span class="text-sm opacity-70">已有 10000+ 团队信赖</span>
+            </div>
+          </div>
+
+          <!-- 右列：产品界面缩略卡 -->
+          <div class="card w-full max-w-xs shrink-0 bg-base-100 shadow-2xl">
+            <div class="card-body gap-4 p-4">
+              <div class="flex items-center gap-1.5">
+                <span class="h-3 w-3 rounded-full bg-error"></span>
+                <span class="h-3 w-3 rounded-full bg-warning"></span>
+                <span class="h-3 w-3 rounded-full bg-success"></span>
+                <span class="ml-2 text-sm font-semibold">项目看板</span>
+              </div>
+              <div class="flex gap-3">
+                <ul class="menu menu-sm w-28 shrink-0 rounded-box bg-base-200 p-1">
+                  <li><a class="menu-active">看板</a></li>
+                  <li><a>任务</a></li>
+                  <li><a>成员</a></li>
+                </ul>
+                <div class="flex min-w-0 flex-1 flex-col gap-3">
+                  <div class="grid grid-cols-2 gap-2">
+                    <div class="rounded-lg bg-base-200 p-2">
+                      <div class="stat-title text-xs">进行中任务</div>
+                      <div class="stat-value text-xl">24</div>
+                    </div>
+                    <div class="rounded-lg bg-base-200 p-2">
+                      <div class="stat-title text-xs">本周完成</div>
+                      <div class="stat-value text-xl">18</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="flex justify-between text-xs">
+                      <span>整体进度</span>
+                      <span>68%</span>
+                    </div>
+                    <progress class="progress progress-primary w-full" value="68" max="100"></progress>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="flex cursor-pointer items-center gap-2 text-sm">
+                      <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+                      <span>首页改版设计稿</span>
+                      <div class="avatar avatar-placeholder ml-auto shrink-0">
+                        <div class="bg-neutral text-neutral-content w-6 rounded-full"><span class="text-xs">张</span></div>
+                      </div>
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 text-sm">
+                      <input type="checkbox" checked="checked" class="checkbox checkbox-xs" />
+                      <span>客户合同归档</span>
+                      <div class="avatar avatar-placeholder ml-auto shrink-0">
+                        <div class="bg-neutral text-neutral-content w-6 rounded-full"><span class="text-xs">李</span></div>
+                      </div>
+                    </label>
+                    <label class="flex cursor-pointer items-center gap-2 text-sm">
+                      <input type="checkbox" class="checkbox checkbox-xs" />
+                      <span>下周迭代排期</span>
+                      <div class="avatar avatar-placeholder ml-auto shrink-0">
+                        <div class="bg-neutral text-neutral-content w-6 rounded-full"><span class="text-xs">王</span></div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="SaaS 项目管理工具首页首屏（首屏横幅）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="首屏横幅">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：居中纯文字 -->
+  <section class="doc-block">
+    <h2>居中纯文字</h2>
+    <p class="desc">没有产品图时，把标题、说明和按钮居中堆在一块：公告胶囊在最上面，下面只有<strong>一个</strong>主按钮，别再放第二个操作抢注意力。</p>
+    <div class="doc-stage">
+      <div class="hero py-20">
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <span class="badge badge-soft badge-primary px-4 py-2">新版本 2.0 已发布</span>
+            <h2 class="mt-6 text-3xl font-bold lg:text-5xl">让好产品自己说话</h2>
+            <p class="mt-4 opacity-70">一段话讲清你是谁、能帮访客解决什么问题，下面只留一个按钮。</p>
+            <button class="btn btn-primary mt-8">免费开始使用</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：图文左右 -->
+  <section class="doc-block">
+    <h2>图文左右</h2>
+    <p class="desc">落地页最常见的结构：左文右图（<code>flex-col lg:flex-row</code>），文字讲价值，图片给佐证。没有真实产品图时用渐变占位，接图时把 <code>div</code> 换成 <code>&lt;img&gt;</code>。</p>
+    <div class="doc-stage">
+      <div class="hero py-20">
+        <div class="hero-content flex-col gap-12 lg:flex-row">
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold lg:text-4xl">把复杂的事，讲简单</h2>
+            <p class="mt-4 opacity-70">左边三五行讲清卖点，右边一张图或一段界面截图，比一大段文案更有说服力。</p>
+            <button class="btn btn-primary mt-6">了解更多</button>
+          </div>
+          <div class="w-full max-w-sm shrink-0">
+            <div class="flex h-44 items-center justify-center rounded-lg shadow-2xl" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-16 w-16 text-white opacity-90"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33 3 3 0 0 0-3.482 3.584A4.502 4.502 0 0 0 2.25 15Zm13.5 0h.008v.007H15.75V15Zm-3.75 0h.008v.007H12V15Z" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：图文反向 -->
+  <section class="doc-block">
+    <h2>图文反向</h2>
+    <p class="desc">把图换到左边：容器加 <code>lg:flex-row-reverse</code>，其余不变。一页里有好几段「图文」区块时，左右交替能打破单调。</p>
+    <div class="doc-stage">
+      <div class="hero py-20">
+        <div class="hero-content flex-col gap-12 lg:flex-row-reverse">
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold lg:text-4xl">数据自动汇总，不用手动做表</h2>
+            <p class="mt-4 opacity-70">和上一段结构一样，只是图在左、文在右，页面节奏立刻不一样。</p>
+            <button class="btn btn-soft mt-6">查看数据报告</button>
+          </div>
+          <div class="w-full max-w-sm shrink-0">
+            <div class="flex h-44 items-center justify-center rounded-lg shadow-2xl" style="background:linear-gradient(135deg,#0ea5e9,#14b8a6)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-16 w-16 text-white opacity-90"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625Zm6.75-3.75c0-.621.504-1.125 1.125-1.125h2.25C20.496 3.75 21 4.254 21 4.875v15.375c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.875Z" /></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：带登录表单卡 -->
+  <section class="doc-block">
+    <h2>带登录表单卡</h2>
+    <p class="desc">首屏右侧直接放一张登录卡（<code>card w-full max-w-sm shadow-2xl</code>），老用户不用再找「登录」入口。邮箱、密码用 <code>fieldset</code> 分组，「忘记密码」是链接不是按钮，登录动作整宽按钮收尾。</p>
+    <div class="doc-stage">
+      <div class="hero py-20">
+        <div class="hero-content flex-col gap-12 lg:flex-row">
+          <div class="min-w-0">
+            <h2 class="text-2xl font-bold lg:text-4xl">登录你的工作台</h2>
+            <p class="mt-4 opacity-70">右侧直接登录，老用户进来就能开工；新用户往下滚动看注册入口。</p>
+          </div>
+          <div class="card w-full max-w-sm shrink-0 bg-base-100 shadow-2xl">
+            <div class="card-body">
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">邮箱</legend>
+                <input type="email" class="input w-full" placeholder="name@company.com" />
+              </fieldset>
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">密码</legend>
+                <input type="password" class="input w-full" placeholder="请输入密码" />
+              </fieldset>
+              <label class="label justify-end">
+                <a class="link link-hover text-sm">忘记密码？</a>
+              </label>
+              <button class="btn btn-neutral btn-block mt-2">登录</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：内联渐变背景 -->
+  <section class="doc-block">
+    <h2>内联渐变背景</h2>
+    <p class="desc">彩色或图片背景上叠一层 <code>hero-overlay</code> 压暗，文字换 <code>text-neutral-content</code> 保证对比度。这里用内联渐变占位，真实项目把它换成你的品牌图或视频。</p>
+    <div class="doc-stage">
+      <div class="hero py-20 text-neutral-content" style="background:linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <div class="hero-overlay" style="background-color:rgba(0,0,0,0.35)"></div>
+        <div class="hero-content text-center">
+          <div class="max-w-md">
+            <h2 class="text-3xl font-bold lg:text-5xl">深色渐变上的首屏</h2>
+            <p class="mt-4 opacity-90">背景越深，文字越要够亮够粗；按钮用实心主色，在暗背景上依然跳得出来。</p>
+            <button class="btn btn-primary mt-8">立即体验</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>一屏只讲一件事、只给一个主按钮</h3>
+    <p>首屏的任务是「让人知道你是干嘛的 + 点哪里继续」：大标题一句话讲清价值，下面最多两个按钮（一个实心主操作 + 一个弱化的次要操作），星级、客户 logo 这类信任元素挤在同一行就够了，不要再加导航、再加报名表单。</p>
+    <h3>标题别被挤成单字断行</h3>
+    <p>左右两列都加 <code>min-w-0</code>，右列产品图卡用 <code>shrink-0</code> 固定不缩；标题在合理位置主动断行（<code>&lt;br /&gt;</code>），字号桌面 <code>lg:text-4xl</code> 或 <code>lg:text-5xl</code>、手机降到 <code>text-2xl</code> 或 <code>text-3xl</code>。宁可主动断行，也不要被挤成「项目管理工／具」这种单字孤行。</p>
+    <h3>别写死整屏高度</h3>
+    <p>本库示例一律用 <code>py-20</code> 或 <code>py-24</code> 控制留白，不写 <code>min-h-screen</code>——在文档流或卡片里它会把页面撑满、盖住复制按钮。真要做整屏高度的独立落地页时，再给 <code>hero</code> 加 <code>min-h-screen</code>。</p>
+    <h3>图与背景用占位、教用户换真图</h3>
+    <p>产品图、背景一律用内联 <code>linear-gradient</code> 或内联 SVG 占位，不外链图片；教程里明确告诉用户「换成你的真实截图」。背景视频、自动轮播这类效果需要 JS，不在纯 CSS 范围内。</p>
+    <h3>深色背景上的对比度</h3>
+    <p>叠了 <code>hero-overlay</code> 或用深色渐变时，文字必须用 <code>text-neutral-content</code>（或白），按钮用实心 <code>btn-primary</code>；不要在暗背景上放半透明幽灵按钮，会看不清。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/hero/" target="_blank" rel="noopener">daisyui.com/components/hero</a>。布局形态参考了 Preline、Flowbite、HyperUI 的 hero 区块（均为 MIT/免费），HTML 一律用 daisyUI 类重写。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】SaaS 产品官网的首页首屏：左边大标题 + 副标题 + 双按钮 + 一行星级评分，右边一张产品界面缩略卡，让访客一眼看懂产品长什么样、点哪里注册。
+【怎么排】
+- 外层 <div class="hero py-20">，内部 <div class="hero-content flex-col gap-12 lg:flex-row w-full">；手机上下堆叠，桌面左右两列（hero-content 加 w-full 撑满舞台，否则在 doc-stage 的 flex 布局里会收缩成内容宽度）。
+- 顶部一行公告胶囊：<span class="badge badge-soft badge-primary px-4 py-2"> 带一个 h-4 w-4 单色 SVG 小图标，写真实公告（如「全新 2.0 版本已发布，立即体验」）。
+- 左列 <div class="min-w-0 max-w-xl">：标题 text-2xl lg:text-5xl font-bold，在合理位置主动 <br /> 断行，禁止被挤成单字；副标题一行讲产品价值（text-base lg:text-lg opacity-70）；按钮 flex flex-wrap gap-3，主操作 btn btn-primary 一个，次要操作 btn btn-soft 一个；星级评分只读展示：rating rating-sm 里 5 个 disabled + checked 的 mask mask-star-2 bg-orange-400 radio，旁边一行小字「已有 10000+ 团队信赖」。
+- 右列是一张真实产品界面缩略卡（card w-full max-w-xs shrink-0 bg-base-100 shadow-2xl，card-body p-4）：从上到下依次是①窗口三圆点（h-3 w-3 rounded-full bg-error/bg-warning/bg-success）+「项目看板」小标题；②左侧 menu menu-sm w-28（3 项，其中一项 menu-active）；③主区 grid grid-cols-2 两个小指标卡（stat-title text-xs + stat-value text-xl，如「进行中任务 24 / 本周完成 18」）；④一条 progress progress-primary w-full value=68；⑤3 行任务清单（label flex items-center gap-2，checkbox checkbox-xs + 任务文字 + avatar avatar-placeholder 小头像 w-6 姓名首字）。
+【精确规格】
+- 左右两列都加 min-w-0，右列加 shrink-0；标题手机 text-2xl、桌面 lg:text-5xl，宁可主动 <br /> 断行也不许单字孤行。
+- 不写 min-h-screen、不用 fixed/absolute 定位；卡片内部全部是普通文档流。
+- 按钮写真实动作（免费开始使用 / 查看演示），禁止出现 Primary / 成功 这类颜色名当文案；图标全部是单色内联 SVG，不外链图片、不用 emoji。
+- 390px 手机宽下两列折成上下，卡片不溢出、按钮不被裁切、标题不拆字。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
