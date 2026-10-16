@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "checkbox",
+  "type": "component",
+  "title": "复选框",
+  "description": "accent-color 主题化原生复选框，保留键盘/屏读语义，禁用态",
+  "styleTags": ["基础组件", "表单"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
