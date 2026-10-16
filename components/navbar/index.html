@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-navbar · 导航栏</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-navbar · 顶部导航栏（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       结构：左（品牌 + 页面标题）/ 中（导航链接）/ 右（通知 + 用户）
+       要点：高 48px；底部 1px 边框；激活项 primary 色
+       ============================================================ */
+
+    .moh-navbar {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-6);
+      height: 48px;
+      padding: 0 var(--moh-space-4);
+      background: var(--moh-surface);
+      border-bottom: 1px solid var(--moh-border);
+    }
+
+    /* 品牌区 */
+    .moh-navbar__brand {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      font-size: var(--moh-text-md);
+      font-weight: 600;
+      color: var(--moh-ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .moh-navbar__brand:hover {
+      color: var(--moh-primary);
+    }
+
+    .moh-navbar__logo {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--moh-radius-sm);
+      background: var(--moh-primary);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    /* 页面标题 / 面包屑 */
+    .moh-navbar__page {
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+      white-space: nowrap;
+      border-left: 1px solid var(--moh-border);
+      padding-left: var(--moh-space-4);
+    }
+
+    /* 导航链接 */
+    .moh-navbar__nav {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-1);
+      margin-left: var(--moh-space-2);
+    }
+
+    .moh-navbar__link {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--moh-space-1) var(--moh-space-3);
+      border-radius: var(--moh-radius-md);
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+      text-decoration: none;
+      transition: var(--moh-transition);
+    }
+
+    .moh-navbar__link:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+
+    .moh-navbar__link--active {
+      color: var(--moh-primary);
+      background: var(--moh-primary-muted);
+      font-weight: 500;
+    }
+
+    /* 右侧用户区 */
+    .moh-navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      margin-left: auto;
+    }
+
+    .moh-navbar__icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: none;
+      border-radius: var(--moh-radius-md);
+      background: transparent;
+      color: var(--moh-muted);
+      cursor: pointer;
+      transition: var(--moh-transition);
+    }
+
+    .moh-navbar__icon-btn:hover {
+      color: var(--moh-ink);
+      background: var(--moh-surface-2);
+    }
+
+    .moh-navbar__icon-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* 通知小红点 */
+    .moh-navbar__badge {
+      position: relative;
+    }
+    .moh-navbar__badge::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--moh-danger);
+      border: 2px solid var(--moh-surface);
+    }
+
+    /* 用户信息 */
+    .moh-navbar__user {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      padding: var(--moh-space-1) var(--moh-space-2);
+      border-radius: var(--moh-radius-md);
+      font-size: var(--moh-text-sm);
+      color: var(--moh-ink);
+    }
+
+    .moh-navbar__avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--moh-primary-muted);
+      color: var(--moh-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--moh-text-xs);
+      font-weight: 600;
+    }
+
+    .moh-navbar__user-name {
+      color: var(--moh-muted);
+    }
+
+    /* 焦点态（可访问性） */
+    .moh-navbar a:focus-visible,
+    .moh-navbar button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-md);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      background: var(--moh-canvas);
+      padding: var(--moh-space-6);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap">
+    <nav class="moh-navbar">
+      <a class="moh-navbar__brand" href="#">
+        <span class="moh-navbar__logo"></span>
+        灰墨控制台
+      </a>
+      <span class="moh-navbar__page">项目管理</span>
+
+      <div class="moh-navbar__nav">
+        <a class="moh-navbar__link moh-navbar__link--active" href="#">概览</a>
+        <a class="moh-navbar__link" href="#">项目</a>
+        <a class="moh-navbar__link" href="#">成员</a>
+        <a class="moh-navbar__link" href="#">设置</a>
+      </div>
+
+      <div class="moh-navbar__actions">
+        <button class="moh-navbar__icon-btn moh-navbar__badge" aria-label="通知">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+        </button>
+        <button class="moh-navbar__icon-btn" aria-label="帮助">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+        <span class="moh-navbar__user">
+          <span class="moh-navbar__avatar">灰</span>
+          <span class="moh-navbar__user-name">noii-y</span>
+        </span>
+      </div>
+    </nav>
+  </div>
+</body>
+</html>
