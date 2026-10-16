@@ -12,14 +12,61 @@
 <body>
 <header class="doc-head">
   <h1>评分 <span class="en">Rating</span></h1>
-  <p>一组单选按钮，让用户打分。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
-  <p>来源：<a href="https://daisyui.com/components/rating/" target="_blank" rel="noopener">daisyui.com/components/rating</a>（MIT）</p>
+  <p>一组单选按钮，让用户对商品、服务打分（五星、心形等）。下面先给一个评价区可以直接拿走的打星成品，再列出尺寸、可清除、半星和只读展示供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改形状、尺寸、颜色只改 <code>class</code> 即可；切换主题后，打星的描边会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：商品评价打星 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>商品评价区的打星输入</h2>
+    <p class="desc">默认 0 星、不预设打分，第一个隐藏 radio 允许用户取消已选；每颗星都写了 aria-label，读屏软件能读出「几星」。打星只是评价的一部分，下方放「提交评价」主按钮收尾，不打星也能提交文字评价。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <fieldset class="fieldset w-full max-w-md">
+        <legend class="fieldset-legend">为这次购物打分</legend>
+        <div class="rating rating-lg">
+          <input type="radio" name="hero-rate" class="rating-hidden" aria-label="清除评分" />
+          <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="1 星" />
+          <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="2 星" />
+          <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="3 星" />
+          <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="4 星" />
+          <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+        </div>
+        <p class="fieldset-label">点星星给商品打分，不打也可直接提交文字评价</p>
+      </fieldset>
+      <div class="flex flex-wrap gap-2">
+        <button class="btn btn-primary">提交评价</button>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品评价区打星输入（评分）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="评分">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>五星评分（默认选中 2 星）</h2>
+    <h2>五星评分（默认选中）</h2>
+    <p class="desc">最常见的五星打分，给某一颗加 <code>checked</code> 就是默认选中的分数。同一组 radio 的 <code>name</code> 必须相同，不同组之间不能重名。</p>
     <div class="doc-stage">
       <div class="rating">
         <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="1 星" />
@@ -32,7 +79,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>心形（多色）</h2>
+    <h2>心形与形状</h2>
+    <p class="desc">形状由 <code>mask</code> 系列决定：<code>mask-star-2</code> 是星形，<code>mask-heart</code> 是心形。多色心形用不同 <code>bg-*</code> 给每颗一个颜色，适合「满意度表情」这类轻量场景。</p>
     <div class="doc-stage">
       <div class="rating gap-1">
         <input type="radio" name="r2" class="mask mask-heart bg-red-400" aria-label="1 分" />
@@ -45,7 +93,8 @@
   </section>
 
   <section class="doc-block">
-    <h2>尺寸</h2>
+    <h2>尺寸四档</h2>
+    <p class="desc">从 xs 到 lg 共四档（默认 md 最通用）；小尺寸塞进商品卡片列表，大尺寸给移动端主评价区。</p>
     <div class="doc-stage col">
       <div class="rating rating-xs"><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="2"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="3" checked="checked"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
       <div class="rating rating-sm"><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="2" checked="checked"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="3"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
@@ -56,22 +105,22 @@
 
   <section class="doc-block">
     <h2>可清除（rating-hidden）</h2>
-    <p class="desc">第一个放一个隐藏的 radio，允许用户取消打分。</p>
+    <p class="desc">在最前面放一个 <code>rating-hidden</code> 的 radio，用户点一下已选的星就能取消打分，回到未评分状态；需要「不强制打分」的场景用它。</p>
     <div class="doc-stage">
       <div class="rating rating-lg">
         <input type="radio" name="r7" class="rating-hidden" aria-label="清除" />
-        <input type="radio" name="r7" class="mask mask-star-2" aria-label="1 星" />
-        <input type="radio" name="r7" class="mask mask-star-2" aria-label="2 星" checked="checked" />
-        <input type="radio" name="r7" class="mask mask-star-2" aria-label="3 星" />
-        <input type="radio" name="r7" class="mask mask-star-2" aria-label="4 星" />
-        <input type="radio" name="r7" class="mask mask-star-2" aria-label="5 星" />
+        <input type="radio" name="r7" class="mask mask-star-2 bg-orange-400" aria-label="1 星" />
+        <input type="radio" name="r7" class="mask mask-star-2 bg-orange-400" aria-label="2 星" checked="checked" />
+        <input type="radio" name="r7" class="mask mask-star-2 bg-orange-400" aria-label="3 星" />
+        <input type="radio" name="r7" class="mask mask-star-2 bg-orange-400" aria-label="4 星" />
+        <input type="radio" name="r7" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
       </div>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>半星</h2>
-    <p class="desc">加 rating-half，每个整星位放两个 mask-half 的 radio。</p>
+    <p class="desc">容器加 <code>rating-half</code>，每个整星位放 <code>mask-half-1</code>（左半）和 <code>mask-half-2</code>（右半）两个 radio，就能选 0.5 星；同样在最前面放 <code>rating-hidden</code> 允许清除。</p>
     <div class="doc-stage">
       <div class="rating rating-lg rating-half">
         <input type="radio" name="r8" class="rating-hidden" aria-label="清除" />
@@ -89,6 +138,61 @@
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>只读展示平均评分</h2>
+    <p class="desc">展示商品详情页的「4.2 分」时不要让用户点：给每个 radio 加 <code>disabled</code>，再按平均分数选中前几颗。只读、不采集输入，旁边配数字与评价人数。</p>
+    <div class="doc-stage col">
+      <div class="rating">
+        <input type="radio" name="avg" class="mask mask-star-2 bg-orange-400" checked disabled aria-label="4 分" />
+        <input type="radio" name="avg" class="mask mask-star-2 bg-orange-400" checked disabled aria-label="4 分" />
+        <input type="radio" name="avg" class="mask mask-star-2 bg-orange-400" checked disabled aria-label="4 分" />
+        <input type="radio" name="avg" class="mask mask-star-2 bg-orange-400" checked disabled aria-label="4 分" />
+        <input type="radio" name="avg" class="mask mask-star-2 bg-orange-400" disabled aria-label="5 分" />
+      </div>
+      <p class="fieldset-label">4.2 分 · 共 128 人评价</p>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>每组 radio 同名、不同组不同名</h3>
+    <p>同一套星星的 5 个 radio 必须共用一个 <code>name</code>（如 <code>rate</code>），否则会变成多选；页面上若有多组评分，每组的 <code>name</code> 都要不一样。</p>
+    <h3>每颗星都要写 aria-label</h3>
+    <p>给每个 radio 写 <code>aria-label="1 星"</code> 这类说明，读屏软件才读得出打分含义；不要只放一堆没有文字的图形。</p>
+    <h3>输入与展示分开</h3>
+    <p>让用户打分用可点的 radio；展示平均分时给 radio 加 <code>disabled</code> 并按分数选中前几颗，旁边写「4.2 分 · 共 128 人评价」，别只给星星不给数字。</p>
+    <h3>半星与可清除</h3>
+    <p><code>rating-half</code> 下每整星位要成对放 <code>mask-half-1</code> / <code>mask-half-2</code>；需要「不强制打分」时，在最前面放一个 <code>rating-hidden</code> radio，用户就能取消已选。</p>
+    <h3>常见坑</h3>
+    <ul>
+      <li>形状用 <code>mask mask-star-2</code> / <code>mask-heart</code>，颜色用 <code>bg-orange-400</code> 这类调色板类，不要写死 <code>style="background:#xxx"</code>。</li>
+      <li>不要为了好看把每颗星涂成不同颜色——那只在「满意度表情」这类轻量场景适用。</li>
+      <li>键盘 Tab 聚焦后用方向键或空格切换，焦点描边不要去掉。</li>
+    </ul>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/rating/" target="_blank" rel="noopener">daisyui.com/components/rating</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】商品评价区里的打星输入：默认 0 星、不预设分数，用户点星星打分，下方放一个「提交评价」主按钮。
+【怎么排】
+- 用 fieldset.fieldset（w-full max-w-md）包住打星，legend（fieldset-legend）写「为这次购物打分」；
+- 打星容器 <div class="rating rating-lg">，最前面放一个 class="rating-hidden" 的 radio（aria-label="清除评分"），让用户能取消已选；
+- 后面 5 颗星每颗都是 <input type="radio" name="hero-rate" class="mask mask-star-2 bg-orange-400" aria-label="N 星" />，默认都不 checked（即 0 星）；
+- 打星下方一行 fieldset-label 写「点星星给商品打分，不打也可直接提交文字评价」；
+- 最下方 flex flex-wrap gap-2 放主按钮「提交评价」（btn btn-primary），整组竖向堆叠、左对齐，不写任何 JS。
+【精确规格】
+- 同一组 5 颗星 radio 必须共用同一个 name；每颗都要有 aria-label（1 星～5 星）；不同页面组之间 name 不能重名。
+- 用到的类全部真实存在：rating、rating-lg、rating-hidden、mask、mask-star-2、bg-orange-400、fieldset、fieldset-legend、fieldset-label、flex-wrap、gap-2、btn-primary。
+- 文案写真实业务动作（提交评价、为这次购物打分），禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 展示平均分时给 radio 加 disabled 并按分数选中前几颗，旁边配数字；不要让用户在只读展示区里能点。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>

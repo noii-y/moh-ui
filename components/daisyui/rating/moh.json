@@ -3,14 +3,14 @@
   "name": "daisyui-rating",
   "type": "component",
   "title": "评分",
-  "description": "搬运自 daisyUI 的评分组件：五星/心形/尺寸/半星/可清除，纯 CSS mask 图形，零依赖。",
+  "description": "搬运自 daisyUI 的评分：五星默认选中、心形多色、尺寸 xs~lg、rating-hidden 可清除、rating-half 半星、disabled 只读展示平均评分，纯 CSS mask 图形，零依赖。",
   "styleTags": ["基础组件", "表单", "评分"],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
     "url": "https://daisyui.com/components/rating/",
     "license": "MIT",
-    "changes": "搬运官网 demo HTML，补 Tailwind 调色板工具类，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+    "changes": "搬运官网 demo HTML（class 版）为中文，按商品评价区打星输入重排成成品示例与变体，新增 disabled 只读展示平均评分示例与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
   "files": ["demo.html", "README.md"],
