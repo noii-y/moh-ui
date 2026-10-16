@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "date-range",
+  "type": "component",
+  "title": "日期范围",
+  "description": "原生 date input 两枚 + 快捷预设（aria-pressed），零依赖",
+  "styleTags": ["基础组件", "表单", "筛选"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}
