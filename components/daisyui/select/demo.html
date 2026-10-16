@@ -12,87 +12,186 @@
 <body>
 <header class="doc-head">
   <h1>下拉选择 <span class="en">Select</span></h1>
-  <p>从一组选项中选择一个值。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
-  <p>来源：<a href="https://daisyui.com/components/select/" target="_blank" rel="noopener">daisyui.com/components/select</a>（MIT）</p>
+  <p>从一组固定选项里选一个值，比手敲更稳、不易出错。下面先给一个收货地址选择区的成品，再列出幽灵、字段标签、尺寸和状态色等形态供参考。</p>
 </header>
 
 <main class="doc-wrap">
 
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改颜色、尺寸只改 <code>class</code> 即可；切换主题后，整套下拉颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：收货地址选择区 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>结算页里的收货地址选择区</h2>
+    <p class="desc">省、市、区三个下拉纵向排开，每个都先放一个禁用且选中的占位项（「请选择省份」），避免一进来就误选；下面用虚线按钮「+ 新建地址」补充新地址，最后用主按钮「保存地址」收尾。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <fieldset class="fieldset rounded-box border border-base-300 p-4 max-w-lg w-full">
+        <legend class="fieldset-legend">收货地址</legend>
+        <div class="flex flex-col gap-3 w-full">
+          <select class="select w-full">
+            <option disabled selected>请选择省份</option>
+            <option>湖北省</option>
+            <option>湖南省</option>
+            <option>广东省</option>
+            <option>江苏省</option>
+          </select>
+          <select class="select w-full">
+            <option disabled selected>请选择城市</option>
+            <option>武汉市</option>
+            <option>宜昌市</option>
+            <option>襄阳市</option>
+          </select>
+          <select class="select w-full">
+            <option disabled selected>请选择区 / 县</option>
+            <option>洪山区</option>
+            <option>武昌区</option>
+            <option>江汉区</option>
+          </select>
+          <button class="btn btn-dash btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+            新建地址
+          </button>
+          <div class="flex flex-wrap gap-2">
+            <button class="btn btn-primary">保存地址</button>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="结算页收货地址选择区（下拉选择）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="下拉选择">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础</h2>
-    <p class="desc">第一项通常设为禁用并选中，作为占位提示。</p>
+    <h2>基础下拉与占位项</h2>
+    <p class="desc">第一项设为 <code>disabled selected</code> 当作占位提示，用户必须主动选一个，避免把默认项误当成已选。选项写真实业务内容。</p>
     <div class="doc-stage">
       <select class="select">
-        <option disabled selected>请选择颜色</option>
-        <option>绯红</option>
-        <option>琥珀</option>
-        <option>绛紫</option>
+        <option disabled selected>请选择套餐</option>
+        <option>标准套餐</option>
+        <option>进阶套餐</option>
+        <option>旗舰套餐</option>
       </select>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>幽灵</h2>
-    <p class="desc">select-ghost：无背景，嵌入工具栏时使用。</p>
+    <h2>幽灵下拉（无外框）</h2>
+    <p class="desc">加 <code>select-ghost</code> 去掉描边，弱化成一行文字，适合嵌在工具条、表格工具栏里做轻量切换，不抢视觉。</p>
     <div class="doc-stage">
       <select class="select select-ghost">
-        <option disabled selected>请选择字体</option>
-        <option>Inter</option>
-        <option>Poppins</option>
-        <option>思源黑体</option>
+        <option disabled selected>每页显示 20 条</option>
+        <option>每页显示 10 条</option>
+        <option>每页显示 50 条</option>
+        <option>每页显示 100 条</option>
       </select>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>字段标签</h2>
-    <div class="doc-stage col w-full">
-      <fieldset class="fieldset max-w-sm">
-        <legend class="fieldset-legend">浏览器</legend>
-        <select class="select">
-          <option disabled selected>请选择浏览器</option>
-          <option>Chrome</option>
-          <option>Firefox</option>
-          <option>Safari</option>
-          <option>Edge</option>
+    <h2>字段标签 fieldset</h2>
+    <p class="desc">推荐用 <code>fieldset</code> + <code>fieldset-legend</code> 组织「标签 + 下拉 + 说明」，比只靠占位项更稳——选定后用户仍看得到这一栏在问什么。</p>
+    <div class="doc-stage col">
+      <fieldset class="fieldset w-full max-w-sm">
+        <legend class="fieldset-legend">发票抬头</legend>
+        <select class="select w-full">
+          <option disabled selected>请选择发票类型</option>
+          <option>个人</option>
+          <option>企业</option>
         </select>
-        <span class="fieldset-label">选填</span>
+        <span class="fieldset-label">选企业抬头需另外填写税号</span>
       </fieldset>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>颜色</h2>
-    <p class="desc">语义色边框，用于状态提示。</p>
+    <h2>语义状态色边框</h2>
+    <p class="desc">前三个是强调边框，标出当前重点；后面是语义状态色，只有在含义明确时才用，而且要像下面这样把结果写成人话，不能只是框变色。</p>
     <div class="doc-stage">
-      <select class="select select-primary"><option disabled selected>主要</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-secondary"><option disabled selected>次要</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-accent"><option disabled selected>强调</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-info"><option disabled selected>信息</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-success"><option disabled selected>成功</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-warning"><option disabled selected>警告</option><option>选项一</option><option>选项二</option></select>
-      <select class="select select-error"><option disabled selected>错误</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-primary"><option disabled selected>请选择商品分类</option><option>数码家电</option><option>服饰鞋包</option></select>
+      <select class="select select-secondary"><option disabled selected>请选择配送时段</option><option>工作日白天</option><option>周末全天</option></select>
+      <select class="select select-accent"><option disabled selected>请选择可用优惠券</option><option>满 99 减 10</option><option>满 199 减 30</option></select>
+      <select class="select select-info"><option disabled selected>已保存 3 个收货地址</option><option>家</option><option>公司</option></select>
+      <select class="select select-success"><option disabled selected>库存充足，可正常发货</option><option>现货</option><option>预售 7 天</option></select>
+      <select class="select select-warning"><option disabled selected>临近今日截单时间</option><option>今日发出</option><option>明日发出</option></select>
+      <select class="select select-error"><option disabled selected>该地区暂不支持配送</option><option>重新选择地址</option></select>
     </div>
   </section>
 
   <section class="doc-block">
-    <h2>尺寸</h2>
-    <div class="doc-stage">
-      <select class="select select-xs"><option disabled selected>超小</option><option>苹果</option></select>
-      <select class="select select-sm"><option disabled selected>小</option><option>苹果</option></select>
-      <select class="select select-md"><option disabled selected>中（默认）</option><option>苹果</option></select>
-      <select class="select select-lg"><option disabled selected>大</option><option>苹果</option></select>
-      <select class="select select-xl"><option disabled selected>超大</option><option>苹果</option></select>
+    <h2>尺寸五档</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合表格筛选条，大尺寸适合移动端主表单。</p>
+    <div class="doc-stage col">
+      <select class="select select-xs w-full"><option disabled selected>超小：表格内筛选</option><option>已完成订单</option><option>进行中订单</option></select>
+      <select class="select select-sm w-full"><option disabled selected>小：筛选条件栏</option><option>近 7 天</option><option>近 30 天</option></select>
+      <select class="select w-full"><option disabled selected>默认：通用表单</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-lg w-full"><option disabled selected>大：移动端主表单</option><option>选项一</option><option>选项二</option></select>
+      <select class="select select-xl w-full"><option disabled selected>超大：首屏筛选</option><option>选项一</option><option>选项二</option></select>
     </div>
   </section>
 
   <section class="doc-block">
     <h2>禁用</h2>
-    <div class="doc-stage">
-      <select class="select" disabled><option>不可选择</option></select>
+    <p class="desc">条件不满足或权限不足时用 <code>disabled</code> 置灰；禁用的下拉用户既点不开也看不出被藏了什么，所以里面要放一个说人话的当前值。</p>
+    <div class="doc-stage col w-full">
+      <select class="select w-full" disabled><option>企业认证后才能更换所属公司</option></select>
     </div>
   </section>
 
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>什么时候用下拉，什么时候用单选</h3>
+    <p>选项很多（省市区、城市、商品类目）或一行塞不下时用下拉；选项只有两三个（性别、付款方式）时直接用单选按钮铺开，别让用户多点一次。</p>
+    <h3>放一个占位项</h3>
+    <p>需要「必选」时，第一项用 <code>&lt;option disabled selected&gt;请选择…&lt;/option&gt;</code>，不要给一个看似默认、实则没意义的真实选项。</p>
+    <h3>每个下拉都要有标签</h3>
+    <p>优先用 <code>fieldset + fieldset-legend</code>，或成对的 <code>&lt;label for="id"&gt;</code>；只靠占位项的话，一旦选定，用户就看不到这一栏在问什么了。</p>
+    <h3>状态色必须配文字</h3>
+    <p><code>select-error</code>、<code>select-warning</code> 这类只在含义明确时用，并且占位项要说清楚为什么是这个状态（如「该地区暂不支持配送」），不能只把框变红。</p>
+    <h3>可访问性</h3>
+    <p>原生下拉自带键盘操作（上下键选择、回车确认），焦点高亮描边不要去掉；禁用优先用 <code>disabled</code> 属性，它会同时阻止展开和聚焦。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/select/" target="_blank" rel="noopener">daisyui.com/components/select</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
 </main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商结算页里的收货地址选择区：让用户依次选省、市、区，需要补新地址时用虚线按钮添加，最后点保存地址。
+【怎么排】
+- 用 fieldset.fieldset（rounded-box border border-base-300 p-4 max-w-lg w-full）把地址选择包成一组，legend 写「收货地址」；
+- 省、市、区三个下拉各一行（flex flex-col gap-3 w-full），每个都加 w-full 占满整行；
+- 每个下拉第一项是 <option disabled selected> 占位：分别写「请选择省份」「请选择城市」「请选择区 / 县」，不要默认选中一个真实地区；
+- 占位项下面放一个虚线新增按钮「新建地址」（btn btn-dash btn-primary，左侧一个加号 SVG 图标 h-5 w-5）；
+- 最下面一行放主操作「保存地址」（btn btn-primary），用 flex flex-wrap gap-2 自然排列，不要用 ml-auto 推到右边。
+【精确规格】
+- 下拉用 <select class="select w-full">，选项写真实中文地名。
+- 标签、按钮文案写真实动作，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：select、w-full、fieldset、fieldset-legend、flex、flex-col、flex-wrap、gap-2、gap-3、p-4、rounded-box、border-base-300、max-w-lg、btn、btn-primary、btn-dash。
+- 不要写死颜色，全部走 daisyUI 主题变量；除展示外不要加任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
 </body>
 </html>

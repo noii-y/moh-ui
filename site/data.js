@@ -406,7 +406,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-select",
       "title": "下拉选择",
-      "description": "搬运自 daisyUI 的下拉选择：基础/幽灵/fieldset/语义色/尺寸/禁用，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的下拉选择：占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -425,7 +425,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-textarea",
       "title": "多行文本域",
-      "description": "搬运自 daisyUI 的多行文本域：基础/固定高度/幽灵/fieldset/语义色/尺寸/禁用，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的多行文本域：基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -463,7 +463,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-radio",
       "title": "单选框",
-      "description": "搬运自 daisyUI 的单选框：基础/选项组/尺寸/语义色/禁用，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的单选框：基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -482,7 +482,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-toggle",
       "title": "开关",
-      "description": "搬运自 daisyUI 的开关：基础/设置项/尺寸/语义色/禁用/图标开关，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的开关：基础开关态、设置行排版（label justify-between）、尺寸 xs~xl、语义状态色、禁用、带图标开关，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -501,7 +501,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-range",
       "title": "滑块",
-      "description": "搬运自 daisyUI 的滑块：基础/刻度/语义色/尺寸/竖向，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的滑块：基础滑杆、带刻度档位、尺寸 xs~xl、语义状态色、竖向 range-vertical，零依赖纯 CSS（实时读数仅一行 JS）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -520,7 +520,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-file-input",
       "title": "文件上传",
-      "description": "搬运自 daisyUI 的文件上传控件：基础/幽灵/多选/限定类型/尺寸/颜色/禁用，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的文件上传：基础选择、fieldset 字段标签与格式说明、accept 限定类型、multiple 多选、幽灵样式、尺寸 xs~lg、语义状态色、禁用，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -539,7 +539,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-fieldset",
       "title": "字段分组",
-      "description": "搬运自 daisyUI 的表单布局骨架：fieldset/legend/label/卡片分组/登录表单/join 组合，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的字段分组容器 fieldset：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -558,7 +558,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-rating",
       "title": "评分",
-      "description": "搬运自 daisyUI 的评分组件：五星/心形/尺寸/半星/可清除，纯 CSS mask 图形，零依赖。",
+      "description": "搬运自 daisyUI 的评分：五星默认选中、心形多色、尺寸 xs~lg、rating-hidden 可清除、rating-half 半星、disabled 只读展示平均评分，纯 CSS mask 图形，零依赖。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -577,7 +577,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-otp",
       "title": "验证码输入",
-      "description": "搬运自 daisyUI 的验证码输入框：4/6 位、连接样式、尺寸、颜色、禁用，零依赖纯 CSS。",
+      "description": "搬运自 daisyUI 的验证码输入：4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -596,12 +596,11 @@ window.MOH_DATA = {
     {
       "name": "daisyui-validator",
       "title": "表单校验",
-      "description": "搬运自 daisyUI 的纯 CSS 表单校验：邮箱/密码/用户名/手机号/数值范围/必勾/完整表单，零 JS，基于原生约束与 :invalid 伪类。",
+      "description": "搬运自 daisyUI 的纯 CSS 表单校验提示：input/checkbox 加 validator 配原生 required/pattern/minlength，validator-hint 写规则，覆盖修改密码、邮箱、用户名、手机号、必勾协议、内嵌图标等场景，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
-        "校验",
-        "零JS"
+        "校验"
       ],
       "category": "表单",
       "dependencies": [],
