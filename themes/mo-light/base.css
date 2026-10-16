@@ -56,7 +56,7 @@ a:hover {
   gap: var(--moh-space-1);
   height: var(--moh-control-height);
   padding: 0 var(--moh-space-4);
-  border: 1px solid transparent;
+  border: var(--moh-border-width, 1px) solid transparent;
   border-radius: var(--moh-radius-md);
   font-size: var(--moh-text-sm);
   font-weight: 500;
@@ -118,7 +118,7 @@ a:hover {
   width: 100%;
   height: var(--moh-control-height);
   padding: 0 var(--moh-space-3);
-  border: 1px solid var(--moh-border);
+  border: var(--moh-border-width, 1px) solid var(--moh-border);
   border-radius: var(--moh-radius-md);
   background: var(--moh-surface);
   color: var(--moh-ink);
@@ -161,14 +161,14 @@ a:hover {
 .moh-table th {
   text-align: left;
   padding: var(--moh-space-2) var(--moh-space-3);
-  border-bottom: 1px solid var(--moh-border);
+  border-bottom: var(--moh-border-width, 1px) solid var(--moh-border);
   color: var(--moh-muted);
   font-weight: 500;
 }
 
 .moh-table td {
   padding: var(--moh-space-2) var(--moh-space-3);
-  border-bottom: 1px solid var(--moh-border);
+  border-bottom: var(--moh-border-width, 1px) solid var(--moh-border);
 }
 
 .moh-table tr:last-child td {
@@ -182,7 +182,7 @@ a:hover {
 /* ---------- 卡片 ---------- */
 .moh-card {
   background: var(--moh-surface);
-  border: 1px solid var(--moh-border);
+  border: var(--moh-border-width, 1px) solid var(--moh-border);
   border-radius: var(--moh-radius-lg);
   padding: var(--moh-space-4);
 }

@@ -12,6 +12,7 @@
   --moh-surface-2: #232328;       /* 悬浮 / 次级底 */
   --moh-border: #2a2a30;          /* 常规描边 */
   --moh-border-strong: #3a3a42;   /* 强调描边 */
+  --moh-border-width: 1px;        /* 描边宽度（风格主题可调，粗野主题 3–4px） */
   --moh-ink: #f7f8f8;             /* 主文字 */
   --moh-muted: #9ca3af;           /* 次级文字 */
   --moh-primary: #5e6ad2;         /* 主色 */

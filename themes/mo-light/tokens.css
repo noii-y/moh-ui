@@ -11,6 +11,7 @@
   --moh-surface-2: #f1f3f5;       /* 悬浮 / 次级底 */
   --moh-border: #e4e7ec;          /* 常规描边 */
   --moh-border-strong: #c9cfd8;   /* 强调描边 */
+  --moh-border-width: 1px;        /* 描边宽度（风格主题可调，粗野主题 3–4px） */
   --moh-ink: #1a202c;             /* 主文字 */
   --moh-muted: #60698a;           /* 次级文字（体检校准：原 #64748b 在 canvas 上对比度 4.47 < 4.5） */
   --moh-primary: #2563eb;         /* 主色 */
