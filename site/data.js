@@ -3,9 +3,9 @@ window.MOH_DATA = {
   "generatedAt": "2026-10-16",
   "stats": {
     "themes": 10,
-    "components": 18,
+    "components": 29,
     "rules": 1,
-    "resources": 29
+    "resources": 40
   },
   "themes": [
     {
@@ -613,6 +613,213 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "daisyui-navbar",
+      "title": "顶部导航",
+      "description": "搬运自 daisyUI 的顶部导航栏：三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "布局"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/navbar/",
+      "slug": "daisyui/navbar",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-menu",
+      "title": "菜单",
+      "description": "搬运自 daisyUI 的菜单组件：垂直侧边栏与横向菜单、分组标题、当前页高亮、数字徽标、details 折叠子菜单（默认展开）、禁用态与尺寸档，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "布局"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/menu/",
+      "slug": "daisyui/menu",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-breadcrumbs",
+      "title": "面包屑",
+      "description": "搬运自 daisyUI 的面包屑组件：层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "导航"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/breadcrumbs/",
+      "slug": "daisyui/breadcrumbs",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-pagination",
+      "title": "分页",
+      "description": "搬运自 daisyUI 的分页组件（v5.7 基于 join 实现，旧 pagination 类已移除）：基础页码、长列表省略号、五档尺寸、等宽上一页/下一页、radio 选中态，附商品列表分页成品。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/pagination/",
+      "slug": "daisyui/pagination",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-link",
+      "title": "链接",
+      "description": "搬运自 daisyUI 的链接组件：基础下划线链接、全套语义色、hover 才显示下划线、无下划线彩色链接、外链新窗口写法，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "导航"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/link/",
+      "slug": "daisyui/link",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-steps",
+      "title": "步骤条",
+      "description": "搬运自 daisyUI 的步骤条组件：横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "布局"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/steps/",
+      "slug": "daisyui/steps",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-drawer",
+      "title": "抽屉侧栏",
+      "description": "搬运自 daisyUI 的抽屉侧栏组件：后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "布局"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/drawer/",
+      "slug": "daisyui/drawer",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-dock",
+      "title": "底部停靠导航",
+      "description": "搬运自 daisyUI 的底部停靠导航组件：带文字标签/纯图标紧凑/大号等形态，附电商 App 底部导航（含中间凸起圆形购物车主按钮与徽标）成品。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/dock/",
+      "slug": "daisyui/dock",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-fab",
+      "title": "悬浮动作按钮",
+      "description": "搬运自 daisyUI 的 FAB / Speed Dial：右下角新建主按钮展开写文章/传图片/发视频等动作，覆盖带标签与纯图标垂直排列、fab-flower 花瓣形、单个悬浮按钮，零依赖纯 CSS。",
+      "styleTags": [
+        "基础组件",
+        "操作",
+        "导航"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/fab/",
+      "slug": "daisyui/fab",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-megamenu",
+      "title": "大菜单",
+      "description": "搬运自 daisyUI 的大菜单组件：电商顶部全部分类导航，覆盖多列链接面板、推荐卡、简洁横向列、垂直版等形态，基于原生 popover 零 JS。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "布局"
+      ],
+      "category": "导航",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/megamenu/",
+      "slug": "daisyui/megamenu",
+      "entry": "demo.html"
+    },
+    {
+      "name": "daisyui-tab",
+      "title": "标签页",
+      "description": "搬运自 daisyUI 的标签页组件：下划线/提升/盒装/标签置底/禁用/尺寸等形态，纯 CSS radio 实现内容切换、零 JS，附订单中心成品。",
+      "styleTags": [
+        "基础组件",
+        "导航",
+        "选择"
+      ],
+      "category": "表单",
+      "dependencies": [],
+      "hasDeps": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "upstreamUrl": "https://daisyui.com/components/tab/",
+      "slug": "daisyui/tab",
+      "entry": "demo.html"
+    },
+    {
       "name": "chart-card",
       "title": "图表卡（ECharts）",
       "description": "折线/柱状/环形图表卡，颜色从 --moh-* 变量读取，换主题自动适配",
@@ -722,6 +929,7 @@ window.MOH_DATA = {
     "基础",
     "表单",
     "反馈",
+    "导航",
     "数据展示"
   ],
   "themeTags": [

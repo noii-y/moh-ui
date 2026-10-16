@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>顶部导航 Navbar · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>顶部导航 <span class="en">Navbar</span></h1>
+  <p>横在页面顶部的一条导航，左边放品牌、中间放栏目、右边放搜索和登录注册。下面先给一个内容站可以直接拿走的成品，再列出极简、带搜索框、带购物车徽标和彩色底等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改栏目、按钮只改 <code>class</code> 与文字即可；切换主题后，整条导航的底色和按钮颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：内容站顶部导航 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>一个内容站的顶部导航</h2>
+    <p class="desc">左边是品牌名「墨白文档」，中间是「首页 / 产品 / 文档 / 定价」四个栏目（首页为当前页），右边依次是搜索图标按钮、纯文字的「登录」和主按钮「免费试用」。大屏时栏目横向排开，小屏时自动收起中间栏目、只保留品牌与右侧操作，整条不会横向溢出。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="navbar bg-base-100 shadow-sm rounded-box w-full">
+        <div class="navbar-start">
+          <a class="btn btn-ghost text-xl">墨白文档</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li><a class="menu-active">首页</a></li>
+            <li><a>产品</a></li>
+            <li><a>文档</a></li>
+            <li><a>定价</a></li>
+          </ul>
+        </div>
+        <div class="navbar-end gap-2 flex-wrap justify-end">
+          <button class="btn btn-ghost btn-circle" aria-label="搜索">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.34-4.34M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" /></svg>
+          </button>
+          <button class="btn btn-ghost">登录</button>
+          <button class="btn btn-primary">免费试用</button>
+        </div>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="内容站顶部导航栏（顶部导航）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="顶部导航">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>极简顶栏：只有品牌加一个主操作</h2>
+    <p class="desc">栏目不多时，最左边放品牌、最右边放一个主按钮即可，中间留白。这是落地页、登录页最常见的形态。</p>
+    <div class="doc-stage col">
+      <div class="navbar bg-base-100 shadow-sm rounded-box">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl">墨白文档</a>
+        </div>
+        <div class="flex-none">
+          <a class="btn btn-primary">立即注册</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>顶栏里放搜索框</h2>
+    <p class="desc">内容站、文档站常把搜索框直接放进顶栏右侧；小屏给一个较窄的宽度（<code>w-24</code>），大屏自然撑开（<code>w-auto</code>）。</p>
+    <div class="doc-stage col">
+      <div class="navbar bg-base-100 shadow-sm rounded-box">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl">墨白文档</a>
+        </div>
+        <div class="flex-none gap-2">
+          <input type="text" placeholder="搜索文档" class="input w-24 lg:w-auto" />
+          <button class="btn btn-primary">免费试用</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带购物车徽标与账户菜单</h2>
+    <p class="desc">电商顶栏常用圆形图标按钮：购物车右上角叠一个数字徽标（<code>indicator</code> + <code>badge</code>），头像点击展开账户菜单。这里用 <code>dropdown-open</code> 让账户菜单在静态预览里保持展开，实际使用时去掉它、靠点击展开即可。</p>
+    <div class="doc-stage col">
+      <div class="navbar bg-base-100 shadow-sm rounded-box">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl">墨白商城</a>
+        </div>
+        <div class="flex-none gap-2">
+          <button class="btn btn-ghost btn-circle" aria-label="购物车">
+            <div class="indicator">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13 5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" /></svg>
+              <span class="badge badge-sm indicator-item">3</span>
+            </div>
+          </button>
+          <div class="dropdown dropdown-end dropdown-open">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full bg-primary text-primary-content flex items-center justify-center">
+                <span class="text-sm font-bold">墨</span>
+              </div>
+            </div>
+            <ul tabindex="-1" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+              <li><a>个人中心</a></li>
+              <li><a>我的订单</a></li>
+              <li><a>退出登录</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>彩色底导航条</h2>
+    <p class="desc">用 <code>bg-neutral</code> / <code>bg-base-300</code> / <code>bg-primary</code> 换底色，文字配对应的 <code>*-content</code>，适合强调品牌的落地页。</p>
+    <div class="doc-stage col gap-3">
+      <div class="navbar bg-neutral text-neutral-content rounded-box">
+        <a class="btn btn-ghost text-xl">墨白文档</a>
+      </div>
+      <div class="navbar bg-base-300 rounded-box">
+        <a class="btn btn-ghost text-xl">墨白文档</a>
+      </div>
+      <div class="navbar bg-primary text-primary-content rounded-box">
+        <a class="btn btn-ghost text-xl">墨白文档</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>三段式布局：start / center / end</h3>
+    <p>用 <code>navbar-start</code>、<code>navbar-center</code>、<code>navbar-end</code> 三段组织内容：品牌放 <code>start</code>，栏目放 <code>center</code>，搜索、登录、主按钮放 <code>end</code>。不想用三段时，直接用 <code>flex-1</code>（占满剩余）和 <code>flex-none</code>（按内容收缩）也行。</p>
+    <h3>一个顶栏只留一个主按钮</h3>
+    <p>右侧的主操作（「免费试用」「立即注册」）用 <code>btn-primary</code> 实心按钮；「登录」这类次要操作用 <code>btn-ghost</code> 弱化成文字，别把两个都做成实心按钮。</p>
+    <h3>小屏怎么处理</h3>
+    <p>顶栏栏目多、放不下时，给中间栏目加 <code>hidden lg:flex</code>（小屏隐藏、大屏横向展开），品牌与右侧操作始终保留；需要在小屏也能展开栏目时，再用汉堡按钮 + <code>dropdown</code> 收起菜单。整条顶栏不要横向溢出，必要时让按钮自然换行。</p>
+    <h3>固定在页面顶部</h3>
+    <p>默认 <code>navbar</code> 是相对定位、跟随文档流；需要吸顶时在最外层加 <code>sticky top-0 z-10</code>，并给页面内容留出高度。在组件舞台里预览时不要加固定定位，避免盖住文档与复制按钮。</p>
+    <h3>可访问性</h3>
+    <p>纯图标按钮（搜索、购物车、汉堡）必须加 <code>aria-label</code>；当前所在栏目加 <code>menu-active</code> 让用户知道在哪一页；键盘焦点描边不要去掉。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/navbar/" target="_blank" rel="noopener">daisyui.com/components/navbar</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】一个内容站（文档、产品官网类）的顶部导航栏：左边品牌，中间栏目，右边搜索、登录和主操作。
+【怎么排】
+- 外层用 <div class="navbar bg-base-100 shadow-sm rounded-box w-full">，相对定位、不要 fixed 固定，让它在页面里自然横排；
+- 左边 navbar-start 放品牌：<a class="btn btn-ghost text-xl">墨白文档</a>；
+- 中间 navbar-center 放横向栏目，小屏收起、大屏展开：<div class="navbar-center hidden lg:flex"> 里包 <ul class="menu menu-horizontal px-1">，四个 <li><a>，当前页那一项加 menu-active（首页）；
+- 右边 navbar-end 依次放：搜索图标按钮（btn btn-ghost btn-circle，必须 aria-label="搜索"，内部一个 h-5 w-5 的单色放大镜 SVG）、「登录」纯文字按钮（btn btn-ghost）、主按钮「免费试用」（btn btn-primary）；
+- 右侧三个操作之间用 gap-2，小屏（约 390px）下中间栏目自动隐藏后，品牌加三个操作仍要在一行内排下，绝不能横向溢出或把按钮裁掉。
+【精确规格】
+- 文案写真实业务动作与栏目名（首页 / 产品 / 文档 / 定价 / 免费试用 / 登录），禁止出现 Primary / 主要 / 成功 这类颜色名当文案。
+- 纯图标按钮必须带 aria-label；当前页栏目用 menu-active 标识。
+- 用到的类全部真实存在：navbar、navbar-start、navbar-center、navbar-end、menu、menu-horizontal、menu-active、btn、btn-ghost、btn-primary、btn-circle、text-xl、hidden、lg:flex、gap-2、w-full、rounded-box、shadow-sm、bg-base-100、h-5、w-5。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色；除点击展开下拉的原生交互外不要加任何业务 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
