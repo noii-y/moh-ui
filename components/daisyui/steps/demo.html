@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>步骤条 Steps · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>步骤条 <span class="en">Steps</span></h1>
+  <p>把一个流程拆成有序的几步，告诉用户「走到哪了、还差几步」。下面先给一个电商下单的成品，再列出纵向、自定义符号和语义色等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改状态只改每一步的 class 和 <code>data-content</code>；切换主题后，整套步骤条颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：电商下单四步 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>电商下单的四步进度</h2>
+    <p class="desc">购物车和收货地址已经填好，节点打勾；当前停在「支付」这一步，用主色高亮；最后一步「完成」还是中性灰，表示没到。步骤横向一排，手机放不下时在容器内横向滚动。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <div class="overflow-x-auto w-full">
+        <ul class="steps w-full">
+          <li class="step step-primary" data-content="✓">购物车</li>
+          <li class="step step-primary" data-content="✓">收货地址</li>
+          <li class="step step-primary" data-content="3">支付</li>
+          <li class="step step-neutral" data-content="4">完成</li>
+        </ul>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="电商下单四步进度（步骤条 Steps）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="步骤条">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>横向基础步骤（默认数字）</h2>
+    <p class="desc">最朴素的形态：节点里自动显示序号。用于「选套餐 → 填信息 → 付款 → 开票」这类线性流程。</p>
+    <div class="doc-stage col">
+      <div class="overflow-x-auto w-full">
+        <ul class="steps w-full">
+          <li class="step">选套餐</li>
+          <li class="step">发票信息</li>
+          <li class="step step-primary">付款</li>
+          <li class="step">申请开票</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>纵向步骤（向导页）</h2>
+    <p class="desc">加 <code>steps-vertical</code> 改成纵向排列，适合手机端的设置向导、入职流程，每一步下面还能放表单内容。</p>
+    <div class="doc-stage col">
+      <ul class="steps steps-vertical w-full">
+        <li class="step step-primary" data-content="✓">实名认证</li>
+        <li class="step step-primary" data-content="✓">绑定银行卡</li>
+        <li class="step step-primary" data-content="3">设置交易密码</li>
+        <li class="step step-neutral" data-content="4">完成开通</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>节点里放自定义符号</h2>
+    <p class="desc">用 <code>data-content</code> 把节点数字换成你想要的符号：已完成打 <code>✓</code>、当前是 <code>!</code>、异常是 <code>✕</code>，一眼看懂状态。</p>
+    <div class="doc-stage col">
+      <div class="overflow-x-auto w-full">
+        <ul class="steps w-full">
+          <li class="step step-neutral" data-content="1">提交申请</li>
+          <li class="step step-primary" data-content="✓">初审通过</li>
+          <li class="step step-accent" data-content="!">等待复审</li>
+          <li class="step step-neutral" data-content="4">完成</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>语义色表示异常步骤</h2>
+    <p class="desc">正常推进的步骤用主色或中性色；某一步出了问题（如审核驳回）用 <code>step-error</code> 突出，并配一句说人话的原因。</p>
+    <div class="doc-stage col">
+      <div class="overflow-x-auto w-full">
+        <ul class="steps w-full">
+          <li class="step step-info" data-content="1">提交资料</li>
+          <li class="step step-info" data-content="2">平台初审</li>
+          <li class="step step-error" data-content="✕">资质不符已驳回，请重传营业执照</li>
+          <li class="step step-neutral" data-content="4">完成入驻</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>三种状态怎么上色</h3>
+    <p>已完成的步骤用 <code>step-primary</code> 配 <code>data-content="✓"</code> 打勾；当前所在步骤用 <code>step-primary</code> 高亮；还没走到的步骤用 <code>step-neutral</code> 置灰。不要每一步都涂彩色，否则等于没有重点。</p>
+    <h3>步骤条 vs 进度条</h3>
+    <p>步骤条用于「流程有明确的几个节点」（下单、开通账号、报销审批）；进度条用于「一件事正在后台跑」（上传、导出、安装），它没有离散节点。</p>
+    <h3>别超过五步，多了就滚动</h3>
+    <p>流程超过五六步时，手机上一排会挤坏字。外层包 <code>overflow-x-auto</code> 让它在容器内横向滑动；或者干脆折叠成「第 3 步 / 共 6 步」。</p>
+    <h3>纵向用在向导页</h3>
+    <p>手机端的设置向导、开通流程用 <code>steps-vertical</code>，每一步的表单内容直接跟在节点后面，不用横向挤。</p>
+    <h3>可访问性</h3>
+    <p>节点里的符号只是辅助，步骤名称文字要写完整（「支付」而不是只放一个图标），读屏软件才能念清楚走到哪一步。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/steps/" target="_blank" rel="noopener">daisyui.com/components/steps</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商下单结算页顶部的四步进度条：购物车 → 收货地址 → 支付 → 完成，告诉用户当前走到哪一步。
+【怎么排】
+- 用 <ul class="steps"> 横向一排，四个 <li class="step">，文字写真实步骤名：购物车、收货地址、支付、完成；
+- 已完成的前两步用 step-primary + data-content="✓"（节点打勾）；
+- 当前步「支付」用 step-primary 高亮，data-content="3"；
+- 未走到的「完成」用 step-neutral 置灰，data-content="4"；
+- 手机宽度不够时，外层包 <div class="overflow-x-auto w-full">，步骤条在容器内横向滑动，整页不能出现横向滚动条。
+【精确规格】
+- 步骤名写真实中文动作，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。
+- 用到的类全部真实存在：steps、step、step-primary、step-neutral、step-accent、step-error、step-info、w-full、overflow-x-auto。
+- 节点符号只作辅助，步骤名称必须写完整中文。
+- 纯展示组件，不需要任何交互 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
