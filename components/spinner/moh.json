@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "spinner",
+  "type": "component",
+  "title": "加载",
+  "description": "旋转圈 sm/md/lg 尺寸 + 文字组合，role=status+aria-busy",
+  "styleTags": ["基础组件", "反馈", "加载"],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["index.html"],
+  "verified": false
+}

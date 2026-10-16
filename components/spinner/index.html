@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>moh-spinner · 加载</title>
+  <link rel="stylesheet" href="../../themes/mo-light/tokens.css" />
+  <style>
+    /* ============================================================
+       moh-spinner · 加载（灰墨 MoH_UI 单文件组件）
+       依赖：tokens.css 的 --moh-* 变量
+       用法：复制本文件 <style> 与需要的 HTML 片段到你的项目
+       形态：旋转圈 + sm/md/lg 尺寸 + 可选文字
+       要点：容器 role="status" + aria-busy="true"；圈色用 primary；
+         动效仅旋转（克制），无多余动画
+       ============================================================ */
+
+    .moh-spinner {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--moh-space-2);
+      font-size: var(--moh-text-sm);
+      color: var(--moh-muted);
+    }
+
+    .moh-spinner__ring {
+      border: 2px solid var(--moh-surface-2);
+      border-top-color: var(--moh-primary);
+      border-radius: 50%;
+      animation: moh-spinner-rotate 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes moh-spinner-rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 尺寸 */
+    .moh-spinner--sm .moh-spinner__ring { width: 14px; height: 14px; }
+    .moh-spinner--md .moh-spinner__ring { width: 20px; height: 20px; }
+    .moh-spinner--lg .moh-spinner__ring { width: 28px; height: 28px; border-width: 3px; }
+
+    /* 纯圈（无文字）居中 */
+    .moh-spinner--lg { justify-content: center; }
+
+    /* 可访问性：加载容器内若出现可交互元素，焦点必须可见 */
+    .moh-spinner a:focus-visible,
+    .moh-spinner button:focus-visible {
+      outline: 2px solid var(--moh-primary);
+      outline-offset: 2px;
+      border-radius: var(--moh-radius-sm);
+    }
+
+    /* ========== 演示容器（非组件样式） ========== */
+    .demo-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--moh-space-6);
+      padding: var(--moh-space-6);
+      background: var(--moh-canvas);
+      border-bottom: 1px solid var(--moh-border);
+    }
+    .demo-note {
+      font-size: var(--moh-text-xs);
+      color: var(--moh-muted);
+      padding: var(--moh-space-3) var(--moh-space-6);
+      margin: 0;
+      background: var(--moh-canvas);
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-wrap" aria-busy="true">
+    <div class="moh-spinner moh-spinner--sm" role="status">
+      <span class="moh-spinner__ring"></span>
+      <span>加载中…</span>
+    </div>
+
+    <div class="moh-spinner moh-spinner--md" role="status">
+      <span class="moh-spinner__ring"></span>
+      <span>正在同步数据</span>
+    </div>
+  </div>
+
+  <div class="demo-wrap" aria-busy="true">
+    <div class="moh-spinner moh-spinner--lg" role="status">
+      <span class="moh-spinner__ring"></span>
+      <span class="moh-text-xs">全屏加载中</span>
+    </div>
+  </div>
+  <p class="demo-note">提示：role="status" 让屏读播报加载态；容器 aria-busy="true"；圈用 surface-2 底 + primary 弧线，尺寸 14/20/28。</p>
+</body>
+</html>
