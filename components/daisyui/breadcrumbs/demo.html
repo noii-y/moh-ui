@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>面包屑 Breadcrumbs · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>面包屑 <span class="en">Breadcrumbs</span></h1>
+  <p>一行小路径告诉用户「现在在哪一层、能回退到哪一级」，常见于电商详情页、文档站和后台列表。下面先给一个商品详情页可以直接拿走的成品，再列出带图标、长路径等形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改层级、文案只改 <code>&lt;ul&gt;</code> 里的 <code>&lt;li&gt;</code> 即可；切换主题后，面包屑颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：商品详情页路径 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>商品详情页顶部的层级路径</h2>
+    <p class="desc">前面几层是可点的上级分类，最后一层是当前商品，写成纯文本并标 <code>aria-current="page"</code>——既不能点，也让读屏软件知道这是当前页。层级不超过四五层，再多该考虑改用菜单了。</p>
+    <div class="doc-stage col" id="hero-stage">
+      <nav class="breadcrumbs text-sm" aria-label="页面路径">
+        <ul style="flex-wrap:wrap;white-space:normal;row-gap:2px;">
+          <li><a>首页</a></li>
+          <li><a>手机数码</a></li>
+          <li><a>智能手机</a></li>
+          <li><span aria-current="page">墨白 Pro 12 手机</span></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品详情页顶部的层级路径（面包屑）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="面包屑">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>带首页图标</h2>
+    <p class="desc">在第一项里放一个单色首页图标（<code>h-4 w-4</code>），帮用户更快认出「回到首页」这个入口；其余层级保持纯文字，图标多了反而乱。</p>
+    <div class="doc-stage col">
+      <nav class="breadcrumbs text-sm" aria-label="页面路径">
+        <ul style="flex-wrap:wrap;white-space:normal;row-gap:2px;">
+          <li>
+            <a>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955a1.5 1.5 0 0 1 2.122 0l8.954 8.955M4.5 10.5v8.25c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-3.75a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75V18a.75.75 0 0 0 .75.75H18a.75.75 0 0 0 .75-.75V10.5"/></svg>
+              首页
+            </a>
+          </li>
+          <li><a>帮助中心</a></li>
+          <li><a>购物与配送</a></li>
+          <li><span aria-current="page">如何修改收货地址</span></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>层级很深时自动换行</h2>
+    <p class="desc">层级多、容器窄时，面包屑会在自己的区域里自动折成两行，每一层仍然可点或可辨认，不会把整页撑出横向滚动条。手机上层级实在太多时，建议只保留「首页 / 当前页」。</p>
+    <div class="doc-stage col w-full">
+      <div class="max-w-md w-full">
+        <nav class="breadcrumbs text-sm" aria-label="页面路径">
+          <ul style="flex-wrap:wrap;white-space:normal;row-gap:2px;">
+            <li><a>首页</a></li>
+            <li><a>帮助中心</a></li>
+            <li><a>购物与配送</a></li>
+            <li><a>常见问题</a></li>
+            <li><a>物流说明</a></li>
+            <li><span aria-current="page">如何修改收货地址</span></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>什么时候用</h3>
+    <p>层级明确的站点（电商分类、文档站、后台列表）在内容页顶部放一行面包屑，让用户知道自己在哪、能往上回退几层；单层的落地页、弹窗里不需要它。</p>
+    <h3>最后一层不要写链接</h3>
+    <p>当前页写成 <code>&lt;span aria-current="page"&gt;</code>，不要套 <code>&lt;a&gt;</code>——点自己当前页没有意义，还会让读屏用户困惑。</p>
+    <h3>层级别贪多</h3>
+    <p>常规控制在 3–5 层；层级过深时手机端建议省略中间层级，只保留「首页」和当前页。层级列表写成真实的分类名，不要用「级别一 / 级别二」这种占位词。</p>
+    <h3>窄屏会换行</h3>
+    <p>面包屑用 <code>nav.breadcrumbs</code> 包 <code>ul</code>；窄屏层级放不下时让 <code>ul</code> 允许换行（加 <code>flex-wrap:wrap</code>），折成两行也比横向滚动好点，更不会把整页撑宽。</p>
+    <h3>可访问性</h3>
+    <p>给 <code>nav</code> 加 <code>aria-label="页面路径"</code>；可点的层级用真实 <code>&lt;a&gt;</code>（在你的项目里指向对应分类页），键盘 Tab 与回车即可回退。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/breadcrumbs/" target="_blank" rel="noopener">daisyui.com/components/breadcrumbs</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商商品详情页顶部的层级路径：让用户知道自己在「首页 / 手机数码 / 智能手机 / 某款手机」这条路上，能逐级点回上级分类。
+【怎么排】
+- 用 nav.breadcrumbs.text-sm（加 aria-label="页面路径"）包住一个 ul；
+- 每一层是一个 li：前面的上级层级写 <li><a>分类名</a></li>，最后当前页写 <li><span aria-current="page">商品名</span></li>，当前页不可点；
+- 层级之间的分隔箭头由组件自动生成，不要手写斜杠或箭头字符；
+- 层级按真实分类写（首页 / 手机数码 / 智能手机 / 墨白 Pro 12 手机），控制在 3–5 层。
+【精确规格】
+- 只用到 breadcrumbs、text-sm、aria-current 这些真实类与属性，零 JS。
+- 文案是真实分类名与商品名，禁止出现 Primary / 主要 这类颜色名当文案。
+- 路径过长时面包屑在自身区域内换行折行，不允许把整页撑出横向滚动条；手机端层级实在太多时省略中间层级，只留首页与当前页。
+- 颜色全部走 daisyUI 主题变量，不要写死颜色。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
