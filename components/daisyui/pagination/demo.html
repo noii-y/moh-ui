@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>分页 Pagination · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>分页 <span class="en">Pagination</span></h1>
+  <p>列表数据很多时，把页码排成一排让用户翻页。下面先给一个商品列表底部的成品，再列出省略号、尺寸、上一页 / 下一页等写法供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">当前页加 <code>btn-active</code>、不可点加 <code>btn-disabled</code> 即可；切换主题后，整套分页颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：商品列表分页 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>商品列表底部的分页</h2>
+    <p class="desc">一共 20 页，当前在第 5 页、主色高亮；只露出当前页附近的 4、5、6 三页，更远的页数用省略号占位、不可点；两端是上一页 / 下一页。手机上一排放不下就自动换行，整页不会被撑宽。</p>
+    <div class="doc-stage center" id="hero-stage">
+      <div class="join flex-wrap justify-center">
+        <button class="join-item btn">上一页</button>
+        <button class="join-item btn">1</button>
+        <button class="join-item btn btn-disabled" aria-label="更多页">…</button>
+        <button class="join-item btn">4</button>
+        <button class="join-item btn btn-active" aria-label="第 5 页，当前页">5</button>
+        <button class="join-item btn">6</button>
+        <button class="join-item btn btn-disabled" aria-label="更多页">…</button>
+        <button class="join-item btn">20</button>
+        <button class="join-item btn">下一页</button>
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="商品列表底部分页（分页 Pagination）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="分页">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 -->
+  <section class="doc-block">
+    <h2>基础页码</h2>
+    <p class="desc">页数不多时全部平铺出来，当前页加 <code>btn-active</code> 用主色实心显示。</p>
+    <div class="doc-stage">
+      <div class="join">
+        <button class="join-item btn">1</button>
+        <button class="join-item btn btn-active">2</button>
+        <button class="join-item btn">3</button>
+        <button class="join-item btn">4</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>长列表用省略号</h2>
+    <p class="desc">上百页时不要全部铺出来：只露第一页、最后一页和当前页附近，中间看不见的用 <code>btn-disabled</code> 省略号占位。</p>
+    <div class="doc-stage">
+      <div class="join flex-wrap justify-center">
+        <button class="join-item btn">1</button>
+        <button class="join-item btn">2</button>
+        <button class="join-item btn btn-disabled" aria-label="更多页">…</button>
+        <button class="join-item btn">99</button>
+        <button class="join-item btn">100</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸五档</h2>
+    <p class="desc">共五档，默认大小最通用；小尺寸适合表格下方的细分页，大尺寸适合移动端翻页。</p>
+    <div class="doc-stage col">
+      <div class="join">
+        <button class="join-item btn btn-xs">1</button>
+        <button class="join-item btn btn-xs btn-active">2</button>
+        <button class="join-item btn btn-xs">3</button>
+        <button class="join-item btn btn-xs">4</button>
+      </div>
+      <div class="join">
+        <button class="join-item btn btn-sm">1</button>
+        <button class="join-item btn btn-sm btn-active">2</button>
+        <button class="join-item btn btn-sm">3</button>
+        <button class="join-item btn btn-sm">4</button>
+      </div>
+      <div class="join">
+        <button class="join-item btn btn-lg">1</button>
+        <button class="join-item btn btn-lg btn-active">2</button>
+        <button class="join-item btn btn-lg">3</button>
+        <button class="join-item btn btn-lg">4</button>
+      </div>
+      <div class="join">
+        <button class="join-item btn btn-xl">1</button>
+        <button class="join-item btn btn-xl btn-active">2</button>
+        <button class="join-item btn btn-xl">3</button>
+        <button class="join-item btn btn-xl">4</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>上一页 / 下一页等宽两格</h2>
+    <p class="desc">不显示页码时，用 <code>join grid grid-cols-2</code> 把两个按钮拉成等宽的一格，描边样式，适合详情页底部的「上一件 / 下一件」。</p>
+    <div class="doc-stage col">
+      <div class="join grid grid-cols-2 w-full max-w-sm">
+        <button class="join-item btn btn-outline">上一件商品</button>
+        <button class="join-item btn btn-outline">下一件商品</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>用 radio 选中页码</h2>
+    <p class="desc">分页也可以用同名 radio 实现纯 CSS 选中态（<code>join-item btn btn-square</code>），不过真实项目里页码一般是链接，按前面的 <code>&lt;button&gt;</code> 写法即可。</p>
+    <div class="doc-stage">
+      <div class="join">
+        <input class="join-item btn btn-square" type="radio" name="page_demo" aria-label="第 1 页" />
+        <input class="join-item btn btn-square" type="radio" name="page_demo" aria-label="第 2 页" checked="checked" />
+        <input class="join-item btn btn-square" type="radio" name="page_demo" aria-label="第 3 页" />
+        <input class="join-item btn btn-square" type="radio" name="page_demo" aria-label="第 4 页" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>v5 起分页基于 join，没有 pagination 类</h3>
+    <p>daisyUI 5 已移除旧的 <code>pagination</code> 类，官方分页就是「一个 <code>join</code> 容器 + 一排 <code>join-item btn</code>」。照本页写法即可，不要再去找 <code>.pagination</code>。</p>
+    <h3>只露出当前页附近的页码</h3>
+    <p>页数多时显示「第 1 页 … 当前页前后各一页 … 最后一页」，中间看不见的用 <code>btn-disabled</code> 省略号。上一页在第一页、下一页在最后一页时，同样置灰并禁止点击。</p>
+    <h3>当前页怎么标</h3>
+    <p>当前页用 <code>btn-active</code>（主色实心），其它页是描边/幽灵态；不要给当前页再加文字说明「这是第 5 页」，视觉已经够了。</p>
+    <h3>手机上别挤成两行小字</h3>
+    <p>窄屏一排放不下时，给 <code>join</code> 加 <code>flex-wrap justify-center</code> 让它自然换行，或整体缩到 <code>btn-sm</code>；不要让页码溢出屏幕。</p>
+    <h3>可访问性</h3>
+    <p>每个页码按钮用 <code>aria-label</code> 写明「第 5 页，当前页」「更多页」，省略号按钮别让读屏念出「点点点」。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/pagination/" target="_blank" rel="noopener">daisyui.com/components/pagination</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】电商商品列表底部的分页：一共 20 页，当前在第 5 页，需要一排「上一页 / 1 … 4 5 6 … 20 / 下一页」让用户翻页。
+【怎么排】
+- daisyUI 5 没有 pagination 类，分页就是 <div class="join"> 容器里一排 <button class="join-item btn">；
+- 当前页按钮加 btn-active（主色实心），写 5；
+- 第一页 1、最后一页 20 始终露出，中间看不见的页用 <button class="join-item btn btn-disabled" aria-label="更多页">…</button> 占位，不可点；
+- 两端是文字按钮「上一页」「下一页」；
+- 手机窄屏一排放不下时，给 join 加 flex-wrap justify-center 自动换行，整页不能出现横向滚动条。
+【精确规格】
+- 页码写数字，按钮文案写真实动作（上一页 / 下一页），禁止出现 Primary / 成功 这类颜色名当文案。
+- 当前页加 aria-label="第 5 页，当前页"；省略号按钮加 aria-label="更多页"，别让读屏念「点点点」。
+- 用到的类全部真实存在：join、join-item、btn、btn-active、btn-disabled、btn-outline、btn-square、btn-xs、btn-sm、btn-lg、btn-xl、flex-wrap、justify-center、grid、grid-cols-2、w-full、max-w-sm。
+- 纯展示组件，翻页跳转由你的路由或数据层处理，这里不写业务 JS。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>

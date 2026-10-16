@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-pagination",
+  "type": "component",
+  "title": "分页",
+  "description": "搬运自 daisyUI 的分页组件（v5.7 基于 join 实现，旧 pagination 类已移除）：基础页码、长列表省略号、五档尺寸、等宽上一页/下一页、radio 选中态，附商品列表分页成品。",
+  "styleTags": ["基础组件", "导航", "选择"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/pagination/",
+    "license": "MIT",
+    "changes": "新建搬运官网 class 版 demo，成品改为商品列表真实场景（上一页 / 1 … 4 5 6 … 20 / 下一页，当前页 btn-active、省略号 btn-disabled）；长列表变体加 flex-wrap justify-center 防止手机整页横向溢出；README 与指南明确写明 v5.7 分页基于 join、旧 pagination 类已移除；新增零依赖 demo 合集页与中文教程，未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
