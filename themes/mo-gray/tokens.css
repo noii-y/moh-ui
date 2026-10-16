@@ -1,0 +1,60 @@
+/* ============================================================
+   灰墨 · MoH_UI — mo-gray（灰阶中性 · 商务浅色）
+   风格参考：shadcn.io 主题 "Graphite"（金属灰、工业精致感）
+   https://www.shadcn.io/theme/graphite（MIT 社区主题站，色板为自研）
+   特征：冷调石墨灰、商务克制、企业级后台
+   ============================================================ */
+
+:root {
+  /* ---------- 色彩语义（冷调石墨灰） ---------- */
+  --moh-canvas: #f4f4f6;          /* 页面底（冷灰白） */
+  --moh-surface: #ffffff;         /* 卡片 / 面板 */
+  --moh-surface-2: #ececef;       /* 悬浮 / 次级底 */
+  --moh-border: #dcdce1;          /* 常规描边 */
+  --moh-border-strong: #c2c2c9;   /* 强调描边 */
+  --moh-border-width: 1px;
+  --moh-ink: #1f1f24;             /* 主文字（近黑微冷） */
+  --moh-muted: #696972;           /* 次级文字（体检校准 ≥4.5） */
+  --moh-primary: #2b2b31;         /* 主色（金属深灰，白字 15+） */
+  --moh-primary-hover: #3a3a41;
+  --moh-primary-muted: #e9e9ed;   /* 主色浅底 */
+  --moh-success: #16a34a;
+  --moh-warning: #d97706;
+  --moh-danger: #dc2626;
+
+  /* ---------- 字体 ---------- */
+  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
+    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+
+  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
+  --moh-text-xs: 12px;
+  --moh-text-sm: 13px;
+  --moh-text-base: 14px;   /* 正文默认 */
+  --moh-text-md: 16px;
+  --moh-text-lg: 20px;
+  --moh-text-xl: 24px;
+
+  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
+  --moh-space-1: 4px;
+  --moh-space-2: 8px;
+  --moh-space-3: 12px;
+  --moh-space-4: 16px;
+  --moh-space-6: 24px;
+  --moh-space-8: 32px;
+
+  /* ---------- 圆角（商务克制，略小） ---------- */
+  --moh-radius-sm: 3px;
+  --moh-radius-md: 5px;
+  --moh-radius-lg: 7px;
+
+  /* ---------- 阴影（克制） ---------- */
+  --moh-shadow-sm: 0 1px 2px rgba(16, 16, 20, 0.06);
+  --moh-shadow-md: 0 4px 12px rgba(16, 16, 20, 0.08);
+  --moh-shadow-lg: 0 8px 24px rgba(16, 16, 20, 0.10);
+
+  /* ---------- 控件与动效 ---------- */
+  --moh-control-height: 32px;
+  --moh-transition: 150ms ease;
+}

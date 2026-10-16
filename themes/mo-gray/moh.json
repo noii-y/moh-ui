@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-gray",
+  "type": "theme",
+  "title": "灰阶中性（商务浅色）",
+  "description": "冷调石墨灰、商务克制，企业级后台与经营管理类产品。",
+  "styleTags": ["灰阶", "商务", "冷调", "企业级"],
+  "inspiration": ["https://www.shadcn.io/theme/graphite"],
+  "base": "mo-gray",
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": null
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
