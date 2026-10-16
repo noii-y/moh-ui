@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-menu",
+  "type": "component",
+  "title": "菜单",
+  "description": "搬运自 daisyUI 的菜单组件：垂直侧边栏与横向菜单、分组标题、当前页高亮、数字徽标、details 折叠子菜单（默认展开）、禁用态与尺寸档，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "导航", "布局"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/menu/",
+    "license": "MIT",
+    "changes": "新建搬运官网 class 版 demo，替换为单色 SVG 图标与真实中文业务条目，子菜单用 details open 默认展开以便静态预览，徽标与禁用态写真实文案，新增中文教程与后台侧边栏成品；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
