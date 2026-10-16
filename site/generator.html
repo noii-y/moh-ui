@@ -8,6 +8,18 @@
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" id="theme-tokens" />
   <link rel="stylesheet" href="assets/site.css" />
   <style id="theme-override"></style>
+  <style>
+    .gen-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding-bottom: 48px;
+    }
+    @media (max-width: 860px) {
+      .gen-layout { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -36,7 +48,7 @@
       <p>点击主题卡，<b>整页实时换肤</b>（原理：运行时切换 tokens.css，组件全部走 <code>var(--moh-*)</code> 自动跟随）。微调主色 / 圆角后复制 tokens.css 或 AI 指令。选择自动记忆（localStorage）。</p>
     </div>
 
-    <div style="display:grid; grid-template-columns: 300px 1fr; gap: 24px; align-items:start; padding-bottom: 48px" class="gen-layout">
+    <div class="gen-layout">
       <div class="site-panel">
         <p class="site-panel__label" style="margin-bottom: 10px">选择主题（<span id="cur-theme-name">mo-dark</span>）</p>
         <div class="site-theme-picker" id="theme-picker"></div>

@@ -797,6 +797,17 @@ a:hover {
   .site-search {
     min-width: 100%;
   }
+  .site-stat__label {
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .site-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
   .site-modal {
     padding: 12px;
   }
