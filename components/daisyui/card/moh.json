@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-card",
+  "type": "component",
+  "title": "卡片",
+  "description": "搬运自 daisyUI 的卡片组件：定价三档（含删除线对比）、电商商品卡、用户资料卡、card-border/card-dash 描边与虚线、card-xs~xl 五档尺寸，零依赖纯 CSS。",
+  "styleTags": ["数据展示", "布局", "基础组件"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/card/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML（class 版），将外链图片改为纯色块 + 单色 SVG 占位、Tailwind 任意值类替换为标准工具类（size-4→h-4 w-4、me-2→mr-2），新增零依赖定价成品页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

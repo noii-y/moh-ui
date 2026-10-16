@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>卡片 Card · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+<script src="../../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>卡片 <span class="en">Card</span></h1>
+  <p>把一组相关内容收拢成一块：定价套餐、商品、用户资料都能用它承载。下面先给一个可以直接拿走的三档定价成品，再列出各种形态供参考。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">改边框、尺寸只改 <code>class</code> 即可；切换主题后，整套卡片颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>SaaS 定价页的三档套餐卡</h2>
+    <p class="desc">三档并排、中间主推档高亮：「最受欢迎」徽标直接点出该推哪档；功能清单里不含的项用删除线弱化，访客一眼看懂差价在哪；底部整宽按钮指向该档唯一动作。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="grid gap-4 grid-cols-1 lg:grid-cols-3">
+
+        <!-- 免费版 -->
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body">
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-bold">免费版</h2>
+              <span class="text-sm opacity-60">¥0 / 月</span>
+            </div>
+            <ul class="mt-6 flex flex-col gap-2 text-sm">
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>最多 3 个项目</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>5GB 存储空间</span>
+              </li>
+              <li class="flex items-center gap-2 opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>
+                <span style="text-decoration:line-through">高级数据分析</span>
+              </li>
+              <li class="flex items-center gap-2 opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>
+                <span style="text-decoration:line-through">团队协作</span>
+              </li>
+            </ul>
+            <div class="mt-6">
+              <button class="btn btn-outline btn-block">免费开始</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 专业版（主推） -->
+        <div class="card bg-base-100 shadow-lg border-2 border-primary">
+          <div class="card-body">
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-bold">专业版</h2>
+              <span class="badge badge-sm badge-warning">最受欢迎</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-sm opacity-60">¥39 / 月</span>
+            </div>
+            <ul class="mt-6 flex flex-col gap-2 text-sm">
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>无限项目数</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>100GB 存储空间</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>高级数据分析</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>团队协作（最多 10 人）</span>
+              </li>
+              <li class="flex items-center gap-2 opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" /></svg>
+                <span style="text-decoration:line-through">专属客户经理</span>
+              </li>
+            </ul>
+            <div class="mt-6">
+              <button class="btn btn-primary btn-block">立即订阅</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 企业版 -->
+        <div class="card bg-base-100 shadow-sm">
+          <div class="card-body">
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl font-bold">企业版</h2>
+              <span class="text-sm opacity-60">¥99 / 月 起</span>
+            </div>
+            <ul class="mt-6 flex flex-col gap-2 text-sm">
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>无限项目数</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>1TB 存储空间</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>团队协作不限人数</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>专属客户经理</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4 text-success shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                <span>SLA 服务保障</span>
+              </li>
+            </ul>
+            <div class="mt-6">
+              <button class="btn btn-soft btn-block">联系销售</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="SaaS 定价页三档套餐卡（卡片）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="卡片">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：电商商品卡 -->
+  <section class="doc-block">
+    <h2>电商商品卡</h2>
+    <p class="desc">商品图放 <code>figure</code> 里，标题、价格、简介在 <code>card-body</code>，动作按钮靠右。这里没有商品图时用纯色块占位，接图时把色块换成 <code>&lt;img&gt;</code> 即可。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 shadow-sm w-full max-w-md">
+        <figure class="flex h-44 items-center justify-center bg-base-200">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-16 w-16 text-neutral opacity-40"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.048 8.287 8.287 0 0 1 9.6 9.6a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 1 2.4.481Zm0 0c.103.123.234.295.358.52a8.25 8.25 0 0 1-.52-.358v-.162Z"/></svg>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">云感无线耳机</h2>
+          <p class="text-2xl font-bold">¥299 <span class="text-sm font-normal opacity-50">包邮 · 7 天无理由</span></p>
+          <p class="text-sm opacity-70">主动降噪 · 30 小时续航 · 支持双设备连接</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-circle btn-ghost" aria-label="收藏">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            </button>
+            <button class="btn btn-primary">加入购物车</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：用户资料卡 -->
+  <section class="doc-block">
+    <h2>用户资料卡</h2>
+    <p class="desc">头像、姓名、头衔居中排列，动作按钮也居中。没有头像图时用 <code>avatar-placeholder</code> 文字占位（姓名首字），接图时换成 <code>&lt;img&gt;</code>。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 shadow-sm w-full max-w-sm">
+        <div class="card-body items-center text-center">
+          <div class="avatar avatar-placeholder">
+            <div class="bg-neutral text-neutral-content w-20">
+              <span class="text-xl">张</span>
+            </div>
+          </div>
+          <h2 class="card-title">张伟</h2>
+          <p class="text-sm opacity-60">产品设计师 · 武汉</p>
+          <div class="card-actions justify-center">
+            <button class="btn btn-primary btn-sm">关注</button>
+            <button class="btn btn-outline btn-sm">发消息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：描边与虚线 -->
+  <section class="doc-block">
+    <h2>描边卡与虚线卡</h2>
+    <p class="desc">不要阴影时用 <code>card-border</code> 描边；虚线 <code>card-dash</code> 专门用来表示「可点击添加」，比如新增收货地址、新建看板。</p>
+    <div class="doc-stage">
+      <div class="grid gap-4 grid-cols-1 lg:grid-cols-2">
+        <div class="card card-border bg-base-100">
+          <div class="card-body">
+            <h2 class="card-title">标准描边卡</h2>
+            <p class="text-sm opacity-70">和页面背景接近时，用一圈细描边代替阴影，视觉更干净。</p>
+            <div class="card-actions justify-end">
+              <button class="btn btn-sm">查看详情</button>
+            </div>
+          </div>
+        </div>
+        <div class="card card-dash bg-base-100">
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">新建看板</h2>
+            <p class="text-sm opacity-70">虚线框暗示这里可以点击添加。</p>
+            <button class="btn btn-ghost btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+              添加
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：五档尺寸 -->
+  <section class="doc-block">
+    <h2>五档尺寸</h2>
+    <p class="desc"><code>card-xs</code> 到 <code>card-xl</code> 只改变内边距和文字密度，不改变宽度——宽度由你外层的网格或 <code>w-*</code> 类控制。看板上的小卡用 <code>card-sm</code>，定价页用默认即可。</p>
+    <div class="doc-stage col">
+      <div class="card bg-base-100 shadow-sm card-xs">
+        <div class="card-body">
+          <h2 class="card-title">特小卡</h2>
+          <p class="text-sm">内边距最紧凑，适合仪表盘里的小指标。</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-sm card-sm">
+        <div class="card-body">
+          <h2 class="card-title">小卡</h2>
+          <p class="text-sm">比默认略紧凑，适合列表里嵌套的小卡片。</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-sm">
+        <div class="card-body">
+          <h2 class="card-title">默认卡</h2>
+          <p class="text-sm">最通用的密度，商品、资料、定价都用它。</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-sm card-lg">
+        <div class="card-body">
+          <h2 class="card-title">大卡</h2>
+          <p class="text-sm">留白更多，适合落地页上的重点介绍。</p>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-sm card-xl">
+        <div class="card-body">
+          <h2 class="card-title">特大卡</h2>
+          <p class="text-sm">留白最多，适合首屏那种大段图文。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>一张卡只讲一件事</h3>
+    <p>卡片是「内容分组」，不是页面布局：一张卡里只放同一个主题的内容（一个商品、一个套餐、一个用户）。需要并排展示多项时，外面套 <code>grid</code> 网格，不要把内容硬塞进同一张卡。</p>
+    <h3>主推档怎么突出</h3>
+    <p>定价页要推某一档，用「徽标 + 稍重阴影 + 一圈主色描边」三件套即可，不要给主推档换一整块高饱和底色——浅底黑字永远比深底白字好读。</p>
+    <h3>不含的功能怎么写</h3>
+    <p>套餐对比表里，「该档不含」的功能用删除线 + 半透明弱化，而不是干脆不列——访客需要先知道「我多花的钱买到了什么」。</p>
+    <h3>图片与零依赖</h3>
+    <p>商品图放 <code>figure</code>，接图时用 <code>&lt;img&gt;</code>；没有图时用 <code>bg-base-200</code> 色块 + 单色 SVG 占位，不要外链图片、不要硬编码十六进制色值。</p>
+    <h3>动作按钮</h3>
+    <p>卡内按钮统一放 <code>card-actions</code> 里，靠右（<code>justify-end</code>）或居中（<code>justify-center</code>）二选一；整宽按钮（<code>btn-block</code>）适合定价页这种「一张卡一个动作」的场景。</p>
+  </section>
+
+  <!-- 来源：每页仅在页脚声明一次 -->
+  <footer class="doc-source">
+    组件样式基于 daisyUI 5.7（MIT，© 2020 Pouya Saadeghi）。查看原版与更多示例：<a href="https://daisyui.com/components/card/" target="_blank" rel="noopener">daisyui.com/components/card</a>。本页中文教程与实战示例由灰墨整理，同样以 MIT 开源。
+  </footer>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】SaaS 产品的定价页：并排三档套餐（免费版 / 专业版 / 企业版），让访客一眼看懂各档差别，并直接点对应按钮完成选择。
+【怎么排】
+- 三档卡片用一行网格排列：桌面三列、手机自动折成单列（grid grid-cols-1 lg:grid-cols-3 gap-4）。
+- 中间「专业版」是主推档：用 badge badge-sm badge-warning 标「最受欢迎」，卡片加 shadow-lg 和一圈主色描边（border-2 border-primary）；左右两档保持普通阴影（shadow-sm）。
+- 每档结构一致：标题 + 月价 → 功能清单（flex flex-col gap-2 text-sm）→ 底部一个整宽按钮（btn-block）。
+- 功能清单里，「本档包含」的项前面用绿色对勾 SVG（h-4 w-4 text-success）；「本档不含」的项用半透明 + 删除线弱化（opacity-50，文字加 line-through），不要直接删掉。
+- 按钮按动作区分：免费版用 btn-outline「免费开始」，专业版用 btn-primary「立即订阅」，企业版用 btn-soft「联系销售」；按钮上只写动作，不写颜色名。
+【精确规格】
+- 卡片本体：div class="card bg-base-100 shadow-sm"，内容包在 div class="card-body" 里；主推档为 card bg-base-100 shadow-lg border-2 border-primary。
+- 价格行：flex items-center justify-between，标题 text-2xl font-bold，价格用 text-sm opacity-60 弱化。
+- 所有图标是单色 SVG（stroke-current，h-4 w-4），不要用 emoji；颜色全部走主题变量，不写死色值。
+- 手机 390px 下三档折成单列，卡片不溢出、按钮不被裁切。</script>
+
+<script src="../../../assets/demo-doc.js"></script>
+</body>
+</html>
