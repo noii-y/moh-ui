@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>表单校验 Validator · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>表单校验 <span class="en">Validator</span></h1>
+  <p>纯 CSS、无需 JS：根据输入框的 required / pattern / minlength 等规则，合法变绿、非法变红，并可用 validator-hint 显示提示。</p>
+  <p>来源：<a href="https://daisyui.com/components/validator/" target="_blank" rel="noopener">daisyui.com/components/validator</a>（MIT）。在下方输入框中输入非法内容即可看到变红与提示。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>邮箱校验</h2>
+    <p class="desc">type="email" + required。试着输入一个非法邮箱（如 abc）。</p>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <input class="input validator w-full" type="email" required placeholder="mail@site.com" />
+        <p class="validator-hint">请输入有效的邮箱地址</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>密码强度</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <input type="password" class="input validator w-full" required placeholder="密码"
+          minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="至少 8 位，含数字、小写、大写字母" />
+        <p class="validator-hint">
+          至少 8 位，并包含：<br />一个数字<br />一个小写字母<br />一个大写字母
+        </p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>用户名规则</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <input type="text" class="input validator w-full" required placeholder="用户名"
+          pattern="[A-Za-z][A-Za-z0-9\-]*" minlength="3" maxlength="30" title="仅字母、数字或连字符" />
+        <p class="validator-hint">
+          3–30 个字符<br />只能包含字母、数字或连字符
+        </p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>手机号（11 位）</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <input type="tel" class="input validator tabular-nums w-full" required placeholder="手机号"
+          pattern="[0-9]*" minlength="11" maxlength="11" title="必须为 11 位数字" />
+        <p class="validator-hint">请输入 11 位手机号</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>数值范围</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <input type="number" class="input validator w-full" required placeholder="输入 1–10 之间的数字"
+          min="1" max="10" title="必须在 1 到 10 之间" />
+        <p class="validator-hint">数字必须在 1 到 10 之间</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>必勾协议</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <label class="flex items-center gap-2">
+          <input type="checkbox" class="checkbox validator" required title="请勾选" />
+          <span>我已阅读并同意《用户协议》</span>
+        </label>
+        <p class="validator-hint">必须勾选才能继续</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>完整登录表单</h2>
+    <p class="desc">每个字段用 fieldset 独立包裹，提示只作用于自己；点提交触发校验。</p>
+    <div class="doc-stage">
+      <form class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4" onsubmit="return false;">
+        <fieldset class="fieldset">
+          <label class="label">邮箱</label>
+          <input type="email" class="input validator w-full" placeholder="Email" required />
+          <p class="validator-hint hidden">请输入邮箱</p>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="label">密码</label>
+          <input type="password" class="input validator w-full" placeholder="密码" required minlength="6" />
+          <p class="validator-hint hidden">密码至少 6 位</p>
+        </fieldset>
+        <button class="btn btn-neutral mt-4" type="submit">登录</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

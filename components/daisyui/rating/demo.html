@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>评分 Rating · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>评分 <span class="en">Rating</span></h1>
+  <p>一组单选按钮，让用户打分。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/rating/" target="_blank" rel="noopener">daisyui.com/components/rating</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>五星评分（默认选中 2 星）</h2>
+    <div class="doc-stage">
+      <div class="rating">
+        <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="1 星" />
+        <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="2 星" checked="checked" />
+        <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="3 星" />
+        <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="4 星" />
+        <input type="radio" name="r1" class="mask mask-star-2 bg-orange-400" aria-label="5 星" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>心形（多色）</h2>
+    <div class="doc-stage">
+      <div class="rating gap-1">
+        <input type="radio" name="r2" class="mask mask-heart bg-red-400" aria-label="1 分" />
+        <input type="radio" name="r2" class="mask mask-heart bg-orange-400" aria-label="2 分" checked="checked" />
+        <input type="radio" name="r2" class="mask mask-heart bg-yellow-400" aria-label="3 分" />
+        <input type="radio" name="r2" class="mask mask-heart bg-lime-400" aria-label="4 分" />
+        <input type="radio" name="r2" class="mask mask-heart bg-green-400" aria-label="5 分" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage col">
+      <div class="rating rating-xs"><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="2"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="3" checked="checked"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r3" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
+      <div class="rating rating-sm"><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="2" checked="checked"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="3"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r4" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
+      <div class="rating rating-md"><input type="radio" name="r5" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r5" class="mask mask-star-2 bg-orange-400" aria-label="2" checked="checked"/><input type="radio" name="r5" class="mask mask-star-2 bg-orange-400" aria-label="3"/><input type="radio" name="r5" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r5" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
+      <div class="rating rating-lg"><input type="radio" name="r6" class="mask mask-star-2 bg-orange-400" aria-label="1"/><input type="radio" name="r6" class="mask mask-star-2 bg-orange-400" aria-label="2" checked="checked"/><input type="radio" name="r6" class="mask mask-star-2 bg-orange-400" aria-label="3"/><input type="radio" name="r6" class="mask mask-star-2 bg-orange-400" aria-label="4"/><input type="radio" name="r6" class="mask mask-star-2 bg-orange-400" aria-label="5"/></div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>可清除（rating-hidden）</h2>
+    <p class="desc">第一个放一个隐藏的 radio，允许用户取消打分。</p>
+    <div class="doc-stage">
+      <div class="rating rating-lg">
+        <input type="radio" name="r7" class="rating-hidden" aria-label="清除" />
+        <input type="radio" name="r7" class="mask mask-star-2" aria-label="1 星" />
+        <input type="radio" name="r7" class="mask mask-star-2" aria-label="2 星" checked="checked" />
+        <input type="radio" name="r7" class="mask mask-star-2" aria-label="3 星" />
+        <input type="radio" name="r7" class="mask mask-star-2" aria-label="4 星" />
+        <input type="radio" name="r7" class="mask mask-star-2" aria-label="5 星" />
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>半星</h2>
+    <p class="desc">加 rating-half，每个整星位放两个 mask-half 的 radio。</p>
+    <div class="doc-stage">
+      <div class="rating rating-lg rating-half">
+        <input type="radio" name="r8" class="rating-hidden" aria-label="清除" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-1 bg-green-500" aria-label="0.5 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-2 bg-green-500" aria-label="1 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-1 bg-green-500" aria-label="1.5 星" checked="checked" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-2 bg-green-500" aria-label="2 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-1 bg-green-500" aria-label="2.5 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-2 bg-green-500" aria-label="3 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-1 bg-green-500" aria-label="3.5 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-2 bg-green-500" aria-label="4 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-1 bg-green-500" aria-label="4.5 星" />
+        <input type="radio" name="r8" class="mask mask-star-2 mask-half-2 bg-green-500" aria-label="5 星" />
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

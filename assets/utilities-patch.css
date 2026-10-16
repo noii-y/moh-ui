@@ -295,6 +295,18 @@
 .cursor-not-allowed { cursor: not-allowed; }
 .select-none { user-select: none; }
 
+/* ---------- Tailwind 常用调色板（少量：评分/图标等 demo 用到） ---------- */
+.bg-orange-400 { background-color: #fb923c; }
+.bg-yellow-400 { background-color: #facc15; }
+.bg-red-400 { background-color: #f87171; }
+.bg-lime-400 { background-color: #a3e635; }
+.bg-green-400 { background-color: #4ade80; }
+.bg-green-500 { background-color: #22c55e; }
+.text-orange-400 { color: #fb923c; }
+.text-yellow-400 { color: #facc15; }
+.text-red-400 { color: #f87171; }
+.text-green-500 { color: #22c55e; }
+
 /* ---------- 响应式（示例页常见：小屏隐藏、大屏展开） ---------- */
 @media (min-width: 1024px) {
   .lg\:flex { display: flex; }

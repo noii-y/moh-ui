@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>字段分组 Fieldset · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>字段分组 <span class="en">Fieldset</span></h1>
+  <p>表单布局的骨架：用 fieldset 分组、fieldset-legend 放标题、label 放字段名或提示。示例结构搬运自 daisyUI 官方文档。</p>
+  <p>来源：<a href="https://daisyui.com/components/fieldset/" target="_blank" rel="noopener">daisyui.com/components/fieldset</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础：标题 + 输入 + 提示</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset w-72">
+        <legend class="fieldset-legend">页面标题</legend>
+        <input type="text" class="input" placeholder="我的页面" />
+        <p class="fieldset-label">之后可在设置中修改</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>带卡片背景</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
+        <legend class="fieldset-legend">页面标题</legend>
+        <input type="text" class="input" placeholder="我的页面" />
+        <p class="fieldset-label">之后可在设置中修改</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>多个字段</h2>
+    <p class="desc">每个字段用 label 标注名称，可加 id / for 提升可访问性。</p>
+    <div class="doc-stage">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
+        <legend class="fieldset-legend">页面详情</legend>
+        <label class="label" for="t">标题</label>
+        <input type="text" id="t" class="input" placeholder="我的页面" />
+        <label class="label" for="s">别名（Slug）</label>
+        <input type="text" id="s" class="input" placeholder="my-awesome-page" />
+        <label class="label" for="a">作者</label>
+        <input type="text" id="a" class="input" placeholder="姓名" />
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>完整登录表单</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
+        <legend class="fieldset-legend">登录</legend>
+        <label class="label" for="em">邮箱</label>
+        <input type="email" id="em" class="input" placeholder="you@example.com" />
+        <label class="label" for="pw">密码</label>
+        <input type="password" id="pw" class="input" placeholder="请输入密码" />
+        <label class="label cursor-pointer mt-2"><span>记住我</span><input type="checkbox" class="checkbox checkbox-sm" /></label>
+        <button class="btn btn-primary mt-4">登录</button>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>输入 + 按钮组合（join）</h2>
+    <div class="doc-stage">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-72 border p-4">
+        <legend class="fieldset-legend">设置</legend>
+        <div class="join w-full">
+          <input type="text" class="input join-item" placeholder="产品名称" />
+          <button class="btn btn-primary join-item">保存</button>
+        </div>
+      </fieldset>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

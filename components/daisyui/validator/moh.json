@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-validator",
+  "type": "component",
+  "title": "表单校验",
+  "description": "搬运自 daisyUI 的纯 CSS 表单校验：邮箱/密码/用户名/手机号/数值范围/必勾/完整表单，零 JS，基于原生约束与 :invalid 伪类。",
+  "styleTags": ["基础组件", "表单", "校验", "零JS"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/validator/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML 为中文，校验规则改为中文场景示例（手机号 11 位），新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}

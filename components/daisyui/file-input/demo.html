@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>文件上传 File Input · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>文件上传 <span class="en">File Input</span></h1>
+  <p>选择本地文件的原生控件。示例结构搬运自 daisyUI 官方文档，已做零依赖改造。</p>
+  <p>来源：<a href="https://daisyui.com/components/file-input/" target="_blank" rel="noopener">daisyui.com/components/file-input</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>基础</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input w-full max-w-md" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>幽灵</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input file-input-ghost w-full max-w-md" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>字段标签</h2>
+    <div class="doc-stage col w-full">
+      <fieldset class="fieldset max-w-md w-full">
+        <legend class="fieldset-legend">选择文件</legend>
+        <input type="file" class="file-input w-full" />
+        <p class="fieldset-label">最大 2MB，支持 jpg / png</p>
+      </fieldset>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>多选文件</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input w-full max-w-md" multiple />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>限定类型</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input w-full max-w-md" accept="image/*" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input file-input-xs w-full max-w-md" />
+      <input type="file" class="file-input file-input-sm w-full max-w-md" />
+      <input type="file" class="file-input file-input-md w-full max-w-md" />
+      <input type="file" class="file-input file-input-lg w-full max-w-md" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input file-input-primary w-full max-w-md" />
+      <input type="file" class="file-input file-input-success w-full max-w-md" />
+      <input type="file" class="file-input file-input-error w-full max-w-md" />
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage col w-full">
+      <input type="file" class="file-input w-full max-w-md" disabled />
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

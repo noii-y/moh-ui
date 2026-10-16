@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>验证码 OTP · 灰墨组件</title>
+<link rel="stylesheet" href="../../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../../assets/demo-page.css" />
+</head>
+<body>
+<header class="doc-head">
+  <h1>验证码输入 <span class="en">OTP</span></h1>
+  <p>输入一次性验证码（通常 4–6 位），用于短信验证、两步登录。示例结构搬运自 daisyUI 官方文档。</p>
+  <p>来源：<a href="https://daisyui.com/components/otp/" target="_blank" rel="noopener">daisyui.com/components/otp</a>（MIT）</p>
+</header>
+
+<main class="doc-wrap">
+
+  <section class="doc-block">
+    <h2>4 位验证码</h2>
+    <p class="desc">span 数量必须与 maxlength、pattern 一致（4 个 span 对应 4 位）。</p>
+    <div class="doc-stage">
+      <label class="otp">
+        <span></span><span></span><span></span><span></span>
+        <input type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required />
+      </label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>6 位验证码</h2>
+    <div class="doc-stage">
+      <label class="otp">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <input type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" required />
+      </label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>连接样式（joined）</h2>
+    <div class="doc-stage">
+      <label class="otp otp-joined">
+        <span></span><span></span><span></span><span></span>
+        <input type="text" autocomplete="one-time-code" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" required />
+      </label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>尺寸</h2>
+    <div class="doc-stage col">
+      <label class="otp otp-xs"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-sm"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-md"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-lg"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-xl"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>颜色</h2>
+    <div class="doc-stage">
+      <label class="otp otp-primary"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-success"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+      <label class="otp otp-error"><span></span><span></span><span></span><span></span><input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" /></label>
+    </div>
+  </section>
+
+  <section class="doc-block">
+    <h2>禁用</h2>
+    <div class="doc-stage">
+      <label class="otp">
+        <span></span><span></span><span></span><span></span>
+        <input type="text" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" disabled />
+      </label>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

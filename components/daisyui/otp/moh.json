@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "daisyui-otp",
+  "type": "component",
+  "title": "验证码输入",
+  "description": "搬运自 daisyUI 的验证码输入框：4/6 位、连接样式、尺寸、颜色、禁用，零依赖纯 CSS。",
+  "styleTags": ["基础组件", "表单", "验证码"],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/otp/",
+    "license": "MIT",
+    "changes": "搬运官网 demo HTML 为中文，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "verified": true
+}
