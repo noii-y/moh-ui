@@ -3,8 +3,12 @@
   "name": "daisyui-navbar",
   "type": "component",
   "title": "顶部导航",
-  "description": "搬运自 daisyUI 的顶部导航栏：三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "导航", "布局"],
+  "description": "三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "导航",
+    "布局"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "新建搬运官网 class 版 demo，替换 Tailwind 任意值类为标准工具类、用单色 SVG 图标，整页级顶栏去掉 fixed/absolute 改为相对定位并放进带边框舞台容器，下拉用 dropdown-open 强制展开态以便静态预览，新增中文教程与真实业务成品；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

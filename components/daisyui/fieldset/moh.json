@@ -3,8 +3,12 @@
   "name": "daisyui-fieldset",
   "type": "component",
   "title": "字段分组",
-  "description": "搬运自 daisyUI 的字段分组容器 fieldset：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "表单", "布局"],
+  "description": "字段分组容器：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "布局"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版）为中文，按设置页通知偏好分组重排成成品示例与变体，补充零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

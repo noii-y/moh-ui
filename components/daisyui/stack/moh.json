@@ -3,8 +3,12 @@
   "name": "daisyui-stack",
   "type": "component",
   "title": "叠放",
-  "description": "搬运自 daisyUI 的叠放组件：stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "布局", "基础组件"],
+  "description": "stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "布局",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版），官方 size-28/在线图片替换为标准类与主题色块，新增商品图册实战成品与中文教程；提示词中如实标注 hover 展开需用内联 hover CSS 或项目 Tailwind hover 类；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

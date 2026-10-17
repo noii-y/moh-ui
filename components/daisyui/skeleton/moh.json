@@ -3,8 +3,11 @@
   "name": "daisyui-skeleton",
   "type": "component",
   "title": "骨架屏",
-  "description": "搬运自 daisyUI 的骨架屏组件：文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "反馈"],
+  "description": "文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "反馈"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网 demo HTML（class 版），新增文章列表加载态实战成品与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

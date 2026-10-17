@@ -3,8 +3,12 @@
   "name": "daisyui-radio",
   "type": "component",
   "title": "单选框",
-  "description": "搬运自 daisyUI 的单选框：基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "表单", "选择"],
+  "description": "基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "选择"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版）为中文，按结算页付款方式选择区重排成成品示例与变体，补充零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

@@ -3,8 +3,11 @@
   "name": "daisyui-radial-progress",
   "type": "component",
   "title": "环形进度",
-  "description": "搬运自 daisyUI 的环形进度组件：--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "反馈"],
+  "description": "--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "反馈"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网 demo HTML（class 版），新增数据看板统计卡实战成品与中文教程；提示词中明确 --value/--size/--thickness 变量机制；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

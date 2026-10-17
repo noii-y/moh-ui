@@ -3,8 +3,12 @@
   "name": "daisyui-drawer",
   "type": "component",
   "title": "抽屉侧栏",
-  "description": "搬运自 daisyUI 的抽屉侧栏组件：后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
-  "styleTags": ["基础组件", "导航", "布局"],
+  "description": "后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
+  "styleTags": [
+    "基础组件",
+    "导航",
+    "布局"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版），侧栏菜单改为真实后台业务文案；成品采用 lg:drawer-open 真实响应式写法，另加演示内联高度约束把整页抽屉限进详情页舞台（指南中已注明真实项目去掉），未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

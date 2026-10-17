@@ -3,8 +3,12 @@
   "name": "daisyui-divider",
   "type": "component",
   "title": "分隔线",
-  "description": "搬运自 daisyUI 的分隔线（Divider）组件：登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "布局", "基础组件"],
+  "description": "登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "布局",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版），将示例改为中文登录卡片「或」分隔场景，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

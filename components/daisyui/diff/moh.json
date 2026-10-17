@@ -3,8 +3,11 @@
   "name": "daisyui-diff",
   "type": "component",
   "title": "对比",
-  "description": "搬运自 daisyUI 的图片/文字对比组件：左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "反馈"],
+  "description": "左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "反馈"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -16,6 +19,9 @@
     "Aceternity UI Compare（React+Framer Motion 拖动对比，仅借鉴左右对照的成品场景思路，HTML 一律用 daisyUI 类重写）"
   ],
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

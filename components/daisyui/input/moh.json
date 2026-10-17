@@ -3,8 +3,12 @@
   "name": "daisyui-input",
   "type": "component",
   "title": "文本输入框",
-  "description": "搬运自 daisyUI 的文本输入框：覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "表单", "输入"],
+  "description": "覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "输入"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版），将 Tailwind 任意值图标类替换为标准工具类，语义色占位文案改为真实业务语境，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

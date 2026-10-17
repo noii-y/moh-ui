@@ -3,8 +3,11 @@
   "name": "daisyui-aura",
   "type": "component",
   "title": "光晕",
-  "description": "搬运自 daisyUI 的光晕特效：给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。",
-  "styleTags": ["数据展示", "反馈"],
+  "description": "给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。",
+  "styleTags": [
+    "数据展示",
+    "反馈"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网定价卡示例改造为中文 SaaS 定价页（最受欢迎套餐卡），size-4 等任意值类替换为 h-4 w-4，动画时长用内联 style，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

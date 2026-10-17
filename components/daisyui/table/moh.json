@@ -3,8 +3,12 @@
   "name": "daisyui-table",
   "type": "component",
   "title": "表格",
-  "description": "搬运自 daisyUI 的表格组件：后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
-  "styleTags": ["数据展示", "布局", "基础组件"],
+  "description": "后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "布局",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版），将示例数据替换为中文后台订单场景、外链头像改为文字占位（avatar-placeholder）、任意值类 border-base-content/5 替换为 border-base-300，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

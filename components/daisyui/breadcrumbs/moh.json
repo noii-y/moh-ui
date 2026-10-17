@@ -3,8 +3,11 @@
   "name": "daisyui-breadcrumbs",
   "type": "component",
   "title": "面包屑",
-  "description": "搬运自 daisyUI 的面包屑组件：层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "导航"],
+  "description": "层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "导航"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网 demo HTML（class 版），文案改为真实电商分类场景，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

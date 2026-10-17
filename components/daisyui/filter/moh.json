@@ -3,8 +3,11 @@
   "name": "daisyui-filter",
   "type": "component",
   "title": "筛选条",
-  "description": "搬运自 daisyUI 的筛选条：form+radio 单选分类、checkbox 多选标签、无 form 用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。",
-  "styleTags": ["表单", "导航"],
+  "description": "筛选条：form + radio 单选分类、checkbox 多选标签、无 form 时用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。",
+  "styleTags": [
+    "表单",
+    "导航"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -17,6 +20,9 @@
     "https://flowbite.com/docs/components/filter/"
   ],
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

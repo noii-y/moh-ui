@@ -3,8 +3,12 @@
   "name": "daisyui-textarea",
   "type": "component",
   "title": "多行文本域",
-  "description": "搬运自 daisyUI 的多行文本域：基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。",
-  "styleTags": ["基础组件", "表单", "输入"],
+  "description": "基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "输入"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版）为中文，按意见反馈输入区重排成成品示例与变体，语义色占位文案改为真实业务语境，补充实时字数统计的一小段 JS 与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

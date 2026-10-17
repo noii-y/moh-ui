@@ -3,8 +3,11 @@
   "name": "daisyui-loading",
   "type": "component",
   "title": "加载动画",
-  "description": "搬运自 daisyUI 的加载动画：spinner/dots/ring/ball/bars/infinity 六种形态、xs~xl 五档尺寸，按钮内嵌与卡片整块加载写法，零依赖纯 CSS。",
-  "styleTags": ["反馈", "基础组件"],
+  "description": "六种加载形态（spinner/dots/ring/ball/bars/infinity）、xs~xl 五档尺寸，支持按钮内嵌与卡片整块加载，零依赖纯 CSS。",
+  "styleTags": [
+    "反馈",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网 demo HTML（class 版），补充提交按钮内嵌与卡片加载区两个真实业务场景，新增零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

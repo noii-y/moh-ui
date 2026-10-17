@@ -3,8 +3,11 @@
   "name": "daisyui-join",
   "type": "component",
   "title": "组合容器",
-  "description": "搬运自 daisyUI 的 Join 组合容器：搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "表单"],
+  "description": "搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "表单"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -17,6 +20,9 @@
     "https://hyperui.dev/components/application-ui/search"
   ],
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

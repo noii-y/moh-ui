@@ -3,8 +3,12 @@
   "name": "daisyui-select",
   "type": "component",
   "title": "下拉选择",
-  "description": "搬运自 daisyUI 的下拉选择：占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。",
-  "styleTags": ["基础组件", "表单", "选择"],
+  "description": "占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "选择"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版）为中文，按结算页收货地址选择区重排成成品示例与变体，语义色占位文案改为真实业务语境，补充零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

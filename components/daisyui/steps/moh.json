@@ -3,8 +3,12 @@
   "name": "daisyui-steps",
   "type": "component",
   "title": "步骤条",
-  "description": "搬运自 daisyUI 的步骤条组件：横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。",
-  "styleTags": ["基础组件", "导航", "布局"],
+  "description": "横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。",
+  "styleTags": [
+    "基础组件",
+    "导航",
+    "布局"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "新建搬运官网 class 版 demo，成品改为电商下单四步真实场景（前两步打勾、支付为当前主色、完成置灰），步骤条外层加 overflow-x-auto 防止手机整页横向溢出；新增零依赖 demo 合集页与中文教程，未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

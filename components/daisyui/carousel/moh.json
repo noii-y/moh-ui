@@ -3,8 +3,11 @@
   "name": "daisyui-carousel",
   "type": "component",
   "title": "轮播",
-  "description": "搬运自 daisyUI 的轮播组件：商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。",
-  "styleTags": ["数据展示", "基础组件"],
+  "description": "商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。",
+  "styleTags": [
+    "数据展示",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -19,6 +22,9 @@
     "https://lucide.dev/ (ISC，仅借鉴 24×24 线性图标轮廓并内联 path，未引入图标库)"
   ],
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

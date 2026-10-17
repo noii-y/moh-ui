@@ -3,8 +3,12 @@
   "name": "daisyui-otp",
   "type": "component",
   "title": "验证码输入",
-  "description": "搬运自 daisyUI 的验证码输入：4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。",
-  "styleTags": ["基础组件", "表单", "验证码"],
+  "description": "4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。",
+  "styleTags": [
+    "基础组件",
+    "表单",
+    "验证码"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +17,9 @@
     "changes": "搬运官网 demo HTML（class 版）为中文，按登录页短信 6 位验证码重排成成品示例与变体，补充零依赖 demo 合集页与中文教程；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }

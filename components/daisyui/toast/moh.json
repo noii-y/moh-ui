@@ -3,8 +3,11 @@
   "name": "daisyui-toast",
   "type": "component",
   "title": "通知浮层",
-  "description": "搬运自 daisyUI 的通知浮层组件：九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。",
-  "styleTags": ["反馈", "基础组件"],
+  "description": "九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。",
+  "styleTags": [
+    "反馈",
+    "基础组件"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",
@@ -13,6 +16,9 @@
     "changes": "搬运官网 demo HTML（class 版），文案改为真实中文业务场景；详情页为在小舞台内展示给外层临时加 position:static（指南与提示词均注明真实项目需删除）；未修改组件样式本体"
   },
   "dependencies": [],
-  "files": ["demo.html", "README.md"],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
   "verified": true
 }
