@@ -3,8 +3,8 @@
   "name": "mo-brutal",
   "type": "theme",
   "title": "粗野主义（浅色）",
-  "description": "3px 厚黑边、直角、硬阴影、蓝红撞色，个性与品牌向界面。",
-  "styleTags": ["粗野", "撞色", "硬朗", "品牌"],
+  "description": "完整页面案例：个性品牌落地页。3px 厚黑边、直角、零模糊硬阴影、海军蓝 + 撞色红，顶栏 + 超大 hero + 特性卡 + 三档价格 + 订阅 CTA；挂 data-theme=\"mo-brutal\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["粗野", "撞色", "硬朗", "品牌", "落地页"],
   "inspiration": ["https://www.shadcn.io/theme/neo-brutalism"],
   "base": "mo-brutal",
   "source": {
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "从旧 --moh-* 变量体系迁移为 daisyUI 5 主题变量（[data-theme=mo-brutal] 覆盖 --color-*、直角圆角、3px 边框）；删除旧 base.css 与色块 preview.html，重做为完整品牌落地页案例 demo.html（硬阴影由页面自定义 .brut 类实现）；风格参考 neo-brutalism（仅风格参考，非品牌素材）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }

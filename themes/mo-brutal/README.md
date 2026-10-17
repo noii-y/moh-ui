@@ -1,40 +1,21 @@
-# mo-brutal · 粗野主义（浅色）
+# 粗野主义（mo-brutal · 浅色）
 
-> 灰墨 MoH_UI 主题包。3px 厚黑边、直角、无模糊硬阴影、蓝红撞色——给品牌感强的产品一份"有态度的界面"。
-> 风格参考来源：shadcn.io 主题 "Neo Brutalism"（<https://www.shadcn.io/theme/neo-brutalism>，MIT 社区主题站）。色板为灰墨自研，仅风格取向参考，未搬运原色值。
-
-## 适用场景
-
-- 独立开发者工具、个人品牌站点后台
-- 设计感强的新消费 / 文创 / 社区类产品
-- 需要"一眼记住"的差异化界面
-
-## 使用方法（给 AI 编程工具）
-
-1. 引入本主题的 `tokens.css` 与 `base.css`：
-
-   ```html
-   <link rel="stylesheet" href="tokens.css" />
-   <link rel="stylesheet" href="base.css" />
-   ```
-
-2. 将项目中与 `--moh-*` 冲突的旧变量、内联颜色、硬编码样式替换为变量引用；
-3. 组件类名统一 `moh-` 前缀（`moh-btn` / `moh-input` / `moh-table` / `moh-card` 等）；
-4. 应用后按自检清单自查：背景近白、黑厚边、直角硬阴影、组件与 `preview.html` 一致、对比度 ≥4.5、无报错。
-
-## 设计变量摘要
-
-- 页面底 `#f7f7f7`，卡片 `#ffffff`，主文字 `#111111`，次级文字 `#555555`
-- 主色 `#1e3a8a`（海军蓝，白字对比 9.6:1）；描边 `#111111` 宽 3px；圆角 0；硬阴影
-- 字号阶 12/13/14/16/20/24，间距 8px 网格，控件高 32px
+3px 厚黑边、直角、零模糊硬阴影、海军蓝 + 撞色红的个性品牌向主题。适合个人品牌站、独立产品、设计感强的营销落地页。
 
 ## 文件
 
-- `tokens.css` — 设计变量
-- `base.css` — 按钮 / 输入 / 表格 / 卡片基础样式
-- `preview.html` — 预览基准页（应用后对照检查）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、圆角、边框、硬阴影取向）
+- `demo.html` — 完整页面案例：个性品牌落地页（顶栏 + 超大 hero + 特性卡 + 三档价格 + 订阅 CTA + 黑底页脚），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 来源声明
+## 使用（在已有 daisyUI 的项目里换肤）
 
-- 风格参考：Neo Brutalism（shadcn.io，MIT）——仅理念参考，色值为自研
-- 色板设计：灰墨 MoH_UI（MIT）
+```html
+<html data-theme="mo-brutal">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
+```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；`demo.html` 里的 `.brut` / `.brut-sm` 硬阴影类（`border:3px solid #111; box-shadow:6px 6px 0 #111`）可一并复制到自己的项目，让卡片与按钮呈现粗野主义气质。

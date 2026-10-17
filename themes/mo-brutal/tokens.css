@@ -1,60 +1,50 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-brutal（粗野主义 · 浅色）
-   风格参考：shadcn.io 主题 "Neo Brutalism"（厚黑边、硬阴影、撞色）
-   https://www.shadcn.io/theme/neo-brutalism（MIT 社区主题站，色板为自研）
-   特征：3px 厚黑边、直角、无模糊硬阴影、蓝红撞色，个性与品牌向
-   ============================================================ */
+/*! 灰墨 mo-brutal · 粗野主义（浅色）—— 个性品牌落地页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-brutal"> 即整站换肤。
+   气质：3px 厚黑边、直角、硬阴影（6px 偏移零模糊）、海军蓝与撞色红。
+   灵感来源：neo-brutalism 界面风格（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义（粗野撞色） ---------- */
-  --moh-canvas: #f7f7f7;          /* 页面底（stark 近白） */
-  --moh-surface: #ffffff;         /* 卡片 / 面板 */
-  --moh-surface-2: #ececec;       /* 悬浮 / 次级底 */
-  --moh-border: #111111;          /* 常规描边（粗黑） */
-  --moh-border-strong: #000000;   /* 强调描边（纯黑） */
-  --moh-border-width: 3px;        /* 厚黑边 */
-  --moh-ink: #111111;             /* 主文字（近黑） */
-  --moh-muted: #555555;           /* 次级文字（体检校准 5.86） */
-  --moh-primary: #1e3a8a;         /* 主色（海军蓝，白字 9.6） */
-  --moh-primary-hover: #2745a1;
-  --moh-primary-muted: #e0e7ff;   /* 主色浅底 */
-  --moh-success: #16a34a;
-  --moh-warning: #d97706;
-  --moh-danger: #dc2626;
+[data-theme="mo-brutal"] {
+  color-scheme: light;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 底与纸：浅灰底 + 纯白卡 + 浅灰层，靠厚黑边分隔层次 */
+  --color-base-100: #f7f7f7;
+  --color-base-200: #ffffff;
+  --color-base-300: #ececec;
+  --color-base-content: #111111;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 主色：海军蓝（实心按钮与主操作） */
+  --color-primary: #1e3a8a;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  /* 次色：黑块（粗野主义的黑） */
+  --color-secondary: #111111;
+  --color-secondary-content: #ffffff;
 
-  /* ---------- 圆角（直角，粗野标志） ---------- */
-  --moh-radius-sm: 0px;
-  --moh-radius-md: 0px;
-  --moh-radius-lg: 2px;
+  /* 强调色：撞色红（徽章 / 提示等点缀） */
+  --color-accent: #dc2626;
+  --color-accent-content: #ffffff;
 
-  /* ---------- 阴影（无模糊硬偏移，scissor-cut） ---------- */
-  --moh-shadow-sm: 3px 3px 0 #111111;
-  --moh-shadow-md: 5px 5px 0 #111111;
-  --moh-shadow-lg: 7px 7px 0 #111111;
+  --color-neutral: #111111;
+  --color-neutral-content: #ffffff;
 
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 语义色 */
+  --color-info: #1e40af;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 边框：直角、3px 厚边，粗野主义取向 */
+  --radius-selector: 0;
+  --radius-field: 0;
+  --radius-box: 0;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 3px;
+  --depth: 0;
+  --noise: 0;
 }
