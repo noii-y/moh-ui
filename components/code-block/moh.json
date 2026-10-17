@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "name": "code-block",
   "type": "component",
-  "title": "代码块（highlight.js）",
-  "description": "代码高亮 + 语言标签 + 复制按钮，token 配色走 --moh-* 变量换主题自适应",
-  "styleTags": ["增强组件", "代码", "开发"],
+  "title": "代码块",
+  "description": "教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。",
+  "styleTags": [
+    "数据展示",
+    "代码",
+    "开发"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "灰墨自研：daisyUI 深色窗口（bg-neutral）+ highlight.js 11（CDN），不引官方主题 CSS，token 配色改读 daisyUI --color-* 变量，含一键复制与横向滚动"
   },
-  "dependencies": ["highlight.js@11 (CDN)"],
-  "files": ["index.html"],
-  "verified": false
+  "dependencies": [
+    "highlight.js@11 (CDN)"
+  ],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
+  "verified": true
 }

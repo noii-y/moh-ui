@@ -2,17 +2,26 @@
   "schemaVersion": 1,
   "name": "chart-card",
   "type": "component",
-  "title": "图表卡（ECharts）",
-  "description": "折线/柱状/环形图表卡，颜色从 --moh-* 变量读取，换主题自动适配",
-  "styleTags": ["增强组件", "数据", "图表"],
+  "title": "图表卡",
+  "description": "数据看板里的图表卡：折线/柱状/环形图与无数据空态，ECharts 渲染，颜色从 daisyUI 主题变量读取、切换主题自动跟随，含数据来源脚注与定高容器（需 ECharts CDN）。",
+  "styleTags": [
+    "数据展示",
+    "图表",
+    "增强组件"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "灰墨自研：daisyUI card 外壳 + ECharts 5（CDN），颜色改读 daisyUI --color-* 变量，含折线/柱状/环形三形态与无数据空态、数据来源脚注"
   },
-  "dependencies": ["echarts@5 (CDN)"],
-  "files": ["index.html"],
-  "verified": false
+  "dependencies": [
+    "echarts@5 (CDN)"
+  ],
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
+  "verified": true
 }

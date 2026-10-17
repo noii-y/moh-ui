@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>拖拽排序 · 灰墨组件</title>
+<link rel="stylesheet" href="../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../assets/demo-page.css" />
+<script src="../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>拖拽排序 <span class="en">Drag &amp; Drop Sort</span></h1>
+  <p>后台菜单、配置列表的顺序调整：鼠标拖拽即换序，把手聚焦后可用 ↑/↓ 键移动，目标位高亮、屏幕阅读器播报结果。样式全部走 daisyUI 类、零依赖；换序本身需要页面内嵌一小段原生 JavaScript（无第三方拖拽库）。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会连同那一小段原生换序 JS 一起生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">增删菜单项只改 <code>&lt;li&gt;</code>：每项的 <code>data-label</code> 与可见名称保持一致；换序后把新顺序提交给你的后端接口保存即可。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>后台「菜单管理」的排序列表</h2>
+    <p class="desc">管理员按使用频率调整左侧菜单的显示顺序：按住一行上下拖动即可换序，被拖动项半透明、目标行主色描边高亮；键盘用户 Tab 到左侧把手后按 ↑/↓ 也能移动，屏幕阅读器会播报「已将 X 移动到第 N 位」。</p>
+    <div class="doc-stage" id="hero-stage">
+      <ul id="menu-sort" class="flex flex-col gap-1 max-w-md w-full" style="list-style:none;margin:0;padding:0">
+        <li draggable="true" data-label="用户管理" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：用户管理" aria-describedby="menu-sort-live">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">用户管理</span>
+        </li>
+        <li draggable="true" data-label="角色与权限" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：角色与权限" aria-describedby="menu-sort-live">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">角色与权限</span>
+        </li>
+        <li draggable="true" data-label="审计日志" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：审计日志" aria-describedby="menu-sort-live">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">审计日志</span>
+        </li>
+        <li draggable="true" data-label="系统设置" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：系统设置" aria-describedby="menu-sort-live">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">系统设置</span>
+        </li>
+      </ul>
+      <div id="menu-sort-live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap"></div>
+      <script>
+      (function () {
+        var list = document.getElementById('menu-sort');
+        var live = document.getElementById('menu-sort-live');
+        if (!list || !live) return;
+        var items = function () {
+          return Array.prototype.slice.call(list.children);
+        };
+        var dragging = null;
+
+        function speak(text) {
+          live.textContent = '';
+          requestAnimationFrame(function () { live.textContent = text; });
+        }
+
+        list.addEventListener('dragstart', function (e) {
+          var item = e.target.closest('li');
+          if (!item || item.hasAttribute('aria-disabled')) return;
+          dragging = item;
+          item.classList.add('opacity-50');
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', item.dataset.label || '');
+        });
+
+        list.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          if (!dragging) return;
+          var item = e.target.closest('li');
+          if (!item || item === dragging || item.hasAttribute('aria-disabled')) return;
+          var rect = item.getBoundingClientRect();
+          var after = e.clientY > rect.top + rect.height / 2;
+          list.insertBefore(dragging, after ? item.nextSibling : item);
+          items().forEach(function (el) { el.classList.remove('border-primary'); });
+          item.classList.add('border-primary');
+        });
+
+        list.addEventListener('drop', function (e) { e.preventDefault(); });
+
+        list.addEventListener('dragend', function () {
+          if (!dragging) return;
+          var label = dragging.dataset.label;
+          var pos = items().indexOf(dragging) + 1;
+          dragging.classList.remove('opacity-50');
+          items().forEach(function (el) { el.classList.remove('border-primary'); });
+          dragging = null;
+          speak('已将 ' + label + ' 移动到第 ' + pos + ' 位');
+        });
+
+        list.addEventListener('keydown', function (e) {
+          var handle = e.target.closest('.sort-handle');
+          if (!handle) return;
+          var item = handle.closest('li');
+          if (!item || item.hasAttribute('aria-disabled')) return;
+          var arr = items();
+          var idx = arr.indexOf(item);
+          if (e.key === 'ArrowUp' && idx > 0) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx - 1]);
+            speak('已将 ' + item.dataset.label + ' 移动到第 ' + idx + ' 位');
+            handle.focus();
+          } else if (e.key === 'ArrowDown' && idx < arr.length - 1) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx + 2] || null);
+            speak('已将 ' + item.dataset.label + ' 移动到第 ' + (idx + 2) + ' 位');
+            handle.focus();
+          }
+        });
+      })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="后台菜单管理的排序列表（拖拽排序）">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="拖拽排序">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成并带上那一小段原生换序 JS；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 ①：带序号 -->
+  <section class="doc-block">
+    <h2>带序号：显示当前排位</h2>
+    <p class="desc">每行左侧加一个序号，让管理员一眼看到菜单排在第几位；拖动换序后序号会自动重排。</p>
+    <div class="doc-stage">
+      <ul class="flex flex-col gap-1 max-w-md w-full" style="list-style:none;margin:0;padding:0">
+        <li draggable="true" data-label="用户管理" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <span class="sort-no text-sm opacity-50 w-5 text-center">1</span>
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：用户管理">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">用户管理</span>
+        </li>
+        <li draggable="true" data-label="角色与权限" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <span class="sort-no text-sm opacity-50 w-5 text-center">2</span>
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：角色与权限">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">角色与权限</span>
+        </li>
+        <li draggable="true" data-label="审计日志" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <span class="sort-no text-sm opacity-50 w-5 text-center">3</span>
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：审计日志">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">审计日志</span>
+        </li>
+        <li draggable="true" data-label="系统设置" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <span class="sort-no text-sm opacity-50 w-5 text-center">4</span>
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：系统设置">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">系统设置</span>
+        </li>
+      </ul>
+      <script>
+      (function () {
+        var stage = document.currentScript.parentElement;
+        var list = stage.querySelector('ul');
+        if (!list) return;
+        var items = function () { return Array.prototype.slice.call(list.children); };
+        var renumber = function () {
+          items().forEach(function (li, i) {
+            var no = li.querySelector('.sort-no');
+            if (no) no.textContent = i + 1;
+          });
+        };
+        var dragging = null;
+        list.addEventListener('dragstart', function (e) {
+          var item = e.target.closest('li');
+          if (!item) return;
+          dragging = item;
+          item.classList.add('opacity-50');
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', item.dataset.label || '');
+        });
+        list.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          if (!dragging) return;
+          var item = e.target.closest('li');
+          if (!item || item === dragging) return;
+          var rect = item.getBoundingClientRect();
+          var after = e.clientY > rect.top + rect.height / 2;
+          list.insertBefore(dragging, after ? item.nextSibling : item);
+        });
+        list.addEventListener('drop', function (e) { e.preventDefault(); });
+        list.addEventListener('dragend', function () {
+          if (!dragging) return;
+          dragging.classList.remove('opacity-50');
+          dragging = null;
+          renumber();
+        });
+        list.addEventListener('keydown', function (e) {
+          var handle = e.target.closest('.sort-handle');
+          if (!handle) return;
+          var item = handle.closest('li');
+          var arr = items();
+          var idx = arr.indexOf(item);
+          if (e.key === 'ArrowUp' && idx > 0) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx - 1]);
+            renumber();
+            handle.focus();
+          } else if (e.key === 'ArrowDown' && idx < arr.length - 1) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx + 2] || null);
+            renumber();
+            handle.focus();
+          }
+        });
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 变体 ②：每行带删除按钮 -->
+  <section class="doc-block">
+    <h2>每行带「删除」操作</h2>
+    <p class="desc">列表里既要排序也要增删：行尾放一个幽灵删除按钮，点一下移除这一项；整行仍然可以拖拽换序。</p>
+    <div class="doc-stage">
+      <ul class="flex flex-col gap-1 max-w-md w-full" style="list-style:none;margin:0;padding:0">
+        <li draggable="true" data-label="用户管理" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：用户管理">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">用户管理</span>
+          <button type="button" class="btn btn-ghost btn-xs" data-del aria-label="删除：用户管理">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+            删除
+          </button>
+        </li>
+        <li draggable="true" data-label="角色与权限" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：角色与权限">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">角色与权限</span>
+          <button type="button" class="btn btn-ghost btn-xs" data-del aria-label="删除：角色与权限">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+            删除
+          </button>
+        </li>
+        <li draggable="true" data-label="审计日志" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：审计日志">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">审计日志</span>
+          <button type="button" class="btn btn-ghost btn-xs" data-del aria-label="删除：审计日志">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+            删除
+          </button>
+        </li>
+      </ul>
+      <script>
+      (function () {
+        var stage = document.currentScript.parentElement;
+        var list = stage.querySelector('ul');
+        if (!list) return;
+        var items = function () { return Array.prototype.slice.call(list.children); };
+        var dragging = null;
+        list.addEventListener('click', function (e) {
+          var del = e.target.closest('[data-del]');
+          if (!del) return;
+          var li = del.closest('li');
+          if (li) li.remove();
+        });
+        list.addEventListener('dragstart', function (e) {
+          var item = e.target.closest('li');
+          if (!item) return;
+          dragging = item;
+          item.classList.add('opacity-50');
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', item.dataset.label || '');
+        });
+        list.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          if (!dragging) return;
+          var item = e.target.closest('li');
+          if (!item || item === dragging) return;
+          var rect = item.getBoundingClientRect();
+          var after = e.clientY > rect.top + rect.height / 2;
+          list.insertBefore(dragging, after ? item.nextSibling : item);
+        });
+        list.addEventListener('drop', function (e) { e.preventDefault(); });
+        list.addEventListener('dragend', function () {
+          if (!dragging) return;
+          dragging.classList.remove('opacity-50');
+          dragging = null;
+        });
+        list.addEventListener('keydown', function (e) {
+          var handle = e.target.closest('.sort-handle');
+          if (!handle) return;
+          var item = handle.closest('li');
+          var arr = items();
+          var idx = arr.indexOf(item);
+          if (e.key === 'ArrowUp' && idx > 0) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx - 1]);
+            handle.focus();
+          } else if (e.key === 'ArrowDown' && idx < arr.length - 1) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx + 2] || null);
+            handle.focus();
+          }
+        });
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 变体 ③：禁用项 -->
+  <section class="doc-block">
+    <h2>禁用项：不可拖动的锁定行</h2>
+    <p class="desc">有些行不允许调整顺序（比如固定在最后的「系统设置」）：加锁图标、标记 <code>aria-disabled="true"</code>，它不参与拖拽与键盘移动，其余行照常排序。</p>
+    <div class="doc-stage">
+      <ul class="flex flex-col gap-1 max-w-md w-full" style="list-style:none;margin:0;padding:0">
+        <li draggable="true" data-label="用户管理" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：用户管理">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">用户管理</span>
+        </li>
+        <li draggable="true" data-label="角色与权限" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：角色与权限">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">角色与权限</span>
+        </li>
+        <li draggable="true" data-label="审计日志" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3">
+          <button type="button" class="btn btn-ghost btn-sm btn-square sort-handle" style="cursor:grab" aria-label="拖拽排序：审计日志">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><circle cx="9" cy="6" r="1.6"/><circle cx="15" cy="6" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="9" cy="18" r="1.6"/><circle cx="15" cy="18" r="1.6"/></svg>
+          </button>
+          <span class="flex-1 text-sm">审计日志</span>
+        </li>
+        <li aria-disabled="true" data-label="系统设置" class="flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3 opacity-50">
+          <span class="btn btn-ghost btn-sm btn-square cursor-not-allowed" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          </span>
+          <span class="flex-1 text-sm">系统设置（固定，不可排序）</span>
+        </li>
+      </ul>
+      <script>
+      (function () {
+        var stage = document.currentScript.parentElement;
+        var list = stage.querySelector('ul');
+        if (!list) return;
+        var items = function () { return Array.prototype.slice.call(list.children); };
+        var dragging = null;
+        list.addEventListener('dragstart', function (e) {
+          var item = e.target.closest('li');
+          if (!item || item.hasAttribute('aria-disabled')) return;
+          dragging = item;
+          item.classList.add('opacity-50');
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', item.dataset.label || '');
+        });
+        list.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          if (!dragging) return;
+          var item = e.target.closest('li');
+          if (!item || item === dragging || item.hasAttribute('aria-disabled')) return;
+          var rect = item.getBoundingClientRect();
+          var after = e.clientY > rect.top + rect.height / 2;
+          list.insertBefore(dragging, after ? item.nextSibling : item);
+        });
+        list.addEventListener('drop', function (e) { e.preventDefault(); });
+        list.addEventListener('dragend', function () {
+          if (!dragging) return;
+          dragging.classList.remove('opacity-50');
+          dragging = null;
+        });
+        list.addEventListener('keydown', function (e) {
+          var handle = e.target.closest('.sort-handle');
+          if (!handle) return;
+          var item = handle.closest('li');
+          if (!item || item.hasAttribute('aria-disabled')) return;
+          var arr = items();
+          var idx = arr.indexOf(item);
+          if (e.key === 'ArrowUp' && idx > 0) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx - 1]);
+            handle.focus();
+          } else if (e.key === 'ArrowDown' && idx < arr.length - 1) {
+            e.preventDefault();
+            list.insertBefore(item, arr[idx + 2] || null);
+            handle.focus();
+          }
+        });
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>纯 CSS 做不到，必须配一小段原生 JS</h3>
+    <p>拖拽换序依赖浏览器的 HTML5 Drag &amp; Drop API，任何纯 CSS 组件库都做不到。本组件的样式全部用 daisyUI 类（零依赖、随主题变色），换序行为是页面内嵌的一小段原生 JavaScript：监听 <code>dragstart / dragover / drop / dragend</code> 并用 <code>insertBefore</code> 移动节点，不到 50 行、不引入任何第三方拖拽库。把成品保存为 .html 双击即可直接拖动。</p>
+    <h3>鼠标与键盘双通道</h3>
+    <p>鼠标按住整行拖动即可换序；键盘用户 Tab 到左侧把手按钮，聚焦后按 ↑ / ↓ 上下移动这一项，移动后焦点仍留在把手上，可连续移动。<code>dragover</code> 里按鼠标在目标行上半段还是下半段决定插入位置，所以拖动过程中列表实时跟随。</p>
+    <h3>可访问性</h3>
+    <p>把手是 <code>&lt;button&gt;</code> 而不是图标字符，带 <code>aria-label="拖拽排序：行名"</code>；拖拽与键盘移动后，隐藏的 <code>aria-live="polite"</code> 区域播报「已将 X 移动到第 N 位」，屏幕阅读器用户同样知道结果。锁定行用 <code>aria-disabled="true"</code>，脚本里同步跳过它，既不能拖也不能键盘移动。</p>
+    <h3>排序结果要自己保存</h3>
+    <p>这套交互只改前端 DOM。用户点「保存」时，按 <code>ul</code> 当前的子节点顺序，把每行的 <code>data-label</code>（或你的业务 id）组成数组提交给后端，由后端持久化；刷新页面后再按后端返回的顺序渲染。</p>
+    <h3>视觉细节</h3>
+    <p>拖拽中被拖行加 <code>opacity-50</code>，当前目标行加 <code>border-primary</code> 高亮，松手自动清除；把手图标用内联单色 SVG（六点 grip），不要用 ≡ 这类字符——字符在不同字体下错位，也没有正确的语义。</p>
+  </section>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】后台系统的「菜单管理」页：管理员按使用频率调整后台菜单的显示顺序，4 个菜单项可上下拖动换序。
+【怎么排】
+- 一列纵向排列的卡片行：每行左侧一个拖拽把手（单色 SVG 六点 grip 图标，不要用 ≡ 字符），中间是菜单名称，行与行间距 4px。
+- 拖拽中被拖动项半透明，当前目标行主色描边高亮；拖动过程中列表实时跟随，松开后顺序即生效。
+- 把手是一个小方形幽灵按钮（btn btn-ghost btn-sm btn-square），可以用 Tab 聚焦，聚焦后按 ↑/↓ 键上下移动这一项，焦点留在原把手上。
+- 屏幕阅读器通过隐藏的 aria-live 区域播报「已将 X 移动到第 N 位」。
+【精确规格】
+- 每行是 <li draggable="true" data-label="真实名称">，类名：flex items-center gap-2 rounded-box border border-base-300 bg-base-100 p-3；ul 用 flex flex-col gap-1，内联去掉列表圆点与默认边距。
+- 把手按钮 aria-label 写「拖拽排序：+ 行名」；行名用真实中文：用户管理 / 角色与权限 / 审计日志 / 系统设置。
+- 行为由页面内嵌一小段原生 JS 完成（不引入任何第三方拖拽库）：dragstart 给被拖行加 opacity-50；dragover 里 e.preventDefault()，按鼠标在目标行上半部/下半部决定 insertBefore 位置，并给目标行切换 border-primary 高亮；dragend 清除高亮、读出行的新位置并播报；键盘在把手 keydown ArrowUp/ArrowDown 时相邻 insertBefore 并播报。
+- 隐藏播报区域：aria-live="polite"，最小内联样式视觉隐藏（position:absolute; 1px 尺寸; clip-path:inset(50%)）。
+- 所有颜色走 daisyUI 主题变量，不写死颜色；图标全部内联单色 SVG。</script>
+
+<script src="../../assets/demo-doc.js"></script>
+</body>
+</html>

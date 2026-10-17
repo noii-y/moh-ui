@@ -3,16 +3,24 @@
   "name": "date-range",
   "type": "component",
   "title": "日期范围",
-  "description": "原生 date input 两枚 + 快捷预设（aria-pressed），零依赖",
-  "styleTags": ["基础组件", "表单", "筛选"],
+  "description": "订单与数据筛选的日期范围：两个原生 date input 用 join 拼接、「至」分隔，带今天/近 7 天/近 30 天/本月快捷预设（aria-pressed 选中态，预设填充为一小段 JS），零依赖纯 CSS。",
+  "styleTags": [
+    "表单",
+    "基础组件",
+    "筛选"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "inspiration": "灰墨自研增强组件，形态参考常见订单列表筛选条（原生 date input + 快捷预设），底座为 daisyUI 的 input / join / btn",
+    "changes": "基于 daisyUI input + join + btn 拼接为日期范围筛选条，「至」为中性分隔 join-item；预设按钮用 btn-soft + aria-pressed 表达选中态；配约 30 行原生 JS 实现今天/近 7 天/近 30 天/本月填充（本地时区格式化）；中文业务文案"
   },
   "dependencies": [],
-  "files": ["index.html"],
-  "verified": false
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
+  "verified": true
 }

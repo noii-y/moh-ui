@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>日期范围 · 灰墨组件</title>
+<link rel="stylesheet" href="../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../assets/demo-page.css" />
+<script src="../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>日期范围 <span class="en">Date Range</span></h1>
+  <p>订单、报表、数据列表顶部的筛选条：两个原生日期框用 join 拼成一条，中间「至」分隔，再配今天 / 近 7 天 / 近 30 天 / 本月四个快捷预设。下面先给一个可以直接拿走的成品，再看各种简化形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">日期框用原生 <code>&lt;input type="date"&gt;</code>（自带日历面板，零依赖）；预设按钮的选中态用 <code>aria-pressed</code> 表达，点预设自动填日期只需要一小段原生 JS（成品已带上）。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>订单列表顶部的日期筛选条</h2>
+    <p class="desc">两个日期框用 join 无缝拼成一条，首尾圆角、中间「至」是一条中性分隔；第二行是四个快捷预设，默认选中「近 7 天」，右边主操作「查询」、弱化的「重置」。点预设按钮会自动把起止日期填好，这就是组件里那一小段原生 JS 干的事。</p>
+    <div class="doc-stage" id="hero-stage">
+      <div class="flex flex-col gap-3">
+        <div class="join">
+          <input type="date" id="dr-start" class="input join-item" aria-label="开始日期" value="2026-10-11" />
+          <span class="join-item flex items-center px-3 bg-base-200 text-sm" aria-hidden="true">至</span>
+          <input type="date" id="dr-end" class="input join-item" aria-label="结束日期" value="2026-10-17" />
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <div class="flex flex-wrap gap-2" role="group" aria-label="快捷预设">
+            <button type="button" class="btn btn-soft btn-sm" data-preset="today" aria-pressed="false">今天</button>
+            <button type="button" class="btn btn-soft btn-sm" data-preset="7" aria-pressed="true">近 7 天</button>
+            <button type="button" class="btn btn-soft btn-sm" data-preset="30" aria-pressed="false">近 30 天</button>
+            <button type="button" class="btn btn-soft btn-sm" data-preset="month" aria-pressed="false">本月</button>
+          </div>
+          <button type="button" class="btn btn-primary">查询</button>
+          <button type="button" class="btn">重置</button>
+        </div>
+      </div>
+      <script>
+      /* 快捷预设：点按钮 → 其他预设取消选中 → 填好起止日期（今天/近7天/近30天/本月）。
+         注意：不要依赖 #hero-stage 定位——「复制成品 HTML」只取 hero-stage 内部，
+         复制后的独立文件里没有这个容器，id 要写在组件自身元素上。 */
+      (function () {
+        var start = document.getElementById("dr-start");
+        var end = document.getElementById("dr-end");
+        var buttons = document.querySelectorAll("[data-preset]");
+        if (!start || !end) return;
+        function fmt(d) {
+          var m = String(d.getMonth() + 1).padStart(2, "0");
+          var day = String(d.getDate()).padStart(2, "0");
+          return d.getFullYear() + "-" + m + "-" + day;
+        }
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            buttons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+            btn.setAttribute("aria-pressed", "true");
+            var now = new Date();
+            var s = now;
+            switch (btn.getAttribute("data-preset")) {
+              case "today": s = new Date(now); break;
+              case "7": s = new Date(now.getTime() - 6 * 86400000); break;
+              case "30": s = new Date(now.getTime() - 29 * 86400000); break;
+              case "month": s = new Date(now.getFullYear(), now.getMonth(), 1); break;
+            }
+            start.value = fmt(s);
+            end.value = fmt(now);
+          });
+        });
+      })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="订单列表顶部的日期范围筛选条">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="日期范围">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体 1：仅起止日期 -->
+  <section class="doc-block">
+    <h2>只要起止日期：最简形态</h2>
+    <p class="desc">不要预设、不要查询按钮时，就剩这条 join：开始日期框、「至」分隔条、结束日期框，首尾圆角由 join 自动处理。两个输入框分别用 <code>aria-label</code> 标注「开始日期」「结束日期」，读屏软件才能念清楚。</p>
+    <div class="doc-stage">
+      <div class="join">
+        <input type="date" class="input join-item" aria-label="开始日期" />
+        <span class="join-item flex items-center px-3 bg-base-200 text-sm" aria-hidden="true">至</span>
+        <input type="date" class="input join-item" aria-label="结束日期" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体 2：窄屏自然折行 -->
+  <section class="doc-block">
+    <h2>窄屏自然折行：不写任何响应式类</h2>
+    <p class="desc">日期条、预设按钮、查询按钮放在一个 <code>flex flex-wrap</code> 容器里：一行放不下时，预设按钮自动换到下一行，任何元素都不被挤出屏幕。不要用 <code>ml-auto</code> 把按钮推到右边——手机上会把按钮挤出屏。</p>
+    <div class="doc-stage">
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="join">
+          <input type="date" class="input join-item" aria-label="开始日期" value="2026-10-01" />
+          <span class="join-item flex items-center px-3 bg-base-200 text-sm" aria-hidden="true">至</span>
+          <input type="date" class="input join-item" aria-label="结束日期" value="2026-10-17" />
+        </div>
+        <div class="flex flex-wrap gap-2" role="group" aria-label="快捷预设">
+          <button type="button" class="btn btn-soft btn-sm" aria-pressed="false">今天</button>
+          <button type="button" class="btn btn-soft btn-sm" aria-pressed="false">近 7 天</button>
+          <button type="button" class="btn btn-soft btn-sm" aria-pressed="false">近 30 天</button>
+          <button type="button" class="btn btn-soft btn-sm" aria-pressed="false">本月</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体 3：带查询/重置 -->
+  <section class="doc-block">
+    <h2>带查询 / 重置的完整筛选行</h2>
+    <p class="desc">不需要快捷预设时，日期条后面直接跟两个动作按钮：主按钮「查询」触发筛选，弱化的「重置」清空起止日期。两个按钮用自然顺序排在日期条后面，窄屏跟着折行。</p>
+    <div class="doc-stage">
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="join">
+          <input type="date" class="input join-item" aria-label="开始日期" value="2026-10-01" />
+          <span class="join-item flex items-center px-3 bg-base-200 text-sm" aria-hidden="true">至</span>
+          <input type="date" class="input join-item" aria-label="结束日期" value="2026-10-17" />
+        </div>
+        <button type="button" class="btn btn-primary">查询</button>
+        <button type="button" class="btn">重置</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>为什么用原生 date input</h3>
+    <p><code>&lt;input type="date"&gt;</code> 自带日历面板、键盘输入和移动端原生滚轮，零依赖零 JS 就能用，日期格式自动跟随系统语言。不要为了统一外观自己手写日历，那是一大坨 JS。</p>
+    <h3>拼接与分隔</h3>
+    <p>两个日期框都加 <code>join-item</code>，首尾圆角由 <code>join</code> 自动处理；中间的「至」用 <code>join-item flex items-center px-3 bg-base-200</code>，渲染成一条中性分隔条，并加 <code>aria-hidden="true"</code>（读屏不需要念这个字）。</p>
+    <h3>快捷预设怎么表达选中</h3>
+    <p>预设按钮用柔和态（<code>btn btn-soft btn-sm</code>），选中项加 <code>aria-pressed="true"</code>，同组同时只有一个为 true。外层包 <code>role="group" aria-label="快捷预设"</code>。视觉上选中态跟随主题色，不要写死颜色。</p>
+    <h3>填充逻辑：仅一小段原生 JS</h3>
+    <p>成品里的 JS 只做三件事：点哪个预设就把它的 <code>aria-pressed</code> 设为 true、其余设为 false；按预设算出起止日期（今天 / 近 7 天 = 今天往前 6 天 / 近 30 天 = 往前 29 天 / 本月 = 当月 1 号）；写回两个 input。日期格式化用本地时区（不要用 <code>toISOString()</code>，UTC 会让日期偏一天）。真实项目里，填完日期再发查询请求即可，这段 JS 可以原样搬。</p>
+    <h3>查询与重置</h3>
+    <p>「查询」是主操作用 <code>btn-primary</code>，「重置」是弱化动作用默认按钮。重置的真实动作是把两个 input 清空（或恢复默认值）并取消预设选中，需要时在上面那段 JS 里再加一个按钮分支。</p>
+    <h3>窄屏</h3>
+    <p>整条筛选条用 <code>flex flex-wrap items-center gap-2</code> 自然折行，不写任何响应式类；不要用 <code>ml-auto</code> 把按钮推到右边。390px 下日期条一行、预设和按钮依次换到下面，任何元素不被裁切。</p>
+  </section>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】订单列表顶部的日期范围筛选条：两个原生日期框拼成一条，带今天/近 7 天/近 30 天/本月快捷预设，以及查询、重置按钮。
+【怎么排】
+- 第一行是 join：开始日期输入框 +「至」分隔条 + 结束日期输入框，三者首尾圆角、相邻无缝；
+- 第二行从左到右：四个快捷预设按钮（柔和态，默认选中「近 7 天」）、主按钮「查询」、弱化按钮「重置」；
+- 所有控件放在 flex flex-wrap 容器里，窄屏自动折行，任何按钮不被挤出屏幕。
+【精确规格】
+- join 结构：<div class="join"> 包三个 join-item——<input type="date" class="input join-item" aria-label="开始日期">、<span class="join-item flex items-center px-3 bg-base-200 text-sm" aria-hidden="true">至</span>、<input type="date" class="input join-item" aria-label="结束日期">。
+- 预设按钮：<button type="button" class="btn btn-soft btn-sm" aria-pressed="true/false">，外层 <div class="flex flex-wrap gap-2" role="group" aria-label="快捷预设">；同一时刻只有一个 aria-pressed="true"。
+- 查询用 btn btn-primary，重置用默认 btn；按钮写真实动作，禁止出现 Primary 这类颜色名。
+- 预设填充逻辑仅一小段原生 JS（随成品一起复制）：点预设 → 其余按钮 aria-pressed 置 false、当前置 true → 按规则填两个 input 的值——今天：起=止=今天；近 7 天：起=今天往前 6 天，止=今天；近 30 天：起=往前 29 天；本月：起=当月 1 号，止=今天；日期格式化用本地时区（YYYY-MM-DD），不要用 toISOString（UTC 会偏一天）。
+- 原生 date input 自带日历面板，不要自己手写日历；颜色全部走主题变量，不写死。</script>
+
+<script src="../../assets/demo-doc.js"></script>
+</body>
+</html>

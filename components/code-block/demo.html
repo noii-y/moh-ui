@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>代码块 Code Block · 灰墨组件</title>
+<link rel="stylesheet" href="../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../assets/demo-page.css" />
+<script src="../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>代码块 <span class="en">Code Block</span></h1>
+  <p>教程与文档里的代码块：深色窗口、语言标签、一键复制、真语法高亮。基于 highlight.js 渲染，高亮配色跟随主题。下面先给一个可以直接拿走的成品，再列出其它形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）；本组件还需额外引入一行 highlight.js CDN 脚本，地址就在下面成品区顶部（common 版含常用语言）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">把 <code>&lt;code&gt;</code> 里的内容换成你的代码，并在 class 里写对语言名（language-javascript / language-python / language-shell）；切换主题后高亮颜色自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>教程文档里的 JavaScript 代码块</h2>
+    <p class="desc">深色窗口：顶栏左边写语言名「JavaScript」，右边一个小「复制」按钮；下面是真实可读的 JS 片段——如何读 daisyUI 主题变量来初始化图表，和图表卡正好呼应。</p>
+    <div class="doc-stage" id="hero-stage">
+      <!-- highlight.js（CDN，需联网；common 版含常用语言）。不引它的官方主题 CSS，token 配色由下方内联样式控制 -->
+      <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js"></script>
+      <style>
+        .cb-window .hljs-keyword,
+        .cb-window .hljs-built_in,
+        .cb-window .hljs-type { color: var(--color-primary); font-weight: 600; }
+        .cb-window .hljs-string,
+        .cb-window .hljs-attr { color: var(--color-success); }
+        .cb-window .hljs-comment,
+        .cb-window .hljs-quote { color: var(--color-neutral-content); opacity: .55; font-style: italic; }
+        .cb-window .hljs-number,
+        .cb-window .hljs-literal { color: var(--color-warning); }
+        .cb-window .hljs-title,
+        .cb-window .hljs-function,
+        .cb-window .hljs-section { color: var(--color-secondary); font-weight: 600; }
+        .cb-window .hljs-params,
+        .cb-window .hljs-variable,
+        .cb-window .hljs-property { color: var(--color-neutral-content); }
+        .cb-window pre { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace); }
+        .cb-window pre code.hljs { background: transparent; padding: 0; }
+        .cb-window .cb-copy { color: var(--color-neutral-content); }
+        .cb-window .cb-copy:hover { color: var(--color-neutral-content); background-color: color-mix(in oklab, var(--color-neutral-content) 12%, transparent); }
+      </style>
+      <div class="cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl">
+        <div class="flex items-center justify-between px-4 py-2 text-xs" style="border-bottom:1px solid rgba(255,255,255,.12);">
+          <span>JavaScript</span>
+          <button type="button" class="btn btn-xs btn-ghost cb-copy" aria-label="复制这段代码">复制</button>
+        </div>
+        <pre class="p-4 overflow-x-auto text-sm leading-relaxed" style="margin:0;"><code class="language-javascript">// 读 daisyUI 主题变量，初始化折线图
+const css = getComputedStyle(document.documentElement);
+const primary = css.getPropertyValue("--color-primary").trim();
+
+const chart = echarts.init(document.getElementById("chart-trend"));
+chart.setOption({
+  xAxis: { type: "category", data: ["5月", "6月", "7月"] },
+  yAxis: { type: "value" },
+  series: [{ type: "line", data: [820, 932, 901], lineStyle: { color: primary } }]
+});
+window.addEventListener("resize", () => chart.resize());</code></pre>
+      </div>
+      <script>
+      (function () {
+        function initAll() {
+          if (window.hljs) {
+            document.querySelectorAll(".cb-window code").forEach(function (el) {
+              try { hljs.highlightElement(el); } catch (e) {}
+            });
+          }
+          document.querySelectorAll(".cb-window .cb-copy").forEach(function (btn) {
+            if (btn.dataset.wired) return;
+            btn.dataset.wired = "1";
+            btn.addEventListener("click", function () {
+              var text = btn.closest(".cb-window").querySelector("code").textContent;
+              function done() {
+                btn.textContent = "已复制";
+                setTimeout(function () { btn.textContent = "复制"; }, 1500);
+              }
+              function legacy() {
+                var ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand("copy"); done(); } catch (e) {}
+                ta.remove();
+              }
+              if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done, legacy);
+              } else {
+                legacy();
+              }
+            });
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initAll);
+        } else {
+          initAll();
+        }
+      })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="教程文档里的 JavaScript 代码块">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="代码块">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：Python -->
+  <section class="doc-block">
+    <h2>Python 高亮块</h2>
+    <p class="desc">把 <code>&lt;code&gt;</code> 的语言类换成 <code>language-python</code>，语言标签写「Python」即可。关键字、字符串、注释的配色规则和 JavaScript 版完全一致。</p>
+    <div class="doc-stage">
+      <div class="cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl">
+        <div class="flex items-center justify-between px-4 py-2 text-xs" style="border-bottom:1px solid rgba(255,255,255,.12);">
+          <span>Python</span>
+          <button type="button" class="btn btn-xs btn-ghost cb-copy" aria-label="复制这段代码">复制</button>
+        </div>
+        <pre class="p-4 overflow-x-auto text-sm leading-relaxed" style="margin:0;"><code class="language-python"># 读取访问数据，按月聚合
+import pandas as pd
+
+df = pd.read_csv("visitors.csv")
+df["month"] = pd.to_datetime(df["date"]).dt.to_period("M")
+monthly = df.groupby("month")["uv"].sum()
+print(monthly)</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：终端命令 -->
+  <section class="doc-block">
+    <h2>终端命令块</h2>
+    <p class="desc">语言标签写「Terminal」，代码用 <code>language-shell</code>；以 <code>$</code> 开头表示输入的命令，下面不带 <code>$</code> 的行是输出。</p>
+    <div class="doc-stage">
+      <div class="cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl">
+        <div class="flex items-center justify-between px-4 py-2 text-xs" style="border-bottom:1px solid rgba(255,255,255,.12);">
+          <span>Terminal</span>
+          <button type="button" class="btn btn-xs btn-ghost cb-copy" aria-label="复制这段代码">复制</button>
+        </div>
+        <pre class="p-4 overflow-x-auto text-sm leading-relaxed" style="margin:0;"><code class="language-shell">$ npm install echarts
+$ npm run dev
+  VITE v5.0 ready in 320 ms</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 变体：长代码横向滚动 -->
+  <section class="doc-block">
+    <h2>长代码横向滚动</h2>
+    <p class="desc">行太长时不要换行打乱缩进，<code>pre</code> 保持默认不换行、外层 <code>overflow-x-auto</code>，让读者左右滚动看完整一行。</p>
+    <div class="doc-stage">
+      <div class="cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl">
+        <div class="flex items-center justify-between px-4 py-2 text-xs" style="border-bottom:1px solid rgba(255,255,255,.12);">
+          <span>JavaScript</span>
+          <button type="button" class="btn btn-xs btn-ghost cb-copy" aria-label="复制这段代码">复制</button>
+        </div>
+        <pre class="p-4 overflow-x-auto text-sm leading-relaxed" style="margin:0;"><code class="language-javascript">const result = await fetch("/api/dashboard/metrics?range=last_180_days&groupBy=month&fields=visits,signups,orders").then((res) => res.json());</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>和 mockup-code 怎么选</h3>
+    <p>纯展示几行命令、不想引 CDN，用零依赖的 <code>mockup-code</code>（daisyUI 自带）；要真语法高亮、要一键复制按钮，用本组件（依赖 highlight.js CDN）。别为了三行命令多加载一个库。</p>
+    <h3>不引 hljs 官方主题 CSS</h3>
+    <p>highlight.js 只引核心库，它自带的浅色主题样式表不要加载；关键字、字符串、注释、数字的配色写在组件内联 <code>&lt;style&gt;</code> 里，全部取 daisyUI 变量（主色=关键字、成功绿=字符串、警告橙=数字、secondary=函数名），深浅主题都协调。</p>
+    <h3>语言类要写对</h3>
+    <p><code>&lt;code&gt;</code> 上加 <code>language-javascript</code> / <code>language-python</code> / <code>language-shell</code>，hljs 按这个类名选语法规则；写错了就没有高亮。展示 HTML 代码时，尖括号必须转义成 <code>&amp;lt;</code> <code>&amp;gt;</code>。</p>
+    <h3>复制按钮</h3>
+    <p>用 <code>navigator.clipboard.writeText</code> 复制 <code>&lt;code&gt;</code> 的文本，失败时兜底 <code>execCommand("copy")</code>；按钮加 <code>aria-label</code>，复制成功后短暂显示「已复制」再还原。</p>
+    <h3>长行不换行</h3>
+    <p><code>pre</code> 保持默认不换行，外层 <code>overflow-x-auto</code> 横向滚动；换行打散缩进比滚动更难看。</p>
+  </section>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】教程或文档里的一个 JavaScript 代码块：深色窗口，顶部左边语言标签、右边「复制」按钮，下面是带语法高亮的真实代码。
+【怎么排】
+- 深色窗口外壳：bg-neutral + text-neutral-content，圆角、overflow-hidden；
+- 顶栏左右两端：左边语言标签「JavaScript」，右边一个小幽灵按钮「复制」，点击成功后短暂显示「已复制」再还原；
+- 代码区等宽字体，长行不换行、横向滚动（overflow-x-auto），不要换行打散缩进。
+【精确规格】
+- 先在页面里引入一行 highlight.js CDN 脚本：https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js （common 版含常用语言）；不要引它的官方主题 CSS。
+- 高亮 token 配色写在组件内联样式里，颜色取 daisyUI 变量：关键词 --color-primary、字符串 --color-success、数字 --color-warning、注释用 --color-neutral-content 半透明斜体、函数名 --color-secondary；禁止写死 hex。
+- 初始化：hljs.highlightElement(document.querySelector("code"))；复制按钮用 navigator.clipboard.writeText，失败兜底 execCommand("copy")，按钮加 aria-label。
+- <code> 里若展示 HTML，尖括号必须转义成 &lt; &gt;；代码内容写真实可读的片段，注释用中文。</script>
+
+<script src="../../assets/demo-doc.js"></script>
+</body>
+</html>

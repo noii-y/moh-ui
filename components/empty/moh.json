@@ -3,16 +3,24 @@
   "name": "empty",
   "type": "component",
   "title": "空状态",
-  "description": "图标 + 标题 + 说明 + 可选操作按钮，紧凑变体供表格内嵌，文案鼓励下一步",
-  "styleTags": ["基础组件", "反馈", "列表"],
+  "description": "列表无数据、搜索无结果、加载失败等空状态：线性图标 + 标题 + 说明 + 可选操作按钮，覆盖标准居中、无按钮、表格内嵌紧凑横排、错误重试等形态，零依赖纯 HTML/CSS。",
+  "styleTags": [
+    "反馈",
+    "基础组件",
+    "列表"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "inspiration": "灰墨自研增强组件，形态参考常见列表空状态（居中图标 + 标题 + 说明 + 可选操作），底座为 daisyUI 的 card / btn",
+    "changes": "基于 daisyUI card + btn 实现标准居中空状态；覆盖搜索无结果（无按钮）、表格内嵌紧凑横排（32px 图标横向排列）、网络错误（云朵断线图标 + 重试）四种形态；图标全部内联单色 SVG（stroke=currentColor），零 emoji 零外链；中文业务文案"
   },
   "dependencies": [],
-  "files": ["index.html"],
-  "verified": false
+  "files": [
+    "demo.html",
+    "README.md"
+  ],
+  "verified": true
 }

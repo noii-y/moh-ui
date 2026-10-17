@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>图表卡 Chart Card · 灰墨组件</title>
+<link rel="stylesheet" href="../../vendor/daisyui.css" />
+<link rel="stylesheet" href="../../assets/utilities-patch.css" />
+<link rel="stylesheet" href="../../assets/demo-page.css" />
+<script src="../../assets/demo-embed.js"></script>
+</head>
+<body>
+<header class="doc-head">
+  <h1>图表卡 <span class="en">Chart Card</span></h1>
+  <p>数据看板里的一张卡片：折线、柱状、环形图，外加无数据空态。基于 daisyUI 卡片外壳和 ECharts 渲染，颜色跟随主题。下面先给一个可以直接拿走的成品，再列出其它形态。</p>
+</header>
+
+<main class="doc-wrap">
+
+  <!-- 怎么用：三步 -->
+  <section class="doc-block doc-howto">
+    <h2>三步用到你项目里</h2>
+    <ol class="doc-steps">
+      <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）；本组件还需额外引入一行 ECharts CDN 脚本，地址就在下面成品区顶部（需联网，也可下载到本地改相对路径）。</li>
+      <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
+      <li data-n="3">换数据、换图表类型只改 <code>setOption</code> 里的配置；切换主题后，图表颜色会自动跟着变。</li>
+    </ol>
+  </section>
+
+  <!-- 成品示例：唯一主按钮 -->
+  <section class="doc-block doc-hero">
+    <span class="doc-hero-badge">成品示例 · 拿来即用</span>
+    <h2>数据看板里的「月度访问趋势」卡</h2>
+    <p class="desc">一张卡从上到下三段：标题加一行副标题、一块定高 240px 的折线图、卡脚一行数据来源。折线用主色，线下浅色半透明填充，不喧宾夺主。</p>
+    <div class="doc-stage" id="hero-stage">
+      <!-- ECharts CDN（需联网；也可下载到 vendor 后改相对路径） -->
+      <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+      <div class="card bg-base-100 shadow-sm max-w-md">
+        <div class="card-body p-4">
+          <div>
+            <h3 class="font-semibold">月度访问趋势</h3>
+            <p class="text-xs opacity-60 mt-1">近 6 个月页面访问量</p>
+          </div>
+          <div id="chart-trend" role="img" aria-label="近6个月页面访问量折线趋势图" style="width:100%;height:240px;"></div>
+          <div class="border-t pt-2 mt-2 text-xs opacity-60">数据来源：演示数据</div>
+        </div>
+      </div>
+      <script>
+      (function () {
+        if (typeof echarts === "undefined") {
+          document.getElementById("chart-trend").textContent = "图表加载失败：请确认已引入 ECharts（CDN 需联网）。";
+          return;
+        }
+        var css = getComputedStyle(document.documentElement);
+        var v = function (name) { return css.getPropertyValue(name).trim(); };
+        var chart = echarts.init(document.getElementById("chart-trend"));
+        chart.setOption({
+          grid: { left: 36, right: 16, top: 20, bottom: 28 },
+          tooltip: {
+            trigger: "axis",
+            backgroundColor: v("--color-base-100"),
+            borderColor: v("--color-base-300"),
+            textStyle: { color: v("--color-base-content") }
+          },
+          xAxis: {
+            type: "category",
+            data: ["5月", "6月", "7月", "8月", "9月", "10月"],
+            axisLine: { lineStyle: { color: v("--color-base-300") } },
+            axisLabel: { color: v("--color-base-content") }
+          },
+          yAxis: {
+            type: "value",
+            splitLine: { lineStyle: { color: v("--color-base-200") } },
+            axisLabel: { color: v("--color-base-content") }
+          },
+          series: [{
+            type: "line",
+            data: [820, 932, 901, 1290, 1330, 1420],
+            smooth: true,
+            symbolSize: 6,
+            lineStyle: { color: v("--color-primary"), width: 2 },
+            itemStyle: { color: v("--color-primary") },
+            areaStyle: { color: v("--color-primary"), opacity: 0.08 }
+          }]
+        });
+        window.addEventListener("resize", function () { chart.resize(); });
+      })();
+      </script>
+    </div>
+    <div class="doc-hero-action">
+      <div class="doc-hero-btns">
+        <button class="btn btn-primary" data-copy-prompt data-component="数据看板里的月度访问趋势图表卡">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
+          复制 AI 提示词
+        </button>
+        <button class="btn btn-soft" data-copy-hero data-component="图表卡">
+          复制成品 HTML
+        </button>
+      </div>
+      <span class="hint">首选「复制 AI 提示词」整段发给你的 AI，它会按你的项目生成；想直接粘贴代码、双击预览，再用「复制成品 HTML」。</span>
+    </div>
+  </section>
+
+  <!-- 变体：柱状图 -->
+  <section class="doc-block">
+    <h2>柱状图：月度销售额</h2>
+    <p class="desc">把 series 的 type 改成 "bar" 就是柱状图，适合比高低：每月销售额单独一根柱子，柱顶圆角 4px，主色实心。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 shadow-sm max-w-md">
+        <div class="card-body p-4">
+          <div>
+            <h3 class="font-semibold">月度销售额</h3>
+            <p class="text-xs opacity-60 mt-1">近 6 个月（单位：万元）</p>
+          </div>
+          <div id="chart-sales" role="img" aria-label="近6个月销售额柱状图" style="width:100%;height:240px;"></div>
+          <div class="border-t pt-2 mt-2 text-xs opacity-60">数据来源：演示数据</div>
+        </div>
+      </div>
+      <script>
+      (function () {
+        if (typeof echarts === "undefined") return;
+        var css = getComputedStyle(document.documentElement);
+        var v = function (name) { return css.getPropertyValue(name).trim(); };
+        var chart = echarts.init(document.getElementById("chart-sales"));
+        chart.setOption({
+          grid: { left: 36, right: 16, top: 20, bottom: 28 },
+          tooltip: {
+            trigger: "axis",
+            backgroundColor: v("--color-base-100"),
+            borderColor: v("--color-base-300"),
+            textStyle: { color: v("--color-base-content") }
+          },
+          xAxis: {
+            type: "category",
+            data: ["5月", "6月", "7月", "8月", "9月", "10月"],
+            axisLine: { lineStyle: { color: v("--color-base-300") } },
+            axisLabel: { color: v("--color-base-content") }
+          },
+          yAxis: {
+            type: "value",
+            splitLine: { lineStyle: { color: v("--color-base-200") } },
+            axisLabel: { color: v("--color-base-content") }
+          },
+          series: [{
+            type: "bar",
+            data: [120, 200, 150, 280, 260, 340],
+            barWidth: 24,
+            itemStyle: { color: v("--color-primary"), borderRadius: [4, 4, 0, 0] }
+          }]
+        });
+        window.addEventListener("resize", function () { chart.resize(); });
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 变体：环形图 -->
+  <section class="doc-block">
+    <h2>环形图：流量来源占比</h2>
+    <p class="desc">type 用 "pie"，radius 写成 ["45%","70%"] 就是环形；三段各用一个语义色，底部图例跟着主题变色。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 shadow-sm max-w-md">
+        <div class="card-body p-4">
+          <div>
+            <h3 class="font-semibold">流量来源占比</h3>
+            <p class="text-xs opacity-60 mt-1">近 30 天访问来源</p>
+          </div>
+          <div id="chart-source" role="img" aria-label="流量来源占比环形图：直接访问、搜索引擎、社交媒体" style="width:100%;height:240px;"></div>
+          <div class="border-t pt-2 mt-2 text-xs opacity-60">数据来源：演示数据</div>
+        </div>
+      </div>
+      <script>
+      (function () {
+        if (typeof echarts === "undefined") return;
+        var css = getComputedStyle(document.documentElement);
+        var v = function (name) { return css.getPropertyValue(name).trim(); };
+        var chart = echarts.init(document.getElementById("chart-source"));
+        chart.setOption({
+          tooltip: {
+            trigger: "item",
+            backgroundColor: v("--color-base-100"),
+            borderColor: v("--color-base-300"),
+            textStyle: { color: v("--color-base-content") }
+          },
+          legend: { bottom: 0, textStyle: { color: v("--color-base-content") } },
+          series: [{
+            type: "pie",
+            radius: ["45%", "70%"],
+            label: { show: false },
+            itemStyle: { borderColor: v("--color-base-100"), borderWidth: 2 },
+            data: [
+              { value: 42, name: "直接访问", itemStyle: { color: v("--color-primary") } },
+              { value: 38, name: "搜索引擎", itemStyle: { color: v("--color-secondary") } },
+              { value: 20, name: "社交媒体", itemStyle: { color: v("--color-accent") } }
+            ]
+          }]
+        });
+        window.addEventListener("resize", function () { chart.resize(); });
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- 变体：无数据空态 -->
+  <section class="doc-block">
+    <h2>无数据空态</h2>
+    <p class="desc">接口还没返回数据时，不要渲染一块空白画布，在同样的定高容器里居中显示一行「暂无数据」，卡片结构保持一致。</p>
+    <div class="doc-stage">
+      <div class="card bg-base-100 shadow-sm max-w-md">
+        <div class="card-body p-4">
+          <div>
+            <h3 class="font-semibold">近 7 天转化</h3>
+            <p class="text-xs opacity-60 mt-1">按渠道分组统计</p>
+          </div>
+          <div style="width:100%;height:240px;display:flex;align-items:center;justify-content:center;opacity:.5;">暂无数据</div>
+          <div class="border-t pt-2 mt-2 text-xs opacity-60">数据来源：演示数据</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用指南 -->
+  <section class="doc-guide">
+    <h2>使用指南</h2>
+    <h3>需要 ECharts，图少别硬上</h3>
+    <p>本组件依赖 ECharts 5（CDN 一行引入，也可下载到本地）。如果卡片里只是一两个数字（今日访问、转化率），优先用零依赖的 <code>stat</code> 统计卡；要展示趋势、对比、占比这种关系，再用图表卡。</p>
+    <h3>容器必须定高</h3>
+    <p>ECharts 不会自己撑开高度，图表容器一定要写死高度（这里是 240px），只给宽度不给高度会渲染成一条线。卡片外壳直接用 daisyUI 的 <code>card bg-base-100 shadow-sm</code>。</p>
+    <h3>颜色读主题变量，不写死</h3>
+    <p>所有颜色用 <code>getComputedStyle(document.documentElement)</code> 读 daisyUI 变量：折线用 <code>--color-primary</code>，文字用 <code>--color-base-content</code>，网格线用 <code>--color-base-200</code> / <code>--color-base-300</code>。这样切换深浅主题时图表自动跟随，不要在 option 里写 hex。</p>
+    <h3>resize 与可访问性</h3>
+    <p>窗口尺寸变化时调用 <code>chart.resize()</code>，不然折线会错位。图表容器加 <code>role="img"</code> 和 <code>aria-label</code>，一句话说清这张图是什么。</p>
+    <h3>空态也要好看</h3>
+    <p>接口没数据时不要硬渲染空坐标轴，在定高容器里居中放一行「暂无数据」，和有数据时卡片同高，看板布局不会跳动。</p>
+  </section>
+
+</main>
+
+<!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
+<script type="text/plain" id="moh-prompt">【场景】数据看板里的一张图表卡：展示「月度访问趋势」折线图（近 6 个月页面访问量）。
+【怎么排】daisyUI card 外壳，从上到下三段：
+- 卡头：标题「月度访问趋势」+ 一行小字副标题「近 6 个月页面访问量」；
+- 卡中：一个定高 240px 的图表容器（必须给死高度，不能只给宽度）；
+- 卡脚：一行小字「数据来源：演示数据」，顶部一条细分隔线。
+- 折线用主色、2px 细线，线下浅色半透明填充；横向网格线用浅灰虚线感，坐标轴文字用正文弱化色。
+【精确规格】
+- 先在页面里引入一行 ECharts CDN 脚本：https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js （需联网，或下载到本地改相对路径）。
+- 图表容器：<div id="chart-trend" role="img" aria-label="近6个月页面访问量折线趋势图" style="width:100%;height:240px;"></div>。
+- 初始化：const chart = echarts.init(document.getElementById('chart-trend')); chart.setOption({...}); window.addEventListener('resize', () => chart.resize());
+- 颜色全部用 getComputedStyle(document.documentElement) 读 daisyUI 变量：--color-primary（折线与填充）、--color-base-content（坐标轴文字）、--color-base-200（网格线）、--color-base-300（坐标轴线）；禁止写死 hex，切换主题时图表自动跟随。
+- 无数据时不要渲染空坐标轴，在同样的定高容器里居中显示一行「暂无数据」。</script>
+
+<script src="../../assets/demo-doc.js"></script>
+</body>
+</html>
