@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-press",
+  "type": "theme",
+  "title": "报刊（浅色）",
+  "description": "完整页面案例：虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与一条克制的报头红，报头双线、双栏正文与竖发丝线分隔，密而不乱；挂 data-theme=\"mo-press\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "纸感", "商务", "留白"],
+  "base": "mo-press",
+  "aiNotes": [
+    "黑白灰为体：纸底 base-100 米白、文字 base-content 墨黑、卡片底 base-200/300 全是无彩色；报头红 primary 只出现在报头 3px 红线、栏目标签（kicker）、当前导航项、订阅主按钮与侧栏当前条，任何区块不得大面积铺红。",
+    "各级标题一律衬线（内联 font-family:\"Songti SC\",\"SimSun\",Georgia,serif），层级：报名 50px > 头版头条 33px > 栏目标题 18.5px > 导读列表 13px；报名加字距 8~12px，正文用无衬线。",
+    "正文新闻区用 CSS column-count:2 双栏，column-gap 约 28px，栏间用 1px 发丝竖线（column-rule，压到 currentColor 18%）分隔；正文行距 1.8~1.9、两端对齐（text-align:justify）。",
+    "版块之间一律 1px 发丝线分隔（color-mix 压到 currentColor 22%），不堆色块、不投影；报头为 3px 报头红 + 1px 墨线的双线。",
+    "图片只用内联 SVG 画成形简影（相框里画天际线/斜拉桥/柱状图，灰阶单色、可加一条 primary 红柱强调），禁止空白占位框、彩色照片、emoji 与 <img>。",
+    "窄屏 ≤860px 一律退化：多栏退单栏（column-count:1、去掉 column-rule）、头版图与标题上下堆叠、侧栏掉到正文下、报名缩到 34px 并减字距；长头条必须换行收缩、不得横向溢出。",
+    "按钮只写真实动作（订阅报纸、订阅数字版），主按钮红底纸白字，次操作幽灵按钮；页脚社址电话均标注「虚构」。",
+    "圆角压到 2~4px（--radius-box:0.25rem）保持印刷气质；不写死任何颜色十六进制，一律取 --color-* 语义变量。"
+  ],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": "自写 daisyUI 5 主题变量（[data-theme=mo-press] 覆盖 --color-*：米白纸底三层 + 墨色文字 + 克制报头红 primary，圆角压到 2~4px、depth:0），配虚构日报「江城日报」头版整页（demo.html：居中报头 masthead 与双线 + 八字文字导航 + 内联 SVG 头版配图与超大衬线头条 + CSS 双栏正文四条新闻 + 导读榜/时评/数据图说侧栏 + 文化体育短讯与订阅 CTA 页脚）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

@@ -1,0 +1,47 @@
+/*! 灰墨 mo-press · 报刊（浅色）—— 日报/周刊首页排版主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-press"> 即整站换肤。
+   气质参考：传统中文纸报版式（报头 masthead、多栏正文、竖发丝线），仅风格参考，非任何真实报纸品牌。 */
+
+[data-theme="mo-press"] {
+  color-scheme: light;
+
+  /* 底与纸：米白三层纸，层次极淡、像印在新闻纸上 */
+  --color-base-100: oklch(97.5% 0.006 90);
+  --color-base-200: oklch(95.5% 0.007 90);
+  --color-base-300: oklch(92.5% 0.008 90);
+  --color-base-content: oklch(24% 0.012 60);
+
+  /* 主色：克制的报头红（只留给报头线/栏目标签/当前导航/订阅主按钮，绝不大面积铺） */
+  --color-primary: oklch(46% 0.15 25);
+  --color-primary-content: oklch(97.5% 0.006 90);
+
+  /* 次色 / 强调色：一律中性灰，不引入第二个色相 */
+  --color-secondary: oklch(58% 0.012 60);
+  --color-secondary-content: oklch(97.5% 0.006 90);
+  --color-accent: oklch(42% 0.012 60);
+  --color-accent-content: oklch(97.5% 0.006 90);
+
+  --color-neutral: oklch(90% 0.008 90);
+  --color-neutral-content: oklch(28% 0.012 60);
+
+  /* 语义色：低饱和中性，报错处才用红 */
+  --color-info: oklch(55% 0.03 230);
+  --color-info-content: oklch(96% 0.006 90);
+  --color-success: oklch(48% 0.07 160);
+  --color-success-content: oklch(96% 0.006 90);
+  --color-warning: oklch(55% 0.09 75);
+  --color-warning-content: oklch(96% 0.006 90);
+  --color-error: oklch(48% 0.15 25);
+  --color-error-content: oklch(97.5% 0.006 90);
+
+  /* 圆角 / 尺寸 / 边框：报刊气质，圆角压到 2~4px */
+  --radius-selector: 0.125rem;
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
