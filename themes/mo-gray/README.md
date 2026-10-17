@@ -1,40 +1,21 @@
-# mo-gray · 灰阶中性（商务浅色）
+# 冷调商务 · 浅色（mo-gray）
 
-> 灰墨 MoH_UI 主题包。冷调石墨灰、商务克制，企业级后台与经营管理类产品的"不出错"选择。
-> 风格参考来源：shadcn.io 主题 "Graphite"（<https://www.shadcn.io/theme/graphite>，MIT 社区主题站）。色板为灰墨自研，仅风格取向参考，未搬运原色值。
-
-## 适用场景
-
-- 企业管理后台、财务 / 人事 / 审批系统
-- 需要"低调可信"的 B 端产品
-- 客户成功、数据运营类工作台
-
-## 使用方法（给 AI 编程工具）
-
-1. 引入本主题的 `tokens.css` 与 `base.css`：
-
-   ```html
-   <link rel="stylesheet" href="tokens.css" />
-   <link rel="stylesheet" href="base.css" />
-   ```
-
-2. 将项目中与 `--moh-*` 冲突的旧变量、内联颜色、硬编码样式替换为变量引用；
-3. 组件类名统一 `moh-` 前缀（`moh-btn` / `moh-input` / `moh-table` / `moh-card` 等）；
-4. 应用后按自检清单自查：背景冷灰白、主文字近黑微冷、组件与 `preview.html` 一致、对比度 ≥4.5、无报错。
-
-## 设计变量摘要
-
-- 页面底 `#f4f4f6`，卡片 `#ffffff`，主文字 `#1f1f24`，次级文字 `#696972`
-- 主色 `#2b2b31`（金属深灰，白字对比 15:1）；状态色用标准语义色
-- 字号阶 12/13/14/16/20/24，间距 8px 网格，圆角 3/5/7，控件高 32px
+灰阶克制的浅色商务主题。冷灰白三层底色 + 金属深灰主色 + 低饱和石墨蓝强调，适合 CRM / 客户管理 / 经营分析类后台。
 
 ## 文件
 
-- `tokens.css` — 设计变量
-- `base.css` — 按钮 / 输入 / 表格 / 卡片基础样式
-- `preview.html` — 预览基准页（应用后对照检查）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、圆角、尺寸、边框）
+- `demo.html` — 完整页面案例：CRM 客户管理整页（侧栏 + 顶栏 + 漏斗指标 + 客户阶段看板 + 跟进时间线 + 漏斗转化），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 来源声明
+## 使用（在已有 daisyUI 的项目里换肤）
 
-- 风格参考：Graphite（shadcn.io，MIT）——仅理念参考，色值为自研
-- 色板设计：灰墨 MoH_UI（MIT）
+```html
+<html data-theme="mo-gray">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
+```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；`demo.html` 整页可直接复制（结构 + 类名）当 CRM 工作台模板。

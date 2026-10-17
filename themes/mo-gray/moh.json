@@ -3,7 +3,7 @@
   "name": "mo-gray",
   "type": "theme",
   "title": "灰阶中性（商务浅色）",
-  "description": "冷调石墨灰、商务克制，企业级后台与经营管理类产品。",
+  "description": "完整页面案例：冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-gray\" 即整站换肤，适合企业级经营管理后台。",
   "styleTags": ["灰阶", "商务", "冷调", "企业级"],
   "inspiration": ["https://www.shadcn.io/theme/graphite"],
   "base": "mo-gray",
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "从旧 --moh-* 变量体系迁移为 daisyUI 5 主题变量（[data-theme=mo-gray] 覆盖 --color-* 等），删 base.css/preview.html 旧色块预览，改为完整 CRM 客户管理页面案例（demo.html：侧栏+顶栏+漏斗指标+客户阶段看板+跟进时间线+漏斗转化）；灵感来源 shadcn Graphite 石墨灰气质（仅风格参考，色值自研）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
