@@ -4,10 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>可视化主题选择器 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨可视化主题选择器：点击主题卡整页实时换肤，微调主色/圆角，一键复制 tokens.css 或 AI 指令。选择自动记忆。" />
-  <link rel="stylesheet" href="../themes/mo-dark/tokens.css" id="theme-tokens" />
+  <meta name="description" content="灰墨可视化主题选择器：点击主题卡，预览区 daisyUI 组件实时换肤（data-theme 机制），微调主色/圆角，一键复制 tokens.css 或 AI 指令。选择自动记忆。" />
+  <link rel="stylesheet" href="../vendor/daisyui.css" />
+  <link rel="stylesheet" href="../vendor/daisyui-themes.css" />
+  <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-light/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-classic/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-gray/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-pastel/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-slate/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-mood/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-brutal/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-neon/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-zhongshi/tokens.css" />
+  <link rel="stylesheet" href="../themes/dracula-oss/tokens.css" />
+  <link rel="stylesheet" href="../themes/catppuccin/tokens.css" />
+  <link rel="stylesheet" href="../themes/nord-dark/tokens.css" />
+  <link rel="stylesheet" href="../themes/tokyo-night/tokens.css" />
+  <link rel="stylesheet" href="../themes/rose-pine/tokens.css" />
+  <link rel="stylesheet" href="../themes/solarized-light/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
-  <style id="theme-override"></style>
   <style>
     .gen-layout {
       display: grid;
@@ -18,6 +34,46 @@
     }
     @media (max-width: 860px) {
       .gen-layout { grid-template-columns: 1fr; }
+    }
+    /* 沙箱舞台：主题变量挂在本容器的 data-theme 上，只换肤这一块，不动站点框架 */
+    #gen-stage {
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid var(--moh-border, #2a2a30);
+      background: var(--color-base-200, #222);
+      color: var(--color-base-content, #eee);
+      display: grid;
+      gap: 16px;
+    }
+    .gen-theme-card {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+      width: 100%;
+    }
+    .gen-theme-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .gen-theme-meta { flex-wrap: wrap; }
+    .gen-chip {
+      font-size: 11px;
+      line-height: 1.6;
+      padding: 0 7px;
+      border-radius: 99px;
+      border: 1px solid var(--moh-border, #2a2a30);
+      color: var(--moh-muted, #9ca3af);
+    }
+    .gen-theme-name {
+      margin-left: auto;
+      font-size: 11px;
+      color: var(--moh-muted, #9ca3af);
+      font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace);
+    }
+    button.site-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -45,35 +101,89 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>可视化主题选择器</h1>
-      <p>点击主题卡，<b>整页实时换肤</b>（原理：运行时切换 tokens.css，组件全部走 <code>var(--moh-*)</code> 自动跟随）。微调主色 / 圆角后复制 tokens.css 或 AI 指令。选择自动记忆（localStorage）。</p>
+      <p>点击主题卡，预览区的 daisyUI 组件实时换肤（原理：只改预览容器的 <code>data-theme</code> 属性，主题变量 <code>--color-*</code> 自动跟随）。微调主色 / 圆角仅作用于预览；复制 tokens.css 得到的是官方 / 收录主题的原始文件，自定义微调请在自己项目里覆盖变量。选择自动记忆（localStorage）。</p>
     </div>
 
     <div class="gen-layout">
-      <div class="site-panel">
-        <p class="site-panel__label" style="margin-bottom: 10px">选择主题（<span id="cur-theme-name">mo-dark</span>）</p>
+      <aside class="site-panel">
+        <p class="site-panel__label">选择主题（当前：<span id="cur-theme-name">mo-dark</span>）</p>
         <div class="site-theme-picker" id="theme-picker"></div>
 
-        <p class="site-panel__label">微调主色</p>
+        <p class="site-panel__label">微调主色（仅作用于预览）</p>
         <input type="color" id="gen-primary" value="#5e6ad2" />
 
-        <p class="site-panel__label">圆角半径 <span id="gen-radius-val">6px</span></p>
-        <input type="range" id="gen-radius" min="2" max="16" step="1" value="6" />
-      </div>
+        <p class="site-panel__label">圆角半径 <span id="gen-radius-val">10px</span></p>
+        <input type="range" id="gen-radius" min="2" max="16" step="1" value="10" />
+      </aside>
 
       <div>
-        <div class="gen-preview" style="border:1px solid var(--moh-border); border-radius: var(--moh-radius-lg); overflow: hidden; background: var(--moh-canvas)">
-          <div class="gen-demo" id="gen-demo" style="padding: 24px; display: grid; gap: 16px"></div>
+        <div id="gen-stage" data-theme="mo-dark">
+          <div class="flex flex-wrap items-center gap-2">
+            <span style="font-weight:600" id="gen-stage-title">墨夜（深色） · mo-dark</span>
+            <span class="badge badge-primary">预览中</span>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button class="btn btn-primary">保存修改</button>
+            <button class="btn btn-soft">取消</button>
+            <button class="btn btn-outline">查看详情</button>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <input type="email" class="input w-full max-w-xs" placeholder="请输入工作邮箱" />
+            <label class="cursor-pointer flex items-center gap-2 text-sm">
+              <input type="checkbox" class="toggle" checked />
+              订阅每周简报
+            </label>
+            <label class="cursor-pointer flex items-center gap-2 text-sm">
+              <input type="checkbox" class="checkbox" checked />
+              记住登录状态
+            </label>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-primary">运行中</span>
+            <span class="badge badge-secondary">已完成</span>
+            <span class="badge badge-accent">待审核</span>
+            <span class="badge badge-outline">已归档</span>
+          </div>
+
+          <div class="stats shadow bg-base-100 w-full">
+            <div class="stat">
+              <div class="stat-title">本月新增用户</div>
+              <div class="stat-value">1,284</div>
+              <div class="stat-desc">较上月 +12.4%</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title">订单完成率</div>
+              <div class="stat-value">96.8%</div>
+              <div class="stat-desc">近 30 天</div>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="table bg-base-100">
+              <thead>
+                <tr><th>项目</th><th>负责人</th><th>状态</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>主题选择器</td><td>灰墨团队</td><td><span class="badge badge-primary badge-sm">运行中</span></td></tr>
+                <tr><td>展示站重构</td><td>灰墨团队</td><td><span class="badge badge-secondary badge-sm">已完成</span></td></tr>
+                <tr><td>AI 指令分发</td><td>灰墨团队</td><td><span class="badge badge-accent badge-sm">已上线</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert alert-info"><span>新版本已发布：点击查看完整更新日志与迁移说明。</span></div>
+          <div class="alert alert-success"><span>设置已保存，所有页面即刻生效。</span></div>
         </div>
+
         <div style="display:flex; gap: 8px; margin-top: 12px; flex-wrap: wrap">
           <button class="site-btn site-btn--primary" id="gen-copy">复制 tokens.css</button>
           <button class="site-btn site-btn--secondary" id="gen-ai">复制 AI 指令</button>
           <button class="site-btn site-btn--secondary" id="gen-download">下载 tokens.css</button>
         </div>
       </div>
-    </div>
-
-    <div style="padding-bottom: 48px">
-      <textarea id="gen-output" readonly style="width:100%; height: 300px; font-size:12px; font-family: Consolas, monospace; border:1px solid var(--moh-border); border-radius: var(--moh-radius-md); padding: 12px; box-sizing: border-box; background: var(--moh-canvas); color: var(--moh-ink)"></textarea>
     </div>
   </div>
 
@@ -86,24 +196,18 @@
   <script src="data.js"></script>
   <script>
     var DATA = window.MOH_DATA;
+    var BASE = "https://noii-y.github.io/moh-ui";
 
     /* ---------- 颜色工具 ---------- */
     function hexToRgb(hex) {
-      var m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+      var m = /^#?([0-9a-f]{6})$/i.exec((hex || "").trim());
       if (!m) return null;
       var n = parseInt(m[1], 16);
       return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
     }
-    function rgbToHex(r, g, b) {
-      function c(v) { var s = Math.max(0, Math.min(255, Math.round(v))).toString(16); return s.length === 1 ? "0" + s : s; }
-      return "#" + c(r) + c(g) + c(b);
-    }
-    function mix(hex, target, t) {
-      var a = hexToRgb(hex), b = hexToRgb(target);
-      return rgbToHex(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t, a.b + (b.b - a.b) * t);
-    }
     function lum(hex) {
       var c = hexToRgb(hex);
+      if (!c) return 0.5;
       var f = function (x) { var s = x / 255; return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4); };
       return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b);
     }
@@ -112,156 +216,124 @@
       return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
     }
 
-    /* ---------- 状态 ---------- */
-    var SAVED = null;
-    try { SAVED = JSON.parse(localStorage.getItem("moh-ui-theme") || "null"); } catch (e) {}
-
-    var curTheme = SAVED ? SAVED.theme : "mo-dark";
-    var curPrimary = SAVED ? SAVED.primary : null;
-    var curRadius = SAVED ? SAVED.radius : 6;
-
+    /* ---------- 数据 ---------- */
+    /* 官方内置主题（silk / caramellatte）没有 tokens 文件，色块条用 daisyUI 官方色值兜底 */
+    var FALLBACK_PALETTE = {
+      silk: {
+        base: "oklch(97% .0035 67.78)", surface: "oklch(95% .0081 61.42)",
+        primary: "oklch(23.27% .0249 284.3)", secondary: "oklch(23.27% .0249 284.3)",
+        accent: "oklch(23.27% .0249 284.3)"
+      },
+      caramellatte: {
+        base: "oklch(98% .016 73.684)", surface: "oklch(95% .038 75.164)",
+        primary: "oklch(0% 0 0)", secondary: "oklch(22.45% .075 37.85)",
+        accent: "oklch(46.44% .111 37.85)"
+      }
+    };
+    function pal(t) {
+      return (t.palette && t.palette.base) ? t.palette : (FALLBACK_PALETTE[t.name] || {});
+    }
     function themeData(name) {
       for (var i = 0; i < DATA.themes.length; i++) if (DATA.themes[i].name === name) return DATA.themes[i];
       return DATA.themes[0];
     }
+    /* 主题主色若是 oklch() 无法填进 color input，返回 null */
+    function hexPrimary(t) {
+      var v = pal(t).primary || "";
+      if (/^#?[0-9a-f]{6}$/i.test(v.trim())) return v.charAt(0) === "#" ? v : "#" + v;
+      return null;
+    }
 
-    /* ---------- 主题列表 ---------- */
+    /* ---------- 状态（localStorage v2） ---------- */
+    var SAVED = null;
+    try { SAVED = JSON.parse(localStorage.getItem("moh-ui-gen-v2") || "null"); } catch (e) {}
+    var curTheme = (SAVED && themeData(SAVED.theme) && SAVED.theme === themeData(SAVED.theme).name) ? SAVED.theme : "mo-dark";
+    var curRadius = (SAVED && SAVED.radius) ? Number(SAVED.radius) : 10;
+    var savedPrimary = (SAVED && SAVED.primary) ? SAVED.primary : null;
+
+    var stage = document.getElementById("gen-stage");
     var picker = document.getElementById("theme-picker");
-    picker.innerHTML = DATA.themes.map(function (t) {
-      var p = t.palette;
-      return '<button class="site-theme-option" data-theme="' + t.name + '" aria-pressed="false">' +
-        '<span class="site-theme-option__swatch">' +
-        '<span style="background:' + (p.canvas || "#000") + '"></span>' +
-        '<span style="background:' + (p.surface || "#333") + '"></span>' +
-        '<span style="background:' + (p.primary || "#555") + '"></span>' +
-        '<span style="background:' + (p.success || "#777") + '"></span>' +
-        '</span>' +
-        '<span class="site-theme-option__name">' + t.title + "</span>" +
-        '<span class="site-theme-option__audit">' + t.audit + "</span></button>";
-    }).join("");
-
-    var themeLink = document.getElementById("theme-tokens");
-    var overrideStyle = document.getElementById("theme-override");
     var primaryInput = document.getElementById("gen-primary");
     var radiusInput = document.getElementById("gen-radius");
     var radiusVal = document.getElementById("gen-radius-val");
-    var demo = document.getElementById("gen-demo");
-    var output = document.getElementById("gen-output");
     var curNameEl = document.getElementById("cur-theme-name");
+    var stageTitle = document.getElementById("gen-stage-title");
+    var copyBtn = document.getElementById("gen-copy");
+    var downloadBtn = document.getElementById("gen-download");
+    var aiBtn = document.getElementById("gen-ai");
 
-    /* ---------- 换肤 ---------- */
+    /* ---------- 主题列表 ---------- */
+    picker.innerHTML = DATA.themes.map(function (t) {
+      var p = pal(t);
+      var stops = [p.base || "#333", p.surface || "#555", p.primary || "#888", p.secondary || p.accent || "#aaa"];
+      var sw = stops.map(function (c) { return '<span style="background:' + c + '"></span>'; }).join("");
+      return '<button class="site-theme-option gen-theme-card" data-theme="' + t.name + '" aria-pressed="false">' +
+        '<span class="gen-theme-row"><span class="site-theme-option__swatch">' + sw + '</span>' +
+        '<span class="site-theme-option__name">' + t.title + "</span></span>" +
+        '<span class="gen-theme-row gen-theme-meta">' +
+        '<span class="gen-chip">' + t.group + "</span>" +
+        '<span class="gen-chip">' + (t.dark ? "深色" : "浅色") + "</span>" +
+        '<span class="gen-chip">' + t.license + "</span>" +
+        '<span class="gen-theme-name">' + t.name + "</span></span>" +
+        "</button>";
+    }).join("");
+
+    /* ---------- 微调应用（只作用于预览容器，不写进复制文件） ---------- */
+    function applyPrimary(hex) {
+      stage.style.setProperty("--color-primary", hex);
+      var onWhite = contrast(hex, "#ffffff") >= 4.5;
+      stage.style.setProperty("--color-primary-content", onWhite ? "#ffffff" : "#1a1a1a");
+    }
+    function clearPrimary() {
+      stage.style.removeProperty("--color-primary");
+      stage.style.removeProperty("--color-primary-content");
+    }
+    function applyRadius() {
+      var n = curRadius;
+      /* 与 tokens.css 真实比例一致：box .625rem / field .375rem / selector .5rem */
+      stage.style.setProperty("--radius-box", n + "px");
+      stage.style.setProperty("--radius-field", Math.round(n * 0.6) + "px");
+      stage.style.setProperty("--radius-selector", Math.round(n * 0.8) + "px");
+    }
+
+    function syncTokenButtons(t) {
+      var noTok = !t.hasTokens;
+      copyBtn.disabled = noTok;
+      downloadBtn.disabled = noTok;
+      copyBtn.textContent = noTok ? "内置主题 · 无 tokens" : "复制 tokens.css";
+      downloadBtn.textContent = noTok ? "内置主题 · 无 tokens" : "下载 tokens.css";
+    }
+
+    function save() {
+      try {
+        localStorage.setItem("moh-ui-gen-v2", JSON.stringify({
+          theme: curTheme,
+          primary: primaryInput.dataset.tuned === "1" ? primaryInput.value : null,
+          radius: curRadius
+        }));
+      } catch (e) {}
+    }
+
     function applyTheme(skipSave) {
       var t = themeData(curTheme);
-      var p = t.palette;
-      /* 切换 tokens.css（整页换肤） */
-      themeLink.href = "../themes/" + t.slug + "/tokens.css";
-      /* 恢复微调控件为选中主题的默认值（仅当用户没微调过） */
-      if (!curPrimary) primaryInput.value = p.primary || "#5e6ad2";
+      /* 核心机制：只改预览容器的 data-theme，站点 nav/footer 不换肤 */
+      stage.dataset.theme = t.name;
       curNameEl.textContent = t.name;
+      stageTitle.textContent = t.title + " · " + t.name;
+      /* 切主题时重置微调：回到该主题原始变量值 */
+      clearPrimary();
+      primaryInput.dataset.tuned = "";
+      primaryInput.value = hexPrimary(t) || "#5e6ad2";
+      radiusInput.value = curRadius;
+      radiusVal.textContent = curRadius + "px";
+      applyRadius();
       picker.querySelectorAll(".site-theme-option").forEach(function (b) {
         var active = b.dataset.theme === curTheme;
         b.classList.toggle("site-theme-option--active", active);
         b.setAttribute("aria-pressed", active ? "true" : "false");
       });
-      render();
+      syncTokenButtons(t);
       if (!skipSave) save();
-    }
-
-    function save() {
-      try {
-        localStorage.setItem("moh-ui-theme", JSON.stringify({ theme: curTheme, primary: curPrimary || null, radius: curRadius }));
-      } catch (e) {}
-    }
-
-    /* ---------- 微调覆盖 ---------- */
-    function primaryHover(base, primary) {
-      var white = "#ffffff", black = "#000000";
-      return base === "dark" ? mix(primary, white, 0.14) : mix(primary, black, 0.12);
-    }
-    function primaryMuted(base, primary) {
-      var target = base === "dark" ? "#1b1b1f" : "#ffffff";
-      return mix(primary, target, 0.86);
-    }
-    function isDarkTheme(t) {
-      var p = t.palette;
-      return lum(p.ink || "#000") > lum(p.canvas || "#fff");
-    }
-
-    function render() {
-      var t = themeData(curTheme);
-      var p = t.palette;
-      var base = isDarkTheme(t) ? "dark" : "light";
-      var radius = curRadius;
-
-      radiusVal.textContent = radius + "px";
-      var primary = primaryInput.value;
-      var ph = primaryHover(base, primary);
-      var pm = primaryMuted(base, primary);
-      var inkOnP = contrast(primary, "#ffffff") >= 4.5 ? "#ffffff" : (base === "dark" ? "#f7f8f8" : "#1a202c");
-
-      /* 微调覆盖：只覆盖主色与圆角，其余继承选中主题 tokens */
-      overrideStyle.textContent =
-        ":root{" +
-        "--moh-primary:" + primary + ";" +
-        "--moh-primary-hover:" + ph + ";" +
-        "--moh-primary-muted:" + pm + ";" +
-        "--moh-radius-sm:" + (radius - 2) + "px;" +
-        "--moh-radius-md:" + radius + "px;" +
-        "--moh-radius-lg:" + (radius + 2) + "px;" +
-        "}";
-
-      demo.innerHTML =
-        '<div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">' +
-        '<span style="font-weight:600">' + t.title + " · 实时预览</span>" +
-        '<span class="gen-tag" style="background:var(--moh-primary-muted); color:var(--moh-primary); border-radius:4px; padding:1px 8px; font-size:12px">主色 ' + primary + "</span>" +
-        '<span class="gen-tag" style="background:var(--moh-primary-muted); color:var(--moh-primary); border-radius:4px; padding:1px 8px; font-size:12px">对比度 ' + contrast(primary, p.surface || "#fff").toFixed(2) + ":1</span>" +
-        "</div>" +
-        '<div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">' +
-        '<button style="height:var(--moh-control-height); padding:0 16px; border:none; border-radius:var(--moh-radius-md); background:var(--moh-primary); color:' + inkOnP + '; font-size:13px; font-weight:500; cursor:pointer">主要操作</button>' +
-        '<button style="height:var(--moh-control-height); padding:0 16px; border:1px solid var(--moh-border); border-radius:var(--moh-radius-md); background:transparent; color:var(--moh-ink); font-size:13px; cursor:pointer">次要操作</button>' +
-        '<input style="height:var(--moh-control-height); padding:0 10px; border:1px solid var(--moh-border); border-radius:var(--moh-radius-md); background:var(--moh-surface); color:var(--moh-ink); font-size:13px" placeholder="输入框" />' +
-        "</div>" +
-        '<table style="width:100%; border-collapse:collapse; font-size:13px">' +
-        "<thead><tr><th style='text-align:left; padding:6px 10px; border-bottom:1px solid var(--moh-border)'>项目</th><th style='text-align:left; padding:6px 10px; border-bottom:1px solid var(--moh-border)'>状态</th></tr></thead>" +
-        "<tbody><tr><td style='padding:6px 10px; border-bottom:1px solid var(--moh-border)'>灰墨选择器</td><td style='padding:6px 10px; border-bottom:1px solid var(--moh-border)'><span style='background:var(--moh-primary-muted); color:var(--moh-primary); border-radius:4px; padding:1px 8px; font-size:12px'>运行中</span></td></tr>" +
-        "<tr><td style='padding:6px 10px'>展示站</td><td style='padding:6px 10px'><span style='background:var(--moh-primary-muted); color:var(--moh-success); border-radius:4px; padding:1px 8px; font-size:12px'>已完成</span></td></tr></tbody></table>" +
-        '<div style="padding:16px; border:1px solid var(--moh-border); border-radius:var(--moh-radius-lg); background:var(--moh-surface)">' +
-        '<div style="font-weight:600; margin-bottom:4px">本月新增用户</div>' +
-        '<div style="font-size:24px; font-weight:700">1,284</div>' +
-        '<div style="font-size:12px; color:var(--moh-muted)">较上月 +12.4%</div></div>';
-
-      output.value = generateCss(t, base, primary, ph, pm, radius);
-    }
-
-    /* ---------- 生成 tokens.css ---------- */
-    function generateCss(t, base, primary, ph, pm, radius) {
-      var p = t.palette;
-      return (
-        "/* 灰墨 MoH_UI · " + t.title + "（" + t.name + "）· 选择器输出" +
-        (curPrimary ? " · 已微调主色 " + primary : "") + " */\n" +
-        ":root {\n" +
-        "  --moh-canvas: " + (p.canvas || "") + ";\n" +
-        "  --moh-surface: " + (p.surface || "") + ";\n" +
-        "  --moh-surface-2: " + (p["surface-2"] || "") + ";\n" +
-        "  --moh-border: " + (p.border || "") + ";\n" +
-        "  --moh-border-strong: " + (p["border-strong"] || "") + ";\n" +
-        "  --moh-ink: " + (p.ink || "") + ";\n" +
-        "  --moh-muted: " + (p.muted || "") + ";\n" +
-        "  --moh-primary: " + primary + ";\n" +
-        "  --moh-primary-hover: " + ph + ";\n" +
-        "  --moh-primary-muted: " + pm + ";\n" +
-        "  --moh-success: " + (p.success || "") + ";\n" +
-        "  --moh-warning: " + (p.warning || "") + ";\n" +
-        "  --moh-danger: " + (p.danger || "") + ";\n" +
-        '  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;\n' +
-        "  --moh-text-xs: 12px; --moh-text-sm: 13px; --moh-text-base: 14px; --moh-text-md: 16px; --moh-text-lg: 20px; --moh-text-xl: 24px;\n" +
-        "  --moh-space-1: 4px; --moh-space-2: 8px; --moh-space-3: 12px; --moh-space-4: 16px; --moh-space-6: 24px; --moh-space-8: 32px;\n" +
-        "  --moh-radius-sm: " + (radius - 2) + "px; --moh-radius-md: " + radius + "px; --moh-radius-lg: " + (radius + 2) + "px;\n" +
-        "  --moh-control-height: " + (p["control-height"] || "32px") + ";\n" +
-        "  --moh-transition: 150ms ease;\n" +
-        "}\n" +
-        "\n/* 提示：正式发布前请运行体检确认 ≥90 分（node scripts/check-audit.mjs themes/你的主题）；本输出基于 " + t.title + " 主题色板（灵感来源见溯源页）。 */\n"
-      );
     }
 
     /* ---------- 事件 ---------- */
@@ -269,61 +341,94 @@
       var b = e.target.closest(".site-theme-option");
       if (!b) return;
       curTheme = b.dataset.theme;
-      curPrimary = null; /* 切主题时重置微调 */
       applyTheme();
     });
 
     primaryInput.addEventListener("input", function () {
-      curPrimary = primaryInput.value;
-      render();
+      primaryInput.dataset.tuned = "1";
+      applyPrimary(primaryInput.value);
       save();
     });
     radiusInput.addEventListener("input", function () {
       curRadius = Number(radiusInput.value);
-      render();
+      radiusVal.textContent = curRadius + "px";
+      applyRadius();
       save();
     });
 
+    /* ---------- toast / 复制 ---------- */
     var toast = document.getElementById("toast");
     var toastTimer;
     function showToast(text) {
       toast.textContent = text;
       toast.classList.add("site-toast--show");
       clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1500);
+      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1800);
+    }
+    function copyText(text, okText) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(function () { showToast(okText); });
+      } else {
+        showToast("复制失败：请手动选择复制");
+      }
+    }
+    function fetchTokens(t) {
+      return fetch("../themes/" + t.slug + "/tokens.css")
+        .then(function (r) { return r.text(); });
     }
 
-    document.getElementById("gen-copy").addEventListener("click", function () {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(output.value).then(function () { showToast("tokens.css 已复制 ✓"); });
-      } else { showToast("复制失败：请手动选择复制"); }
-    });
-
-    document.getElementById("gen-ai").addEventListener("click", function () {
+    /* ① 复制 tokens.css */
+    copyBtn.addEventListener("click", function () {
       var t = themeData(curTheme);
+      if (!t.hasTokens) return;
+      fetchTokens(t)
+        .then(function (css) { copyText(css, "tokens.css 已复制 ✓"); })
+        .catch(function () { showToast("本地打开受限，线上可用或去主题目录查看"); });
+    });
+
+    /* ② 复制 AI 指令（文案与逻辑同 themes.html 弹窗） */
+    aiBtn.addEventListener("click", function () {
+      var t = themeData(curTheme);
+      var intro = t.hasTokens
+        ? "2. 引入该主题的 tokens.css（" + BASE + "/themes/" + t.slug + "/tokens.css ），再在 <html data-theme=\"" + t.name + "\"> 即整站换肤。"
+        : "2. 该主题是 daisyUI 官方内置主题，无需额外文件：在 <html data-theme=\"" + t.name + "\"> 即整站换肤（确保已引入 daisyUI 5）。";
       var cmd =
-        "请把灰墨 MoH_UI 的主题「" + t.title + "（" + t.name + "）」应用到当前项目" +
-        (curPrimary ? "，主色调整为 " + primaryInput.value : "") + "。\n" +
-        "做法：引入该主题 tokens.css 与 base.css（仓库目录：https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug + "），清理硬编码颜色，类名统一 moh- 前缀，全部走 var(--moh-*) 变量。\n" +
-        "应用后按规则包自检清单逐项自查（https://noii-y.github.io/moh-ui/site/rules.html），字号阶 12/13/14/16/20/24、间距 4 的倍数、控件 32px、动效 ≤200ms，达标再交付。";
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(cmd).then(function () { showToast("AI 指令已复制 ✓"); });
-      } else { showToast("复制失败：请手动选择复制"); }
+        "请帮我把灰墨 MoH_UI 的主题「" + t.title + "（" + t.name + "）」应用到当前项目。\n" +
+        "该主题基于 daisyUI 5 的 data-theme 机制：\n" +
+        "1. 先在项目引入 daisyUI 5 的 CSS（daisyui.css，官方内置主题还需 daisyui-themes.css）；\n" +
+        intro + "\n" +
+        "3. 完整整页案例可作为布局与气质参考：" + BASE + "/themes/" + t.slug + "/demo.html\n" +
+        "4. 主题源码：https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug + "\n" +
+        "5. 页面用 daisyUI 组件拼装，不要硬编码颜色，颜色全部走 --color-* 主题变量；许可证：" + t.license + "。";
+      copyText(cmd, "AI 指令已复制 ✓");
     });
 
-    document.getElementById("gen-download").addEventListener("click", function () {
-      var blob = new Blob([output.value], { type: "text/css" });
-      var a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = curTheme + "-tokens.css";
-      a.click();
-      URL.revokeObjectURL(a.href);
-      showToast("已下载 ✓");
+    /* ③ 下载 tokens.css */
+    downloadBtn.addEventListener("click", function () {
+      var t = themeData(curTheme);
+      if (!t.hasTokens) return;
+      fetchTokens(t)
+        .then(function (css) {
+          var blob = new Blob([css], { type: "text/css" });
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = t.slug + "-tokens.css";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(a.href);
+          showToast("tokens.css 已下载 ✓");
+        })
+        .catch(function () { showToast("本地打开受限，线上可用或去主题目录查看"); });
     });
 
-    /* 初始化 */
-    if (curRadius) radiusInput.value = curRadius;
+    /* ---------- 初始化 ---------- */
     applyTheme(true);
+    if (savedPrimary && /^#[0-9a-f]{6}$/i.test(savedPrimary)) {
+      primaryInput.value = savedPrimary;
+      primaryInput.dataset.tuned = "1";
+      applyPrimary(savedPrimary);
+    }
   </script>
 </body>
 </html>
