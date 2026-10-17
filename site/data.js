@@ -1,6 +1,6 @@
 /* 本文件由 scripts/build-site-data.mjs 自动生成，请勿手改；新增主题/组件后重跑脚本。 */
 window.MOH_DATA = {
-  "generatedAt": "2026-10-16",
+  "generatedAt": "2026-10-17",
   "stats": {
     "themes": 10,
     "components": 68,
@@ -368,7 +368,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-button",
       "title": "按钮",
-      "description": "搬运自 daisyUI 的按钮组件：颜色/尺寸/描边/虚线/激活/禁用/图标/加载/玻璃等全部变体，零依赖纯 CSS。",
+      "description": "颜色/尺寸/描边/虚线/激活/禁用/图标/加载/玻璃等全部变体，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -387,7 +387,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-input",
       "title": "文本输入框",
-      "description": "搬运自 daisyUI 的文本输入框：覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。",
+      "description": "覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -406,7 +406,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-select",
       "title": "下拉选择",
-      "description": "搬运自 daisyUI 的下拉选择：占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。",
+      "description": "占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -425,7 +425,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-textarea",
       "title": "多行文本域",
-      "description": "搬运自 daisyUI 的多行文本域：基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。",
+      "description": "基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -444,7 +444,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-checkbox",
       "title": "复选框",
-      "description": "搬运自 daisyUI 的复选框：基础勾选态、label 包裹点文字、fieldset 分组多选、半选 indeterminate、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（半选仅一行 JS）。",
+      "description": "基础勾选态、label 包裹点文字、fieldset 分组多选、半选 indeterminate、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（半选仅一行 JS）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -463,7 +463,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-radio",
       "title": "单选框",
-      "description": "搬运自 daisyUI 的单选框：基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。",
+      "description": "基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -482,7 +482,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-toggle",
       "title": "开关",
-      "description": "搬运自 daisyUI 的开关：基础开关态、设置行排版（label justify-between）、尺寸 xs~xl、语义状态色、禁用、带图标开关，零依赖纯 CSS。",
+      "description": "基础开关态、设置行排版（label justify-between）、尺寸 xs~xl、语义状态色、禁用、带图标开关，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -501,7 +501,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-range",
       "title": "滑块",
-      "description": "搬运自 daisyUI 的滑块：基础滑杆、带刻度档位、尺寸 xs~xl、语义状态色、竖向 range-vertical，零依赖纯 CSS（实时读数仅一行 JS）。",
+      "description": "基础滑杆、带刻度档位、尺寸 xs~xl、语义状态色、竖向 range-vertical，零依赖纯 CSS（实时读数仅一行 JS）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -520,7 +520,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-file-input",
       "title": "文件上传",
-      "description": "搬运自 daisyUI 的文件上传：基础选择、fieldset 字段标签与格式说明、accept 限定类型、multiple 多选、幽灵样式、尺寸 xs~lg、语义状态色、禁用，零依赖纯 CSS。",
+      "description": "基础选择、fieldset 字段标签与格式说明、accept 限定类型、multiple 多选、幽灵样式、尺寸 xs~lg、语义状态色、禁用，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -539,7 +539,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-fieldset",
       "title": "字段分组",
-      "description": "搬运自 daisyUI 的字段分组容器 fieldset：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。",
+      "description": "字段分组容器：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -558,7 +558,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-rating",
       "title": "评分",
-      "description": "搬运自 daisyUI 的评分：五星默认选中、心形多色、尺寸 xs~lg、rating-hidden 可清除、rating-half 半星、disabled 只读展示平均评分，纯 CSS mask 图形，零依赖。",
+      "description": "五星默认选中、心形多色、尺寸 xs~lg、rating-hidden 可清除、rating-half 半星、disabled 只读展示平均评分，纯 CSS mask 图形，零依赖。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -577,7 +577,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-otp",
       "title": "验证码输入",
-      "description": "搬运自 daisyUI 的验证码输入：4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。",
+      "description": "4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -596,7 +596,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-validator",
       "title": "表单校验",
-      "description": "搬运自 daisyUI 的纯 CSS 表单校验提示：input/checkbox 加 validator 配原生 required/pattern/minlength，validator-hint 写规则，覆盖修改密码、邮箱、用户名、手机号、必勾协议、内嵌图标等场景，零依赖纯 CSS。",
+      "description": "input/checkbox 加 validator 配原生 required/pattern/minlength，validator-hint 写规则，覆盖修改密码、邮箱、用户名、手机号、必勾协议、内嵌图标等场景，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单",
@@ -615,7 +615,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-navbar",
       "title": "顶部导航",
-      "description": "搬运自 daisyUI 的顶部导航栏：三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。",
+      "description": "三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -634,7 +634,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-menu",
       "title": "菜单",
-      "description": "搬运自 daisyUI 的菜单组件：垂直侧边栏与横向菜单、分组标题、当前页高亮、数字徽标、details 折叠子菜单（默认展开）、禁用态与尺寸档，零依赖纯 CSS。",
+      "description": "垂直侧边栏与横向菜单、分组标题、当前页高亮、数字徽标、details 折叠子菜单（默认展开）、禁用态与尺寸档，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -653,7 +653,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-dropdown",
       "title": "下拉菜单",
-      "description": "搬运自 daisyUI 的下拉组件：头像下拉菜单、卡片式弹层、上/左/右弹出方向、菜单分组与分隔线，零依赖纯 CSS（CSS focus 写法）。",
+      "description": "头像下拉菜单、卡片式弹层、上/左/右弹出方向、菜单分组与分隔线，零依赖纯 CSS（CSS focus 写法）。",
       "styleTags": [
         "反馈",
         "导航"
@@ -671,7 +671,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-breadcrumbs",
       "title": "面包屑",
-      "description": "搬运自 daisyUI 的面包屑组件：层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
+      "description": "层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "导航"
@@ -689,7 +689,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-pagination",
       "title": "分页",
-      "description": "搬运自 daisyUI 的分页组件（v5.7 基于 join 实现，旧 pagination 类已移除）：基础页码、长列表省略号、五档尺寸、等宽上一页/下一页、radio 选中态，附商品列表分页成品。",
+      "description": "基础页码、长列表省略号、五档尺寸、等宽上一页/下一页、radio 选中态，附商品列表分页成品。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -708,7 +708,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-link",
       "title": "链接",
-      "description": "搬运自 daisyUI 的链接组件：基础下划线链接、全套语义色、hover 才显示下划线、无下划线彩色链接、外链新窗口写法，零依赖纯 CSS。",
+      "description": "基础下划线链接、全套语义色、hover 才显示下划线、无下划线彩色链接、外链新窗口写法，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "导航"
@@ -726,7 +726,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-steps",
       "title": "步骤条",
-      "description": "搬运自 daisyUI 的步骤条组件：横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。",
+      "description": "横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -745,13 +745,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-divider",
       "title": "分隔线",
-      "description": "搬运自 daisyUI 的分隔线（Divider）组件：登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。",
+      "description": "登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -764,7 +764,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-join",
       "title": "组合容器",
-      "description": "搬运自 daisyUI 的 Join 组合容器：搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
+      "description": "搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "表单"
@@ -782,13 +782,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-table",
       "title": "表格",
-      "description": "搬运自 daisyUI 的表格组件：后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
+      "description": "后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -801,13 +801,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-card",
       "title": "卡片",
-      "description": "搬运自 daisyUI 的卡片组件：定价三档（含删除线对比）、电商商品卡、用户资料卡、card-border/card-dash 描边与虚线、card-xs~xl 五档尺寸，零依赖纯 CSS。",
+      "description": "定价三档（含删除线对比）、电商商品卡、用户资料卡、card-border/card-dash 描边与虚线、card-xs~xl 五档尺寸，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -820,13 +820,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-stat",
       "title": "统计卡",
-      "description": "搬运自 daisyUI 的统计卡组件：电商数据看板（涨跌备注+单色图标）、stats-vertical 垂直排列、place-items-center 居中、stat-actions 带操作按钮，零依赖纯 CSS。",
+      "description": "电商数据看板（涨跌备注+单色图标）、stats-vertical 垂直排列、place-items-center 居中、stat-actions 带操作按钮，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -839,12 +839,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-badge",
       "title": "徽标",
-      "description": "搬运自 daisyUI 的徽标组件：五档尺寸/描边虚线柔和幽灵风格/带图标/按钮数字角标等变体，商品标签与状态标记场景，零依赖纯 CSS。",
+      "description": "五档尺寸/描边虚线柔和幽灵风格/带图标/按钮数字角标等变体，商品标签与状态标记场景，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -857,13 +857,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-list",
       "title": "列表",
-      "description": "搬运自 daisyUI 的列表组件：收货地址单选列表（默认标签+编辑删除）、带图标设置列表、紧凑条目列表（list-col-grow），零依赖纯 CSS。",
+      "description": "收货地址单选列表（默认标签+编辑删除）、带图标设置列表、紧凑条目列表（list-col-grow），零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -876,12 +876,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-avatar",
       "title": "头像",
-      "description": "搬运自 daisyUI 的头像组件：在线状态/mask 轮廓形状/文字占位/多人叠放群组等变体，资料页与评论场景，零依赖纯 CSS。",
+      "description": "在线状态/mask 轮廓形状/文字占位/多人叠放群组等变体，资料页与评论场景，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -894,7 +894,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-progress",
       "title": "进度条",
-      "description": "搬运自 daisyUI 的横条进度：确定/不确定进度、primary/secondary/success 等语义色、数值标签与完成态写法，零依赖纯 CSS。",
+      "description": "确定/不确定进度、primary/secondary/success 等语义色、数值标签与完成态写法，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "数据展示"
@@ -912,12 +912,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-radial-progress",
       "title": "环形进度",
-      "description": "搬运自 daisyUI 的环形进度组件：--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
+      "description": "--value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -930,7 +930,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-loading",
       "title": "加载动画",
-      "description": "搬运自 daisyUI 的加载动画：spinner/dots/ring/ball/bars/infinity 六种形态、xs~xl 五档尺寸，按钮内嵌与卡片整块加载写法，零依赖纯 CSS。",
+      "description": "六种加载形态（spinner/dots/ring/ball/bars/infinity）、xs~xl 五档尺寸，支持按钮内嵌与卡片整块加载，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -948,12 +948,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-skeleton",
       "title": "骨架屏",
-      "description": "搬运自 daisyUI 的骨架屏组件：文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。",
+      "description": "文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -966,12 +966,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-countdown",
       "title": "倒计时",
-      "description": "搬运自 daisyUI 的 countdown 纯 CSS 数字块组件：--value/--digits 变量驱动数字渲染，覆盖秒杀盒装、冒号时钟、大号带标签、促销卡、句内嵌数字等真实场景，零 JS。",
+      "description": "用 --value/--digits 变量驱动数字渲染，覆盖秒杀盒装、冒号时钟、大号带标签、促销卡、句内嵌数字等真实场景，零 JS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -984,12 +984,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-kbd",
       "title": "按键",
-      "description": "搬运自 daisyUI 的按键（Kbd）组件：快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。",
+      "description": "快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1002,7 +1002,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-tooltip",
       "title": "悬浮提示",
-      "description": "搬运自 daisyUI 的悬浮提示组件：工具栏图标按钮提示、四个弹出方向、语义色、带图标内容（tooltip-content），零依赖纯 CSS。",
+      "description": "工具栏图标按钮提示、四个弹出方向、语义色、带图标内容（tooltip-content），零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1020,12 +1020,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-chat",
       "title": "对话气泡",
-      "description": "搬运自 daisyUI 的对话气泡组件：左右分边/头像时间头尾/气泡语义色等变体，客服对话与留言场景，零依赖纯 CSS。",
+      "description": "左右分边/头像时间头尾/气泡语义色等变体，客服对话与留言场景，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1038,7 +1038,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-alert",
       "title": "提示条",
-      "description": "搬运自 daisyUI 的提示条组件：info/success/warning/error 四种语义色、带操作按钮、柔和轻提示、可关闭等形态，零依赖纯 CSS。",
+      "description": "四种语义色提示条（info/success/warning/error）、带操作按钮、柔和轻提示、可关闭等形态，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1056,7 +1056,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-modal",
       "title": "对话框",
-      "description": "搬运自 daisyUI 的对话框组件：删除确认、右上角关闭、底部抽屉、自定义宽度、纯信息提示等形态，推荐 dialog+showModal 用法，零依赖纯 CSS。",
+      "description": "删除确认、右上角关闭、底部抽屉、自定义宽度、纯信息提示等形态，推荐 dialog+showModal 用法，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1074,7 +1074,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-toast",
       "title": "通知浮层",
-      "description": "搬运自 daisyUI 的通知浮层组件：九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。",
+      "description": "九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1092,7 +1092,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-collapse",
       "title": "折叠面板",
-      "description": "搬运自 daisyUI 的折叠面板组件：FAQ 手风琴、箭头/加号图标、默认展开、纯文字折叠等形态，零依赖纯 CSS。",
+      "description": "FAQ 手风琴、箭头/加号图标、默认展开、纯文字折叠等形态，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1110,12 +1110,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-indicator",
       "title": "角标",
-      "description": "搬运自 daisyUI 的角标组件：九种贴附位置/数字角标/纯红点/贴输入框与卡片等变体，导航通知与待办提示场景，零依赖纯 CSS。",
+      "description": "九种贴附位置/数字角标/纯红点/贴输入框与卡片等变体，导航通知与待办提示场景，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1128,7 +1128,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-swap",
       "title": "切换状态",
-      "description": "搬运自 daisyUI 的 swap 组件：纯 CSS label+checkbox 双图标切换，覆盖旋转/翻转/默认选中/swap-active 强制 on 态，内联 SVG 收藏、显隐密码、昼夜、静音等真实场景。",
+      "description": "纯 CSS label+checkbox 双图标切换，覆盖旋转/翻转/默认选中/swap-active 强制 on 态，内联 SVG 收藏、显隐密码、昼夜、静音等真实场景。",
       "styleTags": [
         "反馈",
         "基础组件"
@@ -1146,12 +1146,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-carousel",
       "title": "轮播",
-      "description": "搬运自 daisyUI 的轮播组件：商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。",
+      "description": "商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1164,7 +1164,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-hero",
       "title": "首屏横幅",
-      "description": "搬运自 daisyUI 的首屏横幅组件：SaaS 左文右图成品（公告胶囊+大标题+双按钮+星级评分+产品界面缩略卡）、居中纯文字、图文左右、图文反向（lg:flex-row-reverse）、带登录表单卡、内联渐变背景，零依赖纯 CSS。",
+      "description": "SaaS 左文右图成品（公告胶囊+大标题+双按钮+星级评分+产品界面缩略卡）、居中纯文字、图文左右、图文反向（lg:flex-row-reverse）、带登录表单卡、内联渐变背景，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "布局"
@@ -1182,7 +1182,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-drawer",
       "title": "抽屉侧栏",
-      "description": "搬运自 daisyUI 的抽屉侧栏组件：后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
+      "description": "后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -1201,7 +1201,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-footer",
       "title": "页脚",
-      "description": "搬运自 daisyUI 的页脚组件：电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。",
+      "description": "电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。",
       "styleTags": [
         "导航",
         "基础组件"
@@ -1219,12 +1219,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-timeline",
       "title": "时间线",
-      "description": "搬运自 daisyUI 的时间线组件：垂直/双侧交替/紧凑单侧/彩色进度连线等变体，物流跟踪与里程碑场景，零依赖纯 CSS。",
+      "description": "垂直/双侧交替/紧凑单侧/彩色进度连线等变体，物流跟踪与里程碑场景，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1237,12 +1237,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-aura",
       "title": "光晕",
-      "description": "搬运自 daisyUI 的光晕特效：给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。",
+      "description": "给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1255,12 +1255,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-diff",
       "title": "对比",
-      "description": "搬运自 daisyUI 的图片/文字对比组件：左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
+      "description": "左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "反馈"
       ],
-      "category": "反馈",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1273,7 +1273,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-dock",
       "title": "底部停靠导航",
-      "description": "搬运自 daisyUI 的底部停靠导航组件：带文字标签/纯图标紧凑/大号等形态，附电商 App 底部导航（含中间凸起圆形购物车主按钮与徽标）成品。",
+      "description": "底部停靠导航：带文字标签/纯图标紧凑/大号等形态，附电商 App 底部导航（含中间凸起圆形购物车主按钮与徽标）成品。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -1292,7 +1292,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-fab",
       "title": "悬浮动作按钮",
-      "description": "搬运自 daisyUI 的 FAB / Speed Dial：右下角新建主按钮展开写文章/传图片/发视频等动作，覆盖带标签与纯图标垂直排列、fab-flower 花瓣形、单个悬浮按钮，零依赖纯 CSS。",
+      "description": "右下角新建主按钮展开写文章/传图片/发视频等动作，覆盖带标签与纯图标垂直排列、fab-flower 花瓣形、单个悬浮按钮，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "操作",
@@ -1311,7 +1311,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-filter",
       "title": "筛选条",
-      "description": "搬运自 daisyUI 的筛选条：form+radio 单选分类、checkbox 多选标签、无 form 用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。",
+      "description": "筛选条：form + radio 单选分类、checkbox 多选标签、无 form 时用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。",
       "styleTags": [
         "表单",
         "导航"
@@ -1329,12 +1329,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-hover-gallery",
       "title": "悬停画廊",
-      "description": "搬运自 daisyUI 的悬停画廊：默认露第一张图，鼠标横向滑过图位逐张切换多角度图；覆盖纯画廊、卡片内商品画廊、max-w-60 紧凑商品卡等形态，零依赖纯 CSS。",
+      "description": "默认露第一张图，鼠标横向滑过图位逐张切换多角度图；覆盖纯画廊、卡片内商品画廊、max-w-60 紧凑商品卡等形态，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "商务"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1347,12 +1347,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-mask",
       "title": "形状蒙版",
-      "description": "搬运自 daisyUI 的形状蒙版：把图片或色块裁成 circle/squircle/heart/hexagon/diamond/star/triangle 等全部 14 种形状，团队头像与勋章点缀场景，纯 CSS 零依赖。",
+      "description": "把图片或色块裁成 circle/squircle/heart/hexagon/diamond/star/triangle 等全部 14 种形状，团队头像与勋章点缀场景，纯 CSS 零依赖。",
       "styleTags": [
         "数据展示",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1365,7 +1365,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-megamenu",
       "title": "大菜单",
-      "description": "搬运自 daisyUI 的大菜单组件：电商顶部全部分类导航，覆盖多列链接面板、推荐卡、简洁横向列、垂直版等形态，基于原生 popover 零 JS。",
+      "description": "电商顶部全部分类导航，覆盖多列链接面板、推荐卡、简洁横向列、垂直版等形态，基于原生 popover 零 JS。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -1384,13 +1384,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-mockup-browser",
       "title": "浏览器样机",
-      "description": "搬运自 daisyUI 的浏览器样机（Mockup Browser）组件：带地址栏的浏览器外壳，框内可放迷你页面或截图，零依赖纯 CSS。",
+      "description": "带地址栏的浏览器外壳，框内可放迷你页面或截图，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1403,13 +1403,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-mockup-code",
       "title": "代码窗口样机",
-      "description": "搬运自 daisyUI 的代码窗口样机（Mockup Code）组件：深色代码窗口、行号/符号前缀、高亮行、不带前缀、彩色块，零依赖纯 CSS。",
+      "description": "深色代码窗口、行号/符号前缀、高亮行、不带前缀、彩色块，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1422,13 +1422,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-mockup-phone",
       "title": "手机样机",
-      "description": "搬运自 daisyUI 的手机外框样机：mockup-phone 外壳 + camera 挖孔 + display 屏幕区，屏幕内可放任意 App 界面（外卖首页/信息流/锁屏壁纸），零依赖纯 CSS。",
+      "description": "mockup-phone 外壳 + camera 挖孔 + display 屏幕区，屏幕内可放任意 App 界面（外卖首页/信息流/锁屏壁纸），零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1441,13 +1441,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-mockup-window",
       "title": "窗口样机",
-      "description": "搬运自 daisyUI 的操作系统窗口样机：mockup-window 外框 + border/bg 变体，顶栏三圆点标题用零依赖 div 自拼，内容区可放文档/登录框/代码预览，零依赖纯 CSS。",
+      "description": "mockup-window 外框 + border/bg 变体，顶栏三圆点标题用零依赖 div 自拼，内容区可放文档/登录框/代码预览，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1460,13 +1460,13 @@ window.MOH_DATA = {
     {
       "name": "daisyui-stack",
       "title": "叠放",
-      "description": "搬运自 daisyUI 的叠放组件：stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。",
+      "description": "stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。",
       "styleTags": [
         "数据展示",
         "布局",
         "基础组件"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1479,7 +1479,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-status",
       "title": "状态点",
-      "description": "搬运自 daisyUI 的状态圆点：success/error/warning/info/neutral 等八色、xs~xl 五档尺寸，ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。",
+      "description": "八色状态圆点（success/error/warning/info/neutral 等）、xs~xl 五档尺寸，含 ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。",
       "styleTags": [
         "反馈",
         "数据展示"
@@ -1497,7 +1497,7 @@ window.MOH_DATA = {
     {
       "name": "daisyui-tab",
       "title": "标签页",
-      "description": "搬运自 daisyUI 的标签页组件：下划线/提升/盒装/标签置底/禁用/尺寸等形态，纯 CSS radio 实现内容切换、零 JS，附订单中心成品。",
+      "description": "下划线/提升/盒装/标签置底/禁用/尺寸等形态，纯 CSS radio 实现内容切换、零 JS，附订单中心成品。",
       "styleTags": [
         "基础组件",
         "导航",
@@ -1516,12 +1516,12 @@ window.MOH_DATA = {
     {
       "name": "daisyui-text-rotate",
       "title": "文字轮转",
-      "description": "搬运自 daisyUI 的文字轮转组件：一句话里的关键词自动循环轮换（最多 6 词、默认 10 秒一轮），覆盖基础三词、六词大字居中、句子混排彩底、自定义行高与速度等用法，零依赖纯 CSS。",
+      "description": "一句话里的关键词自动循环轮换（最多 6 词、默认 10 秒一轮），覆盖基础三词、六词大字居中、句子混排彩底、自定义行高与速度等用法，零依赖纯 CSS。",
       "styleTags": [
         "基础组件",
         "数据展示"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1533,12 +1533,12 @@ window.MOH_DATA = {
     },
     {
       "name": "chart-card",
-      "title": "图表卡（ECharts）",
-      "description": "折线/柱状/环形图表卡，颜色从 --moh-* 变量读取，换主题自动适配",
+      "title": "图表卡",
+      "description": "数据看板里的图表卡：折线/柱状/环形图与无数据空态，ECharts 渲染，颜色从 daisyUI 主题变量读取、切换主题自动跟随，含数据来源脚注与定高容器（需 ECharts CDN）。",
       "styleTags": [
-        "增强组件",
-        "数据",
-        "图表"
+        "数据展示",
+        "图表",
+        "增强组件"
       ],
       "category": "数据展示",
       "dependencies": [
@@ -1550,18 +1550,18 @@ window.MOH_DATA = {
       "upstream": null,
       "upstreamUrl": null,
       "slug": "chart-card",
-      "entry": "index.html"
+      "entry": "demo.html"
     },
     {
       "name": "code-block",
-      "title": "代码块（highlight.js）",
-      "description": "代码高亮 + 语言标签 + 复制按钮，token 配色走 --moh-* 变量换主题自适应",
+      "title": "代码块",
+      "description": "教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。",
       "styleTags": [
-        "增强组件",
+        "数据展示",
         "代码",
         "开发"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [
         "highlight.js@11 (CDN)"
       ],
@@ -1571,15 +1571,15 @@ window.MOH_DATA = {
       "upstream": null,
       "upstreamUrl": null,
       "slug": "code-block",
-      "entry": "index.html"
+      "entry": "demo.html"
     },
     {
       "name": "date-range",
       "title": "日期范围",
-      "description": "原生 date input 两枚 + 快捷预设（aria-pressed），零依赖",
+      "description": "订单与数据筛选的日期范围：两个原生 date input 用 join 拼接、「至」分隔，带今天/近 7 天/近 30 天/本月快捷预设（aria-pressed 选中态，预设填充为一小段 JS），零依赖纯 CSS。",
       "styleTags": [
-        "基础组件",
         "表单",
+        "基础组件",
         "筛选"
       ],
       "category": "表单",
@@ -1590,18 +1590,18 @@ window.MOH_DATA = {
       "upstream": null,
       "upstreamUrl": null,
       "slug": "date-range",
-      "entry": "index.html"
+      "entry": "demo.html"
     },
     {
       "name": "drag-sort",
       "title": "拖拽排序",
-      "description": "原生 HTML5 drag 换序 + 键盘↑↓替代 + aria-live 播报，目标位高亮",
+      "description": "后台菜单与列表的拖拽排序：HTML5 拖拽换序、把手聚焦后 ↑/↓ 键盘移动、目标位高亮、aria-live 播报移动结果（换序为一小段原生 JS，样式零依赖）。",
       "styleTags": [
-        "增强组件",
-        "交互",
-        "列表"
+        "数据展示",
+        "列表",
+        "交互"
       ],
-      "category": "基础",
+      "category": "数据展示",
       "dependencies": [],
       "hasDeps": false,
       "license": "MIT",
@@ -1609,15 +1609,15 @@ window.MOH_DATA = {
       "upstream": null,
       "upstreamUrl": null,
       "slug": "drag-sort",
-      "entry": "index.html"
+      "entry": "demo.html"
     },
     {
       "name": "empty",
       "title": "空状态",
-      "description": "图标 + 标题 + 说明 + 可选操作按钮，紧凑变体供表格内嵌，文案鼓励下一步",
+      "description": "列表无数据、搜索无结果、加载失败等空状态：线性图标 + 标题 + 说明 + 可选操作按钮，覆盖标准居中、无按钮、表格内嵌紧凑横排、错误重试等形态，零依赖纯 HTML/CSS。",
       "styleTags": [
-        "基础组件",
         "反馈",
+        "基础组件",
         "列表"
       ],
       "category": "反馈",
@@ -1628,7 +1628,7 @@ window.MOH_DATA = {
       "upstream": null,
       "upstreamUrl": null,
       "slug": "empty",
-      "entry": "index.html"
+      "entry": "demo.html"
     }
   ],
   "rules": {
