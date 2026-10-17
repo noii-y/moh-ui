@@ -1,40 +1,21 @@
-# mo-classic · 经典 Bootstrap 后台风（浅色）
+# 经典 Bootstrap 后台风 · 浅色（mo-classic）
 
-> 灰墨 MoH_UI 主题包。经典 Bootstrap 蓝、灰蓝白底——把"人人都会用"的后台节奏做成一套可换肤的主题。
-> 风格参考来源：Tabler（<https://github.com/tabler/tabler>，MIT）与 AdminLTE（<https://github.com/ColorlibHQ/AdminLTE>，MIT）。配色为灰墨自研，仅风格取向参考，未搬运原色值。
-
-## 适用场景
-
-- 迁移 / 改造存量 Bootstrap 后台项目（降低换肤成本）
-- 通用管理后台、CRM、ERP 类产品
-- 需要"零学习成本"的团队内部系统
-
-## 使用方法（给 AI 编程工具）
-
-1. 引入本主题的 `tokens.css` 与 `base.css`：
-
-   ```html
-   <link rel="stylesheet" href="tokens.css" />
-   <link rel="stylesheet" href="base.css" />
-   ```
-
-2. 将项目中与 `--moh-*` 冲突的旧变量、内联颜色、硬编码样式替换为变量引用；
-3. 组件类名统一 `moh-` 前缀（`moh-btn` / `moh-input` / `moh-table` / `moh-card` 等）；
-4. 应用后按自检清单自查：背景灰蓝白、主文字蓝黑、组件与 `preview.html` 一致、对比度 ≥4.5、无报错。
-
-## 设计变量摘要
-
-- 页面底 `#f5f7fa`，卡片 `#ffffff`，主文字 `#212a35`，次级文字 `#5a6675`
-- 主色 `#0b5ed7`（Bootstrap 经典深蓝，白字对比 5.4:1）；状态色用标准语义色
-- 字号阶 12/13/14/16/20/24，间距 8px 网格，圆角 3/4/6，控件高 32px
+Tabler / AdminLTE 式经典后台节奏。经典深蓝 + 灰蓝白底 + 小圆角，人人熟悉的管理后台观感，适合存量项目迁移 / 通用 CRM、ERP 后台。
 
 ## 文件
 
-- `tokens.css` — 设计变量
-- `base.css` — 按钮 / 输入 / 表格 / 卡片基础样式
-- `preview.html` — 预览基准页（应用后对照检查）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、圆角、尺寸、边框）
+- `demo.html` — 完整页面案例：用户管理后台整页（实心底顶栏 + 分组侧栏 + 筛选表单 + 用户表 + 分页 + 新增用户表单），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 来源声明
+## 使用（在已有 daisyUI 的项目里换肤）
 
-- 风格参考：Tabler / AdminLTE（均 MIT）——仅理念参考，色值为自研
-- 色板设计：灰墨 MoH_UI（MIT）
+```html
+<html data-theme="mo-classic">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
+```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；`demo.html` 整页可直接复制（结构 + 类名）当后台页模板。

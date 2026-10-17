@@ -3,7 +3,7 @@
   "name": "mo-classic",
   "type": "theme",
   "title": "经典 Bootstrap 后台风（浅色）",
-  "description": "经典 Bootstrap 蓝、灰蓝白底，人人熟悉的后台节奏，适合存量项目迁移。",
+  "description": "完整页面案例：经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme=\"mo-classic\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["经典", "Bootstrap", "蓝", "通用后台"],
   "inspiration": ["https://github.com/tabler/tabler", "https://github.com/ColorlibHQ/AdminLTE"],
   "base": "mo-classic",
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "重做为 daisyUI 5 主题变量（[data-theme=mo-classic] 覆盖 --color-* 等）+ 完整页面案例（用户管理后台 demo.html）；灵感来源 Tabler / AdminLTE 经典后台节奏（仅风格参考）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
