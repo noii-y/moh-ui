@@ -1,60 +1,47 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-dark（墨夜 · 深色）
-   风格锚点：Linear（公开 token 参考 awesome-design-md，MIT）
-   参数初稿：见《开发计划》6.1；阶段 1 用体检脚本 + 人工校准后定稿
-   使用：引入本文件即完成主题变量定义
-   ============================================================ */
+/*! 灰墨 mo-dark · 墨夜（深色）—— Linear 风格数据看板主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-dark"> 即整站换肤。
+   灵感来源：Linear.app 冷灰 + 克制蓝紫的暗色气质（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义 ---------- */
-  --moh-canvas: #0f0f0f;          /* 页面底 */
-  --moh-surface: #1b1b1f;         /* 卡片 / 面板 */
-  --moh-surface-2: #232328;       /* 悬浮 / 次级底 */
-  --moh-border: #2a2a30;          /* 常规描边 */
-  --moh-border-strong: #3a3a42;   /* 强调描边 */
-  --moh-border-width: 1px;        /* 描边宽度（风格主题可调，粗野主题 3–4px） */
-  --moh-ink: #f7f8f8;             /* 主文字 */
-  --moh-muted: #9ca3af;           /* 次级文字 */
-  --moh-primary: #5e6ad2;         /* 主色 */
-  --moh-primary-hover: #7b84e0;   /* 主色悬浮 */
-  --moh-primary-muted: #262a4d;   /* 主色浅底（选中态底） */
-  --moh-success: #34d399;
-  --moh-warning: #fbbf24;
-  --moh-danger: #f87171;
+[data-theme="mo-dark"] {
+  color-scheme: dark;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 底与纸：近黑冷灰三层，层次靠明度不靠描边 */
+  --color-base-100: oklch(23% 0.012 253);
+  --color-base-200: oklch(20.5% 0.011 253);
+  --color-base-300: oklch(17.5% 0.010 253);
+  --color-base-content: oklch(96% 0.006 253);
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 主色：克制的靛蓝（只留给主操作与选中态，不做大面积亮紫） */
+  --color-primary: oklch(66% 0.17 255);
+  --color-primary-content: oklch(16% 0.03 255);
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  /* 次色 / 强调色：冷灰蓝与青，用于次级元素与数据高亮 */
+  --color-secondary: oklch(58% 0.11 258);
+  --color-secondary-content: oklch(94% 0.01 258);
+  --color-accent: oklch(72% 0.13 200);
+  --color-accent-content: oklch(20% 0.03 200);
 
-  /* ---------- 圆角（4–8px） ---------- */
-  --moh-radius-sm: 4px;
-  --moh-radius-md: 6px;
-  --moh-radius-lg: 8px;
+  --color-neutral: oklch(26% 0.012 253);
+  --color-neutral-content: oklch(94% 0.005 253);
 
-  /* ---------- 阴影（只给浮动元素：弹窗 / 下拉 / 悬浮卡） ---------- */
-  --moh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --moh-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
-  --moh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  /* 语义色：低饱和，保证暗底下可读、不刺眼 */
+  --color-info: oklch(72% 0.12 232);
+  --color-info-content: oklch(22% 0.04 232);
+  --color-success: oklch(72% 0.14 160);
+  --color-success-content: oklch(20% 0.03 160);
+  --color-warning: oklch(80% 0.12 85);
+  --color-warning-content: oklch(25% 0.05 85);
+  --color-error: oklch(68% 0.17 20);
+  --color-error-content: oklch(20% 0.04 20);
 
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 圆角 / 尺寸 / 边框：中等圆角、细边框，Linear 取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }

@@ -3,7 +3,7 @@
   "name": "mo-dark",
   "type": "theme",
   "title": "墨夜（深色）",
-  "description": "近黑底 + 冷灰 + 克制主色，Linear 风格取向，适合数据看板 / 监控类后台。",
+  "description": "完整页面案例：Linear 风格暗色数据看板。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台；挂 data-theme=\"mo-dark\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "数据看板", "Linear 风格"],
   "base": "mo-dark",
   "source": {
@@ -11,10 +11,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "重做为 daisyUI 5 主题变量（[data-theme=mo-dark] 覆盖 --color-* 等），配完整数据看板页面案例（demo.html）；灵感来源 Linear.app 暗色气质（仅风格参考）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }

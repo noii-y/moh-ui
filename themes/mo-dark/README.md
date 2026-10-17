@@ -1,18 +1,21 @@
 # 墨夜 · 深色（mo-dark）
 
-风格锚点：Linear。深色后台主题，适合数据看板 / 监控类后台。
+Linear 风格暗色数据看板主题。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台。
 
 ## 文件
 
-- `tokens.css` — 主题变量（色彩 / 字体 / 字号 / 间距 / 圆角 / 阴影）
-- `base.css` — 基础组件样式（按钮 / 输入 / 表格 / 卡片）
-- `preview.html` — 预览基准页（体检与自检对照）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、圆角、尺寸、边框）
+- `demo.html` — 完整页面案例：数据看板整页（顶栏 + 侧栏 + 指标卡 + 图表 + 订单表），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 使用
-
-引入 `tokens.css` + `base.css` 即可：
+## 使用（在已有 daisyUI 的项目里换肤）
 
 ```html
-<link rel="stylesheet" href="./tokens.css" />
-<link rel="stylesheet" href="./base.css" />
+<html data-theme="mo-dark">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
 ```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；`demo.html` 整页可直接复制（结构 + 类名）当后台页模板。
