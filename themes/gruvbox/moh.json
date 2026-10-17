@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "gruvbox",
+  "type": "theme",
+  "title": "复古做旧（gruvbox）",
+  "description": "完整页面案例：虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme=\"gruvbox\"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "开发者", "手作", "落地页"],
+  "base": "gruvbox",
+  "aiNotes": [
+    "暖棕三层底：base-100 #282828 / base-200 #3c3836（卡片）/ base-300 #504945（更深装饰块），正文 light1 #ebdbb2；做旧感来自底色的暖棕，不要靠降低文字对比度。",
+    "主色只用招牌橙 #fe8019（主按钮、订阅 CTA、当前选中）；黄 #fabd2f 与苔绿 #8ec07c 只做次按钮、badge 与少量点缀；蓝色 #83a598 全篇最多出现一次，绝不抢橙黄。",
+    "主按钮橙底必须配深棕文字（daisyUI 按 primary-content 自动取 #282828）；次要操作用幽灵按钮，按钮只写真实动作（订阅更新、阅读最新文章、查看制作记录）。",
+    "标题用粗体无衬线配 1px 字距，代码、日期、标签与命令行一律等宽（var(--font-mono)），复古气质靠等宽与暖棕，不靠渐变与投影。",
+    "所有设备插图只用 currentColor 单色线稿 SVG：终端要画出屏幕命令行、窗口圆点与键帽排；分体键盘、掌机、收音机三款轮廓差异要明显；不用彩色照片、不用 emoji、不用渐变。",
+    "博客卡片写真实技术选题（终端、键盘、CRT、shell），摘要一行说完价值；标签用 outline badge，日期与阅读时长用等宽小字，不写数字游戏式夸大标题。",
+    "390px 窄屏顶栏自然折行、文章卡单列、假终端块不横向滚动；手机上 Hero 终端插图保持完整。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "gruvbox (morhetz/gruvbox)",
+    "url": "https://github.com/morhetz/gruvbox/blob/master/colors/gruvbox.vim",
+    "license": "MIT",
+    "changes": "将 gruvbox Dark 色板映射为 daisyUI 5 主题变量（[data-theme=gruvbox] 覆盖 --color-*：base 三层 #282828/#3c3836/#504945、base-content #ebdbb2、primary 橙 #fe8019、secondary 黄 #fabd2f、accent 苔绿 #8ec07c，语义色取官方 bright/neutral 色，蓝色刻意克制），圆角调小以贴合复古终端气质；另写虚构技术博客整页案例（demo.html），文章、项目与日期均为示例数据。上游 morhetz/gruvbox 根目录未附 LICENSE 文件，但 README 明确声明 License 为 MIT/X11、colors/gruvbox.vim 头署名为 morhetz（Pavel Pertsev）、仓库创建于 2012 年；灰墨按该 MIT/X11 声明补全标准 MIT LICENSE 文本（Copyright (c) 2012 morhetz），版权署名归原作者。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md", "LICENSE"],
+  "audit": 100,
+  "verified": false
+}

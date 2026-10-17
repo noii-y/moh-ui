@@ -1,0 +1,50 @@
+/*! 灰墨 gruvbox · 复古做旧 —— 暖棕橙黄的极客主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 morhetz/gruvbox 官方 Dark 色板（MIT/X11，© 2012 morhetz / Pavel Pertsev）。
+   上游仓库根目录未附 LICENSE 文件，但 README 声明 License 为 MIT/X11；
+   灰墨已按声明补全标准 MIT 文本于本目录 LICENSE，版权署名归原作者。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="gruvbox"> 即整站换肤。 */
+
+[data-theme="gruvbox"] {
+  color-scheme: dark;
+
+  /* 底与纸：暖棕三层 —— bg0 #282828 / bg1 #3c3836 / bg2 #504945，正文 light1 #ebdbb2 */
+  --color-base-100: #282828;
+  --color-base-200: #3c3836;
+  --color-base-300: #504945;
+  --color-base-content: #ebdbb2;
+
+  /* 主色：招牌橙 bright_orange #fe8019，只留给主操作与选中态 */
+  --color-primary: #fe8019;
+  --color-primary-content: #282828;
+
+  /* 次色：招牌黄 bright_yellow #fabd2f；强调色：苔绿 bright_aqua #8ec07c */
+  --color-secondary: #fabd2f;
+  --color-secondary-content: #282828;
+  --color-accent: #8ec07c;
+  --color-accent-content: #282828;
+
+  /* 中性面：棕灰 bg3 #665c54，用于边框与分隔 */
+  --color-neutral: #665c54;
+  --color-neutral-content: #ebdbb2;
+
+  /* 语义色：官方深色模式直接映射（蓝色刻意克制，不抢橙黄主色） */
+  --color-info: #83a598;       /* bright_blue */
+  --color-info-content: #282828;
+  --color-success: #b8bb26;    /* bright_green */
+  --color-success-content: #282828;
+  --color-warning: #d79921;    /* neutral_yellow，比招牌黄更深一档 */
+  --color-warning-content: #282828;
+  --color-error: #fb4934;      /* bright_red */
+  --color-error-content: #282828;
+
+  /* 圆角 / 尺寸 / 边框：小圆角，复古终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
