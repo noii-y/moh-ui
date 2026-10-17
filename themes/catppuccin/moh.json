@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "catppuccin",
+  "type": "theme",
+  "title": "浅滩紫（Catppuccin Mocha）",
+  "description": "完整页面案例：桌面端音乐播放器。软糯马卡龙深色 + 淡紫主色，左侧歌单导航、中部专辑封面与播放队列、底部播放条；挂 data-theme=\"catppuccin\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "柔和", "圆润"],
+  "base": "catppuccin",
+  "source": {
+    "origin": "third-party",
+    "upstream": "Catppuccin",
+    "url": "https://catppuccin.com/palette/",
+    "license": "MIT",
+    "changes": "将 Catppuccin Mocha 官方色板（base/mantle/crust/mauve/blue/green/sapphire/yellow/red）映射为 daisyUI 5 主题变量（[data-theme=catppuccin] 覆盖 --color-*、圆角偏圆润），自配深底浅字 *-content 对比色，配完整音乐播放器页面案例（demo.html）；未使用官方图标或品牌素材。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
