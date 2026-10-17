@@ -22,7 +22,7 @@
 1. **不从 0 做，先 copy** 成熟开源 demo，再做零依赖改造与中文教程；保留原组件名、原地址、许可证署名。
 2. 组件页**提示词为主、代码为辅**：顶部一个真实业务场景成品，主按钮是「复制 AI 提示词」（复制给 AI 的完整实现指令：场景 + 规格 + 参考结构 + 审美规则 + 交付自查，受众把它发给自己的 AI）；「复制成品 HTML」是次要按钮；变体只是折叠参考。
 3. 主题用**完整页面案例**展示，禁止只放色块。
-4. **来源只声明两次**：展示站顶部全局声明一次、每个组件详情页页脚声明一次；卡片上不挂重复徽章。
+4. **来源只在组件库顶部全局声明一次**：组件库展示页顶部一段全局声明（链接到溯源页）；每个组件的原版名/地址/许可证完整登记在 `moh.json` 与溯源页 `site/attributions.html`。**组件详情页不再写页脚来源声明（不要 `footer.doc-source`）**；卡片描述与首页文案不写"搬运自 daisyUI 的 XXX"前缀，直接写组件能干什么、覆盖哪些形态。README 里的来源引用块保留（面向 GitHub 看代码的人）。
 5. 教程做成**站内页面**（demo.html），禁止把教程链接指向 GitHub 文件夹或文件。
 6. 不写"不是色块玩具"这类自我辩护，不出现用户没问过的话。
 7. 文案写**真实动作**（保存修改 / 删除 / 加入购物车），**禁止**让按钮写着颜色名（Primary / Success）。
@@ -46,7 +46,7 @@ assets/                      组件公共层（改动需 PM 批准）
   utilities-patch.css        Tailwind 风格工具类补丁（flex/gap/h-5/w-5 等）
 components/
   daisyui/<name>/            搬运组件（主战场）：demo.html + README.md + moh.json
-  <name>/                    少量自研增强（chart-card/code-block 等）
+  <name>/                    少量自研增强（chart-card/code-block/date-range/drag-sort/empty）：同样三件套 + daisyUI 底座
   _legacy/                   已下线旧组件，禁止扫描、展示、参考、复活
 site/                        展示站（components.html / themes.html / rules.html …）
   data.js                    由脚本生成，禁止手改
@@ -92,7 +92,7 @@ themes/                      旧色板（待重做为页面案例；预览文件
 4. 若干 `section.doc-block`：每个变体一块，结构为 `<h2>形态名</h2><p class="desc">中文讲解</p><div class="doc-stage">…真实组件…</div>`。
    **变体的代码块和"代码"按钮由 demo-doc.js 自动生成，HTML 里不要手写 `<pre>` / `<details>`。**
 5. `section.doc-block.doc-guide`：中文使用指南（怎么选、可访问性、坑）。
-6. `footer.doc-source`：来源声明，**每页只在此处一次**（组件样式基于 daisyUI x.x（MIT，© 2020 Pouya Saadeghi）+ 原页链接 + 灰墨整理以 MIT 开源）。
+6. **页面到此结束，不写 `footer.doc-source` 来源声明**（来源统一在组件库顶部全局声明 + 溯源页；见铁律 4）。
 
 ### 4.2 README.md（给进仓库看代码的人）
 
@@ -103,10 +103,18 @@ themes/                      旧色板（待重做为页面案例；预览文件
 照 `button/moh.json` 填：
 
 - `name` 必须为 `daisyui-<name>`（全局唯一）；
-- `type: "component"`、`title`、`description`（中文，写清覆盖哪些变体）；
-- `styleTags` 非空数组（决定站点分类，如 `表单` `基础组件` `反馈` `导航` `数据展示`）；
+- `type: "component"`、`title`、`description`（中文，直接写组件能干什么、覆盖哪些变体；**禁止以"搬运自 daisyUI 的 XXX"开头**，站点卡片会原样显示这句描述）；
+- `styleTags` 非空数组（决定站点分类，如 `表单` `基础组件` `反馈` `导航` `数据展示`），只用全站已有标签词，不造孤立标签；
 - `source`：`origin:"third-party"`、`upstream:"daisyUI"`、`url` 官方组件页、`license:"MIT"`、`changes` 写清做了什么改造；
 - `dependencies: []`（纯 CSS 组件应保持零依赖）、`files:["demo.html","README.md"]`、`verified:true`。
+
+### 4.3.1 自研增强组件（`components/<name>/`，如 chart-card/empty）
+
+与搬运组件**同一套三件套与同一页面骨架**，差异只有：
+- `name` 不带 `daisyui-` 前缀；`source.origin:"original"`、`upstream/url` 为 null（有灵感来源填 `inspiration`）。
+- 底座同样引 `vendor/daisyui.css` + `assets/utilities-patch.css` + `demo-page.css`，**禁止再引用 `themes/*/tokens.css` 或旧 `--moh-*` 变量**；入口文件名同样是 `demo.html`（不是 index.html）。
+- 必须依赖第三方库才能工作的（如图表、代码高亮），库走 CDN 写进 `dependencies`，站点会挂「带依赖」标签，指南与提示词如实说明；能用纯 HTML/CSS/极少原生 JS 实现的保持零依赖。
+- 页面同样**不写 `footer.doc-source`**。
 
 ### 4.4 提示词正文（必做，主路径）
 
@@ -149,7 +157,6 @@ themes/                      旧色板（待重做为页面案例；预览文件
 
 **A. 静态校验**
 - `node scripts/check-attributions.mjs`：全部 moh.json 合规（只读，工程师可跑）。
-- `node scripts/check-components.mjs`：组件结构检查（只读，工程师可跑）。
 - `node scripts/build-site-data.mjs`：组件数正确增加、无"色板缺失"等警告。**它会写 `site/data.js`，只由 PM 在整批完成后统一跑；工程师不要跑——多个工程师并发会互相覆盖。**
 
 **B. 三视口截图（Edge headless，生成后必须 Read 图片真看，不能只生成不看）**
@@ -164,7 +171,7 @@ themes/                      旧色板（待重做为页面案例；预览文件
 - 每个变体「</> 代码」能展开/收起、面板里"复制这段"可用。
 
 **D. 内容**
-- 成品是真实场景；文案无颜色名；来源只声明一次；无自我辩护；教程不跳 GitHub；无重复变体。
+- 成品是真实场景；文案无颜色名；详情页无来源声明、描述无"搬运自"前缀（来源只在组件库顶部 + 溯源页）；无自我辩护；教程不跳 GitHub；无重复变体。
 
 **E. 影响面**
 - 只改本组件目录；重跑后站点其它组件截图无回归。
@@ -183,7 +190,7 @@ themes/                      旧色板（待重做为页面案例；预览文件
 | **QC 验收员（子智能体，独立于工程师）** | 对照第 7 节横切复查所有组件，专门挑错 | 不自己改组件，只产出问题清单 |
 
 - 子智能体**禁止 `git add/commit/push`**，只产出文件 + 自检报告。（灰度批出现过 QC 自行 commit + push，属于违规，下不为例；提交推送一律由 PM 统一做。）
-- 子智能体**不要运行 `node scripts/build-site-data.mjs`**（它会写 `site/data.js`，多个工程师并发会互相覆盖）；该脚本只由 PM 在整批完成后统一跑。只读校验 `check-attributions.mjs` / `check-components.mjs` 与 `qa-mobile.mjs` 可自行运行。
+- 子智能体**不要运行 `node scripts/build-site-data.mjs`**（它会写 `site/data.js`，多个工程师并发会互相覆盖）；该脚本只由 PM 在整批完成后统一跑。只读校验 `check-attributions.mjs` 与 `qa-mobile.mjs` 可自行运行。
 - 提交推送由 PM 验收通过后统一做，原则上**一个组件一个 commit**，便于回退。
 - 最终验收权在 PM：**工程师自检 + QC 复查都过了，PM 仍必须自己 Read 改动文件、Read 三视口截图**，确认无问题才算通过；不合格打回对应工程师。
 - 子智能体看不到历史对话，需要的背景、规范、命令都在本文件与样板里，以文件为准。
@@ -264,6 +271,16 @@ git rev-list --count origin/master..HEAD   # 必须为 0
    ⑤ **diff-resizer 自带 `resize:horizontal`**（vendor 压缩 CSS 里无空格，PowerShell 搜 `"resize: horizontal"` 带空格会找不到——用 `.Contains("resize:horizontal")`）。纯 CSS 下 diff 静态停在 50%，拖动需 JS，指南诚实写"补一小段 JS"，不内置。
    ⑥ **styleTags 不造孤立标签**：批次⑥ hover-gallery 原写「电商」全站唯一（站点筛选 chip 不显示），PM 改为已有词「商务」；新组件 styleTags 一律用全站已有标签词。
    ⑦ **text-rotate 词数 3~6、每词 2~4 字真实中文动作词**；轮换词是装饰性强调，页面关键信息不能只放在轮换词里（读屏会连读），指南写清。成品大字号用补丁档位 text-5xl/7xl，禁止更大字号窄屏溢出。
+23. **批次⑦ 自研增强组件 v3 重做与站点整改轮的具体坑**：
+   ① **自研组件（components/<name>/）相对路径是两级 `../../`，不是 daisyui 件的三级 `../../../`**：自研件从 `components/<name>/` 回仓库根正好两级；用错会 404。demo.html 头四行与 body 末脚本引用同理。
+   ② **带依赖组件的 CDN `<script>`、自定义 `<style>`、初始化 `<script>` 必须全部放进 `#hero-stage` 内**：demo-doc.js 的「复制成品 HTML」只取 `hero.innerHTML` + 两行线上 CSS 拼自包含文件，放在 hero-stage 外面的脚本/样式复制出去双击跑不起来（chart-card 的 echarts.init、code-block 的 hljs.highlightElement 都因此内嵌在成品区）。提示词里写明 CDN 裸地址。
+   ③ **`#moh-prompt`（`<script type="text/plain">`）正文里禁止出现字面 `</script>`（也不要写 `<script src=...>`）**：HTML 解析器不认 type=text/plain，遇到字面闭合标签会提前结束 moh-prompt，轻则提示词截断、重则把后面的 demo-doc.js 一起吞掉（代码面板归零）。CDN 一律写裸 URL，不写标签。
+   ④ **组件内交互 JS 禁止依赖 `#hero-stage` 这个容器 id 定位**：「复制成品 HTML」只复制 hero-stage 的 innerHTML，容器本身不在复制结果里——若 JS 写 `document.getElementById("hero-stage")` 再 `root.querySelector(...)`，复制出去的独立文件里 root 为 null、功能静默失效（date-range 预设填充首版即此 bug）。定位要用组件自身元素的 id（id 写在被复制的元素上）、或变体里用 `document.currentScript.parentElement`。验收带 JS 的组件必须真做一次"提取 hero-stage 拼独立 HTML → 双击点按钮"的落地验证，不能只在 demo 页里点。
+   ⑤ **等宽字体：vendor 只有 `--font-mono` 变量，没有 `.font-mono` 工具类**（PowerShell `.Contains` 核实）。要用等宽写内联 `style="font-family:var(--font-mono,ui-monospace,Menlo,Consolas,monospace)"`，不要在 class 里写 font-mono（编造类，QC 曾因此打回两轮）。
+   ⑥ **qa-mobile 横向滚动误报口径适用于所有 overflow 容器**：除 carousel 外，code-block 的 hljs 高亮 span（在 `pre.overflow-x-auto` 内）同样误报 OVERFLOW。判定口径统一：页面级 `scrollWidth≤390` 且越界元素全部在 overflow 祖先内（逐元素查 `getComputedStyle(ancestor).overflowX ∈ {auto,scroll}` 确认）即 PASS，不改脚本。
+   ⑦ **旧 `index.html` + `--moh-*` 变量体系已彻底移除**：5 个自研件重做为三件套后旧 index.html 删除；为旧体系写的 `scripts/check-components.mjs`（查硬编码颜色 / moh- 前缀 / --moh-* 命名空间）随之退役删除——新体系检查由 check-attributions + build-site-data + qa-mobile + grep 类名 + PM 人工 Read 承担。
+   ⑧ **图标尺寸档位按 Tailwind 整组补齐**：empty 首版 56px 图标撞上补丁缺 `h-14/w-14`（内联 style 兜底），已整组补 `h-11/w-11（2.75rem）`、`h-14/w-14（3.5rem）`；后续图标尺寸优先用类，不必再内联。
+   ⑨ **站点整改轮**：63 个 moh.json description 批量去「搬运自 daisyUI 的 XXX：」前缀，正则 `^搬运自\s*daisyUI\s*的[^：:]*[：:]\s*` 一次全命中（以英文类名/变量开头的少数条目手工润色成中文功能开头）；63 个 demo.html 删 footer 有带/不带 `<!-- 来源：每页仅在页脚声明一次 -->` 前置注释两种模式，先干跑确认全匹配再实写；`build-site-data.mjs` 分类精确匹配 bug——分类规则必须把完整词「数据展示」放进 tags 匹配（原漏完整词致 26 个组件误归「基础」，站点计数长期失真，修复并重做 5 自研件后分类为 基础1/表单16/反馈11/导航12/数据展示28）；`.site-filters` 手机断点必须 `flex-wrap:wrap`（nowrap+overflow-x:auto 在 390px 把靠后的分类 chip 挤出屏外）。
 
 ---
 
@@ -274,7 +291,9 @@ git rev-list --count origin/master..HEAD   # 必须为 0
 - **批次④ 流程教训（已入踩坑 20）**：子智能体在 PM 终验前越权 commit+push 16 个 commit、改公共层、代写收尾文档；内容经 PM 逐件复核全部合格故保留上线，但红线重犯，后续派工必须逐字点名"禁 push/禁改 AGENTS、公共层/禁跑 build-site-data"，PM 验收先查 git log 越权。
 - **批次⑤ 教训（已入踩坑 21）**：公共层缺类要按 Tailwind 标准档位整组补（本次响应式字号 lg:text-lg~5xl 一组全缺）；carousel 等横向滚动容器会被 qa-mobile 误报 OVERFLOW（scrollWidth≤390 且越界元素全在 overflow 祖先内即 PASS，不改脚本）；类名核验必须 PowerShell `.Contains`，grep 压缩 CSS 会误判"类不存在"（QC 曾把 3 个真实存在的类误打回）；响应式分数宽 sm:w-1/2/lg:w-1/3 未补，carousel 用静态 w-1/2 兜底、日后补类升级；Lucide 图标网络 502 时按预案手绘同轮廓并注明 inspiration。
 - **批次⑥ 已完整闭环并推送**：**daisyUI 官方 68 个组件全量搬运完成**（本批 5 个特效 aura/diff/hover-gallery/mask/text-rotate，成品：定价卡光晕+改版前后对比+电商商品卡多角度图+团队头像形状+ SaaS 首屏标语轮换，各含多变体+中文教程+提示词），经 4 工程师+2 QC 制作、PM 逐件终验后逐个 commit 并整批推送；站点 **68 组件/10 主题/5 分类**。公共层补丁三次：38c23d4（text-7xl/8xl/9xl、w-60/max-w-60、justify-items-center、teal/blue 调色、orange500/600、red800）、44ec822（margin mt-0/5/10、mx-2）。教训已入踩坑 22。
-- 待办（PM 已规划，按批次推进）：**daisyUI 官方组件已全量搬完**；后续按主题与分发推进——主题改完整页面案例替换色块 preview（#46）、组件 AI 指令分发（形态 A，见开发计划 4.1）、theme-controller 随主题层、calendar 走「带依赖」标签、5 个自研增强组件迁移 daisyUI 变量。**每批开工前先翻竞品，按 §8 多智能体流程做。**
+- **站点整改轮（用户挑问题后拍板，本地完成待推送）**：① 63 个 moh.json description 去"搬运自 daisyUI 的 XXX"前缀（7 条手工润色，check-attributions 79 全合规）；② 63 个 demo.html 整段删 footer 来源声明（来源只在组件库顶部全局声明一次 + 溯源页，README 来源块保留）；③ components.html 顶部声明改写 + 新增「怎么用这个组件库」4 步真实使用说明（工具箱非模板、不用全用、首选复制 AI 提示词、底座只引一次两行 CSS、复制成品 HTML 双击即见）；④ 弹窗底部按钮栏整条删除（查看原版/下载代码/新窗口打开三按钮全删，连带清 toast/copyText 死代码）；⑤ attributions.html 组件表加「原版地址」列 + 动态计数、note 去写死数字；⑥ 首页组件库卡片措辞中性化；⑦ 修复 build-site-data 分类 bug：数据展示规则漏完整词「数据展示」致 26 个组件误归「基础」（5 自研件重做后最终重建分类为 基础1/表单16/反馈11/导航12/数据展示28）；⑧ site.css 手机断点 .site-filters 改 flex-wrap 折行（原 nowrap+overflow-x:auto 在 390px 把导航/数据展示 chip 挤出屏外）。
+- **批次⑦ 5 个自研增强组件 v3「提示词三件套」重做完成（本地待推送）**：chart-card（ECharts 5 CDN，折线/柱状/环形/空态，颜色读 --color-* 主题变量、240px 定高容器+role=img）、code-block（highlight.js 11 CDN，不引官方主题 CSS，.hljs-* 配色走 daisyUI 变量，JS/Python/Terminal/长行横滚四形态）、date-range（零依赖，join 拼两个原生 date input +「至」分隔 + 今天/近7天/近30天/本月 aria-pressed 预设 + 查询/重置，本地时区格式化不用 toISOString）、drag-sort（原生 HTML5 drag + 键盘 ↑↓ + aria-live 播报，旧版 `after===false||true` 恒真 bug 已修，grip 用内联 SVG）、empty（零依赖纯 CSS，标准居中/搜索无结果/表格内嵌紧凑横排/网络错误重试四形态，stroke=currentColor 零 emoji 零外链）；QC 打回 font-mono 编造类（vendor 只有 --font-mono 变量无 .font-mono 类，改内联 var）；**PM 终验又修复并核实：date-range 预设 JS 误依赖 `#hero-stage` 容器定位导致「复制成品」独立文件里预设全部失效（改为直接按元素 id 定位，独立文件落地点击验证通过）；补公共层 h-11/w-11、h-14/w-14 图标档位**；旧 index.html 已从磁盘删除（git 跟踪记录删除，build-site-data 入口 demo.html 优先）、旧体系脚本 check-components.mjs 退役；data.js 重建后 68 组件/10 主题/5 分类（基础1/表单16/反馈11/导航12/数据展示28），check-attributions 79 合规，5 件桌面/embed/手机/自包含/弹窗 PM 全部亲验。教训已入踩坑 23。
+- 待办（PM 已规划，按批次推进）：**daisyUI 官方组件已全量搬完，5 个自研增强组件 v3 重做完成**；后续按主题与分发推进——主题改完整页面案例替换色块 preview（#46）、组件 AI 指令分发（形态 A，见开发计划 4.1）、theme-controller 随主题层、calendar 走「带依赖」标签。**每批开工前先翻竞品，按 §8 多智能体流程做。**
 
 ---
 
