@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "luxury",
+  "type": "theme",
+  "title": "奢金（luxury）",
+  "description": "完整页面案例：虚构高端腕表品牌「时计堂 HELIOS」整页。近黑底配金色衬线标题与内联线稿腕表，留白克制、层级清晰；挂 daisyUI 官方主题 data-theme=\"luxury\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "轻奢", "品牌", "落地页"],
+  "base": "luxury",
+  "aiNotes": [
+    "近黑底（用 base-100 / base-200），金色只来自主题 base-content 等语义色，只用于品牌名、标题、发丝线、主按钮与价格；绝不大面积铺金，也禁止写死任何金色十六进制。",
+    "品牌名与各级标题用衬线（宋体系 / Georgia）并加 1–4px 字间距，正文用无衬线；标题克制、不做粗重堆料。",
+    "大量留白，版块之间用一条 currentColor 约 22% 透明度的发丝线分隔，不堆色块与投影。",
+    "主按钮金底必须配近黑文字（覆写 --btn-color: var(--color-base-content); --btn-fg: var(--color-base-100)），次要操作用幽灵按钮。",
+    "所有商品与装饰图只用 currentColor 单色线稿 SVG（表壳、刻度、指针、表冠齐备，同系列多款要画出差异），不用彩色照片、不用 emoji、不用渐变。",
+    "文案克制有质感，按钮只写真实动作（预约鉴赏、查看表款、查找门店），价格写「¥X 起」，不写「尊贵奢华体验」这类空话。",
+    "390px 窄屏顶栏自然折行、卡片单列、不横向溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=luxury]；仅用 daisyUI 组件拼装一套高端腕表品牌整页（demo.html：顶栏导航与金色预约按钮 + 金色衬线 Hero 与内联线稿腕表 + 三张黑金产品卡含公开指导价格区间 + 工艺传承三要点（自研机芯 / 手工装配 / 限量编号）+ 到店预约 CTA 与虚构门店页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
