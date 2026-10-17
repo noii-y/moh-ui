@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="caramellatte">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>点单 · 屋檐咖啡（caramellatte 主题案例）</title>
+  <meta name="description" content="灰墨 caramellatte 主题完整页面案例：社区咖啡店点单整页。奶油拿铁底色 + 深棕墨黑 + 焦糖强调色，圆润亲切、手作烘焙温暖感。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="../../vendor/daisyui.css" />
+  <link rel="stylesheet" href="../../vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 36px; display: flex; flex-direction: column; gap: 16px; }
+    .brand { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .brand-mark { width: 26px; height: 26px; border-radius: 8px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .shop-grid { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+    .food-art { height: 84px; border-radius: .625rem; background: var(--color-base-200); display: flex; align-items: center; justify-content: center; color: var(--color-accent); }
+    .food-art svg { width: 40px; height: 40px; }
+    .cart-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+    .pickup { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: .625rem; padding: 12px 14px; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }
+    @media (max-width: 900px) {
+      .shop-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏：店名 + 取餐方式 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand"><span class="brand-mark">檐</span>屋檐咖啡 · 梧桐路店</div>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <div class="join">
+          <button class="join-item btn btn-primary btn-sm" type="button">堂食</button>
+          <button class="join-item btn btn-soft btn-sm" type="button">外带</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 标题行 -->
+    <div class="row">
+      <div>
+        <h1 style="font-size:20px;font-weight:700;margin:0">今日推荐</h1>
+        <p style="font-size:13px;opacity:.6;margin:4px 0 0">豆子：今天刚烘的埃塞俄比亚 · 耶加雪菲（示例价格）</p>
+      </div>
+      <span class="badge badge-soft badge-primary">营业中 · 08:00 – 20:00</span>
+    </div>
+
+    <div class="shop-grid">
+      <!-- 菜单卡片 -->
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <div class="menu-grid">
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 9h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z" /><path stroke-linecap="round" d="M15 10h1.5a2 2 0 0 1 0 4H15M7 4.5c.6.6.6 1.4 0 2M10 4.5c.6.6.6 1.4 0 2" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">拿铁</span>
+                <span style="font-size:14px;font-weight:700">¥22</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">浓缩融合蒸奶，丝滑奶香。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 5h10l-1 14a2 2 0 0 1-2 1h-4a2 2 0 0 1-2-1L7 5Z" /><path stroke-linecap="round" d="M7.5 9.5h9M10 5V3.5M13 5V3.5" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">美式</span>
+                <span style="font-size:14px;font-weight:700">¥16</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">双重浓缩兑水，干净回甘。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10h13v4a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5v-4Z" /><path stroke-linecap="round" d="M8 10c0-2 1.5-3 3.5-3M12 3.5c.6.5.6 1.2 0 1.9" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">卡布奇诺</span>
+                <span style="font-size:14px;font-weight:700">¥20</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">厚奶泡撒可可粉。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 9h11v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z" /><path stroke-linecap="round" d="M15 10h1.5a2 2 0 0 1 0 4H15M6.5 4.5c.6.6.6 1.4 0 2" /><path stroke-linecap="round" d="M5.5 12h8" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">燕麦拿铁</span>
+                <span style="font-size:14px;font-weight:700">¥26</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">植物基燕麦奶，谷物香气。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 14.5c0-3.5 3.5-6.5 8.5-6.5 3.5 0 6.5 1.6 8 4-.8 2.6-3.5 4.5-6.8 4.5-3.2 0-6.5-1.2-9.7-2Z" /><path stroke-linecap="round" d="M7.5 12c1.5 1 3.5 1.6 5.8 1.6" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">海盐可颂</span>
+                <span style="font-size:14px;font-weight:700">¥12</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">黄油九折，外酥内软。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+          <div class="card bg-base-200 rounded-box">
+            <div class="card-body" style="padding:12px;gap:8px">
+              <div class="food-art"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 19h16" /><path stroke-linecap="round" stroke-linejoin="round" d="M5 19l3.2-9.6A2 2 0 0 1 10 8h4a2 2 0 0 1 1.9 1.4L19 19" /><path stroke-linecap="round" d="M9 12h6" /></svg></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:6px">
+                <span style="font-size:14px;font-weight:700">巴斯克蛋糕</span>
+                <span style="font-size:14px;font-weight:700">¥28</span>
+              </div>
+              <p style="font-size:12px;opacity:.6;margin:0">焦香外皮，流心芝士。</p>
+              <button class="btn btn-primary btn-sm" type="button">加购</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 制作进度 -->
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h2 style="font-size:15px;font-weight:700;margin:0">制作进度 · A-23</h2>
+              <span class="badge badge-soft badge-accent">出杯中</span>
+            </div>
+            <progress class="progress progress-primary" style="height:10px" value="60" max="100"></progress>
+            <div style="display:flex;justify-content:space-between;font-size:12px;opacity:.6">
+              <span>已下单</span><span>制作中</span><span>可取餐</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 购物车 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+          <h2 style="font-size:15px;font-weight:700;margin:0">购物车 · 2 件</h2>
+
+          <div class="cart-line">
+            <div>
+              <div style="font-size:13px;font-weight:600">拿铁</div>
+              <div style="font-size:12px;opacity:.6">中杯 · 热 · 全脂奶</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="join">
+                <button class="join-item btn btn-soft btn-sm" type="button">−</button>
+                <span class="join-item btn btn-sm" style="pointer-events:none">2</span>
+                <button class="join-item btn btn-soft btn-sm" type="button">+</button>
+              </div>
+              <span style="font-size:13px;font-weight:600">¥44</span>
+            </div>
+          </div>
+
+          <div class="cart-line">
+            <div>
+              <div style="font-size:13px;font-weight:600">海盐可颂</div>
+              <div style="font-size:12px;opacity:.6">当日现烤</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="join">
+                <button class="join-item btn btn-soft btn-sm" type="button">−</button>
+                <span class="join-item btn btn-sm" style="pointer-events:none">1</span>
+                <button class="join-item btn btn-soft btn-sm" type="button">+</button>
+              </div>
+              <span style="font-size:13px;font-weight:600">¥12</span>
+            </div>
+          </div>
+
+          <div class="divider" style="margin:2px 0"></div>
+
+          <div style="display:flex;justify-content:space-between;font-size:13px">
+            <span style="opacity:.65">小计</span><span style="font-weight:700;font-size:16px">¥56.00</span>
+          </div>
+
+          <div class="pickup">
+            <div>
+              <div style="font-size:12px;opacity:.6">取餐码</div>
+              <span class="kbd mono" style="font-size:18px">A-23</span>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:12px;opacity:.6">预计取餐</div>
+              <div style="font-size:15px;font-weight:700">10:42</div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-lg" type="button">下单 ¥56.00</button>
+          <p style="font-size:12px;opacity:.6;margin:0;text-align:center">支持堂食自取与外带打包</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot">以上商品、价格与取餐码均为示例数据，仅用于展示 caramellatte 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>

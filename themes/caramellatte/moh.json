@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "caramellatte",
+  "type": "theme",
+  "title": "焦糖拿铁（caramellatte）",
+  "description": "完整页面案例：社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme=\"caramellatte\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["暖色", "圆润", "餐饮", "手作"],
+  "base": "caramellatte",
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方主题变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=caramellatte]；仅用 daisyUI 组件拼装一套社区咖啡店点单整页案例（demo.html：菜单卡片网格 + 购物车数量加减 + 取餐码与预计时间 + 制作进度条）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
