@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "kanagawa",
+  "type": "theme",
+  "title": "神奈川（kanagawa）",
+  "description": "完整页面案例：虚构日式茶器与艺术品牌「浪见屋 NAMAMIYA」整页。墨色底（#1F1F28）配靛蓝主色、朱赤克制点睛与衬线标题，Hero 为自绘线稿海浪，配三件器物卡、展讯卡、匠人工序与预约 CTA；挂 daisyUI [data-theme=\"kanagawa\"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "东方", "品牌", "落地页"],
+  "base": "kanagawa",
+  "aiNotes": [
+    "墨色底为主：base-100 #1F1F28 / base-200 #223249（蓝灰浮起卡片）/ base-300 #16161D（最深），文字用 fujiWhite #DCD7BA；正文不要用靛蓝或朱赤，只用于标题强调与主操作。",
+    "主色靛蓝 crystalBlue #7E9CD8 只给主按钮、选中态与链接；朱赤 peachRed #FF5D62 全篇只出现 1~2 次（如展讯日期或一句强调），绝不大面积铺红铺蓝。",
+    "品牌名与各级标题用衬线（宋体系 / Georgia）并加 1~4px 字间距，正文用无衬线；标题克制、留白要足，版块之间用 currentColor 约 22% 透明度的发丝线分隔。",
+    "所有器物与装饰图只用 currentColor 单色线稿 SVG：海浪要画出多层浪涛与浪尖飞沫（圆点），茶碗、铁壶、和纸三款器物轮廓差异要明显；不用彩色照片、不用 emoji、不用渐变。",
+    "主按钮靛蓝底必须配近墨色文字（daisyUI 按 primary-content 自动取 #1F1F28），次要操作用幽灵按钮；按钮只写真实动作（预约看展、选购器物、查看器物），不写颜色名。",
+    "文案讲真实动作与真实场景（看展、试茶、开窑），器款附「¥X 起」的虚构价格区间，展览写虚构展名/日期/场地并注明示例数据，不写「奢华传承」这类空话。",
+    "390px 窄屏顶栏自然折行、卡片单列、横向发丝分隔线不溢出；手机上 Hero 海浪保持完整不裁切。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "Kanagawa.nvim (rebelot/kanagawa.nvim)",
+    "url": "https://github.com/rebelot/kanagawa.nvim/blob/master/lua/kanagawa/colors.lua",
+    "license": "MIT",
+    "changes": "将 kanagawa.wave 深色色板映射为 daisyUI 5 主题变量（[data-theme=kanagawa] 覆盖 --color-*：base 三层 #1F1F28/#223249/#16161D、base-content #DCD7BA、primary 靛蓝 #7E9CD8、secondary 紫 #957FB8、accent 朱赤 #FF5D62，语义色取官方诊断与语法色），圆角调小以贴合日式克制气质；按 MIT 义务保留原作者署名与许可证全文（见本目录 LICENSE）；另写虚构日式茶器品牌整页案例（demo.html），品牌、器款、价格、展览与门店均为示例数据，海浪插图为自绘简笔、非原画资产。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md", "LICENSE"],
+  "audit": 100,
+  "verified": false
+}
