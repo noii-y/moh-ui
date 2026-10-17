@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "forest",
+  "type": "theme",
+  "title": "林径（forest）",
+  "description": "完整页面案例：虚构户外装备品牌「野径户外 WILDTRAIL」整页。暖黑底配米白文字与松绿主色，山野层叠线稿为招牌、大圆角圆润；挂 daisyUI 官方主题 data-theme=\"forest\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "品牌", "落地页", "柔和"],
+  "base": "forest",
+  "aiNotes": [
+    "暖黑底（base-100 / base-200 是带暖调的近黑，不是纯黑），正文用米白 base-content；主色只用主题 green primary，只出现在主按钮与关键徽标上，绝不大面积铺绿。",
+    "米白只用于文字与一块浅色卡面（会员 CTA：底色 base-content、字色 base-100），其余卡片保持 base-200 深底；避免荧光绿，不用纯亮绿渐变。",
+    "圆角沿用官方 1rem 大圆角（radius-box），按钮、卡片、徽章保持圆润，不要改成直角。",
+    "山野线稿是招牌：Hero 用 currentColor 单色描边画层叠远山近山（近山实、远山淡）、松树与蜿蜒小径；线条 1.5–2px，不用照片、emoji、彩色插画。",
+    "三件装备卡的 SVG 必须画出差异：登山包（圆身 + 翻盖 + 背带）、徒步鞋（鞋底弧 + 鞋帮 + 鞋带）、帐篷（A 字支架 + 门帘 + 风绳），禁止三个一样的占位块。",
+    "主按钮绿底配近黑文字（primary-content 已是深色，直接 btn-primary 即可），次操作用 btn-ghost；同一屏只保留一个主按钮。",
+    "文案语气像户外老手写的（走山、露营、月度路线），按钮只写真实动作（逛装备、看路线、加入会员），不写「极致体验」这类空话。",
+    "390px 窄屏顶栏自然折行、装备卡与路线卡单列，不横向溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=forest]；仅用 daisyUI 组件拼装一套户外装备品牌整页（demo.html：顶栏导航与逛装备按钮 + Hero 山野层叠线稿与双 CTA + 三张装备卡（登山包 / 徒步鞋 / 帐篷，各含成形内联简影）+ 路线与环保三要点（路线地图 / 叶片承诺 / 旧装回收）+ 米白会员订阅 CTA 与虚构门店页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
