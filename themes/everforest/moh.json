@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "everforest",
+  "type": "theme",
+  "title": "林间（everforest）",
+  "description": "完整页面案例：虚构笔记应用「林间笔记 Grove Notes」整页。暖纸白底配森林绿主色与柔蓝点缀，三栏应用简影、双链图谱、示例长文与三张定价卡，护眼低对比但正文清晰；页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "护眼", "柔和", "落地页"],
+  "base": "everforest",
+  "aiNotes": [
+    "暖纸白底（base-100 #fdf6e3 / base-200 #f4f0d9），分层只靠 base-300 浅卡其与细边框，不写死任何 hex；侧栏用 base-300 半透明即可，不要深色面板。",
+    "主色森林绿 #8da101 只留给主 CTA 与选中态；因明度偏高，绿色按钮必须配深墨字（已在 tokens 里设 primary-content #2d353b），禁止反白。",
+    "柔蓝 #3a94c5 只用于链接、高亮底与双向链接点；橙色 #f57d26 全页只允许点缀一次，不要进大色块。",
+    "长文区用宋体/Georgia 衬线、行高 2.1 以上、字距正常；正文 opacity 别低于 .65，护眼不等于低对比到难读。",
+    "应用界面简影、双链图谱一律用 currentColor 线稿 SVG + 主题语义色填充（高亮用 color-mix 叠色），不用截图、不用 emoji、不用真实产品 logo。",
+    "按钮只写真实动作（免费开始、订阅会员、下载桌面版），定价数字要大、说明列表要克制，虚构价格必须在页脚声明示例。",
+    "圆角放大到 box 0.75rem、留白舒展；390px 窄屏三栏简影保持矢量缩放不变形，卡片单列不溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "Everforest (sainnhe/everforest)",
+    "url": "https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim",
+    "license": "MIT",
+    "changes": "将 Everforest Medium 浅色色板映射为 daisyUI 5 主题变量（[data-theme=everforest]：base 三层 #fdf6e3/#f4f0d9/#e6e2cc、base-content #5c6a72、primary 森林绿 #8da101、secondary 柔蓝 #3a94c5、accent 橙 #f57d26，语义色取 aqua #35a77c / yellow #dfa000 / red #f85552），主按钮绿配深墨字底保证对比度，圆角放大为纸感取向；按 MIT 义务在本目录附 LICENSE 全文（© 2019 sainnhe）并在 README 署名；另写虚构笔记应用整页案例（demo.html），界面、短文、价格与功能均为示例数据。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md", "LICENSE"],
+  "audit": 100,
+  "verified": false
+}

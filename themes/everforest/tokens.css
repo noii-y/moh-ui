@@ -1,0 +1,51 @@
+/*! 灰墨 everforest · 林间 —— Everforest 柔绿暖色护眼浅色主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 sainnhe/everforest 官方 Medium 浅色板（MIT，© 2019 sainnhe，
+   autoload/everforest.vim 的 everforest#get_palette：bg0 #fdf6e3 / bg1 #f4f0d9 / bg3 #e6e2cc /
+   fg #5c6a72 / green #8da101 / blue #3a94c5 / orange #f57d26 / aqua #35a77c /
+   yellow #dfa000 / red #f85552 / bg5 #bdc3af）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="everforest"> 即整站换肤。 */
+
+[data-theme="everforest"] {
+  color-scheme: light;
+
+  /* 底与纸：Medium 浅色纸感三层，bg0 暖纸白 / bg1 卡片 / bg3 再深一档 */
+  --color-base-100: #fdf6e3;
+  --color-base-200: #f4f0d9;
+  --color-base-300: #e6e2cc;
+  --color-base-content: #5c6a72; /* fg 柔灰绿墨，保证正文对比又不刺眼 */
+
+  /* 主色：forest green #8da101；#2d353b 取自上游 dark 板 bg0（同文件 get_palette 深色值），作深墨字底保证对比 */
+  --color-primary: #8da101;
+  --color-primary-content: #2d353b;
+
+  /* 次色 / 强调色：blue #3a94c5 与 orange #f57d26（强调只点缀） */
+  --color-secondary: #3a94c5;
+  --color-secondary-content: #fdf6e3;
+  --color-accent: #f57d26;
+  --color-accent-content: #2d353b;
+
+  /* 中性面：bg5 灰绿，用于侧栏与分隔 */
+  --color-neutral: #bdc3af;
+  --color-neutral-content: #5c6a72;
+
+  /* 语义色：info 蓝 / success aqua 绿 / warning 暗黄 / error 柔红 */
+  --color-info: #3a94c5;
+  --color-info-content: #fdf6e3;
+  --color-success: #35a77c;
+  --color-success-content: #2d353b;
+  --color-warning: #dfa000;
+  --color-warning-content: #2d353b;
+  --color-error: #f85552;
+  --color-error-content: #fdf6e3;
+
+  /* 圆角 / 尺寸 / 边框：大圆角、细边框，纸感写作取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
