@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="corporate">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>以长期判断，陪你穿越周期 · 衡屹咨询 HENGYI ADVISORY（corporate 主题案例）</title>
+  <meta name="description" content="灰墨 corporate 主题完整页面案例：虚构咨询公司官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="../../vendor/daisyui.css" />
+  <link rel="stylesheet" href="../../vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 26px; }
+    .brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; letter-spacing: 2.5px; opacity: .55; font-weight: 400; }
+    .hero-split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: center; padding: 34px 4px 8px; }
+    .hero-split svg { width: 100%; height: auto; display: block; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .section-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .section-head span { font-size: 12px; opacity: .5; }
+    .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .biz-item { display: flex; flex-direction: column; gap: 10px; }
+    .biz-item svg { width: 30px; height: 30px; }
+    .stats-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .quote-mark { font-size: 30px; line-height: 1; opacity: .35; font-family: Georgia, serif; }
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .hero-split { grid-template-columns: 1fr; padding: 20px 4px 4px; }
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-split h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">衡屹咨询 <small>HENGYI</small></div>
+        <ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px">
+          <li><a class="menu-active">业务领域</a></li>
+          <li><a>洞察</a></li>
+          <li><a>团队</a></li>
+          <li><a>关于</a></li>
+          <li><a>联系</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-primary btn-sm" type="button">预约咨询</button>
+      </div>
+    </div>
+
+    <!-- Hero：大标题与上升折线线稿 -->
+    <div class="hero-split">
+      <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+        <span class="badge badge-soft badge-sm" style="align-self:flex-start">独立咨询 · 18 年</span>
+        <h1 style="font-size:34px;font-weight:600;margin:0;line-height:1.25;letter-spacing:1px">以长期判断，<br />陪你穿越周期</h1>
+        <p style="font-size:13px;opacity:.65;margin:0;line-height:2">衡屹咨询为企业董事会与管理层提供战略、并购与风险层面的独立判断，不站队、不外包话术，只对结论负责。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <button class="btn btn-primary btn-sm" type="button">预约咨询</button>
+          <button class="btn btn-ghost btn-sm" type="button">查看行业洞察</button>
+        </div>
+      </div>
+      <svg viewBox="0 0 420 240" role="img" aria-label="上升折线线稿：坐标网格、逐级抬升的折线与端点箭头（示例插图）">
+        <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- 坐标网格 -->
+          <g opacity=".18">
+            <line x1="40" y1="30" x2="40" y2="200" />
+            <line x1="120" y1="30" x2="120" y2="200" />
+            <line x1="200" y1="30" x2="200" y2="200" />
+            <line x1="280" y1="30" x2="280" y2="200" />
+            <line x1="360" y1="30" x2="360" y2="200" />
+            <line x1="40" y1="50" x2="380" y2="50" />
+            <line x1="40" y1="100" x2="380" y2="100" />
+            <line x1="40" y1="150" x2="380" y2="150" />
+          </g>
+          <!-- 基线 -->
+          <line x1="40" y1="200" x2="380" y2="200" opacity=".4" />
+          <!-- 逐级抬升折线 -->
+          <path d="M40 176 L120 150 L200 158 L280 104 L360 58" stroke-width="2.4" />
+          <!-- 端点箭头 -->
+          <path d="M344 58 L362 54 L358 72" stroke-width="2.4" />
+        </g>
+        <!-- 折线上的节点 -->
+        <g fill="currentColor" stroke="none">
+          <circle cx="40" cy="176" r="3" />
+          <circle cx="120" cy="150" r="3" />
+          <circle cx="200" cy="158" r="3" />
+          <circle cx="280" cy="104" r="3" />
+          <circle cx="360" cy="58" r="3.6" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hairline"></div>
+
+    <!-- 业务领域：四张卡 -->
+    <div>
+      <div class="section-head">
+        <h2>业务领域</h2>
+        <span>四个方向，一支团队闭环负责</span>
+      </div>
+      <div class="biz-grid">
+        <!-- 战略咨询：指南针 -->
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body biz-item" style="padding:18px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M15.5 8.5 L13 13 L8.5 15.5 L11 11 Z" />
+            </svg>
+            <h3 style="font-size:15px;margin:0">战略咨询</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">三年规划与业务组合评估，帮管理层看清该进哪一步、舍掉哪一段。</p>
+          </div>
+        </div>
+        <!-- 并购重组：链环 -->
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body biz-item" style="padding:18px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9.5 14.5 L14.5 9.5" />
+              <path d="M10.5 6.5 a4 4 0 0 1 5.7 0 l1.3 1.3 a4 4 0 0 1 0 5.7 l-1.3 1.3" />
+              <path d="M13.5 17.5 a4 4 0 0 1-5.7 0 L6.5 16.2 a4 4 0 0 1 0-5.7 L7.8 9.2" />
+            </svg>
+            <h3 style="font-size:15px;margin:0">并购重组</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">从标的筛选、估值到尽调与整合方案，全程独立把关，不替交易双方说话。</p>
+          </div>
+        </div>
+        <!-- 风险合规：盾牌 -->
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body biz-item" style="padding:18px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z" />
+              <path d="M9 12 L11 14 L15 10" />
+            </svg>
+            <h3 style="font-size:15px;margin:0">风险合规</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">识别业务模式中的合规敞口，把风险清单落到可执行的整改动作上。</p>
+          </div>
+        </div>
+        <!-- 数字化转型：柱状图 -->
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body biz-item" style="padding:18px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="4" y1="20" x2="20" y2="20" />
+              <rect x="6" y="13" width="3.4" height="7" />
+              <rect x="11" y="9" width="3.4" height="11" />
+              <rect x="16" y="4.5" width="3.4" height="15.5" />
+            </svg>
+            <h3 style="font-size:15px;margin:0">数字化转型</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">从流程盘点到系统选型，按业务优先级分批落地，不追求一步到位。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据与背书 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:22px;gap:16px">
+        <div class="section-head" style="margin-bottom:0">
+          <h2>数据与背书</h2>
+          <span>截至 2026 年 9 月（虚构数据）</span>
+        </div>
+        <div class="stats stats-grid">
+          <div class="stat" style="padding:10px 12px">
+            <div class="stat-title">服务年限</div>
+            <div class="stat-value" style="font-size:28px">18 年</div>
+            <div class="stat-desc">自 2008 年成立</div>
+          </div>
+          <div class="stat" style="padding:10px 12px">
+            <div class="stat-title">常驻客户</div>
+            <div class="stat-value" style="font-size:28px">126 家</div>
+            <div class="stat-desc">其中上市企业 41 家</div>
+          </div>
+          <div class="stat" style="padding:10px 12px">
+            <div class="stat-title">交付项目</div>
+            <div class="stat-value" style="font-size:28px">340 个</div>
+            <div class="stat-desc">平均周期 4.5 个月</div>
+          </div>
+          <div class="stat" style="padding:10px 12px">
+            <div class="stat-title">行业覆盖</div>
+            <div class="stat-value" style="font-size:28px">11 个</div>
+            <div class="stat-desc">制造 / 消费 / 金融等</div>
+          </div>
+        </div>
+        <div class="hairline"></div>
+        <div class="quotes">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <p style="font-size:13px;margin:0;line-height:1.9;opacity:.8">他们在董事会上敢直接说「不建议收购」，这在我们合作过的顾问里不多见。最终那次放弃，帮公司避开了一笔减值。</p>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:12px;font-weight:700">陈岭</span>
+              <span style="font-size:11px;opacity:.5">某上市制造集团 · 独立董事（虚构）</span>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span class="quote-mark" aria-hidden="true">“</span>
+            <p style="font-size:13px;margin:0;line-height:1.9;opacity:.8">整合方案落到了岗位和流程上，三个月后跨部门扯皮明显少了。报告不厚，但每一页都有动作。</p>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:12px;font-weight:700">顾芸</span>
+              <span style="font-size:11px;opacity:.5">某消费品牌 · COO（虚构）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 洞察文章：三篇 -->
+    <div>
+      <div class="section-head">
+        <h2>最新洞察</h2>
+        <span>每月两篇，只写有结论的分析</span>
+      </div>
+      <div class="article-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;gap:10px">
+            <span class="badge badge-soft badge-sm" style="align-self:flex-start">2026-09-28</span>
+            <h3 style="font-size:15px;margin:0;line-height:1.5">产能过剩周期里，制造业该守住哪两块业务</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">我们复盘了过去十五年八轮产能出清，收缩期活下来的企业有一个共同动作：先砍产能，再砍品类。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;gap:10px">
+            <span class="badge badge-soft badge-sm" style="align-self:flex-start">2026-09-14</span>
+            <h3 style="font-size:15px;margin:0;line-height:1.5">并购之前：先算清整合账，再谈价格账</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">近三年失败交易的主因不是买贵了，而是整合成本被低估。这篇给出一张可直接套用的自查表。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;gap:10px">
+            <span class="badge badge-soft badge-sm" style="align-self:flex-start">2026-08-30</span>
+            <h3 style="font-size:15px;margin:0;line-height:1.5">数字化转型：从「上系统」到「改流程」的分水岭</h3>
+            <p style="font-size:12px;opacity:.6;margin:0;line-height:1.8">预算没有花在刀刃上的项目，八成卡在流程没改。我们建议先跑通一条主线，再谈全面铺开。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 联系 CTA -->
+    <div class="card rounded-box" style="padding:32px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border:1px solid color-mix(in oklab, currentColor 18%, transparent)">
+      <h2 style="font-size:22px;margin:0;letter-spacing:1px">预约一次深度沟通</h2>
+      <p style="font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9">首次沟通不收费、不签框架：先听你面对的问题，再判断我们能不能帮上忙。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center">
+        <button class="btn btn-primary btn-sm" type="button">预约咨询</button>
+        <span style="font-size:12px;opacity:.55">hello@hengyi.example.com（虚构） · 021-6000-0000（虚构）</span>
+      </div>
+    </div>
+
+    <!-- 虚构办公地址 -->
+    <div class="office-grid">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:2px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:1px">上海 · 总部</span>
+        <span style="font-size:12px;opacity:.6;line-height:1.8">黄浦区中山东一路 12 号 9 层（虚构）</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:2px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:1px">北京 · 办公室</span>
+        <span style="font-size:12px;opacity:.6;line-height:1.8">朝阳区建国门外大街 26 号 11 层（虚构）</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:2px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:1px">深圳 · 办公室</span>
+        <span style="font-size:12px;opacity:.6;line-height:1.8">福田区益田路 5001 号 18 层（虚构）</span>
+      </div>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">衡屹咨询 HENGYI ADVISORY 为虚构机构，文章、数据、评价人、地址与电话均为示例数据，仅用于展示 corporate 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
