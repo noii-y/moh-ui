@@ -8,13 +8,16 @@
    生成：
      ai/<slug>.md    每个组件一个干净 Markdown（给 AI 抓，llms.txt 链接）
      ai/<slug>.html  每个组件一个极简人看页（复制指令 + 指向 .md）
+     ai/<theme-slug>.md/.html  18 套主题的 data-theme 换肤指令页（含完整 tokens.css 变量块）
      llms.txt        根目录索引（按分类，符合 llmstxt.org v2）
-     llms-full.txt   全部组件全文（一次抓全库）
+     llms-full.txt   全部组件 + 全部主题全文（一次抓全库）
    用法：
-     node scripts/build-ai-pages.mjs            全量生成
-     node scripts/build-ai-pages.mjs button     只生成单个组件（做样板）
-   依赖：先跑过 build-site-data.mjs（site/data.js 为组件清单来源）。
-   本脚本只写 ai/ 目录与根目录 llms*.txt，不碰任何组件目录与公共层。
+     node scripts/build-ai-pages.mjs                       全量生成
+     node scripts/build-ai-pages.mjs button                只生成单个组件（做样板）
+     node scripts/build-ai-pages.mjs mo-dark               只生成单个主题（做样板）
+     node scripts/build-ai-pages.mjs --theme tokyo-night  同上，显式指定主题
+   依赖：先跑过 build-site-data.mjs（site/data.js 为组件与主题清单来源）。
+   本脚本只写 ai/ 目录与根目录 llms*.txt，不碰任何组件/主题目录与公共层。
    ============================================================ */
 import fs from "node:fs";
 import path from "node:path";
@@ -22,7 +25,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const BASE = "https://noii-y.github.io/moh-ui";
-const onlySlug = process.argv[2] || null; // 单组件样板模式
+// 参数解析推迟到 loadSiteData() 之后：裸 slug 先命中 data.themes 才走主题模式
 
 /* ---------- 读 site/data.js（浏览器全局语法，替换后求值） ---------- */
 function loadSiteData() {
@@ -351,23 +354,157 @@ ${body}
 `;
 }
 
+/* ---------- 主题 AI 页（data-theme 换肤指令） ---------- */
+function stripThemeDesc(desc) {
+  return desc.replace(/^完整页面案例：/, "").trim();
+}
+
+/* 标题 = 中文名（data-theme 名）；title 已自带（name）时不重复追加（caramellatte / silk）；
+   去掉 title 末尾的（深色）/（浅色）分组括注，避免出现"墨夜（深色）（mo-dark）"双括号 */
+function themeTitleWithName(t) {
+  if (t.title.includes(`（${t.name}）`)) return t.title;
+  var base = t.title.replace(/（(?:深色|浅色)）\s*$/, "");
+  return `${base}（${t.name}）`;
+}
+
+function buildThemeDocs(t) {
+  const desc = stripThemeDesc(t.description);
+  const themeName = t.name;
+  const isBuiltIn = !t.hasTokens; // caramellatte / silk：daisyUI 内置，无独立 tokens.css
+  const tokensCss = t.hasTokens
+    ? fs.readFileSync(path.join(root, "themes", t.slug, "tokens.css"), "utf8").replace(/\s+$/, "")
+    : null;
+
+  // 来源与许可证
+  let srcLine;
+  if (t.origin === "original") {
+    srcLine = `来源：灰墨二创主题（${t.license || "MIT"}）`;
+  } else if (isBuiltIn) {
+    srcLine = `来源：daisyUI 内置主题（MIT，无需额外文件）`;
+  } else {
+    srcLine = `来源：${t.upstream}（${t.license}） · [上游色板](${t.url})`;
+  }
+
+  // ① 引入链接块（md 围栏 与 复制文本共用，保持两处逐字一致）
+  const linkLines = [`<link rel="stylesheet" href="${BASE}/vendor/daisyui.css">`];
+  if (isBuiltIn) linkLines.push(`<link rel="stylesheet" href="${BASE}/vendor/daisyui-themes.css">`);
+  if (t.hasTokens) linkLines.push(`<link rel="stylesheet" href="${BASE}/themes/${t.slug}/tokens.css">`);
+
+  const afterNote = isBuiltIn
+    ? "本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。"
+    : `上面的 tokens.css 覆盖 [data-theme="${themeName}"] 下的全部 --color-* 变量。`;
+
+  const md = [
+    `# ${themeTitleWithName(t)} · 灰墨 MoH_UI`,
+    "",
+    `> ${desc}`,
+    "",
+    srcLine,
+    "",
+    "## 给 AI 的换肤指令",
+    "",
+    "① 在 `<head>` 引入 daisyUI 5 底座：",
+    "",
+    "```html",
+    ...linkLines,
+    "```",
+    "",
+    `② 在 \`<html>\` 标签挂 \`data-theme="${themeName}"\` 即整站换肤：组件类名一行都不用改。${afterNote}`,
+    "",
+    "③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：",
+    "",
+    ...(tokensCss ? ["```css", tokensCss, "```"] : ["该主题变量在 daisyui-themes.css 内，无需复制。"]),
+    "",
+    `④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：${BASE}/themes/${t.slug}/demo.html`,
+    "",
+    `⑤ 审美提示：组件全部走 daisyUI 语义类（\`btn\` / \`card\` / \`table\` / \`input\` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="${themeName}"] 里的 --color-* 变量。`,
+    "",
+    "---",
+    "",
+    "## 更多",
+    "",
+    `- 完整整页案例（在线页面）：${BASE}/themes/${t.slug}/demo.html`,
+    `- 素材溯源与许可证：${BASE}/site/attributions.html`,
+    `- 主题库（全部 18 套整页案例）：${BASE}/site/themes.html`,
+    `- 全站 AI 索引：${BASE}/llms.txt`,
+    ""
+  ].join("\n");
+
+  const promptText = [
+    `请把我的整个前端项目换成「${t.title}」主题（data-theme="${themeName}"）。`,
+    "",
+    desc,
+    "",
+    "【怎么引入】",
+    "在 <head> 加这几行：",
+    "",
+    ...linkLines,
+    "",
+    `然后在 <html data-theme="${themeName}"> 挂属性，整站即刻换肤，组件类名一行都不用改。`,
+    afterNote,
+    "",
+    `【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme="${themeName}"] 里的 --color-* 变量）`,
+    "",
+    ...(tokensCss ? ["```css", tokensCss, "```"] : ["该主题变量在 daisyui-themes.css 内，无需复制。"]),
+    ""
+  ].join("\n");
+
+  return { md, promptText };
+}
+
 /* ---------- 主流程 ---------- */
 const data = loadSiteData();
 const commonRules = loadCommonRules();
 const aiDir = path.join(root, "ai");
 fs.mkdirSync(aiDir, { recursive: true });
 
+/* 参数解析：--theme <slug> 或裸传主题 slug 都走主题模式；其余按原组件逻辑 */
+const themeListAll = data.themes || [];
+let themeOnly = null;
+let compOnly = null;
+{
+  const a = process.argv[2];
+  if (a === "--theme") {
+    themeOnly = process.argv[3] || null;
+  } else if (a) {
+    if (themeListAll.some((t) => t.name === a || t.slug === a)) themeOnly = a;
+    else compOnly = a;
+  }
+}
+
+/* ---------- 主题 AI 页生成 ---------- */
+const themeRecords = [];
+{
+  const wanted = themeListAll.filter((t) => !themeOnly || t.name === themeOnly || t.slug === themeOnly);
+  if (themeOnly && wanted.length === 0) {
+    console.error(`✗ 未找到主题：${themeOnly}（如 mo-dark、tokyo-night、silk）`);
+    process.exit(1);
+  }
+  for (const t of wanted) {
+    const { md, promptText } = buildThemeDocs(t);
+    // 复用组件 HTML 模板：补 demoUrl 指向 themes/ 整页案例
+    const adapter = { ...t, description: stripThemeDesc(t.description), demoUrl: `${BASE}/themes/${t.slug}/${t.entry || "demo.html"}` };
+    const page = buildHtml(adapter, md, promptText);
+    fs.writeFileSync(path.join(aiDir, t.slug + ".md"), md, "utf8");
+    fs.writeFileSync(path.join(aiDir, t.slug + ".html"), page, "utf8");
+    themeRecords.push(t);
+    console.log(`✓ 主题 ${t.slug}.md / ${t.slug}.html`);
+  }
+}
+
 const list = (data.components || []).filter((c) => {
   const slug = c.slug.split("/").pop();
-  return !onlySlug || slug === onlySlug;
+  return !compOnly || slug === compOnly;
 });
 
-if (onlySlug && list.length === 0) {
-  console.error(`✗ 未找到组件：${onlySlug}（slug 取目录名，如 button、chart-card）`);
+if (compOnly && list.length === 0) {
+  console.error(`✗ 未找到组件：${compOnly}（slug 取目录名，如 button、chart-card）`);
   process.exit(1);
 }
 
 const records = [];
+// 单主题样板模式不重建组件（保持现有 68 个组件文件不变）
+if (!themeOnly) {
 for (const c of list) {
   const slug = c.slug.split("/").pop();
   const demoPath = path.join(root, "components", c.slug, c.entry);
@@ -383,10 +520,11 @@ for (const c of list) {
   records.push({ c, slug });
   console.log(`✓ ${slug}.md / ${slug}.html`);
 }
+}
 
-/* 单组件样板模式：不生成索引 */
-if (onlySlug) {
-  console.log(`\n（单组件样板模式：仅生成 ${onlySlug}，未生成 llms.txt / llms-full.txt）`);
+/* 单页样板模式（组件或主题）：不生成索引 */
+if (compOnly || themeOnly) {
+  console.log(`\n（单页样板模式：仅生成 ${compOnly ? "组件 " + compOnly : "主题 " + themeOnly}，未生成 llms.txt / llms-full.txt）`);
   process.exit(0);
 }
 
@@ -399,7 +537,7 @@ L.push("# 灰墨 MoH_UI");
 L.push("");
 L.push("> 零依赖、纯 HTML/CSS、可直接复制给 AI 的中文前端组件库，基于 daisyUI 5（MIT）。每个组件都有一个 AI 友好页面，内含完整实现指令（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。把组件链接发给任意 AI（豆包 / Cursor / Claude Code 等），它即可抓取并按你的项目生成；页面里也有一键复制的纯文本指令。");
 L.push("");
-L.push(`- 组件总数：${data.components.length} 个（daisyUI 搬运件 ${data.components.filter((x) => x.origin === "third-party").length} 个 + 灰墨自研增强 ${data.components.filter((x) => x.origin !== "third-party").length} 个），主题 ${data.themes.length} 套（主题 AI 页随主题层重做后提供）`);
+L.push(`- 组件总数：${data.components.length} 个（daisyUI 搬运件 ${data.components.filter((x) => x.origin === "third-party").length} 个 + 灰墨自研增强 ${data.components.filter((x) => x.origin !== "third-party").length} 个），主题 ${data.themes.length} 套，每套含 data-theme 换肤指令与完整变量`);
 L.push(`- 全部组件完整指令一次抓取：[llms-full.txt](${BASE}/llms-full.txt)`);
 L.push(`- 在线组件库（可交互预览）：${BASE}/site/components.html`);
 L.push("- 组件页同目录下有同名 `.md`（纯文本版）与 `.html`（人看版），下方链接指向 `.md`");
@@ -417,6 +555,13 @@ for (const cat of catOrder) {
   }
   L.push("");
 }
+L.push(`## 主题（${themeListAll.length}）`);
+L.push("");
+for (const t of themeListAll) {
+  const desc = stripThemeDesc(t.description).replace(/\s+/g, " ");
+  L.push(`- [${themeTitleWithName(t)}](${BASE}/ai/${t.slug}.md): ${desc}`);
+}
+L.push("");
 L.push("## Optional");
 L.push("");
 L.push(`- [素材溯源与许可证](${BASE}/site/attributions.html): 每个组件的上游名称、原版地址与许可证登记`);
@@ -424,11 +569,11 @@ L.push(`- [AI 审美硬边界](${BASE}/site/rules.html): 组件背后的排版�
 L.push("");
 fs.writeFileSync(path.join(root, "llms.txt"), L.join("\n"), "utf8");
 
-/* ---------- llms-full.txt（全部组件全文拼接） ---------- */
+/* ---------- llms-full.txt（全部组件 + 全部主题全文拼接） ---------- */
 const full = [];
-full.push("# 灰墨 MoH_UI · 组件 AI 指令全集（llms-full.txt）");
+full.push("# 灰墨 MoH_UI · 组件与主题 AI 指令全集（llms-full.txt）");
 full.push("");
-full.push(`> 本文件由脚本自动拼接，含全部 ${data.components.length} 个组件的完整 AI 指令。需要单个组件时优先用 llms.txt 里的链接以节省上下文；需要整体了解或批量生成时再读本文件。`);
+full.push(`> 本文件由脚本自动拼接，含全部 ${data.components.length} 个组件 + ${themeListAll.length} 套主题的完整 AI 指令。需要单个组件或主题时优先用 llms.txt 里的链接以节省上下文；需要整体了解或批量生成时再读本文件。`);
 full.push("");
 for (const rec of records) {
   const { c, slug } = rec;
@@ -436,7 +581,12 @@ for (const rec of records) {
   full.push(md);
   full.push("\n---\n");
 }
+for (const t of themeRecords) {
+  const md = fs.readFileSync(path.join(aiDir, t.slug + ".md"), "utf8");
+  full.push(md);
+  full.push("\n---\n");
+}
 fs.writeFileSync(path.join(root, "llms-full.txt"), full.join("\n"), "utf8");
 
-console.log(`\n✅ 完成：${records.length} 个组件 → ai/（.md + .html）`);
+console.log(`\n✅ 完成：${records.length} 个组件 + ${themeRecords.length} 套主题 → ai/（各 .md + .html）`);
 console.log(`   根目录 llms.txt（索引）+ llms-full.txt（${(fs.statSync(path.join(root, "llms-full.txt")).size / 1024).toFixed(1)} KB）`);

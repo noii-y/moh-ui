@@ -1,6 +1,6 @@
-# 灰墨 MoH_UI · 组件 AI 指令全集（llms-full.txt）
+# 灰墨 MoH_UI · 组件与主题 AI 指令全集（llms-full.txt）
 
-> 本文件由脚本自动拼接，含全部 68 个组件的完整 AI 指令。需要单个组件时优先用 llms.txt 里的链接以节省上下文；需要整体了解或批量生成时再读本文件。
+> 本文件由脚本自动拼接，含全部 68 个组件 + 18 套主题的完整 AI 指令。需要单个组件或主题时优先用 llms.txt 里的链接以节省上下文；需要整体了解或批量生成时再读本文件。
 
 # 按钮（button） · 灰墨 MoH_UI
 
@@ -5914,6 +5914,1444 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 - 完整中文教程与全部变体（在线页面）：https://noii-y.github.io/moh-ui/components/empty/demo.html
 - 灰墨自研增强组件，基于 daisyUI 底座二次开发。
 - 全站 68 个组件的 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 墨夜（mo-dark） · 灰墨 MoH_UI
+
+> Linear 风格暗色数据看板。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台；挂 data-theme="mo-dark" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-dark/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-dark"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-dark"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-dark · 墨夜（深色）—— Linear 风格数据看板主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-dark"> 即整站换肤。
+   灵感来源：Linear.app 冷灰 + 克制蓝紫的暗色气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-dark"] {
+  color-scheme: dark;
+
+  /* 底与纸：近黑冷灰三层，层次靠明度不靠描边 */
+  --color-base-100: oklch(23% 0.012 253);
+  --color-base-200: oklch(20.5% 0.011 253);
+  --color-base-300: oklch(17.5% 0.010 253);
+  --color-base-content: oklch(96% 0.006 253);
+
+  /* 主色：克制的靛蓝（只留给主操作与选中态，不做大面积亮紫） */
+  --color-primary: oklch(66% 0.17 255);
+  --color-primary-content: oklch(16% 0.03 255);
+
+  /* 次色 / 强调色：冷灰蓝与青，用于次级元素与数据高亮 */
+  --color-secondary: oklch(58% 0.11 258);
+  --color-secondary-content: oklch(94% 0.01 258);
+  --color-accent: oklch(72% 0.13 200);
+  --color-accent-content: oklch(20% 0.03 200);
+
+  --color-neutral: oklch(26% 0.012 253);
+  --color-neutral-content: oklch(94% 0.005 253);
+
+  /* 语义色：低饱和，保证暗底下可读、不刺眼 */
+  --color-info: oklch(72% 0.12 232);
+  --color-info-content: oklch(22% 0.04 232);
+  --color-success: oklch(72% 0.14 160);
+  --color-success-content: oklch(20% 0.03 160);
+  --color-warning: oklch(80% 0.12 85);
+  --color-warning-content: oklch(25% 0.05 85);
+  --color-error: oklch(68% 0.17 20);
+  --color-error-content: oklch(20% 0.04 20);
+
+  /* 圆角 / 尺寸 / 边框：中等圆角、细边框，Linear 取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-dark/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-dark"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-dark/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 宣纸（mo-light） · 灰墨 MoH_UI
+
+> Stripe 风格浅色 SaaS 计费控制台。浅灰白底 + 白卡 + 克制蓝主色，整页含侧栏导航、套餐卡、用量与 API 密钥、账单表与支付方式；挂 data-theme="mo-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-light/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-light"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-light"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-light · 宣纸（浅色）—— Stripe 取向 SaaS 控制台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-light"> 即整站换肤。
+   灵感来源：Stripe 式浅灰白卡 + 克制蓝的干净气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-light"] {
+  /* 底与纸：浅灰三层，白卡浮在灰底上，层次靠明度 */
+  --color-base-100: #f6f8fa;
+  --color-base-200: #ffffff;
+  --color-base-300: #f1f3f5;
+  --color-base-content: #1a202c;
+
+  /* 主色：克制的蓝，只留给主操作与选中态 */
+  --color-primary: #2563eb;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：蓝灰与天蓝，用于次级元素与数据高亮 */
+  --color-secondary: #64748b;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0ea5e9;
+  --color-accent-content: #083344;
+
+  --color-neutral: #334155;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：白底上的标准可读色 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，SaaS 取向 */
+  --radius-selector: .375rem;
+  --radius-field: .25rem;
+  --radius-box: .5rem;
+  --size-selector: .25rem;
+  --size-field: .25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-light/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-light"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-light/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 经典 Bootstrap 后台风（mo-classic） · 灰墨 MoH_UI
+
+> 经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme="mo-classic" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-classic/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-classic"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-classic"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-classic"> 即整站换肤。
+   灵感来源：Tabler / AdminLTE 经典后台节奏（经典蓝 + 灰蓝白底，仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-classic"] {
+  /* 底与纸：经典灰蓝白三层 */
+  --color-base-100: #f5f7fa;
+  --color-base-200: #ffffff;
+  --color-base-300: #eef1f5;
+  --color-base-content: #212a35;
+
+  /* 主色：Bootstrap 经典深蓝 */
+  --color-primary: #0b5ed7;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：经典灰蓝与青蓝 */
+  --color-secondary: #6c7a89;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0aa2c0;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #364152;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：标准可读色 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：经典 3–6px 小圆角、细边框 */
+  --radius-selector: .25rem;
+  --radius-field: .25rem;
+  --radius-box: .375rem;
+  --size-selector: .25rem;
+  --size-field: .25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-classic"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 灰阶中性（商务浅色）（mo-gray） · 灰墨 MoH_UI
+
+> 冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme="mo-gray" 即整站换肤，适合企业级经营管理后台。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-gray/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-gray"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-gray"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-gray"> 即整站换肤。
+   灵感来源：shadcn Graphite 石墨灰的冷调商务气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-gray"] {
+  /* 底与纸：浅灰白三层，层次靠明度与细描边区分 */
+  --color-base-100: #f4f4f6;
+  --color-base-200: #ffffff;
+  --color-base-300: #ececef;
+  --color-base-content: #1f1f24;
+
+  /* 主色：金属深灰（主操作与选中态，不做大面积黑色块） */
+  --color-primary: #2b2b31;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：中灰与低饱和冷青石墨蓝，用于头像、标签与数据高亮 */
+  --color-secondary: #71717a;
+  --color-secondary-content: #ffffff;
+  --color-accent: #4a6fa5;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #1f1f24;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：标准可读色，content 白 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，企业级克制取向 */
+  --radius-selector: 0.3rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.45rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-gray"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 粉彩（柔和浅色）（mo-pastel） · 灰墨 MoH_UI
+
+> 圆润亲和在线教育课程后台整页。微粉暖白底 + 深莓果主色 + 淡紫暖杏点缀，学员统计、课程卡片网格、本周排课表与待批作业全部用 daisyUI 组件拼装、零依赖；挂 data-theme="mo-pastel" 即整站换肤，适合教育 / 生活服务 / 健康类产品后台。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-pastel/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-pastel"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-pastel"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-pastel · 粉彩柔和（浅色）—— 圆润亲和在线教育后台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-pastel"> 即整站换肤。
+   灵感来源：shadcn Marshmallow 粉彩圆润气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-pastel"] {
+  /* 底与纸：微粉暖白三层，柔和不刺眼 */
+  --color-base-100: #faf7f8;
+  --color-base-200: #ffffff;
+  --color-base-300: #f5f0f2;
+  --color-base-content: #45343d;
+
+  /* 主色：深莓果（主操作与选中态，白字对比充足） */
+  --color-primary: #8e3b5e;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：柔和淡紫与暖杏蜜桃，用于装饰与数据高亮 */
+  --color-secondary: #8a63b8;
+  --color-secondary-content: #ffffff;
+  --color-accent: #e8927c;
+  --color-accent-content: #5c2a1a;
+
+  --color-neutral: #45343d;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：标准可读色，content 白 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：大圆角、细边框，亲和圆润取向 */
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-pastel/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-pastel"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-pastel/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 纯净灰阶（mo-slate） · 灰墨 MoH_UI
+
+> 无彩色灰阶文档中心整页。浅灰白底 + 深炭文字，零色相专注阅读，适合文档站 / 帮助中心 / 写作效率类产品；挂 data-theme="mo-slate" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-slate/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-slate"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-slate"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-slate · 纯净灰阶（浅色）—— 文档 / 帮助中心主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-slate"> 即整站换肤。
+   无彩色零色相：正文与按钮全部用中性灰，语义色只保留给提示块，专注阅读。 */
+
+[data-theme="mo-slate"] {
+  /* 底与纸：浅灰三层，层次靠明度不靠描边 */
+  --color-base-100: #f8f8f8;
+  --color-base-200: #ffffff;
+  --color-base-300: #f0f0f0;
+  --color-base-content: #1a1a1a;
+
+  /* 主色：深炭（不是死黑，用于主按钮与选中态，浅底上不刺眼） */
+  --color-primary: #262626;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：纯灰阶，零色相 */
+  --color-secondary: #737373;
+  --color-secondary-content: #ffffff;
+  --color-accent: #525252;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #1a1a1a;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：保留色相但压低饱和，只给文档提示块用 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，纸质文档取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-slate/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-slate"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-slate/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 暗黑开发者（mo-mood） · 灰墨 MoH_UI
+
+> 深空底宇宙蓝开发者 API 控制台整页。低光害深色三层底色 + 宇宙蓝主色，适合开发者工具 / 日志查看器 / 数据产品夜间模式；挂 data-theme="mo-mood" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-mood/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-mood"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-mood"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-mood · 暗黑开发者（深色）—— API 控制台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-mood"> 即整站换肤。
+   深空底三层递进 + 宇宙蓝主色，低光害，适合开发者工具夜间工作。 */
+
+[data-theme="mo-mood"] {
+  color-scheme: dark;
+
+  /* 底与纸：深空近黑三层，层次靠明度不靠描边 */
+  --color-base-100: #0f1117;
+  --color-base-200: #151822;
+  --color-base-300: #1b1f2b;
+  --color-base-content: #e6e8ee;
+
+  /* 主色：宇宙蓝（只留给主操作与选中态） */
+  --color-primary: #4a63e0;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：灰蓝与青，用于次级元素与代码高亮 */
+  --color-secondary: #6b7a99;
+  --color-secondary-content: #ffffff;
+  --color-accent: #38bdf8;
+  --color-accent-content: #061826;
+
+  --color-neutral: #1b1f2b;
+  --color-neutral-content: #e6e8ee;
+
+  /* 语义色：深色版亮语义色，文字用近黑保证对比 */
+  --color-info: #38bdf8;
+  --color-info-content: #061826;
+  --color-success: #34d399;
+  --color-success-content: #06281c;
+  --color-warning: #fbbf24;
+  --color-warning-content: #3a2a05;
+  --color-error: #f87171;
+  --color-error-content: #3b0d0d;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，控制台取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-mood/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-mood"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-mood/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 粗野主义（mo-brutal） · 灰墨 MoH_UI
+
+> 个性品牌落地页。3px 厚黑边、直角、零模糊硬阴影、海军蓝 + 撞色红，顶栏 + 超大 hero + 特性卡 + 三档价格 + 订阅 CTA；挂 data-theme="mo-brutal" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-brutal/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-brutal"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-brutal"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-brutal · 粗野主义（浅色）—— 个性品牌落地页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-brutal"> 即整站换肤。
+   气质：3px 厚黑边、直角、硬阴影（6px 偏移零模糊）、海军蓝与撞色红。
+   灵感来源：neo-brutalism 界面风格（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-brutal"] {
+  color-scheme: light;
+
+  /* 底与纸：浅灰底 + 纯白卡 + 浅灰层，靠厚黑边分隔层次 */
+  --color-base-100: #f7f7f7;
+  --color-base-200: #ffffff;
+  --color-base-300: #ececec;
+  --color-base-content: #111111;
+
+  /* 主色：海军蓝（实心按钮与主操作） */
+  --color-primary: #1e3a8a;
+  --color-primary-content: #ffffff;
+
+  /* 次色：黑块（粗野主义的黑） */
+  --color-secondary: #111111;
+  --color-secondary-content: #ffffff;
+
+  /* 强调色：撞色红（徽章 / 提示等点缀） */
+  --color-accent: #dc2626;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #111111;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色 */
+  --color-info: #1e40af;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 边框：直角、3px 厚边，粗野主义取向 */
+  --radius-selector: 0;
+  --radius-field: 0;
+  --radius-box: 0;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 3px;
+  --depth: 0;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-brutal/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-brutal"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-brutal/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 霓虹（mo-neon） · 灰墨 MoH_UI
+
+> 科技活动发布页。深空底 + 深青实色按钮 + 克制亮青霓虹发光，顶栏 + 网格 hero + 静态倒计时 + 亮点卡 + 议程表 + 购票 CTA；挂 data-theme="mo-neon" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-neon/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-neon"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-neon"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-neon · 霓虹赛博（深色）—— 科技活动 / 新品发布页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-neon"> 即整站换肤。
+   气质：深空底、深青实色按钮、亮青霓虹点缀（发光仅在 demo.html 自定义类里克制使用）。
+   灵感来源：cyberpunk / 科技发布会暗色气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-neon"] {
+  color-scheme: dark;
+
+  /* 底与纸：深空三层，层次靠明度与细描边 */
+  --color-base-100: #0a0e14;
+  --color-base-200: #111722;
+  --color-base-300: #161d2b;
+  --color-base-content: #eaf0f8;
+
+  /* 主色：深青实色（按钮底） */
+  --color-primary: #0e7490;
+  --color-primary-content: #ffffff;
+
+  /* 次色：深蓝青 */
+  --color-secondary: #155e75;
+  --color-secondary-content: #ffffff;
+
+  /* 强调色：亮青霓虹（关键词 / 徽章 / 描边发光） */
+  --color-accent: #22d3ee;
+  --color-accent-content: #04141a;
+
+  --color-neutral: #111722;
+  --color-neutral-content: #eaf0f8;
+
+  /* 语义色：霓虹亮色系，content 用深色保证对比 */
+  --color-info: #38bdf8;
+  --color-info-content: #08222f;
+  --color-success: #34d399;
+  --color-success-content: #06281c;
+  --color-warning: #fbbf24;
+  --color-warning-content: #2b1d02;
+  --color-error: #f87171;
+  --color-error-content: #330a0a;
+
+  /* 圆角 / 边框：小圆角、1px 细边 */
+  --radius-selector: 0.3rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-neon/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-neon"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-neon/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 新中式（mo-zhongshi） · 灰墨 MoH_UI
+
+> 茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme="mo-zhongshi" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-zhongshi/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="mo-zhongshi"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-zhongshi"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-zhongshi · 新中式（浅色）—— 文创 / 茶叶电商首页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-zhongshi"> 即整站换肤。
+   气质：米宣纸底、朱砂主色、墨褐文字、青瓷点缀、克制留白。
+   灵感来源：中式宋明美学与茶饮品牌页面（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-zhongshi"] {
+  color-scheme: light;
+
+  /* 底与纸：米宣纸三层，层次靠暖明度 */
+  --color-base-100: #f6f3ec;
+  --color-base-200: #fffdf8;
+  --color-base-300: #efe9dd;
+  --color-base-content: #3f3730;
+
+  /* 主色：朱砂 */
+  --color-primary: #c23b22;
+  --color-primary-content: #ffffff;
+
+  /* 次色：茶褐 / 赭石 */
+  --color-secondary: #8a6d4a;
+  --color-secondary-content: #ffffff;
+
+  /* 强调色：青瓷低饱和绿 */
+  --color-accent: #6b8e7f;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3f3730;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色 */
+  --color-info: #3a6ea5;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 边框：中性小圆角、1px 细边 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-zhongshi"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 极客紫（OSS 完整版）（dracula-oss） · 灰墨 MoH_UI
+
+> 开源代码协作平台整页（仓库头 + 文件树 + main.py 代码预览 + README 摘要 + PR/Issue 列表）。Dracula 完整 OSS 色板：深紫灰底 + 霓虹紫主色，挂 data-theme="dracula-oss" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：Dracula Theme (dracula/dracula-theme)（MIT） · [上游色板](https://github.com/dracula/dracula-theme#color-palette-oss)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/dracula-oss/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="dracula-oss"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="dracula-oss"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 dracula-oss · 极客紫（外部 OSS 完整版）—— Dracula 完整色板开发者主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 dracula/dracula-theme 官方 OSS 色板（MIT © 2023 Dracula Theme）。
+   注意：vendor 内 daisyUI 官方自带简化版 data-theme=dracula，本目录以 -oss 后缀区分。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="dracula-oss"> 即整站换肤。 */
+
+[data-theme="dracula-oss"] {
+  color-scheme: dark;
+
+  /* 底与纸：Dracula 经典深紫灰三层，#282a36 为官方 Background */
+  --color-base-100: #282a36;
+  --color-base-200: #21222c;
+  --color-base-300: #191a21;
+  --color-base-content: #f8f8f2;
+
+  /* 主色：霓虹紫（官方 Purple #bd93f9），只留给主操作与选中态 */
+  --color-primary: #bd93f9;
+  --color-primary-content: #21222c;
+
+  /* 次色 / 强调色：霓虹粉（Pink #ff79c6）与荧光青（Cyan #8be9fd） */
+  --color-secondary: #ff79c6;
+  --color-secondary-content: #21222c;
+  --color-accent: #8be9fd;
+  --color-accent-content: #21222c;
+
+  /* 中性面：官方 Selection #44475a，用于侧栏与次级面板 */
+  --color-neutral: #44475a;
+  --color-neutral-content: #f8f8f2;
+
+  /* 语义色：官方语法色直接映射（青/绿/黄/红），橙 #ffb86c 留给中性提示 */
+  --color-info: #8be9fd;
+  --color-info-content: #21222c;
+  --color-success: #50fa7b;
+  --color-success-content: #21222c;
+  --color-warning: #f1fa8c;
+  --color-warning-content: #21222c;
+  --color-error: #ff5555;
+  --color-error-content: #f8f8f2;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，开发者终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/dracula-oss/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="dracula-oss"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/dracula-oss/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 浅滩紫（Catppuccin Mocha）（catppuccin） · 灰墨 MoH_UI
+
+> 桌面端音乐播放器。软糯马卡龙深色 + 淡紫主色，左侧歌单导航、中部专辑封面与播放队列、底部播放条；挂 data-theme="catppuccin" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：Catppuccin（MIT） · [上游色板](https://catppuccin.com/palette/)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/catppuccin/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="catppuccin"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="catppuccin"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 catppuccin · 浅滩紫（Catppuccin Mocha 移植）—— 软糯马卡龙深色音乐主题
+   色板出处：Catppuccin Mocha（MIT，© 2021 Catppuccin）https://catppuccin.com/palette/
+   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，<link> 本文件，并在
+   <html data-theme="catppuccin"> 即整站换肤。 */
+
+[data-theme="catppuccin"] {
+  color-scheme: dark;
+
+  /* 底与纸：base / mantle / crust 三层，低反差、柔和 */
+  --color-base-100: #1e1e2e;
+  --color-base-200: #181825;
+  --color-base-300: #11111b;
+  --color-base-content: #cdd6f4;
+
+  /* 主色：mauve 淡紫，只留给主播放按钮与选中态 */
+  --color-primary: #cba6f7;
+  --color-primary-content: #181825;
+
+  /* 次色：blue / green，用于次级高亮 */
+  --color-secondary: #89b4fa;
+  --color-secondary-content: #11111b;
+  --color-accent: #a6e3a1;
+  --color-accent-content: #11111b;
+
+  --color-neutral: #313244;
+  --color-neutral-content: #cdd6f4;
+
+  /* 语义色：sapphire / green / yellow / red，深底配深色字 */
+  --color-info: #74c7ec;
+  --color-info-content: #11111b;
+  --color-success: #a6e3a1;
+  --color-success-content: #11111b;
+  --color-warning: #f9e2af;
+  --color-warning-content: #453a00;
+  --color-error: #f38ba8;
+  --color-error-content: #450a18;
+
+  /* 圆角 / 尺寸 / 边框：中等偏圆润，cozy 取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/catppuccin/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="catppuccin"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/catppuccin/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 北极冷（Nord 暗色版）（nord-dark） · 灰墨 MoH_UI
+
+> 邮件客户端三栏整页。极地冷灰蓝 + 冰蓝主色，左侧文件夹与标签、中部收件箱列表（未读加粗）、右侧邮件阅读窗；挂 data-theme="nord-dark" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：Nord（MIT） · [上游色板](https://www.nordtheme.com/docs/colors-and-palettes)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/nord-dark/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="nord-dark"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="nord-dark"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 nord-dark · 北极冷（Nord 完整暗色移植）—— 极地冷灰蓝、克制专注
+   色板出处：Nord（MIT，© 2016-present Sven Greb）https://www.nordtheme.com/docs/colors-and-palettes
+   说明：daisyUI 官方自带 nord 为浅色简化版，本目录是完整 16 色 Polar Night /
+   Snow Storm / Frost / Aurora 暗色 port，命名为 nord-dark 以区分。
+   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，<link> 本文件，并在
+   <html data-theme="nord-dark"> 即整站换肤。 */
+
+[data-theme="nord-dark"] {
+  color-scheme: dark;
+
+  /* 底与纸：Polar Night 三层，冷灰克制 */
+  --color-base-100: #3b4252;   /* nord1 */
+  --color-base-200: #434c5e;   /* nord2 */
+  --color-base-300: #2e3440;   /* nord0 */
+  --color-base-content: #e5e9f0; /* nord5 */
+
+  /* 主色：nord10 冰蓝，只留给写邮件等主操作 */
+  --color-primary: #5e81ac;
+  --color-primary-content: #eceff4; /* nord6 */
+
+  /* 次色：nord9 / nord8，冷调次级高亮 */
+  --color-secondary: #81a1c1;
+  --color-secondary-content: #2e3440;
+  --color-accent: #88c0d0;
+  --color-accent-content: #2e3440;
+
+  --color-neutral: #4c566a;    /* nord3 */
+  --color-neutral-content: #e5e9f0;
+
+  /* 语义色：Aurora 四色，长时阅读不刺眼 */
+  --color-info: #88c0d0;
+  --color-info-content: #2e3440;
+  --color-success: #a3be8c;    /* nord14 */
+  --color-success-content: #2e3440;
+  --color-warning: #ebcb8b;   /* nord13 */
+  --color-warning-content: #3b3209;
+  --color-error: #bf616a;       /* nord11 */
+  --color-error-content: #eceff4;
+
+  /* 圆角 / 尺寸 / 边框：中性小角，效率工具取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/nord-dark/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="nord-dark"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/nord-dark/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 东京入夜（tokyo-night） · 灰墨 MoH_UI
+
+> 股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme="tokyo-night" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。
+
+来源：Tokyo Night (folke/tokyonight.nvim)（Apache-2.0） · [上游色板](https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/storm.lua)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/tokyo-night/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="tokyo-night"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="tokyo-night"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="tokyo-night"> 即整站换肤。 */
+
+[data-theme="tokyo-night"] {
+  color-scheme: dark;
+
+  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */
+  --color-base-100: #1a1b26;
+  --color-base-200: #292e42;
+  --color-base-300: #16161e;
+  --color-base-content: #c0caf5;
+
+  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */
+  --color-primary: #7aa2f7;
+  --color-primary-content: #16161e;
+
+  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */
+  --color-secondary: #bb9af7;
+  --color-secondary-content: #16161e;
+  --color-accent: #7dcfff;
+  --color-accent-content: #16161e;
+
+  /* 中性面：terminal_black #414868，用于侧栏与分隔 */
+  --color-neutral: #414868;
+  --color-neutral-content: #c0caf5;
+
+  /* 语义色：官方数据色直接映射 */
+  --color-info: #2ac3de;
+  --color-info-content: #16161e;
+  --color-success: #9ece6a;
+  --color-success-content: #16161e;
+  --color-warning: #e0af68;
+  --color-warning-content: #16161e;
+  --color-error: #f7768e;
+  --color-error-content: #16161e;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="tokyo-night"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 暮色松（Rosé Pine）（rose-pine） · 灰墨 MoH_UI
+
+> 独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme="rose-pine" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：Rosé Pine（MIT） · [上游色板](https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/rose-pine/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="rose-pine"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="rose-pine"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质
+   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua
+   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，<link> 本文件，并在
+   <html data-theme="rose-pine"> 即整站换肤。 */
+
+[data-theme="rose-pine"] {
+  color-scheme: dark;
+
+  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */
+  --color-base-100: #191724;
+  --color-base-200: #1f1d2e;
+  --color-base-300: #26233a;
+  --color-base-content: #e0def4;
+
+  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */
+  --color-primary: #c4a7e7;
+  --color-primary-content: #191724;
+
+  /* 次色：rose 玫红 / foam 青，杂志式点缀 */
+  --color-secondary: #eb6f92;
+  --color-secondary-content: #2a0a14;
+  --color-accent: #9ccfd8;
+  --color-accent-content: #12242a;
+
+  --color-neutral: #403d52;
+  --color-neutral-content: #e0def4;
+
+  /* 语义色：pine / foam / gold / love，长文阅读柔和 */
+  --color-info: #31748f;
+  --color-info-content: #e0def4;
+  --color-success: #9ccfd8;
+  --color-success-content: #12242a;
+  --color-warning: #f6c177;
+  --color-warning-content: #3a2a05;
+  --color-error: #eb6f92;
+  --color-error-content: #2a0a14;
+
+  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="rose-pine"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# Solarized Light（纸感护眼）（solarized-light） · 灰墨 MoH_UI
+
+> 健康档案 / 预约挂号整页。米纸底色 #fdf6e3 配深青墨文字，低亮度差、长时间阅读不累眼；挂 data-theme="solarized-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：Solarized（MIT） · [上游色板](https://github.com/altercation/solarized)
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/solarized-light/tokens.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="solarized-light"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="solarized-light"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 solarized-light · 纸感护眼——Solarized 浅色主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   配色取自 Ethan Schoonover 的 Solarized 色板（MIT，https://github.com/altercation/solarized#the-values）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="solarized-light"> 即整站换肤。 */
+
+[data-theme="solarized-light"] {
+  color-scheme: light;
+
+  /* 底与纸：base3 / base2 / 再深一档，米纸三层，层次靠明度 */
+  --color-base-100: #fdf6e3;
+  --color-base-200: #eee8d5;
+  --color-base-300: #e3dccb;
+  --color-base-content: #073642; /* base02 深青墨，保证亮底下对比 */
+
+  /* 主色：Solarized blue（只留给主操作与选中态） */
+  --color-primary: #268bd2;
+  --color-primary-content: #fdf6e3;
+
+  /* 次色 / 强调色：violet 与 cyan */
+  --color-secondary: #6c71c4;
+  --color-secondary-content: #fdf6e3;
+  --color-accent: #2aa198;
+  --color-accent-content: #073642;
+
+  --color-neutral: #93a1a1; /* base1 灰青 */
+  --color-neutral-content: #073642;
+
+  /* 语义色：cyan 信息 / green 成功 / yellow 警告 / red 错误，均配好对比 */
+  --color-info: #2aa198;
+  --color-info-content: #073642;
+  --color-success: #859900;
+  --color-success-content: #002b36;
+  --color-warning: #b58900;
+  --color-warning-content: #073642;
+  --color-error: #dc322f;
+  --color-error-content: #fdf6e3;
+
+  /* 圆角 / 尺寸 / 边框：中性圆角、细边框，长文阅读取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+```
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/solarized-light/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="solarized-light"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/solarized-light/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 焦糖拿铁（caramellatte） · 灰墨 MoH_UI
+
+> 社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme="caramellatte" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="caramellatte"` 即整站换肤：组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/caramellatte/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="caramellatte"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/caramellatte/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
+
+
+---
+
+# 丝绸（silk） · 灰墨 MoH_UI
+
+> 精品民宿预订整页。暖米白底配墨蓝文字，留白舒展、雅致轻奢；挂 daisyUI 官方主题 data-theme="silk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+## 给 AI 的换肤指令
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 标签挂 `data-theme="silk"` 即整站换肤：组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/silk/demo.html
+
+⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="silk"] 里的 --color-* 变量。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/silk/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
 
 
 ---

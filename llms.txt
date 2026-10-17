@@ -2,7 +2,7 @@
 
 > 零依赖、纯 HTML/CSS、可直接复制给 AI 的中文前端组件库，基于 daisyUI 5（MIT）。每个组件都有一个 AI 友好页面，内含完整实现指令（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。把组件链接发给任意 AI（豆包 / Cursor / Claude Code 等），它即可抓取并按你的项目生成；页面里也有一键复制的纯文本指令。
 
-- 组件总数：68 个（daisyUI 搬运件 63 个 + 灰墨自研增强 5 个），主题 10 套（主题 AI 页随主题层重做后提供）
+- 组件总数：68 个（daisyUI 搬运件 63 个 + 灰墨自研增强 5 个），主题 18 套，每套含 data-theme 换肤指令与完整变量
 - 全部组件完整指令一次抓取：[llms-full.txt](https://noii-y.github.io/moh-ui/llms-full.txt)
 - 在线组件库（可交互预览）：https://noii-y.github.io/moh-ui/site/components.html
 - 组件页同目录下有同名 `.md`（纯文本版）与 `.html`（人看版），下方链接指向 `.md`
@@ -89,6 +89,27 @@
 - [图表卡（chart-card）](https://noii-y.github.io/moh-ui/ai/chart-card.md): 数据看板里的图表卡：折线/柱状/环形图与无数据空态，ECharts 渲染，颜色从 daisyUI 主题变量读取、切换主题自动跟随，含数据来源脚注与定高容器（需 ECharts CDN）。
 - [代码块（code-block）](https://noii-y.github.io/moh-ui/ai/code-block.md): 教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。
 - [拖拽排序（drag-sort）](https://noii-y.github.io/moh-ui/ai/drag-sort.md): 后台菜单与列表的拖拽排序：HTML5 拖拽换序、把手聚焦后 ↑/↓ 键盘移动、目标位高亮、aria-live 播报移动结果（换序为一小段原生 JS，样式零依赖）。
+
+## 主题（18）
+
+- [墨夜（mo-dark）](https://noii-y.github.io/moh-ui/ai/mo-dark.md): Linear 风格暗色数据看板。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台；挂 data-theme="mo-dark" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [宣纸（mo-light）](https://noii-y.github.io/moh-ui/ai/mo-light.md): Stripe 风格浅色 SaaS 计费控制台。浅灰白底 + 白卡 + 克制蓝主色，整页含侧栏导航、套餐卡、用量与 API 密钥、账单表与支付方式；挂 data-theme="mo-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [经典 Bootstrap 后台风（mo-classic）](https://noii-y.github.io/moh-ui/ai/mo-classic.md): 经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme="mo-classic" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [灰阶中性（商务浅色）（mo-gray）](https://noii-y.github.io/moh-ui/ai/mo-gray.md): 冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme="mo-gray" 即整站换肤，适合企业级经营管理后台。
+- [粉彩（柔和浅色）（mo-pastel）](https://noii-y.github.io/moh-ui/ai/mo-pastel.md): 圆润亲和在线教育课程后台整页。微粉暖白底 + 深莓果主色 + 淡紫暖杏点缀，学员统计、课程卡片网格、本周排课表与待批作业全部用 daisyUI 组件拼装、零依赖；挂 data-theme="mo-pastel" 即整站换肤，适合教育 / 生活服务 / 健康类产品后台。
+- [纯净灰阶（mo-slate）](https://noii-y.github.io/moh-ui/ai/mo-slate.md): 无彩色灰阶文档中心整页。浅灰白底 + 深炭文字，零色相专注阅读，适合文档站 / 帮助中心 / 写作效率类产品；挂 data-theme="mo-slate" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [暗黑开发者（mo-mood）](https://noii-y.github.io/moh-ui/ai/mo-mood.md): 深空底宇宙蓝开发者 API 控制台整页。低光害深色三层底色 + 宇宙蓝主色，适合开发者工具 / 日志查看器 / 数据产品夜间模式；挂 data-theme="mo-mood" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [粗野主义（mo-brutal）](https://noii-y.github.io/moh-ui/ai/mo-brutal.md): 个性品牌落地页。3px 厚黑边、直角、零模糊硬阴影、海军蓝 + 撞色红，顶栏 + 超大 hero + 特性卡 + 三档价格 + 订阅 CTA；挂 data-theme="mo-brutal" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [霓虹（mo-neon）](https://noii-y.github.io/moh-ui/ai/mo-neon.md): 科技活动发布页。深空底 + 深青实色按钮 + 克制亮青霓虹发光，顶栏 + 网格 hero + 静态倒计时 + 亮点卡 + 议程表 + 购票 CTA；挂 data-theme="mo-neon" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [新中式（mo-zhongshi）](https://noii-y.github.io/moh-ui/ai/mo-zhongshi.md): 茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme="mo-zhongshi" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [极客紫（OSS 完整版）（dracula-oss）](https://noii-y.github.io/moh-ui/ai/dracula-oss.md): 开源代码协作平台整页（仓库头 + 文件树 + main.py 代码预览 + README 摘要 + PR/Issue 列表）。Dracula 完整 OSS 色板：深紫灰底 + 霓虹紫主色，挂 data-theme="dracula-oss" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [浅滩紫（Catppuccin Mocha）（catppuccin）](https://noii-y.github.io/moh-ui/ai/catppuccin.md): 桌面端音乐播放器。软糯马卡龙深色 + 淡紫主色，左侧歌单导航、中部专辑封面与播放队列、底部播放条；挂 data-theme="catppuccin" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [北极冷（Nord 暗色版）（nord-dark）](https://noii-y.github.io/moh-ui/ai/nord-dark.md): 邮件客户端三栏整页。极地冷灰蓝 + 冰蓝主色，左侧文件夹与标签、中部收件箱列表（未读加粗）、右侧邮件阅读窗；挂 data-theme="nord-dark" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [东京入夜（tokyo-night）](https://noii-y.github.io/moh-ui/ai/tokyo-night.md): 股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme="tokyo-night" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。
+- [暮色松（Rosé Pine）（rose-pine）](https://noii-y.github.io/moh-ui/ai/rose-pine.md): 独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme="rose-pine" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [Solarized Light（纸感护眼）（solarized-light）](https://noii-y.github.io/moh-ui/ai/solarized-light.md): 健康档案 / 预约挂号整页。米纸底色 #fdf6e3 配深青墨文字，低亮度差、长时间阅读不累眼；挂 data-theme="solarized-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [焦糖拿铁（caramellatte）](https://noii-y.github.io/moh-ui/ai/caramellatte.md): 社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme="caramellatte" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [丝绸（silk）](https://noii-y.github.io/moh-ui/ai/silk.md): 精品民宿预订整页。暖米白底配墨蓝文字，留白舒展、雅致轻奢；挂 daisyUI 官方主题 data-theme="silk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
 
 ## Optional
 

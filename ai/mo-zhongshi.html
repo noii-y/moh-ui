@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>新中式（浅色）（mo-zhongshi）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「新中式（浅色）」组件。茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme="mo-zhongshi" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="mo-zhongshi.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/mo-zhongshi/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>新中式（mo-zhongshi） · 灰墨 MoH_UI</h1>
+<blockquote>茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme="mo-zhongshi" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：灰墨二创主题（MIT）</p>
+<h2>给 AI 的换肤指令</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-zhongshi/tokens.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 标签挂 <code>data-theme="mo-zhongshi"</code> 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-zhongshi"] 下的全部 --color-* 变量。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<pre class="fence"><code class="lang-css">/*! 灰墨 mo-zhongshi · 新中式（浅色）—— 文创 / 茶叶电商首页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="mo-zhongshi"&gt; 即整站换肤。
+   气质：米宣纸底、朱砂主色、墨褐文字、青瓷点缀、克制留白。
+   灵感来源：中式宋明美学与茶饮品牌页面（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-zhongshi"] {
+  color-scheme: light;
+
+  /* 底与纸：米宣纸三层，层次靠暖明度 */
+  --color-base-100: #f6f3ec;
+  --color-base-200: #fffdf8;
+  --color-base-300: #efe9dd;
+  --color-base-content: #3f3730;
+
+  /* 主色：朱砂 */
+  --color-primary: #c23b22;
+  --color-primary-content: #ffffff;
+
+  /* 次色：茶褐 / 赭石 */
+  --color-secondary: #8a6d4a;
+  --color-secondary-content: #ffffff;
+
+  /* 强调色：青瓷低饱和绿 */
+  --color-accent: #6b8e7f;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3f3730;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色 */
+  --color-info: #3a6ea5;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 边框：中性小圆角、1px 细边 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}</code></pre>
+<p>④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：<a href="https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html</a></p>
+<p>⑤ 审美提示：组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-zhongshi"] 里的 --color-* 变量。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-zhongshi/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库（全部 18 套整页案例）：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请把我的整个前端项目换成「新中式（浅色）」主题（data-theme=\"mo-zhongshi\"）。\n\n茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme=\"mo-zhongshi\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n\n【怎么引入】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-zhongshi/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-zhongshi\"> 挂属性，整站即刻换肤，组件类名一行都不用改。\n上面的 tokens.css 覆盖 [data-theme=\"mo-zhongshi\"] 下的全部 --color-* 变量。\n\n【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme=\"mo-zhongshi\"] 里的 --color-* 变量）\n\n```css\n/*! 灰墨 mo-zhongshi · 新中式（浅色）—— 文创 / 茶叶电商首页主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-zhongshi\"> 即整站换肤。\n   气质：米宣纸底、朱砂主色、墨褐文字、青瓷点缀、克制留白。\n   灵感来源：中式宋明美学与茶饮品牌页面（仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-zhongshi\"] {\n  color-scheme: light;\n\n  /* 底与纸：米宣纸三层，层次靠暖明度 */\n  --color-base-100: #f6f3ec;\n  --color-base-200: #fffdf8;\n  --color-base-300: #efe9dd;\n  --color-base-content: #3f3730;\n\n  /* 主色：朱砂 */\n  --color-primary: #c23b22;\n  --color-primary-content: #ffffff;\n\n  /* 次色：茶褐 / 赭石 */\n  --color-secondary: #8a6d4a;\n  --color-secondary-content: #ffffff;\n\n  /* 强调色：青瓷低饱和绿 */\n  --color-accent: #6b8e7f;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #3f3730;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色 */\n  --color-info: #3a6ea5;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 边框：中性小圆角、1px 细边 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.375rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 0;\n  --noise: 0;\n}\n```\n";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
