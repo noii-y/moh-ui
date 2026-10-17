@@ -4,9 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>主题库 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨主题库：10 套真实色板主题，统一 --moh-* 变量，全部体检 100 分。按风格筛选，一键复制 tokens / AI 指令。" />
+  <meta name="description" content="灰墨主题库：每套主题都是一个真实业务整页案例（数据看板、电商、音乐播放器、股票终端……），挂 data-theme 即整站换肤，daisyUI 5 驱动、零依赖。" />
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
+  <style>
+    /* 整页缩略图：把 1280px 宽的桌面整页缩放进卡片 */
+    .t-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1280 / 900;
+      overflow: hidden;
+      background: #0f0f0f;
+      border-bottom: 1px solid var(--moh-border, #2a2a30);
+    }
+    .t-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      background: #fff;
+      pointer-events: none;
+    }
+    .t-filter-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .t-filter-label {
+      font-size: 12px;
+      color: var(--moh-muted, #9ca3af);
+      margin-right: 2px;
+    }
+    .t-card-scene {
+      font-size: 12px;
+      color: var(--moh-primary, #5e6ad2);
+      margin: 0;
+    }
+    .t-modal-frame {
+      width: 100%;
+      height: min(72vh, 760px);
+      border: none;
+      display: block;
+      background: #fff;
+    }
+    .t-btn[disabled] {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -32,22 +78,27 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>主题库 <span id="theme-count" style="font-size:16px;color:var(--moh-muted)"></span></h1>
-      <p>10 套真实色板，统一 <code>--moh-*</code> 变量，全部通过体检 100/100。点击卡片预览整页效果；一键复制 tokens 或 AI 指令。</p>
+      <p>每套主题都是一个<b>真实业务整页案例</b>（数据看板、电商、音乐播放器、股票终端……），不是色卡。基于 daisyUI 5 的 <code>data-theme</code> 机制，引入主题文件、在 <code>&lt;html&gt;</code> 上挂一个属性即整站换肤；页面全部用 daisyUI 组件拼装、零依赖。主题来源含原创二创与开源收录，许可证逐套标注。</p>
     </div>
 
     <div class="site-toolbar">
       <label class="site-search">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m21 21-4-4" /></svg>
-        <input id="search" type="search" placeholder="搜索主题名 / 风格…" aria-label="搜索主题" />
+        <input id="search" type="search" placeholder="搜索主题名 / 场景…" aria-label="搜索主题" />
       </label>
-      <div class="site-filters" id="filters"></div>
+      <div class="t-filter-group" id="filters-dark">
+        <span class="t-filter-label">明暗</span>
+      </div>
+      <div class="t-filter-group" id="filters-group">
+        <span class="t-filter-label">来源</span>
+      </div>
     </div>
 
     <div class="site-grid" id="grid"></div>
   </div>
 
   <!-- 预览弹层 -->
-  <div class="site-modal" id="modal" role="dialog" aria-modal="true" aria-label="主题预览">
+  <div class="site-modal" id="modal" role="dialog" aria-modal="true" aria-label="主题整页预览">
     <div class="site-modal__panel">
       <div class="site-modal__head">
         <p class="site-modal__title" id="modal-title"></p>
@@ -57,12 +108,14 @@
           <button class="site-modal__close" id="close-btn" aria-label="关闭">✕</button>
         </div>
       </div>
-      <div class="site-modal__body"><iframe id="modal-frame" title="主题预览"></iframe></div>
+      <div class="site-modal__body">
+        <iframe class="t-modal-frame" id="modal-frame" title="主题整页预览"></iframe>
+      </div>
       <div class="site-modal__foot">
-        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-tokens">复制 tokens.css</button>
-        <button class="site-btn site-btn--secondary site-btn--sm" id="copy-ai">复制 AI 指令</button>
-        <button class="site-btn site-btn--secondary site-btn--sm" id="download-tokens">下载 tokens.css</button>
-        <a class="site-btn site-btn--primary site-btn--sm" id="src-link" target="_blank" rel="noopener">查看源码</a>
+        <button class="site-btn site-btn--primary site-btn--sm" id="copy-ai">复制 AI 指令</button>
+        <button class="site-btn site-btn--secondary site-btn--sm t-btn" id="copy-tokens">复制 tokens.css</button>
+        <a class="site-btn site-btn--secondary site-btn--sm" id="open-page" target="_blank" rel="noopener">新窗口打开整页</a>
+        <a class="site-btn site-btn--secondary site-btn--sm" id="src-link" target="_blank" rel="noopener">查看源码</a>
       </div>
     </div>
   </div>
@@ -77,89 +130,102 @@
   <script>
     var DATA = window.MOH_DATA;
     var grid = document.getElementById("grid");
-    var filters = document.getElementById("filters");
     var search = document.getElementById("search");
     var modal = document.getElementById("modal");
     var modalFrame = document.getElementById("modal-frame");
     var modalTitle = document.getElementById("modal-title");
 
-    var tag = new URLSearchParams(location.search).get("tag") || "全部";
-    var q = new URLSearchParams(location.search).get("q") || "";
+    var darkFilter = "全部";
+    var groupFilter = "全部";
+    var q = "";
 
-    document.getElementById("theme-count").textContent = "· " + DATA.stats.themes + " 套";
+    var DESIGN_W = 1280, DESIGN_H = 900;
 
-    /* 筛选栏 */
-    var tags = ["全部"].concat(DATA.themeTags);
-    filters.innerHTML = tags.map(function (t) {
-      return '<button class="site-filter' + (t === tag ? " site-filter--active" : "") + '" data-tag="' + t + '">' + t + "</button>";
-    }).join("");
+    document.getElementById("theme-count").textContent = "· " + DATA.stats.themes + " 套完整页面案例";
 
-    /* 色板条 */
-    function swatch(p) {
-      var cells = [
-        ["canvas", p.canvas], ["surface", p.surface], ["border", p.border],
-        ["primary", p.primary], ["success", p.success], ["danger", p.danger]
-      ].filter(function (c) { return c[1]; });
-      return '<span class="site-swatch" aria-hidden="true">' + cells.map(function (c) {
-        return '<span class="site-swatch__cell" style="background:' + c[1] + '"></span>';
-      }).join("") + "</span>";
+    /* 筛选栏（明暗 / 来源 两组） */
+    function buildFilters(boxId, items, getter) {
+      var box = document.getElementById(boxId);
+      items.forEach(function (item) {
+        var b = document.createElement("button");
+        b.className = "site-filter";
+        b.textContent = item;
+        b.dataset.value = item;
+        b.addEventListener("click", function () {
+          if (boxId === "filters-dark") darkFilter = item;
+          else groupFilter = item;
+          box.querySelectorAll(".site-filter").forEach(function (x) { x.classList.toggle("site-filter--active", x === b); });
+          syncUrl();
+          render();
+        });
+        box.appendChild(b);
+      });
+      box.querySelector(".site-filter").classList.add("site-filter--active");
+    }
+    buildFilters("filters-dark", ["全部", "深色", "浅色"], function (t) { return t.dark ? "深色" : "浅色"; });
+    buildFilters("filters-group", ["全部", "二创", "收录"], function (t) { return t.group; });
+
+    /* 主题来源标签 */
+    function licenseChip(t) {
+      return t.license === "MIT" ? "MIT" : t.license;
     }
 
-    /* 灵感来源小字 */
-    function originLabel(t) {
-      if (t.origin === "original" && t.inspiration && t.inspiration.length) {
-        var src = t.inspiration.map(function (u) { return u.replace(/^https?:\/\//, "").slice(0, 36); }).join(" / ");
-        return "灵感：" + src;
-      }
-      return t.origin === "original" ? "自研色板" : "二创（见溯源）";
+    /* 卡片缩略图：桌面整页缩放进卡片 */
+    function fitFrames() {
+      grid.querySelectorAll(".t-frame").forEach(function (wrap) {
+        var iframe = wrap.querySelector("iframe");
+        var scale = wrap.clientWidth / DESIGN_W;
+        iframe.style.width = DESIGN_W + "px";
+        iframe.style.height = DESIGN_H + "px";
+        iframe.style.transform = "scale(" + scale + ")";
+        iframe.style.transformOrigin = "top left";
+      });
+    }
+
+    function visibleList() {
+      return DATA.themes.filter(function (t) {
+        var okDark = darkFilter === "全部" || (darkFilter === "深色" ? t.dark : !t.dark);
+        var okGroup = groupFilter === "全部" || t.group === groupFilter;
+        var hay = (t.name + " " + t.title + " " + t.description + " " + t.styleTags.join(" ")).toLowerCase();
+        var okQ = !q || hay.indexOf(q.toLowerCase()) !== -1;
+        return okDark && okGroup && okQ;
+      });
     }
 
     function render() {
-      var list = DATA.themes.filter(function (t) {
-        var okTag = tag === "全部" || t.styleTags.indexOf(tag) !== -1;
-        var hay = (t.name + " " + t.title + " " + t.description + " " + t.styleTags.join(" ")).toLowerCase();
-        var okQ = !q || hay.indexOf(q.toLowerCase()) !== -1;
-        return okTag && okQ;
-      });
-
+      var list = visibleList();
       if (!list.length) {
-        grid.innerHTML = '<div class="site-empty"><div class="site-empty__icon">🫥</div><p>没有匹配的主题，换个标签或关键词试试。</p></div>';
+        grid.innerHTML = '<div class="site-empty"><div class="site-empty__icon">🫥</div><p>没有匹配的主题，换个筛选或关键词试试。</p></div>';
         return;
       }
 
       grid.innerHTML = list.map(function (t) {
+        var scene = t.styleTags.filter(function (x) { return x !== "深色" && x !== "浅色"; }).slice(0, 2).join(" · ");
         return (
           '<div class="site-card" data-name="' + t.name + '" tabindex="0" role="button" aria-label="预览主题 ' + t.title + '">' +
-          '<iframe class="site-card__frame" src="../themes/' + t.slug + '/preview.html" loading="lazy" title="' + t.title + ' 预览"></iframe>' +
+          '<div class="t-frame"><iframe src="../themes/' + t.slug + '/demo.html" loading="lazy" title="' + t.title + ' 整页缩略图"></iframe></div>' +
           '<div class="site-card__body">' +
-          '<p class="site-card__title">' + t.title + ' <span class="site-chip site-chip--ok">audit ' + t.audit + '</span></p>' +
-          '<p class="site-card__desc">' + t.description + '</p>' +
-          swatch(t.palette) +
+          '<p class="site-card__title">' + t.title + ' <span class="site-chip">data-theme="' + t.name + '"</span></p>' +
+          '<p class="t-card-scene">' + scene + '</p>' +
+          '<p class="site-card__desc">' + t.description.replace(/^完整页面案例：/, "") + '</p>' +
           '<div class="site-card__meta">' +
-          '<span class="site-chip">' + t.styleTags.join(" / ") + "</span>" +
-          '<span class="site-chip">' + t.license + "</span>" +
-          '<span class="site-chip">' + originLabel(t) + "</span>" +
+          '<span class="site-chip site-chip--active">' + (t.dark ? "深色" : "浅色") + '</span>' +
+          '<span class="site-chip">' + t.group + '</span>' +
+          '<span class="site-chip">' + licenseChip(t) + '</span>' +
           "</div></div></div>"
         );
       }).join("");
+      fitFrames();
     }
 
     /* URL 同步 */
     function syncUrl() {
       var u = new URLSearchParams();
-      if (tag !== "全部") u.set("tag", tag);
+      if (darkFilter !== "全部") u.set("dark", darkFilter);
+      if (groupFilter !== "全部") u.set("group", groupFilter);
       if (q) u.set("q", q);
       history.replaceState(null, "", location.pathname + (u.toString() ? "?" + u.toString() : ""));
     }
-
-    filters.addEventListener("click", function (e) {
-      var b = e.target.closest(".site-filter");
-      if (!b) return;
-      tag = b.dataset.tag;
-      filters.querySelectorAll(".site-filter").forEach(function (x) { x.classList.toggle("site-filter--active", x === b); });
-      syncUrl();
-      render();
-    });
 
     var searchTimer;
     search.addEventListener("input", function () {
@@ -171,6 +237,8 @@
       }, 200);
     });
 
+    window.addEventListener("resize", fitFrames);
+
     /* 弹层 */
     var current = null;
     var listOrder = [];
@@ -181,8 +249,17 @@
       var t = DATA.themes.filter(function (x) { return x.name === name; })[0];
       current = t;
       modalTitle.textContent = t.title + " · " + t.name;
-      modalFrame.src = "../themes/" + t.slug + "/preview.html";
+      modalFrame.src = "../themes/" + t.slug + "/demo.html";
       document.getElementById("src-link").href = "https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug;
+      document.getElementById("open-page").href = "../themes/" + t.slug + "/demo.html";
+      var copyTokensBtn = document.getElementById("copy-tokens");
+      if (t.hasTokens) {
+        copyTokensBtn.disabled = false;
+        copyTokensBtn.textContent = "复制 tokens.css";
+      } else {
+        copyTokensBtn.disabled = true;
+        copyTokensBtn.textContent = "内置主题 · 无 tokens";
+      }
       modal.classList.add("site-modal--open");
       document.body.style.overflow = "hidden";
       modalFrame.focus();
@@ -201,20 +278,20 @@
       openModal(next);
     }
 
-    function currentList() {
-      listOrder = DATA.themes.map(function (t) { return t.name; });
-    }
-
     grid.addEventListener("click", function (e) {
       var card = e.target.closest(".site-card");
       if (!card) return;
-      currentList();
+      listOrder = visibleList().map(function (t) { return t.name; });
       openModal(card.dataset.name);
     });
     grid.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         var card = e.target.closest(".site-card");
-        if (card) { e.preventDefault(); currentList(); openModal(card.dataset.name); }
+        if (card) {
+          e.preventDefault();
+          listOrder = visibleList().map(function (t) { return t.name; });
+          openModal(card.dataset.name);
+        }
       }
     });
 
@@ -229,7 +306,7 @@
       }
     });
 
-    /* 复制 / 下载 */
+    /* 复制反馈 */
     var toast = document.getElementById("toast");
     var toastTimer;
     function showToast(text) {
@@ -246,42 +323,52 @@
       }
     }
 
-    document.getElementById("copy-tokens").addEventListener("click", function () {
+    var BASE = "https://noii-y.github.io/moh-ui";
+    document.getElementById("copy-ai").addEventListener("click", function () {
       if (!current) return;
+      var t = current;
+      var intro = t.hasTokens
+        ? "2. 引入该主题的 tokens.css（" + BASE + "/themes/" + t.slug + "/tokens.css ），再在 <html data-theme=\"" + t.name + "\"> 即整站换肤。"
+        : "2. 该主题是 daisyUI 官方内置主题，无需额外文件：在 <html data-theme=\"" + t.name + "\"> 即整站换肤（确保已引入 daisyUI 5）。";
+      var cmd =
+        "请帮我把灰墨 MoH_UI 的主题「" + t.title + "（" + t.name + "）」应用到当前项目。\n" +
+        "该主题基于 daisyUI 5 的 data-theme 机制：\n" +
+        "1. 先在项目引入 daisyUI 5 的 CSS（daiseyui.css，官方内置主题还需 daisyui-themes.css）；\n" +
+        intro + "\n" +
+        "3. 完整整页案例可作为布局与气质参考：" + BASE + "/themes/" + t.slug + "/demo.html\n" +
+        "4. 主题源码：https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug + "\n" +
+        "5. 页面用 daisyUI 组件拼装，不要硬编码颜色，颜色全部走 --color-* 主题变量；许可证：" + t.license + "。";
+      copyText(cmd, "AI 指令已复制 ✓");
+    });
+
+    document.getElementById("copy-tokens").addEventListener("click", function () {
+      if (!current || !current.hasTokens) return;
       fetch("../themes/" + current.slug + "/tokens.css")
         .then(function (r) { return r.text(); })
         .then(function (css) { copyText(css, "tokens.css 已复制 ✓"); })
         .catch(function () { showToast("复制失败：请到仓库取文件"); });
     });
 
-    document.getElementById("copy-ai").addEventListener("click", function () {
-      if (!current) return;
-      var cmd =
-        "请把灰墨 MoH_UI 的主题「" + current.title + "（" + current.name + "）」应用到当前项目。\n" +
-        "风格：" + current.description + "\n" +
-        "做法：读取 https://noii-y.github.io/moh-ui/themes/" + current.slug + "/preview.html 的基准效果，引入该主题的 tokens.css 与 base.css（仓库目录：https://github.com/noii-y/moh-ui/tree/master/themes/" + current.slug + "），清理硬编码颜色，类名统一 moh- 前缀，全部走 var(--moh-*) 变量。\n" +
-        "应用后按规则包自检清单逐项自查（https://noii-y.github.io/moh-ui/site/rules.html），字号阶 12/13/14/16/20/24、间距 4 的倍数、控件 32px、动效 ≤200ms，达标再交付。";
-      copyText(cmd, "AI 指令已复制 ✓");
-    });
+    /* 读取 URL 参数（分享链接） */
+    var params = new URLSearchParams(location.search);
+    if (params.get("dark")) {
+      darkFilter = params.get("dark");
+      document.querySelectorAll("#filters-dark .site-filter").forEach(function (b) { b.classList.toggle("site-filter--active", b.dataset.value === darkFilter); });
+    }
+    if (params.get("group")) {
+      groupFilter = params.get("group");
+      document.querySelectorAll("#filters-group .site-filter").forEach(function (b) { b.classList.toggle("site-filter--active", b.dataset.value === groupFilter); });
+    }
+    if (params.get("q")) { q = params.get("q"); search.value = q; }
 
-    document.getElementById("download-tokens").addEventListener("click", function () {
-      if (!current) return;
-      fetch("../themes/" + current.slug + "/tokens.css")
-        .then(function (r) { return r.text(); })
-        .then(function (css) {
-          var blob = new Blob([css], { type: "text/css" });
-          var a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = current.name + "-tokens.css";
-          a.click();
-          URL.revokeObjectURL(a.href);
-          showToast("已下载 ✓");
-        })
-        .catch(function () { showToast("下载失败：请到仓库取文件"); });
-    });
-
-    search.value = q;
     render();
+
+    /* 支持 ?open=<slug> 直接打开整页预览（分享链接） */
+    var openParam = params.get("open");
+    if (openParam) {
+      listOrder = DATA.themes.map(function (t) { return t.name; });
+      openModal(openParam);
+    }
   </script>
 </body>
 </html>
