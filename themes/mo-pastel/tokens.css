@@ -1,60 +1,45 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-pastel（粉彩 · 柔和浅色）
-   风格参考：shadcn.io 主题 "Marshmallow"（粉紫柔和、圆角可爱）
-   https://www.shadcn.io/theme/marshmallow（MIT 社区主题站，色板为自研）
-   特征：暖粉底、莓果主色、亲和圆润，适合教育 / 生活服务 / 健康类产品
-   ============================================================ */
+/*! 灰墨 mo-pastel · 粉彩柔和（浅色）—— 圆润亲和在线教育后台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-pastel"> 即整站换肤。
+   灵感来源：shadcn Marshmallow 粉彩圆润气质（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义（暖粉彩） ---------- */
-  --moh-canvas: #faf7f8;          /* 页面底（微粉暖白） */
-  --moh-surface: #ffffff;         /* 卡片 / 面板 */
-  --moh-surface-2: #f5f0f2;       /* 悬浮 / 次级底 */
-  --moh-border: #ecdde3;          /* 常规描边（粉调） */
-  --moh-border-strong: #dcc8d1;   /* 强调描边 */
-  --moh-border-width: 1px;
-  --moh-ink: #45343d;             /* 主文字（深玫瑰棕） */
-  --moh-muted: #71606b;           /* 次级文字（体检校准 5.56） */
-  --moh-primary: #8e3b5e;         /* 主色（深莓果玫红，白字 6.9） */
-  --moh-primary-hover: #a04a6d;
-  --moh-primary-muted: #f6e3ec;   /* 主色浅底 */
-  --moh-success: #16a34a;
-  --moh-warning: #d97706;
-  --moh-danger: #dc2626;
+[data-theme="mo-pastel"] {
+  /* 底与纸：微粉暖白三层，柔和不刺眼 */
+  --color-base-100: #faf7f8;
+  --color-base-200: #ffffff;
+  --color-base-300: #f5f0f2;
+  --color-base-content: #45343d;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 主色：深莓果（主操作与选中态，白字对比充足） */
+  --color-primary: #8e3b5e;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 次色 / 强调色：柔和淡紫与暖杏蜜桃，用于装饰与数据高亮 */
+  --color-secondary: #8a63b8;
+  --color-secondary-content: #ffffff;
+  --color-accent: #e8927c;
+  --color-accent-content: #5c2a1a;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  --color-neutral: #45343d;
+  --color-neutral-content: #ffffff;
 
-  /* ---------- 圆角（亲和偏大） ---------- */
-  --moh-radius-sm: 6px;
-  --moh-radius-md: 10px;
-  --moh-radius-lg: 14px;
+  /* 语义色：标准可读色，content 白 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
 
-  /* ---------- 阴影（柔和） ---------- */
-  --moh-shadow-sm: 0 1px 3px rgba(142, 59, 94, 0.08);
-  --moh-shadow-md: 0 6px 16px rgba(142, 59, 94, 0.10);
-  --moh-shadow-lg: 0 12px 32px rgba(142, 59, 94, 0.12);
-
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 圆角 / 尺寸 / 边框：大圆角、细边框，亲和圆润取向 */
+  --radius-selector: 1rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }

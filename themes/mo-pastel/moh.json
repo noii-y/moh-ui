@@ -3,7 +3,7 @@
   "name": "mo-pastel",
   "type": "theme",
   "title": "粉彩（柔和浅色）",
-  "description": "暖粉底、莓果主色、亲和圆润，适合教育 / 生活服务 / 健康类产品后台。",
+  "description": "完整页面案例：圆润亲和在线教育课程后台整页。微粉暖白底 + 深莓果主色 + 淡紫暖杏点缀，学员统计、课程卡片网格、本周排课表与待批作业全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-pastel\" 即整站换肤，适合教育 / 生活服务 / 健康类产品后台。",
   "styleTags": ["粉彩", "柔和", "亲和", "圆润"],
   "inspiration": ["https://www.shadcn.io/theme/marshmallow"],
   "base": "mo-pastel",
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "从旧 --moh-* 变量体系迁移为 daisyUI 5 主题变量（[data-theme=mo-pastel] 覆盖 --color-* 等），删 base.css/preview.html 旧色块预览，改为完整在线教育课程后台页面案例（demo.html：侧栏+顶栏+学员统计+课程卡片网格+本周排课表+待批作业）；灵感来源 shadcn Marshmallow 粉彩圆润气质（仅风格参考，色值自研）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
