@@ -40,7 +40,7 @@
       <p class="site-howto__title">怎么用这个组件库（组件不用全用）</p>
       <ol class="site-howto__steps">
         <li><b>它是工具箱，不是整站模板。</b>做页面时只挑你用得上的几个组件，不需要把所有组件都放进一个页面。</li>
-        <li><b>首选「复制 AI 提示词」。</b>打开组件，点成品区的主按钮，把整段提示词发给你的 AI，它会按你的项目只生成这一块，不会硬塞别的组件。</li>
+        <li><b>首选「复制 AI 提示词」或「复制链接发给 AI」。</b>打开组件，点成品区主按钮把整段提示词发给你的 AI；或点「复制链接发给 AI」得到这个组件的独立 AI 指令页网址（<code>ai/&lt;组件名&gt;</code>），把网址发给豆包 / Cursor / Claude 等任意 AI 同样能生成——两种方式都只按你的项目生成这一块，不会硬塞别的组件。</li>
         <li><b>底座只引一次。</b>项目里引入 <code>daisyui.css</code> 和 <code>utilities-patch.css</code> 两行样式，所有组件样式都在其中；用哪个组件就写哪个 class，不用的不会出现在页面里。</li>
         <li><b>想先看效果</b>就点「复制成品 HTML」，保存成 <code>.html</code> 双击即见，再交给 AI 或自己粘贴。</li>
       </ol>
@@ -63,6 +63,7 @@
       <div class="site-modal__head">
         <p class="site-modal__title" id="modal-title"></p>
         <div class="site-modal__nav">
+          <button class="site-modal__ailink" id="ai-link-btn" type="button" title="复制这个组件的 AI 页面网址，把网址直接发给 AI">复制链接发给 AI</button>
           <button class="site-modal__close" id="prev-btn" aria-label="上一个组件">←</button>
           <button class="site-modal__close" id="next-btn" aria-label="下一个组件">→</button>
           <button class="site-modal__close" id="close-btn" aria-label="关闭">✕</button>
@@ -72,6 +73,8 @@
       </div>
     </div>
   </div>
+
+  <div class="site-toast" id="site-toast" role="status" aria-live="polite"></div>
 
   <footer class="site-footer">
     <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
@@ -189,6 +192,51 @@
       var next = listOrder[(idx + dir + listOrder.length) % listOrder.length];
       openModal(next);
     }
+
+    /* 形态 A：一键复制当前组件的干净 AI 页网址（线上绝对地址，可直接发给 AI） */
+    var SITE_BASE = "https://noii-y.github.io/moh-ui";
+    var aiLinkBtn = document.getElementById("ai-link-btn");
+    var siteToast = document.getElementById("site-toast");
+    var toastTimer = null;
+    function showToast(msg) {
+      siteToast.textContent = msg;
+      siteToast.classList.add("site-toast--show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { siteToast.classList.remove("site-toast--show"); }, 2000);
+    }
+    function legacyCopy(text) {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      ta.remove();
+      return ok;
+    }
+    function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(function () {
+          if (!legacyCopy(text)) throw new Error("copy failed");
+        });
+      }
+      return new Promise(function (resolve, reject) {
+        legacyCopy(text) ? resolve() : reject(new Error("copy failed"));
+      });
+    }
+    function aiUrlFor(c) {
+      var slug = c.slug.split("/").pop();
+      return SITE_BASE + "/ai/" + slug + ".html";
+    }
+    aiLinkBtn.addEventListener("click", function () {
+      if (!current) return;
+      copyText(aiUrlFor(current))
+        .then(function () { showToast("链接已复制 ✓ 把这个网址发给你的 AI"); })
+        .catch(function () { showToast("复制失败，请手动复制地址"); });
+    });
 
     grid.addEventListener("click", function (e) {
       var card = e.target.closest(".site-card");

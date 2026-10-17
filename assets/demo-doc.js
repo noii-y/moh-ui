@@ -182,6 +182,71 @@
     });
   }
 
+  /* —— 独立「获取卡」：把成品区操作区重组成「让 AI 帮你做（推荐）/ 自己拷贝」两组，
+     并自动注入「复制链接发给 AI」。先把已有按钮节点移入新卡（appendChild 会保留
+     上面绑定的复制事件），再清空旧容器；一处生效，所有详情页自动重组，无需逐页改。
+     结构不符合标准时静默 return，不破坏页面。AI 网址由组件目录推导（daisyui 件
+     components/daisyui/<名>/，自研件 components/<名>/），线上为 BASE/ai/<名>.html。 —— */
+  (function buildGetCard() {
+    var action = document.querySelector(".doc-hero-action");
+    if (!action || !promptBtn || !hero) return;
+    var oldBtns = action.querySelector(".doc-hero-btns");
+    if (!oldBtns) return;
+
+    var aiSlug = (location.pathname.match(/components\/(?:daisyui\/)?([^/]+)\//) || [])[1];
+    var aiLinkBtn = null;
+    if (aiSlug) {
+      var aiUrl = BASE + "/ai/" + aiSlug + ".html";
+      aiLinkBtn = document.createElement("button");
+      aiLinkBtn.type = "button";
+      aiLinkBtn.className = "doc-get__link";
+      aiLinkBtn.textContent = "复制链接发给 AI";
+      aiLinkBtn.addEventListener("click", function () {
+        copyText(aiUrl)
+          .then(function () { toast("链接已复制 ✓ 把这个网址发给你的 AI"); })
+          .catch(function () { toast("复制失败，请手动复制地址"); });
+      });
+    }
+
+    function node(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+
+    var card = node("div", "doc-get");
+    card.appendChild(node("div", "doc-get__head", "把这个组件用进项目"));
+
+    /* 组一：让 AI 帮你做（主路径） */
+    var g1 = node("div", "doc-get__group");
+    var label1 = node("div", "doc-get__label", "让 AI 帮你做");
+    label1.appendChild(node("em", "doc-get__tag", "推荐"));
+    g1.appendChild(label1);
+    var row1 = node("div", "doc-get__row");
+    row1.appendChild(promptBtn);           /* 移动节点，保留复制事件 */
+    if (aiLinkBtn) row1.appendChild(aiLinkBtn);
+    g1.appendChild(row1);
+    g1.appendChild(node("p", "doc-get__tip",
+      "复制一段现成指令，粘贴给任意 AI 就能按你的项目生成；或只发链接，让它自己读取完整规格和代码。"));
+    card.appendChild(g1);
+
+    /* 组二：自己拷贝（进阶） */
+    if (htmlBtn) {
+      var g2 = node("div", "doc-get__group");
+      g2.appendChild(node("div", "doc-get__label", "自己拷贝代码"));
+      var row2 = node("div", "doc-get__row");
+      row2.appendChild(htmlBtn);
+      g2.appendChild(row2);
+      g2.appendChild(node("p", "doc-get__tip",
+        "直接粘贴到你的文件，保存为 .html 双击即可预览。"));
+      card.appendChild(g2);
+    }
+
+    action.innerHTML = "";   /* 此时 promptBtn/htmlBtn 已移入 card，旧按钮行与 hint 清掉 */
+    action.appendChild(card);
+  })();
+
   /* —— PM 自检：?dump-prompt=1 时把完整提示词渲染到页面，供逐字核对 —— */
   if (new URLSearchParams(location.search).has("dump-prompt") && promptBtn && hero) {
     var pre = document.createElement("pre");

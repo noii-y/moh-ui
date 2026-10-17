@@ -164,6 +164,82 @@ body {
 .doc-hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
 .doc-hero-action .hint { font-size: 12px; opacity: 0.55; line-height: 1.6; }
 
+/* 获取卡：把"演示画板"和"带走组件的操作"明确分区，
+   避免组件自身按钮（画板里）与复制按钮（操作区）看起来像一组、互相混淆。 */
+.doc-get {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 18px;
+  background: color-mix(in oklab, var(--color-primary) 6%, var(--color-base-100));
+  border: 1px solid color-mix(in oklab, var(--color-primary) 18%, transparent);
+  border-radius: 12px;
+}
+.doc-get__head {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.doc-get__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.doc-get__group + .doc-get__group {
+  margin-top: 2px;
+  padding-top: 14px;
+  border-top: 1px dashed color-mix(in oklab, var(--color-base-content) 14%, transparent);
+}
+.doc-get__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.doc-get__tag {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: var(--color-primary-content);
+}
+.doc-get__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+.doc-get__tip {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  opacity: 0.62;
+}
+.doc-get__link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.doc-get__link:hover { opacity: 0.75; }
+.doc-get__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* ============================================================
    使用指南 / 来源
    ============================================================ */

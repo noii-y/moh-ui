@@ -611,6 +611,28 @@ a:hover {
   background: var(--moh-surface-2, #232328);
 }
 
+/* 弹窗头部「复制 AI 链接」：把该组件的干净 AI 页网址一键复制给 AI */
+.site-modal__ailink {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  margin-right: 4px;
+  border-radius: var(--moh-radius-md, 8px);
+  border: 1px solid var(--moh-border, #2a2a30);
+  background: none;
+  color: var(--moh-ink, #f7f8f8);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 150ms ease;
+}
+.site-modal__ailink:hover {
+  color: var(--moh-ink, #f7f8f8);
+  background: var(--moh-surface-2, #232328);
+}
+
 /* ---------- Toast（复制反馈） ---------- */
 .site-toast {
   position: fixed;
@@ -971,6 +993,14 @@ a:hover {
   }
   .site-modal__head {
     padding: 12px 14px;
+  }
+  /* 手机窄屏：头部按钮栏整体换到第二行，AI 链接靠左、翻页/关闭靠右，避免挤出视口 */
+  .site-modal__nav {
+    flex-basis: 100%;
+    justify-content: flex-end;
+  }
+  .site-modal__ailink {
+    margin-right: auto;
   }
   .site-modal__body {
     min-height: 0;
