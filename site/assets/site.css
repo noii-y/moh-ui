@@ -287,6 +287,34 @@ a:hover {
 }
 .site-pagehead__note a { color: inherit; text-decoration: underline; }
 
+/* ---------- 组件库使用说明（怎么用：按需取用） ---------- */
+.site-howto {
+  margin: 4px 0 8px;
+  padding: 14px 18px;
+  background: var(--moh-surface-2, rgba(127, 127, 127, 0.08));
+  border: 1px solid var(--moh-border, rgba(127, 127, 127, 0.18));
+  border-radius: 10px;
+}
+.site-howto__title {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--moh-ink, #f7f8f8);
+}
+.site-howto__steps {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+.site-howto__steps li {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--moh-muted, #9ca3af);
+}
+.site-howto__steps b { color: var(--moh-ink, #f7f8f8); font-weight: 600; }
+.site-howto__steps code { font-size: 12px; }
+
 /* ---------- 卡片网格 ---------- */
 .site-grid {
   display: grid;
@@ -919,10 +947,7 @@ a:hover {
     height: 38px;
   }
   .site-filters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap;
     gap: 8px;
   }
   .site-filter {

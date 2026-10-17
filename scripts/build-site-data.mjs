@@ -45,7 +45,7 @@ const CAT_RULES = [
   { cat: "反馈", tags: ["反馈", "状态"] },
   { cat: "导航", tags: ["导航", "菜单", "分页"] },
   { cat: "浮层", tags: ["浮层", "弹窗"] },
-  { cat: "数据展示", tags: ["数据", "展示", "表格", "图表"] },
+  { cat: "数据展示", tags: ["数据展示", "数据", "展示", "表格", "图表"] },
   { cat: "加载状态", tags: ["加载"] }
 ];
 function categorize(styleTags) {

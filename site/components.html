@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>组件库 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨组件库：可直接搬进自己项目的真实组件（daisyUI 官方 demo 零依赖搬运 + 中文教程与溯源），按分类筛选，点击预览，一键复制代码。" />
+  <meta name="description" content="灰墨组件库：可直接复制到自己项目里的真实中文组件（基于 daisyUI 等开源项目做零依赖适配，附中文教程与来源溯源），按分类筛选，点击预览，首选复制 AI 提示词，也可复制成品 HTML。" />
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
 </head>
@@ -32,8 +32,18 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>组件库 <span id="comp-count" style="font-size:16px;color:var(--moh-muted)"></span></h1>
-      <p>可以直接复制到自己项目里的前端组件。每个组件都有一个「拿来即用」的成品示例，点页面里的「复制组件」就能得到可直接打开的代码；下面还附了各种配色、尺寸、中文用法和源码。</p>
-      <p class="site-pagehead__note">本页大部分组件搬运自 <a href="https://daisyui.com" target="_blank" rel="noopener">daisyUI</a> 等开源项目（MIT 许可），灰墨做了零依赖适配与中文教程；每个组件页面底部都标注了原作者与来源地址，完整清单见 <a href="https://github.com/noii-y/moh-ui/blob/master/ATTRIBUTIONS.md" target="_blank" rel="noopener">ATTRIBUTIONS</a>。</p>
+      <p>可以直接复制到自己项目里的前端组件。每个组件都有一个「拿来即用」的成品示例：首选点「复制 AI 提示词」整段发给你的 AI，也可以「复制成品 HTML」直接粘贴；页面里还附了配色、尺寸、中文用法指南和各种形态。</p>
+      <p class="site-pagehead__note">本库组件基于 <a href="https://daisyui.com" target="_blank" rel="noopener">daisyUI</a> 等开源项目（MIT 许可）做零依赖适配与中文教程，原作者、原版地址与许可证清单见 <a href="attributions.html">素材溯源</a>。</p>
+    </div>
+
+    <div class="site-howto">
+      <p class="site-howto__title">怎么用这个组件库（组件不用全用）</p>
+      <ol class="site-howto__steps">
+        <li><b>它是工具箱，不是整站模板。</b>做页面时只挑你用得上的几个组件，不需要把所有组件都放进一个页面。</li>
+        <li><b>首选「复制 AI 提示词」。</b>打开组件，点成品区的主按钮，把整段提示词发给你的 AI，它会按你的项目只生成这一块，不会硬塞别的组件。</li>
+        <li><b>底座只引一次。</b>项目里引入 <code>daisyui.css</code> 和 <code>utilities-patch.css</code> 两行样式，所有组件样式都在其中；用哪个组件就写哪个 class，不用的不会出现在页面里。</li>
+        <li><b>想先看效果</b>就点「复制成品 HTML」，保存成 <code>.html</code> 双击即见，再交给 AI 或自己粘贴。</li>
+      </ol>
     </div>
 
     <div class="site-toolbar">
@@ -58,16 +68,10 @@
           <button class="site-modal__close" id="close-btn" aria-label="关闭">✕</button>
         </div>
       </div>
-      <div class="site-modal__body"><iframe id="modal-frame" title="组件预览"></iframe></div>
-      <div class="site-modal__foot">
-        <button class="site-btn site-btn--secondary site-btn--sm" id="download-code" style="display:none">下载 index.html</button>
-        <a class="site-btn site-btn--secondary site-btn--sm" id="upstream-link" target="_blank" rel="noopener" style="display:none">查看原版</a>
-        <a class="site-btn site-btn--primary site-btn--sm" id="open-new" target="_blank" rel="noopener">在新窗口打开</a>
+      <div class="site-modal__body"><iframe id="modal-frame" title="组件预览"></iframe>
       </div>
     </div>
   </div>
-
-  <div class="site-toast" id="toast" role="status">已复制 ✓</div>
 
   <footer class="site-footer">
     <div class="site-container">灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a></div>
@@ -90,7 +94,6 @@
     function previewPath(c) { return "../components/" + c.slug + "/" + (c.entry || "index.html"); }
     // 卡片缩略图：demo 文档页加 ?embed=1 只展示组件本体
     function thumbPath(c) { return previewPath(c) + (c.entry === "demo.html" ? "?embed=1" : ""); }
-    function srcDir(c) { return "https://github.com/noii-y/moh-ui/tree/master/components/" + c.slug; }
 
     document.getElementById("comp-count").textContent = "· " + DATA.stats.components + " 个";
 
@@ -169,21 +172,6 @@
       current = c;
       modalTitle.textContent = c.title + " · " + c.name;
       modalFrame.src = previewPath(c);
-      var isDai = c.origin === "third-party";
-      var dl = document.getElementById("download-code");
-      var up = document.getElementById("upstream-link");
-      document.getElementById("open-new").href = previewPath(c);
-      if (isDai) {
-        // 搬运组件：详情页内已含复制与教程，无需下载；提供原版入口
-        dl.style.display = "none";
-        up.style.display = "";
-        up.href = c.upstreamUrl || "#";
-        up.textContent = "查看原版（" + (c.upstream || "daisyUI") + "）";
-      } else {
-        // 自研单文件组件：可独立下载
-        dl.style.display = "";
-        up.style.display = "none";
-      }
       modal.classList.add("site-modal--open");
       document.body.style.overflow = "hidden";
       modalFrame.focus();
@@ -224,39 +212,6 @@
       if (modal.classList.contains("site-modal--open") && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
         stepModal(e.key === "ArrowLeft" ? -1 : 1);
       }
-    });
-
-    /* 复制 / 下载 */
-    var toast = document.getElementById("toast");
-    var toastTimer;
-    function showToast(text) {
-      toast.textContent = text;
-      toast.classList.add("site-toast--show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1500);
-    }
-    function copyText(text, okText) {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () { showToast(okText); });
-      } else {
-        showToast("复制失败：请手动选择复制");
-      }
-    }
-
-    document.getElementById("download-code").addEventListener("click", function () {
-      if (!current) return;
-      fetch(previewPath(current))
-        .then(function (r) { return r.text(); })
-        .then(function (html) {
-          var blob = new Blob([html], { type: "text/html" });
-          var a = document.createElement("a");
-          a.href = URL.createObjectURL(blob);
-          a.download = "moh-" + current.name + ".html";
-          a.click();
-          URL.revokeObjectURL(a.href);
-          showToast("已下载 ✓");
-        })
-        .catch(function () { showToast("下载失败：请到仓库取文件"); });
     });
 
     search.value = q;

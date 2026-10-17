@@ -37,11 +37,11 @@
 
     <div class="site-note">
       <span>📜</span>
-      <span>全部资源 MIT 许可；引入外部素材的流程、许可证对照与版权边界见 <a href="https://github.com/noii-y/moh-ui/blob/master/docs/license-policy.md" target="_blank" rel="noopener">docs/license-policy.md</a>。本地校验脚本：<code>node scripts/check-attributions.mjs</code>（41 个 moh.json 合规）。</span>
+      <span>全部资源 MIT 许可；引入外部素材的流程、许可证对照与版权边界见 <a href="https://github.com/noii-y/moh-ui/blob/master/docs/license-policy.md" target="_blank" rel="noopener">docs/license-policy.md</a>。本地校验脚本：<code>node scripts/check-attributions.mjs</code>（校验全部 moh.json 溯源合规）。</span>
     </div>
 
     <div class="site-section" style="padding-top: 8px">
-      <h2 class="site-section__title">主题溯源（10 套）</h2>
+      <h2 class="site-section__title">主题溯源（<span id="theme-n"></span> 套）</h2>
       <div class="site-table-wrap">
         <table class="site-table">
           <thead>
@@ -53,11 +53,11 @@
     </div>
 
     <div class="site-section" style="padding-top: 8px">
-      <h2 class="site-section__title">组件溯源（30 个）</h2>
+      <h2 class="site-section__title">组件溯源（<span id="comp-n"></span> 个）</h2>
       <div class="site-table-wrap">
         <table class="site-table">
           <thead>
-            <tr><th>组件</th><th>分类</th><th>来源类型</th><th>说明</th><th>许可证</th></tr>
+            <tr><th>组件</th><th>分类</th><th>来源类型</th><th>原版地址</th><th>说明</th><th>许可证</th></tr>
           </thead>
           <tbody id="comp-rows"></tbody>
         </table>
@@ -88,6 +88,9 @@
       return '<span class="site-chip site-chip--warn">二创</span> ' + link;
     }
 
+    document.getElementById("theme-n").textContent = DATA.themes.length;
+    document.getElementById("comp-n").textContent = DATA.components.length;
+
     document.getElementById("theme-rows").innerHTML = DATA.themes.map(function (t) {
       return "<tr><td><strong>" + t.title + "</strong><br><code>" + t.name + "</code></td>" +
         "<td>" + t.styleTags.join(" / ") + "</td>" +
@@ -98,9 +101,13 @@
 
     document.getElementById("comp-rows").innerHTML = DATA.components.map(function (c) {
       var dep = c.hasDeps ? "（依赖 " + c.dependencies.join(", ") + "）" : "（零依赖）";
+      var upstream = c.upstreamUrl
+        ? '<a href="' + c.upstreamUrl + '" target="_blank" rel="noopener">' + c.upstreamUrl.replace(/^https?:\/\//, "").slice(0, 42) + "</a>"
+        : "—";
       return "<tr><td><strong>" + c.title + "</strong><br><code>" + c.name + "</code></td>" +
         "<td>" + c.category + "</td>" +
         "<td>" + (c.origin === "original" ? '<span class="site-chip site-chip--ok">original</span>' : '<span class="site-chip site-chip--warn">derived</span>') + "</td>" +
+        "<td>" + upstream + "</td>" +
         "<td>" + c.description + dep + "</td>" +
         "<td>" + c.license + "</td></tr>";
     }).join("");
