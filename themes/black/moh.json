@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "black",
+  "type": "theme",
+  "title": "纯黑（black）",
+  "description": "完整页面案例：虚构独立影像工作室「白夜影像 WHITE NIGHT STUDIO」整页。OLED 纯黑底配白灰阶文字与内联简影相框，美术馆级留白；挂 daisyUI 官方主题 data-theme=\"black\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "无彩色", "极简", "品牌", "落地页"],
+  "base": "black",
+  "aiNotes": [
+    "OLED 纯黑是招牌：页面底色一律用 base-100（纯黑），卡片与相框用 base-200（深灰），两者之间靠明度差分层，绝不引入其它色相；硬编码任何十六进制颜色都算违规。",
+    "配色只有白灰阶：文字用 base-content 及其透明度衰减（opacity .45/.6/.9），唯一强调来自主按钮白字黑底的反转（覆写 --btn-color: var(--color-base-content); --btn-fg: var(--color-base-100)）；语义色（绿黄红蓝）只留给徽章提示，不大面积铺。",
+    "品牌名与标题用衬线（宋体系 / Georgia）并加 2–6px 字间距，正文无衬线小字；标题克制不堆粗重，靠字距和留白出气质。",
+    "美术馆级留白：版块之间大量留白，分隔只用一条 currentColor 约 18% 透明度的发丝线，禁止投影、渐变、色块堆叠。",
+    "相框是核心版式：作品框 3:4 竖幅、细边框（currentColor 约 16%）、深灰底；框内一律 currentColor 单色内联 SVG 简影，不同题材（山景/人像/街景/建筑/静物/舞台）必须画出明确差异，禁止 <img>、禁止彩色照片、禁止 emoji。",
+    "图注写两行：框下一行作品中文名（衬线）+ 一行小号英文/系列名（opacity .45、宽字距）；系列卡、报价卡与相框网格共用同一套 auto-fit 栅格。",
+    "文案真实克制：按钮只写动作（预约拍摄、查看表款这类），报价写「¥X 起」的公开指导区间并注明以方案为准，不写「尊享」「殿堂级」这类空话。",
+    "390px 窄屏顶栏自然折行、相框网格单列、不横向溢出；hero 标题字号降回 26px 仍保持居中大留白。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=black]；仅用 daisyUI 组件拼装一套摄影工作室整页（demo.html：极简顶栏导航与白色预约按钮 + 纯黑大留白 Hero 与光圈线稿 + 六格 35mm 相框作品网格含六种内联简影 + 两个系列专题卡 + 委托拍摄三档公开指导价格 + 预约 CTA 与虚构工作室信息页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
