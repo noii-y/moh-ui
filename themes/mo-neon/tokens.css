@@ -1,60 +1,50 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-neon（霓虹 · 深色）
-   风格参考：shadcn.io 主题 "Cyberpunk"（霓虹青紫、赛博未来）
-   https://www.shadcn.io/theme/cyberpunk（MIT 社区主题站，色板为自研）
-   特征：深空底、深青主色、hover 亮青霓虹、未来科技向
-   ============================================================ */
+/*! 灰墨 mo-neon · 霓虹赛博（深色）—— 科技活动 / 新品发布页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-neon"> 即整站换肤。
+   气质：深空底、深青实色按钮、亮青霓虹点缀（发光仅在 demo.html 自定义类里克制使用）。
+   灵感来源：cyberpunk / 科技发布会暗色气质（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义（霓虹深空） ---------- */
-  --moh-canvas: #0a0e14;          /* 页面底（深空黑） */
-  --moh-surface: #111722;         /* 卡片 / 面板 */
-  --moh-surface-2: #161d2b;       /* 悬浮 / 次级底 */
-  --moh-border: #233043;          /* 常规描边（青调） */
-  --moh-border-strong: #2f4057;   /* 强调描边 */
-  --moh-border-width: 1px;
-  --moh-ink: #eaf0f8;             /* 主文字（近白微青） */
-  --moh-muted: #8fa0b8;           /* 次级文字（体检校准 6.1） */
-  --moh-primary: #0e7490;         /* 主色（深青，白字 5.2） */
-  --moh-primary-hover: #22d3ee;   /* hover 霓虹亮青 */
-  --moh-primary-muted: #0b2b3a;   /* 主色浅底 */
-  --moh-success: #34d399;
-  --moh-warning: #fbbf24;
-  --moh-danger: #f87171;
+[data-theme="mo-neon"] {
+  color-scheme: dark;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 底与纸：深空三层，层次靠明度与细描边 */
+  --color-base-100: #0a0e14;
+  --color-base-200: #111722;
+  --color-base-300: #161d2b;
+  --color-base-content: #eaf0f8;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 主色：深青实色（按钮底） */
+  --color-primary: #0e7490;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  /* 次色：深蓝青 */
+  --color-secondary: #155e75;
+  --color-secondary-content: #ffffff;
 
-  /* ---------- 圆角（科技感稍锐） ---------- */
-  --moh-radius-sm: 3px;
-  --moh-radius-md: 5px;
-  --moh-radius-lg: 8px;
+  /* 强调色：亮青霓虹（关键词 / 徽章 / 描边发光） */
+  --color-accent: #22d3ee;
+  --color-accent-content: #04141a;
 
-  /* ---------- 阴影（深色霓虹光晕） ---------- */
-  --moh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --moh-shadow-md: 0 4px 16px rgba(34, 211, 238, 0.08);
-  --moh-shadow-lg: 0 8px 32px rgba(34, 211, 238, 0.10);
+  --color-neutral: #111722;
+  --color-neutral-content: #eaf0f8;
 
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 语义色：霓虹亮色系，content 用深色保证对比 */
+  --color-info: #38bdf8;
+  --color-info-content: #08222f;
+  --color-success: #34d399;
+  --color-success-content: #06281c;
+  --color-warning: #fbbf24;
+  --color-warning-content: #2b1d02;
+  --color-error: #f87171;
+  --color-error-content: #330a0a;
+
+  /* 圆角 / 边框：小圆角、1px 细边 */
+  --radius-selector: 0.3rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }

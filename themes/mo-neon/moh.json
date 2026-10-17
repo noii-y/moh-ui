@@ -3,8 +3,8 @@
   "name": "mo-neon",
   "type": "theme",
   "title": "霓虹（深色）",
-  "description": "深空底、深青主色、hover 亮青霓虹，赛博未来科技向。",
-  "styleTags": ["霓虹", "深色", "赛博", "科技"],
+  "description": "完整页面案例：科技活动发布页。深空底 + 深青实色按钮 + 克制亮青霓虹发光，顶栏 + 网格 hero + 静态倒计时 + 亮点卡 + 议程表 + 购票 CTA；挂 data-theme=\"mo-neon\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["霓虹", "深色", "赛博", "科技", "活动页"],
   "inspiration": ["https://www.shadcn.io/theme/cyberpunk"],
   "base": "mo-neon",
   "source": {
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "从旧 --moh-* 变量体系迁移为 daisyUI 5 主题变量（[data-theme=mo-neon] 覆盖 --color-*、小圆角、1px 边框）；删除旧 base.css 与色块 preview.html，重做为完整科技活动发布页案例 demo.html（霓虹发光由页面自定义 .neon 类克制实现）；风格参考 cyberpunk（仅风格参考，非品牌素材）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
