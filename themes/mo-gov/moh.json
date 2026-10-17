@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-gov",
+  "type": "theme",
+  "title": "政务（浅色）",
+  "description": "完整页面案例：虚构政务服务大厅「江岸市政务服务网」整页。白底大字、克制政务红、WCAG AAA 对比度（正文 ≥7:1）、大号按钮与粗焦点框，附静态「长辈模式」开关示意；挂 data-theme=\"mo-gov\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "导航", "表单", "亲和"],
+  "base": "mo-gov",
+  "aiNotes": [
+    "对比度向 WCAG AAA 看齐并已实测：正文 #161A20 白底 17.5:1、次级 #3A4150（即 --color-neutral）白底 10.2:1；严禁用 opacity 压文字（会击穿 7:1），需要浅一层就换成 #3A4150，不要加透明度。",
+    "政务红只有一个 #8F1A1A（白字 9.0:1）：只用于主按钮、站名印章、当前导航下划线与链接；禁止大红渐变、禁止浅红大面积铺底，其余强调用语义蓝 #173FA8 / 深绿 #175A22 / 深棕 #6B4400。",
+    "大字号档位：站名 26px、Hero 主标 30px、事项名 18px、正文 16px、说明 15px，正文字号不得小于 15px；线高放宽到 1.7。",
+    "焦点框：所有可交互元素（a/button/input/label）:focus-visible 统一加 outline:3px solid var(--color-info) + outline-offset:2px + 4px 圆角；不允许只靠颜色变化提示焦点态。",
+    "点击区尺寸：主按钮高度 52–56px、常规按钮 ≥48px、快捷入口整块可点且高 ≥108px，按钮文字 ≥17px 加粗；390px 窄屏搜索框与按钮全宽堆叠、服务卡单列，不横向溢出。",
+    "状态不只靠颜色：受理 / 审核 / 办结必须同时有中文文字（badge 或 steps 节点文字），流程用 steps 节点 + 节点文字表达；通知 tag 与状态色搭配文字标签一起出现。",
+    "「长辈模式」只是静态示意：toggle 画 checked 外观 +「示意」角标，不写 JS 切换；真实项目的长辈模式 = 更大字号 / 更高对比 / 语音朗读，另行实现，本页不做假功能。",
+    "窄屏规则：品牌行与导航自然折行、热门服务 auto-fit 单列、表单区纵向堆叠；整页不出现 position:fixed、不出现横向滚动，页脚备案号标注「示例备案」。"
+  ],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": "自写 daisyUI 5 主题变量（[data-theme=mo-gov] 覆盖 --color-* 等，白底大字高对比政务红配色，文字对比度全部实测 ≥7:1），配虚构政务服务大厅整页案例（demo.html：大号站名与长辈模式示意开关 + 导航 + 超大搜索与六高频入口 + 12 张热门服务卡 + 进度查询 steps + 政策公告 + 无障碍承诺 + 示例备案页脚）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

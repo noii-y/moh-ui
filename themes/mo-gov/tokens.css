@@ -1,0 +1,47 @@
+/*! 灰墨 mo-gov · 江岸政务（浅色）—— 政务服务大厅高对比无障碍主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-gov"> 即整站换肤。
+   设计目标：正文对比度向 WCAG AAA 看齐（≥7:1），白底大字、克制政务红、大号点击区。 */
+
+[data-theme="mo-gov"] {
+  color-scheme: light;
+
+  /* 底与纸：纯白 + 浅灰面板，边框用中性灰，层次靠明度与描边 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #c9cdd4;
+  --color-base-content: #161a20;
+
+  /* 主色：克制的政务深红（白字 9.0:1），只留给主按钮、站名印章、当前导航与链接 */
+  --color-primary: #8f1a1a;
+  --color-primary-content: #ffffff;
+
+  /* 次色：沉稳政务蓝（白字 7.2:1），用于次级强调、焦点框外的信息色区分 */
+  --color-secondary: #2e5a88;
+  --color-secondary-content: #ffffff;
+  --color-accent: #6b4400;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3a4150;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：全部加深到白字 ≥7:1，状态同时必须配中文文字，不靠颜色单独传达 */
+  --color-info: #173fa8;
+  --color-info-content: #ffffff;
+  --color-success: #175a22;
+  --color-success-content: #ffffff;
+  --color-warning: #6b4400;
+  --color-warning-content: #ffffff;
+  --color-error: #a01b1b;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：政务偏方正、细边框、无投影 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
