@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "solarized-light",
+  "type": "theme",
+  "title": "Solarized Light（纸感护眼）",
+  "description": "完整页面案例：健康档案 / 预约挂号整页。米纸底色 #fdf6e3 配深青墨文字，低亮度差、长时间阅读不累眼；挂 data-theme=\"solarized-light\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "纸感", "护眼", "医疗"],
+  "base": "solarized-light",
+  "source": {
+    "origin": "third-party",
+    "upstream": "Solarized",
+    "url": "https://github.com/altercation/solarized",
+    "license": "MIT",
+    "changes": "按 daisyUI 5 主题变量体系封装为 [data-theme=solarized-light] tokens.css：base-100/200/300 取 Solarized base3/base2/再深一档，base-content 取 base02 深青墨；primary/secondary/accent 映射 blue/violet/cyan；info/success/warning/error 映射 cyan/green/yellow/red，并补全各 *-content 对比色与中性圆角；配完整健康预约挂号页面案例（demo.html）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
