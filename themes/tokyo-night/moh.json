@@ -14,7 +14,7 @@
     "changes": "将 Tokyo Night Night 色板映射为 daisyUI 5 主题变量（[data-theme=tokyo-night] 覆盖 --color-*：base 三层 #1a1b26/#292e42/#16161e、primary 蓝 #7aa2f7、secondary 品紫 #bb9af7、accent 夜青 #7dcfff，语义色取官方青/绿/黄/红），圆角调小贴合终端气质；按 Apache-2.0 义务保留原作者署名与许可证声明（见 README）；另写虚构股票行情终端整页案例（demo.html），全部行情数据为示例，未使用任何金融机构品牌标识。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "demo.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md", "LICENSE"],
   "audit": 100,
   "verified": false
 }

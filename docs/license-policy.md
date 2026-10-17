@@ -42,4 +42,23 @@
 
 ## 5. 本仓库当前素材状态
 
-全部为**自研**（origin=original，MIT），引入海外素材后按本文第 3 节流程登记。汇总见 `ATTRIBUTIONS.md`。
+汇总以 `site/attributions.html` 与各 `moh.json` 的 `source` 字段为准（`node scripts/check-attributions.mjs` 校验）。当前状态：
+
+**组件（68 个）**：63 个搬运自 daisyUI（MIT，© Pouya Saadeghi），5 个灰墨自研增强（origin=original，MIT）。
+
+**主题（18 套，完整页面案例）**：
+- 10 套灰墨二创（origin=original，MIT）：mo-dark / mo-light / mo-classic / mo-gray / mo-pastel / mo-slate / mo-mood / mo-brutal / mo-neon / mo-zhongshi；
+- 6 套收录外部开源色板（origin=third-party）：dracula-oss（Dracula Theme，MIT）、catppuccin（Catppuccin，MIT）、nord-dark（Nord，MIT）、rose-pine（Rosé Pine，MIT）、solarized-light（Solarized，MIT）、**tokyo-night（Tokyo Night，Apache-2.0，© Folke Lemaitre）**；
+- 2 套收录 daisyUI 官方内置主题（caramellatte / silk，MIT，无独立 tokens.css，变量在 `vendor/daisyui-themes.css` 内）。
+
+### Apache-2.0 实例：tokyo-night
+
+Tokyo Night 色板为 **Apache-2.0**，是全库唯一非 MIT 素材。第 4 条再分发义务已逐项落实：
+
+1. **许可证副本**：`themes/tokyo-night/LICENSE` 为 Apache-2.0 全文；
+2. **修改标注**：`moh.json` 的 `source.changes` 与 `README.md` 写明"将 Vim 主题色板映射为 daisyUI 5 变量、圆角调小、整页案例为新写"；
+3. **保留署名**：`tokens.css` 头注释与 `README.md` 均保留 `© Folke Lemaitre` 与上游地址（https://github.com/folke/tokyonight.nvim）；
+4. 上游无 NOTICE 文件，无需附带 NOTICE；
+5. 衍生的 demo.html 为新写的虚构行情终端，全部数据为示例、无任何金融机构品牌标识。
+
+后续若再引入 Apache-2.0 素材，照此五项办理；若上游含 NOTICE 文件，必须原样附带。

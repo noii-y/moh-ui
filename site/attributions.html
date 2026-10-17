@@ -37,7 +37,7 @@
 
     <div class="site-note">
       <span>📜</span>
-      <span>全部资源 MIT 许可；引入外部素材的流程、许可证对照与版权边界见 <a href="https://github.com/noii-y/moh-ui/blob/master/docs/license-policy.md" target="_blank" rel="noopener">docs/license-policy.md</a>。本地校验脚本：<code>node scripts/check-attributions.mjs</code>（校验全部 moh.json 溯源合规）。</span>
+      <span>组件与主题以 MIT 许可为主，唯一例外是 tokyo-night 主题（Apache-2.0，已按许可证要求保留署名与许可证副本）；引入外部素材的流程、许可证对照与版权边界见 <a href="https://github.com/noii-y/moh-ui/blob/master/docs/license-policy.md" target="_blank" rel="noopener">docs/license-policy.md</a>。本地校验脚本：<code>node scripts/check-attributions.mjs</code>（校验全部 moh.json 溯源合规）。</span>
     </div>
 
     <div class="site-section" style="padding-top: 8px">
@@ -50,6 +50,10 @@
           <tbody id="theme-rows"></tbody>
         </table>
       </div>
+      <p style="margin:12px 2px 0;font-size:13px;color:var(--moh-muted,#9aa0ab);line-height:1.7">
+        18 套主题中 10 套为灰墨二创（MIT），8 套收录自开源项目：dracula-oss / catppuccin / nord-dark / rose-pine / solarized-light 及 daisyUI 官方内置的 caramellatte / silk 均为 MIT；
+        <strong>tokyo-night 为 Apache-2.0（© Folke Lemaitre）</strong>，我们已在其目录附 <code>LICENSE</code> 全文、tokens.css 头注释与 README 保留署名，并标注色板映射与圆角等修改。
+      </p>
     </div>
 
     <div class="site-section" style="padding-top: 8px">
@@ -73,7 +77,7 @@
   <script>
     var DATA = window.MOH_DATA;
 
-    function originText(item) {
+    function originText(item, derivedLabel) {
       if (item.origin === "original") {
         if (item.inspiration && item.inspiration.length) {
           var links = item.inspiration.map(function (u) {
@@ -85,17 +89,20 @@
         return '<span class="site-chip">自研</span>';
       }
       var link = item.url ? '<a href="' + item.url + '" target="_blank" rel="noopener">' + (item.url.replace(/^https?:\/\//, "").slice(0, 40)) + "</a>" : "—";
-      return '<span class="site-chip site-chip--warn">二创</span> ' + link;
+      return '<span class="site-chip site-chip--warn">' + (derivedLabel || "二创") + '</span> ' + link;
     }
 
     document.getElementById("theme-n").textContent = DATA.themes.length;
     document.getElementById("comp-n").textContent = DATA.components.length;
 
     document.getElementById("theme-rows").innerHTML = DATA.themes.map(function (t) {
+      var groupChip = t.group === "收录"
+        ? '<span class="site-chip site-chip--warn">收录</span>'
+        : '<span class="site-chip site-chip--ok">二创</span>';
       return "<tr><td><strong>" + t.title + "</strong><br><code>" + t.name + "</code></td>" +
         "<td>" + t.styleTags.join(" / ") + "</td>" +
-        "<td>" + (t.origin === "original" ? '<span class="site-chip site-chip--ok">original</span>' : '<span class="site-chip site-chip--warn">derived</span>') + "</td>" +
-        "<td>" + originText(t) + "</td>" +
+        "<td>" + groupChip + "</td>" +
+        "<td>" + originText(t, t.group === "收录" ? "收录" : "二创") + "</td>" +
         "<td>" + t.license + "</td></tr>";
     }).join("");
 
