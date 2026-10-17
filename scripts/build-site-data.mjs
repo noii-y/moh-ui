@@ -23,18 +23,20 @@ function readJson(p) {
   }
 }
 
-/* 从 tokens.css 解析关键设计变量（真实色板，驱动卡片/换肤器） */
-const PALETTE_KEYS = [
-  "canvas", "surface", "surface-2", "border", "border-strong",
-  "ink", "muted", "primary", "primary-hover", "primary-muted",
-  "success", "warning", "danger", "radius-md", "control-height"
+/* 从主题 tokens.css 解析 daisyUI 5 语义色（驱动卡片色板条）。
+   收录的官方主题（如 caramellatte/silk）无 tokens.css，变量在 vendor 里，返回 {}。 */
+const THEME_PALETTE_KEYS = [
+  ["base", "--color-base-100"], ["surface", "--color-base-200"], ["surface2", "--color-base-300"],
+  ["primary", "--color-primary"], ["secondary", "--color-secondary"], ["accent", "--color-accent"]
 ];
-function parsePalette(tokensPath) {
+function parseThemePalette(tokensPath) {
+  if (!fs.existsSync(tokensPath)) return {};
   const css = fs.readFileSync(tokensPath, "utf8");
   const out = {};
-  for (const key of PALETTE_KEYS) {
-    const m = css.match(new RegExp("--moh-" + key.replace("-", "-") + ":\\s*([^;]+);"));
-    out[key] = m ? m[1].trim() : "";
+  for (const [key, variable] of THEME_PALETTE_KEYS) {
+    const re = new RegExp(variable.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ":\\s*([^;]+);");
+    const m = css.match(re);
+    if (m) out[key] = m[1].trim();
   }
   return out;
 }
@@ -59,29 +61,45 @@ function categorize(styleTags) {
   return "基础";
 }
 
-/* ---------- 扫描主题 ---------- */
+/* ---------- 扫描主题（完整页面案例体系：demo.html + daisyUI 5 变量） ---------- */
 const themes = [];
 for (const slug of fs.readdirSync(path.join(root, "themes"))) {
   const dir = path.join(root, "themes", slug);
   if (!fs.statSync(dir).isDirectory()) continue;
   const mj = readJson(path.join(dir, "moh.json"));
   if (!mj || mj.type !== "theme") continue;
-  const palette = parsePalette(path.join(dir, "tokens.css"));
+  const files = Array.isArray(mj.files) ? mj.files : [];
+  const hasTokens = files.includes("tokens.css") || fs.existsSync(path.join(dir, "tokens.css"));
+  const palette = parseThemePalette(path.join(dir, "tokens.css"));
+  const styleTags = mj.styleTags || [];
   themes.push({
     name: mj.name,
     title: mj.title,
     description: mj.description,
-    styleTags: mj.styleTags || [],
-    audit: mj.audit ?? null,
+    styleTags,
+    dark: styleTags.includes("深色"),
+    group: mj.source?.origin === "original" ? "二创" : "收录",
+    hasTokens,
     license: mj.source?.license || "MIT",
     origin: mj.source?.origin || "original",
+    upstream: mj.source?.upstream || null,
     url: mj.source?.url || null,
     inspiration: mj.inspiration || mj.source?.inspiration || [],
     palette,
-    slug
+    slug,
+    entry: "demo.html"
   });
 }
-themes.sort((a, b) => a.name.localeCompare(b.name, "zh"));
+/* 排序：二创样板组在前（mo-dark 样板第一），收录组在后，组内按固定展示顺序 */
+const THEME_ORDER = [
+  "mo-dark", "mo-light", "mo-classic", "mo-gray", "mo-pastel", "mo-slate", "mo-mood", "mo-brutal", "mo-neon", "mo-zhongshi",
+  "dracula-oss", "catppuccin", "nord-dark", "tokyo-night", "rose-pine", "solarized-light", "caramellatte", "silk"
+];
+function themeOrder(t) {
+  const i = THEME_ORDER.indexOf(t.slug);
+  return i >= 0 ? String(i).padStart(2, "0") : "99/" + t.name;
+}
+themes.sort((a, b) => themeOrder(a).localeCompare(themeOrder(b)));
 
 /* ---------- 扫描组件（递归，支持 components/daisyui/<name> 命名空间） ---------- */
 const components = [];
@@ -176,5 +194,5 @@ console.log("✅ site/data.js 已生成");
 console.log(`   主题 ${themes.length} 套 · 组件 ${components.length} 个 · 规则 1 包`);
 console.log("   主题标签：" + (data.themeTags.join(" / ") || "（无）"));
 console.log("   组件分类：" + data.categories.join(" / "));
-const missing = themes.filter((t) => !t.palette.primary || !t.palette.canvas);
-if (missing.length) console.warn("⚠ 色板缺失：" + missing.map((t) => t.slug).join(", "));
+const missing = themes.filter((t) => !fs.existsSync(path.join(root, "themes", t.slug, "demo.html")));
+if (missing.length) console.warn("⚠ 主题缺 demo.html 整页案例：" + missing.map((t) => t.slug).join(", "));

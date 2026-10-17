@@ -2,366 +2,528 @@
 window.MOH_DATA = {
   "generatedAt": "2026-10-17",
   "stats": {
-    "themes": 10,
+    "themes": 18,
     "components": 68,
     "rules": 1,
-    "resources": 79
+    "resources": 87
   },
   "themes": [
     {
-      "name": "mo-brutal",
-      "title": "粗野主义（浅色）",
-      "description": "3px 厚黑边、直角、硬阴影、蓝红撞色，个性与品牌向界面。",
+      "name": "mo-dark",
+      "title": "墨夜（深色）",
+      "description": "完整页面案例：Linear 风格暗色数据看板。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台；挂 data-theme=\"mo-dark\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
       "styleTags": [
-        "粗野",
-        "撞色",
-        "硬朗",
-        "品牌"
+        "深色",
+        "数据看板",
+        "Linear 风格"
       ],
-      "audit": 100,
+      "dark": true,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
       "url": null,
-      "inspiration": [
-        "https://www.shadcn.io/theme/neo-brutalism"
-      ],
+      "inspiration": [],
       "palette": {
-        "canvas": "#f7f7f7",
-        "surface": "#ffffff",
-        "surface-2": "#ececec",
-        "border": "#111111",
-        "border-strong": "#000000",
-        "ink": "#111111",
-        "muted": "#555555",
-        "primary": "#1e3a8a",
-        "primary-hover": "#2745a1",
-        "primary-muted": "#e0e7ff",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "0px",
-        "control-height": "32px"
+        "base": "oklch(23% 0.012 253)",
+        "surface": "oklch(20.5% 0.011 253)",
+        "surface2": "oklch(17.5% 0.010 253)",
+        "primary": "oklch(66% 0.17 255)",
+        "secondary": "oklch(58% 0.11 258)",
+        "accent": "oklch(72% 0.13 200)"
       },
-      "slug": "mo-brutal"
+      "slug": "mo-dark",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-light",
+      "title": "宣纸（浅色）",
+      "description": "完整页面案例：Stripe 风格浅色 SaaS 计费控制台。浅灰白底 + 白卡 + 克制蓝主色，整页含侧栏导航、套餐卡、用量与 API 密钥、账单表与支付方式；挂 data-theme=\"mo-light\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "SaaS 控制台",
+        "Stripe 风格"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#f6f8fa",
+        "surface": "#ffffff",
+        "surface2": "#f1f3f5",
+        "primary": "#2563eb",
+        "secondary": "#64748b",
+        "accent": "#0ea5e9"
+      },
+      "slug": "mo-light",
+      "entry": "demo.html"
     },
     {
       "name": "mo-classic",
       "title": "经典 Bootstrap 后台风（浅色）",
-      "description": "经典 Bootstrap 蓝、灰蓝白底，人人熟悉的后台节奏，适合存量项目迁移。",
+      "description": "完整页面案例：经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme=\"mo-classic\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
       "styleTags": [
         "经典",
         "Bootstrap",
         "蓝",
         "通用后台"
       ],
-      "audit": 100,
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
       "url": null,
       "inspiration": [
         "https://github.com/tabler/tabler",
         "https://github.com/ColorlibHQ/AdminLTE"
       ],
       "palette": {
-        "canvas": "#f5f7fa",
+        "base": "#f5f7fa",
         "surface": "#ffffff",
-        "surface-2": "#eef1f5",
-        "border": "#dbe2ea",
-        "border-strong": "#c3ccd9",
-        "ink": "#212a35",
-        "muted": "#5a6675",
+        "surface2": "#eef1f5",
         "primary": "#0b5ed7",
-        "primary-hover": "#0a58ca",
-        "primary-muted": "#e7f0fe",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "4px",
-        "control-height": "32px"
+        "secondary": "#6c7a89",
+        "accent": "#0aa2c0"
       },
-      "slug": "mo-classic"
-    },
-    {
-      "name": "mo-dark",
-      "title": "墨夜（深色）",
-      "description": "近黑底 + 冷灰 + 克制主色，Linear 风格取向，适合数据看板 / 监控类后台。",
-      "styleTags": [
-        "深色",
-        "数据看板",
-        "Linear 风格"
-      ],
-      "audit": 100,
-      "license": "MIT",
-      "origin": "original",
-      "url": null,
-      "inspiration": [],
-      "palette": {
-        "canvas": "#0f0f0f",
-        "surface": "#1b1b1f",
-        "surface-2": "#232328",
-        "border": "#2a2a30",
-        "border-strong": "#3a3a42",
-        "ink": "#f7f8f8",
-        "muted": "#9ca3af",
-        "primary": "#5e6ad2",
-        "primary-hover": "#7b84e0",
-        "primary-muted": "#262a4d",
-        "success": "#34d399",
-        "warning": "#fbbf24",
-        "danger": "#f87171",
-        "radius-md": "6px",
-        "control-height": "32px"
-      },
-      "slug": "mo-dark"
+      "slug": "mo-classic",
+      "entry": "demo.html"
     },
     {
       "name": "mo-gray",
       "title": "灰阶中性（商务浅色）",
-      "description": "冷调石墨灰、商务克制，企业级后台与经营管理类产品。",
+      "description": "完整页面案例：冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-gray\" 即整站换肤，适合企业级经营管理后台。",
       "styleTags": [
         "灰阶",
         "商务",
         "冷调",
         "企业级"
       ],
-      "audit": 100,
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
       "url": null,
       "inspiration": [
         "https://www.shadcn.io/theme/graphite"
       ],
       "palette": {
-        "canvas": "#f4f4f6",
+        "base": "#f4f4f6",
         "surface": "#ffffff",
-        "surface-2": "#ececef",
-        "border": "#dcdce1",
-        "border-strong": "#c2c2c9",
-        "ink": "#1f1f24",
-        "muted": "#696972",
+        "surface2": "#ececef",
         "primary": "#2b2b31",
-        "primary-hover": "#3a3a41",
-        "primary-muted": "#e9e9ed",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "5px",
-        "control-height": "32px"
+        "secondary": "#71717a",
+        "accent": "#4a6fa5"
       },
-      "slug": "mo-gray"
-    },
-    {
-      "name": "mo-light",
-      "title": "宣纸（浅色）",
-      "description": "浅灰底 + 白卡 + 蓝色主色，Stripe 风格取向，适合 SaaS 控制台 / 表单密集型后台。",
-      "styleTags": [
-        "浅色",
-        "SaaS 控制台",
-        "Stripe 风格"
-      ],
-      "audit": 100,
-      "license": "MIT",
-      "origin": "original",
-      "url": null,
-      "inspiration": [],
-      "palette": {
-        "canvas": "#f6f8fa",
-        "surface": "#ffffff",
-        "surface-2": "#f1f3f5",
-        "border": "#e4e7ec",
-        "border-strong": "#c9cfd8",
-        "ink": "#1a202c",
-        "muted": "#60698a",
-        "primary": "#2563eb",
-        "primary-hover": "#1d4ed8",
-        "primary-muted": "#eff6ff",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "6px",
-        "control-height": "32px"
-      },
-      "slug": "mo-light"
-    },
-    {
-      "name": "mo-mood",
-      "title": "暗黑开发者（深色）",
-      "description": "深空底、宇宙蓝主色、低光害，适合开发者工具与数据产品夜间工作。",
-      "styleTags": [
-        "深色",
-        "暗黑",
-        "开发者",
-        "宇宙蓝"
-      ],
-      "audit": 100,
-      "license": "MIT",
-      "origin": "original",
-      "url": null,
-      "inspiration": [
-        "https://www.shadcn.io/theme/cosmic-night"
-      ],
-      "palette": {
-        "canvas": "#0f1117",
-        "surface": "#151822",
-        "surface-2": "#1b1f2b",
-        "border": "#262b3a",
-        "border-strong": "#333a4d",
-        "ink": "#e6e8ee",
-        "muted": "#8b93a8",
-        "primary": "#4a63e0",
-        "primary-hover": "#5d74e8",
-        "primary-muted": "#232a44",
-        "success": "#34d399",
-        "warning": "#fbbf24",
-        "danger": "#f87171",
-        "radius-md": "6px",
-        "control-height": "32px"
-      },
-      "slug": "mo-mood"
-    },
-    {
-      "name": "mo-neon",
-      "title": "霓虹（深色）",
-      "description": "深空底、深青主色、hover 亮青霓虹，赛博未来科技向。",
-      "styleTags": [
-        "霓虹",
-        "深色",
-        "赛博",
-        "科技"
-      ],
-      "audit": 100,
-      "license": "MIT",
-      "origin": "original",
-      "url": null,
-      "inspiration": [
-        "https://www.shadcn.io/theme/cyberpunk"
-      ],
-      "palette": {
-        "canvas": "#0a0e14",
-        "surface": "#111722",
-        "surface-2": "#161d2b",
-        "border": "#233043",
-        "border-strong": "#2f4057",
-        "ink": "#eaf0f8",
-        "muted": "#8fa0b8",
-        "primary": "#0e7490",
-        "primary-hover": "#22d3ee",
-        "primary-muted": "#0b2b3a",
-        "success": "#34d399",
-        "warning": "#fbbf24",
-        "danger": "#f87171",
-        "radius-md": "5px",
-        "control-height": "32px"
-      },
-      "slug": "mo-neon"
+      "slug": "mo-gray",
+      "entry": "demo.html"
     },
     {
       "name": "mo-pastel",
       "title": "粉彩（柔和浅色）",
-      "description": "暖粉底、莓果主色、亲和圆润，适合教育 / 生活服务 / 健康类产品后台。",
+      "description": "完整页面案例：圆润亲和在线教育课程后台整页。微粉暖白底 + 深莓果主色 + 淡紫暖杏点缀，学员统计、课程卡片网格、本周排课表与待批作业全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-pastel\" 即整站换肤，适合教育 / 生活服务 / 健康类产品后台。",
       "styleTags": [
         "粉彩",
         "柔和",
         "亲和",
         "圆润"
       ],
-      "audit": 100,
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
       "url": null,
       "inspiration": [
         "https://www.shadcn.io/theme/marshmallow"
       ],
       "palette": {
-        "canvas": "#faf7f8",
+        "base": "#faf7f8",
         "surface": "#ffffff",
-        "surface-2": "#f5f0f2",
-        "border": "#ecdde3",
-        "border-strong": "#dcc8d1",
-        "ink": "#45343d",
-        "muted": "#71606b",
+        "surface2": "#f5f0f2",
         "primary": "#8e3b5e",
-        "primary-hover": "#a04a6d",
-        "primary-muted": "#f6e3ec",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "10px",
-        "control-height": "32px"
+        "secondary": "#8a63b8",
+        "accent": "#e8927c"
       },
-      "slug": "mo-pastel"
+      "slug": "mo-pastel",
+      "entry": "demo.html"
     },
     {
       "name": "mo-slate",
       "title": "纯净灰阶（浅色）",
-      "description": "无彩色零色相灰阶，深炭文字，适合写作 / 效率 / 文档类产品与中性商务后台。",
+      "description": "完整页面案例：无彩色灰阶文档中心整页。浅灰白底 + 深炭文字，零色相专注阅读，适合文档站 / 帮助中心 / 写作效率类产品；挂 data-theme=\"mo-slate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
       "styleTags": [
         "灰阶",
         "极简",
         "无彩色",
         "专注"
       ],
-      "audit": 100,
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#f8f8f8",
+        "surface": "#ffffff",
+        "surface2": "#f0f0f0",
+        "primary": "#262626",
+        "secondary": "#737373",
+        "accent": "#525252"
+      },
+      "slug": "mo-slate",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-mood",
+      "title": "暗黑开发者（深色）",
+      "description": "完整页面案例：深空底宇宙蓝开发者 API 控制台整页。低光害深色三层底色 + 宇宙蓝主色，适合开发者工具 / 日志查看器 / 数据产品夜间模式；挂 data-theme=\"mo-mood\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "暗黑",
+        "开发者",
+        "宇宙蓝"
+      ],
+      "dark": true,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#0f1117",
+        "surface": "#151822",
+        "surface2": "#1b1f2b",
+        "primary": "#4a63e0",
+        "secondary": "#6b7a99",
+        "accent": "#38bdf8"
+      },
+      "slug": "mo-mood",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-brutal",
+      "title": "粗野主义（浅色）",
+      "description": "完整页面案例：个性品牌落地页。3px 厚黑边、直角、零模糊硬阴影、海军蓝 + 撞色红，顶栏 + 超大 hero + 特性卡 + 三档价格 + 订阅 CTA；挂 data-theme=\"mo-brutal\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "粗野",
+        "撞色",
+        "硬朗",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
       "url": null,
       "inspiration": [
-        "https://www.shadcn.io/theme/clean-slate"
+        "https://www.shadcn.io/theme/neo-brutalism"
       ],
       "palette": {
-        "canvas": "#f8f8f8",
+        "base": "#f7f7f7",
         "surface": "#ffffff",
-        "surface-2": "#f0f0f0",
-        "border": "#e2e2e2",
-        "border-strong": "#cccccc",
-        "ink": "#1a1a1a",
-        "muted": "#6b6b6b",
-        "primary": "#262626",
-        "primary-hover": "#3f3f3f",
-        "primary-muted": "#e9e9e9",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "6px",
-        "control-height": "32px"
+        "surface2": "#ececec",
+        "primary": "#1e3a8a",
+        "secondary": "#111111",
+        "accent": "#dc2626"
       },
-      "slug": "mo-slate"
+      "slug": "mo-brutal",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-neon",
+      "title": "霓虹（深色）",
+      "description": "完整页面案例：科技活动发布页。深空底 + 深青实色按钮 + 克制亮青霓虹发光，顶栏 + 网格 hero + 静态倒计时 + 亮点卡 + 议程表 + 购票 CTA；挂 data-theme=\"mo-neon\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "霓虹",
+        "深色",
+        "赛博",
+        "科技",
+        "活动页"
+      ],
+      "dark": true,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [
+        "https://www.shadcn.io/theme/cyberpunk"
+      ],
+      "palette": {
+        "base": "#0a0e14",
+        "surface": "#111722",
+        "surface2": "#161d2b",
+        "primary": "#0e7490",
+        "secondary": "#155e75",
+        "accent": "#22d3ee"
+      },
+      "slug": "mo-neon",
+      "entry": "demo.html"
     },
     {
       "name": "mo-zhongshi",
-      "title": "新中式（后台版浅色）",
-      "description": "米宣纸底、朱砂主色、墨褐文字，东方留白气质的中式后台。",
+      "title": "新中式（浅色）",
+      "description": "完整页面案例：茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme=\"mo-zhongshi\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
       "styleTags": [
         "新中式",
         "东方",
         "米宣纸",
-        "朱砂"
+        "朱砂",
+        "电商首页"
       ],
-      "audit": 100,
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
       "license": "MIT",
       "origin": "original",
+      "upstream": null,
       "url": null,
       "inspiration": [
         "https://www.shadcn.io/theme"
       ],
       "palette": {
-        "canvas": "#f6f3ec",
+        "base": "#f6f3ec",
         "surface": "#fffdf8",
-        "surface-2": "#efe9dd",
-        "border": "#e0d8c6",
-        "border-strong": "#c9bda3",
-        "ink": "#3f3730",
-        "muted": "#756a58",
+        "surface2": "#efe9dd",
         "primary": "#c23b22",
-        "primary-hover": "#d6492e",
-        "primary-muted": "#f4e3da",
-        "success": "#16a34a",
-        "warning": "#d97706",
-        "danger": "#dc2626",
-        "radius-md": "6px",
-        "control-height": "32px"
+        "secondary": "#8a6d4a",
+        "accent": "#6b8e7f"
       },
-      "slug": "mo-zhongshi"
+      "slug": "mo-zhongshi",
+      "entry": "demo.html"
+    },
+    {
+      "name": "dracula-oss",
+      "title": "极客紫（OSS 完整版）",
+      "description": "完整页面案例：开源代码协作平台整页（仓库头 + 文件树 + main.py 代码预览 + README 摘要 + PR/Issue 列表）。Dracula 完整 OSS 色板：深紫灰底 + 霓虹紫主色，挂 data-theme=\"dracula-oss\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "开发者",
+        "科技"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Dracula Theme (dracula/dracula-theme)",
+      "url": "https://github.com/dracula/dracula-theme#color-palette-oss",
+      "inspiration": [],
+      "palette": {
+        "base": "#282a36",
+        "surface": "#21222c",
+        "surface2": "#191a21",
+        "primary": "#bd93f9",
+        "secondary": "#ff79c6",
+        "accent": "#8be9fd"
+      },
+      "slug": "dracula-oss",
+      "entry": "demo.html"
+    },
+    {
+      "name": "catppuccin",
+      "title": "浅滩紫（Catppuccin Mocha）",
+      "description": "完整页面案例：桌面端音乐播放器。软糯马卡龙深色 + 淡紫主色，左侧歌单导航、中部专辑封面与播放队列、底部播放条；挂 data-theme=\"catppuccin\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "柔和",
+        "圆润"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Catppuccin",
+      "url": "https://catppuccin.com/palette/",
+      "inspiration": [],
+      "palette": {
+        "base": "#1e1e2e",
+        "surface": "#181825",
+        "surface2": "#11111b",
+        "primary": "#cba6f7",
+        "secondary": "#89b4fa",
+        "accent": "#a6e3a1"
+      },
+      "slug": "catppuccin",
+      "entry": "demo.html"
+    },
+    {
+      "name": "nord-dark",
+      "title": "北极冷（Nord 暗色版）",
+      "description": "完整页面案例：邮件客户端三栏整页。极地冷灰蓝 + 冰蓝主色，左侧文件夹与标签、中部收件箱列表（未读加粗）、右侧邮件阅读窗；挂 data-theme=\"nord-dark\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "冷调",
+        "专注"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Nord",
+      "url": "https://www.nordtheme.com/docs/colors-and-palettes",
+      "inspiration": [],
+      "palette": {
+        "base": "#3b4252",
+        "surface": "#434c5e",
+        "surface2": "#2e3440",
+        "primary": "#5e81ac",
+        "secondary": "#81a1c1",
+        "accent": "#88c0d0"
+      },
+      "slug": "nord-dark",
+      "entry": "demo.html"
+    },
+    {
+      "name": "tokyo-night",
+      "title": "东京入夜",
+      "description": "完整页面案例：股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme=\"tokyo-night\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。",
+      "styleTags": [
+        "深色",
+        "科技",
+        "数据看板"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "Apache-2.0",
+      "origin": "third-party",
+      "upstream": "Tokyo Night (folke/tokyonight.nvim)",
+      "url": "https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/storm.lua",
+      "inspiration": [],
+      "palette": {
+        "base": "#1a1b26",
+        "surface": "#292e42",
+        "surface2": "#16161e",
+        "primary": "#7aa2f7",
+        "secondary": "#bb9af7",
+        "accent": "#7dcfff"
+      },
+      "slug": "tokyo-night",
+      "entry": "demo.html"
+    },
+    {
+      "name": "rose-pine",
+      "title": "暮色松（Rosé Pine）",
+      "description": "完整页面案例：独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme=\"rose-pine\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "柔和",
+        "极简"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Rosé Pine",
+      "url": "https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua",
+      "inspiration": [],
+      "palette": {
+        "base": "#191724",
+        "surface": "#1f1d2e",
+        "surface2": "#26233a",
+        "primary": "#c4a7e7",
+        "secondary": "#eb6f92",
+        "accent": "#9ccfd8"
+      },
+      "slug": "rose-pine",
+      "entry": "demo.html"
+    },
+    {
+      "name": "solarized-light",
+      "title": "Solarized Light（纸感护眼）",
+      "description": "完整页面案例：健康档案 / 预约挂号整页。米纸底色 #fdf6e3 配深青墨文字，低亮度差、长时间阅读不累眼；挂 data-theme=\"solarized-light\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "纸感",
+        "护眼",
+        "医疗"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Solarized",
+      "url": "https://github.com/altercation/solarized",
+      "inspiration": [],
+      "palette": {
+        "base": "#fdf6e3",
+        "surface": "#eee8d5",
+        "surface2": "#e3dccb",
+        "primary": "#268bd2",
+        "secondary": "#6c71c4",
+        "accent": "#2aa198"
+      },
+      "slug": "solarized-light",
+      "entry": "demo.html"
+    },
+    {
+      "name": "caramellatte",
+      "title": "焦糖拿铁（caramellatte）",
+      "description": "完整页面案例：社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme=\"caramellatte\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "暖色",
+        "圆润",
+        "餐饮",
+        "手作"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "caramellatte",
+      "entry": "demo.html"
+    },
+    {
+      "name": "silk",
+      "title": "丝绸（silk）",
+      "description": "完整页面案例：精品民宿预订整页。暖米白底配墨蓝文字，留白舒展、雅致轻奢；挂 daisyUI 官方主题 data-theme=\"silk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "轻奢",
+        "留白",
+        "预订"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "silk",
+      "entry": "demo.html"
     }
   ],
   "components": [
@@ -1646,33 +1808,45 @@ window.MOH_DATA = {
   ],
   "themeTags": [
     "暗黑",
+    "餐饮",
     "粗野",
+    "电商首页",
     "东方",
     "粉彩",
+    "护眼",
     "灰阶",
+    "活动页",
     "极简",
     "经典",
     "开发者",
     "科技",
     "蓝",
     "冷调",
+    "留白",
+    "落地页",
     "米宣纸",
     "霓虹",
+    "暖色",
     "品牌",
     "企业级",
     "浅色",
     "亲和",
+    "轻奢",
     "柔和",
     "赛博",
     "商务",
     "深色",
+    "手作",
     "数据看板",
     "通用后台",
     "无彩色",
     "新中式",
+    "医疗",
     "硬朗",
     "宇宙蓝",
+    "预订",
     "圆润",
+    "纸感",
     "朱砂",
     "专注",
     "撞色",
