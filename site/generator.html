@@ -320,13 +320,16 @@
       stage.dataset.theme = t.name;
       curNameEl.textContent = t.name;
       stageTitle.textContent = t.title + " · " + t.name;
-      /* 切主题时重置微调：回到该主题原始变量值 */
+      /* 切主题时两项微调都重置为该主题原始值：主色与圆角都移除内联覆盖 */
       clearPrimary();
       primaryInput.dataset.tuned = "";
       primaryInput.value = hexPrimary(t) || "#5e6ad2";
+      curRadius = 10;
       radiusInput.value = curRadius;
       radiusVal.textContent = curRadius + "px";
-      applyRadius();
+      stage.style.removeProperty("--radius-box");
+      stage.style.removeProperty("--radius-field");
+      stage.style.removeProperty("--radius-selector");
       picker.querySelectorAll(".site-theme-option").forEach(function (b) {
         var active = b.dataset.theme === curTheme;
         b.classList.toggle("site-theme-option--active", active);
@@ -428,6 +431,12 @@
       primaryInput.value = savedPrimary;
       primaryInput.dataset.tuned = "1";
       applyPrimary(savedPrimary);
+    }
+    if (SAVED && SAVED.radius) {
+      curRadius = Number(SAVED.radius);
+      radiusInput.value = curRadius;
+      radiusVal.textContent = curRadius + "px";
+      applyRadius();
     }
   </script>
 </body>
