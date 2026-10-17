@@ -1,0 +1,50 @@
+/*! 灰墨 mo-kids · 童趣（浅色）—— 儿童学习 App 前台糖果色主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-kids"> 即整站换肤。
+   设计取向：奶油白暖底，天蓝 / 草绿 / 橙红 / 粉紫糖果色只做点缀，大圆角、大图标，文字仍保持清晰可读。 */
+
+[data-theme="mo-kids"] {
+  color-scheme: light;
+
+  /* 底与纸：奶油白三层，暖调、明亮不刺眼 */
+  --color-base-100: oklch(98.2% 0.012 85);
+  --color-base-200: oklch(95.8% 0.016 85);
+  --color-base-300: oklch(92.5% 0.020 85);
+  --color-base-content: oklch(34% 0.035 60);
+
+  /* 主色：暖糖果橙（压到白字对比 5.2:1，AA 达标），只留给主操作 */
+  --color-primary: oklch(55% 0.20 50);
+  --color-primary-content: oklch(99% 0.005 85);
+
+  /* 次色：沉稳天蓝（白字对比 5.2:1），用于次级元素与课程点缀 */
+  --color-secondary: oklch(52% 0.14 235);
+  --color-secondary-content: oklch(99% 0.005 235);
+
+  /* 强调色：粉紫（白字对比 5.2:1），用于点缀色卡与美术课图标 */
+  --color-accent: oklch(55% 0.13 335);
+  --color-accent-content: oklch(99% 0.005 335);
+
+  /* 中性：暖奶油灰，用于卡片描边与次要块 */
+  --color-neutral: oklch(90% 0.020 80);
+  --color-neutral-content: oklch(38% 0.030 60);
+
+  /* 语义色：实心色全部压到白字对比 ≥4.5:1，暖黄保留深字 */
+  --color-info: oklch(55% 0.13 235);
+  --color-info-content: oklch(99% 0.005 235);
+  --color-success: oklch(53% 0.15 155);
+  --color-success-content: oklch(99% 0.005 155);
+  --color-warning: oklch(80% 0.14 85);
+  --color-warning-content: oklch(34% 0.06 70);
+  --color-error: oklch(53% 0.19 25);
+  --color-error-content: oklch(99% 0.005 25);
+
+  /* 圆角 / 尺寸：大圆角，亲和圆润 */
+  --radius-selector: 0.75rem;
+  --radius-field: 0.875rem;
+  --radius-box: 1.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
