@@ -4,7 +4,327 @@
 
 来源：Solarized（MIT） · [上游色板](https://github.com/altercation/solarized)
 
-## 给 AI 的换肤指令
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/solarized-light/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="solarized-light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>预约挂号 · 临溪社区医院（solarized-light 主题案例）</title>
+  <meta name="description" content="灰墨 solarized-light 主题完整页面案例：健康档案 / 预约挂号整页。米纸底色 + 深青墨文字，低亮度差、长时间阅读不累眼。本页只依赖 daisyUI 与本主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <style>
+/*! 灰墨 solarized-light · 纸感护眼——Solarized 浅色主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   配色取自 Ethan Schoonover 的 Solarized 色板（MIT，https://github.com/altercation/solarized#the-values）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="solarized-light"> 即整站换肤。 */
+
+[data-theme="solarized-light"] {
+  color-scheme: light;
+
+  /* 底与纸：base3 / base2 / 再深一档，米纸三层，层次靠明度 */
+  --color-base-100: #fdf6e3;
+  --color-base-200: #eee8d5;
+  --color-base-300: #e3dccb;
+  --color-base-content: #073642; /* base02 深青墨，保证亮底下对比 */
+
+  /* 主色：Solarized blue（只留给主操作与选中态） */
+  --color-primary: #268bd2;
+  --color-primary-content: #fdf6e3;
+
+  /* 次色 / 强调色：violet 与 cyan */
+  --color-secondary: #6c71c4;
+  --color-secondary-content: #fdf6e3;
+  --color-accent: #2aa198;
+  --color-accent-content: #073642;
+
+  --color-neutral: #93a1a1; /* base1 灰青 */
+  --color-neutral-content: #073642;
+
+  /* 语义色：cyan 信息 / green 成功 / yellow 警告 / red 错误，均配好对比 */
+  --color-info: #2aa198;
+  --color-info-content: #073642;
+  --color-success: #859900;
+  --color-success-content: #002b36;
+  --color-warning: #b58900;
+  --color-warning-content: #073642;
+  --color-error: #dc322f;
+  --color-error-content: #fdf6e3;
+
+  /* 圆角 / 尺寸 / 边框：中性圆角、细边框，长文阅读取向 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  </style>
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .shell { display: flex; min-height: 100vh; }
+    .side { width: 220px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 18px 12px; display: flex; flex-direction: column; gap: 14px; }
+    .brand { font-size: 15px; font-weight: 700; padding: 2px 12px 8px; display: flex; align-items: center; gap: 8px; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .main { flex: 1; min-width: 0; padding: 20px 24px 32px; display: flex; flex-direction: column; gap: 16px; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .dept-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--color-base-300); color: var(--color-primary); display: inline-flex; align-items: center; justify-content: center; flex: none; }
+    .dept-icon svg { width: 20px; height: 20px; }
+    .tbl-wrap { overflow-x: auto; }
+    .tbl-wrap .badge { white-space: nowrap; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 13px; }
+    @media (max-width: 900px) {
+      .shell { flex-direction: column; }
+      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .brand { flex: none; padding: 0 12px 0 4px; }
+      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }
+      .side .menu li a { white-space: nowrap; }
+      .main { padding: 16px 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <!-- 侧栏导航 -->
+    <aside class="side">
+      <div class="brand"><span class="brand-mark">临</span>临溪社区医院</div>
+      <ul class="menu" style="width:100%;padding:0">
+        <li><a>健康概览</a></li>
+        <li><a class="menu-active">预约挂号</a></li>
+        <li><a>就诊记录</a></li>
+        <li><a>检验报告</a></li>
+        <li><a>缴费记录</a></li>
+        <li><a>家属关怀</a></li>
+        <li><a>设置</a></li>
+      </ul>
+    </aside>
+
+    <!-- 主区 -->
+    <div class="main">
+
+      <!-- 顶栏 -->
+      <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+        <div class="navbar-start">
+          <span style="font-size:13px;opacity:.65">预约挂号 · 本周（10 月 19 日 – 25 日）</span>
+        </div>
+        <div class="navbar-end" style="gap:10px">
+          <label class="input input-sm" style="display:flex;align-items:center;gap:8px;width:230px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;opacity:.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /></svg>
+            <input type="search" placeholder="搜索科室或医生…" style="flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px" />
+          </label>
+          <button class="btn btn-ghost btn-sm" type="button">
+            通知
+            <span class="badge badge-sm badge-primary">3</span>
+          </button>
+          <div class="avatar avatar-placeholder">
+            <div style="width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)">林</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 标题行 -->
+      <div class="row">
+        <div>
+          <h1 style="font-size:20px;font-weight:700;margin:0">预约挂号</h1>
+          <p style="font-size:13px;opacity:.6;margin:4px 0 0">选择科室与时段，挂号成功后可在就诊记录中查看（示例数据）</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" type="button">导出记录</button>
+          <button class="btn btn-primary btn-sm" type="button">预约挂号</button>
+        </div>
+      </div>
+
+      <!-- 指标卡 -->
+      <div class="stat-row">
+        <div class="stat bg-base-200 rounded-box">
+          <div class="stat-title">本周已约</div>
+          <div class="stat-value" style="font-size:26px">6 次</div>
+          <div class="stat-desc" style="opacity:.65">含 2 个复诊号源</div>
+        </div>
+        <div class="stat bg-base-200 rounded-box">
+          <div class="stat-title">下次就诊</div>
+          <div class="stat-value" style="font-size:22px">10 月 20 日</div>
+          <div class="stat-desc" style="opacity:.65">周二上午 · 内科 · 周明德医师</div>
+        </div>
+        <div class="stat bg-base-200 rounded-box">
+          <div class="stat-title">待缴费</div>
+          <div class="stat-value" style="font-size:26px">¥128.00</div>
+          <div class="stat-desc text-warning" style="color:var(--color-warning)">昨日检查费待缴</div>
+        </div>
+        <div class="stat bg-base-200 rounded-box">
+          <div class="stat-title">健康评分</div>
+          <div class="stat-value" style="font-size:26px">92</div>
+          <div class="stat-desc text-success" style="color:var(--color-success)">较上月 +2 分</div>
+        </div>
+      </div>
+
+      <!-- 科室卡片 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <h2 style="font-size:15px;font-weight:700;margin:0">科室导航</h2>
+            <span class="badge badge-soft badge-primary">今日放号 07:30</span>
+          </div>
+          <div class="dept-grid">
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 12.5h4l2.5-5.5 3.5 11 2.5-5.5h4" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">内科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">感冒发热、慢病随访、血压血糖管理。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16M4 12h16" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">外科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">外伤处理、门诊小手术、术后换药。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path stroke-linecap="round" d="M9.5 10h.01M14.5 10h.01M9 14.5c.9.9 2.1 1.4 3 1.4s2.1-.5 3-1.4" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">儿科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">儿童常见病、疫苗接种、生长发育评估。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12S6 6.5 12 6.5 21.5 12 21.5 12 18 17.5 12 17.5 2.5 12 2.5 12Z" /><circle cx="12" cy="12" r="2.8" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">眼科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">视力检查、干眼诊疗、配镜咨询。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v5c0 4.4-2.7 8-4 9.5C10.7 18 8 14.4 8 10V5Z" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">口腔科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">补牙洁牙、儿童涂氟、口腔检查。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:14px;display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span class="dept-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21c-4.5 0-7.5-3-7.5-7.5C4.5 9 8 3 12 3c0 6 1.5 9 9 9-2 3-5 9-9 9Z" /><path stroke-linecap="round" d="M12 21V9" /></svg></span>
+                  <div style="font-size:14px;font-weight:700">中医科</div>
+                </div>
+                <p style="font-size:12px;opacity:.65;margin:0;line-height:1.6">针灸推拿、体质调理、季节养生门诊。</p>
+                <button class="btn btn-soft btn-sm" type="button">预约号源</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 本周预约时间表 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <h2 style="font-size:15px;font-weight:700;margin:0">本周号源</h2>
+            <span class="badge badge-soft badge-sm">内科 · 普通门诊</span>
+          </div>
+          <div class="tbl-wrap">
+            <table class="table" style="font-size:13px">
+              <thead>
+                <tr style="opacity:.6;font-size:12px">
+                  <th>时段</th><th>周一 10/19</th><th>周二 10/20</th><th>周三 10/21</th><th>周四 10/22</th><th>周五 10/23</th><th>周六 10/24</th><th>周日 10/25</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:600">上午 08:00–12:00</td>
+                  <td><span class="badge badge-soft badge-warning">号源紧张</span></td>
+                  <td><span class="badge badge-soft badge-primary">已约 09:30</span></td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-neutral">约满</span></td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-neutral">休诊</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight:600">下午 14:00–17:30</td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-neutral">约满</span></td>
+                  <td><span class="badge badge-soft badge-warning">号源紧张</span></td>
+                  <td><span class="badge badge-soft badge-success">可约</span></td>
+                  <td><span class="badge badge-soft badge-neutral">约满</span></td>
+                  <td><span class="badge badge-soft badge-neutral">休诊</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 就诊记录 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <h2 style="font-size:15px;font-weight:700;margin:0">就诊记录</h2>
+            <a class="link" href="#" style="font-size:13px;text-decoration:none">查看全部</a>
+          </div>
+          <div class="tbl-wrap">
+            <table class="table" style="font-size:13px;min-width:560px">
+              <thead>
+                <tr style="opacity:.6;font-size:12px">
+                  <th>日期</th><th>科室</th><th>医生</th><th>诊断</th><th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>2026-10-12</td><td>内科</td><td>周明德</td><td>上呼吸道感染</td><td><span class="badge badge-soft badge-success">已完成</span></td></tr>
+                <tr><td>2026-10-05</td><td>眼科</td><td>沈知远</td><td>干眼诊疗</td><td><span class="badge badge-soft badge-warning">待复诊</span></td></tr>
+                <tr><td>2026-09-22</td><td>口腔科</td><td>顾安然</td><td>洁牙检查</td><td><span class="badge badge-soft badge-success">已完成</span></td></tr>
+                <tr><td>2026-09-08</td><td>中医科</td><td>叶知秋</td><td>体质调理</td><td><span class="badge badge-soft badge-info">调理中</span></td></tr>
+                <tr><td>2026-08-27</td><td>儿科</td><td>陈嘉禾</td><td>疫苗接种</td><td><span class="badge badge-soft badge-neutral">已取消</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <p class="foot">以上医院、医生与号源均为示例数据，仅用于展示 solarized-light 主题整页效果 · 灰墨 MoH_UI</p>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
 
 ① 在 `<head>` 引入 daisyUI 5 底座：
 
@@ -13,7 +333,7 @@
 <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/solarized-light/tokens.css">
 ```
 
-② 在 `<html>` 标签挂 `data-theme="solarized-light"` 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="solarized-light"] 下的全部 --color-* 变量。
+② 在 `<html>` 挂 `data-theme="solarized-light"`，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="solarized-light"] 下的全部 --color-* 变量。
 
 ③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
 
@@ -67,9 +387,7 @@
 }
 ```
 
-④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：https://noii-y.github.io/moh-ui/themes/solarized-light/demo.html
-
-⑤ 审美提示：组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="solarized-light"] 里的 --color-* 变量。
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
 
 ---
 
@@ -77,5 +395,5 @@
 
 - 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/solarized-light/demo.html
 - 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
-- 主题库（全部 18 套整页案例）：https://noii-y.github.io/moh-ui/site/themes.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
 - 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

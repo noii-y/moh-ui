@@ -1,0 +1,395 @@
+# 报刊（mo-press） · 灰墨 MoH_UI
+
+> 虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与一条克制的报头红，报头双线、双栏正文与竖发丝线分隔，密而不乱；挂 data-theme="mo-press" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/mo-press/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 黑白灰为体：纸底 base-100 米白、文字 base-content 墨黑、卡片底 base-200/300 全是无彩色；报头红 primary 只出现在报头 3px 红线、栏目标签（kicker）、当前导航项、订阅主按钮与侧栏当前条，任何区块不得大面积铺红。
+- 各级标题一律衬线（内联 font-family:"Songti SC","SimSun",Georgia,serif），层级：报名 50px > 头版头条 33px > 栏目标题 18.5px > 导读列表 13px；报名加字距 8~12px，正文用无衬线。
+- 正文新闻区用 CSS column-count:2 双栏，column-gap 约 28px，栏间用 1px 发丝竖线（column-rule，压到 currentColor 18%）分隔；正文行距 1.8~1.9、两端对齐（text-align:justify）。
+- 版块之间一律 1px 发丝线分隔（color-mix 压到 currentColor 22%），不堆色块、不投影；报头为 3px 报头红 + 1px 墨线的双线。
+- 图片只用内联 SVG 画成形简影（相框里画天际线/斜拉桥/柱状图，灰阶单色、可加一条 primary 红柱强调），禁止空白占位框、彩色照片、emoji 与 <img>。
+- 窄屏 ≤860px 一律退化：多栏退单栏（column-count:1、去掉 column-rule）、头版图与标题上下堆叠、侧栏掉到正文下、报名缩到 34px 并减字距；长头条必须换行收缩、不得横向溢出。
+- 按钮只写真实动作（订阅报纸、订阅数字版），主按钮红底纸白字，次操作幽灵按钮；页脚社址电话均标注「虚构」。
+- 圆角压到 2~4px（--radius-box:0.25rem）保持印刷气质；不写死任何颜色十六进制，一律取 --color-* 语义变量。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="mo-press">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>江城日报 · 2026年10月18日 头版（mo-press 主题案例）</title>
+  <meta name="description" content="灰墨 mo-press 主题完整页面案例：虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与克制报头红，报头双线、双栏正文与竖发丝线，密而不乱。本页只依赖 daisyUI 与 mo-press 主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <style>
+/*! 灰墨 mo-press · 报刊（浅色）—— 日报/周刊首页排版主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-press"> 即整站换肤。
+   气质参考：传统中文纸报版式（报头 masthead、多栏正文、竖发丝线），仅风格参考，非任何真实报纸品牌。 */
+
+[data-theme="mo-press"] {
+  color-scheme: light;
+
+  /* 底与纸：米白三层纸，层次极淡、像印在新闻纸上 */
+  --color-base-100: oklch(97.5% 0.006 90);
+  --color-base-200: oklch(95.5% 0.007 90);
+  --color-base-300: oklch(92.5% 0.008 90);
+  --color-base-content: oklch(24% 0.012 60);
+
+  /* 主色：克制的报头红（只留给报头线/栏目标签/当前导航/订阅主按钮，绝不大面积铺） */
+  --color-primary: oklch(46% 0.15 25);
+  --color-primary-content: oklch(97.5% 0.006 90);
+
+  /* 次色 / 强调色：一律中性灰，不引入第二个色相 */
+  --color-secondary: oklch(58% 0.012 60);
+  --color-secondary-content: oklch(97.5% 0.006 90);
+  --color-accent: oklch(42% 0.012 60);
+  --color-accent-content: oklch(97.5% 0.006 90);
+
+  --color-neutral: oklch(90% 0.008 90);
+  --color-neutral-content: oklch(28% 0.012 60);
+
+  /* 语义色：低饱和中性，报错处才用红 */
+  --color-info: oklch(55% 0.03 230);
+  --color-info-content: oklch(96% 0.006 90);
+  --color-success: oklch(48% 0.07 160);
+  --color-success-content: oklch(96% 0.006 90);
+  --color-warning: oklch(55% 0.09 75);
+  --color-warning-content: oklch(96% 0.006 90);
+  --color-error: oklch(48% 0.15 25);
+  --color-error-content: oklch(97.5% 0.006 90);
+
+  /* 圆角 / 尺寸 / 边框：报刊气质，圆角压到 2~4px */
+  --radius-selector: 0.125rem;
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+  </style>
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 20px 18px 44px; }
+    .serif { font-family: "Songti SC", "SimSun", Georgia, serif; }
+    .hair { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+
+    /* 报头 masthead */
+    .masthead { text-align: center; padding: 14px 0 6px; }
+    .masthead .name { font-size: 50px; font-weight: 700; letter-spacing: 12px; line-height: 1.15; margin: 0; text-indent: 12px; }
+    .masthead .en { font-size: 11px; letter-spacing: 5px; opacity: .55; margin-top: 6px; text-indent: 5px; }
+    .masthead .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px; font-size: 12px; opacity: .75; margin-top: 12px; }
+    .redline { border-top: 3px solid var(--color-primary); margin-top: 12px; }
+    .inkline { border-top: 1px solid var(--color-base-content); margin-top: 2px; }
+
+    /* 文字导航 */
+    .papernav { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 24px; padding: 11px 0 10px; font-size: 14px; }
+    .papernav a { color: inherit; text-decoration: none; padding: 2px 0; }
+    .papernav .cur { font-weight: 700; color: var(--color-primary); border-bottom: 2px solid var(--color-primary); }
+
+    /* 头版：图 + 头条 */
+    .front { display: grid; grid-template-columns: 1.35fr 1fr; gap: 26px; padding: 20px 0 18px; }
+    .photo-frame { border: 1px solid color-mix(in oklab, currentColor 30%, transparent); padding: 8px; background: var(--color-base-200); }
+    .photo-frame svg { display: block; width: 100%; height: auto; }
+    .kicker { display: inline-block; background: var(--color-primary); color: var(--color-primary-content); font-size: 11px; letter-spacing: 3px; padding: 2px 9px; }
+    .headline { font-size: 33px; line-height: 1.28; font-weight: 700; margin: 12px 0 10px; }
+    .lede { font-size: 14.5px; line-height: 1.9; margin: 0 0 12px; }
+    .brief { font-size: 13px; line-height: 1.9; border-top: 1px dashed color-mix(in oklab, currentColor 35%, transparent); padding-top: 9px; margin: 0; }
+    .brief b { font-weight: 700; }
+
+    /* 正文 + 侧栏 */
+    .bodygrid { display: grid; grid-template-columns: 1fr 252px; gap: 30px; padding-top: 16px; border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .cols { column-count: 2; column-gap: 28px; column-rule: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .story { break-inside: avoid; margin: 0 0 20px; }
+    .story h3 { font-size: 18.5px; font-weight: 700; line-height: 1.45; margin: 0 0 5px; }
+    .story .byline { font-size: 11px; letter-spacing: 1px; opacity: .5; margin-bottom: 5px; }
+    .story p { font-size: 13px; line-height: 1.85; margin: 0 0 7px; text-align: justify; }
+
+    /* 侧栏盒子 */
+    .sidebox { border-top: 2px solid var(--color-base-content); padding-top: 8px; margin-bottom: 22px; }
+    .sidebox h4 { font-size: 13px; letter-spacing: 4px; margin: 0 0 9px; font-weight: 700; }
+    .toc { margin: 0; padding-left: 22px; }
+    .toc li { font-size: 13px; line-height: 1.75; margin-bottom: 7px; }
+    .toc li::marker { color: var(--color-primary); font-weight: 700; }
+    .talk p { font-size: 12.5px; line-height: 1.85; margin: 6px 0 0; text-align: justify; }
+    .talk .who { font-size: 11px; opacity: .55; margin-top: 6px; }
+    .chartbox svg { display: block; width: 100%; height: auto; }
+    .chartbox .cap { font-size: 11px; line-height: 1.7; opacity: .6; margin-top: 6px; }
+
+    /* 底部短讯与订阅 */
+    .shortcuts { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); padding-top: 16px; }
+    .shortcuts h4 { font-size: 13px; letter-spacing: 4px; margin: 0 0 10px; }
+    .brief-item { margin-bottom: 10px; }
+    .brief-item .t { font-size: 13px; font-weight: 700; line-height: 1.5; }
+    .brief-item .d { font-size: 12px; line-height: 1.75; opacity: .7; margin-top: 2px; }
+    .sub { border: 1px solid var(--color-primary); padding: 26px 18px; text-align: center; margin-top: 26px; }
+    .sub h2 { font-size: 22px; letter-spacing: 4px; margin: 0 0 8px; }
+    .sub p { font-size: 13px; opacity: .75; line-height: 1.9; margin: 0 auto 14px; max-width: 440px; }
+    .sub .addr { font-size: 12px; opacity: .6; line-height: 1.9; margin-top: 14px; }
+    .foot { font-size: 11px; opacity: .5; text-align: center; padding-top: 20px; line-height: 1.9; }
+
+    @media (max-width: 860px) {
+      .front { grid-template-columns: 1fr; gap: 18px; }
+      .bodygrid { grid-template-columns: 1fr; gap: 22px; }
+      .cols { column-count: 1; column-rule: none; }
+      .shortcuts { grid-template-columns: 1fr; gap: 16px 0; }
+      .masthead .name { font-size: 34px; letter-spacing: 6px; text-indent: 6px; }
+      .headline { font-size: 25px; }
+      .wrap { padding: 14px 14px 36px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 报头 masthead -->
+    <header class="masthead">
+      <h1 class="serif name">江城日报</h1>
+      <div class="en serif">JIANGCHENG&nbsp;DAILY</div>
+      <div class="meta">
+        <span>2026 年 10 月 18 日 · 星期日</span>
+        <span>第 12876 期（代号：城报）</span>
+        <span>今日天气：多云转晴，12～19℃，东南风 2 级</span>
+      </div>
+      <div class="redline"></div>
+      <div class="inkline"></div>
+    </header>
+
+    <!-- 文字导航 -->
+    <nav class="papernav">
+      <a class="cur">要闻</a>
+      <a>时政</a>
+      <a>经济</a>
+      <a>文化</a>
+      <a>科技</a>
+      <a>体育</a>
+      <a>评论</a>
+      <a>副刊</a>
+    </nav>
+
+    <!-- 头版：配图 + 头条 -->
+    <section class="front">
+      <div class="photo-frame">
+        <svg viewBox="0 0 420 260" role="img" aria-label="头版配图线稿：跨江斜拉桥与城市天际线（示例插图）">
+          <rect width="420" height="260" fill="var(--color-base-200)" />
+          <circle cx="332" cy="58" r="24" fill="var(--color-base-300)" />
+          <g fill="color-mix(in oklab, currentColor 20%, transparent)">
+            <rect x="18" y="118" width="34" height="92" />
+            <rect x="58" y="88" width="26" height="122" />
+            <rect x="92" y="140" width="40" height="70" />
+            <rect x="138" y="104" width="24" height="106" />
+            <rect x="168" y="132" width="34" height="78" />
+          </g>
+          <rect x="0" y="210" width="420" height="50" fill="var(--color-base-300)" />
+          <g stroke="currentColor" stroke-width="3" fill="none">
+            <line x1="0" y1="205" x2="420" y2="205" />
+            <line x1="252" y1="118" x2="252" y2="205" />
+          </g>
+          <g stroke="currentColor" stroke-width="1.4" fill="none">
+            <line x1="252" y1="118" x2="196" y2="205" />
+            <line x1="252" y1="118" x2="308" y2="205" />
+            <line x1="252" y1="118" x2="158" y2="205" />
+            <line x1="252" y1="118" x2="346" y2="205" />
+          </g>
+          <g stroke="currentColor" stroke-width="1" opacity=".5">
+            <line x1="20" y1="226" x2="120" y2="226" />
+            <line x1="150" y1="238" x2="240" y2="238" />
+            <line x1="290" y1="230" x2="400" y2="230" />
+          </g>
+        </svg>
+      </div>
+      <div>
+        <span class="kicker serif">要闻</span>
+        <h2 class="serif headline">跨江主桥合龙，江城南北再添通途</h2>
+        <p class="lede">今日上午，江城第三过江通道主桥成功合龙。这座全长 2.4 公里的斜拉桥横跨两江交汇口，把江北新城与江南老城的车程从绕行半小时压缩到 8 分钟以内。</p>
+        <p class="brief"><b>摘要：</b>主桥为双塔斜拉结构，设计时速 60 公里，双向六车道；预计明年 6 月通车，同步开通两条公交接驳专线；工程累计减少绕行里程约 11 公里。</p>
+      </div>
+    </section>
+
+    <!-- 正文双栏 + 侧栏 -->
+    <div class="bodygrid">
+      <div class="cols">
+        <article class="story">
+          <h3 class="serif">今冬明春空气质量保障方案发布</h3>
+          <div class="byline">时政 · 本报记者</div>
+          <p>市生态环境部门今日发布今冬明春空气质量保障方案，提出以压减燃煤、管控扬尘、移动源治理为主线的三方面共十二条措施。方案明确，11 月起绕城区域内散装物料车辆须全密闭运输，工地出口统一安装车辆冲洗装置。</p>
+          <p>据介绍，保障期内本地电厂将按预案提升清洁能源发电比例，重点路段每月开展一次柴油车路检。方案同时公布了监督举报电话，公众可通过版面下方公示渠道反映扬尘与冒烟问题。</p>
+        </article>
+        <article class="story">
+          <h3 class="serif">前三季度规上工业增加值增长 5.8%</h3>
+          <div class="byline">经济 · 本报记者</div>
+          <p>市统计局今日发布数据：前三季度全市规模以上工业增加值同比增长 5.8%，其中高技术制造业增长 9.2%，明显快于整体。电子信息、智能装备两条产业链产值合计占规模以上工业比重超过四成。</p>
+          <p>统计局分析认为，新增订单与出口回暖是主要拉动因素；下一步将继续推进中小企业数字化改造补贴，全年新增上云企业目标保持在 1200 家以上。</p>
+        </article>
+        <article class="story">
+          <h3 class="serif">市图书馆新馆周末单日进馆破 6000</h3>
+          <div class="byline">文化 · 本报记者</div>
+          <p>开馆满月的市图书馆新馆再传数据：本周六单日进馆人次突破 6000，其中青少年读者占比近四成。馆方介绍，周末三场公益阅读场场均满座，预约系统提前三天即约满。</p>
+          <p>新馆二楼的地方文献阅览区成为新热点，不少读者专程前来查阅江城地方志旧报刊合订本。馆方表示将在月底前增设夜间开放区域，并把公益讲座排期扩到每周六两场。</p>
+        </article>
+        <article class="story">
+          <h3 class="serif">高新区开通首条车联网示范路段</h3>
+          <div class="byline">科技 · 本报记者</div>
+          <p>高新区今日宣布首条车联网示范路段正式开通，全长 4.6 公里，覆盖三座信号灯路口。沿线布设的路侧设备可向预约车辆实时推送红绿灯相位、前方事故预警与公交优先信号。</p>
+          <p>首批参与示范的是本地两家出行平台的约 300 辆运营车辆。交通部门表示，示范期内不收取用户费用，运行三个月后将评估扩展路段，并同步制定数据安全与隐私保护细则。</p>
+        </article>
+      </div>
+
+      <!-- 侧栏 -->
+      <aside>
+        <div class="sidebox">
+          <h4 class="serif">今日导读</h4>
+          <ol class="toc">
+            <li>跨江主桥合龙，南北再添通途（头版）</li>
+            <li>今冬明春空气质量保障方案发布</li>
+            <li>前三季度工业增加值增长 5.8%</li>
+            <li>图书馆新馆周末进馆破 6000</li>
+            <li>车联网示范路段开通，300 车首批上路</li>
+          </ol>
+        </div>
+        <div class="sidebox talk">
+          <h4 class="serif">时评</h4>
+          <h3 class="serif" style="font-size:16px;line-height:1.5;margin:0">把慢行系统织进城市的日常</h3>
+          <p>一座城市的温度，往往写在骑行道与步行街上。把慢行网络织进街区日常，不是修几条绿道那么简单，而是要让通勤者敢骑车、老人敢出门。</p>
+          <div class="who">评论员 · 江晚</div>
+        </div>
+        <div class="sidebox chartbox">
+          <h4 class="serif">数据图说</h4>
+          <svg viewBox="0 0 240 120" role="img" aria-label="数据图说柱状图：本周空气质量优良率逐日变化（示例插图）">
+            <line x1="14" y1="104" x2="232" y2="104" stroke="currentColor" stroke-width="1" />
+            <g fill="currentColor">
+              <rect x="24" y="66" width="18" height="38" opacity=".55" />
+              <rect x="58" y="52" width="18" height="52" opacity=".55" />
+              <rect x="92" y="38" width="18" height="66" opacity=".55" />
+              <rect x="126" y="58" width="18" height="46" opacity=".55" />
+              <rect x="160" y="28" width="18" height="76" fill="var(--color-primary)" />
+              <rect x="194" y="44" width="18" height="62" opacity=".55" />
+            </g>
+            <text x="169" y="22" text-anchor="middle" font-size="10" fill="var(--color-primary)">68%</text>
+          </svg>
+          <div class="cap">图：本周空气质量优良天数占比逐日变化（虚构示例数据）。</div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 文化 / 体育短讯 -->
+    <section class="shortcuts">
+      <div>
+        <h4 class="serif">文化短讯</h4>
+        <div class="brief-item"><div class="t">老城美术馆双年展本周六开幕</div><div class="d">展出来自 12 个城市的 80 件作品，展期两个月（虚构）。</div></div>
+        <div class="brief-item"><div class="t">江城作者长篇小说入选年度推荐书单</div><div class="d">作品以两江码头三代人为线索，本周起在全市书店上架。</div></div>
+        <div class="brief-item"><div class="t">沿江老码头剧场完成修复试演</div><div class="d">首场为地方戏曲折子戏，11 月起面向市民开放预约。</div></div>
+      </div>
+      <div>
+        <h4 class="serif">体育短讯</h4>
+        <div class="brief-item"><div class="t">市业余篮球联赛决出总冠军</div><div class="d">城投队末节反超，以 81 比 76 力克地铁联队（虚构比分）。</div></div>
+        <div class="brief-item"><div class="t">滨江步道秋季跑本周日清晨鸣枪</div><div class="d">全程 10 公里，报名已满，沿途设六个补水与医疗点。</div></div>
+        <div class="brief-item"><div class="t">青少年围棋定段赛收官</div><div class="d">共 96 名小棋手参赛，本周日上午举行颁奖轮。</div></div>
+      </div>
+    </section>
+
+    <!-- 订阅 CTA -->
+    <section class="sub">
+      <h2 class="serif">订阅江城日报</h2>
+      <p>纸报每日清晨送达，数字版同步早六点更新；订户可优先参加读者日与作家见面活动。</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px">
+        <button class="btn btn-primary" type="button">订阅报纸</button>
+        <button class="btn btn-ghost" type="button">订阅数字版</button>
+      </div>
+      <div class="addr">本报社址：江城区沿江大道 218 号（虚构） · 发行热线：027-8200-0000（虚构）</div>
+    </section>
+
+    <div class="foot">江城日报为虚构报刊，报名、期号、天气、新闻、数据图说、社址与电话均为示例数据，仅用于展示 mo-press 主题整页效果 · 灰墨 MoH_UI</div>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-press/tokens.css">
+```
+
+② 在 `<html>` 挂 `data-theme="mo-press"`，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-press"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-press · 报刊（浅色）—— 日报/周刊首页排版主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-press"> 即整站换肤。
+   气质参考：传统中文纸报版式（报头 masthead、多栏正文、竖发丝线），仅风格参考，非任何真实报纸品牌。 */
+
+[data-theme="mo-press"] {
+  color-scheme: light;
+
+  /* 底与纸：米白三层纸，层次极淡、像印在新闻纸上 */
+  --color-base-100: oklch(97.5% 0.006 90);
+  --color-base-200: oklch(95.5% 0.007 90);
+  --color-base-300: oklch(92.5% 0.008 90);
+  --color-base-content: oklch(24% 0.012 60);
+
+  /* 主色：克制的报头红（只留给报头线/栏目标签/当前导航/订阅主按钮，绝不大面积铺） */
+  --color-primary: oklch(46% 0.15 25);
+  --color-primary-content: oklch(97.5% 0.006 90);
+
+  /* 次色 / 强调色：一律中性灰，不引入第二个色相 */
+  --color-secondary: oklch(58% 0.012 60);
+  --color-secondary-content: oklch(97.5% 0.006 90);
+  --color-accent: oklch(42% 0.012 60);
+  --color-accent-content: oklch(97.5% 0.006 90);
+
+  --color-neutral: oklch(90% 0.008 90);
+  --color-neutral-content: oklch(28% 0.012 60);
+
+  /* 语义色：低饱和中性，报错处才用红 */
+  --color-info: oklch(55% 0.03 230);
+  --color-info-content: oklch(96% 0.006 90);
+  --color-success: oklch(48% 0.07 160);
+  --color-success-content: oklch(96% 0.006 90);
+  --color-warning: oklch(55% 0.09 75);
+  --color-warning-content: oklch(96% 0.006 90);
+  --color-error: oklch(48% 0.15 25);
+  --color-error-content: oklch(97.5% 0.006 90);
+
+  /* 圆角 / 尺寸 / 边框：报刊气质，圆角压到 2~4px */
+  --radius-selector: 0.125rem;
+  --radius-field: 0.125rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+```
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-press/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

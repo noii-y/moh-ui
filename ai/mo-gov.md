@@ -1,0 +1,481 @@
+# 政务（mo-gov） · 灰墨 MoH_UI
+
+> 虚构政务服务大厅「江岸市政务服务网」整页。白底大字、克制政务红、WCAG AAA 对比度（正文 ≥7:1）、大号按钮与粗焦点框，附静态「长辈模式」开关示意；挂 data-theme="mo-gov" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：灰墨二创主题（MIT）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/mo-gov/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 对比度向 WCAG AAA 看齐并已实测：正文 #161A20 白底 17.5:1、次级 #3A4150（即 --color-neutral）白底 10.2:1；严禁用 opacity 压文字（会击穿 7:1），需要浅一层就换成 #3A4150，不要加透明度。
+- 政务红只有一个 #8F1A1A（白字 9.0:1）：只用于主按钮、站名印章、当前导航下划线与链接；禁止大红渐变、禁止浅红大面积铺底，其余强调用语义蓝 #173FA8 / 深绿 #175A22 / 深棕 #6B4400。
+- 大字号档位：站名 26px、Hero 主标 30px、事项名 18px、正文 16px、说明 15px，正文字号不得小于 15px；线高放宽到 1.7。
+- 焦点框：所有可交互元素（a/button/input/label）:focus-visible 统一加 outline:3px solid var(--color-info) + outline-offset:2px + 4px 圆角；不允许只靠颜色变化提示焦点态。
+- 点击区尺寸：主按钮高度 52–56px、常规按钮 ≥48px、快捷入口整块可点且高 ≥108px，按钮文字 ≥17px 加粗；390px 窄屏搜索框与按钮全宽堆叠、服务卡单列，不横向溢出。
+- 状态不只靠颜色：受理 / 审核 / 办结必须同时有中文文字（badge 或 steps 节点文字），流程用 steps 节点 + 节点文字表达；通知 tag 与状态色搭配文字标签一起出现。
+- 「长辈模式」只是静态示意：toggle 画 checked 外观 +「示意」角标，不写 JS 切换；真实项目的长辈模式 = 更大字号 / 更高对比 / 语音朗读，另行实现，本页不做假功能。
+- 窄屏规则：品牌行与导航自然折行、热门服务 auto-fit 单列、表单区纵向堆叠；整页不出现 position:fixed、不出现横向滚动，页脚备案号标注「示例备案」。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="mo-gov">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>江岸市政务服务网 · 办事不用跑（mo-gov 主题案例）</title>
+  <meta name="description" content="灰墨 mo-gov 主题完整页面案例：虚构政务服务大厅整页。白底大字、克制政务红、WCAG AAA 对比度、大号按钮与明显焦点框。本页只依赖 daisyUI 与 mo-gov 主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <style>
+/*! 灰墨 mo-gov · 江岸政务（浅色）—— 政务服务大厅高对比无障碍主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-gov"> 即整站换肤。
+   设计目标：正文对比度向 WCAG AAA 看齐（≥7:1），白底大字、克制政务红、大号点击区。 */
+
+[data-theme="mo-gov"] {
+  color-scheme: light;
+
+  /* 底与纸：纯白 + 浅灰面板，边框用中性灰，层次靠明度与描边 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #c9cdd4;
+  --color-base-content: #161a20;
+
+  /* 主色：克制的政务深红（白字 9.0:1），只留给主按钮、站名印章、当前导航与链接 */
+  --color-primary: #8f1a1a;
+  --color-primary-content: #ffffff;
+
+  /* 次色：沉稳政务蓝（白字 7.2:1），用于次级强调、焦点框外的信息色区分 */
+  --color-secondary: #2e5a88;
+  --color-secondary-content: #ffffff;
+  --color-accent: #6b4400;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3a4150;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：全部加深到白字 ≥7:1，状态同时必须配中文文字，不靠颜色单独传达 */
+  --color-info: #173fa8;
+  --color-info-content: #ffffff;
+  --color-success: #175a22;
+  --color-success-content: #ffffff;
+  --color-warning: #6b4400;
+  --color-warning-content: #ffffff;
+  --color-error: #a01b1b;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：政务偏方正、细边框、无投影 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+  </style>
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.7; }
+    /* 无障碍硬要求：所有可交互元素给粗焦点轮廓，不靠颜色单独提示 */
+    a:focus-visible, button:focus-visible, input:focus-visible, label:focus-within {
+      outline: 3px solid var(--color-info);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px 48px; display: flex; flex-direction: column; gap: 18px; }
+
+    /* 品牌行 */
+    .brandbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0 6px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .seal { width: 58px; height: 58px; flex: none; border-radius: 8px; background: var(--color-primary); color: var(--color-primary-content); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; }
+    .station { font-size: 26px; font-weight: 800; margin: 0; letter-spacing: 1px; }
+    .slogan { margin: 2px 0 0; font-size: 15px; color: var(--color-neutral); }
+    .brand-side { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .elder { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; min-height: 48px; }
+
+    /* 导航 */
+    .navbar { border-bottom: 2px solid var(--color-base-300); padding: 0 0 2px; }
+    .navrow { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; gap: 2px; }
+    .navrow a { display: block; padding: 12px 18px; font-size: 17px; color: var(--color-base-content); text-decoration: none; border-radius: 8px 8px 0 0; }
+    .navrow .menu-active { color: var(--color-primary); font-weight: 800; box-shadow: inset 0 -3px 0 var(--color-primary); }
+
+    /* Hero 搜索 */
+    .hero { border: 1px solid var(--color-base-300); border-radius: 8px; background: var(--color-base-200); padding: 36px 28px; display: flex; flex-direction: column; gap: 18px; align-items: center; text-align: center; }
+    .hero h2 { font-size: 30px; margin: 0; font-weight: 800; }
+    .hero p { margin: 0; font-size: 16px; color: var(--color-neutral); max-width: 560px; }
+    .searchrow { display: flex; gap: 12px; width: 100%; flex-wrap: wrap; }
+    .searchinput { flex: 1 1 320px; display: flex; align-items: center; gap: 10px; padding: 0 16px; min-height: 56px; }
+    .searchinput input { flex: 1; min-width: 0; border: 0; background: none; outline: none; color: inherit; font-size: 17px; }
+    .searchbtn { min-height: 56px; padding: 0 36px; font-size: 18px; font-weight: 700; }
+    .quickgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; width: 100%; }
+    .quick { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 18px 8px; min-height: 108px; background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: 8px; }
+    .quick svg { width: 30px; height: 30px; color: var(--color-primary); }
+    .quick span { font-size: 18px; font-weight: 700; }
+
+    /* 板块标题 */
+    .sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+    .sechead h2 { font-size: 22px; margin: 0; font-weight: 800; }
+    .sechead span { font-size: 15px; color: var(--color-neutral); }
+
+    /* 热门服务 */
+    .svcgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .svc { border: 1px solid var(--color-base-300); border-radius: 8px; background: var(--color-base-100); padding: 18px; display: flex; flex-direction: column; gap: 8px; min-height: 130px; }
+    .svc svg { width: 28px; height: 28px; color: var(--color-primary); }
+    .svc b { font-size: 18px; }
+    .svc p { margin: 0; font-size: 15px; color: var(--color-neutral); }
+
+    /* 进度查询 */
+    .querycard { border: 1px solid var(--color-base-300); border-radius: 8px; background: var(--color-base-200); padding: 24px; display: flex; flex-direction: column; gap: 18px; }
+    .querycard h2 { font-size: 22px; margin: 0; font-weight: 800; }
+    .formrow { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end; }
+    .field { display: flex; flex-direction: column; gap: 6px; flex: 1 1 240px; }
+    .field span { font-size: 16px; font-weight: 700; }
+    .field input { min-height: 52px; font-size: 17px; }
+    .querybtn { min-height: 52px; padding: 0 28px; font-size: 17px; font-weight: 700; }
+    .steps-note { margin: 0; font-size: 15px; color: var(--color-neutral); }
+    .steps-wrap { overflow-x: auto; padding: 4px 0; }
+
+    /* 政策公告 */
+    .news { border: 1px solid var(--color-base-300); border-radius: 8px; background: var(--color-base-100); padding: 8px 20px; }
+    .news h2 { font-size: 22px; margin: 12px 0; font-weight: 800; }
+    .news ul { list-style: none; margin: 0; padding: 0; }
+    .news li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--color-base-300); flex-wrap: wrap; }
+    .news li:last-child { border-bottom: 0; }
+    .news .title { flex: 1; min-width: 220px; font-size: 16px; }
+    .news time { font-size: 15px; color: var(--color-neutral); }
+
+    /* 无障碍承诺 */
+    .a11y { border: 1px solid var(--color-base-300); border-radius: 8px; background: var(--color-base-200); padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .a11y h2 { font-size: 22px; margin: 0; font-weight: 800; }
+    .a11ygrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .a11yitem { display: flex; gap: 12px; align-items: flex-start; }
+    .a11yitem svg { width: 26px; height: 26px; color: var(--color-secondary); flex: none; margin-top: 5px; }
+    .a11yitem b { font-size: 17px; }
+    .a11yitem p { margin: 2px 0 0; font-size: 15px; color: var(--color-neutral); }
+
+    .foot { border-top: 1px solid var(--color-base-300); padding-top: 18px; text-align: center; font-size: 14px; color: var(--color-neutral); line-height: 2; }
+
+    @media (max-width: 640px) {
+      .brandbar { padding: 16px 0 4px; justify-content: center; text-align: left; }
+      .station { font-size: 22px; }
+      .hero { padding: 26px 16px; }
+      .hero h2 { font-size: 24px; }
+      .searchrow { flex-direction: column; }
+      .searchbtn { width: 100%; }
+      .querycard { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 品牌行：大号站名 + 长辈模式静态示意 + 登录 -->
+    <header class="brandbar">
+      <div class="brand">
+        <span class="seal" aria-hidden="true">政</span>
+        <div>
+          <h1 class="station">江岸市政务服务网</h1>
+          <p class="slogan">政务服务 · 一站办理（虚构城市示例）</p>
+        </div>
+      </div>
+      <div class="brand-side">
+        <label class="elder" title="长辈模式：静态示意开关，本页未接线">
+          <input type="checkbox" checked class="toggle toggle-primary" aria-label="长辈模式开关（静态示意）" />
+          <span>长辈模式</span>
+          <span class="badge badge-soft badge-secondary">示意</span>
+        </label>
+        <button class="btn btn-outline btn-lg" type="button">登录</button>
+      </div>
+    </header>
+
+    <!-- 导航：仅一个 menu-active -->
+    <nav class="navbar" aria-label="主导航">
+      <ul class="navrow">
+        <li><a class="menu-active">个人服务</a></li>
+        <li><a>法人服务</a></li>
+        <li><a>办事指南</a></li>
+        <li><a>数据开放</a></li>
+        <li><a>咨询服务</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero：超大搜索 + 高频事项快捷入口 -->
+    <section class="hero">
+      <h2>办事不用跑，网上就能办</h2>
+      <p>输入事项名称，直达办事指南与在线办理入口（示例数据）。</p>
+      <div class="searchrow">
+        <label class="input input-lg searchinput">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor" style="width:22px;height:22px;flex:none" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /></svg>
+          <input type="search" placeholder="请输入您要办的事项，如：社保查询" aria-label="搜索办事事项" />
+        </label>
+        <button class="btn btn-primary btn-lg searchbtn" type="button">搜索办事</button>
+      </div>
+      <div class="quickgrid">
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z" /><path d="m9 12 2 2 4-4.5" /></svg>
+          <span>社保</span>
+        </button>
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6.2a5 5 0 1 1 7.5 6.4Z" /><path d="M4 12h4l2-3.5 2.5 6L14 12h6" /></svg>
+          <span>医保</span>
+        </button>
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1v-9Z" /></svg>
+          <span>公积金</span>
+        </button>
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2" /><path d="M3.5 19.5c0-3 2.5-5 5.5-5s5.5 2 5.5 5" /><path d="M16 5.5a3.2 3.2 0 0 1 0 5.9" /><path d="M17.5 14.7c2.2.5 3.5 2.2 3.5 4.3" /></svg>
+          <span>户籍</span>
+        </button>
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 11l1.8-4.6A2 2 0 0 1 8.7 5h6.6a2 2 0 0 1 1.9 1.4L19 11" /><rect x="3.5" y="11" width="17" height="6" rx="1.5" /><circle cx="7.5" cy="17.5" r="1.6" /><circle cx="16.5" cy="17.5" r="1.6" /></svg>
+          <span>驾照</span>
+        </button>
+        <button class="quick" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12" rx="1.5" /><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5" /><path d="M3 12.5h18" /></svg>
+          <span>企业开办</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 热门服务：12 张大卡 -->
+    <section aria-label="热门服务">
+      <div class="sechead">
+        <h2>热门服务</h2>
+        <span>按市民办理量排序（示例）</span>
+      </div>
+      <div class="svcgrid" style="margin-top:12px">
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3Z" /><path d="m9 12 2 2 4-4.5" /></svg>
+          <b>社保查询</b>
+          <p>查缴费记录、参保状态与待遇发放。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z" /><path d="M9 8h6M9 12h6" /></svg>
+          <b>医保报销</b>
+          <p>上传票据，线上提交报销申请。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="1.5" /><path d="M3 10.5h18" /><circle cx="16.5" cy="15" r="1.4" /></svg>
+          <b>公积金提取</b>
+          <p>购房、租房与退休提取线上办理。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11Z" /><circle cx="12" cy="10" r="2.6" /></svg>
+          <b>户籍迁移</b>
+          <p>迁入迁出预约，材料清单一次说清。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="1.5" /><circle cx="12" cy="10" r="3.4" /><path d="M9 16.5h6" /></svg>
+          <b>护照办理</b>
+          <p>预约办证时间，免去大厅排队。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2.4" /><path d="M12 3v3M12 18v3M3 12h3M18 12h3" /></svg>
+          <b>驾照换证</b>
+          <p>期满换证、遗失补证在线申请。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16" /><path d="M4 21h16M14 21v-9.5h4a1 1 0 0 1 1 1V21" /><path d="M8 8.5h2M8 12h2M8 15.5h2" /></svg>
+          <b>企业开办</b>
+          <p>一表填报，执照公章一次办结。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="4.5" /><path d="M11.5 11.5 20 20" /><path d="M16.5 15.5l2.5-2.5 2 2-2.5 2.5" /></svg>
+          <b>不动产查询</b>
+          <p>个人名下房产登记信息查验。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18" /><path d="M4 21V9l8-5 8 5v12" /><path d="M9 21v-6h6v6" /></svg>
+          <b>不动产登记</b>
+          <p>转移登记、抵押登记预约取号。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 1 1 12 6.2a5 5 0 1 1 7.5 6.4Z" /></svg>
+          <b>婚姻登记预约</b>
+          <p>结婚、离婚登记提前网上预约。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h12v3a6 6 0 0 1-12 0V4Z" /><path d="M12 13v3a6 6 0 0 0 6 6" /><circle cx="7.5" cy="17.5" r="1.8" /><circle cx="16.5" cy="6.5" r="1.8" /></svg>
+          <b>税务办理</b>
+          <p>个税记录、发票与申报一键直达。</p>
+        </div>
+        <div class="svc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.2" /><path d="M4.5 9.5h15M12 9.5V15m0 0-2.5 6M12 15l2.5 6" /></svg>
+          <b>残疾人服务</b>
+          <p>证卡办理与辅助器具补贴申请。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 办事进度查询 -->
+    <section class="querycard" aria-label="办事进度查询">
+      <h2>办事进度查询</h2>
+      <div class="formrow">
+        <label class="field">
+          <span>身份证号</span>
+          <input id="idno" class="input input-lg" type="text" placeholder="请输入 18 位身份证号" inputmode="text" />
+        </label>
+        <label class="field">
+          <span>办件编号</span>
+          <input class="input input-lg" type="text" placeholder="如 BJ20261012-0086" />
+        </label>
+        <button class="btn btn-primary btn-lg querybtn" type="button">查询进度</button>
+      </div>
+      <div class="steps-wrap">
+        <ul class="steps steps-horizontal">
+          <li class="step step-primary">受理完成</li>
+          <li class="step step-primary">材料审核</li>
+          <li class="step step-success">即将办结</li>
+        </ul>
+      </div>
+      <p class="steps-note">办件 BJ20261012-0086 · 社会保障卡申领 · 受理 10 月 12 日，预计 10 月 19 日前办结（示例数据）。</p>
+    </section>
+
+    <!-- 政策公告 -->
+    <section class="news" aria-label="政策公告">
+      <h2>政策公告</h2>
+      <ul>
+        <li>
+          <span class="badge badge-soft badge-primary">政策</span>
+          <span class="title">江岸市 2026 年度灵活就业人员社保补贴申领通知</span>
+          <time>2026-10-15</time>
+        </li>
+        <li>
+          <span class="badge badge-soft badge-secondary">通知</span>
+          <span class="title">政务服务大厅周末延时服务时段调整公告</span>
+          <time>2026-10-12</time>
+        </li>
+        <li>
+          <span class="badge badge-soft badge-primary">政策</span>
+          <span class="title">居住证积分入户指标细则（2026 年修订版）发布</span>
+          <time>2026-10-08</time>
+        </li>
+        <li>
+          <span class="badge badge-soft badge-warning">公示</span>
+          <span class="title">第三批无障碍服务示范窗口名单公示，接受社会监督</span>
+          <time>2026-09-28</time>
+        </li>
+        <li>
+          <span class="badge badge-soft badge-secondary">通知</span>
+          <span class="title">系统维护通知：10 月 20 日 22 时至次日 6 时暂停预约服务</span>
+          <time>2026-09-25</time>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 无障碍服务承诺 -->
+    <section class="a11y" aria-label="无障碍服务承诺">
+      <h2>无障碍服务承诺</h2>
+      <div class="a11ygrid">
+        <div class="a11yitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16" /><path d="M6 12h12" /><path d="M9 17h6" /></svg>
+          <div><b>大字版</b><p>全站正文不小于 16 像素，标题更大更醒目。</p></div>
+        </div>
+        <div class="a11yitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18 9 9 0 0 0 0-18Z" /></svg>
+          <div><b>高对比度</b><p>正文对比度不低于 7:1，文字与底色拉开层次。</p></div>
+        </div>
+        <div class="a11yitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="12" height="7" rx="1.5" /><path d="M16 11.5h2.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5H16" /><path d="M7.5 19.5l2-3" /><path d="M10.5 5.5v3M14 4.5v4" /></svg>
+          <div><b>语音朗读</b><p>公告与指南支持逐段朗读，读屏可顺畅跳转。</p></div>
+        </div>
+        <div class="a11yitem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l1.5 4.5L8 10a12 12 0 0 0 6 6l1.5-2.5L20 15v4a1.5 1.5 0 0 1-1.5 1.5A15.5 15.5 0 0 1 3.5 5.5 1.5 1.5 0 0 1 5 4Z" /></svg>
+          <div><b>客服热线 12345</b><p>全天候人工接听（虚构号码，仅作示例）。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="foot">
+      <p>示例备案号：京ICP备00000000号-1（示例备案） · 江岸市为虚构城市</p>
+      <p>本站站名、电话、办件数据与公告均为示例，仅用于展示 mo-gov 主题整页效果 · 灰墨 MoH_UI</p>
+    </footer>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-gov/tokens.css">
+```
+
+② 在 `<html>` 挂 `data-theme="mo-gov"`，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-gov"] 下的全部 --color-* 变量。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+```css
+/*! 灰墨 mo-gov · 江岸政务（浅色）—— 政务服务大厅高对比无障碍主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-gov"> 即整站换肤。
+   设计目标：正文对比度向 WCAG AAA 看齐（≥7:1），白底大字、克制政务红、大号点击区。 */
+
+[data-theme="mo-gov"] {
+  color-scheme: light;
+
+  /* 底与纸：纯白 + 浅灰面板，边框用中性灰，层次靠明度与描边 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f4f6;
+  --color-base-300: #c9cdd4;
+  --color-base-content: #161a20;
+
+  /* 主色：克制的政务深红（白字 9.0:1），只留给主按钮、站名印章、当前导航与链接 */
+  --color-primary: #8f1a1a;
+  --color-primary-content: #ffffff;
+
+  /* 次色：沉稳政务蓝（白字 7.2:1），用于次级强调、焦点框外的信息色区分 */
+  --color-secondary: #2e5a88;
+  --color-secondary-content: #ffffff;
+  --color-accent: #6b4400;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3a4150;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：全部加深到白字 ≥7:1，状态同时必须配中文文字，不靠颜色单独传达 */
+  --color-info: #173fa8;
+  --color-info-content: #ffffff;
+  --color-success: #175a22;
+  --color-success-content: #ffffff;
+  --color-warning: #6b4400;
+  --color-warning-content: #ffffff;
+  --color-error: #a01b1b;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：政务偏方正、细边框、无投影 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+```
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/mo-gov/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

@@ -58,18 +58,298 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <div class="topbar"><div class="topbar-in">
   <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
   <span class="spacer"></span>
-  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/tokyo-night/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html" target="_blank" rel="noopener">完整教程</a>
   <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
 </div></div>
 <div class="wrap"><article>
 <h1>东京入夜（tokyo-night） · 灰墨 MoH_UI</h1>
 <blockquote>股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme="tokyo-night" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。</blockquote>
 <p>来源：Tokyo Night (folke/tokyonight.nvim)（Apache-2.0） · <a href="https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/storm.lua" target="_blank" rel="noopener noreferrer">上游色板</a></p>
-<h2>给 AI 的换肤指令</h2>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="tokyo-night"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;自选股行情 · 夜航行情终端（tokyo-night 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 tokyo-night 主题完整页面案例：深蓝紫都市霓虹股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 日 K 线）。本页只依赖 daisyUI 与主题 tokens.css，零依赖、零 JS。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="tokyo-night"&gt; 即整站换肤。 */
+
+[data-theme="tokyo-night"] {
+  color-scheme: dark;
+
+  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */
+  --color-base-100: #1a1b26;
+  --color-base-200: #292e42;
+  --color-base-300: #16161e;
+  --color-base-content: #c0caf5;
+
+  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */
+  --color-primary: #7aa2f7;
+  --color-primary-content: #16161e;
+
+  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */
+  --color-secondary: #bb9af7;
+  --color-secondary-content: #16161e;
+  --color-accent: #7dcfff;
+  --color-accent-content: #16161e;
+
+  /* 中性面：terminal_black #414868，用于侧栏与分隔 */
+  --color-neutral: #414868;
+  --color-neutral-content: #c0caf5;
+
+  /* 语义色：官方数据色直接映射 */
+  --color-info: #2ac3de;
+  --color-info-content: #16161e;
+  --color-success: #9ece6a;
+  --color-success-content: #16161e;
+  --color-warning: #e0af68;
+  --color-warning-content: #16161e;
+  --color-error: #f7768e;
+  --color-error-content: #16161e;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .shell { display: flex; min-height: 100vh; }
+    .side { width: 208px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 16px 10px; display: flex; flex-direction: column; gap: 12px; }
+    .brand { font-size: 14px; font-weight: 700; padding: 2px 12px 6px; display: flex; align-items: center; gap: 8px; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .main { flex: 1; min-width: 0; padding: 18px 22px 30px; display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .idx-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+    .trade-row { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 14px; align-items: start; }
+    .tbl-wrap { overflow-x: auto; }
+    .tbl-wrap .badge { white-space: nowrap; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }
+    /* A 股配色：红涨绿跌（自定义语义色，不使用 badge-success 表示上涨） */
+    .up { color: #f7768e; }
+    .down { color: #9ece6a; }
+    .ask-row { background: rgba(158, 206, 106, .08); }
+    .bid-row { background: rgba(247, 118, 142, .08); }
+    @media (max-width: 900px) {
+      .shell { flex-direction: column; }
+      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; padding: 10px; }
+      .brand { flex: none; padding: 0 12px 0 2px; }
+      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }
+      .side .menu li a { white-space: nowrap; }
+      .navbar-start, .navbar-end { width: 100%; }
+      .trade-row { grid-template-columns: minmax(0, 1fr); }
+      .main { padding: 14px 12px 24px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="shell"&gt;
+
+    &lt;!-- 侧栏导航 --&gt;
+    &lt;aside class="side"&gt;
+      &lt;div class="brand"&gt;&lt;span class="brand-mark"&gt;夜&lt;/span&gt;夜航行情&lt;/div&gt;
+      &lt;ul class="menu" style="width:100%;padding:0"&gt;
+        &lt;li&gt;&lt;a class="menu-active"&gt;自选股&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;沪深 A 股&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;板块行情&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;资讯&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;交易记录&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;!-- 主区 --&gt;
+    &lt;div class="main"&gt;
+
+      &lt;!-- 顶栏 --&gt;
+      &lt;div class="navbar rounded-box" style="background:var(--color-base-200);padding:10px 16px;min-height:0;flex-wrap:wrap;gap:10px"&gt;
+        &lt;div class="navbar-start"&gt;
+          &lt;span style="font-size:13px;opacity:.65"&gt;行情终端 · 自选股（示例数据）&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="navbar-end" style="gap:10px"&gt;
+          &lt;label class="input input-sm" style="display:flex;align-items:center;gap:8px;width:210px"&gt;
+            &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;opacity:.5" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /&gt;&lt;/svg&gt;
+            &lt;input type="search" placeholder="输入代码或名称…" style="flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px" /&gt;
+          &lt;/label&gt;
+          &lt;button class="btn btn-ghost btn-sm" type="button"&gt;
+            推送
+            &lt;span class="badge badge-sm badge-primary"&gt;5&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class="avatar avatar-placeholder"&gt;
+            &lt;div style="width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)"&gt;高&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 指数行情条 --&gt;
+      &lt;div class="idx-row"&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:2px"&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;上证指数&lt;/div&gt;
+            &lt;div style="font-size:19px;font-weight:700" class="mono"&gt;3,287.34&lt;/div&gt;
+            &lt;div style="font-size:12.5px" class="up"&gt;+26.61　+0.81%&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:2px"&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;深证成指&lt;/div&gt;
+            &lt;div style="font-size:19px;font-weight:700" class="mono"&gt;10,542.18&lt;/div&gt;
+            &lt;div style="font-size:12.5px" class="up"&gt;+129.63　+1.24%&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:2px"&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;创业板指&lt;/div&gt;
+            &lt;div style="font-size:19px;font-weight:700" class="mono"&gt;2,188.90&lt;/div&gt;
+            &lt;div style="font-size:12.5px" class="down"&gt;-7.91　-0.36%&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:2px"&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;科创 50&lt;/div&gt;
+            &lt;div style="font-size:19px;font-weight:700" class="mono"&gt;721.05&lt;/div&gt;
+            &lt;div style="font-size:12.5px" class="up"&gt;+7.02　+0.98%&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 自选股表 + 五档盘口 --&gt;
+      &lt;div class="trade-row"&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:14px 16px 6px;display:flex;flex-direction:column;gap:10px"&gt;
+            &lt;div class="row"&gt;
+              &lt;h2 style="font-size:15px;font-weight:700;margin:0"&gt;自选股&lt;/h2&gt;
+              &lt;span class="badge badge-soft badge-sm" style="white-space:nowrap"&gt;10 月 17 日 15:00 收盘 · 示例数据&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="tbl-wrap"&gt;
+              &lt;table class="table" style="font-size:13px"&gt;
+                &lt;thead&gt;
+                  &lt;tr style="opacity:.6;font-size:12px"&gt;
+                    &lt;th style="white-space:nowrap"&gt;名称&lt;/th&gt;&lt;th&gt;代码&lt;/th&gt;&lt;th&gt;最新价&lt;/th&gt;&lt;th&gt;涨跌幅&lt;/th&gt;&lt;th&gt;成交量（手）&lt;/th&gt;&lt;th&gt;成交额&lt;/th&gt;
+                  &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;极光光电&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;600118&lt;/td&gt;&lt;td class="mono"&gt;18.64&lt;/td&gt;&lt;td class="up mono"&gt;+2.36%&lt;/td&gt;&lt;td class="mono"&gt;128,400&lt;/td&gt;&lt;td class="mono"&gt;2.39 亿&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;蓝湾医疗&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;300275&lt;/td&gt;&lt;td class="mono"&gt;42.10&lt;/td&gt;&lt;td class="down mono"&gt;-1.82%&lt;/td&gt;&lt;td class="mono"&gt;56,200&lt;/td&gt;&lt;td class="mono"&gt;2.35 亿&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;北辰银行&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;601288&lt;/td&gt;&lt;td class="mono"&gt;5.73&lt;/td&gt;&lt;td class="up mono"&gt;+0.53%&lt;/td&gt;&lt;td class="mono"&gt;312,800&lt;/td&gt;&lt;td class="mono"&gt;1.79 亿&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;云杉软件&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;002230&lt;/td&gt;&lt;td class="mono"&gt;96.58&lt;/td&gt;&lt;td class="down mono"&gt;-3.07%&lt;/td&gt;&lt;td class="mono"&gt;28,900&lt;/td&gt;&lt;td class="mono"&gt;2.79 亿&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;南岭能源&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;600905&lt;/td&gt;&lt;td class="mono"&gt;12.06&lt;/td&gt;&lt;td class="up mono"&gt;+1.01%&lt;/td&gt;&lt;td class="mono"&gt;88,500&lt;/td&gt;&lt;td class="mono"&gt;1.06 亿&lt;/td&gt;&lt;/tr&gt;
+                  &lt;tr&gt;&lt;td style="font-weight:600;white-space:nowrap"&gt;江望通信&lt;/td&gt;&lt;td class="mono" style="opacity:.6"&gt;300699&lt;/td&gt;&lt;td class="mono"&gt;27.35&lt;/td&gt;&lt;td class="up mono"&gt;+4.22%&lt;/td&gt;&lt;td class="mono"&gt;156,700&lt;/td&gt;&lt;td class="mono"&gt;4.28 亿&lt;/td&gt;&lt;/tr&gt;
+                &lt;/tbody&gt;
+              &lt;/table&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 五档买卖盘 --&gt;
+        &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:6px"&gt;
+            &lt;div style="display:flex;align-items:center;justify-content:space-between"&gt;
+              &lt;h2 style="font-size:14px;font-weight:700;margin:0"&gt;五档盘口&lt;/h2&gt;
+              &lt;span class="mono" style="font-size:12px;opacity:.6"&gt;极光光电&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div style="font-size:11.5px;display:flex;justify-content:space-between;opacity:.55;padding:0 4px"&gt;&lt;span&gt;档位 / 价格&lt;/span&gt;&lt;span&gt;挂单（手）&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="ask-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="down mono" style="font-size:12.5px"&gt;卖五　45.20&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;120&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="ask-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="down mono" style="font-size:12.5px"&gt;卖四　45.15&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;85&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="ask-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="down mono" style="font-size:12.5px"&gt;卖三　45.10&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;230&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="ask-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="down mono" style="font-size:12.5px"&gt;卖二　45.05&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;64&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="ask-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="down mono" style="font-size:12.5px"&gt;卖一　45.00&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;158&lt;/span&gt;&lt;/div&gt;
+            &lt;div style="text-align:center;padding:4px 0;border-block:1px solid var(--color-base-300)"&gt;
+              &lt;span class="up mono" style="font-size:16px;font-weight:700"&gt;44.89&lt;/span&gt;
+              &lt;span class="up mono" style="font-size:12px;margin-left:6px"&gt;+2.10%&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="bid-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="up mono" style="font-size:12.5px"&gt;买一　44.89&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;210&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="bid-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="up mono" style="font-size:12.5px"&gt;买二　44.85&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;96&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="bid-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="up mono" style="font-size:12.5px"&gt;买三　44.80&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;145&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="bid-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="up mono" style="font-size:12.5px"&gt;买四　44.75&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;72&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="bid-row" style="display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem"&gt;&lt;span class="up mono" style="font-size:12.5px"&gt;买五　44.70&lt;/span&gt;&lt;span class="mono" style="font-size:12.5px;opacity:.75"&gt;188&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 日 K 线 --&gt;
+      &lt;div class="card" style="background:var(--color-base-200);border-radius:.5rem"&gt;
+        &lt;div class="card-body" style="padding:14px 16px;gap:8px"&gt;
+          &lt;div class="row"&gt;
+            &lt;h2 style="font-size:15px;font-weight:700;margin:0"&gt;极光光电 · 日 K（近一年走势截取，示例数据）&lt;/h2&gt;
+            &lt;span style="display:flex;gap:12px;font-size:11.5px;opacity:.7"&gt;
+              &lt;span&gt;&lt;span style="display:inline-block;width:14px;height:2px;background:#bb9af7;vertical-align:middle"&gt;&lt;/span&gt; MA5&lt;/span&gt;
+              &lt;span&gt;&lt;span style="display:inline-block;width:14px;height:2px;background:#7dcfff;vertical-align:middle"&gt;&lt;/span&gt; MA10&lt;/span&gt;
+              &lt;span class="up"&gt;红涨&lt;/span&gt;&lt;span class="down"&gt;绿跌&lt;/span&gt;
+            &lt;/span&gt;
+          &lt;/div&gt;
+          &lt;svg viewBox="0 0 640 230" style="width:100%;height:260px" role="img" aria-label="极光光电日 K 线示意图（示例数据）"&gt;
+            &lt;g stroke="currentColor" stroke-opacity=".08" stroke-width="1"&gt;
+              &lt;line x1="8" y1="45" x2="632" y2="45" /&gt;
+              &lt;line x1="8" y1="90" x2="632" y2="90" /&gt;
+              &lt;line x1="8" y1="135" x2="632" y2="135" /&gt;
+              &lt;line x1="8" y1="180" x2="632" y2="180" /&gt;
+            &lt;/g&gt;
+            &lt;!-- K 线（红涨绿跌） --&gt;
+            &lt;g stroke-width="1"&gt;
+              &lt;line x1="20" y1="117.8" x2="20" y2="151.8" stroke="#f7768e"/&gt;&lt;rect x="16" y="126.3" width="8" height="17.0" fill="#f7768e"/&gt;
+              &lt;line x1="46" y1="120.7" x2="46" y2="148.9" stroke="#9ece6a"/&gt;&lt;rect x="42" y="126.3" width="8" height="11.4" fill="#9ece6a"/&gt;
+              &lt;line x1="72" y1="106.5" x2="72" y2="143.3" stroke="#f7768e"/&gt;&lt;rect x="68" y="112.2" width="8" height="25.5" fill="#f7768e"/&gt;
+              &lt;line x1="98" y1="100.8" x2="98" y2="126.3" stroke="#9ece6a"/&gt;&lt;rect x="94" y="112.2" width="8" height="8.5" fill="#9ece6a"/&gt;
+              &lt;line x1="124" y1="92.3" x2="124" y2="123.6" stroke="#f7768e"/&gt;&lt;rect x="120" y="98.0" width="8" height="22.7" fill="#f7768e"/&gt;
+              &lt;line x1="150" y1="89.5" x2="150" y2="115.0" stroke="#9ece6a"/&gt;&lt;rect x="146" y="98.0" width="8" height="11.3" fill="#9ece6a"/&gt;
+              &lt;line x1="176" y1="81.0" x2="176" y2="112.2" stroke="#f7768e"/&gt;&lt;rect x="172" y="86.7" width="8" height="22.6" fill="#f7768e"/&gt;
+              &lt;line x1="202" y1="78.2" x2="202" y2="100.8" stroke="#9ece6a"/&gt;&lt;rect x="198" y="86.7" width="8" height="8.5" fill="#9ece6a"/&gt;
+              &lt;line x1="228" y1="69.7" x2="228" y2="98.0" stroke="#f7768e"/&gt;&lt;rect x="224" y="75.3" width="8" height="19.9" fill="#f7768e"/&gt;
+              &lt;line x1="254" y1="55.5" x2="254" y2="81.0" stroke="#f7768e"/&gt;&lt;rect x="250" y="61.2" width="8" height="14.1" fill="#f7768e"/&gt;
+              &lt;line x1="280" y1="52.7" x2="280" y2="78.2" stroke="#9ece6a"/&gt;&lt;rect x="276" y="61.2" width="8" height="11.3" fill="#9ece6a"/&gt;
+              &lt;line x1="306" y1="66.8" x2="306" y2="89.5" stroke="#9ece6a"/&gt;&lt;rect x="302" y="72.5" width="8" height="11.3" fill="#9ece6a"/&gt;
+              &lt;line x1="332" y1="58.3" x2="332" y2="86.7" stroke="#f7768e"/&gt;&lt;rect x="328" y="64.0" width="8" height="19.8" fill="#f7768e"/&gt;
+              &lt;line x1="358" y1="44.2" x2="358" y2="66.8" stroke="#f7768e"/&gt;&lt;rect x="354" y="49.8" width="8" height="14.2" fill="#f7768e"/&gt;
+              &lt;line x1="384" y1="41.3" x2="384" y2="66.8" stroke="#9ece6a"/&gt;&lt;rect x="380" y="49.8" width="8" height="11.4" fill="#9ece6a"/&gt;
+              &lt;line x1="410" y1="55.5" x2="410" y2="81.0" stroke="#9ece6a"/&gt;&lt;rect x="406" y="61.2" width="8" height="14.1" fill="#9ece6a"/&gt;
+              &lt;line x1="436" y1="52.7" x2="436" y2="78.2" stroke="#f7768e"/&gt;&lt;rect x="432" y="58.3" width="8" height="17.0" fill="#f7768e"/&gt;
+              &lt;line x1="462" y1="38.5" x2="462" y2="61.2" stroke="#f7768e"/&gt;&lt;rect x="458" y="47.0" width="8" height="11.3" fill="#f7768e"/&gt;
+              &lt;line x1="488" y1="35.7" x2="488" y2="58.3" stroke="#9ece6a"/&gt;&lt;rect x="484" y="47.0" width="8" height="8.5" fill="#9ece6a"/&gt;
+              &lt;line x1="514" y1="49.8" x2="514" y2="75.3" stroke="#9ece6a"/&gt;&lt;rect x="510" y="55.5" width="8" height="14.2" fill="#9ece6a"/&gt;
+              &lt;line x1="540" y1="47.0" x2="540" y2="72.5" stroke="#f7768e"/&gt;&lt;rect x="536" y="52.7" width="8" height="17.0" fill="#f7768e"/&gt;
+              &lt;line x1="566" y1="32.8" x2="566" y2="55.5" stroke="#f7768e"/&gt;&lt;rect x="562" y="41.3" width="8" height="11.4" fill="#f7768e"/&gt;
+              &lt;line x1="592" y1="30.0" x2="592" y2="55.5" stroke="#9ece6a"/&gt;&lt;rect x="588" y="41.3" width="8" height="11.4" fill="#9ece6a"/&gt;
+              &lt;line x1="618" y1="24.3" x2="618" y2="55.5" stroke="#f7768e"/&gt;&lt;rect x="614" y="32.8" width="8" height="19.9" fill="#f7768e"/&gt;
+            &lt;/g&gt;
+            &lt;!-- 均线 --&gt;
+            &lt;polyline points="124,119.1 150,115.7 176,105.5 202,102.1 228,93.0 254,84.5 280,78.3 306,77.8 332,73.8 358,67.5 384,63.6 410,61.2 436,56.1 462,52.7 488,53.8 514,61.2 540,62.3 566,53.8 592,53.3 618,45.9" fill="none" stroke="#bb9af7" stroke-width="1.5" stroke-linejoin="round"/&gt;
+            &lt;polyline points="254,102.3 280,102.6 306,102.6 332,98.9 358,94.7 384,92.4 410,93.0 436,88.5 462,83.4 488,79.7 514,77.1 540,72.3 566,66.4 592,64.0 618,58.3" fill="none" stroke="#7dcfff" stroke-width="1.5" stroke-linejoin="round"/&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;p class="foot"&gt;以上指数、个股与盘口均为虚构示例数据，仅用于展示 tokyo-night 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
 <p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
 <pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
 &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/tokyo-night/tokens.css"&gt;</code></pre>
-<p>② 在 <code>&lt;html&gt;</code> 标签挂 <code>data-theme="tokyo-night"</code> 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="tokyo-night"] 下的全部 --color-* 变量。</p>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="tokyo-night"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="tokyo-night"] 下的全部 --color-* 变量。</p>
 <p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
 <pre class="fence"><code class="lang-css">/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题
    覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
@@ -119,14 +399,13 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
   --depth: 1;
   --noise: 0;
 }</code></pre>
-<p>④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：<a href="https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html</a></p>
-<p>⑤ 审美提示：组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="tokyo-night"] 里的 --color-* 变量。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
 <hr>
 <h2>更多</h2>
 <ul>
 <li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/tokyo-night/demo.html</a></li>
 <li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
-<li>主题库（全部 18 套整页案例）：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
 <li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
 </ul>
 <p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
@@ -135,7 +414,7 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <script>
 (function(){
   // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
-  var text = "请把我的整个前端项目换成「东京入夜」主题（data-theme=\"tokyo-night\"）。\n\n股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme=\"tokyo-night\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。\n\n【怎么引入】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/tokyo-night/tokens.css\">\n\n然后在 \u003chtml data-theme=\"tokyo-night\"> 挂属性，整站即刻换肤，组件类名一行都不用改。\n上面的 tokens.css 覆盖 [data-theme=\"tokyo-night\"] 下的全部 --color-* 变量。\n\n【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme=\"tokyo-night\"] 里的 --color-* 变量）\n\n```css\n/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"tokyo-night\"> 即整站换肤。 */\n\n[data-theme=\"tokyo-night\"] {\n  color-scheme: dark;\n\n  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */\n  --color-base-100: #1a1b26;\n  --color-base-200: #292e42;\n  --color-base-300: #16161e;\n  --color-base-content: #c0caf5;\n\n  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */\n  --color-primary: #7aa2f7;\n  --color-primary-content: #16161e;\n\n  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */\n  --color-secondary: #bb9af7;\n  --color-secondary-content: #16161e;\n  --color-accent: #7dcfff;\n  --color-accent-content: #16161e;\n\n  /* 中性面：terminal_black #414868，用于侧栏与分隔 */\n  --color-neutral: #414868;\n  --color-neutral-content: #c0caf5;\n\n  /* 语义色：官方数据色直接映射 */\n  --color-info: #2ac3de;\n  --color-info-content: #16161e;\n  --color-success: #9ece6a;\n  --color-success-content: #16161e;\n  --color-warning: #e0af68;\n  --color-warning-content: #16161e;\n  --color-error: #f7768e;\n  --color-error-content: #16161e;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n";
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「东京入夜（tokyo-night）」的整页。\n\n【场景】\n股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme=\"tokyo-night\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/tokyo-night/tokens.css\">\n\n然后在 \u003chtml data-theme=\"tokyo-night\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"tokyo-night\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"tokyo-night\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"tokyo-night\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"tokyo-night\"> 即整站换肤。 */\n\n[data-theme=\"tokyo-night\"] {\n  color-scheme: dark;\n\n  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */\n  --color-base-100: #1a1b26;\n  --color-base-200: #292e42;\n  --color-base-300: #16161e;\n  --color-base-content: #c0caf5;\n\n  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */\n  --color-primary: #7aa2f7;\n  --color-primary-content: #16161e;\n\n  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */\n  --color-secondary: #bb9af7;\n  --color-secondary-content: #16161e;\n  --color-accent: #7dcfff;\n  --color-accent-content: #16161e;\n\n  /* 中性面：terminal_black #414868，用于侧栏与分隔 */\n  --color-neutral: #414868;\n  --color-neutral-content: #c0caf5;\n\n  /* 语义色：官方数据色直接映射 */\n  --color-info: #2ac3de;\n  --color-info-content: #16161e;\n  --color-success: #9ece6a;\n  --color-success-content: #16161e;\n  --color-warning: #e0af68;\n  --color-warning-content: #16161e;\n  --color-error: #f7768e;\n  --color-error-content: #16161e;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"tokyo-night\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>自选股行情 · 夜航行情终端（tokyo-night 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 tokyo-night 主题完整页面案例：深蓝紫都市霓虹股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 日 K 线）。本页只依赖 daisyUI 与主题 tokens.css，零依赖、零 JS。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"tokyo-night\"> 即整站换肤。 */\n\n[data-theme=\"tokyo-night\"] {\n  color-scheme: dark;\n\n  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */\n  --color-base-100: #1a1b26;\n  --color-base-200: #292e42;\n  --color-base-300: #16161e;\n  --color-base-content: #c0caf5;\n\n  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */\n  --color-primary: #7aa2f7;\n  --color-primary-content: #16161e;\n\n  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */\n  --color-secondary: #bb9af7;\n  --color-secondary-content: #16161e;\n  --color-accent: #7dcfff;\n  --color-accent-content: #16161e;\n\n  /* 中性面：terminal_black #414868，用于侧栏与分隔 */\n  --color-neutral: #414868;\n  --color-neutral-content: #c0caf5;\n\n  /* 语义色：官方数据色直接映射 */\n  --color-info: #2ac3de;\n  --color-info-content: #16161e;\n  --color-success: #9ece6a;\n  --color-success-content: #16161e;\n  --color-warning: #e0af68;\n  --color-warning-content: #16161e;\n  --color-error: #f7768e;\n  --color-error-content: #16161e;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .shell { display: flex; min-height: 100vh; }\n    .side { width: 208px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 16px 10px; display: flex; flex-direction: column; gap: 12px; }\n    .brand { font-size: 14px; font-weight: 700; padding: 2px 12px 6px; display: flex; align-items: center; gap: 8px; }\n    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }\n    .main { flex: 1; min-width: 0; padding: 18px 22px 30px; display: flex; flex-direction: column; gap: 14px; }\n    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }\n    .idx-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }\n    .trade-row { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 14px; align-items: start; }\n    .tbl-wrap { overflow-x: auto; }\n    .tbl-wrap .badge { white-space: nowrap; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }\n    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }\n    /* A 股配色：红涨绿跌（自定义语义色，不使用 badge-success 表示上涨） */\n    .up { color: #f7768e; }\n    .down { color: #9ece6a; }\n    .ask-row { background: rgba(158, 206, 106, .08); }\n    .bid-row { background: rgba(247, 118, 142, .08); }\n    @media (max-width: 900px) {\n      .shell { flex-direction: column; }\n      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; padding: 10px; }\n      .brand { flex: none; padding: 0 12px 0 2px; }\n      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }\n      .side .menu li a { white-space: nowrap; }\n      .navbar-start, .navbar-end { width: 100%; }\n      .trade-row { grid-template-columns: minmax(0, 1fr); }\n      .main { padding: 14px 12px 24px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"shell\">\n\n    \u003c!-- 侧栏导航 -->\n    \u003caside class=\"side\">\n      \u003cdiv class=\"brand\">\u003cspan class=\"brand-mark\">夜\u003c/span>夜航行情\u003c/div>\n      \u003cul class=\"menu\" style=\"width:100%;padding:0\">\n        \u003cli>\u003ca class=\"menu-active\">自选股\u003c/a>\u003c/li>\n        \u003cli>\u003ca>沪深 A 股\u003c/a>\u003c/li>\n        \u003cli>\u003ca>板块行情\u003c/a>\u003c/li>\n        \u003cli>\u003ca>资讯\u003c/a>\u003c/li>\n        \u003cli>\u003ca>交易记录\u003c/a>\u003c/li>\n      \u003c/ul>\n    \u003c/aside>\n\n    \u003c!-- 主区 -->\n    \u003cdiv class=\"main\">\n\n      \u003c!-- 顶栏 -->\n      \u003cdiv class=\"navbar rounded-box\" style=\"background:var(--color-base-200);padding:10px 16px;min-height:0;flex-wrap:wrap;gap:10px\">\n        \u003cdiv class=\"navbar-start\">\n          \u003cspan style=\"font-size:13px;opacity:.65\">行情终端 · 自选股（示例数据）\u003c/span>\n        \u003c/div>\n        \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n          \u003clabel class=\"input input-sm\" style=\"display:flex;align-items:center;gap:8px;width:210px\">\n            \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px;opacity:.5\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z\" />\u003c/svg>\n            \u003cinput type=\"search\" placeholder=\"输入代码或名称…\" style=\"flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px\" />\n          \u003c/label>\n          \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">\n            推送\n            \u003cspan class=\"badge badge-sm badge-primary\">5\u003c/span>\n          \u003c/button>\n          \u003cdiv class=\"avatar avatar-placeholder\">\n            \u003cdiv style=\"width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)\">高\u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 指数行情条 -->\n      \u003cdiv class=\"idx-row\">\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:2px\">\n            \u003cdiv style=\"font-size:12px;opacity:.6\">上证指数\u003c/div>\n            \u003cdiv style=\"font-size:19px;font-weight:700\" class=\"mono\">3,287.34\u003c/div>\n            \u003cdiv style=\"font-size:12.5px\" class=\"up\">+26.61　+0.81%\u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:2px\">\n            \u003cdiv style=\"font-size:12px;opacity:.6\">深证成指\u003c/div>\n            \u003cdiv style=\"font-size:19px;font-weight:700\" class=\"mono\">10,542.18\u003c/div>\n            \u003cdiv style=\"font-size:12.5px\" class=\"up\">+129.63　+1.24%\u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:2px\">\n            \u003cdiv style=\"font-size:12px;opacity:.6\">创业板指\u003c/div>\n            \u003cdiv style=\"font-size:19px;font-weight:700\" class=\"mono\">2,188.90\u003c/div>\n            \u003cdiv style=\"font-size:12.5px\" class=\"down\">-7.91　-0.36%\u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:2px\">\n            \u003cdiv style=\"font-size:12px;opacity:.6\">科创 50\u003c/div>\n            \u003cdiv style=\"font-size:19px;font-weight:700\" class=\"mono\">721.05\u003c/div>\n            \u003cdiv style=\"font-size:12.5px\" class=\"up\">+7.02　+0.98%\u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 自选股表 + 五档盘口 -->\n      \u003cdiv class=\"trade-row\">\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px 16px 6px;display:flex;flex-direction:column;gap:10px\">\n            \u003cdiv class=\"row\">\n              \u003ch2 style=\"font-size:15px;font-weight:700;margin:0\">自选股\u003c/h2>\n              \u003cspan class=\"badge badge-soft badge-sm\" style=\"white-space:nowrap\">10 月 17 日 15:00 收盘 · 示例数据\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"tbl-wrap\">\n              \u003ctable class=\"table\" style=\"font-size:13px\">\n                \u003cthead>\n                  \u003ctr style=\"opacity:.6;font-size:12px\">\n                    \u003cth style=\"white-space:nowrap\">名称\u003c/th>\u003cth>代码\u003c/th>\u003cth>最新价\u003c/th>\u003cth>涨跌幅\u003c/th>\u003cth>成交量（手）\u003c/th>\u003cth>成交额\u003c/th>\n                  \u003c/tr>\n                \u003c/thead>\n                \u003ctbody>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">极光光电\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">600118\u003c/td>\u003ctd class=\"mono\">18.64\u003c/td>\u003ctd class=\"up mono\">+2.36%\u003c/td>\u003ctd class=\"mono\">128,400\u003c/td>\u003ctd class=\"mono\">2.39 亿\u003c/td>\u003c/tr>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">蓝湾医疗\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">300275\u003c/td>\u003ctd class=\"mono\">42.10\u003c/td>\u003ctd class=\"down mono\">-1.82%\u003c/td>\u003ctd class=\"mono\">56,200\u003c/td>\u003ctd class=\"mono\">2.35 亿\u003c/td>\u003c/tr>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">北辰银行\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">601288\u003c/td>\u003ctd class=\"mono\">5.73\u003c/td>\u003ctd class=\"up mono\">+0.53%\u003c/td>\u003ctd class=\"mono\">312,800\u003c/td>\u003ctd class=\"mono\">1.79 亿\u003c/td>\u003c/tr>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">云杉软件\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">002230\u003c/td>\u003ctd class=\"mono\">96.58\u003c/td>\u003ctd class=\"down mono\">-3.07%\u003c/td>\u003ctd class=\"mono\">28,900\u003c/td>\u003ctd class=\"mono\">2.79 亿\u003c/td>\u003c/tr>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">南岭能源\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">600905\u003c/td>\u003ctd class=\"mono\">12.06\u003c/td>\u003ctd class=\"up mono\">+1.01%\u003c/td>\u003ctd class=\"mono\">88,500\u003c/td>\u003ctd class=\"mono\">1.06 亿\u003c/td>\u003c/tr>\n                  \u003ctr>\u003ctd style=\"font-weight:600;white-space:nowrap\">江望通信\u003c/td>\u003ctd class=\"mono\" style=\"opacity:.6\">300699\u003c/td>\u003ctd class=\"mono\">27.35\u003c/td>\u003ctd class=\"up mono\">+4.22%\u003c/td>\u003ctd class=\"mono\">156,700\u003c/td>\u003ctd class=\"mono\">4.28 亿\u003c/td>\u003c/tr>\n                \u003c/tbody>\n              \u003c/table>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n\n        \u003c!-- 五档买卖盘 -->\n        \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:6px\">\n            \u003cdiv style=\"display:flex;align-items:center;justify-content:space-between\">\n              \u003ch2 style=\"font-size:14px;font-weight:700;margin:0\">五档盘口\u003c/h2>\n              \u003cspan class=\"mono\" style=\"font-size:12px;opacity:.6\">极光光电\u003c/span>\n            \u003c/div>\n            \u003cdiv style=\"font-size:11.5px;display:flex;justify-content:space-between;opacity:.55;padding:0 4px\">\u003cspan>档位 / 价格\u003c/span>\u003cspan>挂单（手）\u003c/span>\u003c/div>\n            \u003cdiv class=\"ask-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"down mono\" style=\"font-size:12.5px\">卖五　45.20\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">120\u003c/span>\u003c/div>\n            \u003cdiv class=\"ask-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"down mono\" style=\"font-size:12.5px\">卖四　45.15\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">85\u003c/span>\u003c/div>\n            \u003cdiv class=\"ask-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"down mono\" style=\"font-size:12.5px\">卖三　45.10\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">230\u003c/span>\u003c/div>\n            \u003cdiv class=\"ask-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"down mono\" style=\"font-size:12.5px\">卖二　45.05\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">64\u003c/span>\u003c/div>\n            \u003cdiv class=\"ask-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"down mono\" style=\"font-size:12.5px\">卖一　45.00\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">158\u003c/span>\u003c/div>\n            \u003cdiv style=\"text-align:center;padding:4px 0;border-block:1px solid var(--color-base-300)\">\n              \u003cspan class=\"up mono\" style=\"font-size:16px;font-weight:700\">44.89\u003c/span>\n              \u003cspan class=\"up mono\" style=\"font-size:12px;margin-left:6px\">+2.10%\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"bid-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"up mono\" style=\"font-size:12.5px\">买一　44.89\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">210\u003c/span>\u003c/div>\n            \u003cdiv class=\"bid-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"up mono\" style=\"font-size:12.5px\">买二　44.85\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">96\u003c/span>\u003c/div>\n            \u003cdiv class=\"bid-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"up mono\" style=\"font-size:12.5px\">买三　44.80\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">145\u003c/span>\u003c/div>\n            \u003cdiv class=\"bid-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"up mono\" style=\"font-size:12.5px\">买四　44.75\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">72\u003c/span>\u003c/div>\n            \u003cdiv class=\"bid-row\" style=\"display:flex;justify-content:space-between;padding:3px 8px;border-radius:.25rem\">\u003cspan class=\"up mono\" style=\"font-size:12.5px\">买五　44.70\u003c/span>\u003cspan class=\"mono\" style=\"font-size:12.5px;opacity:.75\">188\u003c/span>\u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 日 K 线 -->\n      \u003cdiv class=\"card\" style=\"background:var(--color-base-200);border-radius:.5rem\">\n        \u003cdiv class=\"card-body\" style=\"padding:14px 16px;gap:8px\">\n          \u003cdiv class=\"row\">\n            \u003ch2 style=\"font-size:15px;font-weight:700;margin:0\">极光光电 · 日 K（近一年走势截取，示例数据）\u003c/h2>\n            \u003cspan style=\"display:flex;gap:12px;font-size:11.5px;opacity:.7\">\n              \u003cspan>\u003cspan style=\"display:inline-block;width:14px;height:2px;background:#bb9af7;vertical-align:middle\">\u003c/span> MA5\u003c/span>\n              \u003cspan>\u003cspan style=\"display:inline-block;width:14px;height:2px;background:#7dcfff;vertical-align:middle\">\u003c/span> MA10\u003c/span>\n              \u003cspan class=\"up\">红涨\u003c/span>\u003cspan class=\"down\">绿跌\u003c/span>\n            \u003c/span>\n          \u003c/div>\n          \u003csvg viewBox=\"0 0 640 230\" style=\"width:100%;height:260px\" role=\"img\" aria-label=\"极光光电日 K 线示意图（示例数据）\">\n            \u003cg stroke=\"currentColor\" stroke-opacity=\".08\" stroke-width=\"1\">\n              \u003cline x1=\"8\" y1=\"45\" x2=\"632\" y2=\"45\" />\n              \u003cline x1=\"8\" y1=\"90\" x2=\"632\" y2=\"90\" />\n              \u003cline x1=\"8\" y1=\"135\" x2=\"632\" y2=\"135\" />\n              \u003cline x1=\"8\" y1=\"180\" x2=\"632\" y2=\"180\" />\n            \u003c/g>\n            \u003c!-- K 线（红涨绿跌） -->\n            \u003cg stroke-width=\"1\">\n              \u003cline x1=\"20\" y1=\"117.8\" x2=\"20\" y2=\"151.8\" stroke=\"#f7768e\"/>\u003crect x=\"16\" y=\"126.3\" width=\"8\" height=\"17.0\" fill=\"#f7768e\"/>\n              \u003cline x1=\"46\" y1=\"120.7\" x2=\"46\" y2=\"148.9\" stroke=\"#9ece6a\"/>\u003crect x=\"42\" y=\"126.3\" width=\"8\" height=\"11.4\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"72\" y1=\"106.5\" x2=\"72\" y2=\"143.3\" stroke=\"#f7768e\"/>\u003crect x=\"68\" y=\"112.2\" width=\"8\" height=\"25.5\" fill=\"#f7768e\"/>\n              \u003cline x1=\"98\" y1=\"100.8\" x2=\"98\" y2=\"126.3\" stroke=\"#9ece6a\"/>\u003crect x=\"94\" y=\"112.2\" width=\"8\" height=\"8.5\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"124\" y1=\"92.3\" x2=\"124\" y2=\"123.6\" stroke=\"#f7768e\"/>\u003crect x=\"120\" y=\"98.0\" width=\"8\" height=\"22.7\" fill=\"#f7768e\"/>\n              \u003cline x1=\"150\" y1=\"89.5\" x2=\"150\" y2=\"115.0\" stroke=\"#9ece6a\"/>\u003crect x=\"146\" y=\"98.0\" width=\"8\" height=\"11.3\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"176\" y1=\"81.0\" x2=\"176\" y2=\"112.2\" stroke=\"#f7768e\"/>\u003crect x=\"172\" y=\"86.7\" width=\"8\" height=\"22.6\" fill=\"#f7768e\"/>\n              \u003cline x1=\"202\" y1=\"78.2\" x2=\"202\" y2=\"100.8\" stroke=\"#9ece6a\"/>\u003crect x=\"198\" y=\"86.7\" width=\"8\" height=\"8.5\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"228\" y1=\"69.7\" x2=\"228\" y2=\"98.0\" stroke=\"#f7768e\"/>\u003crect x=\"224\" y=\"75.3\" width=\"8\" height=\"19.9\" fill=\"#f7768e\"/>\n              \u003cline x1=\"254\" y1=\"55.5\" x2=\"254\" y2=\"81.0\" stroke=\"#f7768e\"/>\u003crect x=\"250\" y=\"61.2\" width=\"8\" height=\"14.1\" fill=\"#f7768e\"/>\n              \u003cline x1=\"280\" y1=\"52.7\" x2=\"280\" y2=\"78.2\" stroke=\"#9ece6a\"/>\u003crect x=\"276\" y=\"61.2\" width=\"8\" height=\"11.3\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"306\" y1=\"66.8\" x2=\"306\" y2=\"89.5\" stroke=\"#9ece6a\"/>\u003crect x=\"302\" y=\"72.5\" width=\"8\" height=\"11.3\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"332\" y1=\"58.3\" x2=\"332\" y2=\"86.7\" stroke=\"#f7768e\"/>\u003crect x=\"328\" y=\"64.0\" width=\"8\" height=\"19.8\" fill=\"#f7768e\"/>\n              \u003cline x1=\"358\" y1=\"44.2\" x2=\"358\" y2=\"66.8\" stroke=\"#f7768e\"/>\u003crect x=\"354\" y=\"49.8\" width=\"8\" height=\"14.2\" fill=\"#f7768e\"/>\n              \u003cline x1=\"384\" y1=\"41.3\" x2=\"384\" y2=\"66.8\" stroke=\"#9ece6a\"/>\u003crect x=\"380\" y=\"49.8\" width=\"8\" height=\"11.4\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"410\" y1=\"55.5\" x2=\"410\" y2=\"81.0\" stroke=\"#9ece6a\"/>\u003crect x=\"406\" y=\"61.2\" width=\"8\" height=\"14.1\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"436\" y1=\"52.7\" x2=\"436\" y2=\"78.2\" stroke=\"#f7768e\"/>\u003crect x=\"432\" y=\"58.3\" width=\"8\" height=\"17.0\" fill=\"#f7768e\"/>\n              \u003cline x1=\"462\" y1=\"38.5\" x2=\"462\" y2=\"61.2\" stroke=\"#f7768e\"/>\u003crect x=\"458\" y=\"47.0\" width=\"8\" height=\"11.3\" fill=\"#f7768e\"/>\n              \u003cline x1=\"488\" y1=\"35.7\" x2=\"488\" y2=\"58.3\" stroke=\"#9ece6a\"/>\u003crect x=\"484\" y=\"47.0\" width=\"8\" height=\"8.5\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"514\" y1=\"49.8\" x2=\"514\" y2=\"75.3\" stroke=\"#9ece6a\"/>\u003crect x=\"510\" y=\"55.5\" width=\"8\" height=\"14.2\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"540\" y1=\"47.0\" x2=\"540\" y2=\"72.5\" stroke=\"#f7768e\"/>\u003crect x=\"536\" y=\"52.7\" width=\"8\" height=\"17.0\" fill=\"#f7768e\"/>\n              \u003cline x1=\"566\" y1=\"32.8\" x2=\"566\" y2=\"55.5\" stroke=\"#f7768e\"/>\u003crect x=\"562\" y=\"41.3\" width=\"8\" height=\"11.4\" fill=\"#f7768e\"/>\n              \u003cline x1=\"592\" y1=\"30.0\" x2=\"592\" y2=\"55.5\" stroke=\"#9ece6a\"/>\u003crect x=\"588\" y=\"41.3\" width=\"8\" height=\"11.4\" fill=\"#9ece6a\"/>\n              \u003cline x1=\"618\" y1=\"24.3\" x2=\"618\" y2=\"55.5\" stroke=\"#f7768e\"/>\u003crect x=\"614\" y=\"32.8\" width=\"8\" height=\"19.9\" fill=\"#f7768e\"/>\n            \u003c/g>\n            \u003c!-- 均线 -->\n            \u003cpolyline points=\"124,119.1 150,115.7 176,105.5 202,102.1 228,93.0 254,84.5 280,78.3 306,77.8 332,73.8 358,67.5 384,63.6 410,61.2 436,56.1 462,52.7 488,53.8 514,61.2 540,62.3 566,53.8 592,53.3 618,45.9\" fill=\"none\" stroke=\"#bb9af7\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/>\n            \u003cpolyline points=\"254,102.3 280,102.6 306,102.6 332,98.9 358,94.7 384,92.4 410,93.0 436,88.5 462,83.4 488,79.7 514,77.1 540,72.3 566,66.4 592,64.0 618,58.3\" fill=\"none\" stroke=\"#7dcfff\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/>\n          \u003c/svg>\n        \u003c/div>\n      \u003c/div>\n\n      \u003cp class=\"foot\">以上指数、个股与盘口均为虚构示例数据，仅用于展示 tokyo-night 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n    \u003c/div>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
   function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
   function copy(t){

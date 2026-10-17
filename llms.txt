@@ -2,7 +2,7 @@
 
 > 零依赖、纯 HTML/CSS、可直接复制给 AI 的中文前端组件库，基于 daisyUI 5（MIT）。每个组件都有一个 AI 友好页面，内含完整实现指令（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。把组件链接发给任意 AI（豆包 / Cursor / Claude Code 等），它即可抓取并按你的项目生成；页面里也有一键复制的纯文本指令。
 
-- 组件总数：68 个（daisyUI 搬运件 63 个 + 灰墨自研增强 5 个），主题 18 套，每套含 data-theme 换肤指令与完整变量
+- 组件总数：68 个（daisyUI 搬运件 63 个 + 灰墨自研增强 5 个），主题 30 套，每套含完整整页源码、data-theme 换肤指令与主题视觉红线
 - 全部组件完整指令一次抓取：[llms-full.txt](https://noii-y.github.io/moh-ui/llms-full.txt)
 - 在线组件库（可交互预览）：https://noii-y.github.io/moh-ui/site/components.html
 - 组件页同目录下有同名 `.md`（纯文本版）与 `.html`（人看版），下方链接指向 `.md`
@@ -90,7 +90,7 @@
 - [代码块（code-block）](https://noii-y.github.io/moh-ui/ai/code-block.md): 教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。
 - [拖拽排序（drag-sort）](https://noii-y.github.io/moh-ui/ai/drag-sort.md): 后台菜单与列表的拖拽排序：HTML5 拖拽换序、把手聚焦后 ↑/↓ 键盘移动、目标位高亮、aria-live 播报移动结果（换序为一小段原生 JS，样式零依赖）。
 
-## 主题（18）
+## 主题（30）
 
 - [墨夜（mo-dark）](https://noii-y.github.io/moh-ui/ai/mo-dark.md): Linear 风格暗色数据看板。近黑冷灰 + 克制靛蓝主色，适合数据看板 / 监控类后台；挂 data-theme="mo-dark" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
 - [宣纸（mo-light）](https://noii-y.github.io/moh-ui/ai/mo-light.md): Stripe 风格浅色 SaaS 计费控制台。浅灰白底 + 白卡 + 克制蓝主色，整页含侧栏导航、套餐卡、用量与 API 密钥、账单表与支付方式；挂 data-theme="mo-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
@@ -110,6 +110,18 @@
 - [Solarized Light（纸感护眼）（solarized-light）](https://noii-y.github.io/moh-ui/ai/solarized-light.md): 健康档案 / 预约挂号整页。米纸底色 #fdf6e3 配深青墨文字，低亮度差、长时间阅读不累眼；挂 data-theme="solarized-light" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
 - [焦糖拿铁（caramellatte）](https://noii-y.github.io/moh-ui/ai/caramellatte.md): 社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme="caramellatte" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
 - [丝绸（silk）](https://noii-y.github.io/moh-ui/ai/silk.md): 精品民宿预订整页。暖米白底配墨蓝文字，留白舒展、雅致轻奢；挂 daisyUI 官方主题 data-theme="silk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [深渊（abyss）](https://noii-y.github.io/moh-ui/ai/abyss.md): 虚构物联网运维监控产品「深穹监控 ABYSS OPS」整页。深绿底配磷光绿数据高亮，自绘折线图、可用性环形与节点状态卡；挂 daisyUI 官方主题 data-theme="abyss" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [纯黑（black）](https://noii-y.github.io/moh-ui/ai/black.md): 虚构独立影像工作室「白夜影像 WHITE NIGHT STUDIO」整页。OLED 纯黑底配白灰阶文字与内联简影相框，美术馆级留白；挂 daisyUI 官方主题 data-theme="black" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [睿蓝（corporate）](https://noii-y.github.io/moh-ui/ai/corporate.md): 虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme="corporate" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [林间（everforest）](https://noii-y.github.io/moh-ui/ai/everforest.md): 虚构笔记应用「林间笔记 Grove Notes」整页。暖纸白底配森林绿主色与柔蓝点缀，三栏应用简影、双链图谱、示例长文与三张定价卡，护眼低对比但正文清晰；页面全部使用 daisyUI 组件拼装、零依赖。
+- [林径（forest）](https://noii-y.github.io/moh-ui/ai/forest.md): 虚构户外装备品牌「野径户外 WILDTRAIL」整页。暖黑底配米白文字与松绿主色，山野层叠线稿为招牌、大圆角圆润；挂 daisyUI 官方主题 data-theme="forest" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [开源门户（github-light）](https://noii-y.github.io/moh-ui/ai/github-light.md): 虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。
+- [复古做旧（gruvbox）](https://noii-y.github.io/moh-ui/ai/gruvbox.md): 虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme="gruvbox"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [神奈川（kanagawa）](https://noii-y.github.io/moh-ui/ai/kanagawa.md): 虚构日式茶器与艺术品牌「浪见屋 NAMAMIYA」整页。墨色底（#1F1F28）配靛蓝主色、朱赤克制点睛与衬线标题，Hero 为自绘线稿海浪，配三件器物卡、展讯卡、匠人工序与预约 CTA；挂 daisyUI [data-theme="kanagawa"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [奢金（luxury）](https://noii-y.github.io/moh-ui/ai/luxury.md): 虚构高端腕表品牌「时计堂 HELIOS」整页。近黑底配金色衬线标题与内联线稿腕表，留白克制、层级清晰；挂 daisyUI 官方主题 data-theme="luxury" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [政务（mo-gov）](https://noii-y.github.io/moh-ui/ai/mo-gov.md): 虚构政务服务大厅「江岸市政务服务网」整页。白底大字、克制政务红、WCAG AAA 对比度（正文 ≥7:1）、大号按钮与粗焦点框，附静态「长辈模式」开关示意；挂 data-theme="mo-gov" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [童趣（mo-kids）](https://noii-y.github.io/moh-ui/ai/mo-kids.md): 虚构儿童学习 App「小步学堂」前台。奶油白暖底，天蓝 / 草绿 / 橙红 / 粉紫糖果色只做点缀，大圆角、大图标，含乘火箭穿书星球插画、六门兴趣课卡、闯关打卡勋章激励、家长证言与三档定价；挂 data-theme="mo-kids" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+- [报刊（mo-press）](https://noii-y.github.io/moh-ui/ai/mo-press.md): 虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与一条克制的报头红，报头双线、双栏正文与竖发丝线分隔，密而不乱；挂 data-theme="mo-press" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
 
 ## Optional
 

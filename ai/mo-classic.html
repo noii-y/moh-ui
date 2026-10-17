@@ -58,18 +58,337 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <div class="topbar"><div class="topbar-in">
   <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
   <span class="spacer"></span>
-  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/mo-classic/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html" target="_blank" rel="noopener">完整教程</a>
   <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
 </div></div>
 <div class="wrap"><article>
 <h1>经典 Bootstrap 后台风（mo-classic） · 灰墨 MoH_UI</h1>
 <blockquote>经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme="mo-classic" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
 <p>来源：灰墨二创主题（MIT）</p>
-<h2>给 AI 的换肤指令</h2>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="mo-classic"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;用户管理 · 灰墨后台（mo-classic 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 mo-classic 主题完整页面案例：经典 Bootstrap 风用户管理后台。本页只依赖 daisyUI 与 mo-classic 主题，展示真实后台整页效果。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="mo-classic"&gt; 即整站换肤。
+   灵感来源：Tabler / AdminLTE 经典后台节奏（经典蓝 + 灰蓝白底，仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-classic"] {
+  /* 底与纸：经典灰蓝白三层 */
+  --color-base-100: #f5f7fa;
+  --color-base-200: #ffffff;
+  --color-base-300: #eef1f5;
+  --color-base-content: #212a35;
+
+  /* 主色：Bootstrap 经典深蓝 */
+  --color-primary: #0b5ed7;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：经典灰蓝与青蓝 */
+  --color-secondary: #6c7a89;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0aa2c0;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #364152;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：标准可读色 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：经典 3–6px 小圆角、细边框 */
+  --radius-selector: .25rem;
+  --radius-field: .25rem;
+  --radius-box: .375rem;
+  --size-selector: .25rem;
+  --size-field: .25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 0 20px; min-height: 48px; background: var(--color-primary); color: var(--color-primary-content); }
+    .topbar-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .topbar-mark { width: 22px; height: 22px; border-radius: 4px; background: rgba(255,255,255,.18); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .topbar-right { display: flex; align-items: center; gap: 12px; }
+    .topbar-search { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.15); border-radius: .25rem; padding: 4px 10px; }
+    .topbar-search input { background: none; border: 0; outline: none; color: #fff; font-size: 13px; width: 180px; }
+    .topbar-search input::placeholder { color: rgba(255,255,255,.7); }
+    .shell { display: flex; align-items: flex-start; min-height: calc(100vh - 48px); }
+    .side { width: 208px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 12px 8px; }
+    .main { flex: 1; min-width: 0; padding: 16px 20px 28px; display: flex; flex-direction: column; gap: 14px; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .crumb { font-size: 12px; opacity: .6; }
+    .filter-row { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label { font-size: 12px; opacity: .7; }
+    .tbl-wrap { overflow-x: auto; min-width: 0; }
+    .tbl-wrap .badge { white-space: nowrap; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+    .form-full { grid-column: 1 / -1; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    @media (max-width: 900px) {
+      .shell { flex-direction: column; align-items: stretch; }
+      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }
+      .side .menu li a { white-space: nowrap; }
+      .side .menu .menu-title { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .main { padding: 14px 12px 22px; }
+      .topbar-right { flex-wrap: wrap; row-gap: 6px; }
+      .topbar-search { flex: 1 1 100%; }
+      .topbar-right &gt; span { white-space: nowrap; flex: none; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- 顶部实心底经典后台顶栏 --&gt;
+  &lt;div class="topbar bg-primary text-primary-content"&gt;
+    &lt;div class="topbar-brand"&gt;&lt;span class="topbar-mark"&gt;墨&lt;/span&gt;灰墨后台&lt;/div&gt;
+    &lt;div class="topbar-right"&gt;
+      &lt;div class="topbar-search"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;opacity:.7" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /&gt;&lt;/svg&gt;
+        &lt;input type="search" placeholder="搜索…" /&gt;
+      &lt;/div&gt;
+      &lt;span style="font-size:13px;display:flex;align-items:center;gap:6px;cursor:default"&gt;
+        通知
+        &lt;span class="badge badge-sm"&gt;3&lt;/span&gt;
+      &lt;/span&gt;
+      &lt;span style="font-size:13px;display:flex;align-items:center;gap:8px"&gt;
+        &lt;span style="width:26px;height:26px;border-radius:999px;background:rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;font-size:12px"&gt;高&lt;/span&gt;
+        高管理员
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="shell"&gt;
+
+    &lt;!-- 左侧菜单 --&gt;
+    &lt;aside class="side"&gt;
+      &lt;ul class="menu" style="width:100%;padding:0"&gt;
+        &lt;li class="menu-title" style="padding-left:12px"&gt;概览&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;仪表盘&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="menu-active"&gt;用户管理 &lt;span class="badge badge-sm"&gt;128&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;角色权限 &lt;span class="badge badge-sm"&gt;8&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="menu-title" style="padding-left:12px"&gt;业务&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;订单管理&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;内容管理&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="menu-title" style="padding-left:12px"&gt;系统&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;系统设置&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;!-- 主区 --&gt;
+    &lt;div class="main"&gt;
+
+      &lt;!-- 页头 --&gt;
+      &lt;div class="row"&gt;
+        &lt;div&gt;
+          &lt;div class="crumb"&gt;首页 / 用户管理&lt;/div&gt;
+          &lt;h1 style="font-size:20px;font-weight:700;margin:4px 0 0"&gt;用户管理&lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;button class="btn btn-primary btn-sm" type="button"&gt;新增用户&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 筛选表单 --&gt;
+      &lt;div class="card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body" style="padding:14px 16px;display:flex;flex-direction:column;gap:10px"&gt;
+          &lt;h2 style="font-size:14px;font-weight:700;margin:0"&gt;筛选条件&lt;/h2&gt;
+          &lt;div class="filter-row"&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="kw"&gt;关键词&lt;/label&gt;
+              &lt;input class="input input-sm" id="kw" type="search" placeholder="姓名 / 邮箱" style="width:200px" /&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="role"&gt;角色&lt;/label&gt;
+              &lt;select class="select select-sm" id="role" style="width:160px"&gt;
+                &lt;option&gt;全部角色&lt;/option&gt;
+                &lt;option&gt;管理员&lt;/option&gt;
+                &lt;option&gt;运营&lt;/option&gt;
+                &lt;option&gt;普通成员&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="st"&gt;状态&lt;/label&gt;
+              &lt;select class="select select-sm" id="st" style="width:140px"&gt;
+                &lt;option&gt;全部状态&lt;/option&gt;
+                &lt;option&gt;启用&lt;/option&gt;
+                &lt;option&gt;停用&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="field" style="flex-direction:row;gap:8px;align-items:flex-end"&gt;
+              &lt;button class="btn btn-primary btn-sm" type="button"&gt;查询&lt;/button&gt;
+              &lt;button class="btn btn-ghost btn-sm" type="button"&gt;重置&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 用户表格 --&gt;
+      &lt;div class="card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body" style="padding:14px 16px 8px;display:flex;flex-direction:column;gap:10px"&gt;
+          &lt;div class="tbl-wrap"&gt;
+            &lt;table class="table" style="font-size:13px"&gt;
+              &lt;thead&gt;
+                &lt;tr style="opacity:.6;font-size:12px"&gt;
+                  &lt;th&gt;用户&lt;/th&gt;&lt;th&gt;邮箱&lt;/th&gt;&lt;th&gt;角色&lt;/th&gt;&lt;th&gt;状态&lt;/th&gt;&lt;th&gt;注册时间&lt;/th&gt;&lt;th style="text-align:right"&gt;操作&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-secondary);color:var(--color-secondary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;张&lt;/span&gt;张伟&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;zhangwei@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-primary"&gt;管理员&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-success"&gt;启用&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2025-11-02&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;停用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-accent);color:var(--color-accent-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;李&lt;/span&gt;李娜&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;lina@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-secondary"&gt;运营&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-success"&gt;启用&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2025-12-18&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;停用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-neutral);color:var(--color-neutral-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;王&lt;/span&gt;王强&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;wangqiang@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-secondary"&gt;运营&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-neutral"&gt;停用&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2026-01-07&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;启用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-primary);color:var(--color-primary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;陈&lt;/span&gt;陈静&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;chenjing@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-neutral"&gt;普通成员&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-success"&gt;启用&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2026-02-23&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;停用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-secondary);color:var(--color-secondary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;刘&lt;/span&gt;刘洋&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;liuyang@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-neutral"&gt;普通成员&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-success"&gt;启用&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2026-03-11&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;停用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+                &lt;tr&gt;
+                  &lt;td&gt;
+                    &lt;span style="display:flex;align-items:center;gap:8px"&gt;&lt;span style="width:26px;height:26px;border-radius:999px;background:var(--color-accent);color:var(--color-accent-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px"&gt;赵&lt;/span&gt;赵敏&lt;/span&gt;
+                  &lt;/td&gt;
+                  &lt;td&gt;zhaomin@example.com&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-primary"&gt;管理员&lt;/span&gt;&lt;/td&gt;
+                  &lt;td&gt;&lt;span class="badge badge-soft badge-warning"&gt;待激活&lt;/span&gt;&lt;/td&gt;
+                  &lt;td style="opacity:.6"&gt;2026-09-30&lt;/td&gt;
+                  &lt;td style="text-align:right"&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;编辑&lt;/a&gt;&lt;a class="link" href="#" style="font-size:13px;text-decoration:none;margin-right:8px"&gt;停用&lt;/a&gt;&lt;a class="link text-error" href="#" style="font-size:13px;text-decoration:none"&gt;删除&lt;/a&gt;&lt;/td&gt;
+                &lt;/tr&gt;
+              &lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+          &lt;div class="row" style="padding:4px 0 8px"&gt;
+            &lt;span style="font-size:12px;opacity:.6"&gt;共 128 条记录&lt;/span&gt;
+            &lt;div class="join"&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;上一页&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm btn-active" type="button"&gt;1&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;2&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;3&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;4&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;5&lt;/button&gt;
+              &lt;button class="join-item btn btn-sm" type="button"&gt;下一页&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 新增用户表单（静态展示） --&gt;
+      &lt;div class="card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body" style="padding:14px 16px;display:flex;flex-direction:column;gap:12px"&gt;
+          &lt;h2 style="font-size:14px;font-weight:700;margin:0"&gt;新增用户&lt;/h2&gt;
+          &lt;div class="form-grid"&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="uname"&gt;姓名&lt;/label&gt;
+              &lt;input class="input input-sm" id="uname" type="text" placeholder="请输入姓名" style="width:100%" /&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="uemail"&gt;邮箱&lt;/label&gt;
+              &lt;input class="input input-sm" id="uemail" type="email" placeholder="name@example.com" style="width:100%" /&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+              &lt;label for="urole"&gt;角色&lt;/label&gt;
+              &lt;select class="select select-sm" id="urole" style="width:100%"&gt;
+                &lt;option&gt;普通成员&lt;/option&gt;
+                &lt;option&gt;运营&lt;/option&gt;
+                &lt;option&gt;管理员&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class="field"&gt;
+              &lt;label&gt;状态&lt;/label&gt;
+              &lt;div style="display:flex;gap:16px;align-items:center;height:30px"&gt;
+                &lt;span style="display:flex;align-items:center;gap:6px;font-size:13px"&gt;&lt;input class="radio" type="radio" name="ust" checked /&gt;启用&lt;/span&gt;
+                &lt;span style="display:flex;align-items:center;gap:6px;font-size:13px"&gt;&lt;input class="radio" type="radio" name="ust" /&gt;停用&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="field form-full"&gt;
+              &lt;label for="unote"&gt;备注&lt;/label&gt;
+              &lt;textarea class="textarea textarea-sm" id="unote" placeholder="可选：入职部门、负责事项…" style="width:100%"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div style="display:flex;gap:8px"&gt;
+            &lt;button class="btn btn-primary btn-sm" type="button"&gt;保存修改&lt;/button&gt;
+            &lt;button class="btn btn-ghost btn-sm" type="button"&gt;取消&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;p class="foot"&gt;以上为示例数据，仅用于展示 mo-classic 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
 <p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
 <pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
 &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-classic/tokens.css"&gt;</code></pre>
-<p>② 在 <code>&lt;html&gt;</code> 标签挂 <code>data-theme="mo-classic"</code> 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-classic"] 下的全部 --color-* 变量。</p>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="mo-classic"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-classic"] 下的全部 --color-* 变量。</p>
 <p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
 <pre class="fence"><code class="lang-css">/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）
    覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
@@ -116,14 +435,13 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
   --depth: 1;
   --noise: 0;
 }</code></pre>
-<p>④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：<a href="https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html</a></p>
-<p>⑤ 审美提示：组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-classic"] 里的 --color-* 变量。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
 <hr>
 <h2>更多</h2>
 <ul>
 <li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-classic/demo.html</a></li>
 <li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
-<li>主题库（全部 18 套整页案例）：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
 <li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
 </ul>
 <p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
@@ -132,7 +450,7 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <script>
 (function(){
   // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
-  var text = "请把我的整个前端项目换成「经典 Bootstrap 后台风（浅色）」主题（data-theme=\"mo-classic\"）。\n\n经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme=\"mo-classic\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n\n【怎么引入】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-classic/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-classic\"> 挂属性，整站即刻换肤，组件类名一行都不用改。\n上面的 tokens.css 覆盖 [data-theme=\"mo-classic\"] 下的全部 --color-* 变量。\n\n【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme=\"mo-classic\"] 里的 --color-* 变量）\n\n```css\n/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-classic\"> 即整站换肤。\n   灵感来源：Tabler / AdminLTE 经典后台节奏（经典蓝 + 灰蓝白底，仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-classic\"] {\n  /* 底与纸：经典灰蓝白三层 */\n  --color-base-100: #f5f7fa;\n  --color-base-200: #ffffff;\n  --color-base-300: #eef1f5;\n  --color-base-content: #212a35;\n\n  /* 主色：Bootstrap 经典深蓝 */\n  --color-primary: #0b5ed7;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：经典灰蓝与青蓝 */\n  --color-secondary: #6c7a89;\n  --color-secondary-content: #ffffff;\n  --color-accent: #0aa2c0;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #364152;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：经典 3–6px 小圆角、细边框 */\n  --radius-selector: .25rem;\n  --radius-field: .25rem;\n  --radius-box: .375rem;\n  --size-selector: .25rem;\n  --size-field: .25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n";
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「经典 Bootstrap 后台风（mo-classic）」的整页。\n\n【场景】\n经典 Bootstrap 风用户管理后台。经典深蓝顶栏 + 分组侧栏 + 筛选表单 + 用户分页表 + 新增用户表单，Tabler / AdminLTE 式人人熟悉的后台节奏；挂 data-theme=\"mo-classic\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-classic/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-classic\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"mo-classic\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"mo-classic\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"mo-classic\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-classic\"> 即整站换肤。\n   灵感来源：Tabler / AdminLTE 经典后台节奏（经典蓝 + 灰蓝白底，仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-classic\"] {\n  /* 底与纸：经典灰蓝白三层 */\n  --color-base-100: #f5f7fa;\n  --color-base-200: #ffffff;\n  --color-base-300: #eef1f5;\n  --color-base-content: #212a35;\n\n  /* 主色：Bootstrap 经典深蓝 */\n  --color-primary: #0b5ed7;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：经典灰蓝与青蓝 */\n  --color-secondary: #6c7a89;\n  --color-secondary-content: #ffffff;\n  --color-accent: #0aa2c0;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #364152;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：经典 3–6px 小圆角、细边框 */\n  --radius-selector: .25rem;\n  --radius-field: .25rem;\n  --radius-box: .375rem;\n  --size-selector: .25rem;\n  --size-field: .25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"mo-classic\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>用户管理 · 灰墨后台（mo-classic 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 mo-classic 主题完整页面案例：经典 Bootstrap 风用户管理后台。本页只依赖 daisyUI 与 mo-classic 主题，展示真实后台整页效果。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 mo-classic · 经典 Bootstrap 后台风（浅色）\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-classic\"> 即整站换肤。\n   灵感来源：Tabler / AdminLTE 经典后台节奏（经典蓝 + 灰蓝白底，仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-classic\"] {\n  /* 底与纸：经典灰蓝白三层 */\n  --color-base-100: #f5f7fa;\n  --color-base-200: #ffffff;\n  --color-base-300: #eef1f5;\n  --color-base-content: #212a35;\n\n  /* 主色：Bootstrap 经典深蓝 */\n  --color-primary: #0b5ed7;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：经典灰蓝与青蓝 */\n  --color-secondary: #6c7a89;\n  --color-secondary-content: #ffffff;\n  --color-accent: #0aa2c0;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #364152;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：经典 3–6px 小圆角、细边框 */\n  --radius-selector: .25rem;\n  --radius-field: .25rem;\n  --radius-box: .375rem;\n  --size-selector: .25rem;\n  --size-field: .25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 0 20px; min-height: 48px; background: var(--color-primary); color: var(--color-primary-content); }\n    .topbar-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }\n    .topbar-mark { width: 22px; height: 22px; border-radius: 4px; background: rgba(255,255,255,.18); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }\n    .topbar-right { display: flex; align-items: center; gap: 12px; }\n    .topbar-search { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.15); border-radius: .25rem; padding: 4px 10px; }\n    .topbar-search input { background: none; border: 0; outline: none; color: #fff; font-size: 13px; width: 180px; }\n    .topbar-search input::placeholder { color: rgba(255,255,255,.7); }\n    .shell { display: flex; align-items: flex-start; min-height: calc(100vh - 48px); }\n    .side { width: 208px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 12px 8px; }\n    .main { flex: 1; min-width: 0; padding: 16px 20px 28px; display: flex; flex-direction: column; gap: 14px; }\n    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }\n    .crumb { font-size: 12px; opacity: .6; }\n    .filter-row { display: flex; align-items: flex-end; gap: 10px; flex-wrap: wrap; }\n    .field { display: flex; flex-direction: column; gap: 4px; }\n    .field label { font-size: 12px; opacity: .7; }\n    .tbl-wrap { overflow-x: auto; min-width: 0; }\n    .tbl-wrap .badge { white-space: nowrap; }\n    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }\n    .form-full { grid-column: 1 / -1; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }\n    @media (max-width: 900px) {\n      .shell { flex-direction: column; align-items: stretch; }\n      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; }\n      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }\n      .side .menu li a { white-space: nowrap; }\n      .side .menu .menu-title { display: none; }\n      .form-grid { grid-template-columns: 1fr; }\n      .main { padding: 14px 12px 22px; }\n      .topbar-right { flex-wrap: wrap; row-gap: 6px; }\n      .topbar-search { flex: 1 1 100%; }\n      .topbar-right > span { white-space: nowrap; flex: none; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n\n  \u003c!-- 顶部实心底经典后台顶栏 -->\n  \u003cdiv class=\"topbar bg-primary text-primary-content\">\n    \u003cdiv class=\"topbar-brand\">\u003cspan class=\"topbar-mark\">墨\u003c/span>灰墨后台\u003c/div>\n    \u003cdiv class=\"topbar-right\">\n      \u003cdiv class=\"topbar-search\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px;opacity:.7\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z\" />\u003c/svg>\n        \u003cinput type=\"search\" placeholder=\"搜索…\" />\n      \u003c/div>\n      \u003cspan style=\"font-size:13px;display:flex;align-items:center;gap:6px;cursor:default\">\n        通知\n        \u003cspan class=\"badge badge-sm\">3\u003c/span>\n      \u003c/span>\n      \u003cspan style=\"font-size:13px;display:flex;align-items:center;gap:8px\">\n        \u003cspan style=\"width:26px;height:26px;border-radius:999px;background:rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;font-size:12px\">高\u003c/span>\n        高管理员\n      \u003c/span>\n    \u003c/div>\n  \u003c/div>\n\n  \u003cdiv class=\"shell\">\n\n    \u003c!-- 左侧菜单 -->\n    \u003caside class=\"side\">\n      \u003cul class=\"menu\" style=\"width:100%;padding:0\">\n        \u003cli class=\"menu-title\" style=\"padding-left:12px\">概览\u003c/li>\n        \u003cli>\u003ca>仪表盘\u003c/a>\u003c/li>\n        \u003cli>\u003ca class=\"menu-active\">用户管理 \u003cspan class=\"badge badge-sm\">128\u003c/span>\u003c/a>\u003c/li>\n        \u003cli>\u003ca>角色权限 \u003cspan class=\"badge badge-sm\">8\u003c/span>\u003c/a>\u003c/li>\n        \u003cli class=\"menu-title\" style=\"padding-left:12px\">业务\u003c/li>\n        \u003cli>\u003ca>订单管理\u003c/a>\u003c/li>\n        \u003cli>\u003ca>内容管理\u003c/a>\u003c/li>\n        \u003cli class=\"menu-title\" style=\"padding-left:12px\">系统\u003c/li>\n        \u003cli>\u003ca>系统设置\u003c/a>\u003c/li>\n      \u003c/ul>\n    \u003c/aside>\n\n    \u003c!-- 主区 -->\n    \u003cdiv class=\"main\">\n\n      \u003c!-- 页头 -->\n      \u003cdiv class=\"row\">\n        \u003cdiv>\n          \u003cdiv class=\"crumb\">首页 / 用户管理\u003c/div>\n          \u003ch1 style=\"font-size:20px;font-weight:700;margin:4px 0 0\">用户管理\u003c/h1>\n        \u003c/div>\n        \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">新增用户\u003c/button>\n      \u003c/div>\n\n      \u003c!-- 筛选表单 -->\n      \u003cdiv class=\"card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body\" style=\"padding:14px 16px;display:flex;flex-direction:column;gap:10px\">\n          \u003ch2 style=\"font-size:14px;font-weight:700;margin:0\">筛选条件\u003c/h2>\n          \u003cdiv class=\"filter-row\">\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"kw\">关键词\u003c/label>\n              \u003cinput class=\"input input-sm\" id=\"kw\" type=\"search\" placeholder=\"姓名 / 邮箱\" style=\"width:200px\" />\n            \u003c/div>\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"role\">角色\u003c/label>\n              \u003cselect class=\"select select-sm\" id=\"role\" style=\"width:160px\">\n                \u003coption>全部角色\u003c/option>\n                \u003coption>管理员\u003c/option>\n                \u003coption>运营\u003c/option>\n                \u003coption>普通成员\u003c/option>\n              \u003c/select>\n            \u003c/div>\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"st\">状态\u003c/label>\n              \u003cselect class=\"select select-sm\" id=\"st\" style=\"width:140px\">\n                \u003coption>全部状态\u003c/option>\n                \u003coption>启用\u003c/option>\n                \u003coption>停用\u003c/option>\n              \u003c/select>\n            \u003c/div>\n            \u003cdiv class=\"field\" style=\"flex-direction:row;gap:8px;align-items:flex-end\">\n              \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">查询\u003c/button>\n              \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">重置\u003c/button>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 用户表格 -->\n      \u003cdiv class=\"card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body\" style=\"padding:14px 16px 8px;display:flex;flex-direction:column;gap:10px\">\n          \u003cdiv class=\"tbl-wrap\">\n            \u003ctable class=\"table\" style=\"font-size:13px\">\n              \u003cthead>\n                \u003ctr style=\"opacity:.6;font-size:12px\">\n                  \u003cth>用户\u003c/th>\u003cth>邮箱\u003c/th>\u003cth>角色\u003c/th>\u003cth>状态\u003c/th>\u003cth>注册时间\u003c/th>\u003cth style=\"text-align:right\">操作\u003c/th>\n                \u003c/tr>\n              \u003c/thead>\n              \u003ctbody>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-secondary);color:var(--color-secondary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">张\u003c/span>张伟\u003c/span>\n                  \u003c/td>\n                  \u003ctd>zhangwei@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-primary\">管理员\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-success\">启用\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2025-11-02\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">停用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-accent);color:var(--color-accent-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">李\u003c/span>李娜\u003c/span>\n                  \u003c/td>\n                  \u003ctd>lina@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-secondary\">运营\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-success\">启用\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2025-12-18\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">停用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-neutral);color:var(--color-neutral-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">王\u003c/span>王强\u003c/span>\n                  \u003c/td>\n                  \u003ctd>wangqiang@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-secondary\">运营\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-neutral\">停用\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2026-01-07\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">启用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-primary);color:var(--color-primary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">陈\u003c/span>陈静\u003c/span>\n                  \u003c/td>\n                  \u003ctd>chenjing@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-neutral\">普通成员\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-success\">启用\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2026-02-23\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">停用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-secondary);color:var(--color-secondary-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">刘\u003c/span>刘洋\u003c/span>\n                  \u003c/td>\n                  \u003ctd>liuyang@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-neutral\">普通成员\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-success\">启用\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2026-03-11\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">停用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n                \u003ctr>\n                  \u003ctd>\n                    \u003cspan style=\"display:flex;align-items:center;gap:8px\">\u003cspan style=\"width:26px;height:26px;border-radius:999px;background:var(--color-accent);color:var(--color-accent-content);display:inline-flex;align-items:center;justify-content:center;font-size:11px\">赵\u003c/span>赵敏\u003c/span>\n                  \u003c/td>\n                  \u003ctd>zhaomin@example.com\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-primary\">管理员\u003c/span>\u003c/td>\n                  \u003ctd>\u003cspan class=\"badge badge-soft badge-warning\">待激活\u003c/span>\u003c/td>\n                  \u003ctd style=\"opacity:.6\">2026-09-30\u003c/td>\n                  \u003ctd style=\"text-align:right\">\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">编辑\u003c/a>\u003ca class=\"link\" href=\"#\" style=\"font-size:13px;text-decoration:none;margin-right:8px\">停用\u003c/a>\u003ca class=\"link text-error\" href=\"#\" style=\"font-size:13px;text-decoration:none\">删除\u003c/a>\u003c/td>\n                \u003c/tr>\n              \u003c/tbody>\n            \u003c/table>\n          \u003c/div>\n          \u003cdiv class=\"row\" style=\"padding:4px 0 8px\">\n            \u003cspan style=\"font-size:12px;opacity:.6\">共 128 条记录\u003c/span>\n            \u003cdiv class=\"join\">\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">上一页\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm btn-active\" type=\"button\">1\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">2\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">3\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">4\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">5\u003c/button>\n              \u003cbutton class=\"join-item btn btn-sm\" type=\"button\">下一页\u003c/button>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 新增用户表单（静态展示） -->\n      \u003cdiv class=\"card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body\" style=\"padding:14px 16px;display:flex;flex-direction:column;gap:12px\">\n          \u003ch2 style=\"font-size:14px;font-weight:700;margin:0\">新增用户\u003c/h2>\n          \u003cdiv class=\"form-grid\">\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"uname\">姓名\u003c/label>\n              \u003cinput class=\"input input-sm\" id=\"uname\" type=\"text\" placeholder=\"请输入姓名\" style=\"width:100%\" />\n            \u003c/div>\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"uemail\">邮箱\u003c/label>\n              \u003cinput class=\"input input-sm\" id=\"uemail\" type=\"email\" placeholder=\"name@example.com\" style=\"width:100%\" />\n            \u003c/div>\n            \u003cdiv class=\"field\">\n              \u003clabel for=\"urole\">角色\u003c/label>\n              \u003cselect class=\"select select-sm\" id=\"urole\" style=\"width:100%\">\n                \u003coption>普通成员\u003c/option>\n                \u003coption>运营\u003c/option>\n                \u003coption>管理员\u003c/option>\n              \u003c/select>\n            \u003c/div>\n            \u003cdiv class=\"field\">\n              \u003clabel>状态\u003c/label>\n              \u003cdiv style=\"display:flex;gap:16px;align-items:center;height:30px\">\n                \u003cspan style=\"display:flex;align-items:center;gap:6px;font-size:13px\">\u003cinput class=\"radio\" type=\"radio\" name=\"ust\" checked />启用\u003c/span>\n                \u003cspan style=\"display:flex;align-items:center;gap:6px;font-size:13px\">\u003cinput class=\"radio\" type=\"radio\" name=\"ust\" />停用\u003c/span>\n              \u003c/div>\n            \u003c/div>\n            \u003cdiv class=\"field form-full\">\n              \u003clabel for=\"unote\">备注\u003c/label>\n              \u003ctextarea class=\"textarea textarea-sm\" id=\"unote\" placeholder=\"可选：入职部门、负责事项…\" style=\"width:100%\">\u003c/textarea>\n            \u003c/div>\n          \u003c/div>\n          \u003cdiv style=\"display:flex;gap:8px\">\n            \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">保存修改\u003c/button>\n            \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">取消\u003c/button>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003cp class=\"foot\">以上为示例数据，仅用于展示 mo-classic 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n    \u003c/div>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
   function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
   function copy(t){

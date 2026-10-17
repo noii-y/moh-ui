@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>复古做旧（gruvbox）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「复古做旧（gruvbox）」组件。虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme="gruvbox"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="gruvbox.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/gruvbox/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>复古做旧（gruvbox） · 灰墨 MoH_UI</h1>
+<blockquote>虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme="gruvbox"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：gruvbox (morhetz/gruvbox)（MIT） · <a href="https://github.com/morhetz/gruvbox/blob/master/colors/gruvbox.vim" target="_blank" rel="noopener noreferrer">上游色板</a></p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/gruvbox/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/gruvbox/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>暖棕三层底：base-100 #282828 / base-200 #3c3836（卡片）/ base-300 #504945（更深装饰块），正文 light1 #ebdbb2；做旧感来自底色的暖棕，不要靠降低文字对比度。</li>
+<li>主色只用招牌橙 #fe8019（主按钮、订阅 CTA、当前选中）；黄 #fabd2f 与苔绿 #8ec07c 只做次按钮、badge 与少量点缀；蓝色 #83a598 全篇最多出现一次，绝不抢橙黄。</li>
+<li>主按钮橙底必须配深棕文字（daisyUI 按 primary-content 自动取 #282828）；次要操作用幽灵按钮，按钮只写真实动作（订阅更新、阅读最新文章、查看制作记录）。</li>
+<li>标题用粗体无衬线配 1px 字距，代码、日期、标签与命令行一律等宽（var(--font-mono)），复古气质靠等宽与暖棕，不靠渐变与投影。</li>
+<li>所有设备插图只用 currentColor 单色线稿 SVG：终端要画出屏幕命令行、窗口圆点与键帽排；分体键盘、掌机、收音机三款轮廓差异要明显；不用彩色照片、不用 emoji、不用渐变。</li>
+<li>博客卡片写真实技术选题（终端、键盘、CRT、shell），摘要一行说完价值；标签用 outline badge，日期与阅读时长用等宽小字，不写数字游戏式夸大标题。</li>
+<li>390px 窄屏顶栏自然折行、文章卡单列、假终端块不横向滚动；手机上 Hero 终端插图保持完整。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="gruvbox"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;在终端里，慢慢造东西 · 锈键盘 RUSTY KEYS（gruvbox 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 gruvbox 主题完整页面案例：虚构复古技术博客与极客手作工作室整页。暖棕底配橙黄招牌色与苔绿点缀，自绘线稿复古终端、文章列表与手作项目。本页只依赖 daisyUI 与主题 tokens.css，零依赖、零 JS。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 gruvbox · 复古做旧 —— 暖棕橙黄的极客主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 morhetz/gruvbox 官方 Dark 色板（MIT/X11，© 2012 morhetz / Pavel Pertsev）。
+   上游仓库根目录未附 LICENSE 文件，但 README 声明 License 为 MIT/X11；
+   灰墨已按声明补全标准 MIT 文本于本目录 LICENSE，版权署名归原作者。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="gruvbox"&gt; 即整站换肤。 */
+
+[data-theme="gruvbox"] {
+  color-scheme: dark;
+
+  /* 底与纸：暖棕三层 —— bg0 #282828 / bg1 #3c3836 / bg2 #504945，正文 light1 #ebdbb2 */
+  --color-base-100: #282828;
+  --color-base-200: #3c3836;
+  --color-base-300: #504945;
+  --color-base-content: #ebdbb2;
+
+  /* 主色：招牌橙 bright_orange #fe8019，只留给主操作与选中态 */
+  --color-primary: #fe8019;
+  --color-primary-content: #282828;
+
+  /* 次色：招牌黄 bright_yellow #fabd2f；强调色：苔绿 bright_aqua #8ec07c */
+  --color-secondary: #fabd2f;
+  --color-secondary-content: #282828;
+  --color-accent: #8ec07c;
+  --color-accent-content: #282828;
+
+  /* 中性面：棕灰 bg3 #665c54，用于边框与分隔 */
+  --color-neutral: #665c54;
+  --color-neutral-content: #ebdbb2;
+
+  /* 语义色：官方深色模式直接映射（蓝色刻意克制，不抢橙黄主色） */
+  --color-info: #83a598;       /* bright_blue */
+  --color-info-content: #282828;
+  --color-success: #b8bb26;    /* bright_green */
+  --color-success-content: #282828;
+  --color-warning: #d79921;    /* neutral_yellow，比招牌黄更深一档 */
+  --color-warning-content: #282828;
+  --color-error: #fb4934;      /* bright_red */
+  --color-error-content: #282828;
+
+  /* 圆角 / 尺寸 / 边框：小圆角，复古终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 20px; }
+    .brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 11px; letter-spacing: 2px; opacity: .6; font-weight: 400; }
+    .brand svg { width: 22px; height: 22px; }
+    .hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 36px 16px 30px; }
+    .hero-term { width: 320px; height: auto; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .article-list { display: flex; flex-direction: column; gap: 12px; }
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+    .dial { height: 140px; display: flex; align-items: center; justify-content: center; }
+    .dial svg { width: 112px; height: 112px; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero { padding: 24px 8px 20px; }
+      .hero h1 { font-size: 26px !important; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;rect x="2" y="4" width="20" height="14" rx="2" /&gt;
+            &lt;path d="M6 9l2.5 2.5L6 14" /&gt;
+            &lt;path d="M11 14h7" /&gt;
+          &lt;/svg&gt;
+          锈键盘 &lt;small&gt;RUSTY KEYS&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;文章&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;手作&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;项目&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;关于&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;button class="btn btn-primary btn-sm" type="button"&gt;订阅更新&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero：自绘线稿复古终端 --&gt;
+    &lt;div class="hero"&gt;
+      &lt;span class="badge badge-soft badge-sm" style="--badge-color:var(--color-base-content)"&gt;复古手作 · 自焊键盘与旧物改造（虚构）&lt;/span&gt;
+      &lt;h1 style="font-size:34px;font-weight:800;margin:0;letter-spacing:1px"&gt;在终端里，慢慢造东西&lt;/h1&gt;
+      &lt;p style="font-size:13px;opacity:.65;max-width:480px;margin:0;line-height:2"&gt;锈键盘是一个一人手作工作室：写终端里的工具，焊每天打字的键盘，也修好别人丢掉的旧机器。&lt;/p&gt;
+      &lt;svg class="hero-term" viewBox="0 0 440 260" role="img" aria-label="自绘线稿复古终端显示器：屏幕上有命令行与光标，下方是一排键帽（示例插图）"&gt;
+        &lt;g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;!-- 显示器机身 --&gt;
+          &lt;rect x="20" y="18" width="400" height="168" rx="10" /&gt;
+          &lt;line x1="20" y1="44" x2="420" y2="44" stroke-width="1.2" opacity=".5" /&gt;
+          &lt;!-- 窗口圆点 --&gt;
+          &lt;circle cx="40" cy="31" r="2.5" stroke-width="1.4" /&gt;
+          &lt;circle cx="52" cy="31" r="2.5" stroke-width="1.4" opacity=".6" /&gt;
+          &lt;circle cx="64" cy="31" r="2.5" stroke-width="1.4" opacity=".35" /&gt;
+          &lt;!-- 底座 --&gt;
+          &lt;path d="M190 186 L190 204 L250 204 L250 186" /&gt;
+          &lt;line x1="170" y1="204" x2="270" y2="204" /&gt;
+          &lt;!-- 键帽排 --&gt;
+          &lt;rect x="300" y="196" width="110" height="34" rx="4" stroke-width="1.4" /&gt;
+          &lt;g stroke-width="1.1" opacity=".8"&gt;
+            &lt;line x1="316" y1="196" x2="316" y2="230" /&gt;
+            &lt;line x1="336" y1="196" x2="336" y2="230" /&gt;
+            &lt;line x1="356" y1="196" x2="356" y2="230" /&gt;
+            &lt;line x1="376" y1="196" x2="376" y2="230" /&gt;
+            &lt;line x1="396" y1="196" x2="396" y2="230" /&gt;
+            &lt;line x1="300" y1="213" x2="410" y2="213" /&gt;
+          &lt;/g&gt;
+        &lt;/g&gt;
+        &lt;!-- 屏幕命令行文字 --&gt;
+        &lt;g fill="currentColor" stroke="none" style="font-family:var(--font-mono, ui-monospace, Menlo, Consolas, monospace)"&gt;
+          &lt;text x="40" y="78" font-size="13"&gt;$ rusty build --watch&lt;/text&gt;
+          &lt;text x="40" y="100" font-size="12" opacity=".55"&gt;compiling 42 projects ...&lt;/text&gt;
+          &lt;text x="40" y="122" font-size="12" opacity=".85"&gt;done in 1.8s&lt;/text&gt;
+          &lt;text x="40" y="150" font-size="13"&gt;$ &lt;/text&gt;
+        &lt;/g&gt;
+        &lt;rect x="52" y="140" width="9" height="15" fill="currentColor" stroke="none" /&gt;
+      &lt;/svg&gt;
+      &lt;div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"&gt;
+        &lt;button class="btn btn-primary" type="button"&gt;订阅更新&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;阅读最新文章&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 最新文章 --&gt;
+    &lt;div&gt;
+      &lt;div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"&gt;
+        &lt;h2 style="font-size:19px;margin:0;letter-spacing:1px"&gt;最新文章&lt;/h2&gt;
+        &lt;span style="font-size:12px;opacity:.5"&gt;每周五傍晚更新（虚构排期）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="article-list"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;在终端里管理十年的笔记&lt;/h3&gt;
+            &lt;p style="font-size:12.5px;opacity:.6;margin:0;line-height:1.9"&gt;用纯文本文件加一个 shell 脚本，把日记、书单与摘录攒成可搜索的第二大脑；不依赖任何云同步。&lt;/p&gt;
+            &lt;div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;工具&lt;/span&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;笔记&lt;/span&gt;
+              &lt;span class="mono" style="font-size:11.5px;opacity:.55"&gt;2026.10.02 · 8 分钟&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;自焊一把 40% 分体键盘&lt;/h3&gt;
+            &lt;p style="font-size:12.5px;opacity:.6;margin:0;line-height:1.9"&gt;从套件到手焊轴座，再到自己重配列：一把每天打字八千次的键盘，是怎么在一个周末炼成的。&lt;/p&gt;
+            &lt;div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;手作&lt;/span&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;键盘&lt;/span&gt;
+              &lt;span class="mono" style="font-size:11.5px;opacity:.55"&gt;2026.09.18 · 12 分钟&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;给旧 CRT 显示器换 USB 输入&lt;/h3&gt;
+            &lt;p style="font-size:12.5px;opacity:.6;margin:0;line-height:1.9"&gt;一台 2004 年的 CRT 不该只当废品：改驱动板、换线，最终让它成为我桌面上的第二块终端屏。&lt;/p&gt;
+            &lt;div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;复古&lt;/span&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;硬件&lt;/span&gt;
+              &lt;span class="mono" style="font-size:11.5px;opacity:.55"&gt;2026.08.30 · 6 分钟&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;我的 shell 提示符是这样熬出来的&lt;/h3&gt;
+            &lt;p style="font-size:12.5px;opacity:.6;margin:0;line-height:1.9"&gt;提示符里每一段颜色与图标，背后都是一次 shell 手册的深夜翻阅；附上现在用的这一版。&lt;/p&gt;
+            &lt;div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;工具&lt;/span&gt;
+              &lt;span class="badge badge-outline badge-sm"&gt;shell&lt;/span&gt;
+              &lt;span class="mono" style="font-size:11.5px;opacity:.55"&gt;2026.08.10 · 5 分钟&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 手作项目 --&gt;
+    &lt;div&gt;
+      &lt;div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px"&gt;
+        &lt;h2 style="font-size:19px;margin:0;letter-spacing:1px"&gt;手作项目&lt;/h2&gt;
+        &lt;span style="font-size:12px;opacity:.5"&gt;均为示例项目，制作记录为虚构&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="proj-grid"&gt;
+        &lt;!-- 分体键盘 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;div class="dial"&gt;
+              &lt;svg viewBox="0 0 120 120" role="img" aria-label="分体键盘线稿：左右两片斜置板与键帽点阵（示例插图）"&gt;
+                &lt;g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;
+                  &lt;path d="M26 44 L62 40 L68 94 L32 99 Z" /&gt;
+                  &lt;path d="M94 44 L58 40 L52 94 L88 99 Z" /&gt;
+                &lt;/g&gt;
+                &lt;g fill="currentColor" stroke="none"&gt;
+                  &lt;circle cx="38" cy="56" r="1.4" /&gt;&lt;circle cx="50" cy="55" r="1.4" /&gt;
+                  &lt;circle cx="40" cy="68" r="1.4" /&gt;&lt;circle cx="52" cy="67" r="1.4" /&gt;&lt;circle cx="46" cy="80" r="1.4" /&gt;
+                  &lt;circle cx="82" cy="56" r="1.4" /&gt;&lt;circle cx="70" cy="55" r="1.4" /&gt;
+                  &lt;circle cx="80" cy="68" r="1.4" /&gt;&lt;circle cx="68" cy="67" r="1.4" /&gt;&lt;circle cx="74" cy="80" r="1.4" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:16px;font-weight:700"&gt;Split 40&lt;/span&gt;
+              &lt;span class="mono" style="font-size:10px;letter-spacing:1.5px;opacity:.45"&gt;KEYBOARD&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;左右分体、40% 配列，手焊套件加一枚磨砂旋钮。&lt;/p&gt;
+            &lt;button class="btn btn-ghost btn-sm" type="button" style="align-self:flex-start"&gt;查看制作记录&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 复古掌机 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;div class="dial"&gt;
+              &lt;svg viewBox="0 0 120 120" role="img" aria-label="复古掌机线稿：机身、屏幕、十字键与双按键（示例插图）"&gt;
+                &lt;g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;
+                  &lt;rect x="35" y="24" width="50" height="72" rx="10" /&gt;
+                  &lt;rect x="43" y="34" width="34" height="24" rx="2" /&gt;
+                  &lt;circle cx="49" cy="78" r="5" /&gt;
+                  &lt;line x1="49" y1="73" x2="49" y2="83" stroke-width="1.2" /&gt;
+                  &lt;line x1="44" y1="78" x2="54" y2="78" stroke-width="1.2" /&gt;
+                  &lt;circle cx="72" cy="74" r="3" /&gt;
+                  &lt;circle cx="78" cy="81" r="3" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:16px;font-weight:700"&gt;Pocket 2000&lt;/span&gt;
+              &lt;span class="mono" style="font-size:10px;letter-spacing:1.5px;opacity:.45"&gt;HANDHELD&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;老式掌机外壳装进树莓派，3.5 寸屏配霍尔摇杆。&lt;/p&gt;
+            &lt;button class="btn btn-ghost btn-sm" type="button" style="align-self:flex-start"&gt;查看制作记录&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 电子管收音机 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;div class="dial"&gt;
+              &lt;svg viewBox="0 0 120 120" role="img" aria-label="电子管收音机线稿：调谐刻度盘、扬声器格栅与天线（示例插图）"&gt;
+                &lt;g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;
+                  &lt;line x1="96" y1="42" x2="106" y2="20" /&gt;
+                  &lt;circle cx="106" cy="18" r="2" /&gt;
+                  &lt;rect x="18" y="42" width="84" height="56" rx="6" /&gt;
+                  &lt;circle cx="42" cy="70" r="10" /&gt;
+                  &lt;line x1="42" y1="70" x2="47" y2="64" stroke-width="1.2" /&gt;
+                  &lt;line x1="64" y1="54" x2="64" y2="86" stroke-width="1.2" opacity=".7" /&gt;
+                  &lt;line x1="72" y1="54" x2="72" y2="86" stroke-width="1.2" opacity=".7" /&gt;
+                  &lt;line x1="80" y1="54" x2="80" y2="86" stroke-width="1.2" opacity=".7" /&gt;
+                  &lt;line x1="88" y1="54" x2="88" y2="86" stroke-width="1.2" opacity=".7" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:16px;font-weight:700"&gt;Tube 73&lt;/span&gt;
+              &lt;span class="mono" style="font-size:10px;letter-spacing:1.5px;opacity:.45"&gt;RADIO&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;捡来的台式收音机换了电位器，现在能收三个台。&lt;/p&gt;
+            &lt;button class="btn btn-ghost btn-sm" type="button" style="align-self:flex-start"&gt;查看制作记录&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 假终端装饰块 --&gt;
+    &lt;div class="card bg-base-300 rounded-box"&gt;
+      &lt;div class="card-body mono" style="padding:16px 18px;gap:4px;font-size:13px;line-height:1.9"&gt;
+        &lt;div style="opacity:.85"&gt;~ $ rusty subscribe --email you@example.com&lt;/div&gt;
+        &lt;div style="opacity:.55"&gt;added. welcome to rusty keys（示例数据，不会真的发信）&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 订阅 CTA --&gt;
+    &lt;div class="card rounded-box" style="padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center"&gt;
+      &lt;h2 style="font-size:22px;font-weight:800;margin:0;letter-spacing:1px"&gt;订阅锈键盘通讯&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9"&gt;每周一封，只有一件事：这一周我在终端和工作台前真正做出了什么。没有推送轰炸，随时退订。&lt;/p&gt;
+      &lt;button class="btn btn-primary" type="button"&gt;订阅更新&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;锈键盘 RUSTY KEYS 为虚构工作室，文章、项目、日期与联系方式均为示例数据，仅用于展示 gruvbox 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/gruvbox/tokens.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="gruvbox"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="gruvbox"] 下的全部 --color-* 变量。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<pre class="fence"><code class="lang-css">/*! 灰墨 gruvbox · 复古做旧 —— 暖棕橙黄的极客主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 morhetz/gruvbox 官方 Dark 色板（MIT/X11，© 2012 morhetz / Pavel Pertsev）。
+   上游仓库根目录未附 LICENSE 文件，但 README 声明 License 为 MIT/X11；
+   灰墨已按声明补全标准 MIT 文本于本目录 LICENSE，版权署名归原作者。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="gruvbox"&gt; 即整站换肤。 */
+
+[data-theme="gruvbox"] {
+  color-scheme: dark;
+
+  /* 底与纸：暖棕三层 —— bg0 #282828 / bg1 #3c3836 / bg2 #504945，正文 light1 #ebdbb2 */
+  --color-base-100: #282828;
+  --color-base-200: #3c3836;
+  --color-base-300: #504945;
+  --color-base-content: #ebdbb2;
+
+  /* 主色：招牌橙 bright_orange #fe8019，只留给主操作与选中态 */
+  --color-primary: #fe8019;
+  --color-primary-content: #282828;
+
+  /* 次色：招牌黄 bright_yellow #fabd2f；强调色：苔绿 bright_aqua #8ec07c */
+  --color-secondary: #fabd2f;
+  --color-secondary-content: #282828;
+  --color-accent: #8ec07c;
+  --color-accent-content: #282828;
+
+  /* 中性面：棕灰 bg3 #665c54，用于边框与分隔 */
+  --color-neutral: #665c54;
+  --color-neutral-content: #ebdbb2;
+
+  /* 语义色：官方深色模式直接映射（蓝色刻意克制，不抢橙黄主色） */
+  --color-info: #83a598;       /* bright_blue */
+  --color-info-content: #282828;
+  --color-success: #b8bb26;    /* bright_green */
+  --color-success-content: #282828;
+  --color-warning: #d79921;    /* neutral_yellow，比招牌黄更深一档 */
+  --color-warning-content: #282828;
+  --color-error: #fb4934;      /* bright_red */
+  --color-error-content: #282828;
+
+  /* 圆角 / 尺寸 / 边框：小圆角，复古终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}</code></pre>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/gruvbox/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/gruvbox/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「复古做旧（gruvbox）」的整页。\n\n【场景】\n虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme=\"gruvbox\"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 暖棕三层底：base-100 #282828 / base-200 #3c3836（卡片）/ base-300 #504945（更深装饰块），正文 light1 #ebdbb2；做旧感来自底色的暖棕，不要靠降低文字对比度。\n- 主色只用招牌橙 #fe8019（主按钮、订阅 CTA、当前选中）；黄 #fabd2f 与苔绿 #8ec07c 只做次按钮、badge 与少量点缀；蓝色 #83a598 全篇最多出现一次，绝不抢橙黄。\n- 主按钮橙底必须配深棕文字（daisyUI 按 primary-content 自动取 #282828）；次要操作用幽灵按钮，按钮只写真实动作（订阅更新、阅读最新文章、查看制作记录）。\n- 标题用粗体无衬线配 1px 字距，代码、日期、标签与命令行一律等宽（var(--font-mono)），复古气质靠等宽与暖棕，不靠渐变与投影。\n- 所有设备插图只用 currentColor 单色线稿 SVG：终端要画出屏幕命令行、窗口圆点与键帽排；分体键盘、掌机、收音机三款轮廓差异要明显；不用彩色照片、不用 emoji、不用渐变。\n- 博客卡片写真实技术选题（终端、键盘、CRT、shell），摘要一行说完价值；标签用 outline badge，日期与阅读时长用等宽小字，不写数字游戏式夸大标题。\n- 390px 窄屏顶栏自然折行、文章卡单列、假终端块不横向滚动；手机上 Hero 终端插图保持完整。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/gruvbox/tokens.css\">\n\n然后在 \u003chtml data-theme=\"gruvbox\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"gruvbox\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"gruvbox\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"gruvbox\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 gruvbox · 复古做旧 —— 暖棕橙黄的极客主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 morhetz/gruvbox 官方 Dark 色板（MIT/X11，© 2012 morhetz / Pavel Pertsev）。\n   上游仓库根目录未附 LICENSE 文件，但 README 声明 License 为 MIT/X11；\n   灰墨已按声明补全标准 MIT 文本于本目录 LICENSE，版权署名归原作者。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"gruvbox\"> 即整站换肤。 */\n\n[data-theme=\"gruvbox\"] {\n  color-scheme: dark;\n\n  /* 底与纸：暖棕三层 —— bg0 #282828 / bg1 #3c3836 / bg2 #504945，正文 light1 #ebdbb2 */\n  --color-base-100: #282828;\n  --color-base-200: #3c3836;\n  --color-base-300: #504945;\n  --color-base-content: #ebdbb2;\n\n  /* 主色：招牌橙 bright_orange #fe8019，只留给主操作与选中态 */\n  --color-primary: #fe8019;\n  --color-primary-content: #282828;\n\n  /* 次色：招牌黄 bright_yellow #fabd2f；强调色：苔绿 bright_aqua #8ec07c */\n  --color-secondary: #fabd2f;\n  --color-secondary-content: #282828;\n  --color-accent: #8ec07c;\n  --color-accent-content: #282828;\n\n  /* 中性面：棕灰 bg3 #665c54，用于边框与分隔 */\n  --color-neutral: #665c54;\n  --color-neutral-content: #ebdbb2;\n\n  /* 语义色：官方深色模式直接映射（蓝色刻意克制，不抢橙黄主色） */\n  --color-info: #83a598;       /* bright_blue */\n  --color-info-content: #282828;\n  --color-success: #b8bb26;    /* bright_green */\n  --color-success-content: #282828;\n  --color-warning: #d79921;    /* neutral_yellow，比招牌黄更深一档 */\n  --color-warning-content: #282828;\n  --color-error: #fb4934;      /* bright_red */\n  --color-error-content: #282828;\n\n  /* 圆角 / 尺寸 / 边框：小圆角，复古终端取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"gruvbox\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>在终端里，慢慢造东西 · 锈键盘 RUSTY KEYS（gruvbox 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 gruvbox 主题完整页面案例：虚构复古技术博客与极客手作工作室整页。暖棕底配橙黄招牌色与苔绿点缀，自绘线稿复古终端、文章列表与手作项目。本页只依赖 daisyUI 与主题 tokens.css，零依赖、零 JS。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 gruvbox · 复古做旧 —— 暖棕橙黄的极客主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 morhetz/gruvbox 官方 Dark 色板（MIT/X11，© 2012 morhetz / Pavel Pertsev）。\n   上游仓库根目录未附 LICENSE 文件，但 README 声明 License 为 MIT/X11；\n   灰墨已按声明补全标准 MIT 文本于本目录 LICENSE，版权署名归原作者。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"gruvbox\"> 即整站换肤。 */\n\n[data-theme=\"gruvbox\"] {\n  color-scheme: dark;\n\n  /* 底与纸：暖棕三层 —— bg0 #282828 / bg1 #3c3836 / bg2 #504945，正文 light1 #ebdbb2 */\n  --color-base-100: #282828;\n  --color-base-200: #3c3836;\n  --color-base-300: #504945;\n  --color-base-content: #ebdbb2;\n\n  /* 主色：招牌橙 bright_orange #fe8019，只留给主操作与选中态 */\n  --color-primary: #fe8019;\n  --color-primary-content: #282828;\n\n  /* 次色：招牌黄 bright_yellow #fabd2f；强调色：苔绿 bright_aqua #8ec07c */\n  --color-secondary: #fabd2f;\n  --color-secondary-content: #282828;\n  --color-accent: #8ec07c;\n  --color-accent-content: #282828;\n\n  /* 中性面：棕灰 bg3 #665c54，用于边框与分隔 */\n  --color-neutral: #665c54;\n  --color-neutral-content: #ebdbb2;\n\n  /* 语义色：官方深色模式直接映射（蓝色刻意克制，不抢橙黄主色） */\n  --color-info: #83a598;       /* bright_blue */\n  --color-info-content: #282828;\n  --color-success: #b8bb26;    /* bright_green */\n  --color-success-content: #282828;\n  --color-warning: #d79921;    /* neutral_yellow，比招牌黄更深一档 */\n  --color-warning-content: #282828;\n  --color-error: #fb4934;      /* bright_red */\n  --color-error-content: #282828;\n\n  /* 圆角 / 尺寸 / 边框：小圆角，复古终端取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 20px; }\n    .brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }\n    .brand small { font-size: 11px; letter-spacing: 2px; opacity: .6; font-weight: 400; }\n    .brand svg { width: 22px; height: 22px; }\n    .hero { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 36px 16px 30px; }\n    .hero-term { width: 320px; height: auto; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }\n    .article-list { display: flex; flex-direction: column; gap: 12px; }\n    .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }\n    .dial { height: 140px; display: flex; align-items: center; justify-content: center; }\n    .dial svg { width: 112px; height: 112px; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }\n    @media (max-width: 900px) {\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero { padding: 24px 8px 20px; }\n      .hero h1 { font-size: 26px !important; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003crect x=\"2\" y=\"4\" width=\"20\" height=\"14\" rx=\"2\" />\n            \u003cpath d=\"M6 9l2.5 2.5L6 14\" />\n            \u003cpath d=\"M11 14h7\" />\n          \u003c/svg>\n          锈键盘 \u003csmall>RUSTY KEYS\u003c/small>\n        \u003c/div>\n        \u003cul class=\"menu\" style=\"display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px\">\n          \u003cli>\u003ca class=\"menu-active\">文章\u003c/a>\u003c/li>\n          \u003cli>\u003ca>手作\u003c/a>\u003c/li>\n          \u003cli>\u003ca>项目\u003c/a>\u003c/li>\n          \u003cli>\u003ca>关于\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">订阅更新\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero：自绘线稿复古终端 -->\n    \u003cdiv class=\"hero\">\n      \u003cspan class=\"badge badge-soft badge-sm\" style=\"--badge-color:var(--color-base-content)\">复古手作 · 自焊键盘与旧物改造（虚构）\u003c/span>\n      \u003ch1 style=\"font-size:34px;font-weight:800;margin:0;letter-spacing:1px\">在终端里，慢慢造东西\u003c/h1>\n      \u003cp style=\"font-size:13px;opacity:.65;max-width:480px;margin:0;line-height:2\">锈键盘是一个一人手作工作室：写终端里的工具，焊每天打字的键盘，也修好别人丢掉的旧机器。\u003c/p>\n      \u003csvg class=\"hero-term\" viewBox=\"0 0 440 260\" role=\"img\" aria-label=\"自绘线稿复古终端显示器：屏幕上有命令行与光标，下方是一排键帽（示例插图）\">\n        \u003cg fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003c!-- 显示器机身 -->\n          \u003crect x=\"20\" y=\"18\" width=\"400\" height=\"168\" rx=\"10\" />\n          \u003cline x1=\"20\" y1=\"44\" x2=\"420\" y2=\"44\" stroke-width=\"1.2\" opacity=\".5\" />\n          \u003c!-- 窗口圆点 -->\n          \u003ccircle cx=\"40\" cy=\"31\" r=\"2.5\" stroke-width=\"1.4\" />\n          \u003ccircle cx=\"52\" cy=\"31\" r=\"2.5\" stroke-width=\"1.4\" opacity=\".6\" />\n          \u003ccircle cx=\"64\" cy=\"31\" r=\"2.5\" stroke-width=\"1.4\" opacity=\".35\" />\n          \u003c!-- 底座 -->\n          \u003cpath d=\"M190 186 L190 204 L250 204 L250 186\" />\n          \u003cline x1=\"170\" y1=\"204\" x2=\"270\" y2=\"204\" />\n          \u003c!-- 键帽排 -->\n          \u003crect x=\"300\" y=\"196\" width=\"110\" height=\"34\" rx=\"4\" stroke-width=\"1.4\" />\n          \u003cg stroke-width=\"1.1\" opacity=\".8\">\n            \u003cline x1=\"316\" y1=\"196\" x2=\"316\" y2=\"230\" />\n            \u003cline x1=\"336\" y1=\"196\" x2=\"336\" y2=\"230\" />\n            \u003cline x1=\"356\" y1=\"196\" x2=\"356\" y2=\"230\" />\n            \u003cline x1=\"376\" y1=\"196\" x2=\"376\" y2=\"230\" />\n            \u003cline x1=\"396\" y1=\"196\" x2=\"396\" y2=\"230\" />\n            \u003cline x1=\"300\" y1=\"213\" x2=\"410\" y2=\"213\" />\n          \u003c/g>\n        \u003c/g>\n        \u003c!-- 屏幕命令行文字 -->\n        \u003cg fill=\"currentColor\" stroke=\"none\" style=\"font-family:var(--font-mono, ui-monospace, Menlo, Consolas, monospace)\">\n          \u003ctext x=\"40\" y=\"78\" font-size=\"13\">$ rusty build --watch\u003c/text>\n          \u003ctext x=\"40\" y=\"100\" font-size=\"12\" opacity=\".55\">compiling 42 projects ...\u003c/text>\n          \u003ctext x=\"40\" y=\"122\" font-size=\"12\" opacity=\".85\">done in 1.8s\u003c/text>\n          \u003ctext x=\"40\" y=\"150\" font-size=\"13\">$ \u003c/text>\n        \u003c/g>\n        \u003crect x=\"52\" y=\"140\" width=\"9\" height=\"15\" fill=\"currentColor\" stroke=\"none\" />\n      \u003c/svg>\n      \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center\">\n        \u003cbutton class=\"btn btn-primary\" type=\"button\">订阅更新\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">阅读最新文章\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 最新文章 -->\n    \u003cdiv>\n      \u003cdiv style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px\">\n        \u003ch2 style=\"font-size:19px;margin:0;letter-spacing:1px\">最新文章\u003c/h2>\n        \u003cspan style=\"font-size:12px;opacity:.5\">每周五傍晚更新（虚构排期）\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"article-list\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003ch3 style=\"font-size:15px;margin:0\">在终端里管理十年的笔记\u003c/h3>\n            \u003cp style=\"font-size:12.5px;opacity:.6;margin:0;line-height:1.9\">用纯文本文件加一个 shell 脚本，把日记、书单与摘录攒成可搜索的第二大脑；不依赖任何云同步。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\">\n              \u003cspan class=\"badge badge-outline badge-sm\">工具\u003c/span>\n              \u003cspan class=\"badge badge-outline badge-sm\">笔记\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:11.5px;opacity:.55\">2026.10.02 · 8 分钟\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003ch3 style=\"font-size:15px;margin:0\">自焊一把 40% 分体键盘\u003c/h3>\n            \u003cp style=\"font-size:12.5px;opacity:.6;margin:0;line-height:1.9\">从套件到手焊轴座，再到自己重配列：一把每天打字八千次的键盘，是怎么在一个周末炼成的。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\">\n              \u003cspan class=\"badge badge-outline badge-sm\">手作\u003c/span>\n              \u003cspan class=\"badge badge-outline badge-sm\">键盘\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:11.5px;opacity:.55\">2026.09.18 · 12 分钟\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003ch3 style=\"font-size:15px;margin:0\">给旧 CRT 显示器换 USB 输入\u003c/h3>\n            \u003cp style=\"font-size:12.5px;opacity:.6;margin:0;line-height:1.9\">一台 2004 年的 CRT 不该只当废品：改驱动板、换线，最终让它成为我桌面上的第二块终端屏。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\">\n              \u003cspan class=\"badge badge-outline badge-sm\">复古\u003c/span>\n              \u003cspan class=\"badge badge-outline badge-sm\">硬件\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:11.5px;opacity:.55\">2026.08.30 · 6 分钟\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003ch3 style=\"font-size:15px;margin:0\">我的 shell 提示符是这样熬出来的\u003c/h3>\n            \u003cp style=\"font-size:12.5px;opacity:.6;margin:0;line-height:1.9\">提示符里每一段颜色与图标，背后都是一次 shell 手册的深夜翻阅；附上现在用的这一版。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:8px;align-items:center\">\n              \u003cspan class=\"badge badge-outline badge-sm\">工具\u003c/span>\n              \u003cspan class=\"badge badge-outline badge-sm\">shell\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:11.5px;opacity:.55\">2026.08.10 · 5 分钟\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 手作项目 -->\n    \u003cdiv>\n      \u003cdiv style=\"margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px\">\n        \u003ch2 style=\"font-size:19px;margin:0;letter-spacing:1px\">手作项目\u003c/h2>\n        \u003cspan style=\"font-size:12px;opacity:.5\">均为示例项目，制作记录为虚构\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"proj-grid\">\n        \u003c!-- 分体键盘 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cdiv class=\"dial\">\n              \u003csvg viewBox=\"0 0 120 120\" role=\"img\" aria-label=\"分体键盘线稿：左右两片斜置板与键帽点阵（示例插图）\">\n                \u003cg fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n                  \u003cpath d=\"M26 44 L62 40 L68 94 L32 99 Z\" />\n                  \u003cpath d=\"M94 44 L58 40 L52 94 L88 99 Z\" />\n                \u003c/g>\n                \u003cg fill=\"currentColor\" stroke=\"none\">\n                  \u003ccircle cx=\"38\" cy=\"56\" r=\"1.4\" />\u003ccircle cx=\"50\" cy=\"55\" r=\"1.4\" />\n                  \u003ccircle cx=\"40\" cy=\"68\" r=\"1.4\" />\u003ccircle cx=\"52\" cy=\"67\" r=\"1.4\" />\u003ccircle cx=\"46\" cy=\"80\" r=\"1.4\" />\n                  \u003ccircle cx=\"82\" cy=\"56\" r=\"1.4\" />\u003ccircle cx=\"70\" cy=\"55\" r=\"1.4\" />\n                  \u003ccircle cx=\"80\" cy=\"68\" r=\"1.4\" />\u003ccircle cx=\"68\" cy=\"67\" r=\"1.4\" />\u003ccircle cx=\"74\" cy=\"80\" r=\"1.4\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:16px;font-weight:700\">Split 40\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:10px;letter-spacing:1.5px;opacity:.45\">KEYBOARD\u003c/span>\n            \u003c/div>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">左右分体、40% 配列，手焊套件加一枚磨砂旋钮。\u003c/p>\n            \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\" style=\"align-self:flex-start\">查看制作记录\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003c!-- 复古掌机 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cdiv class=\"dial\">\n              \u003csvg viewBox=\"0 0 120 120\" role=\"img\" aria-label=\"复古掌机线稿：机身、屏幕、十字键与双按键（示例插图）\">\n                \u003cg fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n                  \u003crect x=\"35\" y=\"24\" width=\"50\" height=\"72\" rx=\"10\" />\n                  \u003crect x=\"43\" y=\"34\" width=\"34\" height=\"24\" rx=\"2\" />\n                  \u003ccircle cx=\"49\" cy=\"78\" r=\"5\" />\n                  \u003cline x1=\"49\" y1=\"73\" x2=\"49\" y2=\"83\" stroke-width=\"1.2\" />\n                  \u003cline x1=\"44\" y1=\"78\" x2=\"54\" y2=\"78\" stroke-width=\"1.2\" />\n                  \u003ccircle cx=\"72\" cy=\"74\" r=\"3\" />\n                  \u003ccircle cx=\"78\" cy=\"81\" r=\"3\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:16px;font-weight:700\">Pocket 2000\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:10px;letter-spacing:1.5px;opacity:.45\">HANDHELD\u003c/span>\n            \u003c/div>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">老式掌机外壳装进树莓派，3.5 寸屏配霍尔摇杆。\u003c/p>\n            \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\" style=\"align-self:flex-start\">查看制作记录\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003c!-- 电子管收音机 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cdiv class=\"dial\">\n              \u003csvg viewBox=\"0 0 120 120\" role=\"img\" aria-label=\"电子管收音机线稿：调谐刻度盘、扬声器格栅与天线（示例插图）\">\n                \u003cg fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n                  \u003cline x1=\"96\" y1=\"42\" x2=\"106\" y2=\"20\" />\n                  \u003ccircle cx=\"106\" cy=\"18\" r=\"2\" />\n                  \u003crect x=\"18\" y=\"42\" width=\"84\" height=\"56\" rx=\"6\" />\n                  \u003ccircle cx=\"42\" cy=\"70\" r=\"10\" />\n                  \u003cline x1=\"42\" y1=\"70\" x2=\"47\" y2=\"64\" stroke-width=\"1.2\" />\n                  \u003cline x1=\"64\" y1=\"54\" x2=\"64\" y2=\"86\" stroke-width=\"1.2\" opacity=\".7\" />\n                  \u003cline x1=\"72\" y1=\"54\" x2=\"72\" y2=\"86\" stroke-width=\"1.2\" opacity=\".7\" />\n                  \u003cline x1=\"80\" y1=\"54\" x2=\"80\" y2=\"86\" stroke-width=\"1.2\" opacity=\".7\" />\n                  \u003cline x1=\"88\" y1=\"54\" x2=\"88\" y2=\"86\" stroke-width=\"1.2\" opacity=\".7\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:16px;font-weight:700\">Tube 73\u003c/span>\n              \u003cspan class=\"mono\" style=\"font-size:10px;letter-spacing:1.5px;opacity:.45\">RADIO\u003c/span>\n            \u003c/div>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">捡来的台式收音机换了电位器，现在能收三个台。\u003c/p>\n            \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\" style=\"align-self:flex-start\">查看制作记录\u003c/button>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 假终端装饰块 -->\n    \u003cdiv class=\"card bg-base-300 rounded-box\">\n      \u003cdiv class=\"card-body mono\" style=\"padding:16px 18px;gap:4px;font-size:13px;line-height:1.9\">\n        \u003cdiv style=\"opacity:.85\">~ $ rusty subscribe --email you@example.com\u003c/div>\n        \u003cdiv style=\"opacity:.55\">added. welcome to rusty keys（示例数据，不会真的发信）\u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 订阅 CTA -->\n    \u003cdiv class=\"card rounded-box\" style=\"padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center\">\n      \u003ch2 style=\"font-size:22px;font-weight:800;margin:0;letter-spacing:1px\">订阅锈键盘通讯\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9\">每周一封，只有一件事：这一周我在终端和工作台前真正做出了什么。没有推送轰炸，随时退订。\u003c/p>\n      \u003cbutton class=\"btn btn-primary\" type=\"button\">订阅更新\u003c/button>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">锈键盘 RUSTY KEYS 为虚构工作室，文章、项目、日期与联系方式均为示例数据，仅用于展示 gruvbox 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

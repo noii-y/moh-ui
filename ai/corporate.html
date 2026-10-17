@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>睿蓝（corporate）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「睿蓝（corporate）」组件。虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme="corporate" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="corporate.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/corporate/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>睿蓝（corporate） · 灰墨 MoH_UI</h1>
+<blockquote>虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme="corporate" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：daisyUI 内置主题（MIT，无需额外文件）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/corporate/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/corporate/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>白底为主（base-100 纯白 / base-200 浅灰），正文用深海军蓝 base-content，主色只用主题 primary 蓝，且只出现在主按钮、徽标与关键数字强调上；绝不大面积铺蓝，也禁止写死任何十六进制色值。</li>
+<li>圆角沿用官方直角（radius-box 0.25rem），卡片与按钮不要自行加大圆角；克制、工整、对齐就是 corporate 的气质。</li>
+<li>大量留白，版块之间用一条 currentColor 约 22% 透明度的发丝线（color-mix(in oklab, currentColor 22%, transparent)）分隔，不堆投影、不铺浅灰大色块。</li>
+<li>主按钮用 btn-primary（蓝底白字），次操作一律 btn-ghost；同一屏只保留一个主按钮，按钮文案只写真实动作（预约咨询、查看洞察）。</li>
+<li>Hero 与装饰图只用 currentColor 单色线稿 SVG（坐标网格 + 上升折线 + 端点箭头），线条细、几何感强；业务图标（指南针 / 链环 / 盾牌 / 柱状图）同为 24px 线性图标，不用彩色照片、emoji、渐变。</li>
+<li>标题与正文全部无衬线（系统默认），大标题 30–34px、字重 600、行高 1.2，品牌名加 1px 字距；不做衬线、不做金色、不做厚重装饰。</li>
+<li>统计数字用 daisyUI stats（stat-title / stat-value / stat-desc），数字用主题原生大号字，不加额外颜色、不写单位堆砌。</li>
+<li>390px 窄屏顶栏自然折行、业务卡与文章卡单列、stats 自动折成两列，不横向溢出。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="corporate"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;以长期判断，陪你穿越周期 · 衡屹咨询 HENGYI ADVISORY（corporate 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 corporate 主题完整页面案例：虚构咨询公司官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整。本页只依赖 daisyUI 官方主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" /&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 26px; }
+    .brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; letter-spacing: 2.5px; opacity: .55; font-weight: 400; }
+    .hero-split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: center; padding: 34px 4px 8px; }
+    .hero-split svg { width: 100%; height: auto; display: block; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .section-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .section-head span { font-size: 12px; opacity: .5; }
+    .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .biz-item { display: flex; flex-direction: column; gap: 10px; }
+    .biz-item svg { width: 30px; height: 30px; }
+    .stats-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .quote-mark { font-size: 30px; line-height: 1; opacity: .35; font-family: Georgia, serif; }
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .hero-split { grid-template-columns: 1fr; padding: 20px 4px 4px; }
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-split h1 { font-size: 26px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;衡屹咨询 &lt;small&gt;HENGYI&lt;/small&gt;&lt;/div&gt;
+        &lt;ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;业务领域&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;洞察&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;团队&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;关于&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;联系&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;button class="btn btn-primary btn-sm" type="button"&gt;预约咨询&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero：大标题与上升折线线稿 --&gt;
+    &lt;div class="hero-split"&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:14px;min-width:0"&gt;
+        &lt;span class="badge badge-soft badge-sm" style="align-self:flex-start"&gt;独立咨询 · 18 年&lt;/span&gt;
+        &lt;h1 style="font-size:34px;font-weight:600;margin:0;line-height:1.25;letter-spacing:1px"&gt;以长期判断，&lt;br /&gt;陪你穿越周期&lt;/h1&gt;
+        &lt;p style="font-size:13px;opacity:.65;margin:0;line-height:2"&gt;衡屹咨询为企业董事会与管理层提供战略、并购与风险层面的独立判断，不站队、不外包话术，只对结论负责。&lt;/p&gt;
+        &lt;div style="display:flex;flex-wrap:wrap;gap:10px"&gt;
+          &lt;button class="btn btn-primary btn-sm" type="button"&gt;预约咨询&lt;/button&gt;
+          &lt;button class="btn btn-ghost btn-sm" type="button"&gt;查看行业洞察&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;svg viewBox="0 0 420 240" role="img" aria-label="上升折线线稿：坐标网格、逐级抬升的折线与端点箭头（示例插图）"&gt;
+        &lt;g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;!-- 坐标网格 --&gt;
+          &lt;g opacity=".18"&gt;
+            &lt;line x1="40" y1="30" x2="40" y2="200" /&gt;
+            &lt;line x1="120" y1="30" x2="120" y2="200" /&gt;
+            &lt;line x1="200" y1="30" x2="200" y2="200" /&gt;
+            &lt;line x1="280" y1="30" x2="280" y2="200" /&gt;
+            &lt;line x1="360" y1="30" x2="360" y2="200" /&gt;
+            &lt;line x1="40" y1="50" x2="380" y2="50" /&gt;
+            &lt;line x1="40" y1="100" x2="380" y2="100" /&gt;
+            &lt;line x1="40" y1="150" x2="380" y2="150" /&gt;
+          &lt;/g&gt;
+          &lt;!-- 基线 --&gt;
+          &lt;line x1="40" y1="200" x2="380" y2="200" opacity=".4" /&gt;
+          &lt;!-- 逐级抬升折线 --&gt;
+          &lt;path d="M40 176 L120 150 L200 158 L280 104 L360 58" stroke-width="2.4" /&gt;
+          &lt;!-- 端点箭头 --&gt;
+          &lt;path d="M344 58 L362 54 L358 72" stroke-width="2.4" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 折线上的节点 --&gt;
+        &lt;g fill="currentColor" stroke="none"&gt;
+          &lt;circle cx="40" cy="176" r="3" /&gt;
+          &lt;circle cx="120" cy="150" r="3" /&gt;
+          &lt;circle cx="200" cy="158" r="3" /&gt;
+          &lt;circle cx="280" cy="104" r="3" /&gt;
+          &lt;circle cx="360" cy="58" r="3.6" /&gt;
+        &lt;/g&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+
+    &lt;!-- 业务领域：四张卡 --&gt;
+    &lt;div&gt;
+      &lt;div class="section-head"&gt;
+        &lt;h2&gt;业务领域&lt;/h2&gt;
+        &lt;span&gt;四个方向，一支团队闭环负责&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="biz-grid"&gt;
+        &lt;!-- 战略咨询：指南针 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body biz-item" style="padding:18px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;circle cx="12" cy="12" r="9" /&gt;
+              &lt;path d="M15.5 8.5 L13 13 L8.5 15.5 L11 11 Z" /&gt;
+            &lt;/svg&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;战略咨询&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;三年规划与业务组合评估，帮管理层看清该进哪一步、舍掉哪一段。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 并购重组：链环 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body biz-item" style="padding:18px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M9.5 14.5 L14.5 9.5" /&gt;
+              &lt;path d="M10.5 6.5 a4 4 0 0 1 5.7 0 l1.3 1.3 a4 4 0 0 1 0 5.7 l-1.3 1.3" /&gt;
+              &lt;path d="M13.5 17.5 a4 4 0 0 1-5.7 0 L6.5 16.2 a4 4 0 0 1 0-5.7 L7.8 9.2" /&gt;
+            &lt;/svg&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;并购重组&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;从标的筛选、估值到尽调与整合方案，全程独立把关，不替交易双方说话。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 风险合规：盾牌 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body biz-item" style="padding:18px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z" /&gt;
+              &lt;path d="M9 12 L11 14 L15 10" /&gt;
+            &lt;/svg&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;风险合规&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;识别业务模式中的合规敞口，把风险清单落到可执行的整改动作上。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 数字化转型：柱状图 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body biz-item" style="padding:18px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;line x1="4" y1="20" x2="20" y2="20" /&gt;
+              &lt;rect x="6" y="13" width="3.4" height="7" /&gt;
+              &lt;rect x="11" y="9" width="3.4" height="11" /&gt;
+              &lt;rect x="16" y="4.5" width="3.4" height="15.5" /&gt;
+            &lt;/svg&gt;
+            &lt;h3 style="font-size:15px;margin:0"&gt;数字化转型&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;从流程盘点到系统选型，按业务优先级分批落地，不追求一步到位。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 数据与背书 --&gt;
+    &lt;div class="card bg-base-200 rounded-box"&gt;
+      &lt;div class="card-body" style="padding:22px;gap:16px"&gt;
+        &lt;div class="section-head" style="margin-bottom:0"&gt;
+          &lt;h2&gt;数据与背书&lt;/h2&gt;
+          &lt;span&gt;截至 2026 年 9 月（虚构数据）&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="stats stats-grid"&gt;
+          &lt;div class="stat" style="padding:10px 12px"&gt;
+            &lt;div class="stat-title"&gt;服务年限&lt;/div&gt;
+            &lt;div class="stat-value" style="font-size:28px"&gt;18 年&lt;/div&gt;
+            &lt;div class="stat-desc"&gt;自 2008 年成立&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="stat" style="padding:10px 12px"&gt;
+            &lt;div class="stat-title"&gt;常驻客户&lt;/div&gt;
+            &lt;div class="stat-value" style="font-size:28px"&gt;126 家&lt;/div&gt;
+            &lt;div class="stat-desc"&gt;其中上市企业 41 家&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="stat" style="padding:10px 12px"&gt;
+            &lt;div class="stat-title"&gt;交付项目&lt;/div&gt;
+            &lt;div class="stat-value" style="font-size:28px"&gt;340 个&lt;/div&gt;
+            &lt;div class="stat-desc"&gt;平均周期 4.5 个月&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class="stat" style="padding:10px 12px"&gt;
+            &lt;div class="stat-title"&gt;行业覆盖&lt;/div&gt;
+            &lt;div class="stat-value" style="font-size:28px"&gt;11 个&lt;/div&gt;
+            &lt;div class="stat-desc"&gt;制造 / 消费 / 金融等&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="hairline"&gt;&lt;/div&gt;
+        &lt;div class="quotes"&gt;
+          &lt;div style="display:flex;flex-direction:column;gap:8px"&gt;
+            &lt;span class="quote-mark" aria-hidden="true"&gt;“&lt;/span&gt;
+            &lt;p style="font-size:13px;margin:0;line-height:1.9;opacity:.8"&gt;他们在董事会上敢直接说「不建议收购」，这在我们合作过的顾问里不多见。最终那次放弃，帮公司避开了一笔减值。&lt;/p&gt;
+            &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+              &lt;span style="font-size:12px;font-weight:700"&gt;陈岭&lt;/span&gt;
+              &lt;span style="font-size:11px;opacity:.5"&gt;某上市制造集团 · 独立董事（虚构）&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div style="display:flex;flex-direction:column;gap:8px"&gt;
+            &lt;span class="quote-mark" aria-hidden="true"&gt;“&lt;/span&gt;
+            &lt;p style="font-size:13px;margin:0;line-height:1.9;opacity:.8"&gt;整合方案落到了岗位和流程上，三个月后跨部门扯皮明显少了。报告不厚，但每一页都有动作。&lt;/p&gt;
+            &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+              &lt;span style="font-size:12px;font-weight:700"&gt;顾芸&lt;/span&gt;
+              &lt;span style="font-size:11px;opacity:.5"&gt;某消费品牌 · COO（虚构）&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 洞察文章：三篇 --&gt;
+    &lt;div&gt;
+      &lt;div class="section-head"&gt;
+        &lt;h2&gt;最新洞察&lt;/h2&gt;
+        &lt;span&gt;每月两篇，只写有结论的分析&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="article-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;span class="badge badge-soft badge-sm" style="align-self:flex-start"&gt;2026-09-28&lt;/span&gt;
+            &lt;h3 style="font-size:15px;margin:0;line-height:1.5"&gt;产能过剩周期里，制造业该守住哪两块业务&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;我们复盘了过去十五年八轮产能出清，收缩期活下来的企业有一个共同动作：先砍产能，再砍品类。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;span class="badge badge-soft badge-sm" style="align-self:flex-start"&gt;2026-09-14&lt;/span&gt;
+            &lt;h3 style="font-size:15px;margin:0;line-height:1.5"&gt;并购之前：先算清整合账，再谈价格账&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;近三年失败交易的主因不是买贵了，而是整合成本被低估。这篇给出一张可直接套用的自查表。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:10px"&gt;
+            &lt;span class="badge badge-soft badge-sm" style="align-self:flex-start"&gt;2026-08-30&lt;/span&gt;
+            &lt;h3 style="font-size:15px;margin:0;line-height:1.5"&gt;数字化转型：从「上系统」到「改流程」的分水岭&lt;/h3&gt;
+            &lt;p style="font-size:12px;opacity:.6;margin:0;line-height:1.8"&gt;预算没有花在刀刃上的项目，八成卡在流程没改。我们建议先跑通一条主线，再谈全面铺开。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 联系 CTA --&gt;
+    &lt;div class="card rounded-box" style="padding:32px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border:1px solid color-mix(in oklab, currentColor 18%, transparent)"&gt;
+      &lt;h2 style="font-size:22px;margin:0;letter-spacing:1px"&gt;预约一次深度沟通&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9"&gt;首次沟通不收费、不签框架：先听你面对的问题，再判断我们能不能帮上忙。&lt;/p&gt;
+      &lt;div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center"&gt;
+        &lt;button class="btn btn-primary btn-sm" type="button"&gt;预约咨询&lt;/button&gt;
+        &lt;span style="font-size:12px;opacity:.55"&gt;hello@hengyi.example.com（虚构） · 021-6000-0000（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 虚构办公地址 --&gt;
+    &lt;div class="office-grid"&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:6px;padding:2px"&gt;
+        &lt;span style="font-size:14px;font-weight:700;letter-spacing:1px"&gt;上海 · 总部&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.8"&gt;黄浦区中山东一路 12 号 9 层（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:6px;padding:2px"&gt;
+        &lt;span style="font-size:14px;font-weight:700;letter-spacing:1px"&gt;北京 · 办公室&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.8"&gt;朝阳区建国门外大街 26 号 11 层（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:6px;padding:2px"&gt;
+        &lt;span style="font-size:14px;font-weight:700;letter-spacing:1px"&gt;深圳 · 办公室&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.8"&gt;福田区益田路 5001 号 18 层（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;衡屹咨询 HENGYI ADVISORY 为虚构机构，文章、数据、评价人、地址与电话均为示例数据，仅用于展示 corporate 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="corporate"</code>，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<p>该主题变量在 daisyui-themes.css 内，无需复制。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/corporate/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/corporate/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「睿蓝（corporate）」的整页。\n\n【场景】\n虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme=\"corporate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 白底为主（base-100 纯白 / base-200 浅灰），正文用深海军蓝 base-content，主色只用主题 primary 蓝，且只出现在主按钮、徽标与关键数字强调上；绝不大面积铺蓝，也禁止写死任何十六进制色值。\n- 圆角沿用官方直角（radius-box 0.25rem），卡片与按钮不要自行加大圆角；克制、工整、对齐就是 corporate 的气质。\n- 大量留白，版块之间用一条 currentColor 约 22% 透明度的发丝线（color-mix(in oklab, currentColor 22%, transparent)）分隔，不堆投影、不铺浅灰大色块。\n- 主按钮用 btn-primary（蓝底白字），次操作一律 btn-ghost；同一屏只保留一个主按钮，按钮文案只写真实动作（预约咨询、查看洞察）。\n- Hero 与装饰图只用 currentColor 单色线稿 SVG（坐标网格 + 上升折线 + 端点箭头），线条细、几何感强；业务图标（指南针 / 链环 / 盾牌 / 柱状图）同为 24px 线性图标，不用彩色照片、emoji、渐变。\n- 标题与正文全部无衬线（系统默认），大标题 30–34px、字重 600、行高 1.2，品牌名加 1px 字距；不做衬线、不做金色、不做厚重装饰。\n- 统计数字用 daisyUI stats（stat-title / stat-value / stat-desc），数字用主题原生大号字，不加额外颜色、不写单位堆砌。\n- 390px 窄屏顶栏自然折行、业务卡与文章卡单列、stats 自动折成两列，不横向溢出。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\">\n\n然后在 \u003chtml data-theme=\"corporate\"> 挂属性，整页即刻换肤。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。\n\n【精确规格】\n- 整页挂 data-theme=\"corporate\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"corporate\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"corporate\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>以长期判断，陪你穿越周期 · 衡屹咨询 HENGYI ADVISORY（corporate 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 corporate 主题完整页面案例：虚构咨询公司官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整。本页只依赖 daisyUI 官方主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\" />\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 26px; }\n    .brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }\n    .brand small { font-size: 10px; letter-spacing: 2.5px; opacity: .55; font-weight: 400; }\n    .hero-split { display: grid; grid-template-columns: 1.05fr .95fr; gap: 26px; align-items: center; padding: 34px 4px 8px; }\n    .hero-split svg { width: 100%; height: auto; display: block; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }\n    .section-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }\n    .section-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }\n    .section-head span { font-size: 12px; opacity: .5; }\n    .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }\n    .biz-item { display: flex; flex-direction: column; gap: 10px; }\n    .biz-item svg { width: 30px; height: 30px; }\n    .stats-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }\n    .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }\n    .quote-mark { font-size: 30px; line-height: 1; opacity: .35; font-family: Georgia, serif; }\n    .article-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }\n    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }\n    @media (max-width: 900px) {\n      .hero-split { grid-template-columns: 1fr; padding: 20px 4px 4px; }\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero-split h1 { font-size: 26px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">衡屹咨询 \u003csmall>HENGYI\u003c/small>\u003c/div>\n        \u003cul class=\"menu\" style=\"display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px\">\n          \u003cli>\u003ca class=\"menu-active\">业务领域\u003c/a>\u003c/li>\n          \u003cli>\u003ca>洞察\u003c/a>\u003c/li>\n          \u003cli>\u003ca>团队\u003c/a>\u003c/li>\n          \u003cli>\u003ca>关于\u003c/a>\u003c/li>\n          \u003cli>\u003ca>联系\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">预约咨询\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero：大标题与上升折线线稿 -->\n    \u003cdiv class=\"hero-split\">\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:14px;min-width:0\">\n        \u003cspan class=\"badge badge-soft badge-sm\" style=\"align-self:flex-start\">独立咨询 · 18 年\u003c/span>\n        \u003ch1 style=\"font-size:34px;font-weight:600;margin:0;line-height:1.25;letter-spacing:1px\">以长期判断，\u003cbr />陪你穿越周期\u003c/h1>\n        \u003cp style=\"font-size:13px;opacity:.65;margin:0;line-height:2\">衡屹咨询为企业董事会与管理层提供战略、并购与风险层面的独立判断，不站队、不外包话术，只对结论负责。\u003c/p>\n        \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px\">\n          \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">预约咨询\u003c/button>\n          \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">查看行业洞察\u003c/button>\n        \u003c/div>\n      \u003c/div>\n      \u003csvg viewBox=\"0 0 420 240\" role=\"img\" aria-label=\"上升折线线稿：坐标网格、逐级抬升的折线与端点箭头（示例插图）\">\n        \u003cg fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003c!-- 坐标网格 -->\n          \u003cg opacity=\".18\">\n            \u003cline x1=\"40\" y1=\"30\" x2=\"40\" y2=\"200\" />\n            \u003cline x1=\"120\" y1=\"30\" x2=\"120\" y2=\"200\" />\n            \u003cline x1=\"200\" y1=\"30\" x2=\"200\" y2=\"200\" />\n            \u003cline x1=\"280\" y1=\"30\" x2=\"280\" y2=\"200\" />\n            \u003cline x1=\"360\" y1=\"30\" x2=\"360\" y2=\"200\" />\n            \u003cline x1=\"40\" y1=\"50\" x2=\"380\" y2=\"50\" />\n            \u003cline x1=\"40\" y1=\"100\" x2=\"380\" y2=\"100\" />\n            \u003cline x1=\"40\" y1=\"150\" x2=\"380\" y2=\"150\" />\n          \u003c/g>\n          \u003c!-- 基线 -->\n          \u003cline x1=\"40\" y1=\"200\" x2=\"380\" y2=\"200\" opacity=\".4\" />\n          \u003c!-- 逐级抬升折线 -->\n          \u003cpath d=\"M40 176 L120 150 L200 158 L280 104 L360 58\" stroke-width=\"2.4\" />\n          \u003c!-- 端点箭头 -->\n          \u003cpath d=\"M344 58 L362 54 L358 72\" stroke-width=\"2.4\" />\n        \u003c/g>\n        \u003c!-- 折线上的节点 -->\n        \u003cg fill=\"currentColor\" stroke=\"none\">\n          \u003ccircle cx=\"40\" cy=\"176\" r=\"3\" />\n          \u003ccircle cx=\"120\" cy=\"150\" r=\"3\" />\n          \u003ccircle cx=\"200\" cy=\"158\" r=\"3\" />\n          \u003ccircle cx=\"280\" cy=\"104\" r=\"3\" />\n          \u003ccircle cx=\"360\" cy=\"58\" r=\"3.6\" />\n        \u003c/g>\n      \u003c/svg>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n\n    \u003c!-- 业务领域：四张卡 -->\n    \u003cdiv>\n      \u003cdiv class=\"section-head\">\n        \u003ch2>业务领域\u003c/h2>\n        \u003cspan>四个方向，一支团队闭环负责\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"biz-grid\">\n        \u003c!-- 战略咨询：指南针 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body biz-item\" style=\"padding:18px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003ccircle cx=\"12\" cy=\"12\" r=\"9\" />\n              \u003cpath d=\"M15.5 8.5 L13 13 L8.5 15.5 L11 11 Z\" />\n            \u003c/svg>\n            \u003ch3 style=\"font-size:15px;margin:0\">战略咨询\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">三年规划与业务组合评估，帮管理层看清该进哪一步、舍掉哪一段。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003c!-- 并购重组：链环 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body biz-item\" style=\"padding:18px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M9.5 14.5 L14.5 9.5\" />\n              \u003cpath d=\"M10.5 6.5 a4 4 0 0 1 5.7 0 l1.3 1.3 a4 4 0 0 1 0 5.7 l-1.3 1.3\" />\n              \u003cpath d=\"M13.5 17.5 a4 4 0 0 1-5.7 0 L6.5 16.2 a4 4 0 0 1 0-5.7 L7.8 9.2\" />\n            \u003c/svg>\n            \u003ch3 style=\"font-size:15px;margin:0\">并购重组\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">从标的筛选、估值到尽调与整合方案，全程独立把关，不替交易双方说话。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003c!-- 风险合规：盾牌 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body biz-item\" style=\"padding:18px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z\" />\n              \u003cpath d=\"M9 12 L11 14 L15 10\" />\n            \u003c/svg>\n            \u003ch3 style=\"font-size:15px;margin:0\">风险合规\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">识别业务模式中的合规敞口，把风险清单落到可执行的整改动作上。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003c!-- 数字化转型：柱状图 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body biz-item\" style=\"padding:18px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cline x1=\"4\" y1=\"20\" x2=\"20\" y2=\"20\" />\n              \u003crect x=\"6\" y=\"13\" width=\"3.4\" height=\"7\" />\n              \u003crect x=\"11\" y=\"9\" width=\"3.4\" height=\"11\" />\n              \u003crect x=\"16\" y=\"4.5\" width=\"3.4\" height=\"15.5\" />\n            \u003c/svg>\n            \u003ch3 style=\"font-size:15px;margin:0\">数字化转型\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">从流程盘点到系统选型，按业务优先级分批落地，不追求一步到位。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 数据与背书 -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\">\n      \u003cdiv class=\"card-body\" style=\"padding:22px;gap:16px\">\n        \u003cdiv class=\"section-head\" style=\"margin-bottom:0\">\n          \u003ch2>数据与背书\u003c/h2>\n          \u003cspan>截至 2026 年 9 月（虚构数据）\u003c/span>\n        \u003c/div>\n        \u003cdiv class=\"stats stats-grid\">\n          \u003cdiv class=\"stat\" style=\"padding:10px 12px\">\n            \u003cdiv class=\"stat-title\">服务年限\u003c/div>\n            \u003cdiv class=\"stat-value\" style=\"font-size:28px\">18 年\u003c/div>\n            \u003cdiv class=\"stat-desc\">自 2008 年成立\u003c/div>\n          \u003c/div>\n          \u003cdiv class=\"stat\" style=\"padding:10px 12px\">\n            \u003cdiv class=\"stat-title\">常驻客户\u003c/div>\n            \u003cdiv class=\"stat-value\" style=\"font-size:28px\">126 家\u003c/div>\n            \u003cdiv class=\"stat-desc\">其中上市企业 41 家\u003c/div>\n          \u003c/div>\n          \u003cdiv class=\"stat\" style=\"padding:10px 12px\">\n            \u003cdiv class=\"stat-title\">交付项目\u003c/div>\n            \u003cdiv class=\"stat-value\" style=\"font-size:28px\">340 个\u003c/div>\n            \u003cdiv class=\"stat-desc\">平均周期 4.5 个月\u003c/div>\n          \u003c/div>\n          \u003cdiv class=\"stat\" style=\"padding:10px 12px\">\n            \u003cdiv class=\"stat-title\">行业覆盖\u003c/div>\n            \u003cdiv class=\"stat-value\" style=\"font-size:28px\">11 个\u003c/div>\n            \u003cdiv class=\"stat-desc\">制造 / 消费 / 金融等\u003c/div>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"hairline\">\u003c/div>\n        \u003cdiv class=\"quotes\">\n          \u003cdiv style=\"display:flex;flex-direction:column;gap:8px\">\n            \u003cspan class=\"quote-mark\" aria-hidden=\"true\">“\u003c/span>\n            \u003cp style=\"font-size:13px;margin:0;line-height:1.9;opacity:.8\">他们在董事会上敢直接说「不建议收购」，这在我们合作过的顾问里不多见。最终那次放弃，帮公司避开了一笔减值。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n              \u003cspan style=\"font-size:12px;font-weight:700\">陈岭\u003c/span>\n              \u003cspan style=\"font-size:11px;opacity:.5\">某上市制造集团 · 独立董事（虚构）\u003c/span>\n            \u003c/div>\n          \u003c/div>\n          \u003cdiv style=\"display:flex;flex-direction:column;gap:8px\">\n            \u003cspan class=\"quote-mark\" aria-hidden=\"true\">“\u003c/span>\n            \u003cp style=\"font-size:13px;margin:0;line-height:1.9;opacity:.8\">整合方案落到了岗位和流程上，三个月后跨部门扯皮明显少了。报告不厚，但每一页都有动作。\u003c/p>\n            \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n              \u003cspan style=\"font-size:12px;font-weight:700\">顾芸\u003c/span>\n              \u003cspan style=\"font-size:11px;opacity:.5\">某消费品牌 · COO（虚构）\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 洞察文章：三篇 -->\n    \u003cdiv>\n      \u003cdiv class=\"section-head\">\n        \u003ch2>最新洞察\u003c/h2>\n        \u003cspan>每月两篇，只写有结论的分析\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"article-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"align-self:flex-start\">2026-09-28\u003c/span>\n            \u003ch3 style=\"font-size:15px;margin:0;line-height:1.5\">产能过剩周期里，制造业该守住哪两块业务\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">我们复盘了过去十五年八轮产能出清，收缩期活下来的企业有一个共同动作：先砍产能，再砍品类。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"align-self:flex-start\">2026-09-14\u003c/span>\n            \u003ch3 style=\"font-size:15px;margin:0;line-height:1.5\">并购之前：先算清整合账，再谈价格账\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">近三年失败交易的主因不是买贵了，而是整合成本被低估。这篇给出一张可直接套用的自查表。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:10px\">\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"align-self:flex-start\">2026-08-30\u003c/span>\n            \u003ch3 style=\"font-size:15px;margin:0;line-height:1.5\">数字化转型：从「上系统」到「改流程」的分水岭\u003c/h3>\n            \u003cp style=\"font-size:12px;opacity:.6;margin:0;line-height:1.8\">预算没有花在刀刃上的项目，八成卡在流程没改。我们建议先跑通一条主线，再谈全面铺开。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 联系 CTA -->\n    \u003cdiv class=\"card rounded-box\" style=\"padding:32px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;border:1px solid color-mix(in oklab, currentColor 18%, transparent)\">\n      \u003ch2 style=\"font-size:22px;margin:0;letter-spacing:1px\">预约一次深度沟通\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9\">首次沟通不收费、不签框架：先听你面对的问题，再判断我们能不能帮上忙。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center\">\n        \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">预约咨询\u003c/button>\n        \u003cspan style=\"font-size:12px;opacity:.55\">hello@hengyi.example.com（虚构） · 021-6000-0000（虚构）\u003c/span>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 虚构办公地址 -->\n    \u003cdiv class=\"office-grid\">\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:6px;padding:2px\">\n        \u003cspan style=\"font-size:14px;font-weight:700;letter-spacing:1px\">上海 · 总部\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.8\">黄浦区中山东一路 12 号 9 层（虚构）\u003c/span>\n      \u003c/div>\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:6px;padding:2px\">\n        \u003cspan style=\"font-size:14px;font-weight:700;letter-spacing:1px\">北京 · 办公室\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.8\">朝阳区建国门外大街 26 号 11 层（虚构）\u003c/span>\n      \u003c/div>\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:6px;padding:2px\">\n        \u003cspan style=\"font-size:14px;font-weight:700;letter-spacing:1px\">深圳 · 办公室\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.8\">福田区益田路 5001 号 18 层（虚构）\u003c/span>\n      \u003c/div>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">衡屹咨询 HENGYI ADVISORY 为虚构机构，文章、数据、评价人、地址与电话均为示例数据，仅用于展示 corporate 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

@@ -58,18 +58,403 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <div class="topbar"><div class="topbar-in">
   <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
   <span class="spacer"></span>
-  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/mo-gray/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html" target="_blank" rel="noopener">完整教程</a>
   <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
 </div></div>
 <div class="wrap"><article>
 <h1>灰阶中性（商务浅色）（mo-gray） · 灰墨 MoH_UI</h1>
 <blockquote>冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme="mo-gray" 即整站换肤，适合企业级经营管理后台。</blockquote>
 <p>来源：灰墨二创主题（MIT）</p>
-<h2>给 AI 的换肤指令</h2>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="mo-gray"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;客户总览 · 灰墨 CRM（mo-gray 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 mo-gray 主题完整页面案例：冷调商务 CRM 客户管理整页。本页只依赖 daisyUI 与 mo-gray 主题，展示真实后台整页效果。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="mo-gray"&gt; 即整站换肤。
+   灵感来源：shadcn Graphite 石墨灰的冷调商务气质（仅风格参考，非品牌素材）。 */
+
+[data-theme="mo-gray"] {
+  /* 底与纸：浅灰白三层，层次靠明度与细描边区分 */
+  --color-base-100: #f4f4f6;
+  --color-base-200: #ffffff;
+  --color-base-300: #ececef;
+  --color-base-content: #1f1f24;
+
+  /* 主色：金属深灰（主操作与选中态，不做大面积黑色块） */
+  --color-primary: #2b2b31;
+  --color-primary-content: #ffffff;
+
+  /* 次色 / 强调色：中灰与低饱和冷青石墨蓝，用于头像、标签与数据高亮 */
+  --color-secondary: #71717a;
+  --color-secondary-content: #ffffff;
+  --color-accent: #4a6fa5;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #1f1f24;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：标准可读色，content 白 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，企业级克制取向 */
+  --radius-selector: 0.3rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.45rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .shell { display: flex; min-height: 100vh; }
+    .side { width: 220px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 18px 12px; display: flex; flex-direction: column; gap: 14px; }
+    .brand { font-size: 15px; font-weight: 700; padding: 2px 12px 8px; display: flex; align-items: center; gap: 8px; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .main { flex: 1; min-width: 0; padding: 20px 24px 32px; display: flex; flex-direction: column; gap: 18px; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; align-items: start; }
+    .tbl-wrap { overflow-x: auto; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    .search { display: flex; align-items: center; gap: 8px; }
+    /* 客户看板：外层横滑容器，窄屏整页不溢出 */
+    .board { display: flex; gap: 12px; min-width: 940px; align-items: flex-start; }
+    .board-col { flex: 1; min-width: 215px; display: flex; flex-direction: column; gap: 10px; }
+    .board-head { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 0 4px; }
+    .board-head .cnt { font-size: 12px; font-weight: 400; opacity: .55; }
+    .cust-card { background: var(--color-base-200); border: 1px solid var(--color-base-300); border-radius: var(--radius-box); padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+    .cust-top { display: flex; align-items: center; gap: 10px; }
+    .av { width: 32px; height: 32px; flex: none; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+    .cust-name { font-size: 14px; font-weight: 600; }
+    .cust-co { font-size: 12px; opacity: .6; margin-top: 2px; }
+    .cust-amt { font-size: 16px; font-weight: 700; }
+    .cust-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; }
+    /* 漏斗进度行 */
+    .funnel { display: flex; align-items: center; gap: 10px; }
+    .funnel-label { width: 150px; flex: none; font-size: 13px; opacity: .7; }
+    .funnel-pct { font-size: 13px; opacity: .7; width: 42px; text-align: right; flex: none; }
+    @media (max-width: 900px) {
+      .shell { flex-direction: column; }
+      .side { width: auto; flex-wrap: wrap; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; overflow-x: auto; gap: 6px 12px; }
+      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }
+      .side .menu li a { white-space: nowrap; }
+      .brand { padding: 0 12px 0 4px; flex: none; }
+      .two-col { grid-template-columns: 1fr; }
+      .main { padding: 16px 14px 24px; }
+      .funnel-label { width: 110px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="shell"&gt;
+
+    &lt;!-- 侧栏导航 --&gt;
+    &lt;aside class="side"&gt;
+      &lt;div class="brand"&gt;&lt;span class="brand-mark"&gt;灰&lt;/span&gt;灰墨 CRM&lt;/div&gt;
+      &lt;ul class="menu" style="padding:0;margin:0"&gt;
+        &lt;li&gt;&lt;a class="menu-active"&gt;客户&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;线索&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;商机&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;合同&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;跟进&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;报表&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a&gt;设置&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;!-- 主区 --&gt;
+    &lt;div class="main"&gt;
+
+      &lt;!-- 顶栏 --&gt;
+      &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+        &lt;div class="navbar-start"&gt;
+          &lt;span style="font-size:13px;opacity:.65"&gt;客户总览 · 华东大区&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="navbar-end" style="gap:10px"&gt;
+          &lt;label class="input input-sm" style="display:flex;align-items:center;gap:8px;width:230px"&gt;
+            &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;opacity:.5" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /&gt;&lt;/svg&gt;
+            &lt;input type="search" placeholder="搜索客户或公司…" style="flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px" /&gt;
+          &lt;/label&gt;
+          &lt;button class="btn btn-ghost btn-sm" type="button"&gt;
+            通知
+            &lt;span class="badge badge-sm badge-primary"&gt;3&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class="avatar avatar-placeholder"&gt;
+            &lt;div class="av" style="background:var(--color-neutral);color:var(--color-neutral-content)"&gt;高&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 标题行 --&gt;
+      &lt;div class="row"&gt;
+        &lt;div&gt;
+          &lt;h1 style="font-size:20px;font-weight:700;margin:0"&gt;客户总览&lt;/h1&gt;
+          &lt;p style="font-size:13px;opacity:.6;margin:4px 0 0"&gt;销售漏斗最近 30 天表现（示例数据）&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div style="display:flex;gap:8px"&gt;
+          &lt;button class="btn btn-ghost btn-sm" type="button"&gt;导出名单&lt;/button&gt;
+          &lt;button class="btn btn-primary btn-sm" type="button"&gt;新建客户&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 漏斗指标卡 --&gt;
+      &lt;div class="stat-row"&gt;
+        &lt;div class="stat bg-base-200 rounded-box"&gt;
+          &lt;div class="stat-title"&gt;线索数&lt;/div&gt;
+          &lt;div class="stat-value" style="font-size:26px"&gt;248&lt;/div&gt;
+          &lt;div class="stat-desc" style="color:var(--color-success)"&gt;较上月 +12.5%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="stat bg-base-200 rounded-box"&gt;
+          &lt;div class="stat-title"&gt;商机数&lt;/div&gt;
+          &lt;div class="stat-value" style="font-size:26px"&gt;86&lt;/div&gt;
+          &lt;div class="stat-desc" style="opacity:.65"&gt;较上月 +6.2%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="stat bg-base-200 rounded-box"&gt;
+          &lt;div class="stat-title"&gt;成交数&lt;/div&gt;
+          &lt;div class="stat-value" style="font-size:26px"&gt;32&lt;/div&gt;
+          &lt;div class="stat-desc" style="color:var(--color-success)"&gt;较上月 +9.1%&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="stat bg-base-200 rounded-box"&gt;
+          &lt;div class="stat-title"&gt;成交率&lt;/div&gt;
+          &lt;div class="stat-value" style="font-size:26px"&gt;37.2%&lt;/div&gt;
+          &lt;div class="stat-desc" style="color:var(--color-error)"&gt;较上月 -1.8%&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 客户阶段看板（窄屏横向滑动） --&gt;
+      &lt;div class="card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body" style="padding:16px;gap:12px"&gt;
+          &lt;div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px"&gt;
+            &lt;h2 class="card-title" style="font-size:15px"&gt;客户阶段看板&lt;/h2&gt;
+            &lt;span class="badge badge-soft badge-primary badge-sm"&gt;本月更新 26 家&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="tbl-wrap"&gt;
+            &lt;div class="board"&gt;
+              &lt;!-- 初步接触 --&gt;
+              &lt;div class="board-col"&gt;
+                &lt;div class="board-head"&gt;&lt;span&gt;初步接触&lt;/span&gt;&lt;span class="cnt"&gt;3 家&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-secondary);color:var(--color-secondary-content)"&gt;周&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;周敏&lt;/div&gt;&lt;div class="cust-co"&gt;杭州云杉贸易&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥86,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月18日 电话回访&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-warning"&gt;中优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-accent);color:var(--color-accent-content)"&gt;吴&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;吴迪&lt;/div&gt;&lt;div class="cust-co"&gt;苏州蓝湾物流&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥120,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月19日 发送资料&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-error"&gt;高优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-secondary);color:var(--color-secondary-content)"&gt;郑&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;郑爽&lt;/div&gt;&lt;div class="cust-co"&gt;宁波海纳机械&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥54,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月20日 微信跟进&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-neutral"&gt;低优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!-- 需求确认 --&gt;
+              &lt;div class="board-col"&gt;
+                &lt;div class="board-head"&gt;&lt;span&gt;需求确认&lt;/span&gt;&lt;span class="cnt"&gt;2 家&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-neutral);color:var(--color-neutral-content)"&gt;王&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;王磊&lt;/div&gt;&lt;div class="cust-co"&gt;南京恒瑞医药&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥230,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月17日 上门演示&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-error"&gt;高优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-accent);color:var(--color-accent-content)"&gt;冯&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;冯雪&lt;/div&gt;&lt;div class="cust-co"&gt;合肥晨光文具&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥96,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月18日 需求对齐会&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-warning"&gt;中优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!-- 方案报价 --&gt;
+              &lt;div class="board-col"&gt;
+                &lt;div class="board-head"&gt;&lt;span&gt;方案报价&lt;/span&gt;&lt;span class="cnt"&gt;2 家&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-secondary);color:var(--color-secondary-content)"&gt;陈&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;陈杰&lt;/div&gt;&lt;div class="cust-co"&gt;青岛海天物流&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥380,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;报价已发，等对方评审&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-error"&gt;高优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-accent);color:var(--color-accent-content)"&gt;何&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;何丽&lt;/div&gt;&lt;div class="cust-co"&gt;厦门白鹭食品&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥145,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;下一步 10月19日 合同评审&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-warning"&gt;中优先级&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;!-- 成交赢单 --&gt;
+              &lt;div class="board-col"&gt;
+                &lt;div class="board-head"&gt;&lt;span&gt;成交赢单&lt;/span&gt;&lt;span class="cnt"&gt;3 家&lt;/span&gt;&lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-neutral);color:var(--color-neutral-content)"&gt;许&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;许强&lt;/div&gt;&lt;div class="cust-co"&gt;上海明志科技&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥520,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;已签约，待回款&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-success"&gt;已成交&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-secondary);color:var(--color-secondary-content)"&gt;林&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;林芳&lt;/div&gt;&lt;div class="cust-co"&gt;北京京仪电力&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥410,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;首付款已到账&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-success"&gt;已成交&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="cust-card"&gt;
+                  &lt;div class="cust-top"&gt;
+                    &lt;span class="av" style="background:var(--color-accent);color:var(--color-accent-content)"&gt;罗&lt;/span&gt;
+                    &lt;div&gt;&lt;div class="cust-name"&gt;罗成&lt;/div&gt;&lt;div class="cust-co"&gt;广州珠江日化&lt;/div&gt;&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class="cust-amt"&gt;¥178,000&lt;/div&gt;
+                  &lt;div class="cust-meta"&gt;&lt;span style="opacity:.6"&gt;正在分批交付&lt;/span&gt;&lt;span class="badge badge-sm badge-soft badge-neutral"&gt;交付中&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- 跟进时间线 + 漏斗转化 --&gt;
+      &lt;div class="two-col"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:12px"&gt;
+            &lt;div style="display:flex;align-items:center;justify-content:space-between"&gt;
+              &lt;h2 class="card-title" style="font-size:15px"&gt;跟进时间线 · 上海明志科技&lt;/h2&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;已成交&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="timeline timeline-vertical" style="margin:0;padding:0;list-style:none"&gt;
+              &lt;li&gt;
+                &lt;div class="timeline-start"&gt;10月16日&lt;/div&gt;
+                &lt;div class="timeline-middle"&gt;
+                  &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class="timeline-end timeline-box"&gt;电话：与许总确认三期扩容需求，预算 ¥520,000，对方下周走内部审批&lt;/div&gt;
+                &lt;hr/&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class="timeline-start"&gt;10月14日&lt;/div&gt;
+                &lt;div class="timeline-middle"&gt;
+                  &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16Z" /&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M2 22h20M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01" /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class="timeline-end timeline-box"&gt;上门拜访：现场演示新版报表模块，客户对数据导出能力满意&lt;/div&gt;
+                &lt;hr/&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class="timeline-start"&gt;10月11日&lt;/div&gt;
+                &lt;div class="timeline-middle"&gt;
+                  &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" /&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="m22 6-10 7L2 6" /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class="timeline-end timeline-box"&gt;邮件：发送正式报价单与服务条款，抄送采购部李经理&lt;/div&gt;
+                &lt;hr/&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class="timeline-start"&gt;10月9日&lt;/div&gt;
+                &lt;div class="timeline-middle"&gt;
+                  &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /&gt;&lt;circle cx="9" cy="7" r="4" /&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class="timeline-end timeline-box"&gt;方案评审会：共 4 人参会，确认分两期实施、首期 11 月上线&lt;/div&gt;
+                &lt;hr/&gt;
+              &lt;/li&gt;
+              &lt;li&gt;
+                &lt;div class="timeline-start"&gt;10月8日&lt;/div&gt;
+                &lt;div class="timeline-middle"&gt;
+                  &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;div class="timeline-end timeline-box"&gt;首次电话：客户从官网表单留资，初步介绍产品与服务周期&lt;/div&gt;
+                &lt;hr/&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 销售漏斗转化 --&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:12px"&gt;
+            &lt;div style="display:flex;align-items:center;justify-content:space-between"&gt;
+              &lt;h2 class="card-title" style="font-size:15px"&gt;销售漏斗转化&lt;/h2&gt;
+              &lt;span class="badge badge-soft badge-sm"&gt;本月&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="funnel"&gt;
+              &lt;span class="funnel-label"&gt;线索 → 初步接触&lt;/span&gt;
+              &lt;progress class="progress progress-primary" style="flex:1" value="68" max="100"&gt;&lt;/progress&gt;
+              &lt;span class="funnel-pct"&gt;68%&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="funnel"&gt;
+              &lt;span class="funnel-label"&gt;初步接触 → 需求确认&lt;/span&gt;
+              &lt;progress class="progress progress-primary" style="flex:1;color:var(--color-secondary)" value="45" max="100"&gt;&lt;/progress&gt;
+              &lt;span class="funnel-pct"&gt;45%&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="funnel"&gt;
+              &lt;span class="funnel-label"&gt;需求确认 → 方案报价&lt;/span&gt;
+              &lt;progress class="progress progress-primary" style="flex:1;color:var(--color-accent)" value="62" max="100"&gt;&lt;/progress&gt;
+              &lt;span class="funnel-pct"&gt;62%&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="funnel"&gt;
+              &lt;span class="funnel-label"&gt;方案报价 → 成交赢单&lt;/span&gt;
+              &lt;progress class="progress progress-primary" style="flex:1;color:var(--color-neutral)" value="38" max="100"&gt;&lt;/progress&gt;
+              &lt;span class="funnel-pct"&gt;38%&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="divider" style="margin:2px 0"&gt;&lt;/div&gt;
+            &lt;div style="display:flex;justify-content:space-between;font-size:13px;opacity:.7"&gt;
+              &lt;span&gt;本月新增线索&lt;/span&gt;&lt;span&gt;248 条&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;p class="foot"&gt;以上为示例数据，仅用于展示 mo-gray 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
 <p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
 <pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
 &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-gray/tokens.css"&gt;</code></pre>
-<p>② 在 <code>&lt;html&gt;</code> 标签挂 <code>data-theme="mo-gray"</code> 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-gray"] 下的全部 --color-* 变量。</p>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="mo-gray"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-gray"] 下的全部 --color-* 变量。</p>
 <p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
 <pre class="fence"><code class="lang-css">/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题
    覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
@@ -116,14 +501,13 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
   --depth: 1;
   --noise: 0;
 }</code></pre>
-<p>④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：<a href="https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html</a></p>
-<p>⑤ 审美提示：组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="mo-gray"] 里的 --color-* 变量。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
 <hr>
 <h2>更多</h2>
 <ul>
 <li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-gray/demo.html</a></li>
 <li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
-<li>主题库（全部 18 套整页案例）：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
 <li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
 </ul>
 <p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
@@ -132,7 +516,7 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <script>
 (function(){
   // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
-  var text = "请把我的整个前端项目换成「灰阶中性（商务浅色）」主题（data-theme=\"mo-gray\"）。\n\n冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-gray\" 即整站换肤，适合企业级经营管理后台。\n\n【怎么引入】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-gray/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-gray\"> 挂属性，整站即刻换肤，组件类名一行都不用改。\n上面的 tokens.css 覆盖 [data-theme=\"mo-gray\"] 下的全部 --color-* 变量。\n\n【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme=\"mo-gray\"] 里的 --color-* 变量）\n\n```css\n/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-gray\"> 即整站换肤。\n   灵感来源：shadcn Graphite 石墨灰的冷调商务气质（仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-gray\"] {\n  /* 底与纸：浅灰白三层，层次靠明度与细描边区分 */\n  --color-base-100: #f4f4f6;\n  --color-base-200: #ffffff;\n  --color-base-300: #ececef;\n  --color-base-content: #1f1f24;\n\n  /* 主色：金属深灰（主操作与选中态，不做大面积黑色块） */\n  --color-primary: #2b2b31;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：中灰与低饱和冷青石墨蓝，用于头像、标签与数据高亮 */\n  --color-secondary: #71717a;\n  --color-secondary-content: #ffffff;\n  --color-accent: #4a6fa5;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #1f1f24;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色，content 白 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，企业级克制取向 */\n  --radius-selector: 0.3rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.45rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n";
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「灰阶中性（商务浅色）（mo-gray）」的整页。\n\n【场景】\n冷调商务 CRM 客户管理整页。冷灰白三层底 + 金属深灰主色 + 低饱和石墨蓝强调，客户阶段看板、跟进时间线与销售漏斗全部用 daisyUI 组件拼装、零依赖；挂 data-theme=\"mo-gray\" 即整站换肤，适合企业级经营管理后台。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-gray/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-gray\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"mo-gray\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"mo-gray\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"mo-gray\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-gray\"> 即整站换肤。\n   灵感来源：shadcn Graphite 石墨灰的冷调商务气质（仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-gray\"] {\n  /* 底与纸：浅灰白三层，层次靠明度与细描边区分 */\n  --color-base-100: #f4f4f6;\n  --color-base-200: #ffffff;\n  --color-base-300: #ececef;\n  --color-base-content: #1f1f24;\n\n  /* 主色：金属深灰（主操作与选中态，不做大面积黑色块） */\n  --color-primary: #2b2b31;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：中灰与低饱和冷青石墨蓝，用于头像、标签与数据高亮 */\n  --color-secondary: #71717a;\n  --color-secondary-content: #ffffff;\n  --color-accent: #4a6fa5;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #1f1f24;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色，content 白 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，企业级克制取向 */\n  --radius-selector: 0.3rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.45rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"mo-gray\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>客户总览 · 灰墨 CRM（mo-gray 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 mo-gray 主题完整页面案例：冷调商务 CRM 客户管理整页。本页只依赖 daisyUI 与 mo-gray 主题，展示真实后台整页效果。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 mo-gray · 冷调商务（浅色）—— 灰阶克制 CRM 后台主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-gray\"> 即整站换肤。\n   灵感来源：shadcn Graphite 石墨灰的冷调商务气质（仅风格参考，非品牌素材）。 */\n\n[data-theme=\"mo-gray\"] {\n  /* 底与纸：浅灰白三层，层次靠明度与细描边区分 */\n  --color-base-100: #f4f4f6;\n  --color-base-200: #ffffff;\n  --color-base-300: #ececef;\n  --color-base-content: #1f1f24;\n\n  /* 主色：金属深灰（主操作与选中态，不做大面积黑色块） */\n  --color-primary: #2b2b31;\n  --color-primary-content: #ffffff;\n\n  /* 次色 / 强调色：中灰与低饱和冷青石墨蓝，用于头像、标签与数据高亮 */\n  --color-secondary: #71717a;\n  --color-secondary-content: #ffffff;\n  --color-accent: #4a6fa5;\n  --color-accent-content: #ffffff;\n\n  --color-neutral: #1f1f24;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：标准可读色，content 白 */\n  --color-info: #0284c7;\n  --color-info-content: #ffffff;\n  --color-success: #16a34a;\n  --color-success-content: #ffffff;\n  --color-warning: #d97706;\n  --color-warning-content: #ffffff;\n  --color-error: #dc2626;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，企业级克制取向 */\n  --radius-selector: 0.3rem;\n  --radius-field: 0.25rem;\n  --radius-box: 0.45rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .shell { display: flex; min-height: 100vh; }\n    .side { width: 220px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 18px 12px; display: flex; flex-direction: column; gap: 14px; }\n    .brand { font-size: 15px; font-weight: 700; padding: 2px 12px 8px; display: flex; align-items: center; gap: 8px; }\n    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }\n    .main { flex: 1; min-width: 0; padding: 20px 24px 32px; display: flex; flex-direction: column; gap: 18px; }\n    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }\n    .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }\n    .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; align-items: start; }\n    .tbl-wrap { overflow-x: auto; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }\n    .search { display: flex; align-items: center; gap: 8px; }\n    /* 客户看板：外层横滑容器，窄屏整页不溢出 */\n    .board { display: flex; gap: 12px; min-width: 940px; align-items: flex-start; }\n    .board-col { flex: 1; min-width: 215px; display: flex; flex-direction: column; gap: 10px; }\n    .board-head { display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 0 4px; }\n    .board-head .cnt { font-size: 12px; font-weight: 400; opacity: .55; }\n    .cust-card { background: var(--color-base-200); border: 1px solid var(--color-base-300); border-radius: var(--radius-box); padding: 12px; display: flex; flex-direction: column; gap: 10px; }\n    .cust-top { display: flex; align-items: center; gap: 10px; }\n    .av { width: 32px; height: 32px; flex: none; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }\n    .cust-name { font-size: 14px; font-weight: 600; }\n    .cust-co { font-size: 12px; opacity: .6; margin-top: 2px; }\n    .cust-amt { font-size: 16px; font-weight: 700; }\n    .cust-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 12px; }\n    /* 漏斗进度行 */\n    .funnel { display: flex; align-items: center; gap: 10px; }\n    .funnel-label { width: 150px; flex: none; font-size: 13px; opacity: .7; }\n    .funnel-pct { font-size: 13px; opacity: .7; width: 42px; text-align: right; flex: none; }\n    @media (max-width: 900px) {\n      .shell { flex-direction: column; }\n      .side { width: auto; flex-wrap: wrap; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; overflow-x: auto; gap: 6px 12px; }\n      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }\n      .side .menu li a { white-space: nowrap; }\n      .brand { padding: 0 12px 0 4px; flex: none; }\n      .two-col { grid-template-columns: 1fr; }\n      .main { padding: 16px 14px 24px; }\n      .funnel-label { width: 110px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"shell\">\n\n    \u003c!-- 侧栏导航 -->\n    \u003caside class=\"side\">\n      \u003cdiv class=\"brand\">\u003cspan class=\"brand-mark\">灰\u003c/span>灰墨 CRM\u003c/div>\n      \u003cul class=\"menu\" style=\"padding:0;margin:0\">\n        \u003cli>\u003ca class=\"menu-active\">客户\u003c/a>\u003c/li>\n        \u003cli>\u003ca>线索\u003c/a>\u003c/li>\n        \u003cli>\u003ca>商机\u003c/a>\u003c/li>\n        \u003cli>\u003ca>合同\u003c/a>\u003c/li>\n        \u003cli>\u003ca>跟进\u003c/a>\u003c/li>\n        \u003cli>\u003ca>报表\u003c/a>\u003c/li>\n        \u003cli>\u003ca>设置\u003c/a>\u003c/li>\n      \u003c/ul>\n    \u003c/aside>\n\n    \u003c!-- 主区 -->\n    \u003cdiv class=\"main\">\n\n      \u003c!-- 顶栏 -->\n      \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n        \u003cdiv class=\"navbar-start\">\n          \u003cspan style=\"font-size:13px;opacity:.65\">客户总览 · 华东大区\u003c/span>\n        \u003c/div>\n        \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n          \u003clabel class=\"input input-sm\" style=\"display:flex;align-items:center;gap:8px;width:230px\">\n            \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px;opacity:.5\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z\" />\u003c/svg>\n            \u003cinput type=\"search\" placeholder=\"搜索客户或公司…\" style=\"flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px\" />\n          \u003c/label>\n          \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">\n            通知\n            \u003cspan class=\"badge badge-sm badge-primary\">3\u003c/span>\n          \u003c/button>\n          \u003cdiv class=\"avatar avatar-placeholder\">\n            \u003cdiv class=\"av\" style=\"background:var(--color-neutral);color:var(--color-neutral-content)\">高\u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 标题行 -->\n      \u003cdiv class=\"row\">\n        \u003cdiv>\n          \u003ch1 style=\"font-size:20px;font-weight:700;margin:0\">客户总览\u003c/h1>\n          \u003cp style=\"font-size:13px;opacity:.6;margin:4px 0 0\">销售漏斗最近 30 天表现（示例数据）\u003c/p>\n        \u003c/div>\n        \u003cdiv style=\"display:flex;gap:8px\">\n          \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">导出名单\u003c/button>\n          \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">新建客户\u003c/button>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 漏斗指标卡 -->\n      \u003cdiv class=\"stat-row\">\n        \u003cdiv class=\"stat bg-base-200 rounded-box\">\n          \u003cdiv class=\"stat-title\">线索数\u003c/div>\n          \u003cdiv class=\"stat-value\" style=\"font-size:26px\">248\u003c/div>\n          \u003cdiv class=\"stat-desc\" style=\"color:var(--color-success)\">较上月 +12.5%\u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"stat bg-base-200 rounded-box\">\n          \u003cdiv class=\"stat-title\">商机数\u003c/div>\n          \u003cdiv class=\"stat-value\" style=\"font-size:26px\">86\u003c/div>\n          \u003cdiv class=\"stat-desc\" style=\"opacity:.65\">较上月 +6.2%\u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"stat bg-base-200 rounded-box\">\n          \u003cdiv class=\"stat-title\">成交数\u003c/div>\n          \u003cdiv class=\"stat-value\" style=\"font-size:26px\">32\u003c/div>\n          \u003cdiv class=\"stat-desc\" style=\"color:var(--color-success)\">较上月 +9.1%\u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"stat bg-base-200 rounded-box\">\n          \u003cdiv class=\"stat-title\">成交率\u003c/div>\n          \u003cdiv class=\"stat-value\" style=\"font-size:26px\">37.2%\u003c/div>\n          \u003cdiv class=\"stat-desc\" style=\"color:var(--color-error)\">较上月 -1.8%\u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 客户阶段看板（窄屏横向滑动） -->\n      \u003cdiv class=\"card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body\" style=\"padding:16px;gap:12px\">\n          \u003cdiv style=\"display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px\">\n            \u003ch2 class=\"card-title\" style=\"font-size:15px\">客户阶段看板\u003c/h2>\n            \u003cspan class=\"badge badge-soft badge-primary badge-sm\">本月更新 26 家\u003c/span>\n          \u003c/div>\n          \u003cdiv class=\"tbl-wrap\">\n            \u003cdiv class=\"board\">\n              \u003c!-- 初步接触 -->\n              \u003cdiv class=\"board-col\">\n                \u003cdiv class=\"board-head\">\u003cspan>初步接触\u003c/span>\u003cspan class=\"cnt\">3 家\u003c/span>\u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-secondary);color:var(--color-secondary-content)\">周\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">周敏\u003c/div>\u003cdiv class=\"cust-co\">杭州云杉贸易\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥86,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月18日 电话回访\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-warning\">中优先级\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-accent);color:var(--color-accent-content)\">吴\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">吴迪\u003c/div>\u003cdiv class=\"cust-co\">苏州蓝湾物流\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥120,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月19日 发送资料\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-error\">高优先级\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-secondary);color:var(--color-secondary-content)\">郑\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">郑爽\u003c/div>\u003cdiv class=\"cust-co\">宁波海纳机械\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥54,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月20日 微信跟进\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-neutral\">低优先级\u003c/span>\u003c/div>\n                \u003c/div>\n              \u003c/div>\n              \u003c!-- 需求确认 -->\n              \u003cdiv class=\"board-col\">\n                \u003cdiv class=\"board-head\">\u003cspan>需求确认\u003c/span>\u003cspan class=\"cnt\">2 家\u003c/span>\u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-neutral);color:var(--color-neutral-content)\">王\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">王磊\u003c/div>\u003cdiv class=\"cust-co\">南京恒瑞医药\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥230,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月17日 上门演示\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-error\">高优先级\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-accent);color:var(--color-accent-content)\">冯\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">冯雪\u003c/div>\u003cdiv class=\"cust-co\">合肥晨光文具\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥96,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月18日 需求对齐会\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-warning\">中优先级\u003c/span>\u003c/div>\n                \u003c/div>\n              \u003c/div>\n              \u003c!-- 方案报价 -->\n              \u003cdiv class=\"board-col\">\n                \u003cdiv class=\"board-head\">\u003cspan>方案报价\u003c/span>\u003cspan class=\"cnt\">2 家\u003c/span>\u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-secondary);color:var(--color-secondary-content)\">陈\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">陈杰\u003c/div>\u003cdiv class=\"cust-co\">青岛海天物流\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥380,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">报价已发，等对方评审\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-error\">高优先级\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-accent);color:var(--color-accent-content)\">何\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">何丽\u003c/div>\u003cdiv class=\"cust-co\">厦门白鹭食品\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥145,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">下一步 10月19日 合同评审\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-warning\">中优先级\u003c/span>\u003c/div>\n                \u003c/div>\n              \u003c/div>\n              \u003c!-- 成交赢单 -->\n              \u003cdiv class=\"board-col\">\n                \u003cdiv class=\"board-head\">\u003cspan>成交赢单\u003c/span>\u003cspan class=\"cnt\">3 家\u003c/span>\u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-neutral);color:var(--color-neutral-content)\">许\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">许强\u003c/div>\u003cdiv class=\"cust-co\">上海明志科技\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥520,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">已签约，待回款\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-success\">已成交\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-secondary);color:var(--color-secondary-content)\">林\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">林芳\u003c/div>\u003cdiv class=\"cust-co\">北京京仪电力\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥410,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">首付款已到账\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-success\">已成交\u003c/span>\u003c/div>\n                \u003c/div>\n                \u003cdiv class=\"cust-card\">\n                  \u003cdiv class=\"cust-top\">\n                    \u003cspan class=\"av\" style=\"background:var(--color-accent);color:var(--color-accent-content)\">罗\u003c/span>\n                    \u003cdiv>\u003cdiv class=\"cust-name\">罗成\u003c/div>\u003cdiv class=\"cust-co\">广州珠江日化\u003c/div>\u003c/div>\n                  \u003c/div>\n                  \u003cdiv class=\"cust-amt\">¥178,000\u003c/div>\n                  \u003cdiv class=\"cust-meta\">\u003cspan style=\"opacity:.6\">正在分批交付\u003c/span>\u003cspan class=\"badge badge-sm badge-soft badge-neutral\">交付中\u003c/span>\u003c/div>\n                \u003c/div>\n              \u003c/div>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003c!-- 跟进时间线 + 漏斗转化 -->\n      \u003cdiv class=\"two-col\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:12px\">\n            \u003cdiv style=\"display:flex;align-items:center;justify-content:space-between\">\n              \u003ch2 class=\"card-title\" style=\"font-size:15px\">跟进时间线 · 上海明志科技\u003c/h2>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">已成交\u003c/span>\n            \u003c/div>\n            \u003cul class=\"timeline timeline-vertical\" style=\"margin:0;padding:0;list-style:none\">\n              \u003cli>\n                \u003cdiv class=\"timeline-start\">10月16日\u003c/div>\n                \u003cdiv class=\"timeline-middle\">\n                  \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\" />\u003c/svg>\n                \u003c/div>\n                \u003cdiv class=\"timeline-end timeline-box\">电话：与许总确认三期扩容需求，预算 ¥520,000，对方下周走内部审批\u003c/div>\n                \u003chr/>\n              \u003c/li>\n              \u003cli>\n                \u003cdiv class=\"timeline-start\">10月14日\u003c/div>\n                \u003cdiv class=\"timeline-middle\">\n                  \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16Z\" />\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2 22h20M9 6h.01M15 6h.01M9 10h.01M15 10h.01M9 14h.01M15 14h.01\" />\u003c/svg>\n                \u003c/div>\n                \u003cdiv class=\"timeline-end timeline-box\">上门拜访：现场演示新版报表模块，客户对数据导出能力满意\u003c/div>\n                \u003chr/>\n              \u003c/li>\n              \u003cli>\n                \u003cdiv class=\"timeline-start\">10月11日\u003c/div>\n                \u003cdiv class=\"timeline-middle\">\n                  \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z\" />\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m22 6-10 7L2 6\" />\u003c/svg>\n                \u003c/div>\n                \u003cdiv class=\"timeline-end timeline-box\">邮件：发送正式报价单与服务条款，抄送采购部李经理\u003c/div>\n                \u003chr/>\n              \u003c/li>\n              \u003cli>\n                \u003cdiv class=\"timeline-start\">10月9日\u003c/div>\n                \u003cdiv class=\"timeline-middle\">\n                  \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\" />\u003ccircle cx=\"9\" cy=\"7\" r=\"4\" />\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75\" />\u003c/svg>\n                \u003c/div>\n                \u003cdiv class=\"timeline-end timeline-box\">方案评审会：共 4 人参会，确认分两期实施、首期 11 月上线\u003c/div>\n                \u003chr/>\n              \u003c/li>\n              \u003cli>\n                \u003cdiv class=\"timeline-start\">10月8日\u003c/div>\n                \u003cdiv class=\"timeline-middle\">\n                  \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:14px;height:14px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\" />\u003c/svg>\n                \u003c/div>\n                \u003cdiv class=\"timeline-end timeline-box\">首次电话：客户从官网表单留资，初步介绍产品与服务周期\u003c/div>\n                \u003chr/>\n              \u003c/li>\n            \u003c/ul>\n          \u003c/div>\n        \u003c/div>\n\n        \u003c!-- 销售漏斗转化 -->\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:12px\">\n            \u003cdiv style=\"display:flex;align-items:center;justify-content:space-between\">\n              \u003ch2 class=\"card-title\" style=\"font-size:15px\">销售漏斗转化\u003c/h2>\n              \u003cspan class=\"badge badge-soft badge-sm\">本月\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"funnel\">\n              \u003cspan class=\"funnel-label\">线索 → 初步接触\u003c/span>\n              \u003cprogress class=\"progress progress-primary\" style=\"flex:1\" value=\"68\" max=\"100\">\u003c/progress>\n              \u003cspan class=\"funnel-pct\">68%\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"funnel\">\n              \u003cspan class=\"funnel-label\">初步接触 → 需求确认\u003c/span>\n              \u003cprogress class=\"progress progress-primary\" style=\"flex:1;color:var(--color-secondary)\" value=\"45\" max=\"100\">\u003c/progress>\n              \u003cspan class=\"funnel-pct\">45%\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"funnel\">\n              \u003cspan class=\"funnel-label\">需求确认 → 方案报价\u003c/span>\n              \u003cprogress class=\"progress progress-primary\" style=\"flex:1;color:var(--color-accent)\" value=\"62\" max=\"100\">\u003c/progress>\n              \u003cspan class=\"funnel-pct\">62%\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"funnel\">\n              \u003cspan class=\"funnel-label\">方案报价 → 成交赢单\u003c/span>\n              \u003cprogress class=\"progress progress-primary\" style=\"flex:1;color:var(--color-neutral)\" value=\"38\" max=\"100\">\u003c/progress>\n              \u003cspan class=\"funnel-pct\">38%\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"divider\" style=\"margin:2px 0\">\u003c/div>\n            \u003cdiv style=\"display:flex;justify-content:space-between;font-size:13px;opacity:.7\">\n              \u003cspan>本月新增线索\u003c/span>\u003cspan>248 条\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n\n      \u003cp class=\"foot\">以上为示例数据，仅用于展示 mo-gray 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n    \u003c/div>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
   function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
   function copy(t){

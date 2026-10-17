@@ -58,18 +58,269 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <div class="topbar"><div class="topbar-in">
   <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
   <span class="spacer"></span>
-  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/rose-pine/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html" target="_blank" rel="noopener">完整教程</a>
   <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
 </div></div>
 <div class="wrap"><article>
 <h1>暮色松（Rosé Pine）（rose-pine） · 灰墨 MoH_UI</h1>
 <blockquote>独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme="rose-pine" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
 <p>来源：Rosé Pine（MIT） · <a href="https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua" target="_blank" rel="noopener noreferrer">上游色板</a></p>
-<h2>给 AI 的换肤指令</h2>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="rose-pine"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;在暮色里读书的人 · 山月集（rose-pine 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 rose-pine 主题完整页面案例：独立博客 / 长文杂志整页。本页只依赖 daisyUI 与 rose-pine 主题，展示真实阅读类站点整页效果。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质
+   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua
+   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在
+   &lt;html data-theme="rose-pine"&gt; 即整站换肤。 */
+
+[data-theme="rose-pine"] {
+  color-scheme: dark;
+
+  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */
+  --color-base-100: #191724;
+  --color-base-200: #1f1d2e;
+  --color-base-300: #26233a;
+  --color-base-content: #e0def4;
+
+  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */
+  --color-primary: #c4a7e7;
+  --color-primary-content: #191724;
+
+  /* 次色：rose 玫红 / foam 青，杂志式点缀 */
+  --color-secondary: #eb6f92;
+  --color-secondary-content: #2a0a14;
+  --color-accent: #9ccfd8;
+  --color-accent-content: #12242a;
+
+  --color-neutral: #403d52;
+  --color-neutral-content: #e0def4;
+
+  /* 语义色：pine / foam / gold / love，长文阅读柔和 */
+  --color-info: #31748f;
+  --color-info-content: #e0def4;
+  --color-success: #9ccfd8;
+  --color-success-content: #12242a;
+  --color-warning: #f6c177;
+  --color-warning-content: #3a2a05;
+  --color-error: #eb6f92;
+  --color-error-content: #2a0a14;
+
+  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .site-head { position: sticky; top: 0; background: var(--color-base-200); border-block-end: 1px solid var(--color-base-300); }
+    .head-in { max-width: 1020px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .brand { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; flex: none; }
+    .brand-mark { width: 24px; height: 24px; border-radius: 8px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .head-nav { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .head-nav .menu { flex-direction: row; flex-wrap: wrap; width: auto; padding: 0; gap: 4px; }
+    .head-nav .menu li a { white-space: nowrap; }
+    .page { max-width: 1020px; margin: 0 auto; padding: 24px 20px 40px; display: flex; flex-direction: column; gap: 20px; }
+    .article-grid { display: flex; gap: 28px; align-items: flex-start; }
+    .article { flex: 1; min-width: 0; }
+    .article h2 { font-size: 19px; font-weight: 700; margin: 26px 0 10px; }
+    .article p { font-size: 14.5px; line-height: 2; opacity: .92; margin: 0 0 14px; }
+    .article blockquote { margin: 16px 0; padding: 4px 0 4px 14px; border-inline-start: 3px solid var(--color-primary); opacity: .85; font-size: 14px; line-height: 1.9; }
+    .article ol, .article ul { font-size: 14px; line-height: 2; opacity: .92; margin: 0 0 14px; padding-inline-start: 22px; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 13px; background: var(--color-base-300); padding: 1px 6px; border-radius: .375rem; }
+    .toc { width: 210px; flex: none; position: sticky; top: 70px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .tbl-wrap { overflow-x: auto; }
+    .tbl-wrap .badge { white-space: nowrap; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    @media (max-width: 900px) {
+      .head-nav { margin-left: 0; width: 100%; }
+      .article-grid { flex-direction: column; }
+      .toc { width: auto; position: static; }
+      .page { padding: 16px 14px 28px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- 站点头部 --&gt;
+  &lt;header class="site-head"&gt;
+    &lt;div class="head-in"&gt;
+      &lt;div class="brand"&gt;&lt;span class="brand-mark"&gt;山&lt;/span&gt;山月集&lt;/div&gt;
+      &lt;nav class="head-nav"&gt;
+        &lt;ul class="menu" style="padding:0"&gt;
+          &lt;li&gt;&lt;a&gt;首页&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;文章&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;专栏&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;关于&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;button class="btn btn-ghost btn-sm" type="button" aria-label="搜索"&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:15px;height:15px" aria-hidden="true"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /&gt;&lt;/svg&gt;
+        &lt;/button&gt;
+        &lt;div class="avatar avatar-placeholder"&gt;
+          &lt;div style="width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)"&gt;月&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+
+  &lt;main class="page"&gt;
+
+    &lt;!-- 头图（内联 SVG 装饰插画） --&gt;
+    &lt;div class="card bg-base-200 rounded-box" style="overflow:hidden"&gt;
+      &lt;div style="height:180px" role="img" aria-label="头图：暮色抽象插画（示例）"&gt;
+        &lt;svg viewBox="0 0 1020 180" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" aria-hidden="true"&gt;
+          &lt;rect width="1020" height="180" fill="#1f1d2e" /&gt;
+          &lt;circle cx="820" cy="90" r="46" fill="#f6c177" fill-opacity=".9" /&gt;
+          &lt;circle cx="820" cy="90" r="66" fill="#f6c177" fill-opacity=".18" /&gt;
+          &lt;path d="M0 150 L180 96 L360 148 L520 84 L700 150 L880 104 L1020 152 L1020 180 L0 180 Z" fill="#c4a7e7" fill-opacity=".5" /&gt;
+          &lt;path d="M0 168 L240 128 L460 166 L660 120 L860 168 L1020 138 L1020 180 L0 180 Z" fill="#eb6f92" fill-opacity=".45" /&gt;
+          &lt;circle cx="140" cy="44" r="2.5" fill="#e0def4" fill-opacity=".7" /&gt;
+          &lt;circle cx="320" cy="30" r="2" fill="#e0def4" fill-opacity=".5" /&gt;
+          &lt;circle cx="520" cy="56" r="2" fill="#9ccfd8" fill-opacity=".8" /&gt;
+          &lt;circle cx="660" cy="26" r="2.5" fill="#e0def4" fill-opacity=".6" /&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 文章头 --&gt;
+    &lt;div style="display:flex;flex-direction:column;gap:8px"&gt;
+      &lt;div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"&gt;
+        &lt;span class="badge badge-soft badge-primary"&gt;散文&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6"&gt;原创&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;h1 style="font-size:26px;font-weight:800;margin:0"&gt;在暮色里读书的人&lt;/h1&gt;
+      &lt;p style="font-size:13px;opacity:.6;margin:0"&gt;山月 · 2026 年 10 月 12 日 · 约 12 分钟读完 · 2,318 字&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class="divider" style="margin:0"&gt;&lt;/div&gt;
+
+    &lt;!-- 正文 + 目录 --&gt;
+    &lt;div class="article-grid"&gt;
+      &lt;article class="article"&gt;
+        &lt;h2 id="s1"&gt;暮色开始的时候&lt;/h2&gt;
+        &lt;p&gt;天色将暗未暗的那半小时，是一天里最适合读书的时刻。窗外的光从金色退成灰紫，屋里还没有开灯，书桌上的纸页反而显得更亮。这个时候读进去的字，会比白天多停一会儿——不是因为更聪明，而是因为分心的东西恰好都安静了下来。&lt;/p&gt;
+        &lt;p&gt;手机屏幕朝下扣在桌角，冰箱的嗡鸣隔着两道门，地铁最后一班的轰鸣还远没有开始。世界被调成了低音量，你才听得见自己心里那点翻书的沙沙声。很多人以为读书需要安静的环境，其实环境从来不会彻底安静，能安静下来的只有自己——暮色只是那个帮你按低音量的人。&lt;/p&gt;
+
+        &lt;h2 id="s2"&gt;书的位置&lt;/h2&gt;
+        &lt;p&gt;我习惯把正在读的书放在床头左手边，再随手放一支铅笔。铅笔比签字笔好，写错了不洇墨，划掉的句子第二天再看，多半会觉得自己当时太急躁。书的位置比姿势重要：够得着、不用起身、不用垫枕头，这三个条件凑齐了，读书才会从「安排」变成「顺手」。&lt;/p&gt;
+        &lt;blockquote&gt;读书不需要仪式，但需要惯性。惯性来自一个顺手的位置，不来自一张像样的桌子。&lt;/blockquote&gt;
+        &lt;p&gt;很多人买了书桌就以为能读进去，其实书桌恰恰是最容易让人焦虑的地方——它太正式了，正式得像工位。我后来把书桌清掉，只留一盏灯和一摞翻开的书，进度反而比去年多了一倍。&lt;/p&gt;
+
+        &lt;h2 id="s3"&gt;灯下的节奏&lt;/h2&gt;
+        &lt;p&gt;天黑透以后开一盏小灯，只照亮书页，不照亮整个房间。这个习惯是从一位老编辑那里学来的：他说晚上用大光读书，眼睛先累，心后面跟着累；小光读书，是把注意力收进一个小圆圈里。我试过一段时间 &lt;span class="mono"&gt;21:00 之后不读硬核章节&lt;/span&gt;，只留散文和游记，睡眠果然好了一点——大脑在睡前被软着陆，而不是被论文拽着跑。&lt;/p&gt;
+        &lt;p&gt;这样读了几年，慢慢攒下四个不费事的规矩：&lt;/p&gt;
+        &lt;ol&gt;
+          &lt;li&gt;不读第三遍才读得懂的书，先放回去，等几年再来；&lt;/li&gt;
+          &lt;li&gt;每天只读四十分钟左右，读完就合，不追求进度；&lt;/li&gt;
+          &lt;li&gt;划出来的句子，周末统一抄到一个本子上，抄过才算读过；&lt;/li&gt;
+          &lt;li&gt;读到不喜欢的段落，允许自己跳过去，不必对书礼貌。&lt;/li&gt;
+        &lt;/ol&gt;
+
+        &lt;h2 id="s4"&gt;合上之后&lt;/h2&gt;
+        &lt;p&gt;合上书的那一刻，故事并没有真的结束。它会在第二天通勤的地铁里突然冒出来一句，会在晚饭的汤热气里冒出来一句。所以有人说书是「延迟生效」的东西——现场读完只是签收，它真正的效果要过很多天才能拆开。&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;不必记住所有句子，记住那一两颗就够；&lt;/li&gt;
+          &lt;li&gt;不必给每本书打分，有些书只负责陪一段路；&lt;/li&gt;
+          &lt;li&gt;不必读完每一本买回家的书，放弃也是读书的一部分。&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;暮色又深了一层，窗外的灯次第亮起来。我把铅笔夹回那一页，心想明天这个时候，还从这里接着往下读。&lt;/p&gt;
+      &lt;/article&gt;
+
+      &lt;!-- 目录 --&gt;
+      &lt;aside class="toc card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body" style="padding:14px;gap:6px"&gt;
+          &lt;div style="font-size:12px;opacity:.6;font-weight:600"&gt;目录&lt;/div&gt;
+          &lt;ul class="menu" style="width:100%;padding:0"&gt;
+            &lt;li&gt;&lt;a href="#s1"&gt;暮色开始的时候&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#s2"&gt;书的位置&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#s3"&gt;灯下的节奏&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#s4"&gt;合上之后&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/aside&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 相关文章 --&gt;
+    &lt;div&gt;
+      &lt;h2 style="font-size:16px;font-weight:700;margin:0 0 12px"&gt;相关文章&lt;/h2&gt;
+      &lt;div class="related-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div style="height:84px;overflow:hidden" role="img" aria-label="相关文章封面（示例）"&gt;
+            &lt;svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" aria-hidden="true"&gt;
+              &lt;rect width="240" height="84" fill="#1f1d2e" /&gt;
+              &lt;circle cx="60" cy="42" r="26" fill="#c4a7e7" fill-opacity=".7" /&gt;
+              &lt;circle cx="180" cy="42" r="16" fill="#9ccfd8" fill-opacity=".7" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:6px"&gt;
+            &lt;div style="font-size:14px;font-weight:600"&gt;把夜晚留给无用的事&lt;/div&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;杂谈 · 约 8 分钟&lt;/div&gt;
+            &lt;span class="badge badge-soft badge-sm" style="width:fit-content"&gt;随笔&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div style="height:84px;overflow:hidden" role="img" aria-label="相关文章封面（示例）"&gt;
+            &lt;svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" aria-hidden="true"&gt;
+              &lt;rect width="240" height="84" fill="#1f1d2e" /&gt;
+              &lt;path d="M0 60 Q60 30 120 58 T240 50 L240 84 L0 84 Z" fill="#9ccfd8" fill-opacity=".55" /&gt;
+              &lt;circle cx="190" cy="26" r="12" fill="#f6c177" fill-opacity=".85" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:6px"&gt;
+            &lt;div style="font-size:14px;font-weight:600"&gt;旧书店地图：城南篇&lt;/div&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;专栏 · 约 15 分钟&lt;/div&gt;
+            &lt;span class="badge badge-soft badge-sm" style="width:fit-content"&gt;城市&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div style="height:84px;overflow:hidden" role="img" aria-label="相关文章封面（示例）"&gt;
+            &lt;svg viewBox="0 0 240 84" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" aria-hidden="true"&gt;
+              &lt;rect width="240" height="84" fill="#1f1d2e" /&gt;
+              &lt;rect x="30" y="22" width="120" height="40" rx="6" fill="#eb6f92" fill-opacity=".5" /&gt;
+              &lt;rect x="50" y="32" width="80" height="6" rx="3" fill="#e0def4" fill-opacity=".6" /&gt;
+              &lt;rect x="50" y="46" width="60" height="6" rx="3" fill="#e0def4" fill-opacity=".4" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="card-body" style="padding:12px 14px;gap:6px"&gt;
+            &lt;div style="font-size:14px;font-weight:600"&gt;冬夜书单：七本不费脑的&lt;/div&gt;
+            &lt;div style="font-size:12px;opacity:.6"&gt;书单 · 约 10 分钟&lt;/div&gt;
+            &lt;span class="badge badge-soft badge-sm" style="width:fit-content"&gt;书单&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;p class="foot"&gt;以上文章为虚构习作，仅用于展示 rose-pine 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
 <p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
 <pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
 &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/rose-pine/tokens.css"&gt;</code></pre>
-<p>② 在 <code>&lt;html&gt;</code> 标签挂 <code>data-theme="rose-pine"</code> 即整站换肤：组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="rose-pine"] 下的全部 --color-* 变量。</p>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="rose-pine"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="rose-pine"] 下的全部 --color-* 变量。</p>
 <p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
 <pre class="fence"><code class="lang-css">/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质
    色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua
@@ -118,14 +369,13 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
   --depth: 1;
   --noise: 0;
 }</code></pre>
-<p>④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：<a href="https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html</a></p>
-<p>⑤ 审美提示：组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="rose-pine"] 里的 --color-* 变量。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
 <hr>
 <h2>更多</h2>
 <ul>
 <li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/rose-pine/demo.html</a></li>
 <li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
-<li>主题库（全部 18 套整页案例）：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
 <li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
 </ul>
 <p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
@@ -134,7 +384,7 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 <script>
 (function(){
   // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
-  var text = "请把我的整个前端项目换成「暮色松（Rosé Pine）」主题（data-theme=\"rose-pine\"）。\n\n独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme=\"rose-pine\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n\n【怎么引入】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/rose-pine/tokens.css\">\n\n然后在 \u003chtml data-theme=\"rose-pine\"> 挂属性，整站即刻换肤，组件类名一行都不用改。\n上面的 tokens.css 覆盖 [data-theme=\"rose-pine\"] 下的全部 --color-* 变量。\n\n【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme=\"rose-pine\"] 里的 --color-* 变量）\n\n```css\n/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质\n   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua\n   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在\n   \u003chtml data-theme=\"rose-pine\"> 即整站换肤。 */\n\n[data-theme=\"rose-pine\"] {\n  color-scheme: dark;\n\n  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */\n  --color-base-100: #191724;\n  --color-base-200: #1f1d2e;\n  --color-base-300: #26233a;\n  --color-base-content: #e0def4;\n\n  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */\n  --color-primary: #c4a7e7;\n  --color-primary-content: #191724;\n\n  /* 次色：rose 玫红 / foam 青，杂志式点缀 */\n  --color-secondary: #eb6f92;\n  --color-secondary-content: #2a0a14;\n  --color-accent: #9ccfd8;\n  --color-accent-content: #12242a;\n\n  --color-neutral: #403d52;\n  --color-neutral-content: #e0def4;\n\n  /* 语义色：pine / foam / gold / love，长文阅读柔和 */\n  --color-info: #31748f;\n  --color-info-content: #e0def4;\n  --color-success: #9ccfd8;\n  --color-success-content: #12242a;\n  --color-warning: #f6c177;\n  --color-warning-content: #3a2a05;\n  --color-error: #eb6f92;\n  --color-error-content: #2a0a14;\n\n  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */\n  --radius-selector: 0.5rem;\n  --radius-field: 0.5rem;\n  --radius-box: 0.625rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n";
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「暮色松（Rosé Pine）（rose-pine）」的整页。\n\n【场景】\n独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme=\"rose-pine\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/rose-pine/tokens.css\">\n\n然后在 \u003chtml data-theme=\"rose-pine\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"rose-pine\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"rose-pine\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"rose-pine\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质\n   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua\n   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在\n   \u003chtml data-theme=\"rose-pine\"> 即整站换肤。 */\n\n[data-theme=\"rose-pine\"] {\n  color-scheme: dark;\n\n  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */\n  --color-base-100: #191724;\n  --color-base-200: #1f1d2e;\n  --color-base-300: #26233a;\n  --color-base-content: #e0def4;\n\n  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */\n  --color-primary: #c4a7e7;\n  --color-primary-content: #191724;\n\n  /* 次色：rose 玫红 / foam 青，杂志式点缀 */\n  --color-secondary: #eb6f92;\n  --color-secondary-content: #2a0a14;\n  --color-accent: #9ccfd8;\n  --color-accent-content: #12242a;\n\n  --color-neutral: #403d52;\n  --color-neutral-content: #e0def4;\n\n  /* 语义色：pine / foam / gold / love，长文阅读柔和 */\n  --color-info: #31748f;\n  --color-info-content: #e0def4;\n  --color-success: #9ccfd8;\n  --color-success-content: #12242a;\n  --color-warning: #f6c177;\n  --color-warning-content: #3a2a05;\n  --color-error: #eb6f92;\n  --color-error-content: #2a0a14;\n\n  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */\n  --radius-selector: 0.5rem;\n  --radius-field: 0.5rem;\n  --radius-box: 0.625rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"rose-pine\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>在暮色里读书的人 · 山月集（rose-pine 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 rose-pine 主题完整页面案例：独立博客 / 长文杂志整页。本页只依赖 daisyUI 与 rose-pine 主题，展示真实阅读类站点整页效果。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质\n   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua\n   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在\n   \u003chtml data-theme=\"rose-pine\"> 即整站换肤。 */\n\n[data-theme=\"rose-pine\"] {\n  color-scheme: dark;\n\n  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */\n  --color-base-100: #191724;\n  --color-base-200: #1f1d2e;\n  --color-base-300: #26233a;\n  --color-base-content: #e0def4;\n\n  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */\n  --color-primary: #c4a7e7;\n  --color-primary-content: #191724;\n\n  /* 次色：rose 玫红 / foam 青，杂志式点缀 */\n  --color-secondary: #eb6f92;\n  --color-secondary-content: #2a0a14;\n  --color-accent: #9ccfd8;\n  --color-accent-content: #12242a;\n\n  --color-neutral: #403d52;\n  --color-neutral-content: #e0def4;\n\n  /* 语义色：pine / foam / gold / love，长文阅读柔和 */\n  --color-info: #31748f;\n  --color-info-content: #e0def4;\n  --color-success: #9ccfd8;\n  --color-success-content: #12242a;\n  --color-warning: #f6c177;\n  --color-warning-content: #3a2a05;\n  --color-error: #eb6f92;\n  --color-error-content: #2a0a14;\n\n  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */\n  --radius-selector: 0.5rem;\n  --radius-field: 0.5rem;\n  --radius-box: 0.625rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .site-head { position: sticky; top: 0; background: var(--color-base-200); border-block-end: 1px solid var(--color-base-300); }\n    .head-in { max-width: 1020px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }\n    .brand { font-size: 16px; font-weight: 800; display: flex; align-items: center; gap: 8px; flex: none; }\n    .brand-mark { width: 24px; height: 24px; border-radius: 8px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }\n    .head-nav { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }\n    .head-nav .menu { flex-direction: row; flex-wrap: wrap; width: auto; padding: 0; gap: 4px; }\n    .head-nav .menu li a { white-space: nowrap; }\n    .page { max-width: 1020px; margin: 0 auto; padding: 24px 20px 40px; display: flex; flex-direction: column; gap: 20px; }\n    .article-grid { display: flex; gap: 28px; align-items: flex-start; }\n    .article { flex: 1; min-width: 0; }\n    .article h2 { font-size: 19px; font-weight: 700; margin: 26px 0 10px; }\n    .article p { font-size: 14.5px; line-height: 2; opacity: .92; margin: 0 0 14px; }\n    .article blockquote { margin: 16px 0; padding: 4px 0 4px 14px; border-inline-start: 3px solid var(--color-primary); opacity: .85; font-size: 14px; line-height: 1.9; }\n    .article ol, .article ul { font-size: 14px; line-height: 2; opacity: .92; margin: 0 0 14px; padding-inline-start: 22px; }\n    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 13px; background: var(--color-base-300); padding: 1px 6px; border-radius: .375rem; }\n    .toc { width: 210px; flex: none; position: sticky; top: 70px; }\n    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }\n    .tbl-wrap { overflow-x: auto; }\n    .tbl-wrap .badge { white-space: nowrap; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }\n    @media (max-width: 900px) {\n      .head-nav { margin-left: 0; width: 100%; }\n      .article-grid { flex-direction: column; }\n      .toc { width: auto; position: static; }\n      .page { padding: 16px 14px 28px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n\n  \u003c!-- 站点头部 -->\n  \u003cheader class=\"site-head\">\n    \u003cdiv class=\"head-in\">\n      \u003cdiv class=\"brand\">\u003cspan class=\"brand-mark\">山\u003c/span>山月集\u003c/div>\n      \u003cnav class=\"head-nav\">\n        \u003cul class=\"menu\" style=\"padding:0\">\n          \u003cli>\u003ca>首页\u003c/a>\u003c/li>\n          \u003cli>\u003ca class=\"menu-active\">文章\u003c/a>\u003c/li>\n          \u003cli>\u003ca>专栏\u003c/a>\u003c/li>\n          \u003cli>\u003ca>关于\u003c/a>\u003c/li>\n        \u003c/ul>\n        \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\" aria-label=\"搜索\">\n          \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" style=\"width:15px;height:15px\" aria-hidden=\"true\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z\" />\u003c/svg>\n        \u003c/button>\n        \u003cdiv class=\"avatar avatar-placeholder\">\n          \u003cdiv style=\"width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)\">月\u003c/div>\n        \u003c/div>\n      \u003c/nav>\n    \u003c/div>\n  \u003c/header>\n\n  \u003cmain class=\"page\">\n\n    \u003c!-- 头图（内联 SVG 装饰插画） -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\" style=\"overflow:hidden\">\n      \u003cdiv style=\"height:180px\" role=\"img\" aria-label=\"头图：暮色抽象插画（示例）\">\n        \u003csvg viewBox=\"0 0 1020 180\" preserveAspectRatio=\"xMidYMid slice\" style=\"width:100%;height:100%\" aria-hidden=\"true\">\n          \u003crect width=\"1020\" height=\"180\" fill=\"#1f1d2e\" />\n          \u003ccircle cx=\"820\" cy=\"90\" r=\"46\" fill=\"#f6c177\" fill-opacity=\".9\" />\n          \u003ccircle cx=\"820\" cy=\"90\" r=\"66\" fill=\"#f6c177\" fill-opacity=\".18\" />\n          \u003cpath d=\"M0 150 L180 96 L360 148 L520 84 L700 150 L880 104 L1020 152 L1020 180 L0 180 Z\" fill=\"#c4a7e7\" fill-opacity=\".5\" />\n          \u003cpath d=\"M0 168 L240 128 L460 166 L660 120 L860 168 L1020 138 L1020 180 L0 180 Z\" fill=\"#eb6f92\" fill-opacity=\".45\" />\n          \u003ccircle cx=\"140\" cy=\"44\" r=\"2.5\" fill=\"#e0def4\" fill-opacity=\".7\" />\n          \u003ccircle cx=\"320\" cy=\"30\" r=\"2\" fill=\"#e0def4\" fill-opacity=\".5\" />\n          \u003ccircle cx=\"520\" cy=\"56\" r=\"2\" fill=\"#9ccfd8\" fill-opacity=\".8\" />\n          \u003ccircle cx=\"660\" cy=\"26\" r=\"2.5\" fill=\"#e0def4\" fill-opacity=\".6\" />\n        \u003c/svg>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 文章头 -->\n    \u003cdiv style=\"display:flex;flex-direction:column;gap:8px\">\n      \u003cdiv style=\"display:flex;gap:8px;align-items:center;flex-wrap:wrap\">\n        \u003cspan class=\"badge badge-soft badge-primary\">散文\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6\">原创\u003c/span>\n      \u003c/div>\n      \u003ch1 style=\"font-size:26px;font-weight:800;margin:0\">在暮色里读书的人\u003c/h1>\n      \u003cp style=\"font-size:13px;opacity:.6;margin:0\">山月 · 2026 年 10 月 12 日 · 约 12 分钟读完 · 2,318 字\u003c/p>\n    \u003c/div>\n\n    \u003cdiv class=\"divider\" style=\"margin:0\">\u003c/div>\n\n    \u003c!-- 正文 + 目录 -->\n    \u003cdiv class=\"article-grid\">\n      \u003carticle class=\"article\">\n        \u003ch2 id=\"s1\">暮色开始的时候\u003c/h2>\n        \u003cp>天色将暗未暗的那半小时，是一天里最适合读书的时刻。窗外的光从金色退成灰紫，屋里还没有开灯，书桌上的纸页反而显得更亮。这个时候读进去的字，会比白天多停一会儿——不是因为更聪明，而是因为分心的东西恰好都安静了下来。\u003c/p>\n        \u003cp>手机屏幕朝下扣在桌角，冰箱的嗡鸣隔着两道门，地铁最后一班的轰鸣还远没有开始。世界被调成了低音量，你才听得见自己心里那点翻书的沙沙声。很多人以为读书需要安静的环境，其实环境从来不会彻底安静，能安静下来的只有自己——暮色只是那个帮你按低音量的人。\u003c/p>\n\n        \u003ch2 id=\"s2\">书的位置\u003c/h2>\n        \u003cp>我习惯把正在读的书放在床头左手边，再随手放一支铅笔。铅笔比签字笔好，写错了不洇墨，划掉的句子第二天再看，多半会觉得自己当时太急躁。书的位置比姿势重要：够得着、不用起身、不用垫枕头，这三个条件凑齐了，读书才会从「安排」变成「顺手」。\u003c/p>\n        \u003cblockquote>读书不需要仪式，但需要惯性。惯性来自一个顺手的位置，不来自一张像样的桌子。\u003c/blockquote>\n        \u003cp>很多人买了书桌就以为能读进去，其实书桌恰恰是最容易让人焦虑的地方——它太正式了，正式得像工位。我后来把书桌清掉，只留一盏灯和一摞翻开的书，进度反而比去年多了一倍。\u003c/p>\n\n        \u003ch2 id=\"s3\">灯下的节奏\u003c/h2>\n        \u003cp>天黑透以后开一盏小灯，只照亮书页，不照亮整个房间。这个习惯是从一位老编辑那里学来的：他说晚上用大光读书，眼睛先累，心后面跟着累；小光读书，是把注意力收进一个小圆圈里。我试过一段时间 \u003cspan class=\"mono\">21:00 之后不读硬核章节\u003c/span>，只留散文和游记，睡眠果然好了一点——大脑在睡前被软着陆，而不是被论文拽着跑。\u003c/p>\n        \u003cp>这样读了几年，慢慢攒下四个不费事的规矩：\u003c/p>\n        \u003col>\n          \u003cli>不读第三遍才读得懂的书，先放回去，等几年再来；\u003c/li>\n          \u003cli>每天只读四十分钟左右，读完就合，不追求进度；\u003c/li>\n          \u003cli>划出来的句子，周末统一抄到一个本子上，抄过才算读过；\u003c/li>\n          \u003cli>读到不喜欢的段落，允许自己跳过去，不必对书礼貌。\u003c/li>\n        \u003c/ol>\n\n        \u003ch2 id=\"s4\">合上之后\u003c/h2>\n        \u003cp>合上书的那一刻，故事并没有真的结束。它会在第二天通勤的地铁里突然冒出来一句，会在晚饭的汤热气里冒出来一句。所以有人说书是「延迟生效」的东西——现场读完只是签收，它真正的效果要过很多天才能拆开。\u003c/p>\n        \u003cul>\n          \u003cli>不必记住所有句子，记住那一两颗就够；\u003c/li>\n          \u003cli>不必给每本书打分，有些书只负责陪一段路；\u003c/li>\n          \u003cli>不必读完每一本买回家的书，放弃也是读书的一部分。\u003c/li>\n        \u003c/ul>\n        \u003cp>暮色又深了一层，窗外的灯次第亮起来。我把铅笔夹回那一页，心想明天这个时候，还从这里接着往下读。\u003c/p>\n      \u003c/article>\n\n      \u003c!-- 目录 -->\n      \u003caside class=\"toc card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body\" style=\"padding:14px;gap:6px\">\n          \u003cdiv style=\"font-size:12px;opacity:.6;font-weight:600\">目录\u003c/div>\n          \u003cul class=\"menu\" style=\"width:100%;padding:0\">\n            \u003cli>\u003ca href=\"#s1\">暮色开始的时候\u003c/a>\u003c/li>\n            \u003cli>\u003ca href=\"#s2\">书的位置\u003c/a>\u003c/li>\n            \u003cli>\u003ca href=\"#s3\">灯下的节奏\u003c/a>\u003c/li>\n            \u003cli>\u003ca href=\"#s4\">合上之后\u003c/a>\u003c/li>\n          \u003c/ul>\n        \u003c/div>\n      \u003c/aside>\n    \u003c/div>\n\n    \u003c!-- 相关文章 -->\n    \u003cdiv>\n      \u003ch2 style=\"font-size:16px;font-weight:700;margin:0 0 12px\">相关文章\u003c/h2>\n      \u003cdiv class=\"related-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv style=\"height:84px;overflow:hidden\" role=\"img\" aria-label=\"相关文章封面（示例）\">\n            \u003csvg viewBox=\"0 0 240 84\" preserveAspectRatio=\"xMidYMid slice\" style=\"width:100%;height:100%\" aria-hidden=\"true\">\n              \u003crect width=\"240\" height=\"84\" fill=\"#1f1d2e\" />\n              \u003ccircle cx=\"60\" cy=\"42\" r=\"26\" fill=\"#c4a7e7\" fill-opacity=\".7\" />\n              \u003ccircle cx=\"180\" cy=\"42\" r=\"16\" fill=\"#9ccfd8\" fill-opacity=\".7\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:6px\">\n            \u003cdiv style=\"font-size:14px;font-weight:600\">把夜晚留给无用的事\u003c/div>\n            \u003cdiv style=\"font-size:12px;opacity:.6\">杂谈 · 约 8 分钟\u003c/div>\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"width:fit-content\">随笔\u003c/span>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv style=\"height:84px;overflow:hidden\" role=\"img\" aria-label=\"相关文章封面（示例）\">\n            \u003csvg viewBox=\"0 0 240 84\" preserveAspectRatio=\"xMidYMid slice\" style=\"width:100%;height:100%\" aria-hidden=\"true\">\n              \u003crect width=\"240\" height=\"84\" fill=\"#1f1d2e\" />\n              \u003cpath d=\"M0 60 Q60 30 120 58 T240 50 L240 84 L0 84 Z\" fill=\"#9ccfd8\" fill-opacity=\".55\" />\n              \u003ccircle cx=\"190\" cy=\"26\" r=\"12\" fill=\"#f6c177\" fill-opacity=\".85\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:6px\">\n            \u003cdiv style=\"font-size:14px;font-weight:600\">旧书店地图：城南篇\u003c/div>\n            \u003cdiv style=\"font-size:12px;opacity:.6\">专栏 · 约 15 分钟\u003c/div>\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"width:fit-content\">城市\u003c/span>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv style=\"height:84px;overflow:hidden\" role=\"img\" aria-label=\"相关文章封面（示例）\">\n            \u003csvg viewBox=\"0 0 240 84\" preserveAspectRatio=\"xMidYMid slice\" style=\"width:100%;height:100%\" aria-hidden=\"true\">\n              \u003crect width=\"240\" height=\"84\" fill=\"#1f1d2e\" />\n              \u003crect x=\"30\" y=\"22\" width=\"120\" height=\"40\" rx=\"6\" fill=\"#eb6f92\" fill-opacity=\".5\" />\n              \u003crect x=\"50\" y=\"32\" width=\"80\" height=\"6\" rx=\"3\" fill=\"#e0def4\" fill-opacity=\".6\" />\n              \u003crect x=\"50\" y=\"46\" width=\"60\" height=\"6\" rx=\"3\" fill=\"#e0def4\" fill-opacity=\".4\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"card-body\" style=\"padding:12px 14px;gap:6px\">\n            \u003cdiv style=\"font-size:14px;font-weight:600\">冬夜书单：七本不费脑的\u003c/div>\n            \u003cdiv style=\"font-size:12px;opacity:.6\">书单 · 约 10 分钟\u003c/div>\n            \u003cspan class=\"badge badge-soft badge-sm\" style=\"width:fit-content\">书单\u003c/span>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003cp class=\"foot\">以上文章为虚构习作，仅用于展示 rose-pine 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/main>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
   function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
   function copy(t){

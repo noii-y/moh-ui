@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开源门户（github-light）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「开源门户（github-light）」组件。虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="github-light.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/github-light/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>开源门户（github-light） · 灰墨 MoH_UI</h1>
+<blockquote>虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：GitHub Light (primer/github-vscode-theme)（MIT） · <a href="https://github.com/primer/github-vscode-theme/blob/main/src/colors.js" target="_blank" rel="noopener noreferrer">上游色板</a></p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/github-light/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/github-light/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>纯白底与浅灰卡（base-100 #ffffff / base-200 #f6f8fa），分层只靠 1px 浅灰边（base-300 #d1d9e0），不写死任何 hex、不堆投影与营销色块。</li>
+<li>主色蓝 #0969da 只给主 CTA、链接与选中态；次色绿 #1f883d 留给「开始/安装」类实心徽章与次要按钮，绝不大面积铺绿。</li>
+<li>正文 #1f2328、次要信息用低透明度灰字，标题最多两级、字重中等；文档门户追求信息清晰，不要电商式大标题与堆叠卖点。</li>
+<li>代码区是门面：等宽字体用 var(--font-mono) 内联兜底，窗口三圆点用 currentColor 不同透明度表达；不引外部高亮库、不写硬编码语法色。</li>
+<li>按钮只写真实动作（开始使用、查看文档、在 GitHub 查看），不写 Primary 这类颜色名；「在 GitHub 查看」做成幽灵文字按钮，页面不出现任何真实品牌 logo。</li>
+<li>项目指标（stars/forks/贡献者/版本号）排成一行 stat，数字加粗、标签小灰；凡虚构数据必须在页脚统一声明「示例数据」。</li>
+<li>390px 窄屏：顶栏自然折行、特性卡单列、代码块在窗口内换行不横向溢出，卡片保持轻边框风格。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="github-light"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;开流 OpenFlow · 开源 CI 引擎（github-light 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 github-light 主题完整页面案例：虚构开源项目门户整页。中性灰蓝、卡片轻边框、代码区为招牌，信息清晰不堆营销色块。本页只依赖 daisyUI 与同目录 tokens.css。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 github-light · 开源门户 —— GitHub Light 中性灰蓝开发者主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 primer/github-vscode-theme（MIT，© 2020 Primer）及其依赖
+   @primer/primitives 官方 light 色板（canvas.default #ffffff、canvas.subtle #f6f8fa、
+   border.default #d1d9e0、fg.default #1f2328、fg.muted #59636e、accent #0969da、
+   success.emphasis #1f883d、done #8250df、attention #9a6700、danger #cf222e）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="github-light"&gt; 即整站换肤。 */
+
+[data-theme="github-light"] {
+  color-scheme: light;
+
+  /* 底与纸：canvas.default 纯白 / canvas.subtle 浅灰卡片 / border.default 分层 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f6f8fa;
+  --color-base-300: #d1d9e0;
+  --color-base-content: #1f2328;
+
+  /* 主色：accent 链接蓝 #0969da，只留给主操作、链接与选中态 */
+  --color-primary: #0969da;
+  --color-primary-content: #ffffff;
+
+  /* 次色：success.emphasis 按钮绿 #1f883d（GitHub 主按钮绿）；强调色 done 紫 */
+  --color-secondary: #1f883d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #8250df;
+  --color-accent-content: #ffffff;
+
+  /* 中性面：fg.muted 灰 #59636e，用于次要文字与分隔 */
+  --color-neutral: #59636e;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：info 蓝 / success 绿 / warning 琥珀 / error 红，均取官方亮底色 */
+  --color-info: #0969da;
+  --color-info-content: #ffffff;
+  --color-success: #1a7f37;
+  --color-success-content: #ffffff;
+  --color-warning: #9a6700;
+  --color-warning-content: #ffffff;
+  --color-error: #cf222e;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，文档门户取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; white-space: nowrap; }
+    .brand svg { width: 26px; height: 26px; }
+    .brand small { font-weight: 400; font-size: 11px; opacity: .55; letter-spacing: .5px; }
+    .navlinks { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; list-style: none; }
+    .navlinks a { padding: 4px 8px; border-radius: var(--radius-selector); font-size: 13px; opacity: .8; text-decoration: none; color: inherit; }
+    .navlinks a:hover { background: var(--color-base-200); opacity: 1; }
+    .hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 38px 8px 26px; }
+    .hero h1 { font-size: 36px; line-height: 1.25; margin: 0; letter-spacing: .5px; }
+    .hero p { font-size: 14px; opacity: .7; max-width: 560px; margin: 0; line-height: 1.9; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; padding: 14px 10px; }
+    .stat-item b { font-size: 22px; }
+    .stat-item span { font-size: 12px; opacity: .6; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .feature-item { display: flex; flex-direction: column; gap: 8px; }
+    .feature-item svg { width: 30px; height: 30px; }
+    .feature-item h3 { font-size: 14px; margin: 0; }
+    .feature-item p { font-size: 12px; opacity: .65; margin: 0; line-height: 1.8; }
+    .codebody { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 12.5px; line-height: 2.1; white-space: pre-wrap; word-break: break-all; margin: 0; }
+    .codebody .c { opacity: .55; }
+    .release-row { display: flex; flex-direction: column; gap: 6px; }
+    .release-row h3 { font-size: 14px; margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .release-row p { font-size: 12.5px; opacity: .65; margin: 0; line-height: 1.8; }
+    .release-row time { font-size: 11.5px; opacity: .5; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 20%, transparent); }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero h1 { font-size: 26px; }
+      .hero { padding: 26px 4px 18px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏：抽象流线 logo（非任何真实品牌）+ 导航 + 两个文字按钮 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;span class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;path d="M4 17c4-8 6 4 8-4s4 4 8-2" /&gt;
+            &lt;circle cx="4" cy="17" r="1.6" fill="currentColor" stroke="none" /&gt;
+            &lt;circle cx="20" cy="11" r="1.6" fill="currentColor" stroke="none" /&gt;
+          &lt;/svg&gt;
+          开流 &lt;small&gt;OpenFlow CI&lt;/small&gt;
+        &lt;/span&gt;
+        &lt;ul class="navlinks"&gt;
+          &lt;li&gt;&lt;a&gt;文档&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;指南&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;API&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;更新&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;社区&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:8px"&gt;
+        &lt;button class="btn btn-primary btn-sm" type="button"&gt;开始使用&lt;/button&gt;
+        &lt;button class="btn btn-ghost btn-sm" type="button"&gt;在 GitHub 查看&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero：一句话定位 + 主操作 + 虚构项目指标 --&gt;
+    &lt;div class="hero"&gt;
+      &lt;span class="badge badge-soft badge-sm"&gt;开源 · MIT&lt;/span&gt;
+      &lt;h1&gt;让每一次提交，&lt;br /&gt;都在一分钟内跑出结果&lt;/h1&gt;
+      &lt;p&gt;开流 OpenFlow 是一个零配置起步的开源 CI 引擎：提交即触发，流水线即写即跑，从笔记本到自托管集群，同一份配置随处可复现。&lt;/p&gt;
+      &lt;div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"&gt;
+        &lt;button class="btn btn-primary" type="button"&gt;开始使用&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;查看文档&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 项目指标：虚构数字 --&gt;
+    &lt;div class="card bg-base-200 rounded-box"&gt;
+      &lt;div class="stats-grid" style="padding:6px 10px"&gt;
+        &lt;div class="stat-item"&gt;&lt;b&gt;24.8k&lt;/b&gt;&lt;span&gt;Stars&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="stat-item"&gt;&lt;b&gt;3.1k&lt;/b&gt;&lt;span&gt;Forks&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="stat-item"&gt;&lt;b&gt;486&lt;/b&gt;&lt;span&gt;贡献者&lt;/span&gt;&lt;/div&gt;
+        &lt;div class="stat-item"&gt;&lt;b&gt;v2.4.1&lt;/b&gt;&lt;span&gt;最新版本&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 特性卡：6 个 --&gt;
+    &lt;div&gt;
+      &lt;h2 style="font-size:18px;margin:0 0 12px"&gt;为什么选开流&lt;/h2&gt;
+      &lt;div class="feature-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;快速流水线&lt;/h3&gt;
+            &lt;p&gt;YAML 十行起步，提交后默认 15 秒出结果；缓存命中时，前端项目平均构建只要 38 秒。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;circle cx="12" cy="12" r="9" /&gt;
+              &lt;path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;多语言&lt;/h3&gt;
+            &lt;p&gt;Node、Python、Go、Rust、Java 内置运行时镜像；自定义镜像只要一行声明。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;rect x="3" y="4" width="18" height="7" rx="1.5" /&gt;
+              &lt;rect x="3" y="13" width="18" height="7" rx="1.5" /&gt;
+              &lt;line x1="7" y1="7.5" x2="7" y2="7.5" /&gt;
+              &lt;line x1="7" y1="16.5" x2="7" y2="16.5" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;自托管&lt;/h3&gt;
+            &lt;p&gt;单个二进制即可启动一个 Runner；内网、离线气隙环境同样支持，数据不出机房。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M3 12h4l3-8 4 16 3-8h4" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;可观测&lt;/h3&gt;
+            &lt;p&gt;每一步的耗时趋势、失败重试率自动汇总成图；日志保留 90 天，支持按分支筛选。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M10 3.5 4.5 5.5v5H7v3H4.5v5L10 20.5 11.5 15h-3v-3h3L10 3.5z" /&gt;
+              &lt;path d="M14 3.5 19.5 5.5v6H17v3h2.5v6L14 20.5z" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;插件市场&lt;/h3&gt;
+            &lt;p&gt;200+ 官方与社区插件：钉钉提醒、漏洞扫描、小程序预览，一键装进流水线。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box feature-item"&gt;
+          &lt;div class="card-body" style="padding:16px;gap:8px"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6l-7-3z" /&gt;
+              &lt;path d="m9.3 12 2 2 3.6-3.8" /&gt;
+            &lt;/svg&gt;
+            &lt;h3&gt;权限模型&lt;/h3&gt;
+            &lt;p&gt;按仓库、分支、环境三维授权；密钥只在对应流水线运行时解密，日志里自动打码。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 代码区：macOS 窗框 + 安装命令 --&gt;
+    &lt;div class="card bg-base-200 rounded-box"&gt;
+      &lt;div class="card-body" style="padding:0;gap:0;overflow:hidden"&gt;
+        &lt;div style="display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--color-base-300)"&gt;
+          &lt;span style="width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.75"&gt;&lt;/span&gt;
+          &lt;span style="width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.5"&gt;&lt;/span&gt;
+          &lt;span style="width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.28"&gt;&lt;/span&gt;
+          &lt;span style="font-size:12px;opacity:.55;margin-left:6px"&gt;terminal — 三分钟跑起第一条流水线&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;pre class="codebody" style="padding:16px 18px"&gt;&lt;span class="c"&gt;# 全局安装命令行工具&lt;/span&gt;
+$ npm install -g openflow-cli
+&lt;span class="c"&gt;# 在仓库根目录初始化，选择 Node 模板&lt;/span&gt;
+$ openflow init --template node
+&lt;span class="c"&gt;# 手动触发一次主干分支的试跑&lt;/span&gt;
+$ openflow run --branch main&lt;/pre&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 更新日志：3 条 --&gt;
+    &lt;div&gt;
+      &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px"&gt;
+        &lt;h2 style="font-size:18px;margin:0"&gt;最近更新&lt;/h2&gt;
+        &lt;span style="font-size:12px;opacity:.55"&gt;虚构版本号与日期，仅作版式演示&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="card bg-base-200 rounded-box" style="margin-bottom:10px"&gt;
+        &lt;div class="card-body release-row" style="padding:14px 16px"&gt;
+          &lt;h3&gt;&lt;span class="badge badge-primary badge-sm"&gt;v2.4.1&lt;/span&gt; 缓存命中率提升 &lt;time&gt;2026-09-28&lt;/time&gt;&lt;/h3&gt;
+          &lt;p&gt;Node 依赖缓存默认开启，命中时构建步骤跳过下载；Runner 端修复 Windows 下路径中文目录识别的问题。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card bg-base-200 rounded-box" style="margin-bottom:10px"&gt;
+        &lt;div class="card-body release-row" style="padding:14px 16px"&gt;
+          &lt;h3&gt;&lt;span class="badge badge-secondary badge-sm"&gt;v2.4.0&lt;/span&gt; 插件市场上线 &lt;time&gt;2026-08-15&lt;/time&gt;&lt;/h3&gt;
+          &lt;p&gt;新的插件分发协议：一次安装跨团队共享；内置 12 个官方插件，社区插件提交流程同步开放。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="card bg-base-200 rounded-box"&gt;
+        &lt;div class="card-body release-row" style="padding:14px 16px"&gt;
+          &lt;h3&gt;&lt;span class="badge badge-soft badge-sm"&gt;v2.3.2&lt;/span&gt; 密钥打码默认开启 &lt;time&gt;2026-07-02&lt;/time&gt;&lt;/h3&gt;
+          &lt;p&gt;日志与构建产物上传前自动扫描常见密钥形态；按仓库维度提供例外开关，默认全部开启。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 社区 CTA --&gt;
+    &lt;div class="card rounded-box" style="padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"&gt;
+      &lt;h2 style="font-size:20px;margin:0"&gt;参与贡献&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9"&gt;新手指引用中文撰写，第一个 good-first-issue 平均 3 天内得到回应。文档错别字、示例工程、插件，都欢迎顺手提交。&lt;/p&gt;
+      &lt;div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"&gt;
+        &lt;button class="btn btn-primary" type="button"&gt;查看 good-first-issue&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;阅读贡献指南&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;开流 OpenFlow 为虚构开源项目，名称、指标、版本号、更新内容与日期均为示例数据，仅用于展示 github-light 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/github-light/tokens.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="github-light"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="github-light"] 下的全部 --color-* 变量。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<pre class="fence"><code class="lang-css">/*! 灰墨 github-light · 开源门户 —— GitHub Light 中性灰蓝开发者主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 primer/github-vscode-theme（MIT，© 2020 Primer）及其依赖
+   @primer/primitives 官方 light 色板（canvas.default #ffffff、canvas.subtle #f6f8fa、
+   border.default #d1d9e0、fg.default #1f2328、fg.muted #59636e、accent #0969da、
+   success.emphasis #1f883d、done #8250df、attention #9a6700、danger #cf222e）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="github-light"&gt; 即整站换肤。 */
+
+[data-theme="github-light"] {
+  color-scheme: light;
+
+  /* 底与纸：canvas.default 纯白 / canvas.subtle 浅灰卡片 / border.default 分层 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f6f8fa;
+  --color-base-300: #d1d9e0;
+  --color-base-content: #1f2328;
+
+  /* 主色：accent 链接蓝 #0969da，只留给主操作、链接与选中态 */
+  --color-primary: #0969da;
+  --color-primary-content: #ffffff;
+
+  /* 次色：success.emphasis 按钮绿 #1f883d（GitHub 主按钮绿）；强调色 done 紫 */
+  --color-secondary: #1f883d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #8250df;
+  --color-accent-content: #ffffff;
+
+  /* 中性面：fg.muted 灰 #59636e，用于次要文字与分隔 */
+  --color-neutral: #59636e;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：info 蓝 / success 绿 / warning 琥珀 / error 红，均取官方亮底色 */
+  --color-info: #0969da;
+  --color-info-content: #ffffff;
+  --color-success: #1a7f37;
+  --color-success-content: #ffffff;
+  --color-warning: #9a6700;
+  --color-warning-content: #ffffff;
+  --color-error: #cf222e;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，文档门户取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}</code></pre>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/github-light/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/github-light/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「开源门户（github-light）」的整页。\n\n【场景】\n虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 纯白底与浅灰卡（base-100 #ffffff / base-200 #f6f8fa），分层只靠 1px 浅灰边（base-300 #d1d9e0），不写死任何 hex、不堆投影与营销色块。\n- 主色蓝 #0969da 只给主 CTA、链接与选中态；次色绿 #1f883d 留给「开始/安装」类实心徽章与次要按钮，绝不大面积铺绿。\n- 正文 #1f2328、次要信息用低透明度灰字，标题最多两级、字重中等；文档门户追求信息清晰，不要电商式大标题与堆叠卖点。\n- 代码区是门面：等宽字体用 var(--font-mono) 内联兜底，窗口三圆点用 currentColor 不同透明度表达；不引外部高亮库、不写硬编码语法色。\n- 按钮只写真实动作（开始使用、查看文档、在 GitHub 查看），不写 Primary 这类颜色名；「在 GitHub 查看」做成幽灵文字按钮，页面不出现任何真实品牌 logo。\n- 项目指标（stars/forks/贡献者/版本号）排成一行 stat，数字加粗、标签小灰；凡虚构数据必须在页脚统一声明「示例数据」。\n- 390px 窄屏：顶栏自然折行、特性卡单列、代码块在窗口内换行不横向溢出，卡片保持轻边框风格。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/github-light/tokens.css\">\n\n然后在 \u003chtml data-theme=\"github-light\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"github-light\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"github-light\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"github-light\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 github-light · 开源门户 —— GitHub Light 中性灰蓝开发者主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 primer/github-vscode-theme（MIT，© 2020 Primer）及其依赖\n   @primer/primitives 官方 light 色板（canvas.default #ffffff、canvas.subtle #f6f8fa、\n   border.default #d1d9e0、fg.default #1f2328、fg.muted #59636e、accent #0969da、\n   success.emphasis #1f883d、done #8250df、attention #9a6700、danger #cf222e）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"github-light\"> 即整站换肤。 */\n\n[data-theme=\"github-light\"] {\n  color-scheme: light;\n\n  /* 底与纸：canvas.default 纯白 / canvas.subtle 浅灰卡片 / border.default 分层 */\n  --color-base-100: #ffffff;\n  --color-base-200: #f6f8fa;\n  --color-base-300: #d1d9e0;\n  --color-base-content: #1f2328;\n\n  /* 主色：accent 链接蓝 #0969da，只留给主操作、链接与选中态 */\n  --color-primary: #0969da;\n  --color-primary-content: #ffffff;\n\n  /* 次色：success.emphasis 按钮绿 #1f883d（GitHub 主按钮绿）；强调色 done 紫 */\n  --color-secondary: #1f883d;\n  --color-secondary-content: #ffffff;\n  --color-accent: #8250df;\n  --color-accent-content: #ffffff;\n\n  /* 中性面：fg.muted 灰 #59636e，用于次要文字与分隔 */\n  --color-neutral: #59636e;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：info 蓝 / success 绿 / warning 琥珀 / error 红，均取官方亮底色 */\n  --color-info: #0969da;\n  --color-info-content: #ffffff;\n  --color-success: #1a7f37;\n  --color-success-content: #ffffff;\n  --color-warning: #9a6700;\n  --color-warning-content: #ffffff;\n  --color-error: #cf222e;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，文档门户取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.375rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"github-light\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>开流 OpenFlow · 开源 CI 引擎（github-light 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 github-light 主题完整页面案例：虚构开源项目门户整页。中性灰蓝、卡片轻边框、代码区为招牌，信息清晰不堆营销色块。本页只依赖 daisyUI 与同目录 tokens.css。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 github-light · 开源门户 —— GitHub Light 中性灰蓝开发者主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   色值逐字取自 primer/github-vscode-theme（MIT，© 2020 Primer）及其依赖\n   @primer/primitives 官方 light 色板（canvas.default #ffffff、canvas.subtle #f6f8fa、\n   border.default #d1d9e0、fg.default #1f2328、fg.muted #59636e、accent #0969da、\n   success.emphasis #1f883d、done #8250df、attention #9a6700、danger #cf222e）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"github-light\"> 即整站换肤。 */\n\n[data-theme=\"github-light\"] {\n  color-scheme: light;\n\n  /* 底与纸：canvas.default 纯白 / canvas.subtle 浅灰卡片 / border.default 分层 */\n  --color-base-100: #ffffff;\n  --color-base-200: #f6f8fa;\n  --color-base-300: #d1d9e0;\n  --color-base-content: #1f2328;\n\n  /* 主色：accent 链接蓝 #0969da，只留给主操作、链接与选中态 */\n  --color-primary: #0969da;\n  --color-primary-content: #ffffff;\n\n  /* 次色：success.emphasis 按钮绿 #1f883d（GitHub 主按钮绿）；强调色 done 紫 */\n  --color-secondary: #1f883d;\n  --color-secondary-content: #ffffff;\n  --color-accent: #8250df;\n  --color-accent-content: #ffffff;\n\n  /* 中性面：fg.muted 灰 #59636e，用于次要文字与分隔 */\n  --color-neutral: #59636e;\n  --color-neutral-content: #ffffff;\n\n  /* 语义色：info 蓝 / success 绿 / warning 琥珀 / error 红，均取官方亮底色 */\n  --color-info: #0969da;\n  --color-info-content: #ffffff;\n  --color-success: #1a7f37;\n  --color-success-content: #ffffff;\n  --color-warning: #9a6700;\n  --color-warning-content: #ffffff;\n  --color-error: #cf222e;\n  --color-error-content: #ffffff;\n\n  /* 圆角 / 尺寸 / 边框：小圆角、细边框，文档门户取向 */\n  --radius-selector: 0.375rem;\n  --radius-field: 0.375rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 1;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 20px; }\n    .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; white-space: nowrap; }\n    .brand svg { width: 26px; height: 26px; }\n    .brand small { font-weight: 400; font-size: 11px; opacity: .55; letter-spacing: .5px; }\n    .navlinks { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; list-style: none; }\n    .navlinks a { padding: 4px 8px; border-radius: var(--radius-selector); font-size: 13px; opacity: .8; text-decoration: none; color: inherit; }\n    .navlinks a:hover { background: var(--color-base-200); opacity: 1; }\n    .hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 38px 8px 26px; }\n    .hero h1 { font-size: 36px; line-height: 1.25; margin: 0; letter-spacing: .5px; }\n    .hero p { font-size: 14px; opacity: .7; max-width: 560px; margin: 0; line-height: 1.9; }\n    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }\n    .stat-item { display: flex; flex-direction: column; gap: 2px; padding: 14px 10px; }\n    .stat-item b { font-size: 22px; }\n    .stat-item span { font-size: 12px; opacity: .6; }\n    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }\n    .feature-item { display: flex; flex-direction: column; gap: 8px; }\n    .feature-item svg { width: 30px; height: 30px; }\n    .feature-item h3 { font-size: 14px; margin: 0; }\n    .feature-item p { font-size: 12px; opacity: .65; margin: 0; line-height: 1.8; }\n    .codebody { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 12.5px; line-height: 2.1; white-space: pre-wrap; word-break: break-all; margin: 0; }\n    .codebody .c { opacity: .55; }\n    .release-row { display: flex; flex-direction: column; gap: 6px; }\n    .release-row h3 { font-size: 14px; margin: 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }\n    .release-row p { font-size: 12.5px; opacity: .65; margin: 0; line-height: 1.8; }\n    .release-row time { font-size: 11.5px; opacity: .5; }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 20%, transparent); }\n    @media (max-width: 900px) {\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero h1 { font-size: 26px; }\n      .hero { padding: 26px 4px 18px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏：抽象流线 logo（非任何真实品牌）+ 导航 + 两个文字按钮 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cspan class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003cpath d=\"M4 17c4-8 6 4 8-4s4 4 8-2\" />\n            \u003ccircle cx=\"4\" cy=\"17\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\" />\n            \u003ccircle cx=\"20\" cy=\"11\" r=\"1.6\" fill=\"currentColor\" stroke=\"none\" />\n          \u003c/svg>\n          开流 \u003csmall>OpenFlow CI\u003c/small>\n        \u003c/span>\n        \u003cul class=\"navlinks\">\n          \u003cli>\u003ca>文档\u003c/a>\u003c/li>\n          \u003cli>\u003ca>指南\u003c/a>\u003c/li>\n          \u003cli>\u003ca>API\u003c/a>\u003c/li>\n          \u003cli>\u003ca>更新\u003c/a>\u003c/li>\n          \u003cli>\u003ca>社区\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:8px\">\n        \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">开始使用\u003c/button>\n        \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">在 GitHub 查看\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero：一句话定位 + 主操作 + 虚构项目指标 -->\n    \u003cdiv class=\"hero\">\n      \u003cspan class=\"badge badge-soft badge-sm\">开源 · MIT\u003c/span>\n      \u003ch1>让每一次提交，\u003cbr />都在一分钟内跑出结果\u003c/h1>\n      \u003cp>开流 OpenFlow 是一个零配置起步的开源 CI 引擎：提交即触发，流水线即写即跑，从笔记本到自托管集群，同一份配置随处可复现。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center\">\n        \u003cbutton class=\"btn btn-primary\" type=\"button\">开始使用\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">查看文档\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 项目指标：虚构数字 -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\">\n      \u003cdiv class=\"stats-grid\" style=\"padding:6px 10px\">\n        \u003cdiv class=\"stat-item\">\u003cb>24.8k\u003c/b>\u003cspan>Stars\u003c/span>\u003c/div>\n        \u003cdiv class=\"stat-item\">\u003cb>3.1k\u003c/b>\u003cspan>Forks\u003c/span>\u003c/div>\n        \u003cdiv class=\"stat-item\">\u003cb>486\u003c/b>\u003cspan>贡献者\u003c/span>\u003c/div>\n        \u003cdiv class=\"stat-item\">\u003cb>v2.4.1\u003c/b>\u003cspan>最新版本\u003c/span>\u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 特性卡：6 个 -->\n    \u003cdiv>\n      \u003ch2 style=\"font-size:18px;margin:0 0 12px\">为什么选开流\u003c/h2>\n      \u003cdiv class=\"feature-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M13 2 3 14h7l-1 8 10-12h-7l1-8z\" />\n            \u003c/svg>\n            \u003ch3>快速流水线\u003c/h3>\n            \u003cp>YAML 十行起步，提交后默认 15 秒出结果；缓存命中时，前端项目平均构建只要 38 秒。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003ccircle cx=\"12\" cy=\"12\" r=\"9\" />\n              \u003cpath d=\"M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z\" />\n            \u003c/svg>\n            \u003ch3>多语言\u003c/h3>\n            \u003cp>Node、Python、Go、Rust、Java 内置运行时镜像；自定义镜像只要一行声明。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003crect x=\"3\" y=\"4\" width=\"18\" height=\"7\" rx=\"1.5\" />\n              \u003crect x=\"3\" y=\"13\" width=\"18\" height=\"7\" rx=\"1.5\" />\n              \u003cline x1=\"7\" y1=\"7.5\" x2=\"7\" y2=\"7.5\" />\n              \u003cline x1=\"7\" y1=\"16.5\" x2=\"7\" y2=\"16.5\" />\n            \u003c/svg>\n            \u003ch3>自托管\u003c/h3>\n            \u003cp>单个二进制即可启动一个 Runner；内网、离线气隙环境同样支持，数据不出机房。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M3 12h4l3-8 4 16 3-8h4\" />\n            \u003c/svg>\n            \u003ch3>可观测\u003c/h3>\n            \u003cp>每一步的耗时趋势、失败重试率自动汇总成图；日志保留 90 天，支持按分支筛选。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M10 3.5 4.5 5.5v5H7v3H4.5v5L10 20.5 11.5 15h-3v-3h3L10 3.5z\" />\n              \u003cpath d=\"M14 3.5 19.5 5.5v6H17v3h2.5v6L14 20.5z\" />\n            \u003c/svg>\n            \u003ch3>插件市场\u003c/h3>\n            \u003cp>200+ 官方与社区插件：钉钉提醒、漏洞扫描、小程序预览，一键装进流水线。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box feature-item\">\n          \u003cdiv class=\"card-body\" style=\"padding:16px;gap:8px\">\n            \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M12 3 5 6v5c0 4.5 3 8.4 7 10 4-1.6 7-5.5 7-10V6l-7-3z\" />\n              \u003cpath d=\"m9.3 12 2 2 3.6-3.8\" />\n            \u003c/svg>\n            \u003ch3>权限模型\u003c/h3>\n            \u003cp>按仓库、分支、环境三维授权；密钥只在对应流水线运行时解密，日志里自动打码。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 代码区：macOS 窗框 + 安装命令 -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\">\n      \u003cdiv class=\"card-body\" style=\"padding:0;gap:0;overflow:hidden\">\n        \u003cdiv style=\"display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--color-base-300)\">\n          \u003cspan style=\"width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.75\">\u003c/span>\n          \u003cspan style=\"width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.5\">\u003c/span>\n          \u003cspan style=\"width:11px;height:11px;border-radius:99px;background:currentColor;opacity:.28\">\u003c/span>\n          \u003cspan style=\"font-size:12px;opacity:.55;margin-left:6px\">terminal — 三分钟跑起第一条流水线\u003c/span>\n        \u003c/div>\n        \u003cpre class=\"codebody\" style=\"padding:16px 18px\">\u003cspan class=\"c\"># 全局安装命令行工具\u003c/span>\n$ npm install -g openflow-cli\n\u003cspan class=\"c\"># 在仓库根目录初始化，选择 Node 模板\u003c/span>\n$ openflow init --template node\n\u003cspan class=\"c\"># 手动触发一次主干分支的试跑\u003c/span>\n$ openflow run --branch main\u003c/pre>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 更新日志：3 条 -->\n    \u003cdiv>\n      \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:10px\">\n        \u003ch2 style=\"font-size:18px;margin:0\">最近更新\u003c/h2>\n        \u003cspan style=\"font-size:12px;opacity:.55\">虚构版本号与日期，仅作版式演示\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"card bg-base-200 rounded-box\" style=\"margin-bottom:10px\">\n        \u003cdiv class=\"card-body release-row\" style=\"padding:14px 16px\">\n          \u003ch3>\u003cspan class=\"badge badge-primary badge-sm\">v2.4.1\u003c/span> 缓存命中率提升 \u003ctime>2026-09-28\u003c/time>\u003c/h3>\n          \u003cp>Node 依赖缓存默认开启，命中时构建步骤跳过下载；Runner 端修复 Windows 下路径中文目录识别的问题。\u003c/p>\n        \u003c/div>\n      \u003c/div>\n      \u003cdiv class=\"card bg-base-200 rounded-box\" style=\"margin-bottom:10px\">\n        \u003cdiv class=\"card-body release-row\" style=\"padding:14px 16px\">\n          \u003ch3>\u003cspan class=\"badge badge-secondary badge-sm\">v2.4.0\u003c/span> 插件市场上线 \u003ctime>2026-08-15\u003c/time>\u003c/h3>\n          \u003cp>新的插件分发协议：一次安装跨团队共享；内置 12 个官方插件，社区插件提交流程同步开放。\u003c/p>\n        \u003c/div>\n      \u003c/div>\n      \u003cdiv class=\"card bg-base-200 rounded-box\">\n        \u003cdiv class=\"card-body release-row\" style=\"padding:14px 16px\">\n          \u003ch3>\u003cspan class=\"badge badge-soft badge-sm\">v2.3.2\u003c/span> 密钥打码默认开启 \u003ctime>2026-07-02\u003c/time>\u003c/h3>\n          \u003cp>日志与构建产物上传前自动扫描常见密钥形态；按仓库维度提供例外开关，默认全部开启。\u003c/p>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 社区 CTA -->\n    \u003cdiv class=\"card rounded-box\" style=\"padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center\">\n      \u003ch2 style=\"font-size:20px;margin:0\">参与贡献\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9\">新手指引用中文撰写，第一个 good-first-issue 平均 3 天内得到回应。文档错别字、示例工程、插件，都欢迎顺手提交。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px;justify-content:center\">\n        \u003cbutton class=\"btn btn-primary\" type=\"button\">查看 good-first-issue\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">阅读贡献指南\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">开流 OpenFlow 为虚构开源项目，名称、指标、版本号、更新内容与日期均为示例数据，仅用于展示 github-light 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
