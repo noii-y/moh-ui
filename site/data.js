@@ -2,10 +2,10 @@
 window.MOH_DATA = {
   "generatedAt": "2026-10-17",
   "stats": {
-    "themes": 18,
+    "themes": 30,
     "components": 68,
     "rules": 1,
-    "resources": 87
+    "resources": 99
   },
   "themes": [
     {
@@ -523,6 +523,321 @@ window.MOH_DATA = {
       "inspiration": [],
       "palette": {},
       "slug": "silk",
+      "entry": "demo.html"
+    },
+    {
+      "name": "abyss",
+      "title": "深渊（abyss）",
+      "description": "完整页面案例：虚构物联网运维监控产品「深穹监控 ABYSS OPS」整页。深绿底配磷光绿数据高亮，自绘折线图、可用性环形与节点状态卡；挂 daisyUI 官方主题 data-theme=\"abyss\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "科技",
+        "数据看板",
+        "开发者"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "abyss",
+      "entry": "demo.html"
+    },
+    {
+      "name": "black",
+      "title": "纯黑（black）",
+      "description": "完整页面案例：虚构独立影像工作室「白夜影像 WHITE NIGHT STUDIO」整页。OLED 纯黑底配白灰阶文字与内联简影相框，美术馆级留白；挂 daisyUI 官方主题 data-theme=\"black\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "无彩色",
+        "极简",
+        "品牌",
+        "落地页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "black",
+      "entry": "demo.html"
+    },
+    {
+      "name": "corporate",
+      "title": "睿蓝（corporate）",
+      "description": "完整页面案例：虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme=\"corporate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "商务",
+        "冷调",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "corporate",
+      "entry": "demo.html"
+    },
+    {
+      "name": "everforest",
+      "title": "林间（everforest）",
+      "description": "完整页面案例：虚构笔记应用「林间笔记 Grove Notes」整页。暖纸白底配森林绿主色与柔蓝点缀，三栏应用简影、双链图谱、示例长文与三张定价卡，护眼低对比但正文清晰；页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "护眼",
+        "柔和",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Everforest (sainnhe/everforest)",
+      "url": "https://github.com/sainnhe/everforest/blob/master/autoload/everforest.vim",
+      "inspiration": [],
+      "palette": {
+        "base": "#fdf6e3",
+        "surface": "#f4f0d9",
+        "surface2": "#e6e2cc",
+        "primary": "#8da101",
+        "secondary": "#3a94c5",
+        "accent": "#f57d26"
+      },
+      "slug": "everforest",
+      "entry": "demo.html"
+    },
+    {
+      "name": "forest",
+      "title": "林径（forest）",
+      "description": "完整页面案例：虚构户外装备品牌「野径户外 WILDTRAIL」整页。暖黑底配米白文字与松绿主色，山野层叠线稿为招牌、大圆角圆润；挂 daisyUI 官方主题 data-theme=\"forest\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "品牌",
+        "落地页",
+        "柔和"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "forest",
+      "entry": "demo.html"
+    },
+    {
+      "name": "github-light",
+      "title": "开源门户（github-light）",
+      "description": "完整页面案例：虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "开发",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "GitHub Light (primer/github-vscode-theme)",
+      "url": "https://github.com/primer/github-vscode-theme/blob/main/src/colors.js",
+      "inspiration": [],
+      "palette": {
+        "base": "#ffffff",
+        "surface": "#f6f8fa",
+        "surface2": "#d1d9e0",
+        "primary": "#0969da",
+        "secondary": "#1f883d",
+        "accent": "#8250df"
+      },
+      "slug": "github-light",
+      "entry": "demo.html"
+    },
+    {
+      "name": "gruvbox",
+      "title": "复古做旧（gruvbox）",
+      "description": "完整页面案例：虚构复古技术博客与极客手作工作室「锈键盘 RUSTY KEYS」整页。暖棕底配橙黄招牌色、自绘线稿复古终端 Hero、四篇技术文章卡与三个手作项目卡；挂 daisyUI [data-theme=\"gruvbox\"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "开发者",
+        "手作",
+        "落地页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "gruvbox (morhetz/gruvbox)",
+      "url": "https://github.com/morhetz/gruvbox/blob/master/colors/gruvbox.vim",
+      "inspiration": [],
+      "palette": {
+        "base": "#282828",
+        "surface": "#3c3836",
+        "surface2": "#504945",
+        "primary": "#fe8019",
+        "secondary": "#fabd2f",
+        "accent": "#8ec07c"
+      },
+      "slug": "gruvbox",
+      "entry": "demo.html"
+    },
+    {
+      "name": "kanagawa",
+      "title": "神奈川（kanagawa）",
+      "description": "完整页面案例：虚构日式茶器与艺术品牌「浪见屋 NAMAMIYA」整页。墨色底（#1F1F28）配靛蓝主色、朱赤克制点睛与衬线标题，Hero 为自绘线稿海浪，配三件器物卡、展讯卡、匠人工序与预约 CTA；挂 daisyUI [data-theme=\"kanagawa\"] 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "东方",
+        "品牌",
+        "落地页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "Kanagawa.nvim (rebelot/kanagawa.nvim)",
+      "url": "https://github.com/rebelot/kanagawa.nvim/blob/master/lua/kanagawa/colors.lua",
+      "inspiration": [],
+      "palette": {
+        "base": "#1F1F28",
+        "surface": "#223249",
+        "surface2": "#16161D",
+        "primary": "#7E9CD8",
+        "secondary": "#957FB8",
+        "accent": "#FF5D62"
+      },
+      "slug": "kanagawa",
+      "entry": "demo.html"
+    },
+    {
+      "name": "luxury",
+      "title": "奢金（luxury）",
+      "description": "完整页面案例：虚构高端腕表品牌「时计堂 HELIOS」整页。近黑底配金色衬线标题与内联线稿腕表，留白克制、层级清晰；挂 daisyUI 官方主题 data-theme=\"luxury\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "轻奢",
+        "品牌",
+        "落地页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "luxury",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-gov",
+      "title": "政务（浅色）",
+      "description": "完整页面案例：虚构政务服务大厅「江岸市政务服务网」整页。白底大字、克制政务红、WCAG AAA 对比度（正文 ≥7:1）、大号按钮与粗焦点框，附静态「长辈模式」开关示意；挂 data-theme=\"mo-gov\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "导航",
+        "表单",
+        "亲和"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#ffffff",
+        "surface": "#f3f4f6",
+        "surface2": "#c9cdd4",
+        "primary": "#8f1a1a",
+        "secondary": "#2e5a88",
+        "accent": "#6b4400"
+      },
+      "slug": "mo-gov",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-kids",
+      "title": "童趣（浅色）",
+      "description": "完整页面案例：虚构儿童学习 App「小步学堂」前台。奶油白暖底，天蓝 / 草绿 / 橙红 / 粉紫糖果色只做点缀，大圆角、大图标，含乘火箭穿书星球插画、六门兴趣课卡、闯关打卡勋章激励、家长证言与三档定价；挂 data-theme=\"mo-kids\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "亲和",
+        "圆润",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "oklch(98.2% 0.012 85)",
+        "surface": "oklch(95.8% 0.016 85)",
+        "surface2": "oklch(92.5% 0.020 85)",
+        "primary": "oklch(55% 0.20 50)",
+        "secondary": "oklch(52% 0.14 235)",
+        "accent": "oklch(55% 0.13 335)"
+      },
+      "slug": "mo-kids",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-press",
+      "title": "报刊（浅色）",
+      "description": "完整页面案例：虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与一条克制的报头红，报头双线、双栏正文与竖发丝线分隔，密而不乱；挂 data-theme=\"mo-press\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "纸感",
+        "商务",
+        "留白"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "oklch(97.5% 0.006 90)",
+        "surface": "oklch(95.5% 0.007 90)",
+        "surface2": "oklch(92.5% 0.008 90)",
+        "primary": "oklch(46% 0.15 25)",
+        "secondary": "oklch(58% 0.012 60)",
+        "accent": "oklch(42% 0.012 60)"
+      },
+      "slug": "mo-press",
       "entry": "demo.html"
     }
   ],
@@ -1808,8 +2123,10 @@ window.MOH_DATA = {
   ],
   "themeTags": [
     "暗黑",
+    "表单",
     "餐饮",
     "粗野",
+    "导航",
     "电商首页",
     "东方",
     "粉彩",
@@ -1818,6 +2135,7 @@ window.MOH_DATA = {
     "活动页",
     "极简",
     "经典",
+    "开发",
     "开发者",
     "科技",
     "蓝",
