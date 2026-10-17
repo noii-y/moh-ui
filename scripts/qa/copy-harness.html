@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+  灰墨 · 「复制 AI 指令」按钮自检探针（仓库内置，只读）
+  用法：copy-harness.html?p=ai/<name>.html
+  原理：把目标 AI 页放进同源 iframe（file:// 下同仓库可访问其 DOM），
+  桩接该 frame 的 navigator.clipboard.writeText 捕获按钮真正复制出的文本，
+  再调用按钮的 .click()（同源触发页面主世界监听，绕过隔离世界点不动的问题），
+  顶部绿色 COPY_OK / 红色 COPY_FAIL 即结论，<pre id=out> 显示复制内容。
+  这是因为自动化浏览器运行在隔离世界，直接 .click() 触发不了主世界 addEventListener，
+  同源 iframe 探针里父页可以直接操作子文档 DOM，是可靠的真点验证方式。
+-->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>moh-copy-check</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #e9eaee;
+    font-family: Consolas, "Microsoft YaHei", monospace; }
+  #banner { box-sizing: border-box; padding: 10px 12px; font-size: 13px;
+    line-height: 1.6; white-space: pre-wrap; word-break: break-all; }
+  #banner.ok  { background: #11402b; color: #7cfc8a; }
+  #banner.bad { background: #4a1010; color: #ffb3b3; }
+  #out { margin: 10px; padding: 12px; background: #fff; border: 1px solid #ccc;
+    border-radius: 8px; font-size: 12px; white-space: pre-wrap; word-break: break-word;
+    max-height: 60vh; overflow: auto; }
+</style>
+</head>
+<body>
+  <div id="banner" class="bad">…</div>
+  <pre id="out"></pre>
+  <iframe id="f" style="display:none"></iframe>
+  <script>
+    const p = new URLSearchParams(location.search).get("p") || "";
+    const repoRoot = new URL("../../", location.href);
+    const target = new URL(p, repoRoot).href;
+    const f = document.getElementById("f"), ban = document.getElementById("banner"),
+      out = document.getElementById("out");
+
+    function finish(ok, msg, captured) {
+      ban.className = ok ? "ok" : "bad";
+      ban.textContent = msg;
+      document.title = ok ? "COPY_OK" : "COPY_FAIL";
+      if (captured) out.textContent = captured;
+    }
+
+    f.src = target;
+    f.onload = function () {
+      setTimeout(function () {
+        const d = f.contentDocument, w = f.contentWindow;
+        if (!d || !d.getElementById) { finish(false, "COPY_FAIL：iframe 文档不可访问（缺 --allow-file-access-from-files？）"); return; }
+        let captured = null;
+        try {
+          // 强制走 clipboard.writeText 分支以便捕获（file:// 下真实环境会走 execCommand 兜底，
+          // 两条路径产出的文本一致；这里验证按钮处理逻辑与文本内容）
+          try { Object.defineProperty(w, "isSecureContext", { value: true, configurable: true }); } catch (e) {}
+          Object.defineProperty(w.navigator, "clipboard", {
+            value: { writeText: function (t) { captured = t; return Promise.resolve(); } },
+            configurable: true
+          });
+        } catch (e) {
+          finish(false, "桩接 clipboard 失败：" + e.message);
+          return;
+        }
+        const btn = d.getElementById("copy-btn");
+        if (!btn) { finish(false, "COPY_FAIL：找不到 #copy-btn"); return; }
+        btn.click();
+        setTimeout(function () {
+          if (!captured) { finish(false, "COPY_FAIL：点击后未捕获到剪贴板文本"); return; }
+          // （此回调在点击后 200ms 执行）
+          // 脚本开闭标签必须配对：参考结构里若含完整脚本标签（如 chart-card 的 echarts CDN），
+          // 复制出的文本里开标签数应等于闭标签数，证明没有被提前截断；普通件为 0:0。
+          const opens = (captured.match(/<[s]cript/g) || []).length;
+          const closes = (captured.match(/<\/[s]cript>/g) || []).length;
+          const checks = {
+            "开场白": captured.includes("请用 daisyUI 5"),
+            "场景规格": captured.includes("【场景】") && captured.includes("【精确规格】"),
+            "参考结构": captured.includes("【参考结构】"),
+            "审美硬边界": captured.includes("【灰墨审美硬边界"),
+            "交付要求": captured.includes("【交付要求】"),
+            "无 unicode 转义残留": !captured.includes("\\u003c"),
+            "script 标签开闭配对": opens === closes
+          };
+          const bad = Object.keys(checks).filter((k) => !checks[k]);
+          const lines = Object.keys(checks).map((k) => (checks[k] ? "✓ " : "✗ ") + k);
+          if (bad.length) {
+            finish(false, "COPY_OK 但内容校验未过：" + bad.join(", ") +
+              "\n长度=" + captured.length + "\n" + lines.join("\n"), captured);
+          } else {
+            finish(true, "COPY_OK  长度=" + captured.length + "  target=" + p + "\n" + lines.join("\n"), captured);
+          }
+        }, 200);
+      }, 250);
+    };
+  </script>
+</body>
+</html>
