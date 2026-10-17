@@ -3,19 +3,18 @@
   "name": "mo-slate",
   "type": "theme",
   "title": "纯净灰阶（浅色）",
-  "description": "无彩色零色相灰阶，深炭文字，适合写作 / 效率 / 文档类产品与中性商务后台。",
+  "description": "完整页面案例：无彩色灰阶文档中心整页。浅灰白底 + 深炭文字，零色相专注阅读，适合文档站 / 帮助中心 / 写作效率类产品；挂 data-theme=\"mo-slate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["灰阶", "极简", "无彩色", "专注"],
-  "inspiration": ["https://www.shadcn.io/theme/clean-slate"],
   "base": "mo-slate",
   "source": {
     "origin": "original",
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "由旧 --moh-* 色板体系重做为 daisyUI 5 主题变量（[data-theme=mo-slate] 覆盖 --color-* 等），配文档中心整页案例（demo.html）；灵感来源 shadcn.io Clean Slate 灰阶取向（仅风格参考，未搬运色值）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
