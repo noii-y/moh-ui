@@ -1,40 +1,21 @@
-# mo-zhongshi · 新中式（后台版浅色）
+# 新中式（mo-zhongshi · 浅色）
 
-> 灰墨 MoH_UI 主题包。米宣纸底、朱砂主色、墨褐文字、东方留白气质——把中式美学落进后台，而不只是做个门面。
-> 风格参考：中国风设计理念（配色为灰墨自研，仅风格理念参考）。
-
-## 适用场景
-
-- 文化 / 文旅 / 非遗 / 文创类产品后台
-- 国学教育、茶饮、中式品牌运营台
-- 需要"东方气质但不浮夸"的企业门户
-
-## 使用方法（给 AI 编程工具）
-
-1. 引入本主题的 `tokens.css` 与 `base.css`：
-
-   ```html
-   <link rel="stylesheet" href="tokens.css" />
-   <link rel="stylesheet" href="base.css" />
-   ```
-
-2. 将项目中与 `--moh-*` 冲突的旧变量、内联颜色、硬编码样式替换为变量引用；
-3. 组件类名统一 `moh-` 前缀（`moh-btn` / `moh-input` / `moh-table` / `moh-card` 等）；
-4. 应用后按自检清单自查：背景米宣纸、主文字墨褐、组件与 `preview.html` 一致、对比度 ≥4.5、无报错。
-
-## 设计变量摘要
-
-- 页面底 `#f6f3ec`（米宣纸），卡片 `#fffdf8`（暖白），主文字 `#3f3730`（墨褐），次级文字 `#756a58`
-- 主色 `#c23b22`（朱砂红，白字对比 5.1:1）；状态色用标准语义色
-- 字号阶 12/13/14/16/20/24，间距 8px 网格，圆角 4/6/8，控件高 32px
+米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白的东方气质主题。适合茶叶 / 文创 / 文旅类电商首页与品牌站。
 
 ## 文件
 
-- `tokens.css` — 设计变量
-- `base.css` — 按钮 / 输入 / 表格 / 卡片基础样式
-- `preview.html` — 预览基准页（应用后对照检查）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、中性小圆角、1px 细边框）
+- `demo.html` — 完整页面案例：茶叶电商首页（顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区 + 页脚），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 来源声明
+## 使用（在已有 daisyUI 的项目里换肤）
 
-- 风格理念：中国风设计——仅理念参考，配色为自研
-- 色板设计：灰墨 MoH_UI（MIT）
+```html
+<html data-theme="mo-zhongshi">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
+```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；标题想要东方感时，把 `demo.html` 里的 `.song`（`font-family:"Songti SC","STSong","SimSun",serif`）类一并复制到自己的标题元素上，正文仍保持无衬线；商品图位与插画一律用内联线性 SVG，stroke 取墨褐 `#756a58`，不要纯色块。

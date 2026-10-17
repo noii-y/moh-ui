@@ -1,59 +1,50 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-zhongshi（新中式 · 后台版浅色）
-   风格参考：中国风设计理念（Han Design / 宋明美学，配色自研）
-   特征：米宣纸底、朱砂主色、墨褐文字、东方留白气质
-   ============================================================ */
+/*! 灰墨 mo-zhongshi · 新中式（浅色）—— 文创 / 茶叶电商首页主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-zhongshi"> 即整站换肤。
+   气质：米宣纸底、朱砂主色、墨褐文字、青瓷点缀、克制留白。
+   灵感来源：中式宋明美学与茶饮品牌页面（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义（东方色） ---------- */
-  --moh-canvas: #f6f3ec;          /* 页面底（米宣纸） */
-  --moh-surface: #fffdf8;         /* 卡片 / 面板（暖白） */
-  --moh-surface-2: #efe9dd;       /* 悬浮 / 次级底（浅米） */
-  --moh-border: #e0d8c6;          /* 常规描边（米棕） */
-  --moh-border-strong: #c9bda3;   /* 强调描边 */
-  --moh-border-width: 1px;
-  --moh-ink: #3f3730;             /* 主文字（墨褐） */
-  --moh-muted: #756a58;           /* 次级文字（体检校准 4.69） */
-  --moh-primary: #c23b22;         /* 主色（朱砂红，白字 5.1） */
-  --moh-primary-hover: #d6492e;
-  --moh-primary-muted: #f4e3da;   /* 主色浅底（浅赭） */
-  --moh-success: #16a34a;
-  --moh-warning: #d97706;
-  --moh-danger: #dc2626;
+[data-theme="mo-zhongshi"] {
+  color-scheme: light;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 底与纸：米宣纸三层，层次靠暖明度 */
+  --color-base-100: #f6f3ec;
+  --color-base-200: #fffdf8;
+  --color-base-300: #efe9dd;
+  --color-base-content: #3f3730;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 主色：朱砂 */
+  --color-primary: #c23b22;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  /* 次色：茶褐 / 赭石 */
+  --color-secondary: #8a6d4a;
+  --color-secondary-content: #ffffff;
 
-  /* ---------- 圆角（端正） ---------- */
-  --moh-radius-sm: 4px;
-  --moh-radius-md: 6px;
-  --moh-radius-lg: 8px;
+  /* 强调色：青瓷低饱和绿 */
+  --color-accent: #6b8e7f;
+  --color-accent-content: #ffffff;
 
-  /* ---------- 阴影（轻柔） ---------- */
-  --moh-shadow-sm: 0 1px 3px rgba(63, 55, 48, 0.06);
-  --moh-shadow-md: 0 6px 16px rgba(63, 55, 48, 0.08);
-  --moh-shadow-lg: 0 12px 32px rgba(63, 55, 48, 0.10);
+  --color-neutral: #3f3730;
+  --color-neutral-content: #ffffff;
 
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 语义色 */
+  --color-info: #3a6ea5;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 边框：中性小圆角、1px 细边 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.375rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
 }

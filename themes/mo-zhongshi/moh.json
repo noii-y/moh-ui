@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "name": "mo-zhongshi",
   "type": "theme",
-  "title": "新中式（后台版浅色）",
-  "description": "米宣纸底、朱砂主色、墨褐文字，东方留白气质的中式后台。",
-  "styleTags": ["新中式", "东方", "米宣纸", "朱砂"],
+  "title": "新中式（浅色）",
+  "description": "完整页面案例：茶叶文创电商首页。米宣纸底 + 朱砂主色 + 墨褐文字 + 衬线留白，顶栏 + 水墨 hero + 分类 + 商品网格 + 品牌故事留白区；挂 data-theme=\"mo-zhongshi\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["新中式", "东方", "米宣纸", "朱砂", "电商首页"],
   "inspiration": ["https://www.shadcn.io/theme"],
   "base": "mo-zhongshi",
   "source": {
@@ -12,10 +12,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "从旧 --moh-* 变量体系迁移为 daisyUI 5 主题变量（[data-theme=mo-zhongshi] 覆盖 --color-*、中性小圆角、1px 边框）；删除旧 base.css 与色块 preview.html，重做为完整茶叶电商首页案例 demo.html（标题衬线栈、印章与商品线性插画由页面自定义类实现）；风格参考宋明美学与茶饮品牌页（仅风格参考，非品牌素材）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }
