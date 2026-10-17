@@ -1,18 +1,21 @@
 # 宣纸 · 浅色（mo-light）
 
-风格锚点：Stripe。浅色后台主题，适合 SaaS 控制台 / 表单密集型后台。
+Stripe 风格浅色 SaaS 控制台主题。浅灰白底 + 白色卡片 + 克制蓝主色，适合 SaaS 控制台 / 计费页 / 表单密集型后台。
 
 ## 文件
 
-- `tokens.css` — 主题变量（色彩 / 字体 / 字号 / 间距 / 圆角 / 阴影）
-- `base.css` — 基础组件样式（按钮 / 输入 / 表格 / 卡片）
-- `preview.html` — 预览基准页（体检与自检对照）
+- `tokens.css` — daisyUI 5 主题变量（覆盖 `--color-*`、圆角、尺寸、边框）
+- `demo.html` — 完整页面案例：SaaS 计费控制台整页（侧栏 + 顶栏 + 套餐卡 + 用量与密钥 + 账单表 + 支付方式），全部用 daisyUI 组件拼装、零依赖、零 JS
 
-## 使用
-
-引入 `tokens.css` + `base.css` 即可：
+## 使用（在已有 daisyUI 的项目里换肤）
 
 ```html
-<link rel="stylesheet" href="./tokens.css" />
-<link rel="stylesheet" href="./base.css" />
+<html data-theme="mo-light">
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@5" />
+    <link rel="stylesheet" href="tokens.css" />
+  </head>
+</html>
 ```
+
+只引入 daisyUI 与本主题两个 CSS 即可整站换肤；`demo.html` 整页可直接复制（结构 + 类名）当后台页模板。

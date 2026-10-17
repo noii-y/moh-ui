@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="mo-light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>计费总览 · 灰墨云控制台（mo-light 主题案例）</title>
+  <meta name="description" content="灰墨 mo-light 主题完整页面案例：Stripe 风格浅色 SaaS 计费控制台。本页只依赖 daisyUI 与 mo-light 主题，展示真实后台整页效果。" />
+  <link rel="stylesheet" href="../../vendor/daisyui.css" />
+  <link rel="stylesheet" href="tokens.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .shell { display: flex; min-height: 100vh; }
+    .side { width: 220px; flex: none; border-inline-end: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 18px 12px; display: flex; flex-direction: column; gap: 14px; }
+    .brand { font-size: 15px; font-weight: 700; padding: 2px 12px 8px; display: flex; align-items: center; gap: 8px; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; }
+    .main { flex: 1; min-width: 0; padding: 20px 24px 32px; display: flex; flex-direction: column; gap: 16px; }
+    .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .plan-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .usage-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .usage-seg { display: flex; align-items: center; gap: 10px; }
+    .usage-label { width: 64px; flex: none; font-size: 13px; opacity: .65; }
+    .tbl-wrap { overflow-x: auto; }
+    .tbl-wrap .badge { white-space: nowrap; }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
+    .key-box { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: .375rem; padding: 10px 12px; }
+    .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); font-size: 13px; }
+    .pay-box { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: .375rem; padding: 12px 14px; }
+    .pay-brand { width: 34px; height: 22px; border-radius: 4px; background: var(--color-neutral); color: var(--color-neutral-content); display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; letter-spacing: .5px; flex: none; }
+    @media (max-width: 900px) {
+      .shell { flex-direction: column; }
+      .side { width: auto; border-inline-end: 0; border-block-end: 1px solid var(--color-base-300); flex-direction: row; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .brand { flex: none; padding: 0 12px 0 4px; }
+      .side .menu { flex-direction: row; flex-wrap: wrap; width: auto; gap: 4px; }
+      .side .menu li a { white-space: nowrap; }
+      .main { padding: 16px 14px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+
+    <!-- 侧栏导航 -->
+    <aside class="side">
+      <div class="brand"><span class="brand-mark">墨</span>灰墨云</div>
+      <ul class="menu" style="width:100%;padding:0">
+        <li><a>概览</a></li>
+        <li><a>项目</a></li>
+        <li><a>用量统计</a></li>
+        <li><a class="menu-active">计费</a></li>
+        <li><a>团队成员</a></li>
+        <li><a>设置</a></li>
+      </ul>
+    </aside>
+
+    <!-- 主区 -->
+    <div class="main">
+
+      <!-- 顶栏 -->
+      <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+        <div class="navbar-start">
+          <span style="font-size:13px;opacity:.65">计费 · 最近账单周期</span>
+        </div>
+        <div class="navbar-end" style="gap:10px">
+          <label class="input input-sm" style="display:flex;align-items:center;gap:8px;width:230px">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:14px;height:14px;opacity:.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M17 10.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" /></svg>
+            <input type="search" placeholder="搜索账单或密钥…" style="flex:1;min-width:0;background:none;border:0;outline:none;color:inherit;font-size:13px" />
+          </label>
+          <button class="btn btn-ghost btn-sm" type="button">
+            通知
+            <span class="badge badge-sm badge-primary">2</span>
+          </button>
+          <div class="avatar avatar-placeholder">
+            <div style="width:32px;height:32px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:12px;background:var(--color-neutral);color:var(--color-neutral-content)">高</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 标题行 -->
+      <div class="row">
+        <div>
+          <h1 style="font-size:20px;font-weight:700;margin:0">计费总览</h1>
+          <p style="font-size:13px;opacity:.6;margin:4px 0 0">管理套餐、用量与付款方式（示例数据）</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-ghost btn-sm" type="button">导出账单</button>
+          <button class="btn btn-primary btn-sm" type="button">升级套餐</button>
+        </div>
+      </div>
+
+      <!-- 当前套餐卡 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:8px">
+          <div class="row">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px">
+                <h2 style="font-size:15px;font-weight:700;margin:0">专业版</h2>
+                <span class="badge badge-soft badge-primary">当前套餐</span>
+              </div>
+              <p style="font-size:13px;opacity:.65;margin:4px 0 0">¥99 / 月 · 下一次续费：2026 年 11 月 1 日</p>
+            </div>
+            <button class="btn btn-primary btn-sm" type="button">续费套餐</button>
+          </div>
+          <div class="plan-row" style="margin-top:6px">
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:13px;font-weight:600">基础版</div>
+                <div style="font-size:18px;font-weight:700">¥0<span style="font-size:12px;font-weight:400;opacity:.6"> / 月</span></div>
+                <div style="font-size:12px;opacity:.6">1 个项目 · 1 万次 API / 月</div>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-primary)">
+              <div class="card-body" style="padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px">专业版 <span class="badge badge-primary badge-sm">在用</span></div>
+                <div style="font-size:18px;font-weight:700">¥99<span style="font-size:12px;font-weight:400;opacity:.6"> / 月</span></div>
+                <div style="font-size:12px;opacity:.6">10 个项目 · 100 万次 API / 月</div>
+              </div>
+            </div>
+            <div class="card bg-base-100" style="border:1px solid var(--color-base-300)">
+              <div class="card-body" style="padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+                <div style="font-size:13px;font-weight:600">团队版</div>
+                <div style="font-size:18px;font-weight:700">¥299<span style="font-size:12px;font-weight:400;opacity:.6"> / 月</span></div>
+                <div style="font-size:12px;opacity:.6">不限项目 · 500 万次 API / 月</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 用量与密钥 -->
+      <div class="usage-row">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h2 style="font-size:15px;font-weight:700;margin:0">本月用量</h2>
+              <span class="badge badge-soft badge-sm">2026 年 10 月</span>
+            </div>
+            <div class="usage-seg">
+              <span class="usage-label">API 调用</span>
+              <progress class="progress progress-primary" style="flex:1;height:8px" value="68" max="100"></progress>
+              <span style="font-size:13px;opacity:.7;width:60px;text-align:right">68 万 / 100 万</span>
+            </div>
+            <div class="usage-seg">
+              <span class="usage-label">团队席位</span>
+              <progress class="progress progress-primary" style="flex:1;height:8px;color:var(--color-secondary)" value="4" max="10"></progress>
+              <span style="font-size:13px;opacity:.7;width:60px;text-align:right">4 / 10</span>
+            </div>
+            <div class="usage-seg">
+              <span class="usage-label">存储空间</span>
+              <progress class="progress progress-primary" style="flex:1;height:8px;color:var(--color-accent)" value="32" max="100"></progress>
+              <span style="font-size:13px;opacity:.7;width:60px;text-align:right">3.2 GB / 10 GB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <h2 style="font-size:15px;font-weight:700;margin:0">API 密钥</h2>
+              <button class="btn btn-soft btn-sm" type="button">创建密钥</button>
+            </div>
+            <div class="key-box">
+              <span class="mono">sk-live-••••••8f3a</span>
+              <button class="btn btn-ghost btn-sm" type="button">复制</button>
+            </div>
+            <div class="key-box">
+              <span class="mono">sk-live-••••••c21d</span>
+              <button class="btn btn-ghost btn-sm" type="button">复制</button>
+            </div>
+            <p style="font-size:12px;opacity:.6;margin:0">密钥仅在创建时完整显示一次，遗失后请直接删除重建。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 账单表 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px 16px 8px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+            <h2 style="font-size:15px;font-weight:700;margin:0">发票与账单</h2>
+            <a class="link" href="#" style="font-size:13px;text-decoration:none">开具发票</a>
+          </div>
+          <div class="tbl-wrap">
+            <table class="table" style="font-size:13px">
+              <thead>
+                <tr style="opacity:.6;font-size:12px">
+                  <th>发票号</th><th>账单周期</th><th>金额</th><th>状态</th><th style="text-align:right">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="mono">INV-2026-1014</td><td>2026 年 9 月</td><td>¥99.00</td><td><span class="badge badge-soft badge-success">已支付</span></td><td style="text-align:right"><a class="link" href="#" style="font-size:13px;text-decoration:none">下载 PDF</a></td></tr>
+                <tr><td class="mono">INV-2026-0914</td><td>2026 年 8 月</td><td>¥99.00</td><td><span class="badge badge-soft badge-success">已支付</span></td><td style="text-align:right"><a class="link" href="#" style="font-size:13px;text-decoration:none">下载 PDF</a></td></tr>
+                <tr><td class="mono">INV-2026-0814</td><td>2026 年 7 月</td><td>¥138.50</td><td><span class="badge badge-soft badge-success">已支付</span></td><td style="text-align:right"><a class="link" href="#" style="font-size:13px;text-decoration:none">下载 PDF</a></td></tr>
+                <tr><td class="mono">INV-2026-0714</td><td>2026 年 6 月</td><td>¥99.00</td><td><span class="badge badge-soft badge-warning">待开票</span></td><td style="text-align:right"><a class="link" href="#" style="font-size:13px;text-decoration:none">申请开票</a></td></tr>
+                <tr><td class="mono">INV-2026-0614</td><td>2026 年 5 月</td><td>¥99.00</td><td><span class="badge badge-soft badge-neutral">已退款</span></td><td style="text-align:right"><a class="link" href="#" style="font-size:13px;text-decoration:none">下载 PDF</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 支付方式 -->
+      <div class="card bg-base-200 rounded-box">
+        <div class="card-body" style="padding:16px;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h2 style="font-size:15px;font-weight:700;margin:0">支付方式</h2>
+            <button class="btn btn-soft btn-sm" type="button">添加支付方式</button>
+          </div>
+          <div class="pay-box">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span class="pay-brand">VISA</span>
+              <div>
+                <div style="font-size:13px;font-weight:600">尾号 4242 · 个人卡</div>
+                <div style="font-size:12px;opacity:.6;margin-top:2px">有效期 09 / 28</div>
+              </div>
+            </div>
+            <span class="badge badge-soft badge-primary">默认</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="foot">以上为示例数据，仅用于展示 mo-light 主题整页效果 · 灰墨 MoH_UI</p>
+    </div>
+  </div>
+</body>
+</html>

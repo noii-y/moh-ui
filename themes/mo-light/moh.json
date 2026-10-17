@@ -3,7 +3,7 @@
   "name": "mo-light",
   "type": "theme",
   "title": "宣纸（浅色）",
-  "description": "浅灰底 + 白卡 + 蓝色主色，Stripe 风格取向，适合 SaaS 控制台 / 表单密集型后台。",
+  "description": "完整页面案例：Stripe 风格浅色 SaaS 计费控制台。浅灰白底 + 白卡 + 克制蓝主色，整页含侧栏导航、套餐卡、用量与 API 密钥、账单表与支付方式；挂 data-theme=\"mo-light\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["浅色", "SaaS 控制台", "Stripe 风格"],
   "base": "mo-light",
   "source": {
@@ -11,10 +11,10 @@
     "upstream": null,
     "url": null,
     "license": "MIT",
-    "changes": null
+    "changes": "重做为 daisyUI 5 主题变量（[data-theme=mo-light] 覆盖 --color-* 等）+ 完整页面案例（SaaS 计费控制台 demo.html）；灵感来源 Stripe 浅色气质（仅风格参考）。"
   },
   "dependencies": [],
-  "files": ["tokens.css", "base.css", "preview.html", "README.md"],
+  "files": ["tokens.css", "demo.html", "README.md"],
   "audit": 100,
   "verified": false
 }

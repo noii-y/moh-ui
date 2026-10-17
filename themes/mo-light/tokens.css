@@ -1,59 +1,45 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-light（宣纸 · 浅色）
-   风格锚点：Stripe（公开 token 参考 awesome-design-md，MIT）
-   参数初稿：见《开发计划》6.1；阶段 1 用体检脚本 + 人工校准后定稿
-   ============================================================ */
+/*! 灰墨 mo-light · 宣纸（浅色）—— Stripe 取向 SaaS 控制台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-light"> 即整站换肤。
+   灵感来源：Stripe 式浅灰白卡 + 克制蓝的干净气质（仅风格参考，非品牌素材）。 */
 
-:root {
-  /* ---------- 色彩语义 ---------- */
-  --moh-canvas: #f6f8fa;          /* 页面底 */
-  --moh-surface: #ffffff;         /* 卡片 / 面板 */
-  --moh-surface-2: #f1f3f5;       /* 悬浮 / 次级底 */
-  --moh-border: #e4e7ec;          /* 常规描边 */
-  --moh-border-strong: #c9cfd8;   /* 强调描边 */
-  --moh-border-width: 1px;        /* 描边宽度（风格主题可调，粗野主题 3–4px） */
-  --moh-ink: #1a202c;             /* 主文字 */
-  --moh-muted: #60698a;           /* 次级文字（体检校准：原 #64748b 在 canvas 上对比度 4.47 < 4.5） */
-  --moh-primary: #2563eb;         /* 主色 */
-  --moh-primary-hover: #1d4ed8;   /* 主色悬浮 */
-  --moh-primary-muted: #eff6ff;   /* 主色浅底（选中态底） */
-  --moh-success: #16a34a;
-  --moh-warning: #d97706;
-  --moh-danger: #dc2626;
+[data-theme="mo-light"] {
+  /* 底与纸：浅灰三层，白卡浮在灰底上，层次靠明度 */
+  --color-base-100: #f6f8fa;
+  --color-base-200: #ffffff;
+  --color-base-300: #f1f3f5;
+  --color-base-content: #1a202c;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 主色：克制的蓝，只留给主操作与选中态 */
+  --color-primary: #2563eb;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 次色 / 强调色：蓝灰与天蓝，用于次级元素与数据高亮 */
+  --color-secondary: #64748b;
+  --color-secondary-content: #ffffff;
+  --color-accent: #0ea5e9;
+  --color-accent-content: #083344;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  --color-neutral: #334155;
+  --color-neutral-content: #ffffff;
 
-  /* ---------- 圆角（4–8px） ---------- */
-  --moh-radius-sm: 4px;
-  --moh-radius-md: 6px;
-  --moh-radius-lg: 8px;
+  /* 语义色：白底上的标准可读色 */
+  --color-info: #0284c7;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning: #d97706;
+  --color-warning-content: #ffffff;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
 
-  /* ---------- 阴影（只给浮动元素：弹窗 / 下拉 / 悬浮卡） ---------- */
-  --moh-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
-  --moh-shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
-  --moh-shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.12);
-
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，SaaS 取向 */
+  --radius-selector: .375rem;
+  --radius-field: .25rem;
+  --radius-box: .5rem;
+  --size-selector: .25rem;
+  --size-field: .25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
