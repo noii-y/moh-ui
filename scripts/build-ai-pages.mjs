@@ -309,14 +309,16 @@ pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
 
 function buildHtml(c, md, promptText) {
   const englishName = c.name.replace(/^daisyui-/, "");
-  const demoUrl = `${BASE}/components/${c.slug}/${c.entry}`;
+  const demoUrl = c.demoUrl || `${BASE}/components/${c.slug}/${c.entry}`;
+  // 主题 title 已自带「（name）」，避免再追加一次造成双括号
+  const titleStr = c.title.includes(`（${englishName}）`) ? c.title : `${c.title}（${englishName}）`;
   const body = mdToHtml(md);
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${c.title}（${englishName}）· AI 指令 · 灰墨 MoH_UI</title>
+<title>${titleStr}· AI 指令 · 灰墨 MoH_UI</title>
 <meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「${c.title}」组件。${esc(c.description)}">
 <link rel="alternate" type="text/markdown" href="${englishName}.md">
 <link rel="describedby" href="../llms.txt">
@@ -367,13 +369,40 @@ function themeTitleWithName(t) {
   return `${base}（${t.name}）`;
 }
 
-function buildThemeDocs(t) {
+/* 读主题整页 demo.html，并把相对底座引用（../../vendor/）替换为线上绝对地址，
+   使嵌入 AI 指令的「完整整页源码」独立保存为 .html 也能直接运行（防卖家秀）。
+   外部/二创主题（hasTokens）的 tokens.css 只有 1~2KB，直接内联为 <style>：
+   否则抽出的整页仍带着相对的 tokens.css，保存到别处或纯文本喂给不联网的 AI 时换肤失效。 */
+function loadThemeDemoHtml(t) {
+  const p = path.join(root, "themes", t.slug, t.entry || "demo.html");
+  let html = fs.readFileSync(p, "utf8").replace(/\.\.\/\.\.\/vendor\//g, `${BASE}/vendor/`);
+  if (t.hasTokens) {
+    const tokensCss = fs.readFileSync(path.join(root, "themes", t.slug, "tokens.css"), "utf8").replace(/\s+$/, "");
+    html = html.replace(/<link[^>]*href="(?:\.\/)?tokens\.css"[^>]*\/?>\s*/, `<style>\n${tokensCss}\n  </style>\n  `);
+  }
+  return html.trim();
+}
+
+/* 主题专属复现红线 aiNotes：直接读 moh.json，不依赖 data.js 是否透传；缺省为空 */
+function loadThemeAiNotes(t) {
+  try {
+    const mj = JSON.parse(fs.readFileSync(path.join(root, "themes", t.slug, "moh.json"), "utf8"));
+    return Array.isArray(mj.aiNotes) ? mj.aiNotes.filter((x) => typeof x === "string" && x.trim()) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function buildThemeDocs(t, commonRules) {
   const desc = stripThemeDesc(t.description);
   const themeName = t.name;
   const isBuiltIn = !t.hasTokens; // caramellatte / silk：daisyUI 内置，无独立 tokens.css
   const tokensCss = t.hasTokens
     ? fs.readFileSync(path.join(root, "themes", t.slug, "tokens.css"), "utf8").replace(/\s+$/, "")
     : null;
+  const demoUrl = `${BASE}/themes/${t.slug}/${t.entry || "demo.html"}`;
+  const demoHtml = loadThemeDemoHtml(t);
+  const notes = loadThemeAiNotes(t);
 
   // 来源与许可证
   let srcLine;
@@ -394,6 +423,50 @@ function buildThemeDocs(t) {
     ? "本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。"
     : `上面的 tokens.css 覆盖 [data-theme="${themeName}"] 下的全部 --color-* 变量。`;
 
+  // 换成其它业务时也必须守住的视觉红线（aiNotes 有则逐条列出，否则给一句兜底）
+  const notesLines = notes.length
+    ? notes.map((n) => "- " + n)
+    : ["- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。"];
+
+  // 一键复制的纯文本指令：小节锚点（【场景】【精确规格】【参考结构】…）与组件指令对齐，
+  // 并内嵌完整可运行整页源码 + 视觉红线，保证复制纯文本（不联网）喂 AI 也能高保真复现，而不是只给换肤说明。
+  const promptText = [
+    `请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「${themeTitleWithName(t)}」的整页。`,
+    "",
+    "【场景】",
+    desc,
+    "我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。",
+    "",
+    "【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）",
+    ...notesLines,
+    "",
+    "【怎么引入主题】",
+    "在 <head> 加这几行：",
+    "",
+    ...linkLines,
+    "",
+    `然后在 <html data-theme="${themeName}"> 挂属性，整页即刻换肤。${afterNote}`,
+    "",
+    "【精确规格】",
+    `- 整页挂 data-theme="${themeName}"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme="${themeName}"] 下的 --color-* 变量。`,
+    "- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。",
+    "- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。",
+    ...(tokensCss ? [
+      "- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：",
+      "```css",
+      tokensCss,
+      "```",
+    ] : []),
+    "",
+    "【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）",
+    "```html",
+    demoHtml,
+    "```",
+    "",
+    commonRules
+  ].join("\n");
+
+  // AI 抓取 / 人看的 Markdown：用法一「复刻整页」（含完整源码）优先，用法二「仅换肤」其次
   const md = [
     `# ${themeTitleWithName(t)} · 灰墨 MoH_UI`,
     "",
@@ -401,7 +474,23 @@ function buildThemeDocs(t) {
     "",
     srcLine,
     "",
-    "## 给 AI 的换肤指令",
+    `**在线整页案例：${demoUrl}**`,
+    "",
+    "## 用法一：照着整页做一个同款（推荐，复现效果最接近）",
+    "",
+    "下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。",
+    "",
+    "### 换成你自己的业务时必须守住的视觉特征",
+    "",
+    ...notesLines,
+    "",
+    "### 完整整页源码",
+    "",
+    "```html",
+    demoHtml,
+    "```",
+    "",
+    "## 用法二：只给已有项目换肤",
     "",
     "① 在 `<head>` 引入 daisyUI 5 底座：",
     "",
@@ -409,43 +498,22 @@ function buildThemeDocs(t) {
     ...linkLines,
     "```",
     "",
-    `② 在 \`<html>\` 标签挂 \`data-theme="${themeName}"\` 即整站换肤：组件类名一行都不用改。${afterNote}`,
+    `② 在 \`<html>\` 挂 \`data-theme="${themeName}"\`，组件类名一行都不用改。${afterNote}`,
     "",
     "③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：",
     "",
     ...(tokensCss ? ["```css", tokensCss, "```"] : ["该主题变量在 daisyui-themes.css 内，无需复制。"]),
     "",
-    `④ 整页案例参考（真实场景成品，页面全部由 daisyUI 组件拼装、零依赖）：${BASE}/themes/${t.slug}/demo.html`,
-    "",
-    `⑤ 审美提示：组件全部走 daisyUI 语义类（\`btn\` / \`card\` / \`table\` / \`input\` 等），不要硬编码颜色；要改颜色就覆盖 [data-theme="${themeName}"] 里的 --color-* 变量。`,
+    "④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。",
     "",
     "---",
     "",
     "## 更多",
     "",
-    `- 完整整页案例（在线页面）：${BASE}/themes/${t.slug}/demo.html`,
+    `- 完整整页案例（在线页面）：${demoUrl}`,
     `- 素材溯源与许可证：${BASE}/site/attributions.html`,
-    `- 主题库（全部 18 套整页案例）：${BASE}/site/themes.html`,
+    `- 主题库：${BASE}/site/themes.html`,
     `- 全站 AI 索引：${BASE}/llms.txt`,
-    ""
-  ].join("\n");
-
-  const promptText = [
-    `请把我的整个前端项目换成「${t.title}」主题（data-theme="${themeName}"）。`,
-    "",
-    desc,
-    "",
-    "【怎么引入】",
-    "在 <head> 加这几行：",
-    "",
-    ...linkLines,
-    "",
-    `然后在 <html data-theme="${themeName}"> 挂属性，整站即刻换肤，组件类名一行都不用改。`,
-    afterNote,
-    "",
-    `【本主题完整变量】（组件全部走 daisyUI 语义类，不要硬编码颜色；要改颜色就覆盖 [data-theme="${themeName}"] 里的 --color-* 变量）`,
-    "",
-    ...(tokensCss ? ["```css", tokensCss, "```"] : ["该主题变量在 daisyui-themes.css 内，无需复制。"]),
     ""
   ].join("\n");
 
@@ -481,9 +549,10 @@ const themeRecords = [];
     process.exit(1);
   }
   for (const t of wanted) {
-    const { md, promptText } = buildThemeDocs(t);
+    const themeDemoUrl = `${BASE}/themes/${t.slug}/${t.entry || "demo.html"}`;
+    const { md, promptText } = buildThemeDocs(t, commonRules);
     // 复用组件 HTML 模板：补 demoUrl 指向 themes/ 整页案例
-    const adapter = { ...t, description: stripThemeDesc(t.description), demoUrl: `${BASE}/themes/${t.slug}/${t.entry || "demo.html"}` };
+    const adapter = { ...t, description: stripThemeDesc(t.description), demoUrl: themeDemoUrl };
     const page = buildHtml(adapter, md, promptText);
     fs.writeFileSync(path.join(aiDir, t.slug + ".md"), md, "utf8");
     fs.writeFileSync(path.join(aiDir, t.slug + ".html"), page, "utf8");
@@ -537,7 +606,7 @@ L.push("# 灰墨 MoH_UI");
 L.push("");
 L.push("> 零依赖、纯 HTML/CSS、可直接复制给 AI 的中文前端组件库，基于 daisyUI 5（MIT）。每个组件都有一个 AI 友好页面，内含完整实现指令（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。把组件链接发给任意 AI（豆包 / Cursor / Claude Code 等），它即可抓取并按你的项目生成；页面里也有一键复制的纯文本指令。");
 L.push("");
-L.push(`- 组件总数：${data.components.length} 个（daisyUI 搬运件 ${data.components.filter((x) => x.origin === "third-party").length} 个 + 灰墨自研增强 ${data.components.filter((x) => x.origin !== "third-party").length} 个），主题 ${data.themes.length} 套，每套含 data-theme 换肤指令与完整变量`);
+L.push(`- 组件总数：${data.components.length} 个（daisyUI 搬运件 ${data.components.filter((x) => x.origin === "third-party").length} 个 + 灰墨自研增强 ${data.components.filter((x) => x.origin !== "third-party").length} 个），主题 ${data.themes.length} 套，每套含完整整页源码、data-theme 换肤指令与主题视觉红线`);
 L.push(`- 全部组件完整指令一次抓取：[llms-full.txt](${BASE}/llms-full.txt)`);
 L.push(`- 在线组件库（可交互预览）：${BASE}/site/components.html`);
 L.push("- 组件页同目录下有同名 `.md`（纯文本版）与 `.html`（人看版），下方链接指向 `.md`");
