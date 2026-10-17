@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "nord-dark",
+  "type": "theme",
+  "title": "北极冷（Nord 暗色版）",
+  "description": "完整页面案例：邮件客户端三栏整页。极地冷灰蓝 + 冰蓝主色，左侧文件夹与标签、中部收件箱列表（未读加粗）、右侧邮件阅读窗；挂 data-theme=\"nord-dark\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "冷调", "专注"],
+  "base": "nord-dark",
+  "source": {
+    "origin": "third-party",
+    "upstream": "Nord",
+    "url": "https://www.nordtheme.com/docs/colors-and-palettes",
+    "license": "MIT",
+    "changes": "将 Nord 完整 16 色板（Polar Night / Snow Storm / Frost / Aurora）映射为 daisyUI 5 主题变量（[data-theme=nord-dark] 覆盖 --color-*、圆角中性），自配深底浅字 *-content 对比色，命名 nord-dark 以区分 daisyUI 官方浅色 nord 简化版，配完整邮件客户端页面案例（demo.html）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
