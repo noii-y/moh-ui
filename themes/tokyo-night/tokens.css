@@ -1,0 +1,48 @@
+/*! 灰墨 tokyo-night · 东京入夜 —— 深蓝紫城市霓虹数据终端主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 folke/tokyonight.nvim 官方 Night 色板（Apache-2.0，© Folke Lemaitre）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="tokyo-night"> 即整站换肤。 */
+
+[data-theme="tokyo-night"] {
+  color-scheme: dark;
+
+  /* 底与纸：Night 深蓝紫三层，bg #1a1b26 / bg_highlight #292e42 / bg_dark #16161e */
+  --color-base-100: #1a1b26;
+  --color-base-200: #292e42;
+  --color-base-300: #16161e;
+  --color-base-content: #c0caf5;
+
+  /* 主色：都市霓虹蓝（blue #7aa2f7），只留给主操作与选中态 */
+  --color-primary: #7aa2f7;
+  --color-primary-content: #16161e;
+
+  /* 次色 / 强调色：品紫（magenta #bb9af7）与夜青（cyan #7dcfff） */
+  --color-secondary: #bb9af7;
+  --color-secondary-content: #16161e;
+  --color-accent: #7dcfff;
+  --color-accent-content: #16161e;
+
+  /* 中性面：terminal_black #414868，用于侧栏与分隔 */
+  --color-neutral: #414868;
+  --color-neutral-content: #c0caf5;
+
+  /* 语义色：官方数据色直接映射 */
+  --color-info: #2ac3de;
+  --color-info-content: #16161e;
+  --color-success: #9ece6a;
+  --color-success-content: #16161e;
+  --color-warning: #e0af68;
+  --color-warning-content: #16161e;
+  --color-error: #f7768e;
+  --color-error-content: #16161e;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，交易终端取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}

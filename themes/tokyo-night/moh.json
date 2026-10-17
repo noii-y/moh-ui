@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "tokyo-night",
+  "type": "theme",
+  "title": "东京入夜",
+  "description": "完整页面案例：股票行情交易终端整页（指数行情条 + 自选股涨跌表 + 五档买卖盘 + 手绘 SVG 日 K 线）。Tokyo Night 深蓝紫霓虹色板，挂 data-theme=\"tokyo-night\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖；涨跌幅按 A 股习惯红涨绿跌。",
+  "styleTags": ["深色", "科技", "数据看板"],
+  "base": "tokyo-night",
+  "source": {
+    "origin": "third-party",
+    "upstream": "Tokyo Night (folke/tokyonight.nvim)",
+    "url": "https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors/storm.lua",
+    "license": "Apache-2.0",
+    "changes": "将 Tokyo Night Night 色板映射为 daisyUI 5 主题变量（[data-theme=tokyo-night] 覆盖 --color-*：base 三层 #1a1b26/#292e42/#16161e、primary 蓝 #7aa2f7、secondary 品紫 #bb9af7、accent 夜青 #7dcfff，语义色取官方青/绿/黄/红），圆角调小贴合终端气质；按 Apache-2.0 义务保留原作者署名与许可证声明（见 README）；另写虚构股票行情终端整页案例（demo.html），全部行情数据为示例，未使用任何金融机构品牌标识。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
