@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "github-light",
+  "type": "theme",
+  "title": "开源门户（github-light）",
+  "description": "完整页面案例：虚构开源 CI 引擎「开流 OpenFlow」整页。纯白底配浅灰卡片与链接蓝，顶栏导航 + Hero 项目指标 + 六张特性卡 + 终端安装命令 + 更新日志，信息清晰不堆营销色块；挂 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "开发", "品牌", "落地页"],
+  "base": "github-light",
+  "aiNotes": [
+    "纯白底与浅灰卡（base-100 #ffffff / base-200 #f6f8fa），分层只靠 1px 浅灰边（base-300 #d1d9e0），不写死任何 hex、不堆投影与营销色块。",
+    "主色蓝 #0969da 只给主 CTA、链接与选中态；次色绿 #1f883d 留给「开始/安装」类实心徽章与次要按钮，绝不大面积铺绿。",
+    "正文 #1f2328、次要信息用低透明度灰字，标题最多两级、字重中等；文档门户追求信息清晰，不要电商式大标题与堆叠卖点。",
+    "代码区是门面：等宽字体用 var(--font-mono) 内联兜底，窗口三圆点用 currentColor 不同透明度表达；不引外部高亮库、不写硬编码语法色。",
+    "按钮只写真实动作（开始使用、查看文档、在 GitHub 查看），不写 Primary 这类颜色名；「在 GitHub 查看」做成幽灵文字按钮，页面不出现任何真实品牌 logo。",
+    "项目指标（stars/forks/贡献者/版本号）排成一行 stat，数字加粗、标签小灰；凡虚构数据必须在页脚统一声明「示例数据」。",
+    "390px 窄屏：顶栏自然折行、特性卡单列、代码块在窗口内换行不横向溢出，卡片保持轻边框风格。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "GitHub Light (primer/github-vscode-theme)",
+    "url": "https://github.com/primer/github-vscode-theme/blob/main/src/colors.js",
+    "license": "MIT",
+    "changes": "将 GitHub Light 色板映射为 daisyUI 5 主题变量（[data-theme=github-light]：base 三层 #ffffff/#f6f8fa/#d1d9e0、base-content #1f2328、primary 链接蓝 #0969da、secondary 主按钮绿 #1f883d、accent done 紫 #8250df，语义色取官方 info #0969da / success #1a7f37 / warning #9a6700 / error #cf222e），色值另经 @primer/primitives 官方 light.css（cdn.jsdelivr.net/npm/@primer/primitives/dist/css/functional/themes/light.css）逐字核对；圆角调小贴合文档门户；按 MIT 义务在本目录附 LICENSE 全文（© 2020 Primer）并在 README 署名；另写虚构开源 CI 引擎整页案例（demo.html），项目名、指标、版本号均为示例数据，未使用 GitHub 章鱼猫等真实品牌资产。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md", "LICENSE"],
+  "audit": 100,
+  "verified": false
+}

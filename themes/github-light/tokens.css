@@ -1,0 +1,51 @@
+/*! 灰墨 github-light · 开源门户 —— GitHub Light 中性灰蓝开发者主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   色值逐字取自 primer/github-vscode-theme（MIT，© 2020 Primer）及其依赖
+   @primer/primitives 官方 light 色板（canvas.default #ffffff、canvas.subtle #f6f8fa、
+   border.default #d1d9e0、fg.default #1f2328、fg.muted #59636e、accent #0969da、
+   success.emphasis #1f883d、done #8250df、attention #9a6700、danger #cf222e）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="github-light"> 即整站换肤。 */
+
+[data-theme="github-light"] {
+  color-scheme: light;
+
+  /* 底与纸：canvas.default 纯白 / canvas.subtle 浅灰卡片 / border.default 分层 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f6f8fa;
+  --color-base-300: #d1d9e0;
+  --color-base-content: #1f2328;
+
+  /* 主色：accent 链接蓝 #0969da，只留给主操作、链接与选中态 */
+  --color-primary: #0969da;
+  --color-primary-content: #ffffff;
+
+  /* 次色：success.emphasis 按钮绿 #1f883d（GitHub 主按钮绿）；强调色 done 紫 */
+  --color-secondary: #1f883d;
+  --color-secondary-content: #ffffff;
+  --color-accent: #8250df;
+  --color-accent-content: #ffffff;
+
+  /* 中性面：fg.muted 灰 #59636e，用于次要文字与分隔 */
+  --color-neutral: #59636e;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：info 蓝 / success 绿 / warning 琥珀 / error 红，均取官方亮底色 */
+  --color-info: #0969da;
+  --color-info-content: #ffffff;
+  --color-success: #1a7f37;
+  --color-success-content: #ffffff;
+  --color-warning: #9a6700;
+  --color-warning-content: #ffffff;
+  --color-error: #cf222e;
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，文档门户取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
