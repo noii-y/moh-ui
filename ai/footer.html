@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>页脚（footer）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「页脚」组件。电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。">
+<link rel="alternate" type="text/markdown" href="footer.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/daisyui/footer/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>页脚（footer） · 灰墨 MoH_UI</h1>
+<blockquote>电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。</blockquote>
+<p>分类：导航　｜　来源：daisyUI（MIT） · <a href="https://daisyui.com/components/footer/" target="_blank" rel="noopener noreferrer">官方文档</a>　｜　依赖：无（零依赖）</p>
+<h2>给 AI 的实现指令</h2>
+<p>请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：电商网站完整页脚。</p>
+<p>【场景】一个电商网站落在页面最底部的完整页脚：左边品牌名加简介和四个服务入口（客服、邮箱、电话、反馈），右边四列分组帮助链接，最下面一行版权。 【怎么排】</p>
+<ul>
+<li>外层用 &lt;footer class="footer sm:footer-horizontal text-base-content"&gt;，默认手机纵排、≥640px 自动横排，不要写 fixed 固定，让它跟在页面内容后面；</li>
+<li>最左边一个 &lt;aside&gt;：品牌名用 &lt;span class="text-xl font-bold"&gt;灰墨商城&lt;/span&gt;，下面一句简介，再下面一排四个圆形服务图标按钮（btn btn-ghost btn-circle btn-sm，单色内联 SVG，每个都带 aria-label）：客服画对话气泡（aria-label="联系客服"）、邮箱画信封（aria-label="发送邮件"）、电话画听筒（aria-label="拨打客服电话"）、反馈画留言气泡（aria-label="意见反馈"）；</li>
+<li>右边每个分组一个 &lt;nav&gt;，列标题写 &lt;h6 class="footer-title"&gt;购物指南&lt;/h6&gt;，下面一组 &lt;a class="link link-hover"&gt;新手指南&lt;/a&gt;，分组用真实业务名（购物指南 / 配送与售后 / 关于我们 / 联系客服）；</li>
+<li>footer 之外、下面单独一行版权：&lt;div class="border-t pt-4 text-sm text-base-content/60"&gt;© 2026 灰墨商城 保留所有权利&lt;/div&gt;，用 border-t 顶一条分隔线；</li>
+<li>手机窄屏（约 390px）下各列自动纵向堆叠，链接和简介都不能横向溢出或被裁切。</li>
+</ul>
+<p>【精确规格】</p>
+<ul>
+<li>文案写真实业务名与动作（新手指南 / 配送说明 / 退换货政策 / 在线客服 / 意见反馈），禁止出现 Primary / 成功 这类颜色名当文案。</li>
+<li>纯图标按钮必须带 aria-label；图标语义要对得上入口用途（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡），不画可识别的第三方品牌 logo。</li>
+<li>用到的类全部真实存在：footer、sm:footer-horizontal、footer-title、link、link-hover、aside、nav、text-xl、font-bold、text-base-content、btn、btn-ghost、btn-circle、btn-sm、flex、gap-2、border-t、pt-4、text-sm、text-base-content/60、h-5、w-5。</li>
+<li>颜色全部走 daisyUI 主题变量，不要写死颜色；除订阅/客服跳转外不要加业务 JS。</li>
+</ul>
+<p>【参考结构】（照此实现，外层标签可按我的项目调整）</p>
+<pre class="fence"><code class="lang-html">&lt;footer class="footer sm:footer-horizontal text-base-content"&gt;
+  &lt;aside&gt;
+    &lt;span class="text-xl font-bold"&gt;灰墨商城&lt;/span&gt;
+    &lt;p&gt;甄选好物，正品保障。&lt;br /&gt;下单后 48 小时内发货，七天无理由退换。&lt;/p&gt;
+    &lt;div class="flex gap-2"&gt;
+      &lt;button class="btn btn-ghost btn-circle btn-sm" aria-label="联系客服"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8.5 12h.01M12 12h.01M15.5 12h.01"/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;button class="btn btn-ghost btn-circle btn-sm" aria-label="发送邮件"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;button class="btn btn-ghost btn-circle btn-sm" aria-label="拨打客服电话"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.382-1.21l1.294-.97c.362-.271.526-.734.417-1.173L6.313 2.852a1.125 1.125 0 00-1.091-.852H3.75A2.25 2.25 0 001.5 4.25v2.5z"/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;button class="btn btn-ghost btn-circle btn-sm" aria-label="意见反馈"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M8 9h8M8 13h6"/&gt;&lt;/svg&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/aside&gt;
+  &lt;nav&gt;
+    &lt;h6 class="footer-title"&gt;购物指南&lt;/h6&gt;
+    &lt;a class="link link-hover"&gt;新手指南&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;如何下单&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;支付方式&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;nav&gt;
+    &lt;h6 class="footer-title"&gt;配送与售后&lt;/h6&gt;
+    &lt;a class="link link-hover"&gt;配送说明&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;退换货政策&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;发票服务&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;nav&gt;
+    &lt;h6 class="footer-title"&gt;关于我们&lt;/h6&gt;
+    &lt;a class="link link-hover"&gt;商家入驻&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;加入我们&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;联系方式&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;nav&gt;
+    &lt;h6 class="footer-title"&gt;联系客服&lt;/h6&gt;
+    &lt;a class="link link-hover"&gt;在线客服&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;常见问题&lt;/a&gt;
+    &lt;a class="link link-hover"&gt;意见反馈&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/footer&gt;
+&lt;div class="border-t pt-4 text-sm text-base-content/60"&gt;© 2026 灰墨商城 保留所有权利&lt;/div&gt;</code></pre>
+<p>【灰墨审美硬边界（必须遵守）】</p>
+<ul>
+<li>控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。</li>
+<li>正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。</li>
+<li>所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。</li>
+<li>正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。</li>
+<li>动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。</li>
+<li>颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。</li>
+</ul>
+<p>【交付要求】</p>
+<ul>
+<li>给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。</li>
+<li>如果我的项目还没引入 daisyUI 5，请先告诉我需要在 &lt;head&gt; 里加一行 daisyui.css 的引用。</li>
+<li>做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。</li>
+</ul>
+<hr>
+<h2>底座引入</h2>
+<p>本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 <code>&lt;head&gt;</code> 加这两行即可：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css"&gt;</code></pre>
+<h2>更多</h2>
+<ul>
+<li>完整中文教程与全部变体（在线页面）：<a href="https://noii-y.github.io/moh-ui/components/daisyui/footer/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/components/daisyui/footer/demo.html</a></li>
+<li>上游官方文档：<a href="https://daisyui.com/components/footer/" target="_blank" rel="noopener noreferrer">https://daisyui.com/components/footer/</a></li>
+<li>全站 68 个组件的 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：电商网站完整页脚。\n\n【场景】一个电商网站落在页面最底部的完整页脚：左边品牌名加简介和四个服务入口（客服、邮箱、电话、反馈），右边四列分组帮助链接，最下面一行版权。\n【怎么排】\n- 外层用 \u003cfooter class=\"footer sm:footer-horizontal text-base-content\">，默认手机纵排、≥640px 自动横排，不要写 fixed 固定，让它跟在页面内容后面；\n- 最左边一个 \u003caside>：品牌名用 \u003cspan class=\"text-xl font-bold\">灰墨商城\u003c/span>，下面一句简介，再下面一排四个圆形服务图标按钮（btn btn-ghost btn-circle btn-sm，单色内联 SVG，每个都带 aria-label）：客服画对话气泡（aria-label=\"联系客服\"）、邮箱画信封（aria-label=\"发送邮件\"）、电话画听筒（aria-label=\"拨打客服电话\"）、反馈画留言气泡（aria-label=\"意见反馈\"）；\n- 右边每个分组一个 \u003cnav>，列标题写 \u003ch6 class=\"footer-title\">购物指南\u003c/h6>，下面一组 \u003ca class=\"link link-hover\">新手指南\u003c/a>，分组用真实业务名（购物指南 / 配送与售后 / 关于我们 / 联系客服）；\n- footer 之外、下面单独一行版权：\u003cdiv class=\"border-t pt-4 text-sm text-base-content/60\">© 2026 灰墨商城 保留所有权利\u003c/div>，用 border-t 顶一条分隔线；\n- 手机窄屏（约 390px）下各列自动纵向堆叠，链接和简介都不能横向溢出或被裁切。\n【精确规格】\n- 文案写真实业务名与动作（新手指南 / 配送说明 / 退换货政策 / 在线客服 / 意见反馈），禁止出现 Primary / 成功 这类颜色名当文案。\n- 纯图标按钮必须带 aria-label；图标语义要对得上入口用途（客服=对话气泡、邮箱=信封、电话=听筒、反馈=留言气泡），不画可识别的第三方品牌 logo。\n- 用到的类全部真实存在：footer、sm:footer-horizontal、footer-title、link、link-hover、aside、nav、text-xl、font-bold、text-base-content、btn、btn-ghost、btn-circle、btn-sm、flex、gap-2、border-t、pt-4、text-sm、text-base-content/60、h-5、w-5。\n- 颜色全部走 daisyUI 主题变量，不要写死颜色；除订阅/客服跳转外不要加业务 JS。\n\n【参考结构】（照此实现，外层标签可按我的项目调整）\n```html\n\u003cfooter class=\"footer sm:footer-horizontal text-base-content\">\n  \u003caside>\n    \u003cspan class=\"text-xl font-bold\">灰墨商城\u003c/span>\n    \u003cp>甄选好物，正品保障。\u003cbr />下单后 48 小时内发货，七天无理由退换。\u003c/p>\n    \u003cdiv class=\"flex gap-2\">\n      \u003cbutton class=\"btn btn-ghost btn-circle btn-sm\" aria-label=\"联系客服\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.8\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z\"/>\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8.5 12h.01M12 12h.01M15.5 12h.01\"/>\u003c/svg>\n      \u003c/button>\n      \u003cbutton class=\"btn btn-ghost btn-circle btn-sm\" aria-label=\"发送邮件\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.8\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75\"/>\u003c/svg>\n      \u003c/button>\n      \u003cbutton class=\"btn btn-ghost btn-circle btn-sm\" aria-label=\"拨打客服电话\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.8\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.382-1.21l1.294-.97c.362-.271.526-.734.417-1.173L6.313 2.852a1.125 1.125 0 00-1.091-.852H3.75A2.25 2.25 0 001.5 4.25v2.5z\"/>\u003c/svg>\n      \u003c/button>\n      \u003cbutton class=\"btn btn-ghost btn-circle btn-sm\" aria-label=\"意见反馈\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.8\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"/>\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M8 9h8M8 13h6\"/>\u003c/svg>\n      \u003c/button>\n    \u003c/div>\n  \u003c/aside>\n  \u003cnav>\n    \u003ch6 class=\"footer-title\">购物指南\u003c/h6>\n    \u003ca class=\"link link-hover\">新手指南\u003c/a>\n    \u003ca class=\"link link-hover\">如何下单\u003c/a>\n    \u003ca class=\"link link-hover\">支付方式\u003c/a>\n  \u003c/nav>\n  \u003cnav>\n    \u003ch6 class=\"footer-title\">配送与售后\u003c/h6>\n    \u003ca class=\"link link-hover\">配送说明\u003c/a>\n    \u003ca class=\"link link-hover\">退换货政策\u003c/a>\n    \u003ca class=\"link link-hover\">发票服务\u003c/a>\n  \u003c/nav>\n  \u003cnav>\n    \u003ch6 class=\"footer-title\">关于我们\u003c/h6>\n    \u003ca class=\"link link-hover\">商家入驻\u003c/a>\n    \u003ca class=\"link link-hover\">加入我们\u003c/a>\n    \u003ca class=\"link link-hover\">联系方式\u003c/a>\n  \u003c/nav>\n  \u003cnav>\n    \u003ch6 class=\"footer-title\">联系客服\u003c/h6>\n    \u003ca class=\"link link-hover\">在线客服\u003c/a>\n    \u003ca class=\"link link-hover\">常见问题\u003c/a>\n    \u003ca class=\"link link-hover\">意见反馈\u003c/a>\n  \u003c/nav>\n\u003c/footer>\n\u003cdiv class=\"border-t pt-4 text-sm text-base-content/60\">© 2026 灰墨商城 保留所有权利\u003c/div>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

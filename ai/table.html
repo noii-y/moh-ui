@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>表格（table）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「表格」组件。后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。">
+<link rel="alternate" type="text/markdown" href="table.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/daisyui/table/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>表格（table） · 灰墨 MoH_UI</h1>
+<blockquote>后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。</blockquote>
+<p>分类：数据展示　｜　来源：daisyUI（MIT） · <a href="https://daisyui.com/components/table/" target="_blank" rel="noopener noreferrer">官方文档</a>　｜　依赖：无（零依赖）</p>
+<h2>给 AI 的实现指令</h2>
+<p>请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：后台订单管理表格（表格）。</p>
+<p>【场景】电商后台的订单管理表格：一列订单号、商品、金额、状态、操作，运营人员每天在这里看单、点发货。 【怎么排】</p>
+<ul>
+<li>表外套 &lt;div class="overflow-x-auto"&gt;：列多窄屏时表内横向滑动，页面本身不溢出。</li>
+<li>状态列用语义徽章（badge badge-sm + badge-success / badge-warning / badge-info / badge-error），不要只用红绿字体。</li>
+<li>操作列放最后：次要动作用 btn btn-xs btn-ghost「查看」，当前状态对应的主动作（待付款→收款、待发货→发货、已发货→跟踪物流）才用 btn-primary；没有该状态动作就留空。</li>
+<li>金额列右对齐、等宽数字，方便逐位比较。</li>
+</ul>
+<p>【精确规格】</p>
+<ul>
+<li>表格本体：&lt;table class="table"&gt;，thead 一行 th，tbody 每单一行 tr；不要给表格设死宽，让它在容器里自然撑开。</li>
+<li>行内按钮用 div class="flex flex-wrap gap-1" 排列（窄屏自动折成两排，不挤溢出）；手机 390px 下表格允许表内横向滚动，但页面 scrollWidth 必须等于视口宽。</li>
+<li>如果行数多、需要纵向滚动：把表放进定高容器（如 height 16rem + overflow-y-auto）并给 table 加 table-pin-rows，表头吸顶；列很多需要横向滚动时加 table-pin-cols 让首列吸左。没有定高容器时不要加 pin 类。</li>
+<li>状态文案写真实中文（已付款 / 待发货 / 已发货 / 已完成 / 已取消），按钮写真实动作，禁止出现颜色名。</li>
+</ul>
+<p>【参考结构】（照此实现，外层标签可按我的项目调整）</p>
+<pre class="fence"><code class="lang-html">&lt;div class="overflow-x-auto w-full"&gt;
+  &lt;table class="table table-sm"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;订单号&lt;/th&gt;
+        &lt;th&gt;商品&lt;/th&gt;
+        &lt;th class="text-right"&gt;金额&lt;/th&gt;
+        &lt;th&gt;状态&lt;/th&gt;
+        &lt;th&gt;操作&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;DD-1001&lt;/td&gt;
+        &lt;td&gt;云感无线耳机&lt;/td&gt;
+        &lt;td class="text-right tabular-nums"&gt;¥299.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-sm badge-success"&gt;已付&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="flex flex-wrap gap-1"&gt;
+            &lt;button class="btn btn-xs btn-ghost"&gt;查看&lt;/button&gt;
+            &lt;button class="btn btn-xs btn-primary"&gt;发货&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;DD-1002&lt;/td&gt;
+        &lt;td&gt;便携咖啡杯 500ml&lt;/td&gt;
+        &lt;td class="text-right tabular-nums"&gt;¥89.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-sm badge-warning"&gt;待发&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="flex flex-wrap gap-1"&gt;
+            &lt;button class="btn btn-xs btn-ghost"&gt;查看&lt;/button&gt;
+            &lt;button class="btn btn-xs btn-primary"&gt;发货&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;DD-1003&lt;/td&gt;
+        &lt;td&gt;机械键盘 87 键&lt;/td&gt;
+        &lt;td class="text-right tabular-nums"&gt;¥459.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-sm badge-info"&gt;已发&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="flex flex-wrap gap-1"&gt;
+            &lt;button class="btn btn-xs btn-ghost"&gt;查看&lt;/button&gt;
+            &lt;button class="btn btn-xs btn-soft"&gt;跟踪&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;DD-1004&lt;/td&gt;
+        &lt;td&gt;护眼台灯&lt;/td&gt;
+        &lt;td class="text-right tabular-nums"&gt;¥199.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-sm badge-neutral"&gt;完成&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="flex gap-1"&gt;
+            &lt;button class="btn btn-xs btn-ghost"&gt;查看&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;DD-1005&lt;/td&gt;
+        &lt;td&gt;收纳箱三件套&lt;/td&gt;
+        &lt;td class="text-right tabular-nums"&gt;¥129.00&lt;/td&gt;
+        &lt;td&gt;&lt;span class="badge badge-sm badge-error"&gt;取消&lt;/span&gt;&lt;/td&gt;
+        &lt;td&gt;
+          &lt;div class="flex gap-1"&gt;
+            &lt;button class="btn btn-xs btn-ghost"&gt;查看&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+<p>【灰墨审美硬边界（必须遵守）】</p>
+<ul>
+<li>控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。</li>
+<li>正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。</li>
+<li>所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。</li>
+<li>正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。</li>
+<li>动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。</li>
+<li>颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。</li>
+</ul>
+<p>【交付要求】</p>
+<ul>
+<li>给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。</li>
+<li>如果我的项目还没引入 daisyUI 5，请先告诉我需要在 &lt;head&gt; 里加一行 daisyui.css 的引用。</li>
+<li>做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。</li>
+</ul>
+<hr>
+<h2>底座引入</h2>
+<p>本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 <code>&lt;head&gt;</code> 加这两行即可：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css"&gt;</code></pre>
+<h2>更多</h2>
+<ul>
+<li>完整中文教程与全部变体（在线页面）：<a href="https://noii-y.github.io/moh-ui/components/daisyui/table/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/components/daisyui/table/demo.html</a></li>
+<li>上游官方文档：<a href="https://daisyui.com/components/table/" target="_blank" rel="noopener noreferrer">https://daisyui.com/components/table/</a></li>
+<li>全站 68 个组件的 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：后台订单管理表格（表格）。\n\n【场景】电商后台的订单管理表格：一列订单号、商品、金额、状态、操作，运营人员每天在这里看单、点发货。\n【怎么排】\n- 表外套 \u003cdiv class=\"overflow-x-auto\">：列多窄屏时表内横向滑动，页面本身不溢出。\n- 状态列用语义徽章（badge badge-sm + badge-success / badge-warning / badge-info / badge-error），不要只用红绿字体。\n- 操作列放最后：次要动作用 btn btn-xs btn-ghost「查看」，当前状态对应的主动作（待付款→收款、待发货→发货、已发货→跟踪物流）才用 btn-primary；没有该状态动作就留空。\n- 金额列右对齐、等宽数字，方便逐位比较。\n【精确规格】\n- 表格本体：\u003ctable class=\"table\">，thead 一行 th，tbody 每单一行 tr；不要给表格设死宽，让它在容器里自然撑开。\n- 行内按钮用 div class=\"flex flex-wrap gap-1\" 排列（窄屏自动折成两排，不挤溢出）；手机 390px 下表格允许表内横向滚动，但页面 scrollWidth 必须等于视口宽。\n- 如果行数多、需要纵向滚动：把表放进定高容器（如 height 16rem + overflow-y-auto）并给 table 加 table-pin-rows，表头吸顶；列很多需要横向滚动时加 table-pin-cols 让首列吸左。没有定高容器时不要加 pin 类。\n- 状态文案写真实中文（已付款 / 待发货 / 已发货 / 已完成 / 已取消），按钮写真实动作，禁止出现颜色名。\n\n【参考结构】（照此实现，外层标签可按我的项目调整）\n```html\n\u003cdiv class=\"overflow-x-auto w-full\">\n  \u003ctable class=\"table table-sm\">\n    \u003cthead>\n      \u003ctr>\n        \u003cth>订单号\u003c/th>\n        \u003cth>商品\u003c/th>\n        \u003cth class=\"text-right\">金额\u003c/th>\n        \u003cth>状态\u003c/th>\n        \u003cth>操作\u003c/th>\n      \u003c/tr>\n    \u003c/thead>\n    \u003ctbody>\n      \u003ctr>\n        \u003ctd>DD-1001\u003c/td>\n        \u003ctd>云感无线耳机\u003c/td>\n        \u003ctd class=\"text-right tabular-nums\">¥299.00\u003c/td>\n        \u003ctd>\u003cspan class=\"badge badge-sm badge-success\">已付\u003c/span>\u003c/td>\n        \u003ctd>\n          \u003cdiv class=\"flex flex-wrap gap-1\">\n            \u003cbutton class=\"btn btn-xs btn-ghost\">查看\u003c/button>\n            \u003cbutton class=\"btn btn-xs btn-primary\">发货\u003c/button>\n          \u003c/div>\n        \u003c/td>\n      \u003c/tr>\n      \u003ctr>\n        \u003ctd>DD-1002\u003c/td>\n        \u003ctd>便携咖啡杯 500ml\u003c/td>\n        \u003ctd class=\"text-right tabular-nums\">¥89.00\u003c/td>\n        \u003ctd>\u003cspan class=\"badge badge-sm badge-warning\">待发\u003c/span>\u003c/td>\n        \u003ctd>\n          \u003cdiv class=\"flex flex-wrap gap-1\">\n            \u003cbutton class=\"btn btn-xs btn-ghost\">查看\u003c/button>\n            \u003cbutton class=\"btn btn-xs btn-primary\">发货\u003c/button>\n          \u003c/div>\n        \u003c/td>\n      \u003c/tr>\n      \u003ctr>\n        \u003ctd>DD-1003\u003c/td>\n        \u003ctd>机械键盘 87 键\u003c/td>\n        \u003ctd class=\"text-right tabular-nums\">¥459.00\u003c/td>\n        \u003ctd>\u003cspan class=\"badge badge-sm badge-info\">已发\u003c/span>\u003c/td>\n        \u003ctd>\n          \u003cdiv class=\"flex flex-wrap gap-1\">\n            \u003cbutton class=\"btn btn-xs btn-ghost\">查看\u003c/button>\n            \u003cbutton class=\"btn btn-xs btn-soft\">跟踪\u003c/button>\n          \u003c/div>\n        \u003c/td>\n      \u003c/tr>\n      \u003ctr>\n        \u003ctd>DD-1004\u003c/td>\n        \u003ctd>护眼台灯\u003c/td>\n        \u003ctd class=\"text-right tabular-nums\">¥199.00\u003c/td>\n        \u003ctd>\u003cspan class=\"badge badge-sm badge-neutral\">完成\u003c/span>\u003c/td>\n        \u003ctd>\n          \u003cdiv class=\"flex gap-1\">\n            \u003cbutton class=\"btn btn-xs btn-ghost\">查看\u003c/button>\n          \u003c/div>\n        \u003c/td>\n      \u003c/tr>\n      \u003ctr>\n        \u003ctd>DD-1005\u003c/td>\n        \u003ctd>收纳箱三件套\u003c/td>\n        \u003ctd class=\"text-right tabular-nums\">¥129.00\u003c/td>\n        \u003ctd>\u003cspan class=\"badge badge-sm badge-error\">取消\u003c/span>\u003c/td>\n        \u003ctd>\n          \u003cdiv class=\"flex gap-1\">\n            \u003cbutton class=\"btn btn-xs btn-ghost\">查看\u003c/button>\n          \u003c/div>\n        \u003c/td>\n      \u003c/tr>\n    \u003c/tbody>\n  \u003c/table>\n\u003c/div>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>代码块（code-block）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「代码块」组件。教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。">
+<link rel="alternate" type="text/markdown" href="code-block.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/code-block/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>代码块（code-block） · 灰墨 MoH_UI</h1>
+<blockquote>教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。</blockquote>
+<p>分类：数据展示　｜　来源：灰墨自研（MIT）　｜　依赖：highlight.js@11 (CDN)</p>
+<h2>给 AI 的实现指令</h2>
+<p>请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：教程文档里的 JavaScript 代码块。</p>
+<p>【场景】教程或文档里的一个 JavaScript 代码块：深色窗口，顶部左边语言标签、右边「复制」按钮，下面是带语法高亮的真实代码。 【怎么排】</p>
+<ul>
+<li>深色窗口外壳：bg-neutral + text-neutral-content，圆角、overflow-hidden；</li>
+<li>顶栏左右两端：左边语言标签「JavaScript」，右边一个小幽灵按钮「复制」，点击成功后短暂显示「已复制」再还原；</li>
+<li>代码区等宽字体，长行不换行、横向滚动（overflow-x-auto），不要换行打散缩进。</li>
+</ul>
+<p>【精确规格】</p>
+<ul>
+<li>先在页面里引入一行 highlight.js CDN 脚本：<a href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js" target="_blank" rel="noopener noreferrer">https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js</a> （common 版含常用语言）；不要引它的官方主题 CSS。</li>
+<li>高亮 token 配色写在组件内联样式里，颜色取 daisyUI 变量：关键词 --color-primary、字符串 --color-success、数字 --color-warning、注释用 --color-neutral-content 半透明斜体、函数名 --color-secondary；禁止写死 hex。</li>
+<li>初始化：hljs.highlightElement(document.querySelector("code"))；复制按钮用 navigator.clipboard.writeText，失败兜底 execCommand("copy")，按钮加 aria-label。</li>
+<li>&lt;code&gt; 里若展示 HTML，尖括号必须转义成 &lt; &gt;；代码内容写真实可读的片段，注释用中文。</li>
+</ul>
+<p>【参考结构】（照此实现，外层标签可按我的项目调整）</p>
+<pre class="fence"><code class="lang-html">&lt;!-- highlight.js（CDN，需联网；common 版含常用语言）。不引它的官方主题 CSS，token 配色由下方内联样式控制 --&gt;
+      &lt;script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js"&gt;&lt;/script&gt;
+      &lt;style&gt;
+        .cb-window .hljs-keyword,
+        .cb-window .hljs-built_in,
+        .cb-window .hljs-type { color: var(--color-primary); font-weight: 600; }
+        .cb-window .hljs-string,
+        .cb-window .hljs-attr { color: var(--color-success); }
+        .cb-window .hljs-comment,
+        .cb-window .hljs-quote { color: var(--color-neutral-content); opacity: .55; font-style: italic; }
+        .cb-window .hljs-number,
+        .cb-window .hljs-literal { color: var(--color-warning); }
+        .cb-window .hljs-title,
+        .cb-window .hljs-function,
+        .cb-window .hljs-section { color: var(--color-secondary); font-weight: 600; }
+        .cb-window .hljs-params,
+        .cb-window .hljs-variable,
+        .cb-window .hljs-property { color: var(--color-neutral-content); }
+        .cb-window pre { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace); }
+        .cb-window pre code.hljs { background: transparent; padding: 0; }
+        .cb-window .cb-copy { color: var(--color-neutral-content); }
+        .cb-window .cb-copy:hover { color: var(--color-neutral-content); background-color: color-mix(in oklab, var(--color-neutral-content) 12%, transparent); }
+      &lt;/style&gt;
+      &lt;div class="cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl"&gt;
+        &lt;div class="flex items-center justify-between px-4 py-2 text-xs" style="border-bottom:1px solid rgba(255,255,255,.12);"&gt;
+          &lt;span&gt;JavaScript&lt;/span&gt;
+          &lt;button type="button" class="btn btn-xs btn-ghost cb-copy" aria-label="复制这段代码"&gt;复制&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;pre class="p-4 overflow-x-auto text-sm leading-relaxed" style="margin:0;"&gt;&lt;code class="language-javascript"&gt;// 读 daisyUI 主题变量，初始化折线图
+const css = getComputedStyle(document.documentElement);
+const primary = css.getPropertyValue("--color-primary").trim();
+
+const chart = echarts.init(document.getElementById("chart-trend"));
+chart.setOption({
+  xAxis: { type: "category", data: ["5月", "6月", "7月"] },
+  yAxis: { type: "value" },
+  series: [{ type: "line", data: [820, 932, 901], lineStyle: { color: primary } }]
+});
+window.addEventListener("resize", () =&gt; chart.resize());&lt;/code&gt;&lt;/pre&gt;
+      &lt;/div&gt;
+      &lt;script&gt;
+      (function () {
+        function initAll() {
+          if (window.hljs) {
+            document.querySelectorAll(".cb-window code").forEach(function (el) {
+              try { hljs.highlightElement(el); } catch (e) {}
+            });
+          }
+          document.querySelectorAll(".cb-window .cb-copy").forEach(function (btn) {
+            if (btn.dataset.wired) return;
+            btn.dataset.wired = "1";
+            btn.addEventListener("click", function () {
+              var text = btn.closest(".cb-window").querySelector("code").textContent;
+              function done() {
+                btn.textContent = "已复制";
+                setTimeout(function () { btn.textContent = "复制"; }, 1500);
+              }
+              function legacy() {
+                var ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand("copy"); done(); } catch (e) {}
+                ta.remove();
+              }
+              if (navigator.clipboard &amp;&amp; window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(done, legacy);
+              } else {
+                legacy();
+              }
+            });
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initAll);
+        } else {
+          initAll();
+        }
+      })();
+      &lt;/script&gt;</code></pre>
+<p>【灰墨审美硬边界（必须遵守）】</p>
+<ul>
+<li>控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。</li>
+<li>正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。</li>
+<li>所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。</li>
+<li>正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。</li>
+<li>动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。</li>
+<li>颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。</li>
+</ul>
+<p>【交付要求】</p>
+<ul>
+<li>给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。</li>
+<li>如果我的项目还没引入 daisyUI 5，请先告诉我需要在 &lt;head&gt; 里加一行 daisyui.css 的引用。</li>
+<li>做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。</li>
+</ul>
+<hr>
+<h2>底座引入</h2>
+<p>本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 <code>&lt;head&gt;</code> 加这两行即可：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css"&gt;</code></pre>
+<p>本组件额外依赖：highlight.js@11 (CDN)，需要在参考结构之外再引入对应 CDN：</p>
+<ul>
+<li><a href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js" target="_blank" rel="noopener noreferrer">https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js</a></li>
+</ul>
+<h2>更多</h2>
+<ul>
+<li>完整中文教程与全部变体（在线页面）：<a href="https://noii-y.github.io/moh-ui/components/code-block/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/components/code-block/demo.html</a></li>
+<li>灰墨自研增强组件，基于 daisyUI 底座二次开发。</li>
+<li>全站 68 个组件的 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：教程文档里的 JavaScript 代码块。\n\n【场景】教程或文档里的一个 JavaScript 代码块：深色窗口，顶部左边语言标签、右边「复制」按钮，下面是带语法高亮的真实代码。\n【怎么排】\n- 深色窗口外壳：bg-neutral + text-neutral-content，圆角、overflow-hidden；\n- 顶栏左右两端：左边语言标签「JavaScript」，右边一个小幽灵按钮「复制」，点击成功后短暂显示「已复制」再还原；\n- 代码区等宽字体，长行不换行、横向滚动（overflow-x-auto），不要换行打散缩进。\n【精确规格】\n- 先在页面里引入一行 highlight.js CDN 脚本：https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js （common 版含常用语言）；不要引它的官方主题 CSS。\n- 高亮 token 配色写在组件内联样式里，颜色取 daisyUI 变量：关键词 --color-primary、字符串 --color-success、数字 --color-warning、注释用 --color-neutral-content 半透明斜体、函数名 --color-secondary；禁止写死 hex。\n- 初始化：hljs.highlightElement(document.querySelector(\"code\"))；复制按钮用 navigator.clipboard.writeText，失败兜底 execCommand(\"copy\")，按钮加 aria-label。\n- \u003ccode> 里若展示 HTML，尖括号必须转义成 \u003c >；代码内容写真实可读的片段，注释用中文。\n\n【参考结构】（照此实现，外层标签可按我的项目调整）\n```html\n\u003c!-- highlight.js（CDN，需联网；common 版含常用语言）。不引它的官方主题 CSS，token 配色由下方内联样式控制 -->\n      \u003cscript src=\"https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11/build/highlight.min.js\">\u003c/script>\n      \u003cstyle>\n        .cb-window .hljs-keyword,\n        .cb-window .hljs-built_in,\n        .cb-window .hljs-type { color: var(--color-primary); font-weight: 600; }\n        .cb-window .hljs-string,\n        .cb-window .hljs-attr { color: var(--color-success); }\n        .cb-window .hljs-comment,\n        .cb-window .hljs-quote { color: var(--color-neutral-content); opacity: .55; font-style: italic; }\n        .cb-window .hljs-number,\n        .cb-window .hljs-literal { color: var(--color-warning); }\n        .cb-window .hljs-title,\n        .cb-window .hljs-function,\n        .cb-window .hljs-section { color: var(--color-secondary); font-weight: 600; }\n        .cb-window .hljs-params,\n        .cb-window .hljs-variable,\n        .cb-window .hljs-property { color: var(--color-neutral-content); }\n        .cb-window pre { font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", monospace); }\n        .cb-window pre code.hljs { background: transparent; padding: 0; }\n        .cb-window .cb-copy { color: var(--color-neutral-content); }\n        .cb-window .cb-copy:hover { color: var(--color-neutral-content); background-color: color-mix(in oklab, var(--color-neutral-content) 12%, transparent); }\n      \u003c/style>\n      \u003cdiv class=\"cb-window bg-neutral text-neutral-content rounded-box overflow-hidden max-w-2xl\">\n        \u003cdiv class=\"flex items-center justify-between px-4 py-2 text-xs\" style=\"border-bottom:1px solid rgba(255,255,255,.12);\">\n          \u003cspan>JavaScript\u003c/span>\n          \u003cbutton type=\"button\" class=\"btn btn-xs btn-ghost cb-copy\" aria-label=\"复制这段代码\">复制\u003c/button>\n        \u003c/div>\n        \u003cpre class=\"p-4 overflow-x-auto text-sm leading-relaxed\" style=\"margin:0;\">\u003ccode class=\"language-javascript\">// 读 daisyUI 主题变量，初始化折线图\nconst css = getComputedStyle(document.documentElement);\nconst primary = css.getPropertyValue(\"--color-primary\").trim();\n\nconst chart = echarts.init(document.getElementById(\"chart-trend\"));\nchart.setOption({\n  xAxis: { type: \"category\", data: [\"5月\", \"6月\", \"7月\"] },\n  yAxis: { type: \"value\" },\n  series: [{ type: \"line\", data: [820, 932, 901], lineStyle: { color: primary } }]\n});\nwindow.addEventListener(\"resize\", () => chart.resize());\u003c/code>\u003c/pre>\n      \u003c/div>\n      \u003cscript>\n      (function () {\n        function initAll() {\n          if (window.hljs) {\n            document.querySelectorAll(\".cb-window code\").forEach(function (el) {\n              try { hljs.highlightElement(el); } catch (e) {}\n            });\n          }\n          document.querySelectorAll(\".cb-window .cb-copy\").forEach(function (btn) {\n            if (btn.dataset.wired) return;\n            btn.dataset.wired = \"1\";\n            btn.addEventListener(\"click\", function () {\n              var text = btn.closest(\".cb-window\").querySelector(\"code\").textContent;\n              function done() {\n                btn.textContent = \"已复制\";\n                setTimeout(function () { btn.textContent = \"复制\"; }, 1500);\n              }\n              function legacy() {\n                var ta = document.createElement(\"textarea\");\n                ta.value = text;\n                ta.style.position = \"fixed\";\n                ta.style.opacity = \"0\";\n                document.body.appendChild(ta);\n                ta.select();\n                try { document.execCommand(\"copy\"); done(); } catch (e) {}\n                ta.remove();\n              }\n              if (navigator.clipboard && window.isSecureContext) {\n                navigator.clipboard.writeText(text).then(done, legacy);\n              } else {\n                legacy();\n              }\n            });\n          });\n        }\n        if (document.readyState === \"loading\") {\n          document.addEventListener(\"DOMContentLoaded\", initAll);\n        } else {\n          initAll();\n        }\n      })();\n      \u003c/script>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

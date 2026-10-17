@@ -1,0 +1,75 @@
+# 状态点（status） · 灰墨 MoH_UI
+
+> 八色状态圆点（success/error/warning/info/neutral 等）、xs~xl 五档尺寸，含 ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。
+
+分类：反馈　｜　来源：daisyUI（MIT） · [官方文档](https://daisyui.com/components/status/)　｜　依赖：无（零依赖）
+
+## 给 AI 的实现指令
+请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：服务运行状态列表（状态点）。
+
+【场景】后台系统的服务运行状态列表：四条状态各一个小圆点，圆点颜色表示状态，后面一句人话解释现在怎么了。
+【怎么排】
+- 外层纵向列表：<div class="flex flex-col gap-3 w-full max-w-xs mx-auto">。
+- 每一条：<div class="flex items-center gap-2">，里面一个 status 点 + 一句中文说明。
+- 四条分别是：绿点「服务正常」；红点带晕开动画「连接失败，正在重连」；橙点「系统维护中」；灰点「已断开连接」。
+- 带动画的红点做法：外层 <span class="grid" style="grid-template-columns:max-content">，里面两个同色 status 点都写 style="grid-area:1/1" 叠在同一格，靠后的那个加 animate-ping。
+【精确规格】
+- 点用 <span class="status status-*">，颜色只用语义类（status-success / status-error / status-warning / status-info / status-neutral），禁止写死色值。
+- animate-ping / animate-bounce 只给「正在重连、等待处理」的异常点，正常状态不动。
+- 文案写真实现状（服务正常 / 连接失败，正在重连 / 系统维护中 / 已断开连接），禁止颜色名。
+- 纯装饰点加 aria-hidden="true"；文字已写清状态时不要再加 alt。
+
+【参考结构】（照此实现，外层标签可按我的项目调整）
+```html
+<div class="flex flex-col gap-3 w-full max-w-xs mx-auto">
+  <div class="flex items-center gap-2">
+    <span class="status status-success"></span>
+    <span>服务正常</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="grid" style="grid-template-columns:max-content">
+      <span class="status status-error animate-ping" style="grid-area:1/1"></span>
+      <span class="status status-error" style="grid-area:1/1"></span>
+    </span>
+    <span>连接失败，正在重连</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="status status-warning"></span>
+    <span>系统维护中</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="status status-neutral"></span>
+    <span>已断开连接</span>
+  </div>
+</div>
+```
+
+【灰墨审美硬边界（必须遵守）】
+- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。
+- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。
+- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。
+- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。
+- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。
+- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。
+
+【交付要求】
+- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。
+- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 <head> 里加一行 daisyui.css 的引用。
+- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。
+
+---
+
+## 底座引入
+
+本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 `<head>` 加这两行即可：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css">
+```
+
+## 更多
+
+- 完整中文教程与全部变体（在线页面）：https://noii-y.github.io/moh-ui/components/daisyui/status/demo.html
+- 上游官方文档：https://daisyui.com/components/status/
+- 全站 68 个组件的 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

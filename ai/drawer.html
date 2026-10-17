@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>抽屉侧栏（drawer）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「抽屉侧栏」组件。后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。">
+<link rel="alternate" type="text/markdown" href="drawer.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/daisyui/drawer/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>抽屉侧栏（drawer） · 灰墨 MoH_UI</h1>
+<blockquote>后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。</blockquote>
+<p>分类：导航　｜　来源：daisyUI（MIT） · <a href="https://daisyui.com/components/drawer/" target="_blank" rel="noopener noreferrer">官方文档</a>　｜　依赖：无（零依赖）</p>
+<h2>给 AI 的实现指令</h2>
+<p>请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：后台管理系统的左侧菜单抽屉（抽屉侧栏）。</p>
+<p>【场景】一个后台管理系统的左侧菜单布局：侧栏常驻可见，带图标导航，主内容区在右侧自适应剩余宽度。 【怎么排】</p>
+<ul>
+<li>根容器用 div.drawer + drawer-open（详情页为了让缩略图也能看到侧栏用无条件 drawer-open；真实项目改成 lg:drawer-open 实现「大屏常显、小屏抽屉」，不要在根上加演示用的固定高度）；</li>
+<li>第一个孩子是隐藏复选框 input.drawer-toggle（id 唯一，如 demo-menu）；</li>
+<li>第二个孩子 div.drawer-content 放主内容：顶部一行标题栏（汉堡按钮 label + 当前页标题），下面放业务内容；</li>
+<li>第三个孩子 div.drawer-side 放侧栏：紧跟一个 label.drawer-overlay（aria-label="关闭侧栏"），再放 ul.menu（bg-base-200、w-64、p-2；宽屏可换 w-80）；</li>
+<li>菜单项写真实后台模块名：仪表盘（menu-active 当前页）、订单管理（文字后跟 badge badge-sm 数字徽标）、商品管理（li 内再嵌套 ul 放「在售商品 / 下架商品」）、设置、数据报表（menu-disabled 置灰）。</li>
+</ul>
+<p>【精确规格】</p>
+<ul>
+<li>菜单项图标统一 h-5 w-5 单色 SVG，文字写真实动作与模块名，禁止出现 Primary / 主要 这类颜色名当文案。</li>
+<li>开合完全靠 label 的 for 关联复选框，零 JavaScript；不要自己写 fixed 定位或遮罩逻辑。</li>
+<li>真实项目侧栏铺满整页高度、内容区不被侧栏遮挡；不要让侧栏盖住页面其它内容或按钮。</li>
+<li>参考结构里的舞台限高 height、overlay 静态化内联 style 只用于详情页演示，复制进真实项目后删除。</li>
+<li>用到的类全部真实存在：drawer、drawer-toggle、drawer-content、drawer-side、drawer-overlay、drawer-button、lg:drawer-open、menu、menu-active、menu-disabled、menu-title、badge、badge-sm。</li>
+<li>颜色全部走 daisyUI 主题变量，不要写死颜色。</li>
+</ul>
+<p>【参考结构】（照此实现，外层标签可按我的项目调整）</p>
+<pre class="fence"><code class="lang-html">&lt;div class="drawer drawer-open" style="height:320px;"&gt;
+  &lt;input id="demo-hero-drawer" type="checkbox" class="drawer-toggle" /&gt;
+  &lt;div class="drawer-content flex flex-col w-full"&gt;
+    &lt;div class="flex flex-wrap items-center gap-2 border-b border-base-300 px-4 py-3"&gt;
+      &lt;label for="demo-hero-drawer" class="btn btn-sm btn-ghost drawer-button" aria-label="打开侧栏"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /&gt;&lt;/svg&gt;
+      &lt;/label&gt;
+      &lt;span class="font-semibold"&gt;仪表盘&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="p-4"&gt;
+      &lt;p class="text-sm opacity-60"&gt;这里是后台主内容区：侧栏负责切换模块，内容区展示对应列表与图表。真实项目里侧栏铺满整页高度，内容区自适应剩余空间。&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="drawer-side" style="height:100%;"&gt;
+    &lt;label for="demo-hero-drawer" aria-label="关闭侧栏" class="drawer-overlay" style="position:static;inset:auto;background:transparent;"&gt;&lt;/label&gt;
+    &lt;ul class="menu bg-base-200 w-64 p-2" style="min-height:100%"&gt;
+      &lt;li class="menu-title"&gt;工作台&lt;/li&gt;
+      &lt;li&gt;
+        &lt;a class="menu-active"&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h6v6h-6v-6zm10.5 0h6v6h-6v-6zm-10.5 10.5h6v6h-6v-6zm10.5 0h6v6h-6v-6z" /&gt;&lt;/svg&gt;
+          仪表盘
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z" /&gt;&lt;/svg&gt;
+          订单管理
+          &lt;span class="badge badge-sm"&gt;12&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3.594A.75.75 0 0 0 9.125 3.5h-4.5a.75.75 0 0 0-.75.75v4.5c0 .199.079.39.22.531l8.37 8.37a.75.75 0 0 0 1.06 0l4.47-4.47a.75.75 0 0 0 0-1.06l-8.37-8.371a.75.75 0 0 0-.347-.206zM10 8.65a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z" /&gt;&lt;/svg&gt;
+          商品管理
+        &lt;/a&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a&gt;在售商品&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;下架商品&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a&gt;
+          &lt;svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" /&gt;&lt;/svg&gt;
+          设置
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="menu-disabled"&gt;
+        &lt;a&gt;数据报表（升级后可用）&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>【灰墨审美硬边界（必须遵守）】</p>
+<ul>
+<li>控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。</li>
+<li>正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。</li>
+<li>所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。</li>
+<li>正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。</li>
+<li>动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。</li>
+<li>颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。</li>
+</ul>
+<p>【交付要求】</p>
+<ul>
+<li>给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。</li>
+<li>如果我的项目还没引入 daisyUI 5，请先告诉我需要在 &lt;head&gt; 里加一行 daisyui.css 的引用。</li>
+<li>做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。</li>
+</ul>
+<hr>
+<h2>底座引入</h2>
+<p>本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 <code>&lt;head&gt;</code> 加这两行即可：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css"&gt;</code></pre>
+<h2>更多</h2>
+<ul>
+<li>完整中文教程与全部变体（在线页面）：<a href="https://noii-y.github.io/moh-ui/components/daisyui/drawer/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/components/daisyui/drawer/demo.html</a></li>
+<li>上游官方文档：<a href="https://daisyui.com/components/drawer/" target="_blank" rel="noopener noreferrer">https://daisyui.com/components/drawer/</a></li>
+<li>全站 68 个组件的 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：后台管理系统的左侧菜单抽屉（抽屉侧栏）。\n\n【场景】一个后台管理系统的左侧菜单布局：侧栏常驻可见，带图标导航，主内容区在右侧自适应剩余宽度。\n【怎么排】\n- 根容器用 div.drawer + drawer-open（详情页为了让缩略图也能看到侧栏用无条件 drawer-open；真实项目改成 lg:drawer-open 实现「大屏常显、小屏抽屉」，不要在根上加演示用的固定高度）；\n- 第一个孩子是隐藏复选框 input.drawer-toggle（id 唯一，如 demo-menu）；\n- 第二个孩子 div.drawer-content 放主内容：顶部一行标题栏（汉堡按钮 label + 当前页标题），下面放业务内容；\n- 第三个孩子 div.drawer-side 放侧栏：紧跟一个 label.drawer-overlay（aria-label=\"关闭侧栏\"），再放 ul.menu（bg-base-200、w-64、p-2；宽屏可换 w-80）；\n- 菜单项写真实后台模块名：仪表盘（menu-active 当前页）、订单管理（文字后跟 badge badge-sm 数字徽标）、商品管理（li 内再嵌套 ul 放「在售商品 / 下架商品」）、设置、数据报表（menu-disabled 置灰）。\n【精确规格】\n- 菜单项图标统一 h-5 w-5 单色 SVG，文字写真实动作与模块名，禁止出现 Primary / 主要 这类颜色名当文案。\n- 开合完全靠 label 的 for 关联复选框，零 JavaScript；不要自己写 fixed 定位或遮罩逻辑。\n- 真实项目侧栏铺满整页高度、内容区不被侧栏遮挡；不要让侧栏盖住页面其它内容或按钮。\n- 参考结构里的舞台限高 height、overlay 静态化内联 style 只用于详情页演示，复制进真实项目后删除。\n- 用到的类全部真实存在：drawer、drawer-toggle、drawer-content、drawer-side、drawer-overlay、drawer-button、lg:drawer-open、menu、menu-active、menu-disabled、menu-title、badge、badge-sm。\n- 颜色全部走 daisyUI 主题变量，不要写死颜色。\n\n【参考结构】（照此实现，外层标签可按我的项目调整）\n```html\n\u003cdiv class=\"drawer drawer-open\" style=\"height:320px;\">\n  \u003cinput id=\"demo-hero-drawer\" type=\"checkbox\" class=\"drawer-toggle\" />\n  \u003cdiv class=\"drawer-content flex flex-col w-full\">\n    \u003cdiv class=\"flex flex-wrap items-center gap-2 border-b border-base-300 px-4 py-3\">\n      \u003clabel for=\"demo-hero-drawer\" class=\"btn btn-sm btn-ghost drawer-button\" aria-label=\"打开侧栏\">\n        \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5\" />\u003c/svg>\n      \u003c/label>\n      \u003cspan class=\"font-semibold\">仪表盘\u003c/span>\n    \u003c/div>\n    \u003cdiv class=\"p-4\">\n      \u003cp class=\"text-sm opacity-60\">这里是后台主内容区：侧栏负责切换模块，内容区展示对应列表与图表。真实项目里侧栏铺满整页高度，内容区自适应剩余空间。\u003c/p>\n    \u003c/div>\n  \u003c/div>\n  \u003cdiv class=\"drawer-side\" style=\"height:100%;\">\n    \u003clabel for=\"demo-hero-drawer\" aria-label=\"关闭侧栏\" class=\"drawer-overlay\" style=\"position:static;inset:auto;background:transparent;\">\u003c/label>\n    \u003cul class=\"menu bg-base-200 w-64 p-2\" style=\"min-height:100%\">\n      \u003cli class=\"menu-title\">工作台\u003c/li>\n      \u003cli>\n        \u003ca class=\"menu-active\">\n          \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M3.75 3.75h6v6h-6v-6zm10.5 0h6v6h-6v-6zm-10.5 10.5h6v6h-6v-6zm10.5 0h6v6h-6v-6z\" />\u003c/svg>\n          仪表盘\n        \u003c/a>\n      \u003c/li>\n      \u003cli>\n        \u003ca>\n          \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z\" />\u003c/svg>\n          订单管理\n          \u003cspan class=\"badge badge-sm\">12\u003c/span>\n        \u003c/a>\n      \u003c/li>\n      \u003cli>\n        \u003ca>\n          \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9.568 3.594A.75.75 0 0 0 9.125 3.5h-4.5a.75.75 0 0 0-.75.75v4.5c0 .199.079.39.22.531l8.37 8.37a.75.75 0 0 0 1.06 0l4.47-4.47a.75.75 0 0 0 0-1.06l-8.37-8.371a.75.75 0 0 0-.347-.206zM10 8.65a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z\" />\u003c/svg>\n          商品管理\n        \u003c/a>\n        \u003cul>\n          \u003cli>\u003ca>在售商品\u003c/a>\u003c/li>\n          \u003cli>\u003ca>下架商品\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/li>\n      \u003cli>\n        \u003ca>\n          \u003csvg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" class=\"h-5 w-5\">\u003cpath stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75\" />\u003c/svg>\n          设置\n        \u003c/a>\n      \u003c/li>\n      \u003cli class=\"menu-disabled\">\n        \u003ca>数据报表（升级后可用）\u003c/a>\n      \u003c/li>\n    \u003c/ul>\n  \u003c/div>\n\u003c/div>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

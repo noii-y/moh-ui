@@ -1,0 +1,96 @@
+# 灰墨 MoH_UI
+
+> 零依赖、纯 HTML/CSS、可直接复制给 AI 的中文前端组件库，基于 daisyUI 5（MIT）。每个组件都有一个 AI 友好页面，内含完整实现指令（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。把组件链接发给任意 AI（豆包 / Cursor / Claude Code 等），它即可抓取并按你的项目生成；页面里也有一键复制的纯文本指令。
+
+- 组件总数：68 个（daisyUI 搬运件 63 个 + 灰墨自研增强 5 个），主题 10 套（主题 AI 页随主题层重做后提供）
+- 全部组件完整指令一次抓取：[llms-full.txt](https://noii-y.github.io/moh-ui/llms-full.txt)
+- 在线组件库（可交互预览）：https://noii-y.github.io/moh-ui/site/components.html
+- 组件页同目录下有同名 `.md`（纯文本版）与 `.html`（人看版），下方链接指向 `.md`
+
+## 基础（1）
+
+- [首屏横幅（hero）](https://noii-y.github.io/moh-ui/ai/hero.md): SaaS 左文右图成品（公告胶囊+大标题+双按钮+星级评分+产品界面缩略卡）、居中纯文字、图文左右、图文反向（lg:flex-row-reverse）、带登录表单卡、内联渐变背景，零依赖纯 CSS。
+
+## 表单（16）
+
+- [按钮（button）](https://noii-y.github.io/moh-ui/ai/button.md): 颜色/尺寸/描边/虚线/激活/禁用/图标/加载/玻璃等全部变体，零依赖纯 CSS。
+- [文本输入框（input）](https://noii-y.github.io/moh-ui/ai/input.md): 覆盖单行各 type、内嵌图标/快捷键/徽标、幽灵、fieldset 字段标签、语义状态色、五档尺寸、禁用、datalist 输入建议、原生 validator 校验，零依赖纯 CSS。
+- [下拉选择（select）](https://noii-y.github.io/moh-ui/ai/select.md): 占位必选项、幽灵 select-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以结算页收货地址选择区为成品示例，零依赖纯 CSS。
+- [多行文本域（textarea）](https://noii-y.github.io/moh-ui/ai/textarea.md): 基础多行、固定高度 h-24/h-32、幽灵 textarea-ghost、fieldset 字段标签、语义状态色边框、五档尺寸、禁用，并以带实时字数统计的意见反馈输入区为成品示例（计数仅一小段 JS）。
+- [复选框（checkbox）](https://noii-y.github.io/moh-ui/ai/checkbox.md): 基础勾选态、label 包裹点文字、fieldset 分组多选、半选 indeterminate、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（半选仅一行 JS）。
+- [单选框（radio）](https://noii-y.github.io/moh-ui/ai/radio.md): 基础单选态、label 包裹点文字、fieldset 分组互斥、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS。
+- [开关（toggle）](https://noii-y.github.io/moh-ui/ai/toggle.md): 基础开关态、设置行排版（label justify-between）、尺寸 xs~xl、语义状态色、禁用、带图标开关，零依赖纯 CSS。
+- [滑块（range）](https://noii-y.github.io/moh-ui/ai/range.md): 基础滑杆、带刻度档位、尺寸 xs~xl、语义状态色、竖向 range-vertical，零依赖纯 CSS（实时读数仅一行 JS）。
+- [文件上传（file-input）](https://noii-y.github.io/moh-ui/ai/file-input.md): 基础选择、fieldset 字段标签与格式说明、accept 限定类型、multiple 多选、幽灵样式、尺寸 xs~lg、语义状态色、禁用，零依赖纯 CSS。
+- [字段分组（fieldset）](https://noii-y.github.io/moh-ui/ai/fieldset.md): 字段分组容器：legend 整组标题、fieldset-label 字段名与说明、卡片式分组、标题同行放下拉/开关、label 与控件 for/id 绑定、整组 disabled、join 输入框加按钮，零依赖纯 CSS。
+- [评分（rating）](https://noii-y.github.io/moh-ui/ai/rating.md): 五星默认选中、心形多色、尺寸 xs~lg、rating-hidden 可清除、rating-half 半星、disabled 只读展示平均评分，纯 CSS mask 图形，零依赖。
+- [验证码输入（otp）](https://noii-y.github.io/moh-ui/ai/otp.md): 4/6 位、otp-joined 连接样式、尺寸 xs~xl、语义状态色、禁用，零依赖纯 CSS（跳格/倒计时为业务 JS 增强，不在组件内）。
+- [表单校验（validator）](https://noii-y.github.io/moh-ui/ai/validator.md): input/checkbox 加 validator 配原生 required/pattern/minlength，validator-hint 写规则，覆盖修改密码、邮箱、用户名、手机号、必勾协议、内嵌图标等场景，零依赖纯 CSS。
+- [组合容器（join）](https://noii-y.github.io/moh-ui/ai/join.md): 搜索框（select+input+按钮）、邮箱订阅、分段按钮组（日/周/月）、竖排、响应式竖转横，首尾自动圆角无缝拼接，零依赖纯 CSS。
+- [筛选条（filter）](https://noii-y.github.io/moh-ui/ai/filter.md): 筛选条：form + radio 单选分类、checkbox 多选标签、无 form 时用 filter-reset 当「全部」，选中高亮并自动露出重置按钮，零依赖纯 CSS。
+- [日期范围（date-range）](https://noii-y.github.io/moh-ui/ai/date-range.md): 订单与数据筛选的日期范围：两个原生 date input 用 join 拼接、「至」分隔，带今天/近 7 天/近 30 天/本月快捷预设（aria-pressed 选中态，预设填充为一小段 JS），零依赖纯 CSS。
+
+## 反馈（11）
+
+- [下拉菜单（dropdown）](https://noii-y.github.io/moh-ui/ai/dropdown.md): 头像下拉菜单、卡片式弹层、上/左/右弹出方向、菜单分组与分隔线，零依赖纯 CSS（CSS focus 写法）。
+- [进度条（progress）](https://noii-y.github.io/moh-ui/ai/progress.md): 确定/不确定进度、primary/secondary/success 等语义色、数值标签与完成态写法，零依赖纯 CSS。
+- [加载动画（loading）](https://noii-y.github.io/moh-ui/ai/loading.md): 六种加载形态（spinner/dots/ring/ball/bars/infinity）、xs~xl 五档尺寸，支持按钮内嵌与卡片整块加载，零依赖纯 CSS。
+- [悬浮提示（tooltip）](https://noii-y.github.io/moh-ui/ai/tooltip.md): 工具栏图标按钮提示、四个弹出方向、语义色、带图标内容（tooltip-content），零依赖纯 CSS。
+- [提示条（alert）](https://noii-y.github.io/moh-ui/ai/alert.md): 四种语义色提示条（info/success/warning/error）、带操作按钮、柔和轻提示、可关闭等形态，零依赖纯 CSS。
+- [对话框（modal）](https://noii-y.github.io/moh-ui/ai/modal.md): 删除确认、右上角关闭、底部抽屉、自定义宽度、纯信息提示等形态，推荐 dialog+showModal 用法，零依赖纯 CSS。
+- [通知浮层（toast）](https://noii-y.github.io/moh-ui/ai/toast.md): 九宫格弹出位置、多条纵向堆叠、带图标与带按钮的通知，零依赖纯 CSS。
+- [折叠面板（collapse）](https://noii-y.github.io/moh-ui/ai/collapse.md): FAQ 手风琴、箭头/加号图标、默认展开、纯文字折叠等形态，零依赖纯 CSS。
+- [切换状态（swap）](https://noii-y.github.io/moh-ui/ai/swap.md): 纯 CSS label+checkbox 双图标切换，覆盖旋转/翻转/默认选中/swap-active 强制 on 态，内联 SVG 收藏、显隐密码、昼夜、静音等真实场景。
+- [状态点（status）](https://noii-y.github.io/moh-ui/ai/status.md): 八色状态圆点（success/error/warning/info/neutral 等）、xs~xl 五档尺寸，含 ping/bounce 提醒动画与配文字横排写法，零依赖纯 CSS。
+- [空状态（empty）](https://noii-y.github.io/moh-ui/ai/empty.md): 列表无数据、搜索无结果、加载失败等空状态：线性图标 + 标题 + 说明 + 可选操作按钮，覆盖标准居中、无按钮、表格内嵌紧凑横排、错误重试等形态，零依赖纯 HTML/CSS。
+
+## 导航（12）
+
+- [顶部导航（navbar）](https://noii-y.github.io/moh-ui/ai/navbar.md): 三段式 start/center/end、横向栏目、当前页高亮、搜索框、购物车徽标、头像下拉、彩色底与响应式收起，零依赖纯 CSS。
+- [菜单（menu）](https://noii-y.github.io/moh-ui/ai/menu.md): 垂直侧边栏与横向菜单、分组标题、当前页高亮、数字徽标、details 折叠子菜单（默认展开）、禁用态与尺寸档，零依赖纯 CSS。
+- [面包屑（breadcrumbs）](https://noii-y.github.io/moh-ui/ai/breadcrumbs.md): 层级路径导航，覆盖基础、带首页图标、深层级窄屏换行等形态，末项标当前页不可点，零依赖纯 CSS。
+- [分页（pagination）](https://noii-y.github.io/moh-ui/ai/pagination.md): 基础页码、长列表省略号、五档尺寸、等宽上一页/下一页、radio 选中态，附商品列表分页成品。
+- [链接（link）](https://noii-y.github.io/moh-ui/ai/link.md): 基础下划线链接、全套语义色、hover 才显示下划线、无下划线彩色链接、外链新窗口写法，零依赖纯 CSS。
+- [步骤条（steps）](https://noii-y.github.io/moh-ui/ai/steps.md): 横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。
+- [抽屉侧栏（drawer）](https://noii-y.github.io/moh-ui/ai/drawer.md): 后台可折叠侧边导航，覆盖强制常显、左侧滑出、右侧滑出、响应式大屏常显等形态，复选框纯 CSS 开合，零依赖。
+- [页脚（footer）](https://noii-y.github.io/moh-ui/ai/footer.md): 电商完整页脚（品牌简介+客服/邮箱/电话/反馈四个服务入口+四列链接+版权行）、多列链接、品牌区、邮件订阅表单、居中深色版权条、双行式版权等形态，零依赖纯 CSS。
+- [底部停靠导航（dock）](https://noii-y.github.io/moh-ui/ai/dock.md): 底部停靠导航：带文字标签/纯图标紧凑/大号等形态，附电商 App 底部导航（含中间凸起圆形购物车主按钮与徽标）成品。
+- [悬浮动作按钮（fab）](https://noii-y.github.io/moh-ui/ai/fab.md): 右下角新建主按钮展开写文章/传图片/发视频等动作，覆盖带标签与纯图标垂直排列、fab-flower 花瓣形、单个悬浮按钮，零依赖纯 CSS。
+- [大菜单（megamenu）](https://noii-y.github.io/moh-ui/ai/megamenu.md): 电商顶部全部分类导航，覆盖多列链接面板、推荐卡、简洁横向列、垂直版等形态，基于原生 popover 零 JS。
+- [标签页（tab）](https://noii-y.github.io/moh-ui/ai/tab.md): 下划线/提升/盒装/标签置底/禁用/尺寸等形态，纯 CSS radio 实现内容切换、零 JS，附订单中心成品。
+
+## 数据展示（28）
+
+- [分隔线（divider）](https://noii-y.github.io/moh-ui/ai/divider.md): 登录页「或」、带文字/无文字、起止位置、彩色、并排竖线，零依赖纯 CSS。
+- [表格（table）](https://noii-y.github.io/moh-ui/ai/table.md): 后台订单管理（状态徽章+操作列）、边框背景、table-zebra 斑马纹、row-hover 悬停、table-pin-rows 粘性表头、table-pin-cols 粘性首列+复选头像、table-xs 紧凑尺寸，零依赖纯 CSS。
+- [卡片（card）](https://noii-y.github.io/moh-ui/ai/card.md): 定价三档（含删除线对比）、电商商品卡、用户资料卡、card-border/card-dash 描边与虚线、card-xs~xl 五档尺寸，零依赖纯 CSS。
+- [统计卡（stat）](https://noii-y.github.io/moh-ui/ai/stat.md): 电商数据看板（涨跌备注+单色图标）、stats-vertical 垂直排列、place-items-center 居中、stat-actions 带操作按钮，零依赖纯 CSS。
+- [徽标（badge）](https://noii-y.github.io/moh-ui/ai/badge.md): 五档尺寸/描边虚线柔和幽灵风格/带图标/按钮数字角标等变体，商品标签与状态标记场景，零依赖纯 CSS。
+- [列表（list）](https://noii-y.github.io/moh-ui/ai/list.md): 收货地址单选列表（默认标签+编辑删除）、带图标设置列表、紧凑条目列表（list-col-grow），零依赖纯 CSS。
+- [头像（avatar）](https://noii-y.github.io/moh-ui/ai/avatar.md): 在线状态/mask 轮廓形状/文字占位/多人叠放群组等变体，资料页与评论场景，零依赖纯 CSS。
+- [环形进度（radial-progress）](https://noii-y.github.io/moh-ui/ai/radial-progress.md): --value/--size/--thickness 三变量机制、多完成度对照、语义色环、尺寸与环厚变体、实心填充环，附数据看板统计卡实战，零依赖纯 CSS。
+- [骨架屏（skeleton）](https://noii-y.github.io/moh-ui/ai/skeleton.md): 文章列表加载态成品、卡片骨架、资料行骨架、skeleton-text 渐变文字等待态，形状模拟真实内容排版，零依赖纯 CSS。
+- [倒计时（countdown）](https://noii-y.github.io/moh-ui/ai/countdown.md): 用 --value/--digits 变量驱动数字渲染，覆盖秒杀盒装、冒号时钟、大号带标签、促销卡、句内嵌数字等真实场景，零 JS。
+- [按键（kbd）](https://noii-y.github.io/moh-ui/ai/kbd.md): 快捷键说明卡、组合键、五档尺寸、行内嵌入正文、修饰键符号，零依赖纯 CSS。
+- [对话气泡（chat）](https://noii-y.github.io/moh-ui/ai/chat.md): 左右分边/头像时间头尾/气泡语义色等变体，客服对话与留言场景，零依赖纯 CSS。
+- [角标（indicator）](https://noii-y.github.io/moh-ui/ai/indicator.md): 九种贴附位置/数字角标/纯红点/贴输入框与卡片等变体，导航通知与待办提示场景，零依赖纯 CSS。
+- [轮播（carousel）](https://noii-y.github.io/moh-ui/ai/carousel.md): 商品推荐横滑卡、整屏促销横幅、一屏三张小卡、居中吸附、垂直轮播、锚点箭头与数字指示器，原生滚动 + scroll-snap 零依赖纯 CSS。
+- [时间线（timeline）](https://noii-y.github.io/moh-ui/ai/timeline.md): 垂直/双侧交替/紧凑单侧/彩色进度连线等变体，物流跟踪与里程碑场景，零依赖纯 CSS。
+- [光晕（aura）](https://noii-y.github.io/moh-ui/ai/aura.md): 给最重要的卡片或按钮套一圈旋转光边，含 rainbow 彩虹 / dual 双光 / glow 辉光 / 自定义颜色 / XS~XL 尺寸全部变体，纯 CSS 零依赖。
+- [对比（diff）](https://noii-y.github.io/moh-ui/ai/diff.md): 左右叠放两张等大内容，中间分隔线一压对照差别，含设计稿前后对比、照片两种调色、大字劈开对比三种用法，零依赖纯 CSS。
+- [悬停画廊（hover-gallery）](https://noii-y.github.io/moh-ui/ai/hover-gallery.md): 默认露第一张图，鼠标横向滑过图位逐张切换多角度图；覆盖纯画廊、卡片内商品画廊、max-w-60 紧凑商品卡等形态，零依赖纯 CSS。
+- [形状蒙版（mask）](https://noii-y.github.io/moh-ui/ai/mask.md): 把图片或色块裁成 circle/squircle/heart/hexagon/diamond/star/triangle 等全部 14 种形状，团队头像与勋章点缀场景，纯 CSS 零依赖。
+- [浏览器样机（mockup-browser）](https://noii-y.github.io/moh-ui/ai/mockup-browser.md): 带地址栏的浏览器外壳，框内可放迷你页面或截图，零依赖纯 CSS。
+- [代码窗口样机（mockup-code）](https://noii-y.github.io/moh-ui/ai/mockup-code.md): 深色代码窗口、行号/符号前缀、高亮行、不带前缀、彩色块，零依赖纯 CSS。
+- [手机样机（mockup-phone）](https://noii-y.github.io/moh-ui/ai/mockup-phone.md): mockup-phone 外壳 + camera 挖孔 + display 屏幕区，屏幕内可放任意 App 界面（外卖首页/信息流/锁屏壁纸），零依赖纯 CSS。
+- [窗口样机（mockup-window）](https://noii-y.github.io/moh-ui/ai/mockup-window.md): mockup-window 外框 + border/bg 变体，顶栏三圆点标题用零依赖 div 自拼，内容区可放文档/登录框/代码预览，零依赖纯 CSS。
+- [叠放（stack）](https://noii-y.github.io/moh-ui/ai/stack.md): stack 容器 + stack-top/start/end 方向修饰，商品图册错位叠放、通知堆阴影递减、主题色块代替外链图，附 hover 展开的诚实实现说明，零依赖纯 CSS。
+- [文字轮转（text-rotate）](https://noii-y.github.io/moh-ui/ai/text-rotate.md): 一句话里的关键词自动循环轮换（最多 6 词、默认 10 秒一轮），覆盖基础三词、六词大字居中、句子混排彩底、自定义行高与速度等用法，零依赖纯 CSS。
+- [图表卡（chart-card）](https://noii-y.github.io/moh-ui/ai/chart-card.md): 数据看板里的图表卡：折线/柱状/环形图与无数据空态，ECharts 渲染，颜色从 daisyUI 主题变量读取、切换主题自动跟随，含数据来源脚注与定高容器（需 ECharts CDN）。
+- [代码块（code-block）](https://noii-y.github.io/moh-ui/ai/code-block.md): 教程与文档里的代码块：语言标签 + 一键复制 + 语法高亮，关键词/字符串/注释/数字配色跟随 daisyUI 主题，支持长代码横向滚动；与零依赖的 mockup-code 互补（需 highlight.js CDN）。
+- [拖拽排序（drag-sort）](https://noii-y.github.io/moh-ui/ai/drag-sort.md): 后台菜单与列表的拖拽排序：HTML5 拖拽换序、把手聚焦后 ↑/↓ 键盘移动、目标位高亮、aria-live 播报移动结果（换序为一小段原生 JS，样式零依赖）。
+
+## Optional
+
+- [素材溯源与许可证](https://noii-y.github.io/moh-ui/site/attributions.html): 每个组件的上游名称、原版地址与许可证登记
+- [AI 审美硬边界](https://noii-y.github.io/moh-ui/site/rules.html): 组件背后的排版与审美规则

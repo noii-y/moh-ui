@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>步骤条（steps）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「步骤条」组件。横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。">
+<link rel="alternate" type="text/markdown" href="steps.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/components/daisyui/steps/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>步骤条（steps） · 灰墨 MoH_UI</h1>
+<blockquote>横向/纵向、已完成打勾、当前步高亮、未到置灰、data-content 自定义符号、语义色异常步等形态，附电商下单四步成品。</blockquote>
+<p>分类：导航　｜　来源：daisyUI（MIT） · <a href="https://daisyui.com/components/steps/" target="_blank" rel="noopener noreferrer">官方文档</a>　｜　依赖：无（零依赖）</p>
+<h2>给 AI 的实现指令</h2>
+<p>请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：电商下单四步进度（步骤条 Steps）。</p>
+<p>【场景】电商下单结算页顶部的四步进度条：购物车 → 收货地址 → 支付 → 完成，告诉用户当前走到哪一步。 【怎么排】</p>
+<ul>
+<li>用 &lt;ul class="steps"&gt; 横向一排，四个 &lt;li class="step"&gt;，文字写真实步骤名：购物车、收货地址、支付、完成；</li>
+<li>已完成的前两步用 step-primary + data-content="✓"（节点打勾）；</li>
+<li>当前步「支付」用 step-primary 高亮，data-content="3"；</li>
+<li>未走到的「完成」用 step-neutral 置灰，data-content="4"；</li>
+<li>手机宽度不够时，外层包 &lt;div class="overflow-x-auto w-full"&gt;，步骤条在容器内横向滑动，整页不能出现横向滚动条。</li>
+</ul>
+<p>【精确规格】</p>
+<ul>
+<li>步骤名写真实中文动作，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。</li>
+<li>用到的类全部真实存在：steps、step、step-primary、step-neutral、step-accent、step-error、step-info、w-full、overflow-x-auto。</li>
+<li>节点符号只作辅助，步骤名称必须写完整中文。</li>
+<li>纯展示组件，不需要任何交互 JS。</li>
+</ul>
+<p>【参考结构】（照此实现，外层标签可按我的项目调整）</p>
+<pre class="fence"><code class="lang-html">&lt;div class="overflow-x-auto w-full"&gt;
+  &lt;ul class="steps w-full"&gt;
+    &lt;li class="step step-primary" data-content="✓"&gt;购物车&lt;/li&gt;
+    &lt;li class="step step-primary" data-content="✓"&gt;收货地址&lt;/li&gt;
+    &lt;li class="step step-primary" data-content="3"&gt;支付&lt;/li&gt;
+    &lt;li class="step step-neutral" data-content="4"&gt;完成&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+<p>【灰墨审美硬边界（必须遵守）】</p>
+<ul>
+<li>控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。</li>
+<li>正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。</li>
+<li>所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。</li>
+<li>正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。</li>
+<li>动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。</li>
+<li>颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。</li>
+</ul>
+<p>【交付要求】</p>
+<ul>
+<li>给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。</li>
+<li>如果我的项目还没引入 daisyUI 5，请先告诉我需要在 &lt;head&gt; 里加一行 daisyui.css 的引用。</li>
+<li>做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。</li>
+</ul>
+<hr>
+<h2>底座引入</h2>
+<p>本组件基于 daisyUI 5（纯 CSS、零 JS、零构建）。若目标项目还没有引入，在 <code>&lt;head&gt;</code> 加这两行即可：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css"&gt;</code></pre>
+<h2>更多</h2>
+<ul>
+<li>完整中文教程与全部变体（在线页面）：<a href="https://noii-y.github.io/moh-ui/components/daisyui/steps/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/components/daisyui/steps/demo.html</a></li>
+<li>上游官方文档：<a href="https://daisyui.com/components/steps/" target="_blank" rel="noopener noreferrer">https://daisyui.com/components/steps/</a></li>
+<li>全站 68 个组件的 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我实现：电商下单四步进度（步骤条 Steps）。\n\n【场景】电商下单结算页顶部的四步进度条：购物车 → 收货地址 → 支付 → 完成，告诉用户当前走到哪一步。\n【怎么排】\n- 用 \u003cul class=\"steps\"> 横向一排，四个 \u003cli class=\"step\">，文字写真实步骤名：购物车、收货地址、支付、完成；\n- 已完成的前两步用 step-primary + data-content=\"✓\"（节点打勾）；\n- 当前步「支付」用 step-primary 高亮，data-content=\"3\"；\n- 未走到的「完成」用 step-neutral 置灰，data-content=\"4\"；\n- 手机宽度不够时，外层包 \u003cdiv class=\"overflow-x-auto w-full\">，步骤条在容器内横向滑动，整页不能出现横向滚动条。\n【精确规格】\n- 步骤名写真实中文动作，禁止出现 Primary / 成功 / 主要 这类颜色名当文案。\n- 用到的类全部真实存在：steps、step、step-primary、step-neutral、step-accent、step-error、step-info、w-full、overflow-x-auto。\n- 节点符号只作辅助，步骤名称必须写完整中文。\n- 纯展示组件，不需要任何交互 JS。\n\n【参考结构】（照此实现，外层标签可按我的项目调整）\n```html\n\u003cdiv class=\"overflow-x-auto w-full\">\n  \u003cul class=\"steps w-full\">\n    \u003cli class=\"step step-primary\" data-content=\"✓\">购物车\u003c/li>\n    \u003cli class=\"step step-primary\" data-content=\"✓\">收货地址\u003c/li>\n    \u003cli class=\"step step-primary\" data-content=\"3\">支付\u003c/li>\n    \u003cli class=\"step step-neutral\" data-content=\"4\">完成\u003c/li>\n  \u003c/ul>\n\u003c/div>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
