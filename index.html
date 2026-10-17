@@ -53,9 +53,9 @@
       <div class="site-grid">
         <a class="site-card" href="site/themes.html" style="text-decoration:none; color:inherit">
           <div class="site-card__body">
-            <p class="site-card__title">🎨 主题库 <span class="site-chip">统一 --moh-* 变量</span></p>
-            <p class="site-card__desc">10 套真实色板主题：墨夜 / 宣纸 / 纯净灰阶 / 商务灰 / 粉彩 / 开发者暗黑 / 粗野 / 霓虹 / 新中式 / 经典后台。每套都过体检 100 分、附中文教程与灵感来源。</p>
-            <div class="site-card__meta"><span class="site-chip site-chip--ok">audit 100</span><span class="site-chip">MIT</span></div>
+            <p class="site-card__title">🎨 主题库 <span class="site-chip">整页案例 · data-theme 换肤</span></p>
+            <p class="site-card__desc">18 套主题，每套都是一个真实业务整页案例（数据看板、电商、音乐播放器、股票终端、点单页……），不是色卡。挂 data-theme 即整站换肤，含原创二创与开源收录，许可证逐套标注。</p>
+            <div class="site-card__meta"><span class="site-chip site-chip--ok" id="home-theme-n">整页案例</span><span class="site-chip">MIT / Apache-2.0</span></div>
           </div>
         </a>
         <a class="site-card" href="site/components.html" style="text-decoration:none; color:inherit">
@@ -90,7 +90,7 @@
         <div class="site-card" style="cursor:default">
           <div class="site-card__body">
             <p class="site-card__title">② 搬组件 / 换主题</p>
-            <p class="site-card__desc">组件卡点「复制 AI 提示词」整段发给你的 AI，或点「复制链接发给 AI」把组件专属的 AI 指令页网址丢给它——它按你的项目只生成这一块；也可复制成品 HTML 直接粘贴。主题卡一键复制 tokens.css 变量。</p>
+            <p class="site-card__desc">组件卡点「复制 AI 提示词」整段发给你的 AI，或点「复制链接发给 AI」把组件专属的 AI 指令页网址丢给它——它按你的项目只生成这一块；也可复制成品 HTML 直接粘贴。主题卡点「复制 AI 指令」，挂上 data-theme 即整站换肤。</p>
           </div>
         </div>
         <div class="site-card" style="cursor:default">
@@ -117,7 +117,7 @@
       var compN = document.getElementById("home-comp-n");
       if (compN) compN.textContent = d.components + " 个组件";
       var items = [
-        { n: d.themes, label: "套主题 · 全部体检 100" },
+        { n: d.themes, label: "套主题 · 整页案例" },
         { n: d.components, label: "个组件 · 可直接搬运" },
         { n: d.rules, label: "套规则包 · 硬边界+禁则" },
         { n: d.resources, label: "个资源 · 全部可溯源" }
@@ -126,7 +126,7 @@
         return '<div class="site-stat"><div class="site-stat__num">' + it.n + '</div><div class="site-stat__label">' + it.label + '</div></div>';
       }).join("");
     } else {
-      stats.innerHTML = '<div class="site-stat"><div class="site-stat__num">10</div><div class="site-stat__label">套主题</div></div>';
+      stats.innerHTML = '<div class="site-stat"><div class="site-stat__num">18</div><div class="site-stat__label">套主题</div></div>';
     }
   </script>
 </body>
