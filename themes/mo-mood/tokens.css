@@ -1,60 +1,47 @@
-/* ============================================================
-   灰墨 · MoH_UI — mo-mood（暗黑开发者 · 深色）
-   风格参考：shadcn.io 主题 "Cosmic Night"（深空氛围、宇宙蓝）
-   https://www.shadcn.io/theme/cosmic-night（MIT 社区主题站，色板为自研）
-   特征：深空底、宇宙蓝主色、低光害，适合开发者工具 / 数据产品夜间工作
-   ============================================================ */
+/*! 灰墨 mo-mood · 暗黑开发者（深色）—— API 控制台主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-mood"> 即整站换肤。
+   深空底三层递进 + 宇宙蓝主色，低光害，适合开发者工具夜间工作。 */
 
-:root {
-  /* ---------- 色彩语义（深空） ---------- */
-  --moh-canvas: #0f1117;          /* 页面底（深空近黑） */
-  --moh-surface: #151822;         /* 卡片 / 面板 */
-  --moh-surface-2: #1b1f2b;       /* 悬浮 / 次级底 */
-  --moh-border: #262b3a;          /* 常规描边 */
-  --moh-border-strong: #333a4d;   /* 强调描边 */
-  --moh-border-width: 1px;
-  --moh-ink: #e6e8ee;             /* 主文字（近白微蓝） */
-  --moh-muted: #8b93a8;           /* 次级文字（体检校准 6.1） */
-  --moh-primary: #4a63e0;         /* 主色（宇宙蓝，白字 5.1） */
-  --moh-primary-hover: #5d74e8;
-  --moh-primary-muted: #232a44;   /* 主色浅底 */
-  --moh-success: #34d399;
-  --moh-warning: #fbbf24;
-  --moh-danger: #f87171;
+[data-theme="mo-mood"] {
+  color-scheme: dark;
 
-  /* ---------- 字体 ---------- */
-  --moh-font-sans: "Inter", "HarmonyOS Sans SC", "MiSans",
-    "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --moh-font-mono: "JetBrains Mono", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
+  /* 底与纸：深空近黑三层，层次靠明度不靠描边 */
+  --color-base-100: #0f1117;
+  --color-base-200: #151822;
+  --color-base-300: #1b1f2b;
+  --color-base-content: #e6e8ee;
 
-  /* ---------- 字号阶（12/13/14/16/20/24，一页 ≤5 级） ---------- */
-  --moh-text-xs: 12px;
-  --moh-text-sm: 13px;
-  --moh-text-base: 14px;   /* 正文默认 */
-  --moh-text-md: 16px;
-  --moh-text-lg: 20px;
-  --moh-text-xl: 24px;
+  /* 主色：宇宙蓝（只留给主操作与选中态） */
+  --color-primary: #4a63e0;
+  --color-primary-content: #ffffff;
 
-  /* ---------- 间距（8px 网格，4 的倍数） ---------- */
-  --moh-space-1: 4px;
-  --moh-space-2: 8px;
-  --moh-space-3: 12px;
-  --moh-space-4: 16px;
-  --moh-space-6: 24px;
-  --moh-space-8: 32px;
+  /* 次色 / 强调色：灰蓝与青，用于次级元素与代码高亮 */
+  --color-secondary: #6b7a99;
+  --color-secondary-content: #ffffff;
+  --color-accent: #38bdf8;
+  --color-accent-content: #061826;
 
-  /* ---------- 圆角 ---------- */
-  --moh-radius-sm: 4px;
-  --moh-radius-md: 6px;
-  --moh-radius-lg: 8px;
+  --color-neutral: #1b1f2b;
+  --color-neutral-content: #e6e8ee;
 
-  /* ---------- 阴影（深色下偏柔） ---------- */
-  --moh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.30);
-  --moh-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
-  --moh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.50);
+  /* 语义色：深色版亮语义色，文字用近黑保证对比 */
+  --color-info: #38bdf8;
+  --color-info-content: #061826;
+  --color-success: #34d399;
+  --color-success-content: #06281c;
+  --color-warning: #fbbf24;
+  --color-warning-content: #3a2a05;
+  --color-error: #f87171;
+  --color-error-content: #3b0d0d;
 
-  /* ---------- 控件与动效 ---------- */
-  --moh-control-height: 32px;
-  --moh-transition: 150ms ease;
+  /* 圆角 / 尺寸 / 边框：小圆角、细边框，控制台取向 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
 }
