@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "name": "dracula-oss",
+  "type": "theme",
+  "title": "极客紫（OSS 完整版）",
+  "description": "完整页面案例：开源代码协作平台整页（仓库头 + 文件树 + main.py 代码预览 + README 摘要 + PR/Issue 列表）。Dracula 完整 OSS 色板：深紫灰底 + 霓虹紫主色，挂 data-theme=\"dracula-oss\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "开发者", "科技"],
+  "base": "dracula-oss",
+  "source": {
+    "origin": "third-party",
+    "upstream": "Dracula Theme (dracula/dracula-theme)",
+    "url": "https://github.com/dracula/dracula-theme#color-palette-oss",
+    "license": "MIT",
+    "changes": "将 Dracula 官方 OSS 12 色板映射为 daisyUI 5 主题变量（[data-theme=dracula-oss] 覆盖 --color-*：base 三层 #282a36/#21222c/#191a21、primary 紫 #bd93f9、secondary 粉 #ff79c6、accent 青 #8be9fd，语义色取官方绿/黄/红），圆角调小贴合开发者终端气质；另写虚构开源代码协作平台整页案例（demo.html），未使用任何官方品牌标识。与 daisyUI 官方自带简化版 data-theme=dracula 以 -oss 后缀区分。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
