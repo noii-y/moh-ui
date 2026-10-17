@@ -1,0 +1,47 @@
+/*! 灰墨 rose-pine · 暮色松（Rosé Pine 移植）—— 暖紫暮色、文艺阅读气质
+   色板出处：Rosé Pine（MIT，© 2023 Rosé Pine）https://github.com/rose-pine/neovim/blob/main/lua/rose-pine/palette.lua
+   覆盖 daisyUI 5 主题变量。用法：项目已引入 daisyUI 后，<link> 本文件，并在
+   <html data-theme="rose-pine"> 即整站换肤。 */
+
+[data-theme="rose-pine"] {
+  color-scheme: dark;
+
+  /* 底与纸：base / surface / overlay 三层，暖紫暮色 */
+  --color-base-100: #191724;
+  --color-base-200: #1f1d2e;
+  --color-base-300: #26233a;
+  --color-base-content: #e0def4;
+
+  /* 主色：iris 鸢尾紫，只留给当前导航与主操作 */
+  --color-primary: #c4a7e7;
+  --color-primary-content: #191724;
+
+  /* 次色：rose 玫红 / foam 青，杂志式点缀 */
+  --color-secondary: #eb6f92;
+  --color-secondary-content: #2a0a14;
+  --color-accent: #9ccfd8;
+  --color-accent-content: #12242a;
+
+  --color-neutral: #403d52;
+  --color-neutral-content: #e0def4;
+
+  /* 语义色：pine / foam / gold / love，长文阅读柔和 */
+  --color-info: #31748f;
+  --color-info-content: #e0def4;
+  --color-success: #9ccfd8;
+  --color-success-content: #12242a;
+  --color-warning: #f6c177;
+  --color-warning-content: #3a2a05;
+  --color-error: #eb6f92;
+  --color-error-content: #2a0a14;
+
+  /* 圆角 / 尺寸 / 边框：杂志书卷感，中等圆角 */
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.625rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
