@@ -9,7 +9,7 @@
 
 ---
 
-## 三层入口
+## 四层入口
 
 ### ① 规则边界包 —— 附带服务：AI 不易察觉的「整容」
 
@@ -57,24 +57,31 @@
 
 入口：[主题集市](site/themes.html)（搜索 / 风格筛选 / 色板条 / 一键复制 tokens 或 AI 指令 / 弹层预览整页效果）· 仓库目录 [`themes/`](themes/)
 
-### ③ 组件 / 插件库 —— 主打：能搬进自己项目的单文件组件
+### ③ 组件 / 插件库 —— 主打：能搬进自己项目的真实组件
 
-**30 个组件**，每个都是**单文件** `index.html`（结构 + 样式 + 说明注释），复制进任意项目即可用。类名统一 `moh-` 前缀，全部走 `var(--moh-*)`，**换任意主题自动适配**。
+**68 个组件**（63 个 daisyUI 搬运件 + 5 个灰墨自研增强件），每个都是「提示词三件套」：`demo.html`（成品详情页 + 中文教程）+ `README.md` + `moh.json`（溯源元数据）。基于 daisyUI 5（MIT，纯 CSS、零 JS、零构建）做零依赖中文适配，类名即 daisyUI 官方 class。
 
-- **零依赖 28 个**：button / input / select / table / card / form / navbar / sidebar / tag / modal / breadcrumb / pagination / empty / skeleton / tabs / drawer / toast / stat-card / drag-sort / checkbox / switch / date-range / alert / tooltip / avatar / progress / badge / spinner
-- **带依赖 2 个**（CDN，依赖已在 `moh.json` 注明）：`chart-card`（ECharts，图表颜色读 `--moh-*` 变量）/ `code-block`（highlight.js，token 配色走语义变量）
-- 行为标准对齐可访问性规范：焦点可见、键盘可用（Tabs 方向键 / Drawer 焦点陷阱 / Tooltip hover+focus）、ARIA 语义正确
+- **63 个 daisyUI 搬运件**：按钮 / 输入框 / 表单 / 导航 / 数据展示 / 反馈弹层 / 区块 / 特效，覆盖官方主要形态，附真实业务成品与中文教程
+- **5 个灰墨自研增强件**（`components/<name>/`，同样三件套）：`chart-card`（ECharts，颜色读主题变量）/ `code-block`（highlight.js，token 配色走语义变量）/ `date-range`（零依赖原生日期范围筛选）/ `drag-sort`（原生 HTML5 拖拽排序）/ `empty`（零依赖空态）
+- 行为标准对齐可访问性规范：焦点可见、键盘可用、ARIA 语义正确
 
-**怎么用**：
+**怎么用**：首选把「复制 AI 提示词」整段发给你的 AI，或把组件专属 AI 指令页网址（`https://noii-y.github.io/moh-ui/ai/<组件名>.html`）发给它，让 AI 按你的项目只生成这一块；也可以「复制成品 HTML」直接粘贴。目标项目只需在 `<head>` 引两行底座样式：
 
 ```html
-<!-- 你的项目先引入任意一套主题变量 -->
-<link rel="stylesheet" href="./themes/mo-dark/tokens.css" />
-<!-- 然后打开目标组件的 index.html，把 <style> 和结构片段复制进你的项目 -->
-<!-- 例如搬 button：复制 components/button/index.html 里的 .moh-btn 样式与按钮结构 -->
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/assets/utilities-patch.css">
 ```
 
-入口：[组件集市](site/components.html)（分类浏览 / 依赖徽章 / 弹层预览 / 复制代码或 AI 指令 / 下载单文件）· 仓库目录 [`components/`](components/)
+入口：[组件集市](site/components.html)（分类浏览 / 依赖徽章 / 弹层预览 / 复制提示词或成品 HTML / 复制链接发给 AI）· 仓库目录 [`components/`](components/)
+
+### ④ AI 指令分发（llms.txt）—— 让 AI 直接抓取全库
+
+每个组件都有一个**机器可读的 AI 指令页**：`ai/<组件名>.md`（纯文本，AI 直接抓取）与 `ai/<组件名>.html`（人看版，可一键复制指令），内容与详情页「复制 AI 提示词」逐字一致（真实场景 + 精确规格 + 参考结构 + 审美硬边界 + 交付自查）。
+
+- **`llms.txt`**（根目录）：全库 AI 索引，按分类列出全部 68 个组件，每个指向自己的 `.md`
+- **`llms-full.txt`**：全部组件指令一次拼接，适合让 AI 整体了解组件库后批量生成
+
+把任意链接发给豆包 / Cursor / Claude Code 等 AI 即可让它抓取并按你的项目生成。生成脚本：`node scripts/build-ai-pages.mjs`（PM 维护，只写 `ai/` 与根 `llms*.txt`）。
 
 ---
 
@@ -92,9 +99,10 @@
 | 脚本 | 检查什么 | 当前状态 |
 | --- | --- | --- |
 | `node scripts/check-audit.mjs themes/<slug>` | 主题体检 100 分制：对比度 ≥4.5 / CJK 字体栈 / 8px 网格 / 字号阶 / 禁纯黑白底 / 禁紫渐变 / 必须有焦点态 | 10/10 全 100 |
-| `node scripts/check-components.mjs` | 组件 30 个：结构完整 / 焦点态 / 类名规范 | 30/30 通过 |
-| `node scripts/check-site.mjs` | 展示站 8 个 HTML 的 60 处引用 | 全部有效 |
-| `node scripts/check-attributions.mjs` | 素材溯源：41 个 moh.json（name 唯一 / 许可证 / 来源） | 全部合规 |
+| `node scripts/check-site.mjs` | 展示站 HTML 引用检查 | 全部有效 |
+| `node scripts/check-attributions.mjs` | 素材溯源：79 个 moh.json（name 唯一 / 许可证 / 来源） | 全部合规 |
+| `node scripts/qa-mobile.mjs components/daisyui/<名>/demo.html` | 手机 390 真实 iframe 横向溢出检测 | 68 组件全过 |
+| `node scripts/qa-copy.mjs ai/<名>.html` | AI 页「复制 AI 指令」真点校验（7 项） | 68/68 COPY_OK |
 
 ## 二创与溯源
 
