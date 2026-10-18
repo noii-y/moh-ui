@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>见山影集（浅色）（mo-photo）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「见山影集（浅色）」组件。虚构摄影师个人作品集「见山摄影 · 林见山」整页。米白暖纸三层、衬线大标题、大留白、画廊式装裱作品框（框内为有构图的线稿：山水/人像/街景/建筑），与官方 black（纯黑影棚式）一浅一深；挂 data-theme="mo-photo" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="mo-photo.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/mo-photo/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>见山影集（mo-photo） · 灰墨 MoH_UI</h1>
+<blockquote>虚构摄影师个人作品集「见山摄影 · 林见山」整页。米白暖纸三层、衬线大标题、大留白、画廊式装裱作品框（框内为有构图的线稿：山水/人像/街景/建筑），与官方 black（纯黑影棚式）一浅一深；挂 data-theme="mo-photo" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：灰墨二创主题（MIT）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/mo-photo/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-photo/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>引入方式：项目已引 daisyUI 后再 &lt;link&gt; 本 tokens.css，并在 &lt;html data-theme="mo-photo"&gt;；不要引 daisyui-themes.css，整页底色由本变量集接管。</li>
+<li>纸底三层已实测：--color-base-100 #F6F1E7（画廊墙面）、200 #EFE8D9（装裱衬底）、300 #D8CDB6（画框线/分隔线）；正文 --color-base-content #2A251E 纸面 13.5:1，次级文字 --color-secondary #4F5B66 纸面 6.18:1，都不许用 opacity 压浅，需要淡一档就换色。</li>
+<li>主色只有一个：胡桃木棕 #5F4229（奶油字 #FAF6EE 实测 8.48:1），只用于主按钮、当前导航下划线与链接；古铜 #7C4F14 是点睛色（奶油字 6.53:1 / 纸面 6.25:1），只能小面积，禁止大面积铺底。</li>
+<li>字体气质：大标题与品牌名用宋体衬线（Songti SC / Noto Serif SC）、字距放宽 3~6px；正文保持无衬线 16px、行高 1.8；这是浅色安静画廊，不是黑底影棚——严禁把背景改成深色。</li>
+<li>大留白是硬指标：Hero 上下留白 ≥80px、作品框间距 ≥40px、页宽 ≤1040px；板块之间留足呼吸，不要把内容塞满。</li>
+<li>作品框必须是「装裱结构」：外框 1px 细线 + 内底 base-200 衬纸 + 框内有构图的线稿（远山+水面/人物侧影/路灯+街/建筑轮廓），用 currentColor 单色 SVG；禁止放真照片、禁止空色块占位。</li>
+<li>状态色只在徽章小面积出现：info #2F5D7C / success #3D6B35 / warning #7A4F0E / error #8C2F27，奶油字全部 ≥5.8:1，且必须配中文文字，不只靠颜色传达。</li>
+<li>390px 规则：顶栏品牌与导航自然折行居中、作品框与系列卡单列、关于图文上下堆叠；整页不出现 position:fixed、不出现横向滚动。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="mo-photo"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;见山摄影 · 林见山个人作品集（mo-photo 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 mo-photo 主题完整页面案例：虚构摄影师个人作品集整页。米白暖纸、衬线大标题、大留白、画廊式作品框；本页只依赖 daisyUI 与 mo-photo 主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;style&gt;
+/*! 灰墨 mo-photo · 见山影集（浅色）—— 摄影师个人作品集 · 安静画廊主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="mo-photo"&gt; 即整站换肤。
+   设计取向：米白暖纸三层打底，深暖墨色文字，胡桃木棕主色只留给主按钮与当前导航；
+   与官方 black（纯黑影棚式）一浅一深，本套是浅色安静画廊、大留白、衬线标题。 */
+
+[data-theme="mo-photo"] {
+  color-scheme: light;
+
+  /* 底与纸：米白象牙纸三层，层次极淡，像美术馆墙面 */
+  --color-base-100: #f6f1e7;
+  --color-base-200: #efe8d9;
+  --color-base-300: #d8cdb6;
+  --color-base-content: #2a251e;
+
+  /* 主色：胡桃木棕（奶油字实测 8.48:1），只留给主按钮、当前导航、链接 */
+  --color-primary: #5f4229;
+  --color-primary-content: #faf6ee;
+
+  /* 次色：石板蓝灰（奶油字 6.45:1），次级按钮与系列标签 */
+  --color-secondary: #4f5b66;
+  --color-secondary-content: #faf6ee;
+
+  /* 强调色：古铜棕（奶油字 6.53:1 / 纸上 6.25:1），仅作点睛小面积 */
+  --color-accent: #7c4f14;
+  --color-accent-content: #faf6ee;
+
+  /* 中性：浅米灰卡，深字 9.22:1 */
+  --color-neutral: #e6ddc9;
+  --color-neutral-content: #3a332a;
+
+  /* 语义色：全部压到奶油字 ≥4.5:1，状态另配中文文字 */
+  --color-info: #2f5d7c;
+  --color-info-content: #faf6ee;
+  --color-success: #3d6b35;
+  --color-success-content: #faf6ee;
+  --color-warning: #7a4f0e;
+  --color-warning-content: #faf6ee;
+  --color-error: #8c2f27;
+  --color-error-content: #faf6ee;
+
+  /* 圆角 / 尺寸 / 边框：画廊偏克制，细边框、无投影 */
+  --radius-selector: 0.25rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+  &lt;/style&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：颜色一律取主题语义变量，不写死 hex */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.8; }
+    .serif { font-family: "Songti SC", "Noto Serif SC", "STSong", SimSun, serif; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
+
+    .gwrap { max-width: 1040px; margin: 0 auto; padding: 0 20px 64px; }
+
+    /* 顶栏：极细品牌 + 导航 + 预约 */
+    .ghead { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 28px 0 0; border-bottom: 1px solid var(--color-base-300); padding-bottom: 18px; }
+    .gbrand h1 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: 6px; }
+    .gbrand p { margin: 2px 0 0; font-size: 12px; letter-spacing: 3px; color: var(--color-secondary); }
+    .gnav { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }
+    .gnav a { display: block; padding: 8px 14px; font-size: 15px; color: var(--color-base-content); text-decoration: none; letter-spacing: 2px; border-radius: 4px; }
+    .gnav .gnow { color: var(--color-primary); font-weight: 700; box-shadow: inset 0 -2px 0 var(--color-primary); }
+
+    /* Hero：大留白 + 衬线大标题 + 线稿相机 */
+    .ghero { padding: 84px 0 72px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px; }
+    .ghero .gkick { font-size: 13px; letter-spacing: 5px; color: var(--color-secondary); margin: 0; }
+    .ghero h2 { margin: 0; font-size: 44px; line-height: 1.4; font-weight: 600; letter-spacing: 3px; max-width: 720px; }
+    .ghero .gline { width: 56px; height: 1px; background: var(--color-base-300); }
+    .ghero .gdesc { margin: 0; font-size: 16px; color: var(--color-secondary); max-width: 460px; }
+    .gcamera { width: 72px; height: 72px; color: var(--color-primary); }
+
+    /* 作品框：装裱感，框内是有构图的线稿（不是真图也不是空色块） */
+    .gframes { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    .gframe { background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 16px; }
+    .gframe svg { display: block; width: 100%; height: auto; }
+    .gframe figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 4px 2px; }
+    .gframe figcaption b { font-size: 17px; font-weight: 600; letter-spacing: 1px; }
+    .gframe figcaption span { font-size: 13px; color: var(--color-secondary); letter-spacing: 1px; }
+    @media (min-width: 760px) {
+      .gframes { grid-template-columns: 1fr 1fr; }
+      .gframe.wide { grid-column: 1 / -1; }
+    }
+
+    /* 板块小标题 */
+    .gsechead { margin: 72px 0 20px; text-align: center; }
+    .gsechead h2 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 6px; }
+    .gsechead p { margin: 8px 0 0; font-size: 14px; color: var(--color-secondary); letter-spacing: 2px; }
+
+    /* 系列作品 */
+    .gseries { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    @media (min-width: 760px) { .gseries { grid-template-columns: repeat(3, 1fr); } }
+    .gcard { background: var(--color-base-100); border: 1px solid var(--color-base-300); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    .gthumb { background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 10px; }
+    .gthumb svg { display: block; width: 100%; height: auto; }
+    .gcard b { font-size: 17px; font-weight: 600; letter-spacing: 1px; }
+    .gcard p { margin: 0; font-size: 14px; color: var(--color-secondary); }
+
+    /* 关于 + 日志 */
+    .gabout { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 28px; }
+    @media (min-width: 760px) { .gabout { grid-template-columns: 220px 1fr; } }
+    .gabout svg { width: 100%; height: auto; color: var(--color-primary); }
+    .gabout h3 { margin: 0 0 10px; font-size: 20px; font-weight: 600; letter-spacing: 2px; }
+    .gabout p { margin: 0 0 12px; font-size: 15px; color: var(--color-base-content); }
+    .glog { margin-top: 18px; border-top: 1px solid var(--color-base-300); }
+    .glog div { display: flex; align-items: baseline; gap: 16px; padding: 14px 2px; border-bottom: 1px solid var(--color-base-300); flex-wrap: wrap; }
+    .glog time { font-size: 13px; color: var(--color-secondary); letter-spacing: 1px; flex: none; }
+    .glog span { font-size: 15px; }
+
+    /* 约拍 CTA */
+    .gbook { margin-top: 72px; border: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 44px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .gbook h2 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: 4px; }
+    .gbook p { margin: 0; font-size: 15px; color: var(--color-secondary); max-width: 480px; }
+    .gbook .gtypes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+
+    .gfoot { margin-top: 56px; border-top: 1px solid var(--color-base-300); padding-top: 20px; text-align: center; font-size: 13px; color: var(--color-secondary); line-height: 2.2; letter-spacing: 1px; }
+
+    @media (max-width: 640px) {
+      .ghead { justify-content: center; text-align: center; }
+      .gnav { justify-content: center; }
+      .ghero { padding: 52px 0 48px; }
+      .ghero h2 { font-size: 28px; }
+      .gsechead { margin-top: 48px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="gwrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;header class="ghead"&gt;
+      &lt;div class="gbrand serif"&gt;
+        &lt;h1&gt;见山摄影&lt;/h1&gt;
+        &lt;p&gt;JIANSHAN · PORTFOLIO&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;nav aria-label="主导航"&gt;
+        &lt;ul class="gnav"&gt;
+          &lt;li&gt;&lt;a class="gnow" aria-current="page"&gt;作品&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;系列&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;关于&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;日志&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;联系&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+      &lt;button class="btn btn-outline" type="button"&gt;预约拍摄&lt;/button&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Hero：大留白 + 衬线大标题 + 相机线稿 --&gt;
+    &lt;section class="ghero"&gt;
+      &lt;p class="gkick"&gt;PHOTOGRAPHER · 林见山&lt;/p&gt;
+      &lt;h2 class="serif"&gt;光，停在刚刚好的地方&lt;/h2&gt;
+      &lt;svg class="gcamera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+        &lt;path d="M4 8h3l1.5-2.5h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" /&gt;
+        &lt;circle cx="12" cy="13" r="3.4" /&gt;
+        &lt;path d="M18 10.2h.01" /&gt;
+      &lt;/svg&gt;
+      &lt;p class="gdesc"&gt;十年时间，只拍自然光下的人、山与街。本站所有作品为虚构示例，展示 mo-photo 主题的画廊排版。&lt;/p&gt;
+      &lt;button class="btn btn-primary btn-lg" type="button"&gt;查看作品&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 画廊：四个装裱作品框，框内是有构图的线稿 --&gt;
+    &lt;section aria-label="精选作品"&gt;
+      &lt;div class="gsechead"&gt;
+        &lt;h2 class="serif"&gt;精选作品&lt;/h2&gt;
+        &lt;p&gt;2019 — 2026 · 均为示意线稿&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="gframes"&gt;
+        &lt;figure class="gframe wide"&gt;
+          &lt;svg viewBox="0 0 800 450" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-label="山水示意线稿"&gt;
+            &lt;circle cx="640" cy="110" r="34" /&gt;
+            &lt;path d="M40 300 L220 150 L330 260 L470 120 L640 300 L760 300" /&gt;
+            &lt;path d="M40 300 H760" /&gt;
+            &lt;path d="M90 340 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" stroke-width="1.5" /&gt;
+            &lt;path d="M120 372 q25 -8 50 0 t50 0 t50 0" stroke-width="1.5" /&gt;
+            &lt;path d="M300 400 q20 -6 40 0 t40 0" stroke-width="1.5" /&gt;
+          &lt;/svg&gt;
+          &lt;figcaption&gt;&lt;b class="serif"&gt;雾起时 · 黄山&lt;/b&gt;&lt;span&gt;2023 春 · 1/60s f/8&lt;/span&gt;&lt;/figcaption&gt;
+        &lt;/figure&gt;
+        &lt;figure class="gframe"&gt;
+          &lt;svg viewBox="0 0 800 450" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-label="人像示意线稿"&gt;
+            &lt;circle cx="400" cy="160" r="62" /&gt;
+            &lt;path d="M300 380 c0 -70 45 -110 100 -110 s100 40 100 110" /&gt;
+            &lt;path d="M250 410 H550" /&gt;
+          &lt;/svg&gt;
+          &lt;figcaption&gt;&lt;b class="serif"&gt;侧影 · 朋友&lt;/b&gt;&lt;span&gt;2022 冬 · 自然光&lt;/span&gt;&lt;/figcaption&gt;
+        &lt;/figure&gt;
+        &lt;figure class="gframe"&gt;
+          &lt;svg viewBox="0 0 800 450" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-label="街景示意线稿"&gt;
+            &lt;path d="M120 400 V120" /&gt;
+            &lt;circle cx="120" cy="110" r="26" /&gt;
+            &lt;path d="M60 400 H740" /&gt;
+            &lt;path d="M60 400 l60 -120" /&gt;
+            &lt;path d="M740 400 l-60 -120" /&gt;
+            &lt;rect x="560" y="180" width="140" height="220" /&gt;
+            &lt;path d="M590 220 h28 M642 220 h28 M590 270 h28 M642 270 h28 M590 320 h28 M642 320 h28" stroke-width="1.5" /&gt;
+          &lt;/svg&gt;
+          &lt;figcaption&gt;&lt;b class="serif"&gt;夜路灯 · 汉口&lt;/b&gt;&lt;span&gt;2024 秋 · 35mm&lt;/span&gt;&lt;/figcaption&gt;
+        &lt;/figure&gt;
+        &lt;figure class="gframe wide"&gt;
+          &lt;svg viewBox="0 0 800 450" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-label="建筑示意线稿"&gt;
+            &lt;rect x="180" y="90" width="160" height="320" /&gt;
+            &lt;rect x="420" y="150" width="200" height="260" /&gt;
+            &lt;path d="M210 130 h100 M210 180 h100 M210 230 h100 M210 280 h100 M210 330 h100" stroke-width="1.5" /&gt;
+            &lt;path d="M450 190 h140 M450 240 h140 M450 290 h140 M450 340 h140" stroke-width="1.5" /&gt;
+            &lt;path d="M120 410 H720" /&gt;
+          &lt;/svg&gt;
+          &lt;figcaption&gt;&lt;b class="serif"&gt;方与线 · 美术馆&lt;/b&gt;&lt;span&gt;2025 夏 · 建筑空间&lt;/span&gt;&lt;/figcaption&gt;
+        &lt;/figure&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 三个系列 --&gt;
+    &lt;section aria-label="系列作品"&gt;
+      &lt;div class="gsechead"&gt;
+        &lt;h2 class="serif"&gt;系列&lt;/h2&gt;
+        &lt;p&gt;三个长期拍摄的主题&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="gseries"&gt;
+        &lt;div class="gcard"&gt;
+          &lt;div class="gthumb"&gt;
+            &lt;svg viewBox="0 0 300 200" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M20 140 L90 70 L140 120 L200 60 L280 140" /&gt;
+              &lt;path d="M20 140 H280" /&gt;
+              &lt;path d="M40 165 q15 -6 30 0 t30 0 t30 0 t30 0 t30 0" stroke-width="1.4" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;b class="serif"&gt;山河纪&lt;/b&gt;
+          &lt;p&gt;42 张 · 七年走了十一座山，等雾散的那一下。&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="gcard"&gt;
+          &lt;div class="gthumb"&gt;
+            &lt;svg viewBox="0 0 300 200" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;circle cx="150" cy="80" r="34" /&gt;
+              &lt;path d="M95 190 c0 -42 25 -66 55 -66 s55 24 55 66" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;b class="serif"&gt;窗边的人&lt;/b&gt;
+          &lt;p&gt;28 张 · 自然光里的肖像，不打灯，不摆布。&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class="gcard"&gt;
+          &lt;div class="gthumb"&gt;
+            &lt;svg viewBox="0 0 300 200" fill="none" stroke="var(--color-secondary)" stroke-width="2" stroke-linejoin="round" aria-hidden="true"&gt;
+              &lt;path d="M60 180 V50" /&gt;
+              &lt;circle cx="60" cy="44" r="14" /&gt;
+              &lt;path d="M30 180 H270" /&gt;
+              &lt;path d="M210 90 h50 v90" /&gt;
+              &lt;path d="M225 115 h20 M225 140 h20" stroke-width="1.4" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;b class="serif"&gt;夜走记&lt;/b&gt;
+          &lt;p&gt;36 张 · 凌晨的街道、路灯与还亮着的窗。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 关于 + 日志 --&gt;
+    &lt;section aria-label="关于与日志"&gt;
+      &lt;div class="gsechead"&gt;
+        &lt;h2 class="serif"&gt;关于与日志&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class="gabout"&gt;
+        &lt;svg viewBox="0 0 220 220" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="暗房示意线稿"&gt;
+          &lt;path d="M30 190 V70 l80 -40 80 40 v120" /&gt;
+          &lt;circle cx="110" cy="120" r="34" /&gt;
+          &lt;path d="M110 86 V70" /&gt;
+          &lt;circle cx="110" cy="64" r="6" /&gt;
+          &lt;path d="M70 190 v-40 h80 v40" /&gt;
+        &lt;/svg&gt;
+        &lt;div&gt;
+          &lt;h3 class="serif"&gt;林见山&lt;/h3&gt;
+          &lt;p&gt;独立摄影师，现居武汉。早年做新闻摄影，后来只接自己想拍的东西：山川、肖像、夜里的街。&lt;/p&gt;
+          &lt;p&gt;暗房在自家阳台一角，周末固定冲印。本站作品、人物与联系方式均为虚构示例。&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="glog"&gt;
+        &lt;div&gt;&lt;time&gt;2026-09-28&lt;/time&gt;&lt;span&gt;《山河纪》第二辑画册开始排版，预计十二月印出。&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;time&gt;2026-09-10&lt;/time&gt;&lt;span&gt;去了趟江边，拍了六卷黑白，等冲印出来再挑。&lt;/span&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;time&gt;2026-08-22&lt;/time&gt;&lt;span&gt;更新了约拍时段：十月起每周三、周日开放预约。&lt;/span&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 约拍 CTA --&gt;
+    &lt;section class="gbook" aria-label="预约拍摄"&gt;
+      &lt;h2 class="serif"&gt;约一次拍摄&lt;/h2&gt;
+      &lt;p&gt;服务类型均为虚构示例：个人肖像 / 家庭合影 / 空间与建筑拍摄。预约邮箱 hello@jianshan.example（虚构）。&lt;/p&gt;
+      &lt;div class="gtypes"&gt;
+        &lt;span class="badge badge-soft badge-secondary"&gt;个人肖像 · 1 小时&lt;/span&gt;
+        &lt;span class="badge badge-soft badge-secondary"&gt;家庭合影 · 半天&lt;/span&gt;
+        &lt;span class="badge badge-soft badge-secondary"&gt;空间拍摄 · 按项目&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn-primary btn-lg" type="button"&gt;预约拍摄&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 页脚 --&gt;
+    &lt;footer class="gfoot"&gt;
+      &lt;p&gt;© 2026 见山摄影（虚构摄影师与作品集，仅作 mo-photo 主题展示）&lt;/p&gt;
+      &lt;p&gt;本站人物、地名、邮箱与拍摄参数均为示例 · 灰墨 MoH_UI&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/themes/mo-photo/tokens.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="mo-photo"</code>，组件类名一行都不用改。上面的 tokens.css 覆盖 [data-theme="mo-photo"] 下的全部 --color-* 变量。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<pre class="fence"><code class="lang-css">/*! 灰墨 mo-photo · 见山影集（浅色）—— 摄影师个人作品集 · 安静画廊主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，&lt;link&gt; 本文件，并在 &lt;html data-theme="mo-photo"&gt; 即整站换肤。
+   设计取向：米白暖纸三层打底，深暖墨色文字，胡桃木棕主色只留给主按钮与当前导航；
+   与官方 black（纯黑影棚式）一浅一深，本套是浅色安静画廊、大留白、衬线标题。 */
+
+[data-theme="mo-photo"] {
+  color-scheme: light;
+
+  /* 底与纸：米白象牙纸三层，层次极淡，像美术馆墙面 */
+  --color-base-100: #f6f1e7;
+  --color-base-200: #efe8d9;
+  --color-base-300: #d8cdb6;
+  --color-base-content: #2a251e;
+
+  /* 主色：胡桃木棕（奶油字实测 8.48:1），只留给主按钮、当前导航、链接 */
+  --color-primary: #5f4229;
+  --color-primary-content: #faf6ee;
+
+  /* 次色：石板蓝灰（奶油字 6.45:1），次级按钮与系列标签 */
+  --color-secondary: #4f5b66;
+  --color-secondary-content: #faf6ee;
+
+  /* 强调色：古铜棕（奶油字 6.53:1 / 纸上 6.25:1），仅作点睛小面积 */
+  --color-accent: #7c4f14;
+  --color-accent-content: #faf6ee;
+
+  /* 中性：浅米灰卡，深字 9.22:1 */
+  --color-neutral: #e6ddc9;
+  --color-neutral-content: #3a332a;
+
+  /* 语义色：全部压到奶油字 ≥4.5:1，状态另配中文文字 */
+  --color-info: #2f5d7c;
+  --color-info-content: #faf6ee;
+  --color-success: #3d6b35;
+  --color-success-content: #faf6ee;
+  --color-warning: #7a4f0e;
+  --color-warning-content: #faf6ee;
+  --color-error: #8c2f27;
+  --color-error-content: #faf6ee;
+
+  /* 圆角 / 尺寸 / 边框：画廊偏克制，细边框、无投影 */
+  --radius-selector: 0.25rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}</code></pre>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/mo-photo/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/mo-photo/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「见山影集（mo-photo）」的整页。\n\n【场景】\n虚构摄影师个人作品集「见山摄影 · 林见山」整页。米白暖纸三层、衬线大标题、大留白、画廊式装裱作品框（框内为有构图的线稿：山水/人像/街景/建筑），与官方 black（纯黑影棚式）一浅一深；挂 data-theme=\"mo-photo\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 引入方式：项目已引 daisyUI 后再 \u003clink> 本 tokens.css，并在 \u003chtml data-theme=\"mo-photo\">；不要引 daisyui-themes.css，整页底色由本变量集接管。\n- 纸底三层已实测：--color-base-100 #F6F1E7（画廊墙面）、200 #EFE8D9（装裱衬底）、300 #D8CDB6（画框线/分隔线）；正文 --color-base-content #2A251E 纸面 13.5:1，次级文字 --color-secondary #4F5B66 纸面 6.18:1，都不许用 opacity 压浅，需要淡一档就换色。\n- 主色只有一个：胡桃木棕 #5F4229（奶油字 #FAF6EE 实测 8.48:1），只用于主按钮、当前导航下划线与链接；古铜 #7C4F14 是点睛色（奶油字 6.53:1 / 纸面 6.25:1），只能小面积，禁止大面积铺底。\n- 字体气质：大标题与品牌名用宋体衬线（Songti SC / Noto Serif SC）、字距放宽 3~6px；正文保持无衬线 16px、行高 1.8；这是浅色安静画廊，不是黑底影棚——严禁把背景改成深色。\n- 大留白是硬指标：Hero 上下留白 ≥80px、作品框间距 ≥40px、页宽 ≤1040px；板块之间留足呼吸，不要把内容塞满。\n- 作品框必须是「装裱结构」：外框 1px 细线 + 内底 base-200 衬纸 + 框内有构图的线稿（远山+水面/人物侧影/路灯+街/建筑轮廓），用 currentColor 单色 SVG；禁止放真照片、禁止空色块占位。\n- 状态色只在徽章小面积出现：info #2F5D7C / success #3D6B35 / warning #7A4F0E / error #8C2F27，奶油字全部 ≥5.8:1，且必须配中文文字，不只靠颜色传达。\n- 390px 规则：顶栏品牌与导航自然折行居中、作品框与系列卡单列、关于图文上下堆叠；整页不出现 position:fixed、不出现横向滚动。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/themes/mo-photo/tokens.css\">\n\n然后在 \u003chtml data-theme=\"mo-photo\"> 挂属性，整页即刻换肤。上面的 tokens.css 覆盖 [data-theme=\"mo-photo\"] 下的全部 --color-* 变量。\n\n【精确规格】\n- 整页挂 data-theme=\"mo-photo\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"mo-photo\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n- 本主题完整变量（要改色就覆盖这些变量，不要硬编码）：\n```css\n/*! 灰墨 mo-photo · 见山影集（浅色）—— 摄影师个人作品集 · 安静画廊主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-photo\"> 即整站换肤。\n   设计取向：米白暖纸三层打底，深暖墨色文字，胡桃木棕主色只留给主按钮与当前导航；\n   与官方 black（纯黑影棚式）一浅一深，本套是浅色安静画廊、大留白、衬线标题。 */\n\n[data-theme=\"mo-photo\"] {\n  color-scheme: light;\n\n  /* 底与纸：米白象牙纸三层，层次极淡，像美术馆墙面 */\n  --color-base-100: #f6f1e7;\n  --color-base-200: #efe8d9;\n  --color-base-300: #d8cdb6;\n  --color-base-content: #2a251e;\n\n  /* 主色：胡桃木棕（奶油字实测 8.48:1），只留给主按钮、当前导航、链接 */\n  --color-primary: #5f4229;\n  --color-primary-content: #faf6ee;\n\n  /* 次色：石板蓝灰（奶油字 6.45:1），次级按钮与系列标签 */\n  --color-secondary: #4f5b66;\n  --color-secondary-content: #faf6ee;\n\n  /* 强调色：古铜棕（奶油字 6.53:1 / 纸上 6.25:1），仅作点睛小面积 */\n  --color-accent: #7c4f14;\n  --color-accent-content: #faf6ee;\n\n  /* 中性：浅米灰卡，深字 9.22:1 */\n  --color-neutral: #e6ddc9;\n  --color-neutral-content: #3a332a;\n\n  /* 语义色：全部压到奶油字 ≥4.5:1，状态另配中文文字 */\n  --color-info: #2f5d7c;\n  --color-info-content: #faf6ee;\n  --color-success: #3d6b35;\n  --color-success-content: #faf6ee;\n  --color-warning: #7a4f0e;\n  --color-warning-content: #faf6ee;\n  --color-error: #8c2f27;\n  --color-error-content: #faf6ee;\n\n  /* 圆角 / 尺寸 / 边框：画廊偏克制，细边框、无投影 */\n  --radius-selector: 0.25rem;\n  --radius-field: 0.375rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 0;\n  --noise: 0;\n}\n```\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"mo-photo\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>见山摄影 · 林见山个人作品集（mo-photo 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 mo-photo 主题完整页面案例：虚构摄影师个人作品集整页。米白暖纸、衬线大标题、大留白、画廊式作品框；本页只依赖 daisyUI 与 mo-photo 主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003cstyle>\n/*! 灰墨 mo-photo · 见山影集（浅色）—— 摄影师个人作品集 · 安静画廊主题\n   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。\n   用法：项目已引入 daisyUI 后，\u003clink> 本文件，并在 \u003chtml data-theme=\"mo-photo\"> 即整站换肤。\n   设计取向：米白暖纸三层打底，深暖墨色文字，胡桃木棕主色只留给主按钮与当前导航；\n   与官方 black（纯黑影棚式）一浅一深，本套是浅色安静画廊、大留白、衬线标题。 */\n\n[data-theme=\"mo-photo\"] {\n  color-scheme: light;\n\n  /* 底与纸：米白象牙纸三层，层次极淡，像美术馆墙面 */\n  --color-base-100: #f6f1e7;\n  --color-base-200: #efe8d9;\n  --color-base-300: #d8cdb6;\n  --color-base-content: #2a251e;\n\n  /* 主色：胡桃木棕（奶油字实测 8.48:1），只留给主按钮、当前导航、链接 */\n  --color-primary: #5f4229;\n  --color-primary-content: #faf6ee;\n\n  /* 次色：石板蓝灰（奶油字 6.45:1），次级按钮与系列标签 */\n  --color-secondary: #4f5b66;\n  --color-secondary-content: #faf6ee;\n\n  /* 强调色：古铜棕（奶油字 6.53:1 / 纸上 6.25:1），仅作点睛小面积 */\n  --color-accent: #7c4f14;\n  --color-accent-content: #faf6ee;\n\n  /* 中性：浅米灰卡，深字 9.22:1 */\n  --color-neutral: #e6ddc9;\n  --color-neutral-content: #3a332a;\n\n  /* 语义色：全部压到奶油字 ≥4.5:1，状态另配中文文字 */\n  --color-info: #2f5d7c;\n  --color-info-content: #faf6ee;\n  --color-success: #3d6b35;\n  --color-success-content: #faf6ee;\n  --color-warning: #7a4f0e;\n  --color-warning-content: #faf6ee;\n  --color-error: #8c2f27;\n  --color-error-content: #faf6ee;\n\n  /* 圆角 / 尺寸 / 边框：画廊偏克制，细边框、无投影 */\n  --radius-selector: 0.25rem;\n  --radius-field: 0.375rem;\n  --radius-box: 0.5rem;\n  --size-selector: 0.25rem;\n  --size-field: 0.25rem;\n  --border: 1px;\n  --depth: 0;\n  --noise: 0;\n}\n  \u003c/style>\n  \u003cstyle>\n    /* 仅布局辅助：颜色一律取主题语义变量，不写死 hex */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; font-size: 16px; line-height: 1.8; }\n    .serif { font-family: \"Songti SC\", \"Noto Serif SC\", \"STSong\", SimSun, serif; }\n    a:focus-visible, button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }\n\n    .gwrap { max-width: 1040px; margin: 0 auto; padding: 0 20px 64px; }\n\n    /* 顶栏：极细品牌 + 导航 + 预约 */\n    .ghead { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 28px 0 0; border-bottom: 1px solid var(--color-base-300); padding-bottom: 18px; }\n    .gbrand h1 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: 6px; }\n    .gbrand p { margin: 2px 0 0; font-size: 12px; letter-spacing: 3px; color: var(--color-secondary); }\n    .gnav { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; margin: 0; padding: 0; }\n    .gnav a { display: block; padding: 8px 14px; font-size: 15px; color: var(--color-base-content); text-decoration: none; letter-spacing: 2px; border-radius: 4px; }\n    .gnav .gnow { color: var(--color-primary); font-weight: 700; box-shadow: inset 0 -2px 0 var(--color-primary); }\n\n    /* Hero：大留白 + 衬线大标题 + 线稿相机 */\n    .ghero { padding: 84px 0 72px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px; }\n    .ghero .gkick { font-size: 13px; letter-spacing: 5px; color: var(--color-secondary); margin: 0; }\n    .ghero h2 { margin: 0; font-size: 44px; line-height: 1.4; font-weight: 600; letter-spacing: 3px; max-width: 720px; }\n    .ghero .gline { width: 56px; height: 1px; background: var(--color-base-300); }\n    .ghero .gdesc { margin: 0; font-size: 16px; color: var(--color-secondary); max-width: 460px; }\n    .gcamera { width: 72px; height: 72px; color: var(--color-primary); }\n\n    /* 作品框：装裱感，框内是有构图的线稿（不是真图也不是空色块） */\n    .gframes { display: grid; grid-template-columns: 1fr; gap: 40px; }\n    .gframe { background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 16px; }\n    .gframe svg { display: block; width: 100%; height: auto; }\n    .gframe figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 4px 2px; }\n    .gframe figcaption b { font-size: 17px; font-weight: 600; letter-spacing: 1px; }\n    .gframe figcaption span { font-size: 13px; color: var(--color-secondary); letter-spacing: 1px; }\n    @media (min-width: 760px) {\n      .gframes { grid-template-columns: 1fr 1fr; }\n      .gframe.wide { grid-column: 1 / -1; }\n    }\n\n    /* 板块小标题 */\n    .gsechead { margin: 72px 0 20px; text-align: center; }\n    .gsechead h2 { margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 6px; }\n    .gsechead p { margin: 8px 0 0; font-size: 14px; color: var(--color-secondary); letter-spacing: 2px; }\n\n    /* 系列作品 */\n    .gseries { display: grid; grid-template-columns: 1fr; gap: 18px; }\n    @media (min-width: 760px) { .gseries { grid-template-columns: repeat(3, 1fr); } }\n    .gcard { background: var(--color-base-100); border: 1px solid var(--color-base-300); padding: 14px; display: flex; flex-direction: column; gap: 10px; }\n    .gthumb { background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 10px; }\n    .gthumb svg { display: block; width: 100%; height: auto; }\n    .gcard b { font-size: 17px; font-weight: 600; letter-spacing: 1px; }\n    .gcard p { margin: 0; font-size: 14px; color: var(--color-secondary); }\n\n    /* 关于 + 日志 */\n    .gabout { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; background: var(--color-base-200); border: 1px solid var(--color-base-300); padding: 28px; }\n    @media (min-width: 760px) { .gabout { grid-template-columns: 220px 1fr; } }\n    .gabout svg { width: 100%; height: auto; color: var(--color-primary); }\n    .gabout h3 { margin: 0 0 10px; font-size: 20px; font-weight: 600; letter-spacing: 2px; }\n    .gabout p { margin: 0 0 12px; font-size: 15px; color: var(--color-base-content); }\n    .glog { margin-top: 18px; border-top: 1px solid var(--color-base-300); }\n    .glog div { display: flex; align-items: baseline; gap: 16px; padding: 14px 2px; border-bottom: 1px solid var(--color-base-300); flex-wrap: wrap; }\n    .glog time { font-size: 13px; color: var(--color-secondary); letter-spacing: 1px; flex: none; }\n    .glog span { font-size: 15px; }\n\n    /* 约拍 CTA */\n    .gbook { margin-top: 72px; border: 1px solid var(--color-base-300); background: var(--color-base-200); padding: 44px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }\n    .gbook h2 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: 4px; }\n    .gbook p { margin: 0; font-size: 15px; color: var(--color-secondary); max-width: 480px; }\n    .gbook .gtypes { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }\n\n    .gfoot { margin-top: 56px; border-top: 1px solid var(--color-base-300); padding-top: 20px; text-align: center; font-size: 13px; color: var(--color-secondary); line-height: 2.2; letter-spacing: 1px; }\n\n    @media (max-width: 640px) {\n      .ghead { justify-content: center; text-align: center; }\n      .gnav { justify-content: center; }\n      .ghero { padding: 52px 0 48px; }\n      .ghero h2 { font-size: 28px; }\n      .gsechead { margin-top: 48px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"gwrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cheader class=\"ghead\">\n      \u003cdiv class=\"gbrand serif\">\n        \u003ch1>见山摄影\u003c/h1>\n        \u003cp>JIANSHAN · PORTFOLIO\u003c/p>\n      \u003c/div>\n      \u003cnav aria-label=\"主导航\">\n        \u003cul class=\"gnav\">\n          \u003cli>\u003ca class=\"gnow\" aria-current=\"page\">作品\u003c/a>\u003c/li>\n          \u003cli>\u003ca>系列\u003c/a>\u003c/li>\n          \u003cli>\u003ca>关于\u003c/a>\u003c/li>\n          \u003cli>\u003ca>日志\u003c/a>\u003c/li>\n          \u003cli>\u003ca>联系\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/nav>\n      \u003cbutton class=\"btn btn-outline\" type=\"button\">预约拍摄\u003c/button>\n    \u003c/header>\n\n    \u003c!-- Hero：大留白 + 衬线大标题 + 相机线稿 -->\n    \u003csection class=\"ghero\">\n      \u003cp class=\"gkick\">PHOTOGRAPHER · 林见山\u003c/p>\n      \u003ch2 class=\"serif\">光，停在刚刚好的地方\u003c/h2>\n      \u003csvg class=\"gcamera\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n        \u003cpath d=\"M4 8h3l1.5-2.5h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z\" />\n        \u003ccircle cx=\"12\" cy=\"13\" r=\"3.4\" />\n        \u003cpath d=\"M18 10.2h.01\" />\n      \u003c/svg>\n      \u003cp class=\"gdesc\">十年时间，只拍自然光下的人、山与街。本站所有作品为虚构示例，展示 mo-photo 主题的画廊排版。\u003c/p>\n      \u003cbutton class=\"btn btn-primary btn-lg\" type=\"button\">查看作品\u003c/button>\n    \u003c/section>\n\n    \u003c!-- 画廊：四个装裱作品框，框内是有构图的线稿 -->\n    \u003csection aria-label=\"精选作品\">\n      \u003cdiv class=\"gsechead\">\n        \u003ch2 class=\"serif\">精选作品\u003c/h2>\n        \u003cp>2019 — 2026 · 均为示意线稿\u003c/p>\n      \u003c/div>\n      \u003cdiv class=\"gframes\">\n        \u003cfigure class=\"gframe wide\">\n          \u003csvg viewBox=\"0 0 800 450\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-label=\"山水示意线稿\">\n            \u003ccircle cx=\"640\" cy=\"110\" r=\"34\" />\n            \u003cpath d=\"M40 300 L220 150 L330 260 L470 120 L640 300 L760 300\" />\n            \u003cpath d=\"M40 300 H760\" />\n            \u003cpath d=\"M90 340 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0\" stroke-width=\"1.5\" />\n            \u003cpath d=\"M120 372 q25 -8 50 0 t50 0 t50 0\" stroke-width=\"1.5\" />\n            \u003cpath d=\"M300 400 q20 -6 40 0 t40 0\" stroke-width=\"1.5\" />\n          \u003c/svg>\n          \u003cfigcaption>\u003cb class=\"serif\">雾起时 · 黄山\u003c/b>\u003cspan>2023 春 · 1/60s f/8\u003c/span>\u003c/figcaption>\n        \u003c/figure>\n        \u003cfigure class=\"gframe\">\n          \u003csvg viewBox=\"0 0 800 450\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-label=\"人像示意线稿\">\n            \u003ccircle cx=\"400\" cy=\"160\" r=\"62\" />\n            \u003cpath d=\"M300 380 c0 -70 45 -110 100 -110 s100 40 100 110\" />\n            \u003cpath d=\"M250 410 H550\" />\n          \u003c/svg>\n          \u003cfigcaption>\u003cb class=\"serif\">侧影 · 朋友\u003c/b>\u003cspan>2022 冬 · 自然光\u003c/span>\u003c/figcaption>\n        \u003c/figure>\n        \u003cfigure class=\"gframe\">\n          \u003csvg viewBox=\"0 0 800 450\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-label=\"街景示意线稿\">\n            \u003cpath d=\"M120 400 V120\" />\n            \u003ccircle cx=\"120\" cy=\"110\" r=\"26\" />\n            \u003cpath d=\"M60 400 H740\" />\n            \u003cpath d=\"M60 400 l60 -120\" />\n            \u003cpath d=\"M740 400 l-60 -120\" />\n            \u003crect x=\"560\" y=\"180\" width=\"140\" height=\"220\" />\n            \u003cpath d=\"M590 220 h28 M642 220 h28 M590 270 h28 M642 270 h28 M590 320 h28 M642 320 h28\" stroke-width=\"1.5\" />\n          \u003c/svg>\n          \u003cfigcaption>\u003cb class=\"serif\">夜路灯 · 汉口\u003c/b>\u003cspan>2024 秋 · 35mm\u003c/span>\u003c/figcaption>\n        \u003c/figure>\n        \u003cfigure class=\"gframe wide\">\n          \u003csvg viewBox=\"0 0 800 450\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-label=\"建筑示意线稿\">\n            \u003crect x=\"180\" y=\"90\" width=\"160\" height=\"320\" />\n            \u003crect x=\"420\" y=\"150\" width=\"200\" height=\"260\" />\n            \u003cpath d=\"M210 130 h100 M210 180 h100 M210 230 h100 M210 280 h100 M210 330 h100\" stroke-width=\"1.5\" />\n            \u003cpath d=\"M450 190 h140 M450 240 h140 M450 290 h140 M450 340 h140\" stroke-width=\"1.5\" />\n            \u003cpath d=\"M120 410 H720\" />\n          \u003c/svg>\n          \u003cfigcaption>\u003cb class=\"serif\">方与线 · 美术馆\u003c/b>\u003cspan>2025 夏 · 建筑空间\u003c/span>\u003c/figcaption>\n        \u003c/figure>\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 三个系列 -->\n    \u003csection aria-label=\"系列作品\">\n      \u003cdiv class=\"gsechead\">\n        \u003ch2 class=\"serif\">系列\u003c/h2>\n        \u003cp>三个长期拍摄的主题\u003c/p>\n      \u003c/div>\n      \u003cdiv class=\"gseries\">\n        \u003cdiv class=\"gcard\">\n          \u003cdiv class=\"gthumb\">\n            \u003csvg viewBox=\"0 0 300 200\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M20 140 L90 70 L140 120 L200 60 L280 140\" />\n              \u003cpath d=\"M20 140 H280\" />\n              \u003cpath d=\"M40 165 q15 -6 30 0 t30 0 t30 0 t30 0 t30 0\" stroke-width=\"1.4\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cb class=\"serif\">山河纪\u003c/b>\n          \u003cp>42 张 · 七年走了十一座山，等雾散的那一下。\u003c/p>\n        \u003c/div>\n        \u003cdiv class=\"gcard\">\n          \u003cdiv class=\"gthumb\">\n            \u003csvg viewBox=\"0 0 300 200\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003ccircle cx=\"150\" cy=\"80\" r=\"34\" />\n              \u003cpath d=\"M95 190 c0 -42 25 -66 55 -66 s55 24 55 66\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cb class=\"serif\">窗边的人\u003c/b>\n          \u003cp>28 张 · 自然光里的肖像，不打灯，不摆布。\u003c/p>\n        \u003c/div>\n        \u003cdiv class=\"gcard\">\n          \u003cdiv class=\"gthumb\">\n            \u003csvg viewBox=\"0 0 300 200\" fill=\"none\" stroke=\"var(--color-secondary)\" stroke-width=\"2\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n              \u003cpath d=\"M60 180 V50\" />\n              \u003ccircle cx=\"60\" cy=\"44\" r=\"14\" />\n              \u003cpath d=\"M30 180 H270\" />\n              \u003cpath d=\"M210 90 h50 v90\" />\n              \u003cpath d=\"M225 115 h20 M225 140 h20\" stroke-width=\"1.4\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cb class=\"serif\">夜走记\u003c/b>\n          \u003cp>36 张 · 凌晨的街道、路灯与还亮着的窗。\u003c/p>\n        \u003c/div>\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 关于 + 日志 -->\n    \u003csection aria-label=\"关于与日志\">\n      \u003cdiv class=\"gsechead\">\n        \u003ch2 class=\"serif\">关于与日志\u003c/h2>\n      \u003c/div>\n      \u003cdiv class=\"gabout\">\n        \u003csvg viewBox=\"0 0 220 220\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-label=\"暗房示意线稿\">\n          \u003cpath d=\"M30 190 V70 l80 -40 80 40 v120\" />\n          \u003ccircle cx=\"110\" cy=\"120\" r=\"34\" />\n          \u003cpath d=\"M110 86 V70\" />\n          \u003ccircle cx=\"110\" cy=\"64\" r=\"6\" />\n          \u003cpath d=\"M70 190 v-40 h80 v40\" />\n        \u003c/svg>\n        \u003cdiv>\n          \u003ch3 class=\"serif\">林见山\u003c/h3>\n          \u003cp>独立摄影师，现居武汉。早年做新闻摄影，后来只接自己想拍的东西：山川、肖像、夜里的街。\u003c/p>\n          \u003cp>暗房在自家阳台一角，周末固定冲印。本站作品、人物与联系方式均为虚构示例。\u003c/p>\n        \u003c/div>\n      \u003c/div>\n      \u003cdiv class=\"glog\">\n        \u003cdiv>\u003ctime>2026-09-28\u003c/time>\u003cspan>《山河纪》第二辑画册开始排版，预计十二月印出。\u003c/span>\u003c/div>\n        \u003cdiv>\u003ctime>2026-09-10\u003c/time>\u003cspan>去了趟江边，拍了六卷黑白，等冲印出来再挑。\u003c/span>\u003c/div>\n        \u003cdiv>\u003ctime>2026-08-22\u003c/time>\u003cspan>更新了约拍时段：十月起每周三、周日开放预约。\u003c/span>\u003c/div>\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 约拍 CTA -->\n    \u003csection class=\"gbook\" aria-label=\"预约拍摄\">\n      \u003ch2 class=\"serif\">约一次拍摄\u003c/h2>\n      \u003cp>服务类型均为虚构示例：个人肖像 / 家庭合影 / 空间与建筑拍摄。预约邮箱 hello@jianshan.example（虚构）。\u003c/p>\n      \u003cdiv class=\"gtypes\">\n        \u003cspan class=\"badge badge-soft badge-secondary\">个人肖像 · 1 小时\u003c/span>\n        \u003cspan class=\"badge badge-soft badge-secondary\">家庭合影 · 半天\u003c/span>\n        \u003cspan class=\"badge badge-soft badge-secondary\">空间拍摄 · 按项目\u003c/span>\n      \u003c/div>\n      \u003cbutton class=\"btn btn-primary btn-lg\" type=\"button\">预约拍摄\u003c/button>\n    \u003c/section>\n\n    \u003c!-- 页脚 -->\n    \u003cfooter class=\"gfoot\">\n      \u003cp>© 2026 见山摄影（虚构摄影师与作品集，仅作 mo-photo 主题展示）\u003c/p>\n      \u003cp>本站人物、地名、邮箱与拍摄参数均为示例 · 灰墨 MoH_UI\u003c/p>\n    \u003c/footer>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

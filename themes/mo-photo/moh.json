@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-photo",
+  "type": "theme",
+  "title": "见山影集（浅色）",
+  "description": "完整页面案例：虚构摄影师个人作品集「见山摄影 · 林见山」整页。米白暖纸三层、衬线大标题、大留白、画廊式装裱作品框（框内为有构图的线稿：山水/人像/街景/建筑），与官方 black（纯黑影棚式）一浅一深；挂 data-theme=\"mo-photo\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "纸感", "留白", "品牌", "手作"],
+  "base": "mo-photo",
+  "aiNotes": [
+    "引入方式：项目已引 daisyUI 后再 <link> 本 tokens.css，并在 <html data-theme=\"mo-photo\">；不要引 daisyui-themes.css，整页底色由本变量集接管。",
+    "纸底三层已实测：--color-base-100 #F6F1E7（画廊墙面）、200 #EFE8D9（装裱衬底）、300 #D8CDB6（画框线/分隔线）；正文 --color-base-content #2A251E 纸面 13.5:1，次级文字 --color-secondary #4F5B66 纸面 6.18:1，都不许用 opacity 压浅，需要淡一档就换色。",
+    "主色只有一个：胡桃木棕 #5F4229（奶油字 #FAF6EE 实测 8.48:1），只用于主按钮、当前导航下划线与链接；古铜 #7C4F14 是点睛色（奶油字 6.53:1 / 纸面 6.25:1），只能小面积，禁止大面积铺底。",
+    "字体气质：大标题与品牌名用宋体衬线（Songti SC / Noto Serif SC）、字距放宽 3~6px；正文保持无衬线 16px、行高 1.8；这是浅色安静画廊，不是黑底影棚——严禁把背景改成深色。",
+    "大留白是硬指标：Hero 上下留白 ≥80px、作品框间距 ≥40px、页宽 ≤1040px；板块之间留足呼吸，不要把内容塞满。",
+    "作品框必须是「装裱结构」：外框 1px 细线 + 内底 base-200 衬纸 + 框内有构图的线稿（远山+水面/人物侧影/路灯+街/建筑轮廓），用 currentColor 单色 SVG；禁止放真照片、禁止空色块占位。",
+    "状态色只在徽章小面积出现：info #2F5D7C / success #3D6B35 / warning #7A4F0E / error #8C2F27，奶油字全部 ≥5.8:1，且必须配中文文字，不只靠颜色传达。",
+    "390px 规则：顶栏品牌与导航自然折行居中、作品框与系列卡单列、关于图文上下堆叠；整页不出现 position:fixed、不出现横向滚动。"
+  ],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": "自写 daisyUI 5 主题变量（[data-theme=mo-photo] 覆盖 --color-* 等，米白暖纸 + 胡桃木棕 + 古铜点睛，奶油/纸上文字对比度全部实测 ≥4.5:1），配虚构摄影师个人作品集整页案例（demo.html：衬线品牌顶栏与导航 + 大留白 Hero 含相机线稿与单 CTA + 四幅装裱作品框（山水/人像/街景/建筑线稿）+ 三个系列卡（缩略画框）+ 关于图文与日志三篇 + 约拍 CTA 徽章组 + 虚构声明页脚）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

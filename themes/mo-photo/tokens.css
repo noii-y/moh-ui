@@ -1,0 +1,51 @@
+/*! 灰墨 mo-photo · 见山影集（浅色）—— 摄影师个人作品集 · 安静画廊主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-photo"> 即整站换肤。
+   设计取向：米白暖纸三层打底，深暖墨色文字，胡桃木棕主色只留给主按钮与当前导航；
+   与官方 black（纯黑影棚式）一浅一深，本套是浅色安静画廊、大留白、衬线标题。 */
+
+[data-theme="mo-photo"] {
+  color-scheme: light;
+
+  /* 底与纸：米白象牙纸三层，层次极淡，像美术馆墙面 */
+  --color-base-100: #f6f1e7;
+  --color-base-200: #efe8d9;
+  --color-base-300: #d8cdb6;
+  --color-base-content: #2a251e;
+
+  /* 主色：胡桃木棕（奶油字实测 8.48:1），只留给主按钮、当前导航、链接 */
+  --color-primary: #5f4229;
+  --color-primary-content: #faf6ee;
+
+  /* 次色：石板蓝灰（奶油字 6.45:1），次级按钮与系列标签 */
+  --color-secondary: #4f5b66;
+  --color-secondary-content: #faf6ee;
+
+  /* 强调色：古铜棕（奶油字 6.53:1 / 纸上 6.25:1），仅作点睛小面积 */
+  --color-accent: #7c4f14;
+  --color-accent-content: #faf6ee;
+
+  /* 中性：浅米灰卡，深字 9.22:1 */
+  --color-neutral: #e6ddc9;
+  --color-neutral-content: #3a332a;
+
+  /* 语义色：全部压到奶油字 ≥4.5:1，状态另配中文文字 */
+  --color-info: #2f5d7c;
+  --color-info-content: #faf6ee;
+  --color-success: #3d6b35;
+  --color-success-content: #faf6ee;
+  --color-warning: #7a4f0e;
+  --color-warning-content: #faf6ee;
+  --color-error: #8c2f27;
+  --color-error-content: #faf6ee;
+
+  /* 圆角 / 尺寸 / 边框：画廊偏克制，细边框、无投影 */
+  --radius-selector: 0.25rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
