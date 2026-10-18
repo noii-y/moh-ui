@@ -1,0 +1,392 @@
+# 青园（garden） · 灰墨 MoH_UI
+
+> 虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme="garden" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/garden/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 浅暖米白底（base-100 / base-200 微暖灰），正文用近黑暖灰 base-content；绿色只来自主题 accent（鼠尾草灰绿），只用于主按钮、幼苗线稿、图标叶片与品牌标记，绝不大面积铺绿，禁止写死任何绿色十六进制。
+- garden 的 primary 是中等明度玫红（白字压它实测约 4.15:1，不达 4.5:1），accent 灰绿直接压白字实测也仅 4.48:1（临界不达标）：彩色实心按钮一律 --btn-fg: var(--color-accent-content) 白字，--btn-color 必须内联加深为 color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content))（白字对比实测 5.3:1），不要直接用默认 btn-primary，也不要在玫红底上压白小字。
+- 卡片用 base-200 浅底圆角块，标题 17–19px 加粗、正文 12–13px、行距 1.8–2，字距克制不堆衬线；菜名/套餐名加粗即可，不做粗重装饰。
+- 装饰与商品图只用 currentColor 单色线稿 SVG，叶片/幼苗用 var(--color-accent) 勾线，六种蔬菜必须画出可分辨的轮廓差异（圆果/球叶/锥形/肋瓜/心形/棒形），不用彩色照片、不用 emoji、不用渐变。
+- 版块之间靠留白与 currentColor 约 18% 发丝线分隔，不堆投影、不放大色块；数字（面积/会员数）用深色加粗，不用绿色数字压浅底（对比不足 4.5:1）。
+- 文案写真实动作与具体信息（加入宅配、选择套餐、预约采摘日、糖度 6.8、单颗约 900 克），价格写「¥128 / 周」，地址电话标注虚构，不写「新鲜健康自然之选」这类空话。
+- 390px 窄屏顶栏自然折行、蔬菜卡与套餐卡单列、菜畦/幼苗 SVG 不溢出，不横向滚动。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="garden">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>从土地到餐桌 · 青禾农庄 QINGHE FARM（garden 主题案例）</title>
+  <meta name="description" content="灰墨 garden 主题完整页面案例：虚构有机农场品牌整页。浅暖底配鼠尾草绿点缀与内联蔬菜线稿，新鲜、克制、有土地感。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .brand svg { width: 22px; height: 22px; color: var(--color-accent); }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head span { font-size: 12px; opacity: .5; }
+    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }
+    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }
+    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 460px; margin: 0; line-height: 2; }
+    .hero-art { width: 320px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 应季蔬菜 */
+    .veg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .veg-art { height: 104px; display: flex; align-items: center; justify-content: center; }
+    .veg-art svg { width: 72px; height: 72px; }
+    .veg-name { font-size: 14px; font-weight: 700; }
+    .veg-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    /* 套餐 */
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .plan-price { font-size: 18px; font-weight: 800; }
+    .plan-list { font-size: 12px; opacity: .65; margin: 0; padding-left: 18px; line-height: 2; }
+    /* 农场故事 */
+    .story-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; align-items: center; }
+    .story-grid p { font-size: 13px; opacity: .75; margin: 0 0 12px; line-height: 2; }
+    .story-art { width: 100%; height: auto; }
+    .stat-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 4px; }
+    .stat-num { font-size: 24px; font-weight: 800; letter-spacing: .5px; }
+    .stat-label { font-size: 12px; opacity: .55; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-zone { padding: 24px 8px 20px; }
+      .hero-zone h1 { font-size: 25px; }
+      .story-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21c0-7 3-11 9-12-1 7-4 11-9 12z" />
+            <path d="M12 21c0-5-2-8-7-9 1 5 3 8 7 9z" />
+          </svg>
+          青禾农庄 <small>QINGHE FARM</small>
+        </div>
+        <ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-accent) 16%, transparent);--menu-active-fg:var(--color-base-content)">
+          <li><a class="menu-active">应季蔬菜</a></li>
+          <li><a>会员宅配</a></li>
+          <li><a>农场故事</a></li>
+          <li><a>门店预约</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">加入宅配</button>
+      </div>
+    </div>
+
+    <!-- Hero：田园线稿 -->
+    <div class="hero-zone">
+      <span class="badge badge-soft badge-sm" style="--badge-color:var(--color-base-content)">当季直采 · 每日清晨采摘</span>
+      <h1>从土地到餐桌，只要一夜</h1>
+      <p class="lede">青禾农庄在城郊缓坡种着二十六亩时令菜。清晨带露采摘，傍晚分拣装车，第二天清早送到你家门口的保温箱。</p>
+      <svg class="hero-art" viewBox="0 0 360 210" role="img" aria-label="田园线稿：太阳、三垄菜畦上的幼苗、右侧一座拱形温室（示例插图）">
+        <!-- 太阳 -->
+        <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <circle cx="54" cy="46" r="17" />
+          <line x1="54" y1="18" x2="54" y2="26" />
+          <line x1="28" y1="30" x2="34" y2="36" />
+          <line x1="80" y1="30" x2="74" y2="36" />
+        </g>
+        <!-- 拱形温室 -->
+        <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M236 176 L236 118 Q268 84 300 118 L300 176" />
+          <line x1="252" y1="104" x2="252" y2="176" />
+          <line x1="284" y1="104" x2="284" y2="176" />
+        </g>
+        <!-- 三垄菜畦 -->
+        <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <path d="M24 132 Q110 122 200 132" />
+          <path d="M24 152 Q110 142 200 152" />
+          <path d="M24 172 Q110 162 200 172" />
+        </g>
+        <!-- 幼苗 -->
+        <g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round">
+          <path d="M60 128 v-8" /><path d="M60 122 l-4 -4 M60 122 l4 -4" />
+          <path d="M118 126 v-8" /><path d="M118 120 l-4 -4 M118 120 l4 -4" />
+          <path d="M172 129 v-8" /><path d="M172 123 l-4 -4 M172 123 l4 -4" />
+          <path d="M88 148 v-8" /><path d="M88 142 l-4 -4 M88 142 l4 -4" />
+          <path d="M150 147 v-8" /><path d="M150 141 l-4 -4 M150 141 l4 -4" />
+          <path d="M60 168 v-8" /><path d="M60 162 l-4 -4 M60 162 l4 -4" />
+          <path d="M128 166 v-8" /><path d="M128 160 l-4 -4 M128 160 l4 -4" />
+        </g>
+      </svg>
+      <div class="cta-row">
+        <button class="btn" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">加入宅配</button>
+        <button class="btn btn-ghost" type="button">逛逛本季菜品</button>
+      </div>
+    </div>
+
+    <!-- 应季蔬菜：六张菜品卡 -->
+    <div>
+      <div class="sect-head">
+        <h2>本季应季</h2>
+        <span>十月中旬 · 七大棚与露天田轮替上市</span>
+      </div>
+      <div class="veg-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="番茄线稿（示例插图）">
+                <circle cx="48" cy="56" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+                <g stroke="var(--color-accent)" stroke-width="2" fill="none" stroke-linecap="round">
+                  <path d="M48 32 v-10" />
+                  <path d="M48 26 l-8 -6 M48 26 l8 -6" />
+                </g>
+              </svg>
+            </div>
+            <span class="veg-name">粉果番茄</span>
+            <p class="veg-desc">沙瓤多汁，糖度 6.8，生吃最出味。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="生菜线稿（示例插图）">
+                <circle cx="48" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M48 28 v44 M34 36 q6 14 4 28 M62 36 q-6 14 -4 28" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="veg-name">奶油生菜</span>
+            <p class="veg-desc">叶球紧实，涮火锅或手撕沙拉都合适。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="胡萝卜线稿（示例插图）">
+                <path d="M48 34 L38 74 Q48 82 58 74 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <g stroke="var(--color-accent)" stroke-width="2" fill="none" stroke-linecap="round">
+                  <path d="M48 34 v-12" />
+                  <path d="M48 24 l-8 -6 M48 24 l8 -6 M48 22 l0 -8" />
+                </g>
+              </svg>
+            </div>
+            <span class="veg-name">手指胡萝卜</span>
+            <p class="veg-desc">拇指粗细，脆甜无渣，孩子抓着吃。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="南瓜线稿（示例插图）">
+                <ellipse cx="48" cy="56" rx="28" ry="22" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M48 34 v44 M36 36 q-6 20 0 40 M60 36 q6 20 0 40" fill="none" stroke="currentColor" stroke-width="1.6" />
+                <path d="M48 34 q0 -8 6 -10" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="veg-name">板栗南瓜</span>
+            <p class="veg-desc">蒸后粉糯带板栗香，单颗约 900 克。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="草莓线稿（示例插图）">
+                <path d="M48 32 C36 42 31 54 36 64 Q48 82 60 64 C65 54 60 42 48 32 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <g fill="currentColor">
+                  <circle cx="42" cy="50" r="1.4" /><circle cx="52" cy="48" r="1.4" /><circle cx="46" cy="60" r="1.4" /><circle cx="54" cy="60" r="1.4" />
+                </g>
+                <g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round">
+                  <path d="M48 32 l-7 -7 M48 32 l0 -9 M48 32 l7 -7" />
+                </g>
+              </svg>
+            </div>
+            <span class="veg-name">高山草莓</span>
+            <p class="veg-desc">高架垄栽培，香气浓，一盒 250 克。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="veg-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="玉米线稿（示例插图）">
+                <path d="M42 24 Q56 24 56 46 Q56 74 49 80 Q42 74 42 46 Z" fill="none" stroke="currentColor" stroke-width="2" />
+                <g stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                  <path d="M46 34 h8 M45 44 h10 M45 54 h10 M46 64 h8" />
+                </g>
+                <g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round">
+                  <path d="M42 40 q-10 8 -10 22 M56 40 q10 8 10 22" />
+                </g>
+              </svg>
+            </div>
+            <span class="veg-name">甜糯玉米</span>
+            <p class="veg-desc">采摘后四小时内锁鲜，上锅蒸二十分钟。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 会员宅配：三个套餐 -->
+    <div>
+      <div class="sect-head">
+        <h2>会员宅配</h2>
+        <span>每周三 / 周六两次配送 · 暂免运费</span>
+      </div>
+      <div class="plan-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">每周菜箱</span>
+              <span class="plan-price">¥128<span style="font-size:11px;font-weight:400;opacity:.5"> / 周</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>当季八样蔬菜，约 5 斤</li>
+              <li>附一张一周菜谱小卡</li>
+              <li>一家三口的常规量</li>
+            </ul>
+            <button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">选择套餐</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">亲子农场</span>
+              <span class="plan-price">¥680<span style="font-size:11px;font-weight:400;opacity:.5"> / 季</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>每季一箱 + 一块认养菜畦</li>
+              <li>每月一次亲子采收日</li>
+              <li>孩子认识十种农作物</li>
+            </ul>
+            <button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">选择套餐</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">全年宅配</span>
+              <span class="plan-price">¥4680<span style="font-size:11px;font-weight:400;opacity:.5"> / 年</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>全年五十次菜箱不重样</li>
+              <li>节庆加送一箱时令果</li>
+              <li>配送时间可在线改约</li>
+            </ul>
+            <button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">选择套餐</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 农场故事 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:22px;gap:16px">
+        <h2 style="font-size:19px;margin:0;letter-spacing:1px">农场故事</h2>
+        <div class="story-grid">
+          <div>
+            <p>十二年前，我们在城郊缓坡租下这片地。第一年只种活了三畦生菜，第二年才敢搭第一座温室。现在四十一户合作农户跟着我们种应季菜，不催熟、不早摘，按节气来。</p>
+            <p>菜箱里的每一样菜，都附一张小标签：哪块地、哪天采的、谁种的。你在厨房洗菜的时候，能想起土地上具体的一天。</p>
+            <div class="stat-grid">
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <span class="stat-num">260 亩</span>
+                <span class="stat-label">耕种面积</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <span class="stat-num">3200+</span>
+                <span class="stat-label">会员家庭</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <span class="stat-num">46 户</span>
+                <span class="stat-label">合作农户</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <span class="stat-num">12 年</span>
+                <span class="stat-label">直采年份</span>
+              </div>
+            </div>
+          </div>
+          <svg class="story-art" viewBox="0 0 260 190" role="img" aria-label="农场景致线稿：缓坡上一座小屋、两棵树与三行田垄（示例插图）">
+            <g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M0 150 Q130 132 260 150" />
+              <path d="M0 166 Q130 148 260 166" />
+            </g>
+            <!-- 小屋 -->
+            <g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="60" y="96" width="60" height="44" />
+              <path d="M52 98 L90 70 L128 98" />
+              <rect x="82" y="116" width="16" height="24" />
+            </g>
+            <!-- 两棵树 -->
+            <g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M196 140 v-22" />
+              <circle cx="196" cy="108" r="14" />
+              <path d="M228 146 v-16" />
+              <circle cx="228" cy="118" r="11" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- 门店预约 CTA -->
+    <div class="card rounded-box" style="padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <h2 style="font-size:21px;margin:0;letter-spacing:1px">周末来农场走走</h2>
+      <p style="font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9">采摘日上午九点开放，凭会员记录免预约入场；非会员可在门店先尝后买。</p>
+      <div style="display:flex;flex-direction:column;gap:2px;margin-top:2px">
+        <span style="font-size:13px;font-weight:700">青禾农庄 · 浦江门店</span>
+        <span style="font-size:12px;opacity:.6;line-height:1.8">闵行区浦航路 1200 号（虚构）<br />021-5400-0000（虚构）</span>
+      </div>
+      <button class="btn" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)">预约采摘日</button>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">青禾农庄 QINGHE FARM 为虚构品牌，菜品、套餐价格、门店地址与电话均为示例数据，仅用于展示 garden 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="garden"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/garden/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

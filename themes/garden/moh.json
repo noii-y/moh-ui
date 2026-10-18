@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "garden",
+  "type": "theme",
+  "title": "青园（garden）",
+  "description": "完整页面案例：虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme=\"garden\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "柔和", "品牌", "落地页"],
+  "base": "garden",
+  "aiNotes": [
+    "浅暖米白底（base-100 / base-200 微暖灰），正文用近黑暖灰 base-content；绿色只来自主题 accent（鼠尾草灰绿），只用于主按钮、幼苗线稿、图标叶片与品牌标记，绝不大面积铺绿，禁止写死任何绿色十六进制。",
+    "garden 的 primary 是中等明度玫红（白字压它实测约 4.15:1，不达 4.5:1），accent 灰绿直接压白字实测也仅 4.48:1（临界不达标）：彩色实心按钮一律 --btn-fg: var(--color-accent-content) 白字，--btn-color 必须内联加深为 color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content))（白字对比实测 5.3:1），不要直接用默认 btn-primary，也不要在玫红底上压白小字。",
+    "卡片用 base-200 浅底圆角块，标题 17–19px 加粗、正文 12–13px、行距 1.8–2，字距克制不堆衬线；菜名/套餐名加粗即可，不做粗重装饰。",
+    "装饰与商品图只用 currentColor 单色线稿 SVG，叶片/幼苗用 var(--color-accent) 勾线，六种蔬菜必须画出可分辨的轮廓差异（圆果/球叶/锥形/肋瓜/心形/棒形），不用彩色照片、不用 emoji、不用渐变。",
+    "版块之间靠留白与 currentColor 约 18% 发丝线分隔，不堆投影、不放大色块；数字（面积/会员数）用深色加粗，不用绿色数字压浅底（对比不足 4.5:1）。",
+    "文案写真实动作与具体信息（加入宅配、选择套餐、预约采摘日、糖度 6.8、单颗约 900 克），价格写「¥128 / 周」，地址电话标注虚构，不写「新鲜健康自然之选」这类空话。",
+    "390px 窄屏顶栏自然折行、蔬菜卡与套餐卡单列、菜畦/幼苗 SVG 不溢出，不横向滚动。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=garden]；仅用 daisyUI 组件拼装一套有机农场品牌整页（demo.html：顶栏导航与绿色加入宅配按钮 + 田园线稿 Hero 与双 CTA + 六张应季蔬菜卡含差异化蔬菜线稿 + 会员宅配三套餐（每周菜箱 / 亲子农场 / 全年宅配）+ 农场故事图文与四项数据 + 周末采摘预约 CTA 与虚构门店页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

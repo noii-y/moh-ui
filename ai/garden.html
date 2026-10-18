@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>青园（garden）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「青园（garden）」组件。虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme="garden" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="garden.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/garden/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>青园（garden） · 灰墨 MoH_UI</h1>
+<blockquote>虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme="garden" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：daisyUI 内置主题（MIT，无需额外文件）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/garden/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/garden/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>浅暖米白底（base-100 / base-200 微暖灰），正文用近黑暖灰 base-content；绿色只来自主题 accent（鼠尾草灰绿），只用于主按钮、幼苗线稿、图标叶片与品牌标记，绝不大面积铺绿，禁止写死任何绿色十六进制。</li>
+<li>garden 的 primary 是中等明度玫红（白字压它实测约 4.15:1，不达 4.5:1），accent 灰绿直接压白字实测也仅 4.48:1（临界不达标）：彩色实心按钮一律 --btn-fg: var(--color-accent-content) 白字，--btn-color 必须内联加深为 color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content))（白字对比实测 5.3:1），不要直接用默认 btn-primary，也不要在玫红底上压白小字。</li>
+<li>卡片用 base-200 浅底圆角块，标题 17–19px 加粗、正文 12–13px、行距 1.8–2，字距克制不堆衬线；菜名/套餐名加粗即可，不做粗重装饰。</li>
+<li>装饰与商品图只用 currentColor 单色线稿 SVG，叶片/幼苗用 var(--color-accent) 勾线，六种蔬菜必须画出可分辨的轮廓差异（圆果/球叶/锥形/肋瓜/心形/棒形），不用彩色照片、不用 emoji、不用渐变。</li>
+<li>版块之间靠留白与 currentColor 约 18% 发丝线分隔，不堆投影、不放大色块；数字（面积/会员数）用深色加粗，不用绿色数字压浅底（对比不足 4.5:1）。</li>
+<li>文案写真实动作与具体信息（加入宅配、选择套餐、预约采摘日、糖度 6.8、单颗约 900 克），价格写「¥128 / 周」，地址电话标注虚构，不写「新鲜健康自然之选」这类空话。</li>
+<li>390px 窄屏顶栏自然折行、蔬菜卡与套餐卡单列、菜畦/幼苗 SVG 不溢出，不横向滚动。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="garden"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;从土地到餐桌 · 青禾农庄 QINGHE FARM（garden 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 garden 主题完整页面案例：虚构有机农场品牌整页。浅暖底配鼠尾草绿点缀与内联蔬菜线稿，新鲜、克制、有土地感。本页只依赖 daisyUI 官方主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" /&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .brand svg { width: 22px; height: 22px; color: var(--color-accent); }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head span { font-size: 12px; opacity: .5; }
+    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }
+    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }
+    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 460px; margin: 0; line-height: 2; }
+    .hero-art { width: 320px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 应季蔬菜 */
+    .veg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .veg-art { height: 104px; display: flex; align-items: center; justify-content: center; }
+    .veg-art svg { width: 72px; height: 72px; }
+    .veg-name { font-size: 14px; font-weight: 700; }
+    .veg-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    /* 套餐 */
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .plan-price { font-size: 18px; font-weight: 800; }
+    .plan-list { font-size: 12px; opacity: .65; margin: 0; padding-left: 18px; line-height: 2; }
+    /* 农场故事 */
+    .story-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; align-items: center; }
+    .story-grid p { font-size: 13px; opacity: .75; margin: 0 0 12px; line-height: 2; }
+    .story-art { width: 100%; height: auto; }
+    .stat-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 4px; }
+    .stat-num { font-size: 24px; font-weight: 800; letter-spacing: .5px; }
+    .stat-label { font-size: 12px; opacity: .55; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-zone { padding: 24px 8px 20px; }
+      .hero-zone h1 { font-size: 25px; }
+      .story-grid { grid-template-columns: 1fr; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;path d="M12 21c0-7 3-11 9-12-1 7-4 11-9 12z" /&gt;
+            &lt;path d="M12 21c0-5-2-8-7-9 1 5 3 8 7 9z" /&gt;
+          &lt;/svg&gt;
+          青禾农庄 &lt;small&gt;QINGHE FARM&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-accent) 16%, transparent);--menu-active-fg:var(--color-base-content)"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;应季蔬菜&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;会员宅配&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;农场故事&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;门店预约&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;加入宅配&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero：田园线稿 --&gt;
+    &lt;div class="hero-zone"&gt;
+      &lt;span class="badge badge-soft badge-sm" style="--badge-color:var(--color-base-content)"&gt;当季直采 · 每日清晨采摘&lt;/span&gt;
+      &lt;h1&gt;从土地到餐桌，只要一夜&lt;/h1&gt;
+      &lt;p class="lede"&gt;青禾农庄在城郊缓坡种着二十六亩时令菜。清晨带露采摘，傍晚分拣装车，第二天清早送到你家门口的保温箱。&lt;/p&gt;
+      &lt;svg class="hero-art" viewBox="0 0 360 210" role="img" aria-label="田园线稿：太阳、三垄菜畦上的幼苗、右侧一座拱形温室（示例插图）"&gt;
+        &lt;!-- 太阳 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"&gt;
+          &lt;circle cx="54" cy="46" r="17" /&gt;
+          &lt;line x1="54" y1="18" x2="54" y2="26" /&gt;
+          &lt;line x1="28" y1="30" x2="34" y2="36" /&gt;
+          &lt;line x1="80" y1="30" x2="74" y2="36" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 拱形温室 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;path d="M236 176 L236 118 Q268 84 300 118 L300 176" /&gt;
+          &lt;line x1="252" y1="104" x2="252" y2="176" /&gt;
+          &lt;line x1="284" y1="104" x2="284" y2="176" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 三垄菜畦 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"&gt;
+          &lt;path d="M24 132 Q110 122 200 132" /&gt;
+          &lt;path d="M24 152 Q110 142 200 152" /&gt;
+          &lt;path d="M24 172 Q110 162 200 172" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 幼苗 --&gt;
+        &lt;g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round"&gt;
+          &lt;path d="M60 128 v-8" /&gt;&lt;path d="M60 122 l-4 -4 M60 122 l4 -4" /&gt;
+          &lt;path d="M118 126 v-8" /&gt;&lt;path d="M118 120 l-4 -4 M118 120 l4 -4" /&gt;
+          &lt;path d="M172 129 v-8" /&gt;&lt;path d="M172 123 l-4 -4 M172 123 l4 -4" /&gt;
+          &lt;path d="M88 148 v-8" /&gt;&lt;path d="M88 142 l-4 -4 M88 142 l4 -4" /&gt;
+          &lt;path d="M150 147 v-8" /&gt;&lt;path d="M150 141 l-4 -4 M150 141 l4 -4" /&gt;
+          &lt;path d="M60 168 v-8" /&gt;&lt;path d="M60 162 l-4 -4 M60 162 l4 -4" /&gt;
+          &lt;path d="M128 166 v-8" /&gt;&lt;path d="M128 160 l-4 -4 M128 160 l4 -4" /&gt;
+        &lt;/g&gt;
+      &lt;/svg&gt;
+      &lt;div class="cta-row"&gt;
+        &lt;button class="btn" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;加入宅配&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;逛逛本季菜品&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 应季蔬菜：六张菜品卡 --&gt;
+    &lt;div&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;本季应季&lt;/h2&gt;
+        &lt;span&gt;十月中旬 · 七大棚与露天田轮替上市&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="veg-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="番茄线稿（示例插图）"&gt;
+                &lt;circle cx="48" cy="56" r="24" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;g stroke="var(--color-accent)" stroke-width="2" fill="none" stroke-linecap="round"&gt;
+                  &lt;path d="M48 32 v-10" /&gt;
+                  &lt;path d="M48 26 l-8 -6 M48 26 l8 -6" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;粉果番茄&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;沙瓤多汁，糖度 6.8，生吃最出味。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="生菜线稿（示例插图）"&gt;
+                &lt;circle cx="48" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;path d="M48 28 v44 M34 36 q6 14 4 28 M62 36 q-6 14 -4 28" fill="none" stroke="var(--color-accent)" stroke-width="1.8" stroke-linecap="round" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;奶油生菜&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;叶球紧实，涮火锅或手撕沙拉都合适。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="胡萝卜线稿（示例插图）"&gt;
+                &lt;path d="M48 34 L38 74 Q48 82 58 74 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /&gt;
+                &lt;g stroke="var(--color-accent)" stroke-width="2" fill="none" stroke-linecap="round"&gt;
+                  &lt;path d="M48 34 v-12" /&gt;
+                  &lt;path d="M48 24 l-8 -6 M48 24 l8 -6 M48 22 l0 -8" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;手指胡萝卜&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;拇指粗细，脆甜无渣，孩子抓着吃。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="南瓜线稿（示例插图）"&gt;
+                &lt;ellipse cx="48" cy="56" rx="28" ry="22" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;path d="M48 34 v44 M36 36 q-6 20 0 40 M60 36 q6 20 0 40" fill="none" stroke="currentColor" stroke-width="1.6" /&gt;
+                &lt;path d="M48 34 q0 -8 6 -10" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;板栗南瓜&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;蒸后粉糯带板栗香，单颗约 900 克。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="草莓线稿（示例插图）"&gt;
+                &lt;path d="M48 32 C36 42 31 54 36 64 Q48 82 60 64 C65 54 60 42 48 32 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /&gt;
+                &lt;g fill="currentColor"&gt;
+                  &lt;circle cx="42" cy="50" r="1.4" /&gt;&lt;circle cx="52" cy="48" r="1.4" /&gt;&lt;circle cx="46" cy="60" r="1.4" /&gt;&lt;circle cx="54" cy="60" r="1.4" /&gt;
+                &lt;/g&gt;
+                &lt;g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round"&gt;
+                  &lt;path d="M48 32 l-7 -7 M48 32 l0 -9 M48 32 l7 -7" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;高山草莓&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;高架垄栽培，香气浓，一盒 250 克。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="veg-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="玉米线稿（示例插图）"&gt;
+                &lt;path d="M42 24 Q56 24 56 46 Q56 74 49 80 Q42 74 42 46 Z" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;g stroke="currentColor" stroke-width="1.3" stroke-linecap="round"&gt;
+                  &lt;path d="M46 34 h8 M45 44 h10 M45 54 h10 M46 64 h8" /&gt;
+                &lt;/g&gt;
+                &lt;g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round"&gt;
+                  &lt;path d="M42 40 q-10 8 -10 22 M56 40 q10 8 10 22" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="veg-name"&gt;甜糯玉米&lt;/span&gt;
+            &lt;p class="veg-desc"&gt;采摘后四小时内锁鲜，上锅蒸二十分钟。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 会员宅配：三个套餐 --&gt;
+    &lt;div&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;会员宅配&lt;/h2&gt;
+        &lt;span&gt;每周三 / 周六两次配送 · 暂免运费&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="plan-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:18px;gap:10px"&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:15px;font-weight:700"&gt;每周菜箱&lt;/span&gt;
+              &lt;span class="plan-price"&gt;¥128&lt;span style="font-size:11px;font-weight:400;opacity:.5"&gt; / 周&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="plan-list"&gt;
+              &lt;li&gt;当季八样蔬菜，约 5 斤&lt;/li&gt;
+              &lt;li&gt;附一张一周菜谱小卡&lt;/li&gt;
+              &lt;li&gt;一家三口的常规量&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;选择套餐&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:18px;gap:10px"&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:15px;font-weight:700"&gt;亲子农场&lt;/span&gt;
+              &lt;span class="plan-price"&gt;¥680&lt;span style="font-size:11px;font-weight:400;opacity:.5"&gt; / 季&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="plan-list"&gt;
+              &lt;li&gt;每季一箱 + 一块认养菜畦&lt;/li&gt;
+              &lt;li&gt;每月一次亲子采收日&lt;/li&gt;
+              &lt;li&gt;孩子认识十种农作物&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;选择套餐&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:18px;gap:10px"&gt;
+            &lt;div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px"&gt;
+              &lt;span style="font-size:15px;font-weight:700"&gt;全年宅配&lt;/span&gt;
+              &lt;span class="plan-price"&gt;¥4680&lt;span style="font-size:11px;font-weight:400;opacity:.5"&gt; / 年&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;ul class="plan-list"&gt;
+              &lt;li&gt;全年五十次菜箱不重样&lt;/li&gt;
+              &lt;li&gt;节庆加送一箱时令果&lt;/li&gt;
+              &lt;li&gt;配送时间可在线改约&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button class="btn btn-sm" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;选择套餐&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 农场故事 --&gt;
+    &lt;div class="card bg-base-200 rounded-box"&gt;
+      &lt;div class="card-body" style="padding:22px;gap:16px"&gt;
+        &lt;h2 style="font-size:19px;margin:0;letter-spacing:1px"&gt;农场故事&lt;/h2&gt;
+        &lt;div class="story-grid"&gt;
+          &lt;div&gt;
+            &lt;p&gt;十二年前，我们在城郊缓坡租下这片地。第一年只种活了三畦生菜，第二年才敢搭第一座温室。现在四十一户合作农户跟着我们种应季菜，不催熟、不早摘，按节气来。&lt;/p&gt;
+            &lt;p&gt;菜箱里的每一样菜，都附一张小标签：哪块地、哪天采的、谁种的。你在厨房洗菜的时候，能想起土地上具体的一天。&lt;/p&gt;
+            &lt;div class="stat-grid"&gt;
+              &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+                &lt;span class="stat-num"&gt;260 亩&lt;/span&gt;
+                &lt;span class="stat-label"&gt;耕种面积&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+                &lt;span class="stat-num"&gt;3200+&lt;/span&gt;
+                &lt;span class="stat-label"&gt;会员家庭&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+                &lt;span class="stat-num"&gt;46 户&lt;/span&gt;
+                &lt;span class="stat-label"&gt;合作农户&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div style="display:flex;flex-direction:column;gap:2px"&gt;
+                &lt;span class="stat-num"&gt;12 年&lt;/span&gt;
+                &lt;span class="stat-label"&gt;直采年份&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;svg class="story-art" viewBox="0 0 260 190" role="img" aria-label="农场景致线稿：缓坡上一座小屋、两棵树与三行田垄（示例插图）"&gt;
+            &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+              &lt;path d="M0 150 Q130 132 260 150" /&gt;
+              &lt;path d="M0 166 Q130 148 260 166" /&gt;
+            &lt;/g&gt;
+            &lt;!-- 小屋 --&gt;
+            &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+              &lt;rect x="60" y="96" width="60" height="44" /&gt;
+              &lt;path d="M52 98 L90 70 L128 98" /&gt;
+              &lt;rect x="82" y="116" width="16" height="24" /&gt;
+            &lt;/g&gt;
+            &lt;!-- 两棵树 --&gt;
+            &lt;g stroke="var(--color-accent)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+              &lt;path d="M196 140 v-22" /&gt;
+              &lt;circle cx="196" cy="108" r="14" /&gt;
+              &lt;path d="M228 146 v-16" /&gt;
+              &lt;circle cx="228" cy="118" r="11" /&gt;
+            &lt;/g&gt;
+          &lt;/svg&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 门店预约 CTA --&gt;
+    &lt;div class="card rounded-box" style="padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"&gt;
+      &lt;h2 style="font-size:21px;margin:0;letter-spacing:1px"&gt;周末来农场走走&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9"&gt;采摘日上午九点开放，凭会员记录免预约入场；非会员可在门店先尝后买。&lt;/p&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:2px;margin-top:2px"&gt;
+        &lt;span style="font-size:13px;font-weight:700"&gt;青禾农庄 · 浦江门店&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.8"&gt;闵行区浦航路 1200 号（虚构）&lt;br /&gt;021-5400-0000（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;button class="btn" type="button" style="--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)"&gt;预约采摘日&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;青禾农庄 QINGHE FARM 为虚构品牌，菜品、套餐价格、门店地址与电话均为示例数据，仅用于展示 garden 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="garden"</code>，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<p>该主题变量在 daisyui-themes.css 内，无需复制。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/garden/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/garden/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「青园（garden）」的整页。\n\n【场景】\n虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme=\"garden\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 浅暖米白底（base-100 / base-200 微暖灰），正文用近黑暖灰 base-content；绿色只来自主题 accent（鼠尾草灰绿），只用于主按钮、幼苗线稿、图标叶片与品牌标记，绝不大面积铺绿，禁止写死任何绿色十六进制。\n- garden 的 primary 是中等明度玫红（白字压它实测约 4.15:1，不达 4.5:1），accent 灰绿直接压白字实测也仅 4.48:1（临界不达标）：彩色实心按钮一律 --btn-fg: var(--color-accent-content) 白字，--btn-color 必须内联加深为 color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content))（白字对比实测 5.3:1），不要直接用默认 btn-primary，也不要在玫红底上压白小字。\n- 卡片用 base-200 浅底圆角块，标题 17–19px 加粗、正文 12–13px、行距 1.8–2，字距克制不堆衬线；菜名/套餐名加粗即可，不做粗重装饰。\n- 装饰与商品图只用 currentColor 单色线稿 SVG，叶片/幼苗用 var(--color-accent) 勾线，六种蔬菜必须画出可分辨的轮廓差异（圆果/球叶/锥形/肋瓜/心形/棒形），不用彩色照片、不用 emoji、不用渐变。\n- 版块之间靠留白与 currentColor 约 18% 发丝线分隔，不堆投影、不放大色块；数字（面积/会员数）用深色加粗，不用绿色数字压浅底（对比不足 4.5:1）。\n- 文案写真实动作与具体信息（加入宅配、选择套餐、预约采摘日、糖度 6.8、单颗约 900 克），价格写「¥128 / 周」，地址电话标注虚构，不写「新鲜健康自然之选」这类空话。\n- 390px 窄屏顶栏自然折行、蔬菜卡与套餐卡单列、菜畦/幼苗 SVG 不溢出，不横向滚动。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\">\n\n然后在 \u003chtml data-theme=\"garden\"> 挂属性，整页即刻换肤。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。\n\n【精确规格】\n- 整页挂 data-theme=\"garden\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"garden\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"garden\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>从土地到餐桌 · 青禾农庄 QINGHE FARM（garden 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 garden 主题完整页面案例：虚构有机农场品牌整页。浅暖底配鼠尾草绿点缀与内联蔬菜线稿，新鲜、克制、有土地感。本页只依赖 daisyUI 官方主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\" />\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }\n    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }\n    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }\n    .brand svg { width: 22px; height: 22px; color: var(--color-accent); }\n    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }\n    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }\n    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }\n    .sect-head span { font-size: 12px; opacity: .5; }\n    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */\n    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }\n    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }\n    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 460px; margin: 0; line-height: 2; }\n    .hero-art { width: 320px; max-width: 100%; height: auto; }\n    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }\n    /* 应季蔬菜 */\n    .veg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }\n    .veg-art { height: 104px; display: flex; align-items: center; justify-content: center; }\n    .veg-art svg { width: 72px; height: 72px; }\n    .veg-name { font-size: 14px; font-weight: 700; }\n    .veg-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }\n    /* 套餐 */\n    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }\n    .plan-price { font-size: 18px; font-weight: 800; }\n    .plan-list { font-size: 12px; opacity: .65; margin: 0; padding-left: 18px; line-height: 2; }\n    /* 农场故事 */\n    .story-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 20px; align-items: center; }\n    .story-grid p { font-size: 13px; opacity: .75; margin: 0 0 12px; line-height: 2; }\n    .story-art { width: 100%; height: auto; }\n    .stat-grid { display: grid; grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 4px; }\n    .stat-num { font-size: 24px; font-weight: 800; letter-spacing: .5px; }\n    .stat-label { font-size: 12px; opacity: .55; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }\n    @media (max-width: 900px) {\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero-zone { padding: 24px 8px 20px; }\n      .hero-zone h1 { font-size: 25px; }\n      .story-grid { grid-template-columns: 1fr; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003cpath d=\"M12 21c0-7 3-11 9-12-1 7-4 11-9 12z\" />\n            \u003cpath d=\"M12 21c0-5-2-8-7-9 1 5 3 8 7 9z\" />\n          \u003c/svg>\n          青禾农庄 \u003csmall>QINGHE FARM\u003c/small>\n        \u003c/div>\n        \u003cul class=\"menu-row menu\" style=\"--menu-active-bg:color-mix(in oklab, var(--color-accent) 16%, transparent);--menu-active-fg:var(--color-base-content)\">\n          \u003cli>\u003ca class=\"menu-active\">应季蔬菜\u003c/a>\u003c/li>\n          \u003cli>\u003ca>会员宅配\u003c/a>\u003c/li>\n          \u003cli>\u003ca>农场故事\u003c/a>\u003c/li>\n          \u003cli>\u003ca>门店预约\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cbutton class=\"btn btn-sm\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">加入宅配\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero：田园线稿 -->\n    \u003cdiv class=\"hero-zone\">\n      \u003cspan class=\"badge badge-soft badge-sm\" style=\"--badge-color:var(--color-base-content)\">当季直采 · 每日清晨采摘\u003c/span>\n      \u003ch1>从土地到餐桌，只要一夜\u003c/h1>\n      \u003cp class=\"lede\">青禾农庄在城郊缓坡种着二十六亩时令菜。清晨带露采摘，傍晚分拣装车，第二天清早送到你家门口的保温箱。\u003c/p>\n      \u003csvg class=\"hero-art\" viewBox=\"0 0 360 210\" role=\"img\" aria-label=\"田园线稿：太阳、三垄菜畦上的幼苗、右侧一座拱形温室（示例插图）\">\n        \u003c!-- 太阳 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\">\n          \u003ccircle cx=\"54\" cy=\"46\" r=\"17\" />\n          \u003cline x1=\"54\" y1=\"18\" x2=\"54\" y2=\"26\" />\n          \u003cline x1=\"28\" y1=\"30\" x2=\"34\" y2=\"36\" />\n          \u003cline x1=\"80\" y1=\"30\" x2=\"74\" y2=\"36\" />\n        \u003c/g>\n        \u003c!-- 拱形温室 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003cpath d=\"M236 176 L236 118 Q268 84 300 118 L300 176\" />\n          \u003cline x1=\"252\" y1=\"104\" x2=\"252\" y2=\"176\" />\n          \u003cline x1=\"284\" y1=\"104\" x2=\"284\" y2=\"176\" />\n        \u003c/g>\n        \u003c!-- 三垄菜畦 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\">\n          \u003cpath d=\"M24 132 Q110 122 200 132\" />\n          \u003cpath d=\"M24 152 Q110 142 200 152\" />\n          \u003cpath d=\"M24 172 Q110 162 200 172\" />\n        \u003c/g>\n        \u003c!-- 幼苗 -->\n        \u003cg stroke=\"var(--color-accent)\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\">\n          \u003cpath d=\"M60 128 v-8\" />\u003cpath d=\"M60 122 l-4 -4 M60 122 l4 -4\" />\n          \u003cpath d=\"M118 126 v-8\" />\u003cpath d=\"M118 120 l-4 -4 M118 120 l4 -4\" />\n          \u003cpath d=\"M172 129 v-8\" />\u003cpath d=\"M172 123 l-4 -4 M172 123 l4 -4\" />\n          \u003cpath d=\"M88 148 v-8\" />\u003cpath d=\"M88 142 l-4 -4 M88 142 l4 -4\" />\n          \u003cpath d=\"M150 147 v-8\" />\u003cpath d=\"M150 141 l-4 -4 M150 141 l4 -4\" />\n          \u003cpath d=\"M60 168 v-8\" />\u003cpath d=\"M60 162 l-4 -4 M60 162 l4 -4\" />\n          \u003cpath d=\"M128 166 v-8\" />\u003cpath d=\"M128 160 l-4 -4 M128 160 l4 -4\" />\n        \u003c/g>\n      \u003c/svg>\n      \u003cdiv class=\"cta-row\">\n        \u003cbutton class=\"btn\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">加入宅配\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">逛逛本季菜品\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 应季蔬菜：六张菜品卡 -->\n    \u003cdiv>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>本季应季\u003c/h2>\n        \u003cspan>十月中旬 · 七大棚与露天田轮替上市\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"veg-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"番茄线稿（示例插图）\">\n                \u003ccircle cx=\"48\" cy=\"56\" r=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cg stroke=\"var(--color-accent)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\">\n                  \u003cpath d=\"M48 32 v-10\" />\n                  \u003cpath d=\"M48 26 l-8 -6 M48 26 l8 -6\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">粉果番茄\u003c/span>\n            \u003cp class=\"veg-desc\">沙瓤多汁，糖度 6.8，生吃最出味。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"生菜线稿（示例插图）\">\n                \u003ccircle cx=\"48\" cy=\"50\" r=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cpath d=\"M48 28 v44 M34 36 q6 14 4 28 M62 36 q-6 14 -4 28\" fill=\"none\" stroke=\"var(--color-accent)\" stroke-width=\"1.8\" stroke-linecap=\"round\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">奶油生菜\u003c/span>\n            \u003cp class=\"veg-desc\">叶球紧实，涮火锅或手撕沙拉都合适。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"胡萝卜线稿（示例插图）\">\n                \u003cpath d=\"M48 34 L38 74 Q48 82 58 74 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" />\n                \u003cg stroke=\"var(--color-accent)\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\">\n                  \u003cpath d=\"M48 34 v-12\" />\n                  \u003cpath d=\"M48 24 l-8 -6 M48 24 l8 -6 M48 22 l0 -8\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">手指胡萝卜\u003c/span>\n            \u003cp class=\"veg-desc\">拇指粗细，脆甜无渣，孩子抓着吃。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"南瓜线稿（示例插图）\">\n                \u003cellipse cx=\"48\" cy=\"56\" rx=\"28\" ry=\"22\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cpath d=\"M48 34 v44 M36 36 q-6 20 0 40 M60 36 q6 20 0 40\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n                \u003cpath d=\"M48 34 q0 -8 6 -10\" fill=\"none\" stroke=\"var(--color-accent)\" stroke-width=\"2\" stroke-linecap=\"round\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">板栗南瓜\u003c/span>\n            \u003cp class=\"veg-desc\">蒸后粉糯带板栗香，单颗约 900 克。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"草莓线稿（示例插图）\">\n                \u003cpath d=\"M48 32 C36 42 31 54 36 64 Q48 82 60 64 C65 54 60 42 48 32 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" />\n                \u003cg fill=\"currentColor\">\n                  \u003ccircle cx=\"42\" cy=\"50\" r=\"1.4\" />\u003ccircle cx=\"52\" cy=\"48\" r=\"1.4\" />\u003ccircle cx=\"46\" cy=\"60\" r=\"1.4\" />\u003ccircle cx=\"54\" cy=\"60\" r=\"1.4\" />\n                \u003c/g>\n                \u003cg stroke=\"var(--color-accent)\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\">\n                  \u003cpath d=\"M48 32 l-7 -7 M48 32 l0 -9 M48 32 l7 -7\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">高山草莓\u003c/span>\n            \u003cp class=\"veg-desc\">高架垄栽培，香气浓，一盒 250 克。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"veg-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"玉米线稿（示例插图）\">\n                \u003cpath d=\"M42 24 Q56 24 56 46 Q56 74 49 80 Q42 74 42 46 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cg stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\">\n                  \u003cpath d=\"M46 34 h8 M45 44 h10 M45 54 h10 M46 64 h8\" />\n                \u003c/g>\n                \u003cg stroke=\"var(--color-accent)\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\">\n                  \u003cpath d=\"M42 40 q-10 8 -10 22 M56 40 q10 8 10 22\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"veg-name\">甜糯玉米\u003c/span>\n            \u003cp class=\"veg-desc\">采摘后四小时内锁鲜，上锅蒸二十分钟。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 会员宅配：三个套餐 -->\n    \u003cdiv>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>会员宅配\u003c/h2>\n        \u003cspan>每周三 / 周六两次配送 · 暂免运费\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"plan-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:18px;gap:10px\">\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:15px;font-weight:700\">每周菜箱\u003c/span>\n              \u003cspan class=\"plan-price\">¥128\u003cspan style=\"font-size:11px;font-weight:400;opacity:.5\"> / 周\u003c/span>\u003c/span>\n            \u003c/div>\n            \u003cul class=\"plan-list\">\n              \u003cli>当季八样蔬菜，约 5 斤\u003c/li>\n              \u003cli>附一张一周菜谱小卡\u003c/li>\n              \u003cli>一家三口的常规量\u003c/li>\n            \u003c/ul>\n            \u003cbutton class=\"btn btn-sm\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">选择套餐\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:18px;gap:10px\">\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:15px;font-weight:700\">亲子农场\u003c/span>\n              \u003cspan class=\"plan-price\">¥680\u003cspan style=\"font-size:11px;font-weight:400;opacity:.5\"> / 季\u003c/span>\u003c/span>\n            \u003c/div>\n            \u003cul class=\"plan-list\">\n              \u003cli>每季一箱 + 一块认养菜畦\u003c/li>\n              \u003cli>每月一次亲子采收日\u003c/li>\n              \u003cli>孩子认识十种农作物\u003c/li>\n            \u003c/ul>\n            \u003cbutton class=\"btn btn-sm\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">选择套餐\u003c/button>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:18px;gap:10px\">\n            \u003cdiv style=\"display:flex;align-items:baseline;justify-content:space-between;gap:8px\">\n              \u003cspan style=\"font-size:15px;font-weight:700\">全年宅配\u003c/span>\n              \u003cspan class=\"plan-price\">¥4680\u003cspan style=\"font-size:11px;font-weight:400;opacity:.5\"> / 年\u003c/span>\u003c/span>\n            \u003c/div>\n            \u003cul class=\"plan-list\">\n              \u003cli>全年五十次菜箱不重样\u003c/li>\n              \u003cli>节庆加送一箱时令果\u003c/li>\n              \u003cli>配送时间可在线改约\u003c/li>\n            \u003c/ul>\n            \u003cbutton class=\"btn btn-sm\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">选择套餐\u003c/button>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 农场故事 -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\">\n      \u003cdiv class=\"card-body\" style=\"padding:22px;gap:16px\">\n        \u003ch2 style=\"font-size:19px;margin:0;letter-spacing:1px\">农场故事\u003c/h2>\n        \u003cdiv class=\"story-grid\">\n          \u003cdiv>\n            \u003cp>十二年前，我们在城郊缓坡租下这片地。第一年只种活了三畦生菜，第二年才敢搭第一座温室。现在四十一户合作农户跟着我们种应季菜，不催熟、不早摘，按节气来。\u003c/p>\n            \u003cp>菜箱里的每一样菜，都附一张小标签：哪块地、哪天采的、谁种的。你在厨房洗菜的时候，能想起土地上具体的一天。\u003c/p>\n            \u003cdiv class=\"stat-grid\">\n              \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n                \u003cspan class=\"stat-num\">260 亩\u003c/span>\n                \u003cspan class=\"stat-label\">耕种面积\u003c/span>\n              \u003c/div>\n              \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n                \u003cspan class=\"stat-num\">3200+\u003c/span>\n                \u003cspan class=\"stat-label\">会员家庭\u003c/span>\n              \u003c/div>\n              \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n                \u003cspan class=\"stat-num\">46 户\u003c/span>\n                \u003cspan class=\"stat-label\">合作农户\u003c/span>\n              \u003c/div>\n              \u003cdiv style=\"display:flex;flex-direction:column;gap:2px\">\n                \u003cspan class=\"stat-num\">12 年\u003c/span>\n                \u003cspan class=\"stat-label\">直采年份\u003c/span>\n              \u003c/div>\n            \u003c/div>\n          \u003c/div>\n          \u003csvg class=\"story-art\" viewBox=\"0 0 260 190\" role=\"img\" aria-label=\"农场景致线稿：缓坡上一座小屋、两棵树与三行田垄（示例插图）\">\n            \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n              \u003cpath d=\"M0 150 Q130 132 260 150\" />\n              \u003cpath d=\"M0 166 Q130 148 260 166\" />\n            \u003c/g>\n            \u003c!-- 小屋 -->\n            \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n              \u003crect x=\"60\" y=\"96\" width=\"60\" height=\"44\" />\n              \u003cpath d=\"M52 98 L90 70 L128 98\" />\n              \u003crect x=\"82\" y=\"116\" width=\"16\" height=\"24\" />\n            \u003c/g>\n            \u003c!-- 两棵树 -->\n            \u003cg stroke=\"var(--color-accent)\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n              \u003cpath d=\"M196 140 v-22\" />\n              \u003ccircle cx=\"196\" cy=\"108\" r=\"14\" />\n              \u003cpath d=\"M228 146 v-16\" />\n              \u003ccircle cx=\"228\" cy=\"118\" r=\"11\" />\n            \u003c/g>\n          \u003c/svg>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 门店预约 CTA -->\n    \u003cdiv class=\"card rounded-box\" style=\"padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center\">\n      \u003ch2 style=\"font-size:21px;margin:0;letter-spacing:1px\">周末来农场走走\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9\">采摘日上午九点开放，凭会员记录免预约入场；非会员可在门店先尝后买。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:2px;margin-top:2px\">\n        \u003cspan style=\"font-size:13px;font-weight:700\">青禾农庄 · 浦江门店\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.8\">闵行区浦航路 1200 号（虚构）\u003cbr />021-5400-0000（虚构）\u003c/span>\n      \u003c/div>\n      \u003cbutton class=\"btn\" type=\"button\" style=\"--btn-color:color-mix(in oklab, var(--color-accent) 90%, var(--color-base-content));--btn-fg:var(--color-accent-content)\">预约采摘日\u003c/button>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">青禾农庄 QINGHE FARM 为虚构品牌，菜品、套餐价格、门店地址与电话均为示例数据，仅用于展示 garden 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
