@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>可视化主题选择器 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨可视化主题选择器：点击主题卡，预览区 daisyUI 组件实时换肤（data-theme 机制），微调主色/圆角，一键复制 tokens.css 或 AI 指令。选择自动记忆。" />
+  <meta name="description" content="灰墨可视化主题选择器：整页预览（点主题卡直接看完整业务页面）或组件沙箱实时换肤（data-theme 机制），微调主色/圆角，一键复制 tokens.css 或 AI 指令。选择自动记忆。" />
   <link rel="stylesheet" href="../vendor/daisyui.css" />
   <link rel="stylesheet" href="../vendor/daisyui-themes.css" />
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
@@ -123,6 +123,58 @@
       border-color: var(--moh-accent, #8b93f5);
     }
     .gen-is-hidden { display: none !important; }
+
+    /* 预览模式切换（整页预览 / 组件沙箱） */
+    .gen-modes { display: flex; gap: 6px; margin: 0 0 10px; }
+    .gen-modes button {
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--moh-border, #2a2a30);
+      background: transparent;
+      color: var(--moh-muted, #9ca3af);
+      cursor: pointer;
+    }
+    .gen-modes button.is-on {
+      border-color: var(--moh-accent, #8b93f5);
+      color: var(--moh-accent, #8b93f5);
+    }
+    /* 整页预览：真实尺寸、可滚动、可点击（同 themes.html 弹窗 iframe） */
+    .gen-fullframe {
+      position: relative;
+      width: 100%;
+      height: 72vh;
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .gen-fullframe iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+    /* 仅试玩主题：无整页案例的占位卡 */
+    .gen-full-none {
+      display: none;
+      padding: 40px 24px;
+      border: 1px dashed var(--moh-border, #2a2a30);
+      border-radius: 8px;
+      text-align: center;
+      color: var(--moh-muted, #9ca3af);
+    }
+    .gen-full-none .gen-swatch-row { display: flex; justify-content: center; gap: 4px; margin: 0 0 12px; }
+    .gen-full-none .gen-swatch-row span { width: 28px; height: 28px; border-radius: 6px; display: inline-block; }
+    .gen-view { display: none; }
+    .gen-view.is-on { display: block; }
+    /* 组件沙箱的微调工具行 */
+    .gen-tune { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 10px; }
+    .gen-framehint { flex-basis: 100%; font-size: 11px; line-height: 1.6; color: #d9a35c; }
+    .gen-framehint[hidden] { display: none; }
+    .gen-tune .site-panel__label { margin: 0; }
   </style>
 </head>
 <body>
@@ -149,7 +201,7 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>可视化主题选择器</h1>
-      <p>点击主题卡，预览区的 daisyUI 组件实时换肤（原理：只改预览容器的 <code>data-theme</code> 属性，主题变量 <code>--color-*</code> 自动跟随）。这里收录了<strong>完整页面案例</strong>（带真实业务整页与 AI 指令）与 daisyUI 官方全部 35 套主题中的<strong>仅试玩</strong>款（只换肤、无整页案例）。微调主色 / 圆角仅作用于预览；复制 tokens.css 得到的是收录 / 二创主题的原始文件，官方内置主题无需额外文件。选择自动记忆（localStorage）。</p>
+      <p>点主题卡，右侧默认直接预览这套主题的<strong>完整业务整页</strong>（收录与二创共 45 套都有整页案例）；官方内置主题暂无整页，自动落到组件沙箱试玩换肤。整页预览与组件沙箱两种模式可随时切换；沙箱里微调主色 / 圆角只作用于预览、不影响复制内容。复制 tokens.css 得到收录/二创主题的原始文件，官方内置主题无需额外文件。选择自动记忆（localStorage）。</p>
     </div>
 
     <div class="gen-layout">
@@ -161,16 +213,36 @@
           <button type="button" data-tone="dark">深色</button>
         </div>
         <div class="site-theme-picker" id="theme-picker"></div>
-
-        <p class="site-panel__label">微调主色（仅作用于预览）</p>
-        <input type="color" id="gen-primary" value="#5e6ad2" />
-
-        <p class="site-panel__label">圆角半径 <span id="gen-radius-val">10px</span></p>
-        <input type="range" id="gen-radius" min="2" max="16" step="1" value="10" />
       </aside>
 
       <div>
-        <div id="gen-stage" data-theme="mo-dark">
+        <div class="gen-modes" id="gen-modes" role="group" aria-label="预览方式">
+          <button type="button" data-mode="full" class="is-on">整页预览</button>
+          <button type="button" data-mode="sandbox">组件沙箱</button>
+        </div>
+
+        <div class="gen-tune">
+          <span class="site-panel__label">微调主色</span>
+          <input type="color" id="gen-primary" value="#5e6ad2" />
+          <span class="site-panel__label">圆角 <span id="gen-radius-val">10px</span></span>
+          <input type="range" id="gen-radius" min="2" max="16" step="1" value="10" />
+          <span style="font-size:11px;color:var(--moh-muted,#9ca3af)">微调只作用于预览，不影响复制内容</span>
+          <span id="gen-frame-hint" class="gen-framehint" hidden>本地双击打开时，浏览器安全限制会让整页实时微调不生效；组件沙箱可正常微调，部署到线上后整页也能实时变色。</span>
+        </div>
+
+        <div class="gen-view is-on" id="view-full">
+          <div class="gen-fullframe" id="gen-fullframe">
+            <iframe id="gen-fullframe-iframe" title="主题整页预览（可滚动）"></iframe>
+          </div>
+          <div class="gen-full-none" id="gen-full-none">
+            <div class="gen-swatch-row" id="gen-full-none-swatches"></div>
+            <p id="gen-full-none-text">这套官方主题暂无整页案例，只能试玩换肤。</p>
+            <button class="site-btn site-btn--secondary" id="gen-to-sandbox">切到组件沙箱试玩</button>
+          </div>
+        </div>
+
+        <div class="gen-view" id="view-sandbox">
+          <div id="gen-stage" data-theme="mo-dark">
           <div class="flex flex-wrap items-center gap-2">
             <span style="font-weight:600" id="gen-stage-title">墨夜（深色） · mo-dark</span>
             <span class="badge badge-primary">预览中</span>
@@ -229,6 +301,7 @@
 
           <div class="alert alert-info"><span>新版本已发布：点击查看完整更新日志与迁移说明。</span></div>
           <div class="alert alert-success"><span>设置已保存，所有页面即刻生效。</span></div>
+        </div>
         </div>
 
         <div style="display:flex; gap: 8px; margin-top: 12px; flex-wrap: wrap">
@@ -368,6 +441,17 @@
     var filterBar = document.getElementById("gen-filter");
     var toneFilter = "all";
 
+    /* 预览模式：full=整页预览 / sandbox=组件沙箱；默认整页预览 */
+    var modesBox = document.getElementById("gen-modes");
+    var viewFull = document.getElementById("view-full");
+    var viewSandbox = document.getElementById("view-sandbox");
+    var fullFrame = document.getElementById("gen-fullframe");
+    var fullIframe = document.getElementById("gen-fullframe-iframe");
+    var fullNone = document.getElementById("gen-full-none");
+    var fullNoneSwatches = document.getElementById("gen-full-none-swatches");
+    var fullNoneText = document.getElementById("gen-full-none-text");
+    var previewMode = (SAVED && SAVED.mode === "sandbox") ? "sandbox" : "full";
+
     /* ---------- 主题列表（分两组） ---------- */
     function cardHtml(t) {
       var p = pal(t);
@@ -423,10 +507,12 @@
       stage.style.setProperty("--color-primary", hex);
       var onWhite = contrast(hex, "#ffffff") >= 4.5;
       stage.style.setProperty("--color-primary-content", onWhite ? "#ffffff" : "#1a1a1a");
+      syncFrameTune();
     }
     function clearPrimary() {
       stage.style.removeProperty("--color-primary");
       stage.style.removeProperty("--color-primary-content");
+      syncFrameTune();
     }
     function applyRadius() {
       var n = curRadius;
@@ -434,6 +520,7 @@
       stage.style.setProperty("--radius-box", n + "px");
       stage.style.setProperty("--radius-field", Math.round(n * 0.6) + "px");
       stage.style.setProperty("--radius-selector", Math.round(n * 0.8) + "px");
+      syncFrameTune();
     }
 
     function syncActions(t) {
@@ -455,9 +542,77 @@
         localStorage.setItem("moh-ui-gen-v2", JSON.stringify({
           theme: curTheme,
           primary: primaryInput.dataset.tuned === "1" ? primaryInput.value : null,
-          radius: curRadius
+          radius: curRadius,
+          mode: previewMode
         }));
       } catch (e) {}
+    }
+
+    /* ---------- 预览模式（整页 / 沙箱） ---------- */
+    function showView(mode) {
+      previewMode = mode;
+      modesBox.querySelectorAll("button").forEach(function (b) {
+        b.classList.toggle("is-on", b.dataset.mode === mode);
+      });
+      viewFull.classList.toggle("is-on", mode === "full");
+      viewSandbox.classList.toggle("is-on", mode === "sandbox");
+      updateFrameHint();
+    }
+
+    /* 把主色/圆角微调同步注入整页 iframe（同源时生效；file:// 未授权时静默失败） */
+    var frameWritable = null; /* null=未知，true=可写，false=跨域不可写（本地 file://） */
+    var frameHint = document.getElementById("gen-frame-hint");
+    function updateFrameHint() {
+      var t = themeData(curTheme);
+      frameHint.hidden = !(frameWritable === false && previewMode === "full" && t && !t.isPlayOnly);
+    }
+    function syncFrameTune() {
+      var t = themeData(curTheme);
+      var crossDoc = null;
+      try { crossDoc = fullIframe.contentDocument; } catch (e) { crossDoc = null; }
+      if (!crossDoc) {
+        /* iframe 已加载真实整页但跨域不可写（本地 file:// 未授权）：contentDocument 为 null */
+        if (t && !t.isPlayOnly) { frameWritable = false; updateFrameHint(); }
+        return;
+      }
+      try {
+        var root = crossDoc.documentElement;
+        if (primaryInput.dataset.tuned === "1") {
+          root.style.setProperty("--color-primary", primaryInput.value);
+          var onWhite = contrast(primaryInput.value, "#ffffff") >= 4.5;
+          root.style.setProperty("--color-primary-content", onWhite ? "#ffffff" : "#1a1a1a");
+        } else {
+          root.style.removeProperty("--color-primary");
+          root.style.removeProperty("--color-primary-content");
+        }
+        root.style.setProperty("--radius-box", curRadius + "px");
+        root.style.setProperty("--radius-field", Math.round(curRadius * 0.6) + "px");
+        root.style.setProperty("--radius-selector", Math.round(curRadius * 0.8) + "px");
+        frameWritable = true;
+        updateFrameHint();
+      } catch (e) {
+        frameWritable = false;
+        updateFrameHint();
+      }
+    }
+
+    function renderFullPreview(t) {
+      if (t.isPlayOnly) {
+        /* 仅试玩：无 demo.html，显示色板条 + 说明 */
+        fullFrame.style.display = "none";
+        fullNone.style.display = "block";
+        var p = pal(t);
+        var stops = [p.base, p.surface, p.primary, p.secondary || p.accent].filter(Boolean);
+        fullNoneSwatches.innerHTML = stops.map(function (c) {
+          return '<span style="background:' + c + '"></span>';
+        }).join("");
+        fullNoneText.textContent = "「" + t.title + "」是官方内置主题，暂无整页案例，只能试玩换肤。";
+      } else {
+        fullNone.style.display = "none";
+        fullFrame.style.display = "block";
+        fullIframe.src = "../themes/" + (t.slug || t.name) + "/" + (t.entry || "demo.html");
+      }
+      updateFrameHint();
     }
 
     function applyTheme(skipSave) {
@@ -482,6 +637,7 @@
         b.setAttribute("aria-pressed", active ? "true" : "false");
       });
       syncActions(t);
+      renderFullPreview(t);
       if (!skipSave) save();
     }
 
@@ -494,9 +650,24 @@
       applyTheme();
       /* 窄屏（≤860px）预览区在卡片下方，点选后自动带入视野，否则用户只看到卡片、看不到换肤，会以为“点击没反应”；宽屏左右分栏无需滚动 */
       if (changed && window.matchMedia("(max-width: 860px)").matches) {
-        stage.scrollIntoView({ behavior: "smooth", block: "start" });
+        var target = previewMode === "full" ? viewFull : viewSandbox;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
+
+    /* 预览模式切换 */
+    modesBox.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-mode]");
+      if (!b || b.dataset.mode === previewMode) return;
+      showView(b.dataset.mode);
+      save();
+    });
+    document.getElementById("gen-to-sandbox").addEventListener("click", function () {
+      showView("sandbox");
+      save();
+    });
+    /* iframe 重新加载（换主题）后，微调注入会丢失，需重新写入 */
+    fullIframe.addEventListener("load", syncFrameTune);
 
     primaryInput.addEventListener("input", function () {
       primaryInput.dataset.tuned = "1";
@@ -589,8 +760,23 @@
     });
 
     /* ---------- 初始化 ---------- */
+    /* URL 参数预选（分享链接）：?theme=<slug>&mode=full|sandbox&primary=%23rrggbb */
+    var initParams = new URLSearchParams(location.search);
+    if (initParams.get("theme")) {
+      var initTheme = themeData(initParams.get("theme"));
+      if (initTheme) curTheme = initTheme.name;
+    }
+    if (initParams.get("mode") === "sandbox" || initParams.get("mode") === "full") {
+      previewMode = initParams.get("mode");
+    }
+    var initPrimary = initParams.get("primary");
+    showView(previewMode);
     applyTheme(true);
-    if (savedPrimary && /^#[0-9a-f]{6}$/i.test(savedPrimary)) {
+    if (initPrimary && /^#[0-9a-f]{6}$/i.test(initPrimary)) {
+      primaryInput.value = initPrimary;
+      primaryInput.dataset.tuned = "1";
+      applyPrimary(initPrimary);
+    } else if (savedPrimary && /^#[0-9a-f]{6}$/i.test(savedPrimary)) {
       primaryInput.value = savedPrimary;
       primaryInput.dataset.tuned = "1";
       applyPrimary(savedPrimary);
