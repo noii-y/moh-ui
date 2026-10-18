@@ -18,14 +18,16 @@
 - 真实交互：用户点按 / Tab 聚焦触发元素时菜单展开，失焦自动收起，全程零 JavaScript；不要为下拉写业务 JS。
 - 如需鼠标悬停也展开，容器加 dropdown-hover；但移动端没有悬停，必须保留上面的点按 / 聚焦写法兜底，不能只靠 hover。
 - 静态预览：容器上临时加 dropdown-open 类强制展开（用于截图 / 文档展示），同时给容器内联 style="min-height:19rem" 之类的高度，让展开的菜单完整露出、不被下一个元素裁切；上线前去掉 dropdown-open。
-- 用到的类全部真实存在：dropdown、dropdown-end、dropdown-open、dropdown-content、menu、bg-base-100、rounded-box、w-52、w-48、border、border-base-300、p-2、btn、btn-circle、btn-primary、text-error、divider、menu-title；不要写不存在的 z-1 / shadow-sm。
-- 菜单文案写真实功能名（个人中心 / 退出登录），禁止出现 Primary / 成功 这类颜色名当文案；颜色全部走 daisyUI 主题变量。
+- 键盘可用场景改用原生 popover：<button popovertarget="菜单id" aria-haspopup="menu" aria-controls="菜单id" aria-expanded="false">，菜单 <ul id="菜单id" popover role="menu" aria-labelledby="触发按钮id">；原生 popover 自带点外部关闭、Esc 关闭、关闭后焦点回到触发按钮，不要手写焦点陷阱；aria-expanded 用菜单上一行 toggle 监听同步。
+- popover 键盘：按钮聚焦按 ↓ 展开并聚焦第一项，菜单内 ↑/↓/Home/End 在菜单项间移动；菜单项写 <a role="menuitem" tabindex="0">（无 href 必须加 tabindex=0，否则键盘进不去）。
+- 用到的类全部真实存在：dropdown、dropdown-end、dropdown-open、dropdown-content、menu、bg-base-100、rounded-box、w-52、w-48、border、border-base-300、p-2、btn、btn-circle、btn-primary、btn-soft、text-error、divider、menu-title；不要写不存在的 z-1 / shadow-sm。
+- 菜单文案写真实功能名（个人中心 / 退出登录 / 编辑备注 / 删除订单），禁止出现 Primary / 成功 这类颜色名当文案；颜色全部走 daisyUI 主题变量。
 
 【参考结构】（照此实现，外层标签可按我的项目调整）
 ```html
 <div class="flex w-full justify-end">
   <div class="dropdown dropdown-end dropdown-open" style="min-height:19rem">
-    <div tabindex="0" role="button" class="btn btn-circle btn-primary">我</div>
+    <div tabindex="0" role="button" aria-haspopup="true" class="btn btn-circle btn-primary">我</div>
     <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box w-52 border border-base-300 p-2">
       <li><a>个人中心</a></li>
       <li><a>我的订单</a></li>
@@ -40,6 +42,7 @@
 - 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。
 - 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。
 - 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。
+- 凡会弹出覆盖层的组件（对话框、抽屉、下拉菜单、大菜单）：优先用原生 <dialog> + showModal() 或 popover API（popovertarget + [popover]），不要自己写焦点陷阱；做到打开后焦点进入弹层、Tab 只在弹层内循环跑不到背景、Esc 可关（菜单点外部也可关）、关闭后焦点回到触发按钮；触发按钮加 aria-expanded / aria-controls，弹层标题用 aria-labelledby 关联。纯 hover 提示的 tooltip 不拦截焦点，不需要这套。
 - 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。
 - 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。
 - 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。

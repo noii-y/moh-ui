@@ -16,14 +16,16 @@
 【精确规格】
 - 纯 CSS 即可：speed-dial 子按钮平时隐藏，主按钮 focus/hover 时由 daisyUI 自动展开，不要为展开写任何 JS，也不要复制详情页那段强制展开的演示样式。
 - 圆形按钮用 btn btn-circle btn-lg；主按钮加 btn-primary；图标统一 h-6 w-6；纯图标按钮必须带 aria-label。
+- 主按钮补 aria-haspopup="menu"，并用 aria-controls 指向外层 .fab 容器的 id（如 fab-hero-menu）；静态展开演示里写 aria-expanded="true" 对应当前画面。
+- 键盘与焦点行为（必须如实实现）：Tab 聚焦主按钮菜单即展开，继续 Tab 依次进入各动作按钮，焦点移出整组后菜单自动收起；纯 CSS 版没有 Esc 收起、鼠标点主按钮也不开关（靠悬停展开）；aria-expanded 无法随开合自动更新，若读屏产品要求开合状态可被播报，改用原生 details 当主按钮（Enter/Space 开合、读屏自动播报状态），但它同样没有 Esc 与点外部收起。
 - 文字写真实动作（新建 / 写文章 / 传图片 / 发视频），禁止出现颜色名当文案。
 - 用到的类全部真实存在：fab、static（仅详情页演示用，真实项目去掉）、btn、btn-circle、btn-lg、btn-primary、flex、items-center、gap-2、text-sm、h-6、w-6。
 - 颜色全部走 daisyUI 主题变量，不要写死颜色。
 
 【参考结构】（照此实现，外层标签可按我的项目调整）
 ```html
-<div class="fab static">
-  <div tabindex="0" role="button" aria-label="新建" class="btn btn-circle btn-lg btn-primary">
+<div class="fab static" id="fab-hero-menu">
+  <div tabindex="0" role="button" aria-label="新建" aria-haspopup="menu" aria-controls="fab-hero-menu" aria-expanded="true" class="btn btn-circle btn-lg btn-primary">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
   </div>
   <div class="flex items-center gap-2">
@@ -51,6 +53,7 @@
 - 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。
 - 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。
 - 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。
+- 凡会弹出覆盖层的组件（对话框、抽屉、下拉菜单、大菜单）：优先用原生 <dialog> + showModal() 或 popover API（popovertarget + [popover]），不要自己写焦点陷阱；做到打开后焦点进入弹层、Tab 只在弹层内循环跑不到背景、Esc 可关（菜单点外部也可关）、关闭后焦点回到触发按钮；触发按钮加 aria-expanded / aria-controls，弹层标题用 aria-labelledby 关联。纯 hover 提示的 tooltip 不拦截焦点，不需要这套。
 - 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。
 - 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。
 - 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。

@@ -10,8 +10,10 @@
 【场景】用户在收货地址列表点了「删除」后弹出的确认对话框：标题直接问是否确认，正文说清后果，底部两个按钮让用户决定。
 【怎么排】居中弹窗 modal-box：标题加粗一行，正文一句说明后果，底部 modal-action 按钮组自动右对齐——次要的「取消」用默认按钮，危险的「确认删除」用 btn-error；整层带半透明遮罩，真实项目里按 Esc 或点遮罩即可关闭。
 【精确规格】
-- 推荐实现：<dialog id="地址删除确认" class="modal">，用 document.getElementById('地址删除确认').showModal() 打开；Esc 关闭、背景锁定、焦点圈定由 dialog 原生提供；关闭按钮包一层 <form method="dialog">。
-- 本页静态展示用复选框法（无 JS）：<input type="checkbox" checked class="modal-toggle"> 必须紧跟 <div class="modal" role="dialog">，内部放 .modal-box（标题 h3.text-lg.font-bold + p.py-4 正文 + div.modal-action 按钮组）。
+- 推荐实现：<dialog id="地址删除确认" class="modal" aria-labelledby="删除标题id">，用 document.getElementById('地址删除确认').showModal() 打开；焦点圈定（Tab 只在弹窗内循环、跑不到背景）、Esc 关闭、背景锁定、关闭后焦点回到触发按钮，都由 dialog 原生提供，不要手写焦点陷阱；底部按钮包一层 <form method="dialog">，点击自动关闭。
+- 给标题 h3 加 id，dialog 用 aria-labelledby 指向它，让读屏器念出弹窗标题。
+- 焦点落点：showModal() 默认聚焦弹窗内第一个可聚焦元素，按钮按「取消 / 确认」顺序排，焦点自然落在取消上；删除、清空这类危险确认不要给危险按钮加 autofocus，避免用户误按回车直接删除；填写类弹窗（保存/提交）才给主按钮加 autofocus。
+- 本页静态展示用复选框法（无 JS）：<input type="checkbox" checked class="modal-toggle"> 必须紧跟 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="标题id">，内部放 .modal-box（标题 h3.text-lg.font-bold + p.py-4 正文 + div.modal-action 按钮组）。
 - 详情页给 .modal 加了内联 style="position:static;pointer-events:none"，仅为在小舞台内排开展示；复制进真实项目后删掉这两行内联样式，弹窗会自动 fixed 铺满全屏并带遮罩。
 - 文案写真实决策问题与后果（确认删除这条收货地址？此操作不可撤销，删除后该地址将无法找回），按钮写真实动作（取消 / 确认删除），禁止出现 Error / 红色 这类颜色名。
 - 只有删除、清空这类危险确认才用 btn-error；普通弹窗主操作用 btn-primary。
@@ -20,9 +22,9 @@
 【参考结构】（照此实现，外层标签可按我的项目调整）
 ```html
 <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-<div class="modal" role="dialog" style="position:static;pointer-events:none">
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-del-title" style="position:static;pointer-events:none">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">确认删除这条收货地址？</h3>
+    <h3 class="text-lg font-bold" id="modal-del-title">确认删除这条收货地址？</h3>
     <p class="py-4">此操作不可撤销，删除后该地址将无法找回。</p>
     <div class="modal-action">
       <button class="btn">取消</button>
@@ -36,6 +38,7 @@
 - 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。
 - 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。
 - 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。
+- 凡会弹出覆盖层的组件（对话框、抽屉、下拉菜单、大菜单）：优先用原生 <dialog> + showModal() 或 popover API（popovertarget + [popover]），不要自己写焦点陷阱；做到打开后焦点进入弹层、Tab 只在弹层内循环跑不到背景、Esc 可关（菜单点外部也可关）、关闭后焦点回到触发按钮；触发按钮加 aria-expanded / aria-controls，弹层标题用 aria-labelledby 关联。纯 hover 提示的 tooltip 不拦截焦点，不需要这套。
 - 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。
 - 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。
 - 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。

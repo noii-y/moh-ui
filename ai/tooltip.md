@@ -14,8 +14,10 @@
 - 相邻按钮一行排列；并排间距留 16px 以上（提示气泡通常比按钮宽，多个气泡同时露出时不能互相压住）。
 - 删除按钮用 btn-ghost 弱化外观，但 aria-label 仍写「删除」。
 【精确规格】
-- 真实交互：鼠标悬停在按钮上时气泡出现，移开即消失，零 JavaScript；静态预览（截图 / 文档）时给 tooltip 外层临时加 tooltip-open 强制显示，并在容器四周留出内边距，避免气泡顶出边界。
-- 用到的类全部真实存在：tooltip、tooltip-open、tooltip-bottom、tooltip-left、tooltip-right、tooltip-primary、tooltip-error、tooltip-content、btn、btn-square、btn-ghost、btn-error、aria-label；提示文字只写在 data-tip 属性里（如 data-tip="保存 (Ctrl+S)"），不要额外写元素。
+- 真实交互：鼠标悬停在按钮上时气泡出现，键盘 Tab 把焦点移到按钮上（:focus-visible）同样出现，移开 / 焦点移走即消失，零 JavaScript；静态预览（截图 / 文档）时给 tooltip 外层临时加 tooltip-open 强制显示，并在容器四周留出内边距，避免气泡顶出边界。
+- 焦点行为：tooltip 不是弹层——不拦截焦点、不用 Tab 圈定、Esc 无关；不要给它加 role="tooltip" 容器陷阱，也不要为此写任何键盘 JS。
+- 可访问性：data-tip 文字是 CSS 伪元素渲染、读屏不念，所以纯图标按钮必须自带 aria-label；aria-label 只说动作（如「保存」），快捷键说明留给 data-tip 气泡（如「保存 (Ctrl+S)」），两者不要求逐字一致；需要读屏读到气泡全文时，改用真实元素 div.tooltip-content 并加 id，触发元素挂 aria-describedby 指向它，此时两边文案才保持一致。
+- 用到的类全部真实存在：tooltip、tooltip-open、tooltip-bottom、tooltip-left、tooltip-right、tooltip-primary、tooltip-error、tooltip-content、btn、btn-square、btn-ghost、btn-error；提示文字只写在 data-tip 属性里（如 data-tip="保存 (Ctrl+S)"），不要额外写元素。
 - 提示文案写真实动作与快捷键（保存 (Ctrl+S) / 删除），禁止颜色名；气泡颜色全部走 daisyUI 主题变量，不要写死。
 
 【参考结构】（照此实现，外层标签可按我的项目调整）
@@ -41,6 +43,7 @@
 - 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。
 - 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。
 - 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。
+- 凡会弹出覆盖层的组件（对话框、抽屉、下拉菜单、大菜单）：优先用原生 <dialog> + showModal() 或 popover API（popovertarget + [popover]），不要自己写焦点陷阱；做到打开后焦点进入弹层、Tab 只在弹层内循环跑不到背景、Esc 可关（菜单点外部也可关）、关闭后焦点回到触发按钮；触发按钮加 aria-expanded / aria-controls，弹层标题用 aria-labelledby 关联。纯 hover 提示的 tooltip 不拦截焦点，不需要这套。
 - 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。
 - 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。
 - 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。
