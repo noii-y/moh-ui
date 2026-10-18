@@ -226,6 +226,34 @@
     var row1 = node("div", "doc-get__row");
     row1.appendChild(promptBtn);           /* 移动节点，保留复制事件 */
     if (aiLinkBtn) row1.appendChild(aiLinkBtn);
+
+    /* 配套规则：跳规则装配器并预选本组件与最典型页面场景。映射唯一真相源
+       是 assets/scene-map.js（与 rules.html 同源）；组件页未引该文件，按需
+       注入；加载失败时退化为只带 comps（场景进装配器再选），链接仍可用。 */
+    if (aiSlug) {
+      var rootRel = location.pathname.indexOf("/components/daisyui/") !== -1
+        ? "../../../" : "../../";
+      var ruleLink = function (scene) {
+        var a = document.createElement("a");
+        a.className = "doc-get__link";
+        a.href = rootRel + "site/rules.html?comps=" + encodeURIComponent(aiSlug) +
+          (scene && scene !== "generic" ? "&scene=" + scene : "");
+        a.textContent = "配套规则";
+        a.title = "在规则装配器里预选本组件，按页面类型装配场景规则、主题红线与自检清单";
+        row1.appendChild(a);
+      };
+      if (window.MOH_SCENE_MAP) {
+        ruleLink(window.MOH_SCENE_MAP.sceneOf(aiSlug));
+      } else {
+        var mapScript = document.createElement("script");
+        mapScript.src = rootRel + "assets/scene-map.js";
+        mapScript.onload = function () {
+          ruleLink(window.MOH_SCENE_MAP ? window.MOH_SCENE_MAP.sceneOf(aiSlug) : "generic");
+        };
+        mapScript.onerror = function () { ruleLink("generic"); };
+        document.head.appendChild(mapScript);
+      }
+    }
     g1.appendChild(row1);
     g1.appendChild(node("p", "doc-get__tip",
       "复制一段现成指令，粘贴给任意 AI 就能按你的项目生成；或只发链接，让它自己读取完整规格和代码。"));

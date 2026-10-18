@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
   <script src="data.js"></script>
+  <script src="../assets/scene-map.js"></script>
   <style>
     /* ===== 装配器专属样式（只作用于本页，site- 公共类不动） ===== */
     .as-wrap { padding-bottom: 56px; }
@@ -369,22 +370,8 @@
       var BASE = "https://noii-y.github.io/moh-ui";
       var DATA = window.MOH_DATA || { themes: [], components: [] };
 
-      /* 场景 → 推荐组件（短名与 ai/<短名>.html 对齐）；core 默认勾选，more 按需 */
-      var SCENES = {
-        generic:   { label: "通用", file: null, desc: "没有明确的表格/表单/看板，只守通用排版审美。", core: [], more: [] },
-        table:     { label: "表格页", file: "../rules/scenarios/table.md",
-                     desc: "列表、筛选、分页的管理页面。",
-                     core: ["table", "filter", "pagination", "date-range"],
-                     more: ["list", "stat", "badge", "empty", "card", "skeleton", "dropdown"] },
-        form:      { label: "表单页", file: "../rules/scenarios/form.md",
-                     desc: "录入、配置、设置类页面。",
-                     core: ["fieldset", "validator", "input", "select", "textarea", "checkbox", "radio", "toggle", "range", "button", "join", "date-range"],
-                     more: ["otp", "rating", "file-input", "alert", "tooltip", "loading"] },
-        dashboard: { label: "数据看板", file: "../rules/scenarios/dashboard.md",
-                     desc: "KPI、图表、监控大屏。",
-                     core: ["stat", "chart-card", "table", "card", "badge"],
-                     more: ["navbar", "menu", "drawer", "tab", "progress", "list", "avatar", "radial-progress", "timeline", "code-block"] }
-      };
+      /* 场景 → 推荐组件映射来自共享的 assets/scene-map.js（与组件详情页同源） */
+      var SCENES = window.MOH_SCENE_MAP.scenes;
 
       /* 与 assets/demo-doc.js 同源的兜底副本（fetch 失败时用；正路是提取 demo-doc.js 原文） */
       var FALLBACK_COMMON = [
