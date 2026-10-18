@@ -9116,7 +9116,7 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 - 深空三层底：base-100 #0a0e14 页面、base-200 #111722 面板、base-300 #161d2b 图标盒；面板层次靠 1px 深青灰描边（#233043 分隔、#2f4057 图标盒）而非阴影，辅助文字统一 muted #8fa0b8。
 - 主按钮是深青实色 #0e7490 白字（不是亮青）；亮青 #22d3ee 是唯一霓虹色，只给 hero 关键词、kicker 小标题、幽灵按钮描边（透明底 + 1px 亮青边 + 亮青字）与徽章，徽章文字用深色 #04141a。
-- 发光极度克制：text-shadow:0 0 8px rgba(34,211,238,.55) 只用于 hero 里那一个关键词；box-shadow:0 0 0 1px #22d3ee, 0 0 12px rgba(34,211,238,.25) 只用于主 CTA 按钮、购票卡、倒计时秒格——整页发光元素不超过 5 处；禁止满屏霓虹、禁止多色霓虹、禁止紫粉赛博渐变。
+- 发光极度克制：text-shadow:0 0 8px rgba(34,211,238,.55) 只用于 hero 里那一个关键词（1 处）；box-shadow:0 0 0 1px #22d3ee, 0 0 12px rgba(34,211,238,.25) 的发光描边只给三处「立即报名」按钮（顶栏 / hero / 购票卡内）、购票卡本体与倒计时秒格（共 5 处），两类合计不超过 6 处；禁止满屏霓虹、禁止多色霓虹、禁止紫粉赛博渐变。
 - hero 背景是 36px 细网格线（rgba(35,48,67,.32) 的 1px 横竖线），不是渐变底色；标题用无衬线黑体 800。
 - 倒计时用 daisyUI countdown 纯 CSS 静态渲染（--value:N、--digits:2、tabular-nums 38px），真实活动页必须 JS 每秒改 --value；四个数字格里只有「秒」格加亮青描边发光。
 - 小圆角（--radius-box 0.5rem / field 0.25rem）、1px 细边；图标盒 44px 深底 + 亮青 currentColor 线条 SVG；议程表 min-width 560px 放 overflow-x:auto 容器里窄屏横向滚动。
@@ -12434,7 +12434,7 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 - 底色是几乎没有色相的暖米白三层：官方 oklch 97%/95%/90%、色度仅 .003–.008，base-content 是同色相同约 40% 明度的暖灰墨；分区靠留白而非色块，明度差极弱。绝不要给它加彩色背景或深灰大块底色。
 - 最大机制：primary / secondary / accent 在官方主题里是同一个色——低饱和墨蓝近黑（oklch 23.3%、色度 .025）；强调不靠彩色、靠字重与留白。主按钮墨底配浅豆绿字（primary-content 官方为 oklch 94.2% 浅豆绿），这是官方设定，不要擅自改成白字或棕字。
-- 语义色全是浅盘深字机制：info/success/warning/error 均为 80–84% 高明度浅底 + 各自深色字，用于 badge-soft 胶囊；neutral 是纯黑，只用于头像底这类极小面积。
+- 语义色全是浅盘深字机制：info/success/warning/error 均为 75–84% 高明度浅底 + 各自深色字，用于 badge-soft 胶囊；neutral 是纯黑，只用于头像底这类极小面积。
 - 圆角大而平滑：--radius-selector 2rem 胶囊、--radius-box 1rem、--border 2px、--noise:0（无颗粒、无阴影，要的就是丝滑平整）；卡片统一 bg-base-200 rounded-box。
 - 插图全部 currentColor 单色线稿：hero 山景线条画（太阳、远山、小屋、草地）与房源房形图标，stroke 2 圆角端点、无填色无渐变；不用照片、不用彩色插画、不用 emoji。
 - 气质是留白与层级：hero 大标题 26px、描述文字降到 .65 透明度，房源评分用 badge-soft badge-primary 小胶囊，价格加粗写「¥680 / 晚」，账单明细两列对齐。
