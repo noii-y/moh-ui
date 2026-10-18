@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商办（business）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「商办（business）」组件。虚构企业 OA 审批后台「汇通办公 OA」整页。近黑蓝灰底配深蓝主按钮与流程节点，待办列表、审批状态、流程节点、公文与组织架构齐备；挂 daisyUI 官方主题 data-theme="business" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="business.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/business/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>商办（business） · 灰墨 MoH_UI</h1>
+<blockquote>虚构企业 OA 审批后台「汇通办公 OA」整页。近黑蓝灰底配深蓝主按钮与流程节点，待办列表、审批状态、流程节点、公文与组织架构齐备；挂 daisyUI 官方主题 data-theme="business" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：daisyUI 内置主题（MIT，无需额外文件）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/business/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/business/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>business 是深色蓝灰 OA 主题：base-100 近黑中性灰（oklch 24%）、base-200 略深、base-content 浅灰（oklch 85%），正文对比度约 10:1；布局必须是「顶栏 + 左侧栏 + 主内容」的后台骨架，不要做成营销落地页或官网前台。</li>
+<li>主按钮用默认 btn-primary（深蓝 oklch 41% 配浅蓝白字 primary-content，实测对比 6.0:1，达标）；驳回等危险操作按钮用 btn-error 叠加内联类 .err-dark（--btn-color: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）做加深红底配 error-content 浅字，实测 4.99:1；默认 error 是 oklch 51.6% 配浅字仅 4.47:1 临界、近黑底上的幽灵红字只有 2.83:1，这两种都不要用。</li>
+<li>审批状态徽章用语义色：待审批=warning、已通过=success、已驳回/超时=error；超时/紧急徽章用 badge-error 叠加同一个 .err-dark（--badge-bg: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）加深红底浅字，实测 4.99:1，不要用默认 error（4.47:1 临界），也不要用深红字压近黑底的软徽章（实测仅 2.55:1）；每一行最多两枚徽章。</li>
+<li>流程节点横向排布（发起→部门主管→分管领导→财务复核→归档），已完成节点 success 绿底白字打勾、当前节点 primary 蓝底白字加阴影环、待办节点 base-300 灰底半透明；节点之间用 2px 横线连接，已完成段线也用 success 绿。</li>
+<li>待办列表每行结构固定：类型图标（base-300 方底 SVG）+ 标题（13px 加粗省略号）+ 发起人/部门 meta（11px 55% 透明度）+ 时间（右对齐 11px）+ 状态徽章；hover 时整行变 base-200，选中行 primary 18% 透明底。</li>
+<li>卡片用 base-200 圆角块（business 圆角很小 0.25rem，偏硬朗），标题 17px 加粗、正文 12-13px、行距 1.8-2；附件占位用虚线框（dashed border 30% currentColor），不要画假图片。</li>
+<li>文案写真实审批动作（同意并提交、驳回、转交他人审批），金额写具体数字（¥8,640.00），人员姓名部门虚构但像真实企业；不写「高效办公智慧协同」这类空话。</li>
+<li>与 corporate（官网前台营销 hero）、mo-classic（普通用户后台仪表盘）的差异：本页核心是审批/流程/待办/已办——必须有列表、状态徽章、流程节点、审批意见框，不做营销 hero、不做客户展示、不放销售数字大卡片。</li>
+<li>390px 窄屏左侧栏隐藏、待办列表行退化为两列（图标+标题/meta 叠行）、时间徽章折到第二列，不横向溢出。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="business"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;汇通办公 OA · 审批中心（business 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 business 主题完整页面案例：虚构企业 OA 审批后台整页。近黑蓝灰底配深蓝主按钮与流程节点，列表、审批状态、流程节点齐备。本页只依赖 daisyUI 官方主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" /&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .shell { max-width: 1200px; margin: 0 auto; padding: 14px 16px 48px; display: flex; flex-direction: column; gap: 14px; }
+    .brand { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand svg { width: 22px; height: 22px; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .nav-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    /* 后台两栏布局 */
+    .layout { display: grid; grid-template-columns: 200px 1fr; gap: 14px; align-items: start; }
+    .side { background: var(--color-base-200); border-radius: var(--radius-box); padding: 8px; }
+    .side .side-title { font-size: 11px; opacity: .5; padding: 8px 12px 4px; letter-spacing: 1px; }
+    .side ul.menu { padding: 0; }
+    .main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+    .sect-head h2 { font-size: 17px; margin: 0; }
+    .sect-head .sub { font-size: 12px; opacity: .55; }
+    /* 审批列表行 */
+    .rowlist { display: flex; flex-direction: column; gap: 2px; }
+    .aprow { display: grid; grid-template-columns: 36px 1fr auto auto auto; align-items: center; gap: 12px; padding: 10px 12px; border-radius: var(--radius-box); }
+    .aprow:hover { background: var(--color-base-200); }
+    .aprow.selected { background: color-mix(in oklab, var(--color-primary) 18%, transparent); }
+    .aprow .icon { width: 36px; height: 36px; border-radius: var(--radius-box); background: var(--color-base-300); display: flex; align-items: center; justify-content: center; }
+    .aprow .icon svg { width: 18px; height: 18px; }
+    .aprow .tt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .aprow .tt .title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .aprow .tt .meta { font-size: 11px; opacity: .55; display: flex; gap: 8px; }
+    .aprow .time { font-size: 11px; opacity: .5; white-space: nowrap; }
+    /* 审批单 */
+    .doc-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+    .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .doc-field { display: flex; flex-direction: column; gap: 3px; }
+    .doc-field .k { font-size: 11px; opacity: .5; }
+    .doc-field .v { font-size: 13px; font-weight: 600; }
+    .reason { font-size: 13px; line-height: 2; opacity: .85; margin: 0; }
+    .attach { border: 1px dashed color-mix(in oklab, currentColor 30%, transparent); border-radius: var(--radius-box); padding: 14px; display: flex; align-items: center; gap: 10px; font-size: 12px; opacity: .7; }
+    .attach svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .opinion-box { background: var(--color-base-100); border-radius: var(--radius-box); padding: 12px 14px; font-size: 12px; line-height: 1.9; opacity: .8; }
+    /* 流程节点 */
+    .flow { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding: 4px 0; }
+    .flow .node { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 80px; text-align: center; }
+    .flow .dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    .flow .dot.done { background: var(--color-success); color: var(--color-success-content); }
+    .flow .dot.cur { background: var(--color-primary); color: var(--color-primary-content); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 25%, transparent); }
+    .flow .dot.todo { background: var(--color-base-300); color: var(--color-base-content); opacity: .6; }
+    .flow .lbl { font-size: 11px; line-height: 1.4; }
+    .flow .lbl .who { opacity: .5; display: block; font-size: 10px; }
+    .flow .bar { flex: 1; min-width: 24px; height: 2px; background: var(--color-base-300); margin-top: 14px; position: relative; }
+    .flow .bar.done { background: var(--color-success); }
+    /* 公文简卡 */
+    .docmini { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+    .docmini .mini { background: var(--color-base-200); border-radius: var(--radius-box); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+    .docmini .mini .mt { font-size: 13px; font-weight: 600; }
+    .docmini .mini .mm { font-size: 11px; opacity: .55; line-height: 1.7; }
+    /* 组织架构树 */
+    .orgtree { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }
+    .orgtree .lv1 { font-weight: 700; padding: 4px 0; }
+    .orgtree .lv2 { padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+    .orgtree .lv2 .dept { display: flex; align-items: center; gap: 6px; opacity: .85; }
+    .orgtree .lv2 .dept svg { width: 13px; height: 13px; opacity: .6; }
+    .orgtree .lv3 { padding-left: 40px; display: flex; flex-direction: column; gap: 3px; opacity: .65; font-size: 11px; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    .bell { position: relative; width: 36px; height: 36px; border-radius: var(--radius-box); display: flex; align-items: center; justify-content: center; }
+    .bell svg { width: 20px; height: 20px; }
+    .bell .dot { position: absolute; top: 7px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-error); border: 2px solid var(--color-base-200); }
+    .oa-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-content); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+    /* 加深 error：原 oklch 51.6% 配 error-content 浅字仅 4.47:1，与 base-100 混 10% 后实测 4.99:1，用于实心 error 徽章与驳回按钮 */
+    .err-dark { --badge-bg: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100)); --btn-color: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100)); }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .side { display: none; }
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .aprow { grid-template-columns: 32px 1fr; gap: 8px; }
+      .aprow .time, .aprow .badge { grid-column: 2; }
+      .flow .node { min-width: 58px; }
+      .flow .dot { width: 24px; height: 24px; font-size: 11px; }
+      .flow .lbl { font-size: 10px; }
+      .flow .lbl .who { font-size: 9px; }
+      .flow .bar { min-width: 12px; margin-top: 12px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="shell"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;rect x="3" y="4" width="18" height="16" rx="2" /&gt;
+            &lt;path d="M3 9h18" /&gt;
+            &lt;path d="M9 14h6" /&gt;
+          &lt;/svg&gt;
+          汇通办公 &lt;small&gt;OA&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;ul class="nav-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 22%, transparent);--menu-active-fg:var(--color-primary-content)"&gt;
+          &lt;li&gt;&lt;a&gt;工作台&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;审批&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;公文&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;通讯录&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;日程&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;div class="bell" role="img" aria-label="通知：三条未读"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" /&gt;
+            &lt;path d="M13.7 21a2 2 0 0 1-3.4 0" /&gt;
+          &lt;/svg&gt;
+          &lt;span class="dot"&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="oa-avatar" role="img" aria-label="当前用户头像：张"&gt;张&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 后台两栏 --&gt;
+    &lt;div class="layout"&gt;
+
+      &lt;!-- 左侧栏 --&gt;
+      &lt;aside class="side"&gt;
+        &lt;div class="side-title"&gt;审批&lt;/div&gt;
+        &lt;ul class="menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 22%, transparent);--menu-active-fg:var(--color-primary-content)"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;待办审批 &lt;span class="badge badge-sm"&gt;7&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;已办审批&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;我发起的&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class="side-title"&gt;审批类型&lt;/div&gt;
+        &lt;ul class="menu"&gt;
+          &lt;li&gt;&lt;a&gt;请假申请&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;费用报销&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;采购申请&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;用印申请&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;合同审批&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/aside&gt;
+
+      &lt;!-- 主内容 --&gt;
+      &lt;main class="main"&gt;
+
+        &lt;!-- 待办列表 --&gt;
+        &lt;section&gt;
+          &lt;div class="sect-head"&gt;
+            &lt;h2&gt;待办审批&lt;/h2&gt;
+            &lt;span class="sub"&gt;今日 7 条待处理 · 已按提交时间排序&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="rowlist" style="margin-top:8px"&gt;
+
+            &lt;div class="aprow selected"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;rect x="3" y="4" width="18" height="18" rx="2"/&gt;&lt;path d="M16 2v4M8 2v4M3 10h18"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;市场部三季度团建费用报销申请&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;李婉清&lt;/span&gt;&lt;span&gt;市场部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;09:24&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-error badge-sm err-dark"&gt;超时 2h&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/&gt;&lt;path d="M14 2v6h6"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;供应商年度框架合同（华东区物流）&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;王泽宇&lt;/span&gt;&lt;span&gt;采购部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;08:51&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-error badge-sm err-dark"&gt;超时 5h&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="12" cy="12" r="9"/&gt;&lt;path d="M12 7v5l3 2"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;技术部远程办公申请（10 月 21 日）&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;陈思远&lt;/span&gt;&lt;span&gt;研发中心&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;昨天 18:30&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;常规&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;差旅报销 · 上海客户拜访（9/28–9/30）&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;赵晓彤&lt;/span&gt;&lt;span&gt;销售一部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;昨天 16:12&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;常规&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;采购申请 · 会议室投影设备更换（2 台）&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;刘建军&lt;/span&gt;&lt;span&gt;行政部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;昨天 11:45&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-error badge-sm err-dark"&gt;超时 1d&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M4 4h16v16H4z"/&gt;&lt;path d="M9 9h6v6H9z"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;公章使用申请 · 与乙公司合作协议盖章&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;孙明辉&lt;/span&gt;&lt;span&gt;法务部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;周一 14:20&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-warning badge-sm"&gt;待审批&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;常规&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="aprow"&gt;
+              &lt;div class="icon"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/&gt;&lt;circle cx="9" cy="7" r="4"/&gt;&lt;path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+              &lt;div class="tt"&gt;
+                &lt;span class="title"&gt;年度调休申请 · 10 月 24 日（周五）&lt;/span&gt;
+                &lt;span class="meta"&gt;&lt;span&gt;周雅琴&lt;/span&gt;&lt;span&gt;人力资源部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;span class="time"&gt;周一 10:08&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;已通过&lt;/span&gt;
+              &lt;span class="badge badge-soft badge-success badge-sm"&gt;已归档&lt;/span&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 审批单详情 --&gt;
+        &lt;section class="doc-card"&gt;
+          &lt;div class="sect-head"&gt;
+            &lt;h2&gt;审批单 · 市场部三季度团建费用报销&lt;/h2&gt;
+            &lt;span class="sub"&gt;单号 BX-2026-1018-007&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="doc-grid"&gt;
+            &lt;div class="doc-field"&gt;&lt;span class="k"&gt;申请类型&lt;/span&gt;&lt;span class="v"&gt;费用报销 · 团建&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="doc-field"&gt;&lt;span class="k"&gt;申请人&lt;/span&gt;&lt;span class="v"&gt;李婉清（市场部）&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="doc-field"&gt;&lt;span class="k"&gt;金额&lt;/span&gt;&lt;span class="v"&gt;¥ 8,640.00&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="doc-field"&gt;&lt;span class="k"&gt;提交时间&lt;/span&gt;&lt;span class="v"&gt;2026-10-18 09:24&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class="doc-field" style="margin-bottom:6px"&gt;&lt;span class="k"&gt;事由&lt;/span&gt;&lt;/div&gt;
+            &lt;p class="reason"&gt;三季度部门团建于 10 月 12 日在近郊度假村举办，共 14 人参加。费用含场地租赁 ¥4,200、午餐 ¥2,880、交通费 ¥1,560，合计 ¥8,640，发票已随附件上传。&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class="doc-field" style="margin-bottom:6px"&gt;&lt;span class="k"&gt;附件（2 份）&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="attach"&gt;
+              &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/&gt;&lt;/svg&gt;
+              &lt;span&gt;团建费用明细单.pdf · 发票扫描件.zip（仅为演示占位，实际可下载）&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class="doc-field" style="margin-bottom:6px"&gt;&lt;span class="k"&gt;前序审批意见&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="opinion-box"&gt;
+              &lt;strong&gt;部门主管 王建国&lt;/strong&gt;（10-18 10:02）：团建预算在季度额度内，发票齐全，同意报销，请分管领导审批。
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div class="doc-field" style="margin-bottom:8px"&gt;&lt;span class="k"&gt;审批流程&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="flow"&gt;
+              &lt;div class="node"&gt;
+                &lt;div class="dot done"&gt;✓&lt;/div&gt;
+                &lt;span class="lbl"&gt;发起申请&lt;span class="who"&gt;李婉清&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="bar done"&gt;&lt;/div&gt;
+              &lt;div class="node"&gt;
+                &lt;div class="dot done"&gt;✓&lt;/div&gt;
+                &lt;span class="lbl"&gt;部门主管&lt;span class="who"&gt;王建国&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="bar"&gt;&lt;/div&gt;
+              &lt;div class="node"&gt;
+                &lt;div class="dot cur"&gt;3&lt;/div&gt;
+                &lt;span class="lbl"&gt;分管领导&lt;span class="who"&gt;张明远（当前）&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="bar"&gt;&lt;/div&gt;
+              &lt;div class="node"&gt;
+                &lt;div class="dot todo"&gt;4&lt;/div&gt;
+                &lt;span class="lbl"&gt;财务复核&lt;span class="who"&gt;财务部&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="bar"&gt;&lt;/div&gt;
+              &lt;div class="node"&gt;
+                &lt;div class="dot todo"&gt;5&lt;/div&gt;
+                &lt;span class="lbl"&gt;归档&lt;span class="who"&gt;OA 系统&lt;/span&gt;&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px"&gt;
+            &lt;button class="btn btn-primary btn-sm" type="button"&gt;同意并提交&lt;/button&gt;
+            &lt;button class="btn btn-error btn-sm err-dark" type="button"&gt;驳回&lt;/button&gt;
+            &lt;button class="btn btn-ghost btn-sm" type="button"&gt;转交他人审批&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 公文简卡 --&gt;
+        &lt;section&gt;
+          &lt;div class="sect-head"&gt;
+            &lt;h2&gt;最新公文&lt;/h2&gt;
+            &lt;span class="sub"&gt;来自公司办公室 · 3 份待阅&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class="docmini" style="margin-top:10px"&gt;
+            &lt;div class="mini"&gt;
+              &lt;span class="mt"&gt;关于 2026 年度部门预算申报的通知&lt;/span&gt;
+              &lt;span class="mm"&gt;办公室 · 10-17 · 请各部门于 10 月 31 日前提交预算初稿。&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="mini"&gt;
+              &lt;span class="mt"&gt;信息安全管理办法（修订版）&lt;/span&gt;
+              &lt;span class="mm"&gt;IT 部 · 10-15 · 新增远程办公数据导出审批条款，11 月 1 日施行。&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class="mini"&gt;
+              &lt;span class="mt"&gt;第三季度优秀员工评选结果公示&lt;/span&gt;
+              &lt;span class="mm"&gt;人力资源部 · 10-14 · 共 8 人入选，公示期至 10 月 21 日。&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- 组织架构 --&gt;
+        &lt;section class="doc-card"&gt;
+          &lt;h2 style="font-size:17px;margin:0"&gt;组织架构（本部门）&lt;/h2&gt;
+          &lt;div class="orgtree"&gt;
+            &lt;div class="lv1"&gt;汇通办公科技有限公司&lt;/div&gt;
+            &lt;div class="lv2"&gt;
+              &lt;div class="dept"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/&gt;&lt;/svg&gt;
+                市场部（32 人）
+              &lt;/div&gt;
+              &lt;div class="lv3"&gt;
+                &lt;span&gt;品牌组 · 活动组 · 媒介组&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="dept"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/&gt;&lt;/svg&gt;
+                研发中心（86 人）
+              &lt;/div&gt;
+              &lt;div class="lv3"&gt;
+                &lt;span&gt;前端组 · 后端组 · 测试组 · 运维组&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class="dept"&gt;
+                &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/&gt;&lt;/svg&gt;
+                销售部（54 人）
+              &lt;/div&gt;
+              &lt;div class="lv3"&gt;
+                &lt;span&gt;销售一部 · 销售二部 · 大客户组&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+
+      &lt;/main&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;汇通办公 OA 为虚构企业系统，审批单数据、人员姓名、部门架构与公文内容均为示例数据，仅用于展示 business 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="business"</code>，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<p>该主题变量在 daisyui-themes.css 内，无需复制。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/business/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/business/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「商办（business）」的整页。\n\n【场景】\n虚构企业 OA 审批后台「汇通办公 OA」整页。近黑蓝灰底配深蓝主按钮与流程节点，待办列表、审批状态、流程节点、公文与组织架构齐备；挂 daisyUI 官方主题 data-theme=\"business\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- business 是深色蓝灰 OA 主题：base-100 近黑中性灰（oklch 24%）、base-200 略深、base-content 浅灰（oklch 85%），正文对比度约 10:1；布局必须是「顶栏 + 左侧栏 + 主内容」的后台骨架，不要做成营销落地页或官网前台。\n- 主按钮用默认 btn-primary（深蓝 oklch 41% 配浅蓝白字 primary-content，实测对比 6.0:1，达标）；驳回等危险操作按钮用 btn-error 叠加内联类 .err-dark（--btn-color: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）做加深红底配 error-content 浅字，实测 4.99:1；默认 error 是 oklch 51.6% 配浅字仅 4.47:1 临界、近黑底上的幽灵红字只有 2.83:1，这两种都不要用。\n- 审批状态徽章用语义色：待审批=warning、已通过=success、已驳回/超时=error；超时/紧急徽章用 badge-error 叠加同一个 .err-dark（--badge-bg: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）加深红底浅字，实测 4.99:1，不要用默认 error（4.47:1 临界），也不要用深红字压近黑底的软徽章（实测仅 2.55:1）；每一行最多两枚徽章。\n- 流程节点横向排布（发起→部门主管→分管领导→财务复核→归档），已完成节点 success 绿底白字打勾、当前节点 primary 蓝底白字加阴影环、待办节点 base-300 灰底半透明；节点之间用 2px 横线连接，已完成段线也用 success 绿。\n- 待办列表每行结构固定：类型图标（base-300 方底 SVG）+ 标题（13px 加粗省略号）+ 发起人/部门 meta（11px 55% 透明度）+ 时间（右对齐 11px）+ 状态徽章；hover 时整行变 base-200，选中行 primary 18% 透明底。\n- 卡片用 base-200 圆角块（business 圆角很小 0.25rem，偏硬朗），标题 17px 加粗、正文 12-13px、行距 1.8-2；附件占位用虚线框（dashed border 30% currentColor），不要画假图片。\n- 文案写真实审批动作（同意并提交、驳回、转交他人审批），金额写具体数字（¥8,640.00），人员姓名部门虚构但像真实企业；不写「高效办公智慧协同」这类空话。\n- 与 corporate（官网前台营销 hero）、mo-classic（普通用户后台仪表盘）的差异：本页核心是审批/流程/待办/已办——必须有列表、状态徽章、流程节点、审批意见框，不做营销 hero、不做客户展示、不放销售数字大卡片。\n- 390px 窄屏左侧栏隐藏、待办列表行退化为两列（图标+标题/meta 叠行）、时间徽章折到第二列，不横向溢出。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\">\n\n然后在 \u003chtml data-theme=\"business\"> 挂属性，整页即刻换肤。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。\n\n【精确规格】\n- 整页挂 data-theme=\"business\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"business\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"business\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>汇通办公 OA · 审批中心（business 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 business 主题完整页面案例：虚构企业 OA 审批后台整页。近黑蓝灰底配深蓝主按钮与流程节点，列表、审批状态、流程节点齐备。本页只依赖 daisyUI 官方主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\" />\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .shell { max-width: 1200px; margin: 0 auto; padding: 14px 16px 48px; display: flex; flex-direction: column; gap: 14px; }\n    .brand { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }\n    .brand svg { width: 22px; height: 22px; }\n    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }\n    .nav-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }\n    /* 后台两栏布局 */\n    .layout { display: grid; grid-template-columns: 200px 1fr; gap: 14px; align-items: start; }\n    .side { background: var(--color-base-200); border-radius: var(--radius-box); padding: 8px; }\n    .side .side-title { font-size: 11px; opacity: .5; padding: 8px 12px 4px; letter-spacing: 1px; }\n    .side ul.menu { padding: 0; }\n    .main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }\n    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }\n    .sect-head h2 { font-size: 17px; margin: 0; }\n    .sect-head .sub { font-size: 12px; opacity: .55; }\n    /* 审批列表行 */\n    .rowlist { display: flex; flex-direction: column; gap: 2px; }\n    .aprow { display: grid; grid-template-columns: 36px 1fr auto auto auto; align-items: center; gap: 12px; padding: 10px 12px; border-radius: var(--radius-box); }\n    .aprow:hover { background: var(--color-base-200); }\n    .aprow.selected { background: color-mix(in oklab, var(--color-primary) 18%, transparent); }\n    .aprow .icon { width: 36px; height: 36px; border-radius: var(--radius-box); background: var(--color-base-300); display: flex; align-items: center; justify-content: center; }\n    .aprow .icon svg { width: 18px; height: 18px; }\n    .aprow .tt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }\n    .aprow .tt .title { font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }\n    .aprow .tt .meta { font-size: 11px; opacity: .55; display: flex; gap: 8px; }\n    .aprow .time { font-size: 11px; opacity: .5; white-space: nowrap; }\n    /* 审批单 */\n    .doc-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 18px; display: flex; flex-direction: column; gap: 14px; }\n    .doc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }\n    .doc-field { display: flex; flex-direction: column; gap: 3px; }\n    .doc-field .k { font-size: 11px; opacity: .5; }\n    .doc-field .v { font-size: 13px; font-weight: 600; }\n    .reason { font-size: 13px; line-height: 2; opacity: .85; margin: 0; }\n    .attach { border: 1px dashed color-mix(in oklab, currentColor 30%, transparent); border-radius: var(--radius-box); padding: 14px; display: flex; align-items: center; gap: 10px; font-size: 12px; opacity: .7; }\n    .attach svg { width: 18px; height: 18px; flex-shrink: 0; }\n    .opinion-box { background: var(--color-base-100); border-radius: var(--radius-box); padding: 12px 14px; font-size: 12px; line-height: 1.9; opacity: .8; }\n    /* 流程节点 */\n    .flow { display: flex; align-items: flex-start; gap: 0; overflow-x: auto; padding: 4px 0; }\n    .flow .node { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 80px; text-align: center; }\n    .flow .dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }\n    .flow .dot.done { background: var(--color-success); color: var(--color-success-content); }\n    .flow .dot.cur { background: var(--color-primary); color: var(--color-primary-content); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary) 25%, transparent); }\n    .flow .dot.todo { background: var(--color-base-300); color: var(--color-base-content); opacity: .6; }\n    .flow .lbl { font-size: 11px; line-height: 1.4; }\n    .flow .lbl .who { opacity: .5; display: block; font-size: 10px; }\n    .flow .bar { flex: 1; min-width: 24px; height: 2px; background: var(--color-base-300); margin-top: 14px; position: relative; }\n    .flow .bar.done { background: var(--color-success); }\n    /* 公文简卡 */\n    .docmini { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }\n    .docmini .mini { background: var(--color-base-200); border-radius: var(--radius-box); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }\n    .docmini .mini .mt { font-size: 13px; font-weight: 600; }\n    .docmini .mini .mm { font-size: 11px; opacity: .55; line-height: 1.7; }\n    /* 组织架构树 */\n    .orgtree { display: flex; flex-direction: column; gap: 6px; font-size: 12px; }\n    .orgtree .lv1 { font-weight: 700; padding: 4px 0; }\n    .orgtree .lv2 { padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }\n    .orgtree .lv2 .dept { display: flex; align-items: center; gap: 6px; opacity: .85; }\n    .orgtree .lv2 .dept svg { width: 13px; height: 13px; opacity: .6; }\n    .orgtree .lv3 { padding-left: 40px; display: flex; flex-direction: column; gap: 3px; opacity: .65; font-size: 11px; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }\n    .bell { position: relative; width: 36px; height: 36px; border-radius: var(--radius-box); display: flex; align-items: center; justify-content: center; }\n    .bell svg { width: 20px; height: 20px; }\n    .bell .dot { position: absolute; top: 7px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-error); border: 2px solid var(--color-base-200); }\n    .oa-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-content); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }\n    /* 加深 error：原 oklch 51.6% 配 error-content 浅字仅 4.47:1，与 base-100 混 10% 后实测 4.99:1，用于实心 error 徽章与驳回按钮 */\n    .err-dark { --badge-bg: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100)); --btn-color: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100)); }\n    @media (max-width: 860px) {\n      .layout { grid-template-columns: 1fr; }\n      .side { display: none; }\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .aprow { grid-template-columns: 32px 1fr; gap: 8px; }\n      .aprow .time, .aprow .badge { grid-column: 2; }\n      .flow .node { min-width: 58px; }\n      .flow .dot { width: 24px; height: 24px; font-size: 11px; }\n      .flow .lbl { font-size: 10px; }\n      .flow .lbl .who { font-size: 9px; }\n      .flow .bar { min-width: 12px; margin-top: 12px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"shell\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003crect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\" />\n            \u003cpath d=\"M3 9h18\" />\n            \u003cpath d=\"M9 14h6\" />\n          \u003c/svg>\n          汇通办公 \u003csmall>OA\u003c/small>\n        \u003c/div>\n        \u003cul class=\"nav-row menu\" style=\"--menu-active-bg:color-mix(in oklab, var(--color-primary) 22%, transparent);--menu-active-fg:var(--color-primary-content)\">\n          \u003cli>\u003ca>工作台\u003c/a>\u003c/li>\n          \u003cli>\u003ca>审批\u003c/a>\u003c/li>\n          \u003cli>\u003ca>公文\u003c/a>\u003c/li>\n          \u003cli>\u003ca>通讯录\u003c/a>\u003c/li>\n          \u003cli>\u003ca>日程\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cdiv class=\"bell\" role=\"img\" aria-label=\"通知：三条未读\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003cpath d=\"M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9\" />\n            \u003cpath d=\"M13.7 21a2 2 0 0 1-3.4 0\" />\n          \u003c/svg>\n          \u003cspan class=\"dot\">\u003c/span>\n        \u003c/div>\n        \u003cdiv class=\"oa-avatar\" role=\"img\" aria-label=\"当前用户头像：张\">张\u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 后台两栏 -->\n    \u003cdiv class=\"layout\">\n\n      \u003c!-- 左侧栏 -->\n      \u003caside class=\"side\">\n        \u003cdiv class=\"side-title\">审批\u003c/div>\n        \u003cul class=\"menu\" style=\"--menu-active-bg:color-mix(in oklab, var(--color-primary) 22%, transparent);--menu-active-fg:var(--color-primary-content)\">\n          \u003cli>\u003ca class=\"menu-active\">待办审批 \u003cspan class=\"badge badge-sm\">7\u003c/span>\u003c/a>\u003c/li>\n          \u003cli>\u003ca>已办审批\u003c/a>\u003c/li>\n          \u003cli>\u003ca>我发起的\u003c/a>\u003c/li>\n        \u003c/ul>\n        \u003cdiv class=\"side-title\">审批类型\u003c/div>\n        \u003cul class=\"menu\">\n          \u003cli>\u003ca>请假申请\u003c/a>\u003c/li>\n          \u003cli>\u003ca>费用报销\u003c/a>\u003c/li>\n          \u003cli>\u003ca>采购申请\u003c/a>\u003c/li>\n          \u003cli>\u003ca>用印申请\u003c/a>\u003c/li>\n          \u003cli>\u003ca>合同审批\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/aside>\n\n      \u003c!-- 主内容 -->\n      \u003cmain class=\"main\">\n\n        \u003c!-- 待办列表 -->\n        \u003csection>\n          \u003cdiv class=\"sect-head\">\n            \u003ch2>待办审批\u003c/h2>\n            \u003cspan class=\"sub\">今日 7 条待处理 · 已按提交时间排序\u003c/span>\n          \u003c/div>\n          \u003cdiv class=\"rowlist\" style=\"margin-top:8px\">\n\n            \u003cdiv class=\"aprow selected\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003crect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/>\u003cpath d=\"M16 2v4M8 2v4M3 10h18\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">市场部三季度团建费用报销申请\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>李婉清\u003c/span>\u003cspan>市场部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">09:24\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-error badge-sm err-dark\">超时 2h\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z\"/>\u003cpath d=\"M14 2v6h6\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">供应商年度框架合同（华东区物流）\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>王泽宇\u003c/span>\u003cspan>采购部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">08:51\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-error badge-sm err-dark\">超时 5h\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003ccircle cx=\"12\" cy=\"12\" r=\"9\"/>\u003cpath d=\"M12 7v5l3 2\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">技术部远程办公申请（10 月 21 日）\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>陈思远\u003c/span>\u003cspan>研发中心\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">昨天 18:30\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">常规\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">差旅报销 · 上海客户拜访（9/28–9/30）\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>赵晓彤\u003c/span>\u003cspan>销售一部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">昨天 16:12\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">常规\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">采购申请 · 会议室投影设备更换（2 台）\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>刘建军\u003c/span>\u003cspan>行政部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">昨天 11:45\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-error badge-sm err-dark\">超时 1d\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M4 4h16v16H4z\"/>\u003cpath d=\"M9 9h6v6H9z\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">公章使用申请 · 与乙公司合作协议盖章\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>孙明辉\u003c/span>\u003cspan>法务部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">周一 14:20\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-warning badge-sm\">待审批\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">常规\u003c/span>\n            \u003c/div>\n\n            \u003cdiv class=\"aprow\">\n              \u003cdiv class=\"icon\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2\"/>\u003ccircle cx=\"9\" cy=\"7\" r=\"4\"/>\u003cpath d=\"M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75\"/>\u003c/svg>\n              \u003c/div>\n              \u003cdiv class=\"tt\">\n                \u003cspan class=\"title\">年度调休申请 · 10 月 24 日（周五）\u003c/span>\n                \u003cspan class=\"meta\">\u003cspan>周雅琴\u003c/span>\u003cspan>人力资源部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cspan class=\"time\">周一 10:08\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">已通过\u003c/span>\n              \u003cspan class=\"badge badge-soft badge-success badge-sm\">已归档\u003c/span>\n            \u003c/div>\n\n          \u003c/div>\n        \u003c/section>\n\n        \u003c!-- 审批单详情 -->\n        \u003csection class=\"doc-card\">\n          \u003cdiv class=\"sect-head\">\n            \u003ch2>审批单 · 市场部三季度团建费用报销\u003c/h2>\n            \u003cspan class=\"sub\">单号 BX-2026-1018-007\u003c/span>\n          \u003c/div>\n          \u003cdiv class=\"doc-grid\">\n            \u003cdiv class=\"doc-field\">\u003cspan class=\"k\">申请类型\u003c/span>\u003cspan class=\"v\">费用报销 · 团建\u003c/span>\u003c/div>\n            \u003cdiv class=\"doc-field\">\u003cspan class=\"k\">申请人\u003c/span>\u003cspan class=\"v\">李婉清（市场部）\u003c/span>\u003c/div>\n            \u003cdiv class=\"doc-field\">\u003cspan class=\"k\">金额\u003c/span>\u003cspan class=\"v\">¥ 8,640.00\u003c/span>\u003c/div>\n            \u003cdiv class=\"doc-field\">\u003cspan class=\"k\">提交时间\u003c/span>\u003cspan class=\"v\">2026-10-18 09:24\u003c/span>\u003c/div>\n          \u003c/div>\n          \u003cdiv>\n            \u003cdiv class=\"doc-field\" style=\"margin-bottom:6px\">\u003cspan class=\"k\">事由\u003c/span>\u003c/div>\n            \u003cp class=\"reason\">三季度部门团建于 10 月 12 日在近郊度假村举办，共 14 人参加。费用含场地租赁 ¥4,200、午餐 ¥2,880、交通费 ¥1,560，合计 ¥8,640，发票已随附件上传。\u003c/p>\n          \u003c/div>\n          \u003cdiv>\n            \u003cdiv class=\"doc-field\" style=\"margin-bottom:6px\">\u003cspan class=\"k\">附件（2 份）\u003c/span>\u003c/div>\n            \u003cdiv class=\"attach\">\n              \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48\"/>\u003c/svg>\n              \u003cspan>团建费用明细单.pdf · 发票扫描件.zip（仅为演示占位，实际可下载）\u003c/span>\n            \u003c/div>\n          \u003c/div>\n          \u003cdiv>\n            \u003cdiv class=\"doc-field\" style=\"margin-bottom:6px\">\u003cspan class=\"k\">前序审批意见\u003c/span>\u003c/div>\n            \u003cdiv class=\"opinion-box\">\n              \u003cstrong>部门主管 王建国\u003c/strong>（10-18 10:02）：团建预算在季度额度内，发票齐全，同意报销，请分管领导审批。\n            \u003c/div>\n          \u003c/div>\n          \u003cdiv>\n            \u003cdiv class=\"doc-field\" style=\"margin-bottom:8px\">\u003cspan class=\"k\">审批流程\u003c/span>\u003c/div>\n            \u003cdiv class=\"flow\">\n              \u003cdiv class=\"node\">\n                \u003cdiv class=\"dot done\">✓\u003c/div>\n                \u003cspan class=\"lbl\">发起申请\u003cspan class=\"who\">李婉清\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"bar done\">\u003c/div>\n              \u003cdiv class=\"node\">\n                \u003cdiv class=\"dot done\">✓\u003c/div>\n                \u003cspan class=\"lbl\">部门主管\u003cspan class=\"who\">王建国\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"bar\">\u003c/div>\n              \u003cdiv class=\"node\">\n                \u003cdiv class=\"dot cur\">3\u003c/div>\n                \u003cspan class=\"lbl\">分管领导\u003cspan class=\"who\">张明远（当前）\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"bar\">\u003c/div>\n              \u003cdiv class=\"node\">\n                \u003cdiv class=\"dot todo\">4\u003c/div>\n                \u003cspan class=\"lbl\">财务复核\u003cspan class=\"who\">财务部\u003c/span>\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"bar\">\u003c/div>\n              \u003cdiv class=\"node\">\n                \u003cdiv class=\"dot todo\">5\u003c/div>\n                \u003cspan class=\"lbl\">归档\u003cspan class=\"who\">OA 系统\u003c/span>\u003c/span>\n              \u003c/div>\n            \u003c/div>\n          \u003c/div>\n          \u003cdiv style=\"display:flex;flex-wrap:wrap;gap:10px;margin-top:4px\">\n            \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">同意并提交\u003c/button>\n            \u003cbutton class=\"btn btn-error btn-sm err-dark\" type=\"button\">驳回\u003c/button>\n            \u003cbutton class=\"btn btn-ghost btn-sm\" type=\"button\">转交他人审批\u003c/button>\n          \u003c/div>\n        \u003c/section>\n\n        \u003c!-- 公文简卡 -->\n        \u003csection>\n          \u003cdiv class=\"sect-head\">\n            \u003ch2>最新公文\u003c/h2>\n            \u003cspan class=\"sub\">来自公司办公室 · 3 份待阅\u003c/span>\n          \u003c/div>\n          \u003cdiv class=\"docmini\" style=\"margin-top:10px\">\n            \u003cdiv class=\"mini\">\n              \u003cspan class=\"mt\">关于 2026 年度部门预算申报的通知\u003c/span>\n              \u003cspan class=\"mm\">办公室 · 10-17 · 请各部门于 10 月 31 日前提交预算初稿。\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"mini\">\n              \u003cspan class=\"mt\">信息安全管理办法（修订版）\u003c/span>\n              \u003cspan class=\"mm\">IT 部 · 10-15 · 新增远程办公数据导出审批条款，11 月 1 日施行。\u003c/span>\n            \u003c/div>\n            \u003cdiv class=\"mini\">\n              \u003cspan class=\"mt\">第三季度优秀员工评选结果公示\u003c/span>\n              \u003cspan class=\"mm\">人力资源部 · 10-14 · 共 8 人入选，公示期至 10 月 21 日。\u003c/span>\n            \u003c/div>\n          \u003c/div>\n        \u003c/section>\n\n        \u003c!-- 组织架构 -->\n        \u003csection class=\"doc-card\">\n          \u003ch2 style=\"font-size:17px;margin:0\">组织架构（本部门）\u003c/h2>\n          \u003cdiv class=\"orgtree\">\n            \u003cdiv class=\"lv1\">汇通办公科技有限公司\u003c/div>\n            \u003cdiv class=\"lv2\">\n              \u003cdiv class=\"dept\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>\u003c/svg>\n                市场部（32 人）\n              \u003c/div>\n              \u003cdiv class=\"lv3\">\n                \u003cspan>品牌组 · 活动组 · 媒介组\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"dept\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>\u003c/svg>\n                研发中心（86 人）\n              \u003c/div>\n              \u003cdiv class=\"lv3\">\n                \u003cspan>前端组 · 后端组 · 测试组 · 运维组\u003c/span>\n              \u003c/div>\n              \u003cdiv class=\"dept\">\n                \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u003cpath d=\"M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/>\u003c/svg>\n                销售部（54 人）\n              \u003c/div>\n              \u003cdiv class=\"lv3\">\n                \u003cspan>销售一部 · 销售二部 · 大客户组\u003c/span>\n              \u003c/div>\n            \u003c/div>\n          \u003c/div>\n        \u003c/section>\n\n      \u003c/main>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">汇通办公 OA 为虚构企业系统，审批单数据、人员姓名、部门架构与公文内容均为示例数据，仅用于展示 business 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>

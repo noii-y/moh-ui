@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "name": "business",
+  "type": "theme",
+  "title": "商办（business）",
+  "description": "完整页面案例：虚构企业 OA 审批后台「汇通办公 OA」整页。近黑蓝灰底配深蓝主按钮与流程节点，待办列表、审批状态、流程节点、公文与组织架构齐备；挂 daisyUI 官方主题 data-theme=\"business\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "商务", "企业级", "通用后台"],
+  "base": "business",
+  "aiNotes": [
+    "business 是深色蓝灰 OA 主题：base-100 近黑中性灰（oklch 24%）、base-200 略深、base-content 浅灰（oklch 85%），正文对比度约 10:1；布局必须是「顶栏 + 左侧栏 + 主内容」的后台骨架，不要做成营销落地页或官网前台。",
+    "主按钮用默认 btn-primary（深蓝 oklch 41% 配浅蓝白字 primary-content，实测对比 6.0:1，达标）；驳回等危险操作按钮用 btn-error 叠加内联类 .err-dark（--btn-color: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）做加深红底配 error-content 浅字，实测 4.99:1；默认 error 是 oklch 51.6% 配浅字仅 4.47:1 临界、近黑底上的幽灵红字只有 2.83:1，这两种都不要用。",
+    "审批状态徽章用语义色：待审批=warning、已通过=success、已驳回/超时=error；超时/紧急徽章用 badge-error 叠加同一个 .err-dark（--badge-bg: color-mix(in oklab, var(--color-error) 90%, var(--color-base-100))）加深红底浅字，实测 4.99:1，不要用默认 error（4.47:1 临界），也不要用深红字压近黑底的软徽章（实测仅 2.55:1）；每一行最多两枚徽章。",
+    "流程节点横向排布（发起→部门主管→分管领导→财务复核→归档），已完成节点 success 绿底白字打勾、当前节点 primary 蓝底白字加阴影环、待办节点 base-300 灰底半透明；节点之间用 2px 横线连接，已完成段线也用 success 绿。",
+    "待办列表每行结构固定：类型图标（base-300 方底 SVG）+ 标题（13px 加粗省略号）+ 发起人/部门 meta（11px 55% 透明度）+ 时间（右对齐 11px）+ 状态徽章；hover 时整行变 base-200，选中行 primary 18% 透明底。",
+    "卡片用 base-200 圆角块（business 圆角很小 0.25rem，偏硬朗），标题 17px 加粗、正文 12-13px、行距 1.8-2；附件占位用虚线框（dashed border 30% currentColor），不要画假图片。",
+    "文案写真实审批动作（同意并提交、驳回、转交他人审批），金额写具体数字（¥8,640.00），人员姓名部门虚构但像真实企业；不写「高效办公智慧协同」这类空话。",
+    "与 corporate（官网前台营销 hero）、mo-classic（普通用户后台仪表盘）的差异：本页核心是审批/流程/待办/已办——必须有列表、状态徽章、流程节点、审批意见框，不做营销 hero、不做客户展示、不放销售数字大卡片。",
+    "390px 窄屏左侧栏隐藏、待办列表行退化为两列（图标+标题/meta 叠行）、时间徽章折到第二列，不横向溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=business]；仅用 daisyUI 组件拼装一套企业 OA 审批后台整页（demo.html：顶栏导航 + 通知铃铛红点 + 头像占位 + 左侧审批菜单侧栏（待办 menu-active / 已办 / 我发起的 + 五类审批入口）+ 七条待办审批列表行（图标/标题/发起人/时间/双状态徽章）+ 审批单详情卡（申请类型/申请人/金额/事由正文/虚线附件占位/前序审批意见框/五节点横向流程/同意驳回转交按钮）+ 三份最新公文简卡 + 三层组织架构树 + 虚构页脚声明）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
