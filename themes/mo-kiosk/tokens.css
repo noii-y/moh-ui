@@ -1,0 +1,51 @@
+/*! 灰墨 mo-kiosk · 暖茶点单（暖色）—— 餐饮门店堂食自助点单触控大屏主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-kiosk"> 即整站换肤。
+   设计取向：暖奶油底 + 烤棕主色 + 抹茶绿点缀，超大圆角、超大触控按钮；
+   这是店里固定横屏触控大屏（左右三栏），不是手机移动端点单。 */
+
+[data-theme="mo-kiosk"] {
+  color-scheme: light;
+
+  /* 底与纸：暖奶油三层，堂食光线下面暖、不刺眼 */
+  --color-base-100: #fbf4e6;
+  --color-base-200: #f4e7cf;
+  --color-base-300: #e3d0ac;
+  --color-base-content: #332517;
+
+  /* 主色：烤面包棕（奶油字实测 6.31:1），只留给下单主按钮与当前分类 */
+  --color-primary: #8a4b1f;
+  --color-primary-content: #fff6e8;
+
+  /* 次色：抹茶绿（奶油字 5.71:1），鲜果/纯茶类点缀与套餐标签 */
+  --color-secondary: #4c6b32;
+  --color-secondary-content: #fbf8ec;
+
+  /* 强调色：焦糖棕（奶油字 5.68:1 / 纸面 5.56:1），价格数字与加料提示 */
+  --color-accent: #96500a;
+  --color-accent-content: #fff6e8;
+
+  /* 中性：暖棕灰静音色（奶油底 6.18:1 / 购物车底 5.53:1），承接说明文字与中性按钮 */
+  --color-neutral: #6b5844;
+  --color-neutral-content: #fff6e8;
+
+  /* 语义色：奶油字全部压到 ≥4.5:1，状态另配中文文字 */
+  --color-info: #33607a;
+  --color-info-content: #fff6e8;
+  --color-success: #41702f;
+  --color-success-content: #fff6e8;
+  --color-warning: #9a6410;
+  --color-warning-content: #fff6e8;
+  --color-error: #a03426;
+  --color-error-content: #fff6e8;
+
+  /* 圆角 / 尺寸：触控大屏大圆角，按钮要大、要圆、要好找 */
+  --radius-selector: 0.625rem;
+  --radius-field: 0.75rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}

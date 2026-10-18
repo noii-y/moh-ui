@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="mo-kiosk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>暖茶茶饮 · 自助点单屏（mo-kiosk 主题案例）</title>
+  <meta name="description" content="灰墨 mo-kiosk 主题完整页面案例：虚构奶茶店堂食自助点单触控大屏整页。暖色堂食、超大触控按钮、左右三栏（分类 / 菜品 / 购物车）；本页只依赖 daisyUI 与 mo-kiosk 主题。" />
+  <link rel="stylesheet" href="../../vendor/daisyui.css" />
+  <link rel="stylesheet" href="tokens.css" />
+  <style>
+    /* 仅布局辅助：颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.6; }
+    button { font: inherit; cursor: pointer; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--color-info); outline-offset: 2px; }
+
+    .kwrap { max-width: 1280px; margin: 0 auto; padding: 16px 16px 40px; display: flex; flex-direction: column; gap: 16px; }
+
+    /* 顶行：品牌 + 提示 + 取餐号 */
+    .kbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: var(--color-base-200); border: 1px solid var(--color-base-300); border-radius: var(--radius-box); padding: 14px 20px; }
+    .kbrand { display: flex; align-items: center; gap: 12px; }
+    .kbrand svg { width: 34px; height: 34px; color: var(--color-primary); }
+    .kbrand b { font-size: 20px; letter-spacing: 2px; }
+    .kbrand span { font-size: 12px; letter-spacing: 2px; color: var(--color-neutral); }
+    .ktip { font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+    .knum { font-size: 14px; color: var(--color-neutral); }
+    .knum b { display: block; font-size: 26px; color: var(--color-accent); letter-spacing: 2px; }
+
+    /* 三栏主体 */
+    .kbody { display: grid; grid-template-columns: 190px 1fr 300px; gap: 16px; align-items: start; }
+
+    /* 左：分类栏（大屏纵向大按钮） */
+    .kcats { display: flex; flex-direction: column; gap: 12px; }
+    .kcat { border: 1px solid var(--color-base-300); background: var(--color-base-200); border-radius: var(--radius-box); min-height: 72px; font-size: 19px; font-weight: 700; letter-spacing: 2px; color: var(--color-base-content); padding: 10px 12px; }
+    .kcat.gone { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-primary-content); }
+
+    /* 中：菜品网格 */
+    .kmenu { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 1100px) { .kmenu { grid-template-columns: repeat(3, 1fr); } }
+    .kdish { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px 10px 16px; background: var(--color-base-100); border: 1px solid var(--color-base-300); border-radius: var(--radius-box); min-height: 178px; }
+    .kdish svg { width: 60px; height: 60px; color: var(--color-primary); }
+    .kdish b { font-size: 17px; }
+    .kdish .kprice { font-size: 18px; font-weight: 800; color: var(--color-accent); }
+
+    /* 右：购物车栏 */
+    .kcart { background: var(--color-base-200); border: 1px solid var(--color-base-300); border-radius: var(--radius-box); padding: 18px; display: flex; flex-direction: column; gap: 14px; position: static; }
+    .kcart h2 { margin: 0; font-size: 20px; letter-spacing: 2px; }
+    .krows { display: flex; flex-direction: column; }
+    .krow { display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px dashed var(--color-base-300); flex-wrap: wrap; }
+    .krow .kname { flex: 1; min-width: 120px; font-size: 16px; }
+    .kstep { display: flex; align-items: center; gap: 8px; }
+    .kstep button { width: 40px; height: 40px; border-radius: var(--radius-selector); border: 1px solid var(--color-base-300); background: var(--color-base-100); font-size: 20px; font-weight: 700; color: var(--color-base-content); }
+    .kstep .qn { min-width: 28px; text-align: center; font-size: 18px; font-weight: 800; }
+    .krow .ksum { width: 64px; text-align: right; font-size: 16px; font-weight: 700; }
+    .ksub { display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; }
+    .ksub em { font-style: normal; color: var(--color-accent); font-size: 22px; }
+    .ktake { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ktake .pill { padding: 8px 18px; border-radius: var(--radius-selector); font-size: 16px; border: 1px solid var(--color-base-300); background: var(--color-base-100); }
+    .ktake .pill.on { background: var(--color-secondary); border-color: var(--color-secondary); color: var(--color-secondary-content); font-weight: 700; }
+    .korder { min-height: 64px; font-size: 22px; font-weight: 800; letter-spacing: 4px; }
+    .knote { margin: 0; font-size: 13px; color: var(--color-neutral); text-align: center; }
+
+    /* 窄屏：三栏退单列——分类横滑条、菜品两列、购物车在下 */
+    @media (max-width: 860px) {
+      .kbody { grid-template-columns: 1fr; }
+      .kcats { flex-direction: row; overflow-x: auto; gap: 10px; padding-bottom: 4px; }
+      .kcat { flex: none; min-height: 56px; padding: 8px 18px; font-size: 16px; }
+      .kmenu { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .kdish { min-height: 150px; padding: 14px 8px 12px; }
+      .kdish svg { width: 48px; height: 48px; }
+      .ktip { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="kwrap">
+
+    <!-- 顶行 -->
+    <header class="kbar">
+      <div class="kbrand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 9h10l-1 11a1.5 1.5 0 0 1-1.5 1.4h-5A1.5 1.5 0 0 1 8 20L7 9Z" />
+          <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+          <path d="M12 4V2" />
+        </svg>
+        <div><b>暖茶茶饮</b><span>WARM CHA · 自助点单</span></div>
+      </div>
+      <p class="ktip">请选择菜品</p>
+      <p class="knum">取餐号<b>A012</b></p>
+    </header>
+
+    <!-- 三栏主体 -->
+    <div class="kbody">
+
+      <!-- 左：分类栏，仅一个选中态 -->
+      <nav class="kcats" aria-label="菜品分类">
+        <button class="kcat gone" aria-current="true" type="button">招牌奶茶</button>
+        <button class="kcat" type="button">鲜果茶</button>
+        <button class="kcat" type="button">纯茶</button>
+        <button class="kcat" type="button">咖啡</button>
+        <button class="kcat" type="button">小食</button>
+      </nav>
+
+      <!-- 中：菜品网格 -->
+      <main class="kmenu" aria-label="菜品列表">
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="招牌奶茶图标">
+            <path d="M22 12h20l-2.5 40a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L22 12Z" />
+            <path d="M20 22h24" /><path d="M32 12V4" />
+            <circle cx="27" cy="44" r="2.4" /><circle cx="33" cy="48" r="2.4" /><circle cx="38" cy="43" r="2.4" />
+          </svg>
+          <b>招牌奶茶</b><span class="kprice">¥16</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="茉莉奶绿图标">
+            <path d="M22 14h20l-2.5 38a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L22 14Z" />
+            <path d="M20 24h24" />
+            <path d="M44 14c6 0 8 6 8 6s-6 2-9 0" />
+            <path d="M43 13c-2 3-3 6-3 9" />
+          </svg>
+          <b>茉莉奶绿</b><span class="kprice">¥15</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="珍珠奶茶图标">
+            <path d="M22 12h20l-2.5 40a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L22 12Z" />
+            <path d="M20 22h24" /><path d="M32 12V4" />
+            <circle cx="26" cy="46" r="3" /><circle cx="32" cy="51" r="3" /><circle cx="38" cy="46" r="3" /><circle cx="29" cy="40" r="3" /><circle cx="36" cy="39" r="3" />
+          </svg>
+          <b>珍珠奶茶</b><span class="kprice">¥17</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="杨枝甘露图标">
+            <path d="M22 14h20l-2.5 38a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L22 14Z" />
+            <path d="M20 26h24" /><path d="M21.5 38h21" /><path d="M32 14V5" />
+          </svg>
+          <b>杨枝甘露</b><span class="kprice">¥19</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="满杯鲜橙茶图标">
+            <path d="M22 16h20l-2.5 36a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2L22 16Z" />
+            <path d="M20 26h24" />
+            <circle cx="44" cy="14" r="8" /><path d="M44 8v12M38 14h12" />
+          </svg>
+          <b>满杯鲜橙茶</b><span class="kprice">¥18</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="白牡丹纯茶图标">
+            <path d="M18 26h28v10a10 10 0 0 1-10 10h-8a10 10 0 0 1-10-10V26Z" />
+            <path d="M46 28h4a4 4 0 0 1 0 8h-4" />
+            <path d="M26 16c0-3 3-3 3-6M34 16c0-3 3-3 3-6" />
+            <path d="M22 52h20" />
+          </svg>
+          <b>白牡丹纯茶</b><span class="kprice">¥12</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="燕麦拿铁图标">
+            <path d="M24 14h16l-1.8 38a2 2 0 0 1-2 2h-8.4a2 2 0 0 1-2-2L24 14Z" />
+            <path d="M23 30h18" /><path d="M24.5 42h15" />
+            <path d="M42 18h8a5 5 0 0 1 0 10h-8" />
+          </svg>
+          <b>燕麦拿铁</b><span class="kprice">¥18</span>
+        </button>
+        <button class="kdish" type="button">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-label="鸡米花图标">
+            <path d="M18 26h28l-3 26a2 2 0 0 1-2 1.6H23a2 2 0 0 1-2-1.6l-3-26Z" />
+            <path d="M16 26h32" />
+            <circle cx="28" cy="20" r="4" /><circle cx="38" cy="17" r="4.5" />
+            <circle cx="28" cy="36" r="2.6" /><circle cx="35" cy="42" r="2.6" /><circle cx="30" cy="48" r="2.4" />
+          </svg>
+          <b>鸡米花小份</b><span class="kprice">¥11</span>
+        </button>
+      </main>
+
+      <!-- 右：购物车 -->
+      <aside class="kcart" aria-label="已选清单">
+        <h2>已选清单</h2>
+        <div class="krows">
+          <div class="krow">
+            <span class="kname">招牌奶茶（大杯）</span>
+            <span class="kstep"><button type="button" aria-label="减少招牌奶茶数量">−</button><span class="qn">2</span><button type="button" aria-label="增加招牌奶茶数量">＋</button></span>
+            <span class="ksum">¥32</span>
+          </div>
+          <div class="krow">
+            <span class="kname">杨枝甘露</span>
+            <span class="kstep"><button type="button" aria-label="减少杨枝甘露数量">−</button><span class="qn">1</span><button type="button" aria-label="增加杨枝甘露数量">＋</button></span>
+            <span class="ksum">¥19</span>
+          </div>
+        </div>
+        <div class="ktake" role="group" aria-label="取餐方式">
+          <span class="pill on">堂食</span>
+          <span class="pill">外带</span>
+        </div>
+        <div class="ksub"><span>合计</span><em>¥51</em></div>
+        <button class="btn btn-primary btn-lg korder" type="button">下单</button>
+        <p class="knote">示例屏幕：按钮数量加减为静态展示，未接下单逻辑</p>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>
