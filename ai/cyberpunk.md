@@ -1,0 +1,355 @@
+# 赛博锋芒（cyberpunk） · 灰墨 MoH_UI
+
+> 虚构电竞俱乐部「极锋电竞 NEONEDGE」整页。荧光黄亮底配纯黑字与直角硬边，洋红主按钮与青/洋紫徽章点缀，深色海军蓝块压场；挂 daisyUI 官方主题 data-theme="cyberpunk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/cyberpunk/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 荧光黄亮底（base-100/200/300）配纯黑字（base-content）是这套主题的命门：正文、标题、卡片一律黑字；绝不把黑字放进深色块（neutral 海军蓝上黑字对比度仅约 1.2，深色块里必须用 neutral-content 荧光黄字）。
+- 主题圆角为 0，全站直角硬边；卡片与按钮保持硬朗切角，不要加圆润圆角、柔和投影或大色块渐变。
+- 洋红（primary）是招牌色，只用于主按钮与闪电一类关键强调；主按钮必须覆写 --btn-fg 为 var(--color-base-content) 纯黑字（黑字 on 洋红约 7.6:1），保证按钮文字清晰。
+- 青色（secondary）用于报名中一类徽章，洋紫（accent）用于即将截止一类次级强调；徽章配官方 *-content 深色字（均在 7:1 以上），不要反过来把浅色字压在浅徽章底上。
+- 深色海军蓝块（neutral）上的 CTA：主按钮洋红底黑字，反白按钮用荧光黄底（--btn-color:var(--color-neutral-content)）配海军蓝字（--btn-fg:var(--color-neutral)，约 14.6:1）。
+- 配图全部用 currentColor 单色棱角线稿 SVG（城市天际线、直角电路板走线、几何棱角头像、键盘/鼠标/机甲轮廓），最多留一处洋红点缀；不用照片、不用 emoji、不用柔边。
+- 与 synthwave 划清界限：cyberpunk 是荧光黄亮底 + 直角 + 运动街头电竞，不是 80 年代深紫蓝复古霓虹；绝不要做成深紫蓝底。
+- 390px 窄屏顶栏自然折行、卡片单列、不横向溢出；导航同一时刻只标一个当前项。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cyberpunk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>上场，即是锋芒 · 极锋电竞 NEONEDGE（cyberpunk 主题案例）</title>
+  <meta name="description" content="灰墨 cyberpunk 主题完整页面案例：虚构电竞俱乐部整页。荧光黄底配纯黑字与直角硬边，洋红与青色点缀，街头电竞感。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 18px; }
+    .brand { font-size: 17px; font-weight: 800; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; opacity: .55; }
+    .brand svg { width: 26px; height: 26px; flex: none; }
+    .band { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 30px 22px 26px; }
+    .band h1 { font-size: 34px; font-weight: 900; margin: 0; letter-spacing: 2px; line-height: 1.2; }
+    .band p.desc { font-size: 13px; opacity: .75; max-width: 460px; margin: 0; line-height: 2; }
+    .band-art { width: 100%; max-width: 460px; height: auto; align-self: center; }
+    .band-ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+    .row-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .row-head h2 { font-size: 18px; font-weight: 800; margin: 0; letter-spacing: 1.5px; }
+    .row-head span.note { font-size: 12px; opacity: .55; }
+    .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+    .event-card { padding: 16px; display: flex; flex-direction: column; gap: 9px; }
+    .event-card .ico { width: 30px; height: 30px; }
+    .event-card h3 { font-size: 15px; font-weight: 800; margin: 0; letter-spacing: .5px; }
+    .event-meta { font-size: 12px; opacity: .65; line-height: 1.9; margin: 0; }
+    .event-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; gap: 8px; }
+    .prize { font-size: 14px; font-weight: 800; }
+    .roster-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .roster-card { padding: 16px; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .roster-card .face { width: 54px; height: 54px; }
+    .roster-card .nick { font-size: 15px; font-weight: 800; letter-spacing: .5px; }
+    .roster-card .pos { font-size: 11px; letter-spacing: 2px; opacity: .55; }
+    .roster-card .bio { font-size: 12px; opacity: .7; line-height: 1.8; margin: 0; }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .shop-card { padding: 16px; display: flex; flex-direction: column; gap: 9px; }
+    .shop-card .prod { height: 110px; display: flex; align-items: center; justify-content: center; }
+    .shop-card .prod svg { width: 96px; height: 96px; }
+    .shop-card h3 { font-size: 15px; font-weight: 800; margin: 0; }
+    .shop-card p.d { font-size: 12px; opacity: .65; line-height: 1.8; margin: 0; }
+    .shop-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 2px; }
+    .price { font-size: 14px; font-weight: 800; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 25%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .band { padding: 22px 16px 20px; }
+      .band h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 26 L16 4 L26 26 L19 26 L16 18 L13 26 Z" />
+          </svg>
+          极锋电竞 <small>NEONEDGE</small>
+        </div>
+        <ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px">
+          <li><a>赛事</a></li>
+          <li><a>战队</a></li>
+          <li><a>外设</a></li>
+          <li><a>潮玩</a></li>
+          <li><a>社区</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm" type="button" style="--btn-color:var(--color-primary);--btn-fg:var(--color-base-content)">报名参赛</button>
+      </div>
+    </div>
+
+    <!-- Hero：深色海军蓝块 + 荧光黄字 + 棱角城市天际线 -->
+    <div class="band card rounded-box" style="background:var(--color-neutral);color:var(--color-neutral-content)">
+      <span class="badge badge-sm" style="--badge-color:var(--color-secondary)">秋季联赛 · 火热报名中</span>
+      <h1>上场，即是锋芒</h1>
+      <p class="desc">极锋电竞 NEONEDGE 旗下城市战队体系开放注册。线上海选、线下总决赛，街头舞台只认操作，不认来历。</p>
+      <svg class="band-art" viewBox="0 0 460 220" role="img" aria-label="赛博风城市天际线与电路板走线：棱角楼宇、天线、直角电路与闪电符号（示例插图）">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+          <!-- 天际线楼宇 -->
+          <path d="M20 200 L20 120 L48 120 L48 96 L66 96 L66 200" />
+          <path d="M78 200 L78 70 L108 70 L108 200" />
+          <path d="M120 200 L120 110 L150 110 L150 200" />
+          <path d="M162 200 L162 50 L184 50 L184 34 L192 34 L192 50 L214 50 L214 200" />
+          <path d="M226 200 L226 90 L252 90 L252 200" />
+          <path d="M264 200 L264 64 L296 64 L296 200" />
+          <path d="M308 200 L308 118 L336 118 L336 200" />
+          <path d="M348 200 L348 84 L372 84 L372 66 L380 66 L380 84 L404 84 L404 200" />
+          <!-- 楼窗 -->
+          <path d="M30 132 L38 132 M30 148 L38 148 M88 86 L96 86 M88 104 L96 104 M172 66 L180 66 M172 84 L180 84 M274 80 L282 80 M274 98 L282 98 M358 98 L366 98 M388 100 L396 100" />
+          <!-- 电路板走线（直角） -->
+          <path d="M20 212 L60 212 L60 196 L96 196" />
+          <path d="M150 212 L210 212 L210 196 L250 196" />
+          <path d="M300 212 L340 212 L340 196 L386 196 L386 178" />
+        </g>
+        <!-- 走线节点 -->
+        <g fill="currentColor" stroke="none">
+          <circle cx="60" cy="212" r="2.6" /><circle cx="210" cy="212" r="2.6" /><circle cx="340" cy="212" r="2.6" />
+        </g>
+        <!-- 闪电符号（洋红点缀） -->
+        <path d="M430 30 L408 96 L424 96 L414 150 L446 82 L428 82 Z" fill="var(--color-primary)" stroke="none" />
+      </svg>
+      <div class="band-ctas">
+        <button class="btn" type="button" style="--btn-color:var(--color-primary);--btn-fg:var(--color-base-content)">报名参赛</button>
+        <button class="btn" type="button" style="--btn-color:var(--color-neutral-content);--btn-fg:var(--color-neutral)">查看赛事</button>
+      </div>
+    </div>
+
+    <!-- 赛事专区 -->
+    <div>
+      <div class="row-head">
+        <h2>赛事专区</h2>
+        <span class="note">奖金与日期均为示例数据，以官方报名页为准</span>
+      </div>
+      <div class="event-grid">
+        <!-- 城市霓虹公开赛 -->
+        <div class="card bg-base-200 rounded-box event-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 21 h8 M12 17 v4 M7 4 h10 v5 a5 5 0 0 1 -10 0 Z" />
+            <path d="M7 5 H4 v2 a3 3 0 0 0 3 3 M17 5 h3 v2 a3 3 0 0 1 -3 3" />
+          </svg>
+          <h3>城市霓虹公开赛</h3>
+          <p class="event-meta">线上海选 · 11 月 02 日开打<br />5v5 团队赛 · 面向所有注册战队</p>
+          <div class="event-foot">
+            <span class="prize">¥ 50,000</span>
+            <span class="badge badge-sm" style="--badge-color:var(--color-secondary)">报名中</span>
+          </div>
+        </div>
+        <!-- 极锋杯秋季总决赛 -->
+        <div class="card bg-base-200 rounded-box event-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 6 L12 12 L20 6 M12 12 v6" />
+            <path d="M6 4 h12 M6 20 h12" opacity=".55" />
+          </svg>
+          <h3>极锋杯 · 秋季总决赛</h3>
+          <p class="event-meta">线下线下双败 · 11 月 23 日 · 城市电竞馆<br />海选晋级 16 强入围线下</p>
+          <div class="event-foot">
+            <span class="prize">¥ 200,000</span>
+            <span class="badge badge-sm" style="--badge-color:var(--color-accent)">即将截止</span>
+          </div>
+        </div>
+        <!-- 街头 1v1 -->
+        <div class="card bg-base-200 rounded-box event-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="12" />
+            <path d="M9 21 h6 M12 17 v4" />
+            <path d="M7 9 l2.5 2.5 L7 14 M12.5 14 h4.5" />
+          </svg>
+          <h3>街头 1v1 单挑赛</h3>
+          <p class="event-meta">单败淘汰 · 11 月 09 日 · 街头舞台<br />单人报名 · 当场抽签配对</p>
+          <div class="event-foot">
+            <span class="prize">¥ 8,000</span>
+            <span class="badge badge-sm" style="--badge-color:var(--color-secondary)">报名中</span>
+          </div>
+        </div>
+        <!-- 主播表演赛 -->
+        <div class="card bg-base-200 rounded-box event-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="8" width="13" height="11" />
+            <path d="M17 11 l4 -2 v7 l-4 -2" />
+            <path d="M8 12 h5" opacity=".55" />
+          </svg>
+          <h3>潮玩主播表演赛</h3>
+          <p class="event-meta">邀请制 · 11 月 16 日 · 潮玩区联动<br />主播 vs 青训队 · 外设礼包相赠</p>
+          <div class="event-foot">
+            <span class="prize">外设礼包</span>
+            <span class="badge badge-sm" style="--badge-color:var(--color-base-300)">已截止</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 战队/选手 -->
+    <div>
+      <div class="row-head">
+        <h2>城市战队 · 首发五人</h2>
+        <span class="note">选手数据为示例战绩</span>
+      </div>
+      <div class="roster-grid">
+        <div class="card bg-base-200 rounded-box roster-card">
+          <svg class="face" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" role="img" aria-label="选手冷锋头像：空心三角几何标">
+            <path d="M28 8 L50 46 L6 46 Z" />
+            <text x="28" y="39" text-anchor="middle" font-size="16" font-weight="800" fill="currentColor" stroke="none">冷</text>
+          </svg>
+          <span class="nick">冷锋 ICE</span>
+          <span class="pos">突击手 · DUEL</span>
+          <p class="bio">赛季 KDA 4.2 · 出战 124 场<br />首杀率 31%</p>
+        </div>
+        <div class="card bg-base-200 rounded-box roster-card">
+          <svg class="face" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" role="img" aria-label="选手夜航头像：空心六边几何标">
+            <path d="M28 6 L48 18 L48 38 L28 50 L8 38 L8 18 Z" />
+            <text x="28" y="37" text-anchor="middle" font-size="15" font-weight="800" fill="currentColor" stroke="none">夜</text>
+          </svg>
+          <span class="nick">夜航 NIGHT</span>
+          <span class="pos">指挥 · IGL</span>
+          <p class="bio">局均胜率 63% · 出战 88 场<br />战术暂停胜率 71%</p>
+        </div>
+        <div class="card bg-base-200 rounded-box roster-card">
+          <svg class="face" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" role="img" aria-label="选手碎星头像：空心菱边几何标">
+            <path d="M28 6 L50 28 L28 50 L6 28 Z" />
+            <text x="28" y="35" text-anchor="middle" font-size="15" font-weight="800" fill="currentColor" stroke="none">碎</text>
+          </svg>
+          <span class="nick">碎星 RAZOR</span>
+          <span class="pos">狙击手 · AWP</span>
+          <p class="bio">爆头率 38% · 出战 96 场<br />最远击杀 42 米</p>
+        </div>
+        <div class="card bg-base-200 rounded-box roster-card">
+          <svg class="face" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="miter" role="img" aria-label="选手零头像：空心方边几何标">
+            <rect x="8" y="8" width="40" height="40" />
+            <text x="28" y="37" text-anchor="middle" font-size="15" font-weight="800" fill="currentColor" stroke="none">零</text>
+          </svg>
+          <span class="nick">零 ZERO</span>
+          <span class="pos">自由人 · FLEX</span>
+          <p class="bio">场均伤害 712 · 出战 110 场<br />残局胜率 47%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 外设/潮玩 -->
+    <div>
+      <div class="row-head">
+        <h2>战队外设 · 潮玩周边</h2>
+        <span class="note">价格为示例定价</span>
+      </div>
+      <div class="shop-grid">
+        <div class="card bg-base-200 rounded-box shop-card">
+          <div class="prod">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" role="img" aria-label="机械键盘轮廓线稿：八七键配列与方向键">
+              <rect x="12" y="34" width="96" height="52" />
+              <path d="M22 46 h10 M40 46 h10 M58 46 h10 M76 46 h10 M94 46 h8" />
+              <path d="M22 60 h10 M40 60 h10 M58 60 h10 M76 60 h10 M94 60 h8" />
+              <path d="M22 74 h44 M76 74 h10 M94 74 h8" />
+            </svg>
+          </div>
+          <h3>机械键盘「棱角 87」</h3>
+          <p class="d">磁轴热插拔 · 黄黑配色 · 战队同款八七键配列。</p>
+          <div class="shop-foot">
+            <span class="price">¥ 599</span>
+            <button class="btn btn-ghost btn-sm" type="button">查看详情</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box shop-card">
+          <div class="prod">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="电竞鼠标轮廓线稿：对称机身、滚轮与侧键">
+              <path d="M60 26 C40 26 30 44 30 66 C30 86 42 96 60 96 C78 96 90 86 90 66 C90 44 80 26 60 26 Z" />
+              <path d="M60 26 v22" />
+              <rect x="56" y="46" width="8" height="14" rx="2" />
+              <path d="M36 58 h-6 M84 58 h6" />
+            </svg>
+          </div>
+          <h3>电竞鼠标「追光 PRO」</h3>
+          <p class="d">26000 DPI · 轻量化机身 · 选手调校固件。</p>
+          <div class="shop-foot">
+            <span class="price">¥ 349</span>
+            <button class="btn btn-ghost btn-sm" type="button">查看详情</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box shop-card">
+          <div class="prod">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="潮玩手办轮廓线稿：棱角头盔与棱角机身的队长机甲">
+              <path d="M42 30 L60 18 L78 30 L74 52 L46 52 Z" />
+              <path d="M50 38 h20" />
+              <path d="M46 52 L38 92 L52 92 L60 66 L68 92 L82 92 L74 52" />
+              <path d="M38 92 h44" />
+            </svg>
+          </div>
+          <h3>潮玩手办「霓虹战队 · 队长」</h3>
+          <p class="d">限量 999 体 · 棱角机甲造型 · 附收藏编号卡。</p>
+          <div class="shop-foot">
+            <span class="price">¥ 269</span>
+            <button class="btn btn-ghost btn-sm" type="button">查看详情</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 社区/战报 CTA：深色块 -->
+    <div class="card rounded-box" style="background:var(--color-neutral);color:var(--color-neutral-content);padding:26px 22px;display:flex;flex-direction:column;gap:12px">
+      <span class="badge badge-sm" style="--badge-color:var(--color-accent)">社区战报</span>
+      <h2 style="font-size:20px;font-weight:900;margin:0;letter-spacing:1px">极锋 2:1 逆转星海，晋级秋季总决赛</h2>
+      <p style="font-size:13px;opacity:.75;margin:0;line-height:2">决胜图最后 30 秒，碎星 AWP 三杀守住包点，夜航指挥连叫两个暂停完成翻盘。完整录像与赛后复盘已上架社区。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <button class="btn" type="button" style="--btn-color:var(--color-primary);--btn-fg:var(--color-base-content)">加入战队社区</button>
+        <button class="btn" type="button" style="--btn-color:var(--color-neutral-content);--btn-fg:var(--color-neutral)">查看复盘</button>
+      </div>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">极锋电竞 NEONEDGE CLUB 为虚构俱乐部，赛事、奖金、选手战绩、外设与手办均为示例数据，仅用于展示 cyberpunk 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="cyberpunk"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/cyberpunk/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

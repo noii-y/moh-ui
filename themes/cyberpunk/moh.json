@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "cyberpunk",
+  "type": "theme",
+  "title": "赛博锋芒（cyberpunk）",
+  "description": "完整页面案例：虚构电竞俱乐部「极锋电竞 NEONEDGE」整页。荧光黄亮底配纯黑字与直角硬边，洋红主按钮与青/洋紫徽章点缀，深色海军蓝块压场；挂 daisyUI 官方主题 data-theme=\"cyberpunk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["撞色", "硬朗", "落地页", "品牌"],
+  "base": "cyberpunk",
+  "aiNotes": [
+    "荧光黄亮底（base-100/200/300）配纯黑字（base-content）是这套主题的命门：正文、标题、卡片一律黑字；绝不把黑字放进深色块（neutral 海军蓝上黑字对比度仅约 1.2，深色块里必须用 neutral-content 荧光黄字）。",
+    "主题圆角为 0，全站直角硬边；卡片与按钮保持硬朗切角，不要加圆润圆角、柔和投影或大色块渐变。",
+    "洋红（primary）是招牌色，只用于主按钮与闪电一类关键强调；主按钮必须覆写 --btn-fg 为 var(--color-base-content) 纯黑字（黑字 on 洋红约 7.6:1），保证按钮文字清晰。",
+    "青色（secondary）用于报名中一类徽章，洋紫（accent）用于即将截止一类次级强调；徽章配官方 *-content 深色字（均在 7:1 以上），不要反过来把浅色字压在浅徽章底上。",
+    "深色海军蓝块（neutral）上的 CTA：主按钮洋红底黑字，反白按钮用荧光黄底（--btn-color:var(--color-neutral-content)）配海军蓝字（--btn-fg:var(--color-neutral)，约 14.6:1）。",
+    "配图全部用 currentColor 单色棱角线稿 SVG（城市天际线、直角电路板走线、几何棱角头像、键盘/鼠标/机甲轮廓），最多留一处洋红点缀；不用照片、不用 emoji、不用柔边。",
+    "与 synthwave 划清界限：cyberpunk 是荧光黄亮底 + 直角 + 运动街头电竞，不是 80 年代深紫蓝复古霓虹；绝不要做成深紫蓝底。",
+    "390px 窄屏顶栏自然折行、卡片单列、不横向溢出；导航同一时刻只标一个当前项。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=cyberpunk]；仅用 daisyUI 组件拼装一套电竞俱乐部整页（demo.html：顶栏导航与洋红报名按钮 + 深色海军蓝 Hero 与棱角城市天际线 SVG + 四张赛事卡（含虚构奖金区间与报名状态徽章）+ 四名首发选手几何头像卡 + 三张外设潮玩产品卡 + 社区战报深色 CTA 与虚构声明页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
