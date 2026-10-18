@@ -23,6 +23,13 @@
   <link rel="stylesheet" href="../themes/tokyo-night/tokens.css" />
   <link rel="stylesheet" href="../themes/rose-pine/tokens.css" />
   <link rel="stylesheet" href="../themes/solarized-light/tokens.css" />
+  <link rel="stylesheet" href="../themes/kanagawa/tokens.css" />
+  <link rel="stylesheet" href="../themes/gruvbox/tokens.css" />
+  <link rel="stylesheet" href="../themes/github-light/tokens.css" />
+  <link rel="stylesheet" href="../themes/everforest/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-gov/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-press/tokens.css" />
+  <link rel="stylesheet" href="../themes/mo-kids/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
   <style>
     .gen-layout {
@@ -75,6 +82,47 @@
       opacity: 0.45;
       cursor: not-allowed;
     }
+    /* 主题分组与筛选 */
+    .gen-filter {
+      display: flex;
+      gap: 6px;
+      margin: 4px 0 10px;
+    }
+    .gen-filter button {
+      flex: 1;
+      font-size: 12px;
+      padding: 4px 0;
+      border-radius: 99px;
+      border: 1px solid var(--moh-border, #2a2a30);
+      background: transparent;
+      color: var(--moh-muted, #9ca3af);
+      cursor: pointer;
+    }
+    .gen-filter button.is-on {
+      border-color: var(--moh-accent, #8b93f5);
+      color: var(--moh-accent, #8b93f5);
+    }
+    .gen-group { margin-bottom: 14px; }
+    .gen-group__title {
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--moh-muted, #9ca3af);
+      margin: 0 0 6px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .gen-group__title small { font-weight: 400; opacity: 0.7; }
+    .gen-group__cards { display: grid; gap: 6px; }
+    .gen-chip--play {
+      border-style: dashed;
+      opacity: 0.85;
+    }
+    .gen-chip--full {
+      color: var(--moh-accent, #8b93f5);
+      border-color: var(--moh-accent, #8b93f5);
+    }
+    .gen-is-hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -101,12 +149,17 @@
   <div class="site-container">
     <div class="site-pagehead">
       <h1>可视化主题选择器</h1>
-      <p>点击主题卡，预览区的 daisyUI 组件实时换肤（原理：只改预览容器的 <code>data-theme</code> 属性，主题变量 <code>--color-*</code> 自动跟随）。微调主色 / 圆角仅作用于预览；复制 tokens.css 得到的是官方 / 收录主题的原始文件，自定义微调请在自己项目里覆盖变量。选择自动记忆（localStorage）。</p>
+      <p>点击主题卡，预览区的 daisyUI 组件实时换肤（原理：只改预览容器的 <code>data-theme</code> 属性，主题变量 <code>--color-*</code> 自动跟随）。这里收录了<strong>完整页面案例</strong>（带真实业务整页与 AI 指令）与 daisyUI 官方全部 35 套主题中的<strong>仅试玩</strong>款（只换肤、无整页案例）。微调主色 / 圆角仅作用于预览；复制 tokens.css 得到的是收录 / 二创主题的原始文件，官方内置主题无需额外文件。选择自动记忆（localStorage）。</p>
     </div>
 
     <div class="gen-layout">
       <aside class="site-panel">
         <p class="site-panel__label">选择主题（当前：<span id="cur-theme-name">mo-dark</span>）</p>
+        <div class="gen-filter" id="gen-filter" role="group" aria-label="按明暗筛选">
+          <button type="button" data-tone="all" class="is-on">全部</button>
+          <button type="button" data-tone="light">浅色</button>
+          <button type="button" data-tone="dark">深色</button>
+        </div>
         <div class="site-theme-picker" id="theme-picker"></div>
 
         <p class="site-panel__label">微调主色（仅作用于预览）</p>
@@ -182,6 +235,7 @@
           <button class="site-btn site-btn--primary" id="gen-copy">复制 tokens.css</button>
           <button class="site-btn site-btn--secondary" id="gen-ai">复制 AI 指令</button>
           <button class="site-btn site-btn--secondary" id="gen-download">下载 tokens.css</button>
+          <a class="site-btn site-btn--secondary" id="gen-demo" href="#" target="_blank" rel="noopener" style="display:none">查看整页案例</a>
         </div>
       </div>
     </div>
@@ -197,6 +251,46 @@
   <script>
     var DATA = window.MOH_DATA;
     var BASE = "https://noii-y.github.io/moh-ui";
+
+    /* 官方 35 套内置主题（色板从 vendor/daisyui-themes.css 提取，真实值）。
+       其中已收录为整页案例的会在下方合并时自动剔除，仅保留“仅试玩”款。 */
+    var OFFICIAL_THEMES = [
+      { name: "light", title: "晨光", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(98% 0 0)", primary: "oklch(45% .24 277.023)", secondary: "oklch(65% .241 354.308)", accent: "oklch(77% .152 181.912)" } },
+      { name: "dark", title: "暮灰", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(25.33% .016 252.42)", surface: "oklch(23.26% .014 253.1)", primary: "oklch(58% .233 277.117)", secondary: "oklch(65% .241 354.308)", accent: "oklch(77% .152 181.912)" } },
+      { name: "cupcake", title: "纸杯蛋糕", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(97.788% .004 56.375)", surface: "oklch(93.982% .007 61.449)", primary: "oklch(85% .138 181.071)", secondary: "oklch(89% .061 343.231)", accent: "oklch(90% .076 70.697)" } },
+      { name: "bumblebee", title: "大黄蜂", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(97% 0 0)", primary: "oklch(85% .199 91.936)", secondary: "oklch(75% .183 55.934)", accent: "oklch(0% 0 0)" } },
+      { name: "emerald", title: "翠绿", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(93% 0 0)", primary: "oklch(76.662% .135 153.45)", secondary: "oklch(61.302% .202 261.294)", accent: "oklch(72.772% .149 33.2)" } },
+      { name: "corporate", title: "商务咨询", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(93% 0 0)", primary: "oklch(58% .158 241.966)", secondary: "oklch(55% .046 257.417)", accent: "oklch(60% .118 184.704)" } },
+      { name: "synthwave", title: "合成波", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(15% .09 281.288)", surface: "oklch(20% .09 281.288)", primary: "oklch(71% .202 349.761)", secondary: "oklch(82% .111 230.318)", accent: "oklch(75% .183 55.934)" } },
+      { name: "retro", title: "复古", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(91.637% .034 90.515)", surface: "oklch(88.272% .049 91.774)", primary: "oklch(80% .114 19.571)", secondary: "oklch(92% .084 155.995)", accent: "oklch(68% .162 75.834)" } },
+      { name: "cyberpunk", title: "赛博朋克", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(94.51% .179 104.32)", surface: "oklch(91.51% .179 104.32)", primary: "oklch(74.22% .209 6.35)", secondary: "oklch(83.33% .184 204.72)", accent: "oklch(71.86% .217 310.43)" } },
+      { name: "valentine", title: "情人节", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(97% .014 343.198)", surface: "oklch(94% .028 342.258)", primary: "oklch(65% .241 354.308)", secondary: "oklch(62% .265 303.9)", accent: "oklch(82% .111 230.318)" } },
+      { name: "halloween", title: "万圣节", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(21% .006 56.043)", surface: "oklch(14% .004 49.25)", primary: "oklch(77.48% .204 60.62)", secondary: "oklch(45.98% .248 305.03)", accent: "oklch(64.8% .223 136.073)" } },
+      { name: "garden", title: "花园", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(92.951% .002 17.197)", surface: "oklch(86.445% .002 17.197)", primary: "oklch(62.45% .278 3.836)", secondary: "oklch(48.495% .11 355.095)", accent: "oklch(56.273% .054 154.39)" } },
+      { name: "forest", title: "森林", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(20.84% .008 17.911)", surface: "oklch(18.522% .007 17.911)", primary: "oklch(68.628% .185 148.958)", secondary: "oklch(69.776% .135 168.327)", accent: "oklch(70.628% .119 185.713)" } },
+      { name: "aqua", title: "水蓝", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(37% .146 265.522)", surface: "oklch(28% .091 267.935)", primary: "oklch(85.661% .144 198.645)", secondary: "oklch(60.682% .108 309.782)", accent: "oklch(93.426% .102 94.555)" } },
+      { name: "lofi", title: "低保真", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(97% 0 0)", primary: "oklch(15.906% 0 0)", secondary: "oklch(21.455% .001 17.278)", accent: "oklch(26.861% 0 0)" } },
+      { name: "pastel", title: "粉彩", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(98.462% .001 247.838)", primary: "oklch(90% .063 306.703)", secondary: "oklch(89% .058 10.001)", accent: "oklch(90% .093 164.15)" } },
+      { name: "fantasy", title: "奇幻", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(93% 0 0)", primary: "oklch(37.45% .189 325.02)", secondary: "oklch(53.92% .162 241.36)", accent: "oklch(75.98% .204 56.72)" } },
+      { name: "wireframe", title: "线框", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(97% 0 0)", primary: "oklch(87% 0 0)", secondary: "oklch(87% 0 0)", accent: "oklch(87% 0 0)" } },
+      { name: "black", title: "纯黑", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(0% 0 0)", surface: "oklch(19% 0 0)", primary: "oklch(35% 0 0)", secondary: "oklch(35% 0 0)", accent: "oklch(35% 0 0)" } },
+      { name: "luxury", title: "奢金", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(14.076% .004 285.822)", surface: "oklch(20.219% .004 308.229)", primary: "oklch(100% 0 0)", secondary: "oklch(27.581% .064 261.069)", accent: "oklch(36.674% .051 338.825)" } },
+      { name: "dracula", title: "德古拉", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(28.822% .022 277.508)", surface: "oklch(26.805% .02 277.508)", primary: "oklch(75.461% .183 346.812)", secondary: "oklch(74.202% .148 301.883)", accent: "oklch(83.392% .124 66.558)" } },
+      { name: "cmyk", title: "印刷四色", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(95% 0 0)", primary: "oklch(71.772% .133 239.443)", secondary: "oklch(64.476% .202 359.339)", accent: "oklch(94.228% .189 105.306)" } },
+      { name: "autumn", title: "秋日", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(95.814% 0 0)", surface: "oklch(89.107% 0 0)", primary: "oklch(40.723% .161 17.53)", secondary: "oklch(61.676% .169 23.865)", accent: "oklch(73.425% .094 60.729)" } },
+      { name: "business", title: "商务", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(24.353% 0 0)", surface: "oklch(22.648% 0 0)", primary: "oklch(41.703% .099 251.473)", secondary: "oklch(64.092% .027 229.389)", accent: "oklch(67.271% .167 35.791)" } },
+      { name: "acid", title: "酸性", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(98% 0 0)", surface: "oklch(95% 0 0)", primary: "oklch(71.9% .357 330.759)", secondary: "oklch(73.37% .224 48.25)", accent: "oklch(92.78% .264 122.962)" } },
+      { name: "lemonade", title: "柠檬", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(98.71% .02 123.72)", surface: "oklch(91.8% .018 123.72)", primary: "oklch(58.92% .199 134.6)", secondary: "oklch(77.75% .196 111.09)", accent: "oklch(85.39% .201 100.73)" } },
+      { name: "night", title: "夜空", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(20.768% .039 265.754)", surface: "oklch(19.314% .037 265.754)", primary: "oklch(75.351% .138 232.661)", secondary: "oklch(68.011% .158 276.934)", accent: "oklch(72.36% .176 350.048)" } },
+      { name: "coffee", title: "咖啡", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(24% .023 329.708)", surface: "oklch(21% .021 329.708)", primary: "oklch(71.996% .123 62.756)", secondary: "oklch(34.465% .029 199.194)", accent: "oklch(42.621% .074 224.389)" } },
+      { name: "winter", title: "冬雪", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(100% 0 0)", surface: "oklch(97.466% .011 259.822)", primary: "oklch(56.86% .255 257.57)", secondary: "oklch(42.551% .161 282.339)", accent: "oklch(59.939% .191 335.171)" } },
+      { name: "dim", title: "微暗", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(30.857% .023 264.149)", surface: "oklch(28.036% .019 264.182)", primary: "oklch(86.133% .141 139.549)", secondary: "oklch(73.375% .165 35.353)", accent: "oklch(74.229% .133 311.379)" } },
+      { name: "nord", title: "北极", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(95.127% .007 260.731)", surface: "oklch(93.299% .01 261.788)", primary: "oklch(59.435% .077 254.027)", secondary: "oklch(69.651% .059 248.687)", accent: "oklch(77.464% .062 217.469)" } },
+      { name: "sunset", title: "日落", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(22% .019 237.69)", surface: "oklch(20% .019 237.69)", primary: "oklch(74.703% .158 39.947)", secondary: "oklch(72.537% .177 2.72)", accent: "oklch(71.294% .166 299.844)" } },
+      { name: "caramellatte", title: "焦糖拿铁", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(98% .016 73.684)", surface: "oklch(95% .038 75.164)", primary: "oklch(0% 0 0)", secondary: "oklch(22.45% .075 37.85)", accent: "oklch(46.44% .111 37.85)" } },
+      { name: "abyss", title: "深渊", dark: true, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(20% .08 209)", surface: "oklch(15% .08 209)", primary: "oklch(92% .2653 125)", secondary: "oklch(83.27% .0764 298.3)", accent: "oklch(43% 0 0)" } },
+      { name: "silk", title: "丝绸", dark: false, hasTokens: false, group: "官方内置", license: "MIT", palette: { base: "oklch(97% .0035 67.78)", surface: "oklch(95% .0081 61.42)", primary: "oklch(23.27% .0249 284.3)", secondary: "oklch(23.27% .0249 284.3)", accent: "oklch(23.27% .0249 284.3)" } }
+    ];
 
     /* ---------- 颜色工具 ---------- */
     function hexToRgb(hex) {
@@ -217,6 +311,15 @@
     }
 
     /* ---------- 数据 ---------- */
+    /* 整页组：data.js 收录的完整页面案例（含官方/收录/二创） */
+    var fullThemes = DATA.themes.map(function (t) { t.isPlayOnly = false; return t; });
+    var fullNames = {};
+    fullThemes.forEach(function (t) { fullNames[t.name] = 1; });
+    /* 仅试玩组：官方 35 套里尚未做成整页案例的（data.js 重建后做了整页的会自动移出本组） */
+    var playThemes = OFFICIAL_THEMES.filter(function (t) { return !fullNames[t.name]; })
+      .map(function (t) { t.isPlayOnly = true; t.slug = t.name; return t; });
+    var allThemes = fullThemes.concat(playThemes);
+
     /* 官方内置主题（silk / caramellatte）没有 tokens 文件，色块条用 daisyUI 官方色值兜底 */
     var FALLBACK_PALETTE = {
       silk: {
@@ -234,8 +337,8 @@
       return (t.palette && t.palette.base) ? t.palette : (FALLBACK_PALETTE[t.name] || {});
     }
     function themeData(name) {
-      for (var i = 0; i < DATA.themes.length; i++) if (DATA.themes[i].name === name) return DATA.themes[i];
-      return DATA.themes[0];
+      for (var i = 0; i < allThemes.length; i++) if (allThemes[i].name === name) return allThemes[i];
+      return fullThemes[0];
     }
     /* 主题主色若是 oklch() 无法填进 color input，返回 null */
     function hexPrimary(t) {
@@ -261,22 +364,59 @@
     var copyBtn = document.getElementById("gen-copy");
     var downloadBtn = document.getElementById("gen-download");
     var aiBtn = document.getElementById("gen-ai");
+    var demoBtn = document.getElementById("gen-demo");
+    var filterBar = document.getElementById("gen-filter");
+    var toneFilter = "all";
 
-    /* ---------- 主题列表 ---------- */
-    picker.innerHTML = DATA.themes.map(function (t) {
+    /* ---------- 主题列表（分两组） ---------- */
+    function cardHtml(t) {
       var p = pal(t);
       var stops = [p.base || "#333", p.surface || "#555", p.primary || "#888", p.secondary || p.accent || "#aaa"];
       var sw = stops.map(function (c) { return '<span style="background:' + c + '"></span>'; }).join("");
-      return '<button class="site-theme-option gen-theme-card" data-theme="' + t.name + '" aria-pressed="false">' +
+      var statusChip = t.isPlayOnly
+        ? '<span class="gen-chip gen-chip--play">仅试玩</span>'
+        : '<span class="gen-chip gen-chip--full">整页案例</span>';
+      var groupChip = t.isPlayOnly ? "" : '<span class="gen-chip">' + t.group + "</span>";
+      return '<button class="site-theme-option gen-theme-card" data-theme="' + t.name +
+        '" data-tone="' + (t.dark ? "dark" : "light") + '" aria-pressed="false">' +
         '<span class="gen-theme-row"><span class="site-theme-option__swatch">' + sw + '</span>' +
         '<span class="site-theme-option__name">' + t.title + "</span></span>" +
         '<span class="gen-theme-row gen-theme-meta">' +
-        '<span class="gen-chip">' + t.group + "</span>" +
+        statusChip + groupChip +
         '<span class="gen-chip">' + (t.dark ? "深色" : "浅色") + "</span>" +
-        '<span class="gen-chip">' + t.license + "</span>" +
         '<span class="gen-theme-name">' + t.name + "</span></span>" +
         "</button>";
-    }).join("");
+    }
+    function groupHtml(list, title) {
+      return '<div class="gen-group"><p class="gen-group__title">' + title +
+        ' <small>' + list.length + "</small></p><div class=\"gen-group__cards\">" +
+        list.map(cardHtml).join("") + "</div></div>";
+    }
+    function renderPicker() {
+      picker.innerHTML =
+        groupHtml(fullThemes, "完整页面案例") +
+        groupHtml(playThemes, "官方主题 · 仅试玩");
+    }
+    function applyFilter() {
+      picker.querySelectorAll(".site-theme-option").forEach(function (card) {
+        var show = toneFilter === "all" || card.dataset.tone === toneFilter;
+        card.classList.toggle("gen-is-hidden", !show);
+      });
+      picker.querySelectorAll(".gen-group").forEach(function (g) {
+        var any = g.querySelectorAll(".site-theme-option:not(.gen-is-hidden)").length > 0;
+        g.classList.toggle("gen-is-hidden", !any);
+      });
+    }
+    renderPicker();
+    filterBar.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-tone]");
+      if (!b) return;
+      toneFilter = b.dataset.tone;
+      filterBar.querySelectorAll("button").forEach(function (x) {
+        x.classList.toggle("is-on", x === b);
+      });
+      applyFilter();
+    });
 
     /* ---------- 微调应用（只作用于预览容器，不写进复制文件） ---------- */
     function applyPrimary(hex) {
@@ -296,12 +436,18 @@
       stage.style.setProperty("--radius-selector", Math.round(n * 0.8) + "px");
     }
 
-    function syncTokenButtons(t) {
+    function syncActions(t) {
       var noTok = !t.hasTokens;
       copyBtn.disabled = noTok;
       downloadBtn.disabled = noTok;
       copyBtn.textContent = noTok ? "内置主题 · 无 tokens" : "复制 tokens.css";
       downloadBtn.textContent = noTok ? "内置主题 · 无 tokens" : "下载 tokens.css";
+      if (t.isPlayOnly) {
+        demoBtn.style.display = "none";
+      } else {
+        demoBtn.style.display = "";
+        demoBtn.href = "../themes/" + (t.slug || t.name) + "/" + (t.entry || "demo.html");
+      }
     }
 
     function save() {
@@ -335,7 +481,7 @@
         b.classList.toggle("site-theme-option--active", active);
         b.setAttribute("aria-pressed", active ? "true" : "false");
       });
-      syncTokenButtons(t);
+      syncActions(t);
       if (!skipSave) save();
     }
 
@@ -343,8 +489,13 @@
     picker.addEventListener("click", function (e) {
       var b = e.target.closest(".site-theme-option");
       if (!b) return;
+      var changed = b.dataset.theme !== curTheme;
       curTheme = b.dataset.theme;
       applyTheme();
+      /* 窄屏（≤860px）预览区在卡片下方，点选后自动带入视野，否则用户只看到卡片、看不到换肤，会以为“点击没反应”；宽屏左右分栏无需滚动 */
+      if (changed && window.matchMedia("(max-width: 860px)").matches) {
+        stage.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
 
     primaryInput.addEventListener("input", function () {
@@ -389,20 +540,32 @@
         .catch(function () { showToast("本地打开受限，线上可用或去主题目录查看"); });
     });
 
-    /* ② 复制 AI 指令（文案与逻辑同 themes.html 弹窗） */
+    /* ② 复制 AI 指令（整页组给完整案例；仅试玩组只给换肤，不给不存在的整页链接） */
     aiBtn.addEventListener("click", function () {
       var t = themeData(curTheme);
-      var intro = t.hasTokens
-        ? "2. 引入该主题的 tokens.css（" + BASE + "/themes/" + t.slug + "/tokens.css ），再在 <html data-theme=\"" + t.name + "\"> 即整站换肤。"
-        : "2. 该主题是 daisyUI 官方内置主题，无需额外文件：在 <html data-theme=\"" + t.name + "\"> 即整站换肤（确保已引入 daisyUI 5）。";
-      var cmd =
-        "请帮我把灰墨 MoH_UI 的主题「" + t.title + "（" + t.name + "）」应用到当前项目。\n" +
-        "该主题基于 daisyUI 5 的 data-theme 机制：\n" +
-        "1. 先在项目引入 daisyUI 5 的 CSS（daisyui.css，官方内置主题还需 daisyui-themes.css）；\n" +
-        intro + "\n" +
-        "3. 完整整页案例可作为布局与气质参考：" + BASE + "/themes/" + t.slug + "/demo.html\n" +
-        "4. 主题源码：https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug + "\n" +
-        "5. 页面用 daisyUI 组件拼装，不要硬编码颜色，颜色全部走 --color-* 主题变量；许可证：" + t.license + "。";
+      var cmd;
+      if (t.isPlayOnly) {
+        cmd =
+          "请帮我把 daisyUI 官方内置主题「" + t.title + "（" + t.name + "）」应用到当前项目。\n" +
+          "它基于 daisyUI 5 的 data-theme 机制：\n" +
+          "1. 先在项目引入 daisyUI 5 的 daisyui.css 与官方主题包 daisyui-themes.css；\n" +
+          "2. 在 <html data-theme=\"" + t.name + "\"> 即整站换肤，无需任何额外 tokens 文件；\n" +
+          "3. 官方主题页（可查看该主题色值与预览）：https://daisyui.com/docs/themes/\n" +
+          "4. 页面用 daisyUI 组件拼装，不要硬编码颜色，颜色全部走 --color-* 主题变量；许可证：MIT。\n" +
+          "说明：灰墨 MoH_UI 目前只提供这套主题的在线试玩（" + BASE + "/generator.html），尚无配套整页案例，布局请自行设计。";
+      } else {
+        var intro = t.hasTokens
+          ? "2. 引入该主题的 tokens.css（" + BASE + "/themes/" + t.slug + "/tokens.css ），再在 <html data-theme=\"" + t.name + "\"> 即整站换肤。"
+          : "2. 该主题是 daisyUI 官方内置主题，无需额外文件：在 <html data-theme=\"" + t.name + "\"> 即整站换肤（确保已引入 daisyUI 5）。";
+        cmd =
+          "请帮我把灰墨 MoH_UI 的主题「" + t.title + "（" + t.name + "）」应用到当前项目。\n" +
+          "该主题基于 daisyUI 5 的 data-theme 机制：\n" +
+          "1. 先在项目引入 daisyUI 5 的 CSS（daisyui.css，官方内置主题还需 daisyui-themes.css）；\n" +
+          intro + "\n" +
+          "3. 完整整页案例可作为布局与气质参考：" + BASE + "/themes/" + t.slug + "/demo.html\n" +
+          "4. 主题源码：https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug + "\n" +
+          "5. 页面用 daisyUI 组件拼装，不要硬编码颜色，颜色全部走 --color-* 主题变量；许可证：" + t.license + "。";
+      }
       copyText(cmd, "AI 指令已复制 ✓");
     });
 
