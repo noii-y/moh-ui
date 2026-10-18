@@ -1,6 +1,8 @@
 # 阶段 C 组件规格（component-spec-c）
 
-> 来源：阶段 C1 竞品调研（shadcn/ui 组件清单 + AdminLTE/Headless 行为标准 + Aceternity 微交互理念）。
+> **历史归档（旧单文件组件体系）**：本文写于"单文件 `index.html` + `moh-` 前缀 + `--moh-*` 变量"阶段。组件层后来改为 daisyUI 5 底座 + 「提示词三件套」（demo.html / README.md / moh.json），旧自研组件已下线到 `components/_legacy/`。组件的现行制作与验收规范见根目录 `AGENTS.md`，本文仅保留当时的行为标准调研。
+
+> 来源：阶段 C1 竞品调研（shadcn/ui 组件清单 + AdminLTE/Headless 行为标准 + Aceternum 微交互理念）。
 > 所有组件：单文件 `index.html`（样式 + 演示），零依赖（除非标注"带依赖"），类名 `moh-` 前缀，样式全走 `--moh-*` 变量。
 > 行为标准是硬要求：键盘可操作、焦点可见、语义标签正确——"照着做不会出错"。
 

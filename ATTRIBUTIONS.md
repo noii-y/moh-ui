@@ -1,46 +1,41 @@
 # 素材来源清单（ATTRIBUTIONS）
 
-> 灰墨 MoH_UI 是开源、非商用项目。凡引入的外部素材（主题 / 组件 / 区块），按 `docs/license-policy.md` 逐项核对许可证后在此登记，并与各资源自带 `moh.json` 的 `source` 字段保持一致。
-> 维护规则：新增资源时，同时更新本文件与对应 `moh.json`；`scripts/check-attributions.mjs` 强制校验。
+> 灰墨 MoH_UI 是开源项目。每个主题、组件的原作者、许可证、原地址、改动说明都登记在各自目录的 `moh.json` 里，`scripts/check-attributions.mjs` 对其做强制校验。
+>
+> **完整、逐套的来源清单（45 套主题 + 68 个组件）由数据自动生成，见在线溯源页：[site/attributions.html](site/attributions.html)。** 本文件不再手工维护逐条清单，以免与实际脱节；这里只登记不适合放进单个 `moh.json` 的库级来源与方法论参考。
 
-## 汇总
+## 库级来源
 
-| 资源 | 类型 | 来源 | 许可证 | 原地址 | 改动说明 |
+| 资源 | 类型 | 来源 | 许可证 | 原地址 | 说明 |
 |---|---|---|---|---|---|
-| mo-dark（墨夜） | 主题 | 自研（noii-y） | MIT | — | 风格取向参考 Linear 公开 token（见 themes/mo-dark/tokens.css 头注释） |
-| mo-light（宣纸） | 主题 | 自研（noii-y） | MIT | — | 风格取向参考 Stripe 公开 token（见 themes/mo-light/tokens.css 头注释） |
-| mo-slate（纯净灰阶） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Clean Slate（色板自研，见 moh.json inspiration） |
-| mo-gray（灰阶中性商务） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Graphite（色板自研，见 moh.json inspiration） |
-| mo-pastel（粉彩） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Marshmallow（色板自研，见 moh.json inspiration） |
-| mo-mood（暗黑开发者） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Cosmic Night（色板自研，见 moh.json inspiration） |
-| mo-brutal（粗野主义） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Neo Brutalism（色板自研，见 moh.json inspiration） |
-| mo-neon（霓虹） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 shadcn Cyberpunk（色板自研，见 moh.json inspiration） |
-| mo-zhongshi（新中式后台） | 主题 | 自研（noii-y） | MIT | — | 中国风设计理念（配色自研，见 moh.json inspiration） |
-| mo-classic（经典Bootstrap） | 主题 | 自研（noii-y） | MIT | — | 风格灵感参考 Tabler/AdminLTE（色板自研，见 moh.json inspiration） |
-| mo-rules（规则边界包） | 规则 | 自研（noii-y） | MIT | — | 方法论参考 Taste Skill（规则化审美），已中文化并改写为后台场景 |
-| button / input / select / table / card / form / navbar / sidebar / tag / modal | 组件 | 自研（noii-y） | MIT | — | 全部原创，零依赖，类名 moh- 前缀 |
-| breadcrumb / pagination / empty / skeleton / tabs / drawer / toast / stat-card | 组件 | 自研（noii-y） | MIT | — | 阶段 C 基础组件，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
-| chart-card / code-block / drag-sort | 组件 | 自研（noii-y） | MIT | — | 阶段 C 增强组件；chart-card 依赖 ECharts（CDN）、code-block 依赖 highlight.js（CDN）、drag-sort 零依赖 |
-| checkbox / switch / date-range / alert / tooltip / avatar / progress / badge / spinner | 组件 | 自研（noii-y） | MIT | — | 阶段 C 补充轮，零依赖，行为标准参考 shadcn/Headless（见 docs/component-spec-c.md） |
-| daisyui.css / daisyui-themes.css（vendor 运行时底座） | 运行时 | daisyUI（Pouya Saadeghi） | MIT | https://github.com/saadeghi/daisyui | 从 npm 包 daisyui@5.7.50 原样复制，未修改；详见 vendor/README.md |
-| components/daisyui/* 各组件 demo HTML | 组件 | daisyUI（Pouya Saadeghi） | MIT | https://daisyui.com/components/ | 搬运官网 demo HTML，补零依赖工具类、中文教程；各组件 moh.json 逐项标注来源与改动 |
+| daisyui.css / daisyui-themes.css | 运行时底座 | daisyUI（Pouya Saadeghi） | MIT | https://github.com/saadeghi/daisyui | 从 npm 包 daisyui@5.7.50 原样复制，未修改；见 `vendor/LICENSE-daisyui.txt` |
+| components/daisyui/* 各组件 demo | 组件 | daisyUI（Pouya Saadeghi） | MIT | https://daisyui.com/components/ | 搬运官网 class 版 demo，补零依赖工具类、中文业务文案与教程；逐套来源与改动见各组件 `moh.json` |
+| 外部收录主题（catppuccin、dracula、nord、rose-pine、solarized、tokyo-night、kanagawa、gruvbox、github-light、everforest） | 主题 | 各开源项目 | 见各自目录 | 见各主题 `moh.json` | 保留原许可证与署名，色板映射到 daisyUI 变量；其中 tokyo-night 为 Apache-2.0，目录附完整 LICENSE |
 
-## 引入外部素材时的登记模板
+> 灰墨二创主题（mo-*）与自研组件（`chart-card`、`code-block`、`date-range`、`drag-sort`、`empty`）均为 noii-y 原创，MIT 许可。`chart-card` 经 CDN 引入 ECharts、`code-block` 经 CDN 引入 highlight.js，依赖说明见各自 README 与 `moh.json`。
 
-```markdown
-| 资源名 | 类型 | 第三方来源 | 许可证 | 原地址 | 改动说明 |
-|---|---|---|---|---|---|
-| mo-xxx | 主题/组件/区块 | 原项目名 | 如 MIT | <原仓库地址> | 转换 --moh-* 变量 / 重写 base.css / 新增 preview 等 |
+## 新增外部素材时怎么登记
+
+在对应目录的 `moh.json` 的 `source` 字段登记即可，在线溯源页会自动收录：
+
+```json
+{
+  "origin": "third-party",
+  "upstream": "原项目名",
+  "url": "原仓库地址",
+  "license": "MIT",
+  "changes": "做了哪些改动：映射到 daisyUI [data-theme] 变量 / 换成中文业务文案 / 整页案例重写等"
+}
 ```
 
 ## 方法论参考（非代码素材，不影响许可证）
 
-- Taste Skill（<https://github.com/Leonxlnx/taste-skill>，MIT）：规则化审美、四步闭环、三旋钮 → 规则包 v0 的方法来源
-- shadcn/ui registry（<https://ui.shadcn.com/docs/registry>，MIT）：`moh.json` 元数据机制参照
-- Aceternity UI（<https://ui.aceternity.com>）："基础组件 vs 区块"分层思路参照
+- Taste Skill（<https://github.com/Leonxlnx/taste-skill>，MIT）：规则化审美、四步闭环 → `rules/` 规则包的方法来源
+- shadcn/ui registry（<https://www.ui.shadcn.com/docs/registry>，MIT）：`moh.json` 元数据机制参照
+- Aceternity UI（<https://www.ui.aceternity.com>）："基础组件 vs 区块"分层思路参照
 - StyleSeed（<https://github.com/bitjaru/styleseed>）：`themes/<name>/` 目录架构参照
-- shadcn.io 主题页（<https://www.shadcn.io/theme>，MIT 社区主题站）：阶段 B 首批 8 套主题的风格描述来源（色板均为灰墨自研）
 
-## 校验状态
+## 校验
 
-- 最近校验：2026-10-16，`node scripts/check-attributions.mjs` 全过（41 个 moh.json 合规）
+- `node scripts/check-attributions.mjs`：校验全部 `moh.json` 的来源、许可证、必填字段与 name 唯一，通过时打印合规数量（随库增长，不写死）。
+- 许可证引入流程与对照表见 `docs/license-policy.md`。

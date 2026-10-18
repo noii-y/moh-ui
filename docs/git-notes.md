@@ -30,15 +30,12 @@ $env:GIT_CONFIG_GLOBAL='NUL'; git push origin master
 ## 常用命令速查
 
 ```powershell
-# 体检（发布门槛 <90 不许发布）
-node scripts/check-audit.mjs themes/mo-dark
-node scripts/check-audit.mjs themes/mo-light
-
-# 生成清单
-node scripts/build-index.mjs
-
-# 提交并推送
-git add -A
+# 只 add 本批次的具体文件或目录，禁止 git add -A（会带入 .sessions/ 等运行痕迹）
+git add <具体文件或目录>
 git commit -m "描述"
 $env:GIT_CONFIG_GLOBAL='NUL'; git push origin master
+
+# 推完核对本地与远端已同步（输出必须为 0）
+git fetch origin
+git rev-list --count origin/master..HEAD
 ```

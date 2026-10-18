@@ -115,7 +115,6 @@ site/rules.html?scene=form&theme=luxury&comps=button,input
 | 脚本 | 检查什么 |
 | --- | --- |
 | `node scripts/check-attributions.mjs` | 114 个 moh.json 的溯源合规：name 唯一、许可证、来源地址、必填字段 |
-| `node scripts/check-audit.mjs themes/<slug>` | 主题审美体检（百分制）：对比度 ≥ 4.5、CJK 字体栈、字号阶、8px 网格、禁纯黑纯白、必须有焦点态；低于 90 分不许发布 |
 | `node scripts/check-site.mjs` | 展示站所有页面的相对链接是否指向真实文件 |
 | `node scripts/qa-mobile.mjs <页面.html>` | 390px 真实 iframe 下有没有横向溢出（横向滚动容器按口径豁免） |
 | `node scripts/qa-copy.mjs ai/<名>.html` | 模拟真实点击「复制 AI 指令」，检查指令 7 个必备段落是否齐全 |
