@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "cmyk",
+  "type": "theme",
+  "title": "叠色（cmyk）",
+  "description": "完整页面案例：虚构印刷工作室「叠彩印刷 DIE-CAI PRINT STUDIO」整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感；挂 daisyUI 官方主题 data-theme=\"cmyk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "纸感", "品牌", "落地页"],
+  "base": "cmyk",
+  "aiNotes": [
+    "纯白底 base-100（oklch 100%），卡片用 base-200 浅灰，正文近黑 base-content（白/近黑实测对比 18.1:1）；印刷四色只作克制点缀——青蓝=primary、品红=secondary、黄=accent、黑=base-content，只用在品牌三色叠印小标、工艺步圆点与 SVG 局部填充，绝不大面积铺四色，禁止写死任何十六进制色。",
+    "cmyk 默认 btn-primary 蓝底配 primary-content 深蓝字实测 8.06:1，直接用默认按钮即可；蓝底上压白字实测仅 2.46:1，禁止白字压蓝或品红实心底；品红 secondary 配其 content 实测 5.52:1 可用。",
+    "黄 accent 明度极高（oklch 94.2%）只做圆点与线稿点缀，黄底若压字一律用 accent-content（实测 15.84:1），不要在浅黄底上压近黑以外的任意字。",
+    "纸感排版：标题 19–32px 加粗、正文 12–13px、行距 1.8–2；版块之间用 currentColor 约 18% 发丝线分隔，卡片 base-200 圆角 1rem，不堆投影、不放大色块、不做渐变。",
+    "装饰与成品图只用 currentColor 线稿加主题四色填充：印张带四角裁切标记与中央套准十字、工艺四步各配一枚线性图标（菲林/晒版/胶印辊/裁切叠纸）、案例是画册/包装盒/海报剪影且轮廓必须可分辨；不用彩色照片、不用 emoji。",
+    "文案写真实动作与具体参数（菲林 175 线、色差 ΔE≤3、500 张起、¥35/盒），价格写「¥X / 单位」，门店地址电话标注虚构，不写「专业品质值得信赖」这类空话。",
+    "390px 窄屏顶栏自然折行、工艺卡与案例卡单列、报价金额换行不溢出，不横向滚动。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=cmyk]；仅用 daisyUI 组件拼装一套印刷工作室整页（demo.html：顶栏导航与获取报价按钮 + 印张套准线稿 Hero 与双 CTA + 印刷工艺四步卡（菲林输出/制版晒版/四色套印/裁切装订）+ 三个设计案例剪影卡（画册/包装/海报）+ 打样报价价格表与提交打样需求 + 预约打样 CTA 与虚构打样间页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

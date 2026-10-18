@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>叠色（cmyk）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「叠色（cmyk）」组件。虚构印刷工作室「叠彩印刷 DIE-CAI PRINT STUDIO」整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感；挂 daisyUI 官方主题 data-theme="cmyk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="cmyk.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/cmyk/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>叠色（cmyk） · 灰墨 MoH_UI</h1>
+<blockquote>虚构印刷工作室「叠彩印刷 DIE-CAI PRINT STUDIO」整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感；挂 daisyUI 官方主题 data-theme="cmyk" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：daisyUI 内置主题（MIT，无需额外文件）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/cmyk/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/cmyk/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>纯白底 base-100（oklch 100%），卡片用 base-200 浅灰，正文近黑 base-content（白/近黑实测对比 18.1:1）；印刷四色只作克制点缀——青蓝=primary、品红=secondary、黄=accent、黑=base-content，只用在品牌三色叠印小标、工艺步圆点与 SVG 局部填充，绝不大面积铺四色，禁止写死任何十六进制色。</li>
+<li>cmyk 默认 btn-primary 蓝底配 primary-content 深蓝字实测 8.06:1，直接用默认按钮即可；蓝底上压白字实测仅 2.46:1，禁止白字压蓝或品红实心底；品红 secondary 配其 content 实测 5.52:1 可用。</li>
+<li>黄 accent 明度极高（oklch 94.2%）只做圆点与线稿点缀，黄底若压字一律用 accent-content（实测 15.84:1），不要在浅黄底上压近黑以外的任意字。</li>
+<li>纸感排版：标题 19–32px 加粗、正文 12–13px、行距 1.8–2；版块之间用 currentColor 约 18% 发丝线分隔，卡片 base-200 圆角 1rem，不堆投影、不放大色块、不做渐变。</li>
+<li>装饰与成品图只用 currentColor 线稿加主题四色填充：印张带四角裁切标记与中央套准十字、工艺四步各配一枚线性图标（菲林/晒版/胶印辊/裁切叠纸）、案例是画册/包装盒/海报剪影且轮廓必须可分辨；不用彩色照片、不用 emoji。</li>
+<li>文案写真实动作与具体参数（菲林 175 线、色差 ΔE≤3、500 张起、¥35/盒），价格写「¥X / 单位」，门店地址电话标注虚构，不写「专业品质值得信赖」这类空话。</li>
+<li>390px 窄屏顶栏自然折行、工艺卡与案例卡单列、报价金额换行不溢出，不横向滚动。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="cmyk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;每一次套色，都经得起放大 · 叠彩印刷 DIE-CAI PRINT STUDIO（cmyk 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 cmyk 主题完整页面案例：虚构印刷工作室整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感。本页只依赖 daisyUI 官方主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" /&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .brand svg { width: 22px; height: 22px; }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head span { font-size: 12px; opacity: .5; }
+    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }
+    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }
+    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 480px; margin: 0; line-height: 2; }
+    .hero-art { width: 340px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 工艺四步 */
+    .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .step-art { height: 88px; display: flex; align-items: center; justify-content: center; }
+    .step-art svg { width: 64px; height: 64px; }
+    .step-name { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .step-name i { width: 8px; height: 8px; border-radius: 9999px; display: inline-block; }
+    .step-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    /* 案例 */
+    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .case-art { height: 120px; display: flex; align-items: center; justify-content: center; }
+    .case-art svg { width: 110px; height: 110px; }
+    .case-name { font-size: 14px; font-weight: 700; }
+    .case-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    /* 报价 */
+    .price-list { display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .price-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 2px; border-top: 1px solid color-mix(in oklab, currentColor 14%, transparent); font-size: 13px; flex-wrap: wrap; }
+    .price-list .qty { font-size: 11px; opacity: .5; }
+    .price-list .amount { font-weight: 800; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-zone { padding: 24px 8px 20px; }
+      .hero-zone h1 { font-size: 25px; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;
+            &lt;circle cx="9" cy="9" r="4" fill="var(--color-primary)" /&gt;
+            &lt;circle cx="15" cy="9" r="4" fill="var(--color-secondary)" opacity=".85" /&gt;
+            &lt;circle cx="12" cy="15" r="4" fill="var(--color-accent)" /&gt;
+          &lt;/svg&gt;
+          叠彩印刷 &lt;small&gt;DIE-CAI PRINT&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 14%, transparent);--menu-active-fg:var(--color-base-content)"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;印刷工艺&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;设计案例&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;打样报价&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;联系门店&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;button class="btn btn-sm btn-primary" type="button"&gt;获取报价&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero：印刷套准线稿 --&gt;
+    &lt;div class="hero-zone"&gt;
+      &lt;span class="badge badge-soft badge-sm"&gt;四色套印 · 菲林级精度&lt;/span&gt;
+      &lt;h1&gt;每一次套色，都经得起放大&lt;/h1&gt;
+      &lt;p class="lede"&gt;叠彩印刷在工业园区有两台八色胶印机。从菲林输出到裁切装订，每个环节都留了出血线与套准十字——你把文件发过来，三天内收到打样。&lt;/p&gt;
+      &lt;svg class="hero-art" viewBox="0 0 360 210" role="img" aria-label="印刷线稿：一张带四角裁切标记的印张，中央是套准十字线，左下角青品黄三色叠印小色点（示例插图）"&gt;
+        &lt;!-- 印张 --&gt;
+        &lt;rect x="60" y="34" width="240" height="142" fill="none" stroke="currentColor" stroke-width="1.6" /&gt;
+        &lt;!-- 四角裁切标记 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.2" stroke-linecap="round"&gt;
+          &lt;line x1="46" y1="34" x2="56" y2="34" /&gt;&lt;line x1="60" y1="20" x2="60" y2="30" /&gt;
+          &lt;line x1="304" y1="34" x2="314" y2="34" /&gt;&lt;line x1="300" y1="20" x2="300" y2="30" /&gt;
+          &lt;line x1="46" y1="176" x2="56" y2="176" /&gt;&lt;line x1="60" y1="180" x2="60" y2="190" /&gt;
+          &lt;line x1="304" y1="176" x2="314" y2="176" /&gt;&lt;line x1="300" y1="180" x2="300" y2="190" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 套准十字 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.4" fill="none"&gt;
+          &lt;circle cx="180" cy="105" r="26" /&gt;
+          &lt;circle cx="180" cy="105" r="12" /&gt;
+          &lt;line x1="180" y1="68" x2="180" y2="82" /&gt;
+          &lt;line x1="180" y1="128" x2="180" y2="142" /&gt;
+          &lt;line x1="143" y1="105" x2="157" y2="105" /&gt;
+          &lt;line x1="203" y1="105" x2="217" y2="105" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 三色叠印小色点（克制：仅左下角一处） --&gt;
+        &lt;circle cx="86" cy="156" r="9" fill="var(--color-primary)" opacity=".7" /&gt;
+        &lt;circle cx="98" cy="156" r="9" fill="var(--color-secondary)" opacity=".7" /&gt;
+        &lt;circle cx="92" cy="147" r="9" fill="var(--color-accent)" opacity=".8" /&gt;
+      &lt;/svg&gt;
+      &lt;div class="cta-row"&gt;
+        &lt;button class="btn btn-primary" type="button"&gt;获取报价&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;看看设计案例&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 印刷工艺：四步 --&gt;
+    &lt;div&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;印刷工艺&lt;/h2&gt;
+        &lt;span&gt;从菲林到成品 · 四天交付打样&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="step-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="step-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="菲林输出线稿（示例插图）"&gt;
+                &lt;rect x="18" y="30" width="60" height="36" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"&gt;
+                  &lt;line x1="30" y1="38" x2="30" y2="58" /&gt;&lt;line x1="42" y1="38" x2="42" y2="58" /&gt;&lt;line x1="54" y1="38" x2="54" y2="58" /&gt;&lt;line x1="66" y1="38" x2="66" y2="58" /&gt;
+                &lt;/g&gt;
+                &lt;line x1="18" y1="74" x2="78" y2="74" stroke="currentColor" stroke-width="1.6" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="step-name"&gt;&lt;i style="background:var(--color-primary)"&gt;&lt;/i&gt;菲林输出&lt;/span&gt;
+            &lt;p class="step-desc"&gt;文件四色分色出菲林，网点精度 175 线，偏色先打样再上机。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="step-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="制版晒版线稿（示例插图）"&gt;
+                &lt;rect x="24" y="34" width="48" height="40" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;circle cx="48" cy="54" r="9" fill="none" stroke="var(--color-accent)" stroke-width="1.8" /&gt;
+                &lt;g stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"&gt;
+                  &lt;line x1="48" y1="38" x2="48" y2="42" /&gt;&lt;line x1="48" y1="66" x2="48" y2="70" /&gt;&lt;line x1="32" y1="54" x2="36" y2="54" /&gt;&lt;line x1="60" y1="54" x2="64" y2="54" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="step-name"&gt;&lt;i style="background:var(--color-secondary)"&gt;&lt;/i&gt;制版晒版&lt;/span&gt;
+            &lt;p class="step-desc"&gt;PS 版烤版上胶，版面亲墨性均匀，长版印刷不花版。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="step-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="四色套印线稿（示例插图）"&gt;
+                &lt;circle cx="36" cy="44" r="16" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;circle cx="60" cy="60" r="16" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;line x1="20" y1="78" x2="76" y2="78" stroke="currentColor" stroke-width="1.6" /&gt;
+                &lt;circle cx="36" cy="44" r="5" fill="var(--color-primary)" opacity=".7" /&gt;
+                &lt;circle cx="60" cy="60" r="5" fill="var(--color-secondary)" opacity=".7" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="step-name"&gt;&lt;i style="background:var(--color-accent)"&gt;&lt;/i&gt;四色套印&lt;/span&gt;
+            &lt;p class="step-desc"&gt;青品黄黑逐色套准，色差 ΔE 控制在 3 以内才放行。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="step-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="裁切装订单稿（示例插图）"&gt;
+                &lt;rect x="26" y="28" width="44" height="10" fill="none" stroke="currentColor" stroke-width="1.8" /&gt;
+                &lt;rect x="26" y="42" width="44" height="10" fill="none" stroke="currentColor" stroke-width="1.8" /&gt;
+                &lt;rect x="26" y="56" width="44" height="10" fill="none" stroke="currentColor" stroke-width="1.8" /&gt;
+                &lt;g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"&gt;
+                  &lt;line x1="16" y1="80" x2="30" y2="80" /&gt;&lt;line x1="66" y1="80" x2="80" y2="80" /&gt;
+                &lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="step-name"&gt;&lt;i style="background:var(--color-base-content)"&gt;&lt;/i&gt;裁切装订&lt;/span&gt;
+            &lt;p class="step-desc"&gt;按出血线模切，骑马钉或胶装，成品逐张质检打包。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 设计案例：三个成品剪影 --&gt;
+    &lt;div&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;设计案例&lt;/h2&gt;
+        &lt;span&gt;近三个月交付 · 客户均已验收&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="case-grid"&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="case-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="画册剪影线稿（示例插图）"&gt;
+                &lt;path d="M20 26 h24 v44 h-24 z" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;path d="M76 26 h-24 v44 h24 z" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;line x1="44" y1="26" x2="52" y2="26" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;line x1="48" y1="26" x2="48" y2="70" stroke="currentColor" stroke-width="1.6" /&gt;
+                &lt;g stroke="var(--color-primary)" stroke-width="1.4" stroke-linecap="round"&gt;&lt;line x1="26" y1="36" x2="38" y2="36" /&gt;&lt;line x1="26" y1="44" x2="38" y2="44" /&gt;&lt;/g&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="case-name"&gt;企业画册&lt;/span&gt;
+            &lt;p class="case-desc"&gt;16 开 64 页锁线胶装，封面 250g 铜版纸覆哑膜。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="case-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="包装盒剪影线稿（示例插图）"&gt;
+                &lt;path d="M28 40 L48 28 L68 40 L48 52 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /&gt;
+                &lt;path d="M28 40 v26 l20 12 v-26 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /&gt;
+                &lt;path d="M68 40 v26 l-20 12 v-26 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /&gt;
+                &lt;circle cx="48" cy="53" r="4" fill="var(--color-secondary)" opacity=".7" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="case-name"&gt;产品包装&lt;/span&gt;
+            &lt;p class="case-desc"&gt;350g 白卡手提盒，四色印刷加局部 UV，打样两天确认。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="card bg-base-200 rounded-box"&gt;
+          &lt;div class="card-body" style="padding:14px;gap:8px"&gt;
+            &lt;div class="case-art"&gt;
+              &lt;svg viewBox="0 0 96 96" role="img" aria-label="海报剪影线稿（示例插图）"&gt;
+                &lt;rect x="30" y="18" width="36" height="60" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+                &lt;line x1="36" y1="30" x2="60" y2="30" stroke="currentColor" stroke-width="1.6" /&gt;
+                &lt;path d="M36 44 q6 -6 12 0 t12 0" fill="none" stroke="var(--color-accent)" stroke-width="1.8" /&gt;
+                &lt;line x1="36" y1="62" x2="52" y2="62" stroke="currentColor" stroke-width="1.6" /&gt;
+              &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;span class="case-name"&gt;活动海报&lt;/span&gt;
+            &lt;p class="case-desc"&gt;对开 157g 铜版纸，大批量 24 小时内交货。&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 打样报价 --&gt;
+    &lt;div class="card bg-base-200 rounded-box"&gt;
+      &lt;div class="card-body" style="padding:20px;gap:12px"&gt;
+        &lt;div class="sect-head" style="margin-bottom:0"&gt;
+          &lt;h2&gt;打样报价&lt;/h2&gt;
+          &lt;span&gt;以下为示例价格 · 实际以文件工艺核算为准&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;ul class="price-list"&gt;
+          &lt;li&gt;&lt;span&gt;名片印刷 &lt;span class="qty"&gt;300g 铜版纸覆哑膜 · 500 张起&lt;/span&gt;&lt;/span&gt;&lt;span class="amount"&gt;¥35 / 盒&lt;/span&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;span&gt;宣传画册 &lt;span class="qty"&gt;16 开 · 50 本起印&lt;/span&gt;&lt;/span&gt;&lt;span class="amount"&gt;¥8.5 / 本起&lt;/span&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;span&gt;产品包装 &lt;span class="qty"&gt;350g 白卡 · 1000 个起订&lt;/span&gt;&lt;/span&gt;&lt;span class="amount"&gt;¥1.2 / 个起&lt;/span&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;span&gt;活动海报 &lt;span class="qty"&gt;对开 · 200 张起&lt;/span&gt;&lt;/span&gt;&lt;span class="amount"&gt;¥45 / 张起&lt;/span&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div&gt;
+          &lt;button class="btn btn-primary" type="button"&gt;提交打样需求&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 联系 CTA --&gt;
+    &lt;div class="card rounded-box" style="padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center"&gt;
+      &lt;h2 style="font-size:21px;margin:0;letter-spacing:1px"&gt;带着文件来，先打样再谈量&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9"&gt;工作日上午九点前发来印刷文件，当天出数码样，确认色差后再上八色机。&lt;/p&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:2px;margin-top:2px"&gt;
+        &lt;span style="font-size:13px;font-weight:700"&gt;叠彩印刷 · 打样间&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.8"&gt;工业园区双庆路 88 号 3 栋（虚构）&lt;br /&gt;021-6600-0000（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn-primary" type="button"&gt;预约打样&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;叠彩印刷 DIE-CAI PRINT STUDIO 为虚构品牌，工艺、价格、案例与门店地址均为示例数据，仅用于展示 cmyk 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="cmyk"</code>，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<p>该主题变量在 daisyui-themes.css 内，无需复制。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/cmyk/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/cmyk/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「叠色（cmyk）」的整页。\n\n【场景】\n虚构印刷工作室「叠彩印刷 DIE-CAI PRINT STUDIO」整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感；挂 daisyUI 官方主题 data-theme=\"cmyk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- 纯白底 base-100（oklch 100%），卡片用 base-200 浅灰，正文近黑 base-content（白/近黑实测对比 18.1:1）；印刷四色只作克制点缀——青蓝=primary、品红=secondary、黄=accent、黑=base-content，只用在品牌三色叠印小标、工艺步圆点与 SVG 局部填充，绝不大面积铺四色，禁止写死任何十六进制色。\n- cmyk 默认 btn-primary 蓝底配 primary-content 深蓝字实测 8.06:1，直接用默认按钮即可；蓝底上压白字实测仅 2.46:1，禁止白字压蓝或品红实心底；品红 secondary 配其 content 实测 5.52:1 可用。\n- 黄 accent 明度极高（oklch 94.2%）只做圆点与线稿点缀，黄底若压字一律用 accent-content（实测 15.84:1），不要在浅黄底上压近黑以外的任意字。\n- 纸感排版：标题 19–32px 加粗、正文 12–13px、行距 1.8–2；版块之间用 currentColor 约 18% 发丝线分隔，卡片 base-200 圆角 1rem，不堆投影、不放大色块、不做渐变。\n- 装饰与成品图只用 currentColor 线稿加主题四色填充：印张带四角裁切标记与中央套准十字、工艺四步各配一枚线性图标（菲林/晒版/胶印辊/裁切叠纸）、案例是画册/包装盒/海报剪影且轮廓必须可分辨；不用彩色照片、不用 emoji。\n- 文案写真实动作与具体参数（菲林 175 线、色差 ΔE≤3、500 张起、¥35/盒），价格写「¥X / 单位」，门店地址电话标注虚构，不写「专业品质值得信赖」这类空话。\n- 390px 窄屏顶栏自然折行、工艺卡与案例卡单列、报价金额换行不溢出，不横向滚动。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\">\n\n然后在 \u003chtml data-theme=\"cmyk\"> 挂属性，整页即刻换肤。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。\n\n【精确规格】\n- 整页挂 data-theme=\"cmyk\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"cmyk\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"cmyk\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>每一次套色，都经得起放大 · 叠彩印刷 DIE-CAI PRINT STUDIO（cmyk 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 cmyk 主题完整页面案例：虚构印刷工作室整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感。本页只依赖 daisyUI 官方主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\" />\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }\n    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }\n    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }\n    .brand svg { width: 22px; height: 22px; }\n    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }\n    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }\n    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }\n    .sect-head span { font-size: 12px; opacity: .5; }\n    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */\n    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }\n    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }\n    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 480px; margin: 0; line-height: 2; }\n    .hero-art { width: 340px; max-width: 100%; height: auto; }\n    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }\n    /* 工艺四步 */\n    .step-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }\n    .step-art { height: 88px; display: flex; align-items: center; justify-content: center; }\n    .step-art svg { width: 64px; height: 64px; }\n    .step-name { font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 6px; }\n    .step-name i { width: 8px; height: 8px; border-radius: 9999px; display: inline-block; }\n    .step-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }\n    /* 案例 */\n    .case-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }\n    .case-art { height: 120px; display: flex; align-items: center; justify-content: center; }\n    .case-art svg { width: 110px; height: 110px; }\n    .case-name { font-size: 14px; font-weight: 700; }\n    .case-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }\n    /* 报价 */\n    .price-list { display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; list-style: none; }\n    .price-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 2px; border-top: 1px solid color-mix(in oklab, currentColor 14%, transparent); font-size: 13px; flex-wrap: wrap; }\n    .price-list .qty { font-size: 11px; opacity: .5; }\n    .price-list .amount { font-weight: 800; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }\n    @media (max-width: 900px) {\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero-zone { padding: 24px 8px 20px; }\n      .hero-zone h1 { font-size: 25px; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\">\n            \u003ccircle cx=\"9\" cy=\"9\" r=\"4\" fill=\"var(--color-primary)\" />\n            \u003ccircle cx=\"15\" cy=\"9\" r=\"4\" fill=\"var(--color-secondary)\" opacity=\".85\" />\n            \u003ccircle cx=\"12\" cy=\"15\" r=\"4\" fill=\"var(--color-accent)\" />\n          \u003c/svg>\n          叠彩印刷 \u003csmall>DIE-CAI PRINT\u003c/small>\n        \u003c/div>\n        \u003cul class=\"menu-row menu\" style=\"--menu-active-bg:color-mix(in oklab, var(--color-primary) 14%, transparent);--menu-active-fg:var(--color-base-content)\">\n          \u003cli>\u003ca class=\"menu-active\">印刷工艺\u003c/a>\u003c/li>\n          \u003cli>\u003ca>设计案例\u003c/a>\u003c/li>\n          \u003cli>\u003ca>打样报价\u003c/a>\u003c/li>\n          \u003cli>\u003ca>联系门店\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cbutton class=\"btn btn-sm btn-primary\" type=\"button\">获取报价\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero：印刷套准线稿 -->\n    \u003cdiv class=\"hero-zone\">\n      \u003cspan class=\"badge badge-soft badge-sm\">四色套印 · 菲林级精度\u003c/span>\n      \u003ch1>每一次套色，都经得起放大\u003c/h1>\n      \u003cp class=\"lede\">叠彩印刷在工业园区有两台八色胶印机。从菲林输出到裁切装订，每个环节都留了出血线与套准十字——你把文件发过来，三天内收到打样。\u003c/p>\n      \u003csvg class=\"hero-art\" viewBox=\"0 0 360 210\" role=\"img\" aria-label=\"印刷线稿：一张带四角裁切标记的印张，中央是套准十字线，左下角青品黄三色叠印小色点（示例插图）\">\n        \u003c!-- 印张 -->\n        \u003crect x=\"60\" y=\"34\" width=\"240\" height=\"142\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n        \u003c!-- 四角裁切标记 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\">\n          \u003cline x1=\"46\" y1=\"34\" x2=\"56\" y2=\"34\" />\u003cline x1=\"60\" y1=\"20\" x2=\"60\" y2=\"30\" />\n          \u003cline x1=\"304\" y1=\"34\" x2=\"314\" y2=\"34\" />\u003cline x1=\"300\" y1=\"20\" x2=\"300\" y2=\"30\" />\n          \u003cline x1=\"46\" y1=\"176\" x2=\"56\" y2=\"176\" />\u003cline x1=\"60\" y1=\"180\" x2=\"60\" y2=\"190\" />\n          \u003cline x1=\"304\" y1=\"176\" x2=\"314\" y2=\"176\" />\u003cline x1=\"300\" y1=\"180\" x2=\"300\" y2=\"190\" />\n        \u003c/g>\n        \u003c!-- 套准十字 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.4\" fill=\"none\">\n          \u003ccircle cx=\"180\" cy=\"105\" r=\"26\" />\n          \u003ccircle cx=\"180\" cy=\"105\" r=\"12\" />\n          \u003cline x1=\"180\" y1=\"68\" x2=\"180\" y2=\"82\" />\n          \u003cline x1=\"180\" y1=\"128\" x2=\"180\" y2=\"142\" />\n          \u003cline x1=\"143\" y1=\"105\" x2=\"157\" y2=\"105\" />\n          \u003cline x1=\"203\" y1=\"105\" x2=\"217\" y2=\"105\" />\n        \u003c/g>\n        \u003c!-- 三色叠印小色点（克制：仅左下角一处） -->\n        \u003ccircle cx=\"86\" cy=\"156\" r=\"9\" fill=\"var(--color-primary)\" opacity=\".7\" />\n        \u003ccircle cx=\"98\" cy=\"156\" r=\"9\" fill=\"var(--color-secondary)\" opacity=\".7\" />\n        \u003ccircle cx=\"92\" cy=\"147\" r=\"9\" fill=\"var(--color-accent)\" opacity=\".8\" />\n      \u003c/svg>\n      \u003cdiv class=\"cta-row\">\n        \u003cbutton class=\"btn btn-primary\" type=\"button\">获取报价\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">看看设计案例\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 印刷工艺：四步 -->\n    \u003cdiv>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>印刷工艺\u003c/h2>\n        \u003cspan>从菲林到成品 · 四天交付打样\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"step-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"step-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"菲林输出线稿（示例插图）\">\n                \u003crect x=\"18\" y=\"30\" width=\"60\" height=\"36\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\">\n                  \u003cline x1=\"30\" y1=\"38\" x2=\"30\" y2=\"58\" />\u003cline x1=\"42\" y1=\"38\" x2=\"42\" y2=\"58\" />\u003cline x1=\"54\" y1=\"38\" x2=\"54\" y2=\"58\" />\u003cline x1=\"66\" y1=\"38\" x2=\"66\" y2=\"58\" />\n                \u003c/g>\n                \u003cline x1=\"18\" y1=\"74\" x2=\"78\" y2=\"74\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"step-name\">\u003ci style=\"background:var(--color-primary)\">\u003c/i>菲林输出\u003c/span>\n            \u003cp class=\"step-desc\">文件四色分色出菲林，网点精度 175 线，偏色先打样再上机。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"step-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"制版晒版线稿（示例插图）\">\n                \u003crect x=\"24\" y=\"34\" width=\"48\" height=\"40\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003ccircle cx=\"48\" cy=\"54\" r=\"9\" fill=\"none\" stroke=\"var(--color-accent)\" stroke-width=\"1.8\" />\n                \u003cg stroke=\"var(--color-accent)\" stroke-width=\"1.6\" stroke-linecap=\"round\">\n                  \u003cline x1=\"48\" y1=\"38\" x2=\"48\" y2=\"42\" />\u003cline x1=\"48\" y1=\"66\" x2=\"48\" y2=\"70\" />\u003cline x1=\"32\" y1=\"54\" x2=\"36\" y2=\"54\" />\u003cline x1=\"60\" y1=\"54\" x2=\"64\" y2=\"54\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"step-name\">\u003ci style=\"background:var(--color-secondary)\">\u003c/i>制版晒版\u003c/span>\n            \u003cp class=\"step-desc\">PS 版烤版上胶，版面亲墨性均匀，长版印刷不花版。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"step-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"四色套印线稿（示例插图）\">\n                \u003ccircle cx=\"36\" cy=\"44\" r=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003ccircle cx=\"60\" cy=\"60\" r=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cline x1=\"20\" y1=\"78\" x2=\"76\" y2=\"78\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n                \u003ccircle cx=\"36\" cy=\"44\" r=\"5\" fill=\"var(--color-primary)\" opacity=\".7\" />\n                \u003ccircle cx=\"60\" cy=\"60\" r=\"5\" fill=\"var(--color-secondary)\" opacity=\".7\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"step-name\">\u003ci style=\"background:var(--color-accent)\">\u003c/i>四色套印\u003c/span>\n            \u003cp class=\"step-desc\">青品黄黑逐色套准，色差 ΔE 控制在 3 以内才放行。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"step-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"裁切装订单稿（示例插图）\">\n                \u003crect x=\"26\" y=\"28\" width=\"44\" height=\"10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" />\n                \u003crect x=\"26\" y=\"42\" width=\"44\" height=\"10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" />\n                \u003crect x=\"26\" y=\"56\" width=\"44\" height=\"10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" />\n                \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\">\n                  \u003cline x1=\"16\" y1=\"80\" x2=\"30\" y2=\"80\" />\u003cline x1=\"66\" y1=\"80\" x2=\"80\" y2=\"80\" />\n                \u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"step-name\">\u003ci style=\"background:var(--color-base-content)\">\u003c/i>裁切装订\u003c/span>\n            \u003cp class=\"step-desc\">按出血线模切，骑马钉或胶装，成品逐张质检打包。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 设计案例：三个成品剪影 -->\n    \u003cdiv>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>设计案例\u003c/h2>\n        \u003cspan>近三个月交付 · 客户均已验收\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"case-grid\">\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"case-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"画册剪影线稿（示例插图）\">\n                \u003cpath d=\"M20 26 h24 v44 h-24 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cpath d=\"M76 26 h-24 v44 h24 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cline x1=\"44\" y1=\"26\" x2=\"52\" y2=\"26\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cline x1=\"48\" y1=\"26\" x2=\"48\" y2=\"70\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n                \u003cg stroke=\"var(--color-primary)\" stroke-width=\"1.4\" stroke-linecap=\"round\">\u003cline x1=\"26\" y1=\"36\" x2=\"38\" y2=\"36\" />\u003cline x1=\"26\" y1=\"44\" x2=\"38\" y2=\"44\" />\u003c/g>\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"case-name\">企业画册\u003c/span>\n            \u003cp class=\"case-desc\">16 开 64 页锁线胶装，封面 250g 铜版纸覆哑膜。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"case-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"包装盒剪影线稿（示例插图）\">\n                \u003cpath d=\"M28 40 L48 28 L68 40 L48 52 Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" />\n                \u003cpath d=\"M28 40 v26 l20 12 v-26 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" />\n                \u003cpath d=\"M68 40 v26 l-20 12 v-26 z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\" />\n                \u003ccircle cx=\"48\" cy=\"53\" r=\"4\" fill=\"var(--color-secondary)\" opacity=\".7\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"case-name\">产品包装\u003c/span>\n            \u003cp class=\"case-desc\">350g 白卡手提盒，四色印刷加局部 UV，打样两天确认。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n        \u003cdiv class=\"card bg-base-200 rounded-box\">\n          \u003cdiv class=\"card-body\" style=\"padding:14px;gap:8px\">\n            \u003cdiv class=\"case-art\">\n              \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"海报剪影线稿（示例插图）\">\n                \u003crect x=\"30\" y=\"18\" width=\"36\" height=\"60\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n                \u003cline x1=\"36\" y1=\"30\" x2=\"60\" y2=\"30\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n                \u003cpath d=\"M36 44 q6 -6 12 0 t12 0\" fill=\"none\" stroke=\"var(--color-accent)\" stroke-width=\"1.8\" />\n                \u003cline x1=\"36\" y1=\"62\" x2=\"52\" y2=\"62\" stroke=\"currentColor\" stroke-width=\"1.6\" />\n              \u003c/svg>\n            \u003c/div>\n            \u003cspan class=\"case-name\">活动海报\u003c/span>\n            \u003cp class=\"case-desc\">对开 157g 铜版纸，大批量 24 小时内交货。\u003c/p>\n          \u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 打样报价 -->\n    \u003cdiv class=\"card bg-base-200 rounded-box\">\n      \u003cdiv class=\"card-body\" style=\"padding:20px;gap:12px\">\n        \u003cdiv class=\"sect-head\" style=\"margin-bottom:0\">\n          \u003ch2>打样报价\u003c/h2>\n          \u003cspan>以下为示例价格 · 实际以文件工艺核算为准\u003c/span>\n        \u003c/div>\n        \u003cul class=\"price-list\">\n          \u003cli>\u003cspan>名片印刷 \u003cspan class=\"qty\">300g 铜版纸覆哑膜 · 500 张起\u003c/span>\u003c/span>\u003cspan class=\"amount\">¥35 / 盒\u003c/span>\u003c/li>\n          \u003cli>\u003cspan>宣传画册 \u003cspan class=\"qty\">16 开 · 50 本起印\u003c/span>\u003c/span>\u003cspan class=\"amount\">¥8.5 / 本起\u003c/span>\u003c/li>\n          \u003cli>\u003cspan>产品包装 \u003cspan class=\"qty\">350g 白卡 · 1000 个起订\u003c/span>\u003c/span>\u003cspan class=\"amount\">¥1.2 / 个起\u003c/span>\u003c/li>\n          \u003cli>\u003cspan>活动海报 \u003cspan class=\"qty\">对开 · 200 张起\u003c/span>\u003c/span>\u003cspan class=\"amount\">¥45 / 张起\u003c/span>\u003c/li>\n        \u003c/ul>\n        \u003cdiv>\n          \u003cbutton class=\"btn btn-primary\" type=\"button\">提交打样需求\u003c/button>\n        \u003c/div>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 联系 CTA -->\n    \u003cdiv class=\"card rounded-box\" style=\"padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center\">\n      \u003ch2 style=\"font-size:21px;margin:0;letter-spacing:1px\">带着文件来，先打样再谈量\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9\">工作日上午九点前发来印刷文件，当天出数码样，确认色差后再上八色机。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:2px;margin-top:2px\">\n        \u003cspan style=\"font-size:13px;font-weight:700\">叠彩印刷 · 打样间\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.8\">工业园区双庆路 88 号 3 栋（虚构）\u003cbr />021-6600-0000（虚构）\u003c/span>\n      \u003c/div>\n      \u003cbutton class=\"btn btn-primary\" type=\"button\">预约打样\u003c/button>\n    \u003c/div>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">叠彩印刷 DIE-CAI PRINT STUDIO 为虚构品牌，工艺、价格、案例与门店地址均为示例数据，仅用于展示 cmyk 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
