@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>暖焙（coffee）· AI 指令 · 灰墨 MoH_UI</title>
+<meta name="description" content="把本页链接发给任意 AI，即可按灰墨审美生成「暖焙（coffee）」组件。虚构烘焙坊品牌「暖炉烘焙坊 WARMSTONE」品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感；挂 daisyUI 官方主题 data-theme="coffee" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。">
+<link rel="alternate" type="text/markdown" href="coffee.md">
+<link rel="describedby" href="../llms.txt">
+<style>
+:root{--ink:#1f2430;--muted:#5b6472;--line:#e5e8ee;--bg:#fafbfc;--card:#fff;--brand:#2563eb;--code-bg:#0f1420;--code-ink:#e6eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.topbar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-weight:700;font-size:14px;color:var(--ink);text-decoration:none}
+.brand small{color:var(--muted);font-weight:400;margin-left:6px}
+.spacer{flex:1}
+.btn{appearance:none;border:0;border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;
+  font-family:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+article{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 36px}
+h1{font-size:23px;line-height:1.4;margin:0 0 12px}
+h2{font-size:17px;margin:30px 0 10px;padding-top:16px;border-top:1px solid var(--line)}
+h2:first-child{border-top:0;padding-top:0}
+h3{font-size:15px;margin:20px 0 8px}
+p{margin:8px 0}
+blockquote{margin:10px 0;padding:10px 16px;background:#f1f5ff;border-left:3px solid var(--brand);
+  border-radius:0 8px 8px 0;color:#2b3650;font-size:14px}
+blockquote p{margin:0}
+ul,ol{margin:8px 0;padding-left:24px}
+li{margin:3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:24px 0}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font-family:ui-monospace,"JetBrains Mono",Consolas,Menlo,monospace;font-size:13px;
+  background:#eef1f6;padding:1px 6px;border-radius:5px;color:#263044}
+pre.fence{background:var(--code-bg);color:var(--code-ink);padding:16px 18px;border-radius:10px;
+  overflow-x:auto;font-size:13px;line-height:1.65;margin:10px 0}
+pre.fence code{background:transparent;padding:0;color:inherit;font-size:13px}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.copy-note{font-size:12px;color:var(--muted);margin-top:8px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:#111827;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;opacity:0;
+  transition:all .2s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}article{padding:22px 18px;border-radius:10px}
+  .topbar-in{padding:10px 14px}.btn-ghost{display:none}h1{font-size:19px}
+  pre.fence{padding:13px 14px;border-radius:8px}pre.fence code{font-size:11.5px;line-height:1.6}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <a class="brand" href="../index.html">灰墨 MoH_UI<small>AI 组件指令</small></a>
+  <span class="spacer"></span>
+  <a class="btn btn-ghost" href="https://noii-y.github.io/moh-ui/themes/coffee/demo.html" target="_blank" rel="noopener">完整教程</a>
+  <button class="btn btn-primary" id="copy-btn" type="button">复制 AI 指令</button>
+</div></div>
+<div class="wrap"><article>
+<h1>暖焙（coffee） · 灰墨 MoH_UI</h1>
+<blockquote>虚构烘焙坊品牌「暖炉烘焙坊 WARMSTONE」品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感；挂 daisyUI 官方主题 data-theme="coffee" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。</blockquote>
+<p>来源：daisyUI 内置主题（MIT，无需额外文件）</p>
+<p><strong>在线整页案例：<a href="https://noii-y.github.io/moh-ui/themes/coffee/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/coffee/demo.html</a></strong></p>
+<h2>用法一：照着整页做一个同款（推荐，复现效果最接近）</h2>
+<p>下面是该主题<strong>完整、可直接运行的整页源码</strong>（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。</p>
+<h3>换成你自己的业务时必须守住的视觉特征</h3>
+<ul>
+<li>coffee 是深暖棕烘焙主题：base-100 深咖啡棕（oklch 24%）、base-200 更深、base-content 暖奶油色（oklch 72%），正文对比约 6.7:1；整体气质温润、慢手工，不要做成冷峻科技感。</li>
+<li>主色 primary 是焦糖橙（oklch 72%），按钮默认 btn-primary 直接用即可——深棕底上焦糖橙配深色 primary-content 字实测 7.8:1，完全达标；primary 橙只用于主按钮、品牌咖啡杯图标、烘焙度高亮条、课程步骤圆号、热气/咖啡豆点缀线稿，绝不大面积铺橙色背景。</li>
+<li>装饰与商品图只用 currentColor 单色线稿 SVG：烘焙滚筒、手冲壶、滤杯、马克杯、咖啡豆、工坊豆袋与磨豆台都要画出可分辨轮廓；咖啡豆用焦糖橙描中线（椭圆+中间缝），四款豆子用不同方向的缝线弧线区分，不用彩色照片、不用 emoji、不用渐变。</li>
+<li>烘焙度用深浅条示意（4 格小方块，点亮数 = 烘焙度），不要用色块填充整张卡；风味描述写真实词（茉莉花、焦糖、黑巧、草本），不写「醇厚香浓回味无穷」。</li>
+<li>课程卡结构：级别标签（10px 字距 2）+ 课程名 + 时间/内容/名额三行 meta + 报名按钮；名额余量用 warning 暖黄色加粗；三个课程流程用横向圆号 + 细线连接（签到选豆→讲师演示→杯测带豆回家）。</li>
+<li>与 caramellatte（点单/菜单/加购）的差异：本页做品牌故事与课程报名，页面不出现「加入购物车 / 立即下单 / 价格标签 / 数量加减」；唯一的 CTA 是「报名手作课程」和「看看本周豆子」，按钮动作都是报名/浏览，不是购买。</li>
+<li>文案写真实工坊动作（每周一烘豆、烘后十四天保质期、每场限 6 人、周三至周日 10:00–19:00），地址电话标注虚构，不写「匠心臻品手作之选」这类空话。</li>
+<li>390px 窄屏顶栏自然折行、豆子卡与课程卡单列、品牌故事图文上下堆叠、不横向溢出。</li>
+</ul>
+<h3>完整整页源码</h3>
+<pre class="fence"><code class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN" data-theme="coffee"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;慢火，慢手，慢一点的味道 · 暖炉烘焙坊 WARMSTONE（coffee 主题案例）&lt;/title&gt;
+  &lt;meta name="description" content="灰墨 coffee 主题完整页面案例：虚构烘焙坊品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感。本页只依赖 daisyUI 官方主题。" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" /&gt;
+  &lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" /&gt;
+  &lt;style&gt;
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 24px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand svg { width: 24px; height: 24px; color: var(--color-primary); }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head .sub { font-size: 12px; opacity: .55; }
+    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 40px 16px 32px; }
+    .hero-zone h1 { font-size: 34px; font-weight: 800; margin: 0; line-height: 1.3; letter-spacing: 2px; }
+    .hero-zone .lede { font-size: 13px; opacity: .7; max-width: 480px; margin: 0; line-height: 2.1; }
+    .hero-art { width: 300px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 豆子卡 */
+    .bean-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .bean-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .bean-art { height: 100px; display: flex; align-items: center; justify-content: center; }
+    .bean-art svg { width: 72px; height: 72px; }
+    .bean-name { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    .bean-origin { font-size: 11px; opacity: .55; letter-spacing: 1px; }
+    .bean-flavor { font-size: 12px; opacity: .7; margin: 0; line-height: 1.9; }
+    /* 烘焙度条 */
+    .roast { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .7; }
+    .roast .bar { display: flex; gap: 2px; }
+    .roast .bar span { width: 14px; height: 6px; border-radius: 2px; background: var(--color-base-300); }
+    .roast .bar span.on { background: var(--color-primary); }
+    /* 课程卡 */
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+    .course-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .course-tag { font-size: 10px; letter-spacing: 2px; opacity: .5; }
+    .course-name { font-size: 16px; font-weight: 700; }
+    .course-meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; opacity: .7; line-height: 1.8; }
+    .course-meta .row { display: flex; justify-content: space-between; gap: 8px; }
+    .course-seats { color: var(--color-warning); font-weight: 600; }
+    /* 课程流程 */
+    .steps3 { display: flex; align-items: flex-start; gap: 0; padding: 8px 0 0; flex-wrap: wrap; }
+    .steps3 .s { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 90px; text-align: center; }
+    .steps3 .num { width: 30px; height: 30px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-content); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .steps3 .txt { font-size: 11px; line-height: 1.5; opacity: .8; }
+    .steps3 .line { flex: 1; min-width: 20px; height: 1px; background: color-mix(in oklab, currentColor 25%, transparent); margin-top: 15px; }
+    /* 品牌故事 */
+    .story-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+    .story-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; align-items: center; }
+    .story-grid p { font-size: 13px; opacity: .8; margin: 0 0 12px; line-height: 2.1; }
+    .story-art { width: 100%; height: auto; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.9; }
+    .cta-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 30px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+    @media (max-width: 860px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-zone { padding: 28px 8px 22px; }
+      .hero-zone h1 { font-size: 26px; }
+      .story-grid { grid-template-columns: 1fr; }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="wrap"&gt;
+
+    &lt;!-- 顶栏 --&gt;
+    &lt;div class="navbar rounded-box bg-base-200" style="padding:0 16px"&gt;
+      &lt;div class="navbar-start"&gt;
+        &lt;div class="brand"&gt;
+          &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"&gt;
+            &lt;path d="M18 8h1a4 4 0 0 1 0 8h-1" /&gt;
+            &lt;path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /&gt;
+            &lt;line x1="6" y1="1" x2="6" y2="4" /&gt;
+            &lt;line x1="10" y1="1" x2="10" y2="4" /&gt;
+            &lt;line x1="14" y1="1" x2="14" y2="4" /&gt;
+          &lt;/svg&gt;
+          暖炉烘焙坊 &lt;small&gt;WARMSTONE&lt;/small&gt;
+        &lt;/div&gt;
+        &lt;ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 20%, transparent);--menu-active-fg:var(--color-primary-content)"&gt;
+          &lt;li&gt;&lt;a class="menu-active"&gt;品牌故事&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;豆子溯源&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;手作课程&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;门店&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a&gt;会员&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="navbar-end" style="gap:10px"&gt;
+        &lt;button class="btn btn-sm btn-primary" type="button"&gt;报名课程&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Hero --&gt;
+    &lt;div class="hero-zone"&gt;
+      &lt;span class="badge badge-soft badge-sm" style="--badge-color:var(--color-primary)"&gt;自烘焙 · 小批量 · 当周烘豆&lt;/span&gt;
+      &lt;h1&gt;慢火，慢手，&lt;br /&gt;慢一点的味道&lt;/h1&gt;
+      &lt;p class="lede"&gt;暖炉烘焙坊在城西的旧厂房里架着一台五公斤的铸铁滚筒。每周一烘豆，周三开卖，豆子不超过十四天。我们不追风味猎奇，只想把一杯手冲做稳。&lt;/p&gt;
+      &lt;svg class="hero-art" viewBox="0 0 320 200" role="img" aria-label="烘焙坊线稿：左侧烘焙滚筒冒着热气、右侧手冲壶与滤杯、下方一只马克杯（示例插图）"&gt;
+        &lt;!-- 烘焙滚筒 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;ellipse cx="80" cy="100" rx="38" ry="32" /&gt;
+          &lt;circle cx="80" cy="100" r="22" /&gt;
+          &lt;line x1="42" y1="100" x2="24" y2="100" /&gt;
+          &lt;line x1="118" y1="100" x2="132" y2="100" /&gt;
+          &lt;!-- 热气 --&gt;
+          &lt;path d="M68 58 q-4 -8 0 -16 q4 -8 0 -16" stroke="var(--color-primary)" /&gt;
+          &lt;path d="M80 56 q-4 -8 0 -16 q4 -8 0 -16" stroke="var(--color-primary)" /&gt;
+          &lt;path d="M92 58 q-4 -8 0 -16 q4 -8 0 -16" stroke="var(--color-primary)" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 手冲壶 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;path d="M180 130 v-30 q0 -12 12 -12 h14 q12 0 12 12 v30 z" /&gt;
+          &lt;path d="M218 108 q14 -2 16 -14" /&gt;
+          &lt;path d="M180 118 h-10" /&gt;
+          &lt;!-- 细嘴 --&gt;
+          &lt;path d="M196 88 q0 -8 -8 -10" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 滤杯 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;path d="M172 130 h48 l-8 22 h-32 z" /&gt;
+          &lt;line x1="168" y1="152" x2="224" y2="152" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 马克杯 --&gt;
+        &lt;g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+          &lt;path d="M178 162 h36 v14 q0 10 -10 10 h-16 q-10 0 -10 -10 z" /&gt;
+          &lt;path d="M214 166 q10 0 10 6 q0 6 -10 6" /&gt;
+        &lt;/g&gt;
+        &lt;!-- 咖啡豆散落 --&gt;
+        &lt;g stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round"&gt;
+          &lt;ellipse cx="150" cy="178" rx="5" ry="7" transform="rotate(-20 150 178)" /&gt;
+          &lt;path d="M147 172 l6 12" /&gt;
+          &lt;ellipse cx="240" cy="180" rx="5" ry="7" transform="rotate(15 240 180)" /&gt;
+          &lt;path d="M238 174 l4 12" /&gt;
+        &lt;/g&gt;
+      &lt;/svg&gt;
+      &lt;div class="cta-row"&gt;
+        &lt;button class="btn btn-primary" type="button"&gt;报名手作课程&lt;/button&gt;
+        &lt;button class="btn btn-ghost" type="button"&gt;看看本周豆子&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- 豆子溯源 --&gt;
+    &lt;section&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;本周烘焙豆&lt;/h2&gt;
+        &lt;span class="sub"&gt;每周一烘豆 · 保质期烘后十四天&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="bean-grid"&gt;
+
+        &lt;div class="bean-card"&gt;
+          &lt;div class="bean-art"&gt;
+            &lt;svg viewBox="0 0 96 96" role="img" aria-label="埃塞俄比亚耶加雪菲咖啡豆线稿（示例插图）"&gt;
+              &lt;ellipse cx="48" cy="48" rx="22" ry="30" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+              &lt;path d="M48 22 v52" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="bean-name"&gt;耶加雪菲 &lt;span class="bean-origin"&gt;ETHIOPIA · 水洗&lt;/span&gt;&lt;/div&gt;
+          &lt;p class="bean-flavor"&gt;浅烘。茉莉花、柠檬茶、蜂蜜尾韵。适合手冲与冷萃。&lt;/p&gt;
+          &lt;div class="roast"&gt;
+            &lt;span&gt;烘焙度&lt;/span&gt;
+            &lt;div class="bar"&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;span&gt;浅&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="bean-card"&gt;
+          &lt;div class="bean-art"&gt;
+            &lt;svg viewBox="0 0 96 96" role="img" aria-label="哥伦比亚慧兰咖啡豆线稿（示例插图）"&gt;
+              &lt;ellipse cx="48" cy="48" rx="22" ry="30" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+              &lt;path d="M44 22 q8 26 0 52" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="bean-name"&gt;慧兰 supremo &lt;span class="bean-origin"&gt;COLOMBIA · 水洗&lt;/span&gt;&lt;/div&gt;
+          &lt;p class="bean-flavor"&gt;中烘。焦糖、坚果、橙皮。平衡干净，日常口粮豆。&lt;/p&gt;
+          &lt;div class="roast"&gt;
+            &lt;span&gt;烘焙度&lt;/span&gt;
+            &lt;div class="bar"&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;span&gt;中&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="bean-card"&gt;
+          &lt;div class="bean-art"&gt;
+            &lt;svg viewBox="0 0 96 96" role="img" aria-label="巴西喜拉多咖啡豆线稿（示例插图）"&gt;
+              &lt;ellipse cx="48" cy="48" rx="22" ry="30" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+              &lt;path d="M42 24 q12 24 2 48" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="bean-name"&gt;喜拉多 · 黄波旁 &lt;span class="bean-origin"&gt;BRAZIL · 日晒&lt;/span&gt;&lt;/div&gt;
+          &lt;p class="bean-flavor"&gt;中深烘。巧克力、花生、低酸醇厚。拿铁与奶咖首选。&lt;/p&gt;
+          &lt;div class="roast"&gt;
+            &lt;span&gt;烘焙度&lt;/span&gt;
+            &lt;div class="bar"&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;span&gt;中深&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="bean-card"&gt;
+          &lt;div class="bean-art"&gt;
+            &lt;svg viewBox="0 0 96 96" role="img" aria-label="曼特宁咖啡豆线稿（示例插图）"&gt;
+              &lt;ellipse cx="48" cy="48" rx="22" ry="30" fill="none" stroke="currentColor" stroke-width="2" /&gt;
+              &lt;path d="M50 22 q-6 26 2 52" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" /&gt;
+            &lt;/svg&gt;
+          &lt;/div&gt;
+          &lt;div class="bean-name"&gt;曼特宁 · 湿刨 &lt;span class="bean-origin"&gt;INDONESIA · 湿刨&lt;/span&gt;&lt;/div&gt;
+          &lt;p class="bean-flavor"&gt;深烘。草本、黑巧、松木。厚 body，适合手冲加奶。&lt;/p&gt;
+          &lt;div class="roast"&gt;
+            &lt;span&gt;烘焙度&lt;/span&gt;
+            &lt;div class="bar"&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;span class="on"&gt;&lt;/span&gt;&lt;/div&gt;
+            &lt;span&gt;深&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 品牌故事 --&gt;
+    &lt;section class="story-card"&gt;
+      &lt;h2 style="font-size:19px;margin:0;letter-spacing:1px"&gt;我们的炉子&lt;/h2&gt;
+      &lt;div class="story-grid"&gt;
+        &lt;div&gt;
+          &lt;p&gt;2019 年冬天，我们在城西旧棉纺厂的一间车间里架起第一台铸铁滚筒。那时候只有一张磨豆台、两把手冲壶，和十二个来试豆子的朋友。&lt;/p&gt;
+          &lt;p&gt;烘豆这件事急不得。一炉五公斤，从爆一爆到二爆之间的两三分钟，是味道的分水岭。我们宁可每周只烘四炉，也不愿意为了现货量把豆子烘到"不出错"——不出错，往往也就是不出彩。&lt;/p&gt;
+          &lt;p&gt;现在工坊里有三台滚筒、两个常驻烘豆师，和一面写满批次记录的墙。每一袋豆子都贴着烘焙日，你买回家时离出炉不超过七天。&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;svg class="story-art" viewBox="0 0 260 200" role="img" aria-label="工坊线稿：墙上一排豆袋、中间一张磨豆台、窗边一株绿植（示例插图）"&gt;
+          &lt;!-- 墙面豆袋 --&gt;
+          &lt;g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+            &lt;rect x="20" y="30" width="36" height="44" rx="3" /&gt;
+            &lt;path d="M20 40 h36" opacity=".5" /&gt;
+            &lt;rect x="66" y="30" width="36" height="44" rx="3" /&gt;
+            &lt;path d="M66 40 h36" opacity=".5" /&gt;
+            &lt;rect x="112" y="30" width="36" height="44" rx="3" /&gt;
+            &lt;path d="M112 40 h36" opacity=".5" /&gt;
+          &lt;/g&gt;
+          &lt;!-- 磨豆台 --&gt;
+          &lt;g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+            &lt;rect x="40" y="120" width="140" height="8" /&gt;
+            &lt;rect x="56" y="128" width="6" height="50" /&gt;
+            &lt;rect x="158" y="128" width="6" height="50" /&gt;
+            &lt;!-- 磨豆机 --&gt;
+            &lt;rect x="86" y="92" width="28" height="28" rx="3" /&gt;
+            &lt;path d="M92 92 v-8 h16 v8" /&gt;
+          &lt;/g&gt;
+          &lt;!-- 窗边绿植 --&gt;
+          &lt;g stroke="var(--color-primary)" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"&gt;
+            &lt;path d="M210 180 v-30" /&gt;
+            &lt;path d="M210 150 q-14 -6 -18 -20 q16 2 18 20z" /&gt;
+            &lt;path d="M210 150 q14 -6 18 -20 q-16 2 -18 20z" /&gt;
+            &lt;path d="M210 140 q-8 -10 -8 -22" /&gt;
+            &lt;path d="M210 140 q8 -10 8 -22" /&gt;
+          &lt;/g&gt;
+          &lt;!-- 地面 --&gt;
+          &lt;line x1="0" y1="180" x2="260" y2="180" stroke="currentColor" stroke-width="1.4" opacity=".4" /&gt;
+        &lt;/svg&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 手作课程 --&gt;
+    &lt;section&gt;
+      &lt;div class="sect-head"&gt;
+        &lt;h2&gt;手作课程&lt;/h2&gt;
+        &lt;span class="sub"&gt;小班教学 · 每场限 6 人 · 工坊内开课&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="course-grid"&gt;
+
+        &lt;div class="course-card"&gt;
+          &lt;span class="course-tag"&gt;BEGINNER · 2.5 H&lt;/span&gt;
+          &lt;span class="course-name"&gt;手冲入门&lt;/span&gt;
+          &lt;div class="course-meta"&gt;
+            &lt;div class="row"&gt;&lt;span&gt;时间&lt;/span&gt;&lt;span&gt;10 月 25 日（周六）14:00&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;内容&lt;/span&gt;&lt;span&gt;磨豆 · 水温 · 注水手法&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;名额&lt;/span&gt;&lt;span class="course-seats"&gt;余 3 席&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class="btn btn-primary btn-sm" type="button"&gt;报名课程&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class="course-card"&gt;
+          &lt;span class="course-tag"&gt;INTERMEDIATE · 3 H&lt;/span&gt;
+          &lt;span class="course-name"&gt;烘焙实践&lt;/span&gt;
+          &lt;div class="course-meta"&gt;
+            &lt;div class="row"&gt;&lt;span&gt;时间&lt;/span&gt;&lt;span&gt;11 月 1 日（周六）09:30&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;内容&lt;/span&gt;&lt;span&gt;一爆二爆 · 曲线记录 · 杯测&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;名额&lt;/span&gt;&lt;span class="course-seats"&gt;余 2 席&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class="btn btn-primary btn-sm" type="button"&gt;报名课程&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class="course-card"&gt;
+          &lt;span class="course-tag"&gt;BEGINNER · 2 H&lt;/span&gt;
+          &lt;span class="course-name"&gt;拉花体验&lt;/span&gt;
+          &lt;div class="course-meta"&gt;
+            &lt;div class="row"&gt;&lt;span&gt;时间&lt;/span&gt;&lt;span&gt;11 月 8 日（周六）15:00&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;内容&lt;/span&gt;&lt;span&gt;奶泡打发 · 基础心形&lt;/span&gt;&lt;/div&gt;
+            &lt;div class="row"&gt;&lt;span&gt;名额&lt;/span&gt;&lt;span class="course-seats"&gt;余 4 席&lt;/span&gt;&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button class="btn btn-primary btn-sm" type="button"&gt;报名课程&lt;/button&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;div style="margin-top:14px;padding:0 4px"&gt;
+        &lt;div style="font-size:12px;opacity:.55;margin-bottom:8px"&gt;课程流程&lt;/div&gt;
+        &lt;div class="steps3"&gt;
+          &lt;div class="s"&gt;&lt;div class="num"&gt;1&lt;/div&gt;&lt;span class="txt"&gt;到店签到&lt;br /&gt;选豆闻香&lt;/span&gt;&lt;/div&gt;
+          &lt;div class="line"&gt;&lt;/div&gt;
+          &lt;div class="s"&gt;&lt;div class="num"&gt;2&lt;/div&gt;&lt;span class="txt"&gt;讲师演示&lt;br /&gt;学员动手&lt;/span&gt;&lt;/div&gt;
+          &lt;div class="line"&gt;&lt;/div&gt;
+          &lt;div class="s"&gt;&lt;div class="num"&gt;3&lt;/div&gt;&lt;span class="txt"&gt;杯测点评&lt;br /&gt;带豆回家&lt;/span&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- 门店 / 会员 CTA --&gt;
+    &lt;section class="cta-card"&gt;
+      &lt;h2 style="font-size:21px;margin:0;letter-spacing:1px"&gt;来工坊坐坐&lt;/h2&gt;
+      &lt;p style="font-size:13px;opacity:.65;max-width:460px;margin:0;line-height:2"&gt;周三至周日 10:00–19:00，工坊玻璃房对外开放。点一杯手冲，看烘豆师转滚筒。课程报名后会有店员电话与你确认时间。&lt;/p&gt;
+      &lt;div style="display:flex;flex-direction:column;gap:2px;margin-top:4px"&gt;
+        &lt;span style="font-size:13px;font-weight:700"&gt;暖炉烘焙坊 · 城西工坊店&lt;/span&gt;
+        &lt;span style="font-size:12px;opacity:.6;line-height:1.9"&gt;棉纺路 17 号旧厂房 B 栋 102（虚构）&lt;br /&gt;021-5600-0000（虚构）&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;button class="btn btn-primary" type="button"&gt;报名手作课程&lt;/button&gt;
+    &lt;/section&gt;
+
+    &lt;div class="hairline"&gt;&lt;/div&gt;
+    &lt;p class="foot"&gt;暖炉烘焙坊 WARMSTONE 为虚构品牌，咖啡豆产区、课程时间、门店地址与电话均为示例数据，仅用于展示 coffee 主题整页效果 · 灰墨 MoH_UI&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h2>用法二：只给已有项目换肤</h2>
+<p>① 在 <code>&lt;head&gt;</code> 引入 daisyUI 5 底座：</p>
+<pre class="fence"><code class="lang-html">&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css"&gt;
+&lt;link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css"&gt;</code></pre>
+<p>② 在 <code>&lt;html&gt;</code> 挂 <code>data-theme="coffee"</code>，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。</p>
+<p>③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：</p>
+<p>该主题变量在 daisyui-themes.css 内，无需复制。</p>
+<p>④ 组件全部走 daisyUI 语义类（<code>btn</code> / <code>card</code> / <code>table</code> / <code>input</code> 等），不要硬编码颜色。</p>
+<hr>
+<h2>更多</h2>
+<ul>
+<li>完整整页案例（在线页面）：<a href="https://noii-y.github.io/moh-ui/themes/coffee/demo.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/themes/coffee/demo.html</a></li>
+<li>素材溯源与许可证：<a href="https://noii-y.github.io/moh-ui/site/attributions.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/attributions.html</a></li>
+<li>主题库：<a href="https://noii-y.github.io/moh-ui/site/themes.html" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/site/themes.html</a></li>
+<li>全站 AI 索引：<a href="https://noii-y.github.io/moh-ui/llms.txt" target="_blank" rel="noopener noreferrer">https://noii-y.github.io/moh-ui/llms.txt</a></li>
+</ul>
+<p class="copy-note">提示：把本页链接（或点「复制 AI 指令」得到的纯文本）发给豆包 / Cursor / Claude Code 等任意 AI，它会结合你的项目生成代码。</p>
+</article></div>
+<div class="toast" id="toast">AI 指令已复制 ✓</div>
+<script>
+(function(){
+  // 内联文本的尖括号已转义为 unicode，避免参考结构里的脚本闭合标签提前终止本脚本（运行时还原）
+  var text = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个「暖焙（coffee）」的整页。\n\n【场景】\n虚构烘焙坊品牌「暖炉烘焙坊 WARMSTONE」品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感；挂 daisyUI 官方主题 data-theme=\"coffee\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。\n我要的就是这套真实页面样板的视觉效果：先 1:1 还原它的结构、配色、字体与留白，再把品牌名、文案、商品与数据替换成我业务里的内容。\n\n【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n- coffee 是深暖棕烘焙主题：base-100 深咖啡棕（oklch 24%）、base-200 更深、base-content 暖奶油色（oklch 72%），正文对比约 6.7:1；整体气质温润、慢手工，不要做成冷峻科技感。\n- 主色 primary 是焦糖橙（oklch 72%），按钮默认 btn-primary 直接用即可——深棕底上焦糖橙配深色 primary-content 字实测 7.8:1，完全达标；primary 橙只用于主按钮、品牌咖啡杯图标、烘焙度高亮条、课程步骤圆号、热气/咖啡豆点缀线稿，绝不大面积铺橙色背景。\n- 装饰与商品图只用 currentColor 单色线稿 SVG：烘焙滚筒、手冲壶、滤杯、马克杯、咖啡豆、工坊豆袋与磨豆台都要画出可分辨轮廓；咖啡豆用焦糖橙描中线（椭圆+中间缝），四款豆子用不同方向的缝线弧线区分，不用彩色照片、不用 emoji、不用渐变。\n- 烘焙度用深浅条示意（4 格小方块，点亮数 = 烘焙度），不要用色块填充整张卡；风味描述写真实词（茉莉花、焦糖、黑巧、草本），不写「醇厚香浓回味无穷」。\n- 课程卡结构：级别标签（10px 字距 2）+ 课程名 + 时间/内容/名额三行 meta + 报名按钮；名额余量用 warning 暖黄色加粗；三个课程流程用横向圆号 + 细线连接（签到选豆→讲师演示→杯测带豆回家）。\n- 与 caramellatte（点单/菜单/加购）的差异：本页做品牌故事与课程报名，页面不出现「加入购物车 / 立即下单 / 价格标签 / 数量加减」；唯一的 CTA 是「报名手作课程」和「看看本周豆子」，按钮动作都是报名/浏览，不是购买。\n- 文案写真实工坊动作（每周一烘豆、烘后十四天保质期、每场限 6 人、周三至周日 10:00–19:00），地址电话标注虚构，不写「匠心臻品手作之选」这类空话。\n- 390px 窄屏顶栏自然折行、豆子卡与课程卡单列、品牌故事图文上下堆叠、不横向溢出。\n\n【怎么引入主题】\n在 \u003chead> 加这几行：\n\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\">\n\u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\">\n\n然后在 \u003chtml data-theme=\"coffee\"> 挂属性，整页即刻换肤。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。\n\n【精确规格】\n- 整页挂 data-theme=\"coffee\"；组件全部走 daisyUI 语义类（btn / card / table / input 等），不硬编码颜色，要改色就覆盖 [data-theme=\"coffee\"] 下的 --color-* 变量。\n- 零依赖、零 JS、零外网图片：配图一律用内联 currentColor 单色 SVG；不出现真实商标，品牌与数据均为示例。\n- 390px 窄屏不横向溢出：顶栏自然折行、卡片单列，表格或代码可横滑但不撑破页面。\n\n【参考结构】（完整可运行整页，零依赖，可直接保存为 .html 双击打开；照此实现，替换业务内容时保持上面的视觉特征）\n```html\n\u003c!DOCTYPE html>\n\u003chtml lang=\"zh-CN\" data-theme=\"coffee\">\n\u003chead>\n  \u003cmeta charset=\"UTF-8\" />\n  \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  \u003ctitle>慢火，慢手，慢一点的味道 · 暖炉烘焙坊 WARMSTONE（coffee 主题案例）\u003c/title>\n  \u003cmeta name=\"description\" content=\"灰墨 coffee 主题完整页面案例：虚构烘焙坊品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感。本页只依赖 daisyUI 官方主题。\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui.css\" />\n  \u003clink rel=\"stylesheet\" href=\"https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css\" />\n  \u003cstyle>\n    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */\n    html, body { margin: 0; }\n    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, \"PingFang SC\", \"Microsoft YaHei\", sans-serif; }\n    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 24px; }\n    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }\n    .brand svg { width: 24px; height: 24px; color: var(--color-primary); }\n    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }\n    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }\n    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }\n    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }\n    .sect-head .sub { font-size: 12px; opacity: .55; }\n    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */\n    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; padding: 40px 16px 32px; }\n    .hero-zone h1 { font-size: 34px; font-weight: 800; margin: 0; line-height: 1.3; letter-spacing: 2px; }\n    .hero-zone .lede { font-size: 13px; opacity: .7; max-width: 480px; margin: 0; line-height: 2.1; }\n    .hero-art { width: 300px; max-width: 100%; height: auto; }\n    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }\n    /* 豆子卡 */\n    .bean-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }\n    .bean-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 16px; display: flex; flex-direction: column; gap: 10px; }\n    .bean-art { height: 100px; display: flex; align-items: center; justify-content: center; }\n    .bean-art svg { width: 72px; height: 72px; }\n    .bean-name { font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }\n    .bean-origin { font-size: 11px; opacity: .55; letter-spacing: 1px; }\n    .bean-flavor { font-size: 12px; opacity: .7; margin: 0; line-height: 1.9; }\n    /* 烘焙度条 */\n    .roast { display: flex; align-items: center; gap: 6px; font-size: 11px; opacity: .7; }\n    .roast .bar { display: flex; gap: 2px; }\n    .roast .bar span { width: 14px; height: 6px; border-radius: 2px; background: var(--color-base-300); }\n    .roast .bar span.on { background: var(--color-primary); }\n    /* 课程卡 */\n    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }\n    .course-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 18px; display: flex; flex-direction: column; gap: 10px; }\n    .course-tag { font-size: 10px; letter-spacing: 2px; opacity: .5; }\n    .course-name { font-size: 16px; font-weight: 700; }\n    .course-meta { display: flex; flex-direction: column; gap: 4px; font-size: 12px; opacity: .7; line-height: 1.8; }\n    .course-meta .row { display: flex; justify-content: space-between; gap: 8px; }\n    .course-seats { color: var(--color-warning); font-weight: 600; }\n    /* 课程流程 */\n    .steps3 { display: flex; align-items: flex-start; gap: 0; padding: 8px 0 0; flex-wrap: wrap; }\n    .steps3 .s { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 90px; text-align: center; }\n    .steps3 .num { width: 30px; height: 30px; border-radius: 50%; background: var(--color-primary); color: var(--color-primary-content); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }\n    .steps3 .txt { font-size: 11px; line-height: 1.5; opacity: .8; }\n    .steps3 .line { flex: 1; min-width: 20px; height: 1px; background: color-mix(in oklab, currentColor 25%, transparent); margin-top: 15px; }\n    /* 品牌故事 */\n    .story-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 22px; display: flex; flex-direction: column; gap: 16px; }\n    .story-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; align-items: center; }\n    .story-grid p { font-size: 13px; opacity: .8; margin: 0 0 12px; line-height: 2.1; }\n    .story-art { width: 100%; height: auto; }\n    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }\n    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.9; }\n    .cta-card { background: var(--color-base-200); border-radius: var(--radius-box); padding: 30px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }\n    @media (max-width: 860px) {\n      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }\n      .navbar-start { width: 100%; }\n      .navbar-end { width: 100%; justify-content: flex-end; }\n      .hero-zone { padding: 28px 8px 22px; }\n      .hero-zone h1 { font-size: 26px; }\n      .story-grid { grid-template-columns: 1fr; }\n    }\n  \u003c/style>\n\u003c/head>\n\u003cbody>\n  \u003cdiv class=\"wrap\">\n\n    \u003c!-- 顶栏 -->\n    \u003cdiv class=\"navbar rounded-box bg-base-200\" style=\"padding:0 16px\">\n      \u003cdiv class=\"navbar-start\">\n        \u003cdiv class=\"brand\">\n          \u003csvg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\">\n            \u003cpath d=\"M18 8h1a4 4 0 0 1 0 8h-1\" />\n            \u003cpath d=\"M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z\" />\n            \u003cline x1=\"6\" y1=\"1\" x2=\"6\" y2=\"4\" />\n            \u003cline x1=\"10\" y1=\"1\" x2=\"10\" y2=\"4\" />\n            \u003cline x1=\"14\" y1=\"1\" x2=\"14\" y2=\"4\" />\n          \u003c/svg>\n          暖炉烘焙坊 \u003csmall>WARMSTONE\u003c/small>\n        \u003c/div>\n        \u003cul class=\"menu-row menu\" style=\"--menu-active-bg:color-mix(in oklab, var(--color-primary) 20%, transparent);--menu-active-fg:var(--color-primary-content)\">\n          \u003cli>\u003ca class=\"menu-active\">品牌故事\u003c/a>\u003c/li>\n          \u003cli>\u003ca>豆子溯源\u003c/a>\u003c/li>\n          \u003cli>\u003ca>手作课程\u003c/a>\u003c/li>\n          \u003cli>\u003ca>门店\u003c/a>\u003c/li>\n          \u003cli>\u003ca>会员\u003c/a>\u003c/li>\n        \u003c/ul>\n      \u003c/div>\n      \u003cdiv class=\"navbar-end\" style=\"gap:10px\">\n        \u003cbutton class=\"btn btn-sm btn-primary\" type=\"button\">报名课程\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- Hero -->\n    \u003cdiv class=\"hero-zone\">\n      \u003cspan class=\"badge badge-soft badge-sm\" style=\"--badge-color:var(--color-primary)\">自烘焙 · 小批量 · 当周烘豆\u003c/span>\n      \u003ch1>慢火，慢手，\u003cbr />慢一点的味道\u003c/h1>\n      \u003cp class=\"lede\">暖炉烘焙坊在城西的旧厂房里架着一台五公斤的铸铁滚筒。每周一烘豆，周三开卖，豆子不超过十四天。我们不追风味猎奇，只想把一杯手冲做稳。\u003c/p>\n      \u003csvg class=\"hero-art\" viewBox=\"0 0 320 200\" role=\"img\" aria-label=\"烘焙坊线稿：左侧烘焙滚筒冒着热气、右侧手冲壶与滤杯、下方一只马克杯（示例插图）\">\n        \u003c!-- 烘焙滚筒 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003cellipse cx=\"80\" cy=\"100\" rx=\"38\" ry=\"32\" />\n          \u003ccircle cx=\"80\" cy=\"100\" r=\"22\" />\n          \u003cline x1=\"42\" y1=\"100\" x2=\"24\" y2=\"100\" />\n          \u003cline x1=\"118\" y1=\"100\" x2=\"132\" y2=\"100\" />\n          \u003c!-- 热气 -->\n          \u003cpath d=\"M68 58 q-4 -8 0 -16 q4 -8 0 -16\" stroke=\"var(--color-primary)\" />\n          \u003cpath d=\"M80 56 q-4 -8 0 -16 q4 -8 0 -16\" stroke=\"var(--color-primary)\" />\n          \u003cpath d=\"M92 58 q-4 -8 0 -16 q4 -8 0 -16\" stroke=\"var(--color-primary)\" />\n        \u003c/g>\n        \u003c!-- 手冲壶 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003cpath d=\"M180 130 v-30 q0 -12 12 -12 h14 q12 0 12 12 v30 z\" />\n          \u003cpath d=\"M218 108 q14 -2 16 -14\" />\n          \u003cpath d=\"M180 118 h-10\" />\n          \u003c!-- 细嘴 -->\n          \u003cpath d=\"M196 88 q0 -8 -8 -10\" />\n        \u003c/g>\n        \u003c!-- 滤杯 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003cpath d=\"M172 130 h48 l-8 22 h-32 z\" />\n          \u003cline x1=\"168\" y1=\"152\" x2=\"224\" y2=\"152\" />\n        \u003c/g>\n        \u003c!-- 马克杯 -->\n        \u003cg stroke=\"currentColor\" stroke-width=\"1.8\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          \u003cpath d=\"M178 162 h36 v14 q0 10 -10 10 h-16 q-10 0 -10 -10 z\" />\n          \u003cpath d=\"M214 166 q10 0 10 6 q0 6 -10 6\" />\n        \u003c/g>\n        \u003c!-- 咖啡豆散落 -->\n        \u003cg stroke=\"var(--color-primary)\" stroke-width=\"1.5\" fill=\"none\" stroke-linecap=\"round\">\n          \u003cellipse cx=\"150\" cy=\"178\" rx=\"5\" ry=\"7\" transform=\"rotate(-20 150 178)\" />\n          \u003cpath d=\"M147 172 l6 12\" />\n          \u003cellipse cx=\"240\" cy=\"180\" rx=\"5\" ry=\"7\" transform=\"rotate(15 240 180)\" />\n          \u003cpath d=\"M238 174 l4 12\" />\n        \u003c/g>\n      \u003c/svg>\n      \u003cdiv class=\"cta-row\">\n        \u003cbutton class=\"btn btn-primary\" type=\"button\">报名手作课程\u003c/button>\n        \u003cbutton class=\"btn btn-ghost\" type=\"button\">看看本周豆子\u003c/button>\n      \u003c/div>\n    \u003c/div>\n\n    \u003c!-- 豆子溯源 -->\n    \u003csection>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>本周烘焙豆\u003c/h2>\n        \u003cspan class=\"sub\">每周一烘豆 · 保质期烘后十四天\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"bean-grid\">\n\n        \u003cdiv class=\"bean-card\">\n          \u003cdiv class=\"bean-art\">\n            \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"埃塞俄比亚耶加雪菲咖啡豆线稿（示例插图）\">\n              \u003cellipse cx=\"48\" cy=\"48\" rx=\"22\" ry=\"30\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n              \u003cpath d=\"M48 22 v52\" fill=\"none\" stroke=\"var(--color-primary)\" stroke-width=\"2\" stroke-linecap=\"round\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"bean-name\">耶加雪菲 \u003cspan class=\"bean-origin\">ETHIOPIA · 水洗\u003c/span>\u003c/div>\n          \u003cp class=\"bean-flavor\">浅烘。茉莉花、柠檬茶、蜂蜜尾韵。适合手冲与冷萃。\u003c/p>\n          \u003cdiv class=\"roast\">\n            \u003cspan>烘焙度\u003c/span>\n            \u003cdiv class=\"bar\">\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan>\u003c/span>\u003cspan>\u003c/span>\u003c/div>\n            \u003cspan>浅\u003c/span>\n          \u003c/div>\n        \u003c/div>\n\n        \u003cdiv class=\"bean-card\">\n          \u003cdiv class=\"bean-art\">\n            \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"哥伦比亚慧兰咖啡豆线稿（示例插图）\">\n              \u003cellipse cx=\"48\" cy=\"48\" rx=\"22\" ry=\"30\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n              \u003cpath d=\"M44 22 q8 26 0 52\" fill=\"none\" stroke=\"var(--color-primary)\" stroke-width=\"2\" stroke-linecap=\"round\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"bean-name\">慧兰 supremo \u003cspan class=\"bean-origin\">COLOMBIA · 水洗\u003c/span>\u003c/div>\n          \u003cp class=\"bean-flavor\">中烘。焦糖、坚果、橙皮。平衡干净，日常口粮豆。\u003c/p>\n          \u003cdiv class=\"roast\">\n            \u003cspan>烘焙度\u003c/span>\n            \u003cdiv class=\"bar\">\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan>\u003c/span>\u003c/div>\n            \u003cspan>中\u003c/span>\n          \u003c/div>\n        \u003c/div>\n\n        \u003cdiv class=\"bean-card\">\n          \u003cdiv class=\"bean-art\">\n            \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"巴西喜拉多咖啡豆线稿（示例插图）\">\n              \u003cellipse cx=\"48\" cy=\"48\" rx=\"22\" ry=\"30\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n              \u003cpath d=\"M42 24 q12 24 2 48\" fill=\"none\" stroke=\"var(--color-primary)\" stroke-width=\"2\" stroke-linecap=\"round\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"bean-name\">喜拉多 · 黄波旁 \u003cspan class=\"bean-origin\">BRAZIL · 日晒\u003c/span>\u003c/div>\n          \u003cp class=\"bean-flavor\">中深烘。巧克力、花生、低酸醇厚。拿铁与奶咖首选。\u003c/p>\n          \u003cdiv class=\"roast\">\n            \u003cspan>烘焙度\u003c/span>\n            \u003cdiv class=\"bar\">\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003c/div>\n            \u003cspan>中深\u003c/span>\n          \u003c/div>\n        \u003c/div>\n\n        \u003cdiv class=\"bean-card\">\n          \u003cdiv class=\"bean-art\">\n            \u003csvg viewBox=\"0 0 96 96\" role=\"img\" aria-label=\"曼特宁咖啡豆线稿（示例插图）\">\n              \u003cellipse cx=\"48\" cy=\"48\" rx=\"22\" ry=\"30\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" />\n              \u003cpath d=\"M50 22 q-6 26 2 52\" fill=\"none\" stroke=\"var(--color-primary)\" stroke-width=\"2\" stroke-linecap=\"round\" />\n            \u003c/svg>\n          \u003c/div>\n          \u003cdiv class=\"bean-name\">曼特宁 · 湿刨 \u003cspan class=\"bean-origin\">INDONESIA · 湿刨\u003c/span>\u003c/div>\n          \u003cp class=\"bean-flavor\">深烘。草本、黑巧、松木。厚 body，适合手冲加奶。\u003c/p>\n          \u003cdiv class=\"roast\">\n            \u003cspan>烘焙度\u003c/span>\n            \u003cdiv class=\"bar\">\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003cspan class=\"on\">\u003c/span>\u003c/div>\n            \u003cspan>深\u003c/span>\n          \u003c/div>\n        \u003c/div>\n\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 品牌故事 -->\n    \u003csection class=\"story-card\">\n      \u003ch2 style=\"font-size:19px;margin:0;letter-spacing:1px\">我们的炉子\u003c/h2>\n      \u003cdiv class=\"story-grid\">\n        \u003cdiv>\n          \u003cp>2019 年冬天，我们在城西旧棉纺厂的一间车间里架起第一台铸铁滚筒。那时候只有一张磨豆台、两把手冲壶，和十二个来试豆子的朋友。\u003c/p>\n          \u003cp>烘豆这件事急不得。一炉五公斤，从爆一爆到二爆之间的两三分钟，是味道的分水岭。我们宁可每周只烘四炉，也不愿意为了现货量把豆子烘到\"不出错\"——不出错，往往也就是不出彩。\u003c/p>\n          \u003cp>现在工坊里有三台滚筒、两个常驻烘豆师，和一面写满批次记录的墙。每一袋豆子都贴着烘焙日，你买回家时离出炉不超过七天。\u003c/p>\n        \u003c/div>\n        \u003csvg class=\"story-art\" viewBox=\"0 0 260 200\" role=\"img\" aria-label=\"工坊线稿：墙上一排豆袋、中间一张磨豆台、窗边一株绿植（示例插图）\">\n          \u003c!-- 墙面豆袋 -->\n          \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n            \u003crect x=\"20\" y=\"30\" width=\"36\" height=\"44\" rx=\"3\" />\n            \u003cpath d=\"M20 40 h36\" opacity=\".5\" />\n            \u003crect x=\"66\" y=\"30\" width=\"36\" height=\"44\" rx=\"3\" />\n            \u003cpath d=\"M66 40 h36\" opacity=\".5\" />\n            \u003crect x=\"112\" y=\"30\" width=\"36\" height=\"44\" rx=\"3\" />\n            \u003cpath d=\"M112 40 h36\" opacity=\".5\" />\n          \u003c/g>\n          \u003c!-- 磨豆台 -->\n          \u003cg stroke=\"currentColor\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n            \u003crect x=\"40\" y=\"120\" width=\"140\" height=\"8\" />\n            \u003crect x=\"56\" y=\"128\" width=\"6\" height=\"50\" />\n            \u003crect x=\"158\" y=\"128\" width=\"6\" height=\"50\" />\n            \u003c!-- 磨豆机 -->\n            \u003crect x=\"86\" y=\"92\" width=\"28\" height=\"28\" rx=\"3\" />\n            \u003cpath d=\"M92 92 v-8 h16 v8\" />\n          \u003c/g>\n          \u003c!-- 窗边绿植 -->\n          \u003cg stroke=\"var(--color-primary)\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n            \u003cpath d=\"M210 180 v-30\" />\n            \u003cpath d=\"M210 150 q-14 -6 -18 -20 q16 2 18 20z\" />\n            \u003cpath d=\"M210 150 q14 -6 18 -20 q-16 2 -18 20z\" />\n            \u003cpath d=\"M210 140 q-8 -10 -8 -22\" />\n            \u003cpath d=\"M210 140 q8 -10 8 -22\" />\n          \u003c/g>\n          \u003c!-- 地面 -->\n          \u003cline x1=\"0\" y1=\"180\" x2=\"260\" y2=\"180\" stroke=\"currentColor\" stroke-width=\"1.4\" opacity=\".4\" />\n        \u003c/svg>\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 手作课程 -->\n    \u003csection>\n      \u003cdiv class=\"sect-head\">\n        \u003ch2>手作课程\u003c/h2>\n        \u003cspan class=\"sub\">小班教学 · 每场限 6 人 · 工坊内开课\u003c/span>\n      \u003c/div>\n      \u003cdiv class=\"course-grid\">\n\n        \u003cdiv class=\"course-card\">\n          \u003cspan class=\"course-tag\">BEGINNER · 2.5 H\u003c/span>\n          \u003cspan class=\"course-name\">手冲入门\u003c/span>\n          \u003cdiv class=\"course-meta\">\n            \u003cdiv class=\"row\">\u003cspan>时间\u003c/span>\u003cspan>10 月 25 日（周六）14:00\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>内容\u003c/span>\u003cspan>磨豆 · 水温 · 注水手法\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>名额\u003c/span>\u003cspan class=\"course-seats\">余 3 席\u003c/span>\u003c/div>\n          \u003c/div>\n          \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">报名课程\u003c/button>\n        \u003c/div>\n\n        \u003cdiv class=\"course-card\">\n          \u003cspan class=\"course-tag\">INTERMEDIATE · 3 H\u003c/span>\n          \u003cspan class=\"course-name\">烘焙实践\u003c/span>\n          \u003cdiv class=\"course-meta\">\n            \u003cdiv class=\"row\">\u003cspan>时间\u003c/span>\u003cspan>11 月 1 日（周六）09:30\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>内容\u003c/span>\u003cspan>一爆二爆 · 曲线记录 · 杯测\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>名额\u003c/span>\u003cspan class=\"course-seats\">余 2 席\u003c/span>\u003c/div>\n          \u003c/div>\n          \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">报名课程\u003c/button>\n        \u003c/div>\n\n        \u003cdiv class=\"course-card\">\n          \u003cspan class=\"course-tag\">BEGINNER · 2 H\u003c/span>\n          \u003cspan class=\"course-name\">拉花体验\u003c/span>\n          \u003cdiv class=\"course-meta\">\n            \u003cdiv class=\"row\">\u003cspan>时间\u003c/span>\u003cspan>11 月 8 日（周六）15:00\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>内容\u003c/span>\u003cspan>奶泡打发 · 基础心形\u003c/span>\u003c/div>\n            \u003cdiv class=\"row\">\u003cspan>名额\u003c/span>\u003cspan class=\"course-seats\">余 4 席\u003c/span>\u003c/div>\n          \u003c/div>\n          \u003cbutton class=\"btn btn-primary btn-sm\" type=\"button\">报名课程\u003c/button>\n        \u003c/div>\n\n      \u003c/div>\n      \u003cdiv style=\"margin-top:14px;padding:0 4px\">\n        \u003cdiv style=\"font-size:12px;opacity:.55;margin-bottom:8px\">课程流程\u003c/div>\n        \u003cdiv class=\"steps3\">\n          \u003cdiv class=\"s\">\u003cdiv class=\"num\">1\u003c/div>\u003cspan class=\"txt\">到店签到\u003cbr />选豆闻香\u003c/span>\u003c/div>\n          \u003cdiv class=\"line\">\u003c/div>\n          \u003cdiv class=\"s\">\u003cdiv class=\"num\">2\u003c/div>\u003cspan class=\"txt\">讲师演示\u003cbr />学员动手\u003c/span>\u003c/div>\n          \u003cdiv class=\"line\">\u003c/div>\n          \u003cdiv class=\"s\">\u003cdiv class=\"num\">3\u003c/div>\u003cspan class=\"txt\">杯测点评\u003cbr />带豆回家\u003c/span>\u003c/div>\n        \u003c/div>\n      \u003c/div>\n    \u003c/section>\n\n    \u003c!-- 门店 / 会员 CTA -->\n    \u003csection class=\"cta-card\">\n      \u003ch2 style=\"font-size:21px;margin:0;letter-spacing:1px\">来工坊坐坐\u003c/h2>\n      \u003cp style=\"font-size:13px;opacity:.65;max-width:460px;margin:0;line-height:2\">周三至周日 10:00–19:00，工坊玻璃房对外开放。点一杯手冲，看烘豆师转滚筒。课程报名后会有店员电话与你确认时间。\u003c/p>\n      \u003cdiv style=\"display:flex;flex-direction:column;gap:2px;margin-top:4px\">\n        \u003cspan style=\"font-size:13px;font-weight:700\">暖炉烘焙坊 · 城西工坊店\u003c/span>\n        \u003cspan style=\"font-size:12px;opacity:.6;line-height:1.9\">棉纺路 17 号旧厂房 B 栋 102（虚构）\u003cbr />021-5600-0000（虚构）\u003c/span>\n      \u003c/div>\n      \u003cbutton class=\"btn btn-primary\" type=\"button\">报名手作课程\u003c/button>\n    \u003c/section>\n\n    \u003cdiv class=\"hairline\">\u003c/div>\n    \u003cp class=\"foot\">暖炉烘焙坊 WARMSTONE 为虚构品牌，咖啡豆产区、课程时间、门店地址与电话均为示例数据，仅用于展示 coffee 主题整页效果 · 灰墨 MoH_UI\u003c/p>\n  \u003c/div>\n\u003c/body>\n\u003c/html>\n```\n\n【灰墨审美硬边界（必须遵守）】\n- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。\n- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。\n- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。\n- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。\n- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可，不要再额外叠加装饰动画。\n- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。\n\n【交付要求】\n- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。\n- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 \u003chead> 里加一行 daisyui.css 的引用。\n- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。";
+  function legacy(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}ta.remove();}
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t).catch(function(){legacy(t)});
+    return Promise.resolve(legacy(t));
+  }
+  var btn=document.getElementById('copy-btn'),toast=document.getElementById('toast');
+  btn.addEventListener('click',function(){copy(text).then(function(){toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},1600);});});
+})();
+</script>
+</body>
+</html>
