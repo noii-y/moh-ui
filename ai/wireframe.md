@@ -1,0 +1,317 @@
+# 框线（wireframe） · 灰墨 MoH_UI
+
+> 虚构线框原型交付工作室「框线原型 WIREFRAME KIT」整页。全站灰阶无配色，虚线框与占位横线为招牌，裸线框陈列按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条，并附一张完整网页三栏结构线框图；挂 daisyUI 官方主题 data-theme="wireframe" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/wireframe/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 全站只允许灰阶：文字与线条一律取 var(--color-base-content) 语义色，用 color-mix 调透明度；整页陈列不铺任何彩色（信息 / 成功 / 警告 / 错误色只留给表单校验等功能性场景）。
+- 虚线框是招牌：占位区与结构线框用 1.5px dashed + currentColor 约 35–45% 透明度描边；占位内容用 8px 高灰色横条（currentColor 约 16% 透明度），标题占位条加粗加高到 12px、透明度约 30%。
+- 陈列区呈现 daisyUI 组件的「裸」状态：按钮、输入框、表格、进度条直接用 daisyUI 类原生渲染，旁边用小字标注组件名（按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条），不要为线框稿重画假组件。
+- 按钮直接用主题默认 primary（浅灰底深字）与 btn-outline / btn-dash 描边态，保持低保真手感；不写死任何灰色十六进制，颜色一律 var(--color-*) 加 color-mix。
+- 圆角克制：沿用主题自带的小半径（.25rem），像工程稿而不是营销海报；标题字间距放宽 1–2px，不做粗重堆料与大面积投影。
+- 文案写真实动作（浏览组件线框、下载示例稿、预约原型评审），页面结构与联系方式均标注「虚构 / 示例数据」，不写「专业高效品质保证」这类空话。
+- 390px 窄屏：网页结构线框图三栏折成单列、顶栏自然折行、按钮组自然换行，不横向溢出。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="wireframe">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>先画线框，再谈样式 · 框线原型 WIREFRAME KIT（wireframe 主题案例）</title>
+  <meta name="description" content="灰墨 wireframe 主题完整页面案例：虚构线框原型交付工作室整页。全站灰阶、虚线框与占位横线，裸线框陈列按钮、输入框、卡片、表格、头像与进度条。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 16px; letter-spacing: 1.5px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; font-weight: 700; }
+    .brand small { font-size: 10px; letter-spacing: 2.5px; opacity: .55; font-weight: 400; }
+    .stage { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 36px 16px 28px; }
+    .stage h1 { font-size: 32px; font-weight: 700; margin: 0; letter-spacing: 2px; }
+    .stage .sub { font-size: 13px; opacity: .65; max-width: 460px; margin: 0; line-height: 2; }
+    /* 虚线占位框与占位横线 */
+    .dashbox { border: 1.5px dashed color-mix(in oklab, currentColor 45%, transparent); border-radius: 4px; }
+    .ph { height: 8px; border-radius: 99px; background: color-mix(in oklab, currentColor 16%, transparent); }
+    .ph-strong { height: 12px; border-radius: 99px; background: color-mix(in oklab, currentColor 30%, transparent); }
+    .hero-frame { width: 100%; max-width: 560px; height: 188px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; box-sizing: border-box; }
+    .hero-frame svg { width: 44px; height: 44px; opacity: .55; }
+    .hero-frame span { font-size: 11px; letter-spacing: 2px; opacity: .5; }
+    /* 裸组件陈列 */
+    .sec-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+    .sec-head h2 { font-size: 19px; margin: 0; letter-spacing: 2px; }
+    .sec-head span { font-size: 12px; opacity: .5; }
+    .kit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .kit-card { border: 1.5px solid color-mix(in oklab, currentColor 18%, transparent); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: var(--color-base-100); }
+    .kit-label { font-size: 11px; letter-spacing: 2px; opacity: .5; }
+    /* 完整页面结构线框图 */
+    .wirepage { border: 1.5px dashed color-mix(in oklab, currentColor 45%, transparent); border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 10px; background: color-mix(in oklab, currentColor 3%, transparent); }
+    .wire-nav { height: 34px; border: 1.5px dashed color-mix(in oklab, currentColor 35%, transparent); border-radius: 4px; }
+    .wire-cols { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 10px; }
+    .wire-col { border: 1.5px dashed color-mix(in oklab, currentColor 35%, transparent); border-radius: 4px; min-height: 148px; padding: 10px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; }
+    .wire-foot { height: 40px; border: 1.5px dashed color-mix(in oklab, currentColor 35%, transparent); border-radius: 4px; }
+    /* 交付清单 */
+    .craft-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+    .craft-item { display: flex; flex-direction: column; gap: 8px; }
+    .craft-item svg { width: 30px; height: 30px; }
+    .craft-item h3 { font-size: 14px; margin: 0; }
+    .craft-item p { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .stage { padding: 26px 8px 22px; }
+      .stage h1 { font-size: 25px !important; }
+      .wire-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏：灰阶线框导航 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">框线原型 <small>WIREFRAME KIT</small></div>
+        <ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px">
+          <li><a>组件库</a></li>
+          <li><a>页面结构</a></li>
+          <li><a>交付说明</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm btn-dash" type="button">新建线框</button>
+      </div>
+    </div>
+
+    <!-- Hero：大标题 + 虚线占位块 -->
+    <div class="stage">
+      <span class="badge badge-soft badge-sm">低保真原型 · LO-FI</span>
+      <h1>先画线框，再谈样式</h1>
+      <p class="sub">框线原型把信息层级与页面结构先定下来：灰阶、虚线、占位横线，不纠缠配色与质感，专注哪里放什么。</p>
+      <div class="dashbox hero-frame">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="14" rx="1.5" />
+          <circle cx="8.5" cy="9" r="1.5" />
+          <path d="M4 16l5-4 3.5 3L16 12l4 4" />
+        </svg>
+        <span>首页主视觉占位 · 16:9（示例区块）</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+        <button class="btn" type="button">浏览组件线框</button>
+        <button class="btn btn-ghost" type="button">下载示例稿</button>
+      </div>
+    </div>
+
+    <!-- 裸组件线框陈列 -->
+    <div>
+      <div class="sec-head">
+        <h2>裸组件线框</h2>
+        <span>以下组件按 wireframe 主题原生渲染，未加任何配色</span>
+      </div>
+      <div class="kit-grid">
+        <!-- 按钮 -->
+        <div class="kit-card">
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <button class="btn btn-sm" type="button">主要按钮</button>
+            <button class="btn btn-sm btn-outline" type="button">描边按钮</button>
+            <button class="btn btn-sm btn-ghost" type="button">幽灵按钮</button>
+          </div>
+          <span class="kit-label">按钮</span>
+        </div>
+        <!-- 输入框 -->
+        <div class="kit-card">
+          <input type="text" placeholder="请输入项目名称…" class="input" style="width:100%" />
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div class="ph" style="width:92%"></div>
+            <div class="ph" style="width:64%"></div>
+          </div>
+          <span class="kit-label">输入框</span>
+        </div>
+        <!-- 卡片 -->
+        <div class="kit-card" style="padding:0;overflow:hidden;gap:0">
+          <div class="dashbox" style="height:78px;border-radius:0;border-left:0;border-right:0;border-top:0;display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="14" rx="1.5" />
+              <circle cx="8.5" cy="9" r="1.5" />
+              <path d="M4 16l5-4 3.5 3L16 12l4 4" />
+            </svg>
+          </div>
+          <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+            <div class="ph-strong" style="width:42%"></div>
+            <div class="ph" style="width:96%"></div>
+            <div class="ph" style="width:70%"></div>
+          </div>
+          <span class="kit-label" style="padding:0 12px 12px">卡片</span>
+        </div>
+        <!-- 表格 -->
+        <div class="kit-card">
+          <div style="overflow-x:auto">
+            <table class="table" style="font-size:12px;--border:1px">
+              <thead>
+                <tr><th>列 A</th><th>列 B</th><th>列 C</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="ph" style="width:80%"></div></td>
+                  <td><div class="ph" style="width:60%"></div></td>
+                  <td><div class="ph" style="width:40%"></div></td>
+                </tr>
+                <tr>
+                  <td><div class="ph" style="width:70%"></div></td>
+                  <td><div class="ph" style="width:90%"></div></td>
+                  <td><div class="ph" style="width:50%"></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="kit-label">表格</span>
+        </div>
+        <!-- 头像 -->
+        <div class="kit-card">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:46px;height:46px;border-radius:50%;border:1.5px dashed color-mix(in oklab, currentColor 45%, transparent);flex:none"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+              <div class="ph-strong" style="width:45%"></div>
+              <div class="ph" style="width:85%"></div>
+            </div>
+          </div>
+          <span class="kit-label">头像</span>
+        </div>
+        <!-- 进度条 -->
+        <div class="kit-card">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <progress class="progress" value="60" max="100"></progress>
+            <div style="display:flex;justify-content:space-between;font-size:11px;opacity:.55">
+              <span>已完成区块</span><span>60%</span>
+            </div>
+          </div>
+          <span class="kit-label">进度条</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 完整页面结构线框图 -->
+    <div>
+      <div class="sec-head">
+        <h2>页面结构线框</h2>
+        <span>一张完整页面的低保真示意（虚构结构）</span>
+      </div>
+      <div class="wirepage">
+        <div class="wire-nav"></div>
+        <div class="wire-cols">
+          <div class="wire-col">
+            <div class="ph-strong" style="width:50%"></div>
+            <div class="ph"></div>
+            <div class="ph" style="width:80%"></div>
+            <div class="ph" style="width:65%"></div>
+          </div>
+          <div class="wire-col">
+            <div class="ph-strong" style="width:35%"></div>
+            <div class="ph"></div>
+            <div class="ph"></div>
+            <div class="ph" style="width:90%"></div>
+          </div>
+          <div class="wire-col">
+            <div class="ph-strong" style="width:55%"></div>
+            <div class="ph" style="width:75%"></div>
+            <div class="ph" style="width:85%"></div>
+          </div>
+        </div>
+        <div class="wire-foot"></div>
+      </div>
+    </div>
+
+    <!-- 交付清单 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:22px;gap:18px">
+        <h2 style="font-size:19px;margin:0;letter-spacing:2px">交付清单</h2>
+        <div class="craft-grid">
+          <div class="craft-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="3" width="6" height="5" rx="1" />
+              <rect x="3" y="15" width="6" height="5" rx="1" />
+              <rect x="15" y="15" width="6" height="5" rx="1" />
+              <line x1="12" y1="8" x2="12" y2="11" />
+              <line x1="6" y1="11" x2="18" y2="11" />
+              <line x1="6" y1="11" x2="6" y2="15" />
+              <line x1="18" y1="11" x2="18" y2="15" />
+            </svg>
+            <h3>信息架构</h3>
+            <p>先列站点地图与导航层级，确认哪些页面并列、哪些互相包含，再画任何一张稿。</p>
+          </div>
+          <div class="craft-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="14" rx="1.5" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="9" x2="9" y2="18" />
+            </svg>
+            <h3>页面线框</h3>
+            <p>每个页面出一张灰阶线框稿：顶栏、主栏、侧栏、页脚的位置与占比一次定清。</p>
+          </div>
+          <div class="craft-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l.9-4.4A8 8 0 1 1 21 12z" />
+              <line x1="8.5" y1="11" x2="15.5" y2="11" />
+              <line x1="8.5" y1="14" x2="13" y2="14" />
+            </svg>
+            <h3>交互注释</h3>
+            <p>按钮点了去哪、表单提交后落在哪一步，全部在线框旁注明，评审时只讨论结构。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 交付说明 CTA -->
+    <div class="card rounded-box" style="padding:30px 18px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+      <h2 style="font-size:22px;margin:0;letter-spacing:2px">把想法先画成线框</h2>
+      <p style="font-size:13px;opacity:.6;max-width:460px;margin:0;line-height:1.9">一次原型评审只看结构不看样式：半天出稿、逐页过框，确认无误后再进入视觉与开发。</p>
+      <button class="btn" type="button">预约原型评审</button>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">框线原型 WIREFRAME KIT 为虚构工作室，页面结构、交付流程与联系方式均为示例数据，仅用于展示 wireframe 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="wireframe"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/wireframe/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

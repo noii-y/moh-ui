@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "wireframe",
+  "type": "theme",
+  "title": "框线（wireframe）",
+  "description": "完整页面案例：虚构线框原型交付工作室「框线原型 WIREFRAME KIT」整页。全站灰阶无配色，虚线框与占位横线为招牌，裸线框陈列按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条，并附一张完整网页三栏结构线框图；挂 daisyUI 官方主题 data-theme=\"wireframe\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["灰阶", "无彩色", "极简", "落地页"],
+  "base": "wireframe",
+  "aiNotes": [
+    "全站只允许灰阶：文字与线条一律取 var(--color-base-content) 语义色，用 color-mix 调透明度；整页陈列不铺任何彩色（信息 / 成功 / 警告 / 错误色只留给表单校验等功能性场景）。",
+    "虚线框是招牌：占位区与结构线框用 1.5px dashed + currentColor 约 35–45% 透明度描边；占位内容用 8px 高灰色横条（currentColor 约 16% 透明度），标题占位条加粗加高到 12px、透明度约 30%。",
+    "陈列区呈现 daisyUI 组件的「裸」状态：按钮、输入框、表格、进度条直接用 daisyUI 类原生渲染，旁边用小字标注组件名（按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条），不要为线框稿重画假组件。",
+    "按钮直接用主题默认 primary（浅灰底深字）与 btn-outline / btn-dash 描边态，保持低保真手感；不写死任何灰色十六进制，颜色一律 var(--color-*) 加 color-mix。",
+    "圆角克制：沿用主题自带的小半径（.25rem），像工程稿而不是营销海报；标题字间距放宽 1–2px，不做粗重堆料与大面积投影。",
+    "文案写真实动作（浏览组件线框、下载示例稿、预约原型评审），页面结构与联系方式均标注「虚构 / 示例数据」，不写「专业高效品质保证」这类空话。",
+    "390px 窄屏：网页结构线框图三栏折成单列、顶栏自然折行、按钮组自然换行，不横向溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=wireframe]；仅用 daisyUI 组件拼装一套线框原型交付工作室整页（demo.html：灰阶线框顶栏与虚线按钮 + 大标题 Hero 与虚线占位块 + 裸组件线框陈列六卡（按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条）+ 完整网页三栏结构线框图 + 交付清单三要点（信息架构 / 页面线框 / 交互注释）+ 预约评审 CTA 与虚构页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
