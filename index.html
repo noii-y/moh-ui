@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>灰墨 MoH_UI · AI 编程审美插件 / 皮肤包资源库</title>
-  <meta name="description" content="灰墨 MoH_UI：规则边界包 + 视觉主题库 + 组件插件库。给 AI 搭出来的项目做审美急救：AI 不易察觉的整容规则、丰富主题、可搬进自己项目的组件。中文优先、开源 MIT、素材可溯源。" />
+  <title>灰墨 MoH_UI · 复制给 AI 就能用的前端素材</title>
+  <meta name="description" content="灰墨 MoH_UI：45 套完整业务页面主题、68 个现成组件、113 份 AI 指令和一套排版审美规则。AI 写的页面功能都在就是不好看，复制指令给豆包、Cursor，照着改。MIT 开源，来源可溯源。" />
   <link rel="stylesheet" href="themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="site/assets/site.css" />
+  <link rel="stylesheet" href="site/assets/home.css" />
 </head>
-<body>
+<body class="home">
+  <div class="home-bg-glow" aria-hidden="true"></div>
+  <div class="home-bg-noise" aria-hidden="true"></div>
+
   <nav class="site-nav">
     <div class="site-container site-nav__inner">
       <a class="site-nav__brand" href="index.html">
@@ -29,105 +33,169 @@
     </div>
   </nav>
 
-  <header class="site-hero">
-    <div class="site-container">
-      <span class="site-hero__badge">规则边界 · 视觉主题 · 组件插件 · 全部可溯源</span>
-      <h1 class="site-hero__title">给 AI 搭出来的项目做「审美急救」</h1>
-      <p class="site-hero__desc">
-        换皮谁都会，灰墨做的是 AI <b>不容易察觉</b>的整容：字号不许过大过小、表格不许溢出、排列整齐、符合美观条件——
-        这是附带服务。真正的主打是<b>丰富视觉主题</b>和<b>能搬进自己项目的组件插件</b>：内容多、使用率高、二创专业（附原组件名与出处、教程转中文）。
-      </p>
-      <div class="site-hero__actions">
-        <a class="site-btn site-btn--primary" href="site/themes.html">挑选主题</a>
-        <a class="site-btn site-btn--secondary" href="site/components.html">搬组件</a>
-        <a class="site-btn site-btn--secondary" href="site/rules.html">规则边界</a>
+  <main>
+    <header class="home-hero">
+      <div class="site-container">
+        <span class="home-hero__badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          复制给 AI 就能用的前端素材
+        </span>
+        <h1 class="home-hero__title">给 AI 搭出来的项目做「审美急救」</h1>
+        <p class="home-hero__desc">AI 写出来的页面，功能都在，就是不好看：标题字号忽大忽小，表格在手机上撑出屏幕。这种问题不是换个颜色能解决的。<br><br>灰墨里有 45 套完整业务页面的主题、68 个现成组件，还有一套管排版的审美规则。每个主题和组件都配好了 AI 指令，你不用自己描述，复制给豆包、Cursor 或其他 AI，它照着做。选择器里还能实时试另外 17 套官方主题，素材来源和许可证逐个登记。</p>
+        <div class="home-hero__actions">
+          <a class="site-btn site-btn--primary" href="site/themes.html">挑选主题</a>
+          <a class="site-btn site-btn--secondary" href="site/components.html">搬组件</a>
+          <a class="site-btn site-btn--secondary" href="site/rules.html">规则边界</a>
+        </div>
+        <div class="home-stats" id="stats"></div>
       </div>
-      <div class="site-stats" id="stats"></div>
-    </div>
-  </header>
+    </header>
 
-  <section class="site-section" style="padding-top: 0">
-    <div class="site-container">
-      <h2 class="site-section__title">三大资源</h2>
-      <p class="site-section__desc">每类资源都有独立目录、moh.json 元数据与体检门槛；素材来源、许可证全部可溯源。</p>
-      <div class="site-grid">
-        <a class="site-card" href="site/themes.html" style="text-decoration:none; color:inherit">
-          <div class="site-card__body">
-            <p class="site-card__title">🎨 主题库 <span class="site-chip">整页案例 · data-theme 换肤</span></p>
-            <p class="site-card__desc">18 套主题，每套都是一个真实业务整页案例（数据看板、电商、音乐播放器、股票终端、点单页……），不是色卡。挂 data-theme 即整站换肤，含原创二创与开源收录，许可证逐套标注。</p>
-            <div class="site-card__meta"><span class="site-chip site-chip--ok" id="home-theme-n">整页案例</span><span class="site-chip">MIT / Apache-2.0</span></div>
-          </div>
-        </a>
-        <a class="site-card" href="site/components.html" style="text-decoration:none; color:inherit">
-          <div class="site-card__body">
-            <p class="site-card__title">🧩 组件库 <span class="site-chip">真实组件 · 零依赖</span></p>
-            <p class="site-card__desc">表单、导航、数据展示、反馈弹层等真实前端组件：官网原版结构 + 中文教程 + 真实业务成品，首选复制 AI 提示词发给 AI，也可复制成品 HTML 直接粘贴；基于 daisyUI 等开源项目（MIT），原版来源全部可溯源。</p>
-            <div class="site-card__meta"><span class="site-chip site-chip--ok" id="home-comp-n">真实组件</span><span class="site-chip">MIT 可溯源</span></div>
-          </div>
-        </a>
-        <a class="site-card" href="site/rules.html" style="text-decoration:none; color:inherit">
-          <div class="site-card__body">
-            <p class="site-card__title">📏 规则边界包 <span class="site-chip">AI 不易察觉的整容</span></p>
-            <p class="site-card__desc">8 类硬边界 + 10 条禁则一票否决 + 26 项自检清单。把规则丢给 AI，让它按美学边界改你的项目——不换皮、做整容。</p>
-            <div class="site-card__meta"><span class="site-chip site-chip--ok">可复制</span><span class="site-chip">含自查闭环</span></div>
-          </div>
-        </a>
+    <section class="home-section">
+      <div class="site-container">
+        <div class="home-section__head">
+          <h2 class="home-section__title">从 45 套里挑 8 套先看看</h2>
+          <span class="home-section__hint">都是真实页面截图，悬停可看 3D 效果，点卡片进主题墙</span>
+        </div>
+        <div class="home-strip">
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/luxury.png" alt="luxury 主题整页：黑金腕表官网" loading="lazy">
+            <div class="home-tcard__meta"><span>luxury · 黑金腕表</span><span class="home-tag">深色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/cyberpunk.png" alt="cyberpunk 主题整页：荧光黄电竞俱乐部" loading="lazy">
+            <div class="home-tcard__meta"><span>cyberpunk · 电竞</span><span class="home-tag">亮色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/synthwave.png" alt="synthwave 主题整页：深紫霓虹电子厂牌" loading="lazy">
+            <div class="home-tcard__meta"><span>synthwave · 霓虹厂牌</span><span class="home-tag">深色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/lofi.png" alt="lofi 主题整页：极简黑白笔记" loading="lazy">
+            <div class="home-tcard__meta"><span>lofi · 素白笔记</span><span class="home-tag">浅色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/cupcake.png" alt="cupcake 主题整页：暖白甜品烘焙" loading="lazy">
+            <div class="home-tcard__meta"><span>cupcake · 云朵糖</span><span class="home-tag">浅色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/cmyk.png" alt="cmyk 主题整页：白底印刷工作室" loading="lazy">
+            <div class="home-tcard__meta"><span>cmyk · 叠彩印刷</span><span class="home-tag">浅色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/coffee.png" alt="coffee 主题整页：深棕烘焙坊" loading="lazy">
+            <div class="home-tcard__meta"><span>coffee · 暖炉烘焙</span><span class="home-tag">深色</span></div>
+          </a>
+          <a class="home-tcard" href="site/themes.html">
+            <img class="home-tcard__frame" src="site/assets/thumbs/mo-command.png" alt="mo-command 主题整页：超深色指挥中心大屏" loading="lazy">
+            <div class="home-tcard__meta"><span>mo-command · 指挥大屏</span><span class="home-tag">深色</span></div>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="site-section" style="padding-top: 0">
-    <div class="site-container">
-      <h2 class="site-section__title">怎么用</h2>
-      <p class="site-section__desc">三种姿势，从零门槛到开发者全流程。</p>
-      <div class="site-grid">
-        <div class="site-card" style="cursor:default">
-          <div class="site-card__body">
-            <p class="site-card__title">① 丢规则给 AI</p>
-            <p class="site-card__desc">把规则边界包或 AI 指令复制给豆包 / Cursor，AI 按硬边界+自检清单改你的项目——字号、表格、间距、美观条件一次到位。</p>
-          </div>
+    <section class="home-section">
+      <div class="site-container">
+        <div class="home-section__head">
+          <h2 class="home-section__title">三大资源</h2>
+          <span class="home-section__hint">每个主题和组件都有单独目录，来源和许可证逐个登记，复制出去也放心</span>
         </div>
-        <div class="site-card" style="cursor:default">
-          <div class="site-card__body">
-            <p class="site-card__title">② 搬组件 / 换主题</p>
-            <p class="site-card__desc">组件卡点「复制 AI 提示词」整段发给你的 AI，或点「复制链接发给 AI」把组件专属的 AI 指令页网址丢给它——它按你的项目只生成这一块；也可复制成品 HTML 直接粘贴。主题卡点「复制 AI 指令」，挂上 data-theme 即整站换肤。</p>
-          </div>
+        <div class="home-grid">
+          <a class="home-card" href="site/themes.html">
+            <span class="home-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></span>
+            <h3 class="home-card__title">主题库 <span class="home-chip">完整业务页面 · 一键换肤</span></h3>
+            <p class="home-card__desc">45 套主题，每套都是一个完整业务页面：腕表官网、电竞俱乐部、烘焙坊、堂食点单屏、指挥中心大屏。看中哪套，把配套的 AI 指令发给你用的 AI，它按这套风格重做你的页面；也可以直接挂 data-theme 换肤。</p>
+            <span class="home-card__foot"><span>45 套 · 另有 17 套官方主题可试玩</span><span class="home-card__go">去主题库 →</span></span>
+          </a>
+          <a class="home-card" href="site/components.html">
+            <span class="home-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
+            <h3 class="home-card__title">组件库 <span class="home-chip">真实业务成品 · 零依赖</span></h3>
+            <p class="home-card__desc">68 个组件，覆盖表单、导航、数据展示、弹窗反馈。每个都做了一个真实场景的成品，比如电商筛选条、审批待办列表，旁边就是一段 AI 提示词：发给你的 AI，它只生成这一块。想直接拷代码也行，纯 CSS，不引框架。</p>
+            <span class="home-card__foot"><span>68 个 · 基于 daisyUI</span><span class="home-card__go">去组件库 →</span></span>
+          </a>
+          <a class="home-card" href="site/rules.html">
+            <span class="home-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+            <h3 class="home-card__title">规则边界包 <span class="home-chip">管排版的审美硬边界</span></h3>
+            <p class="home-card__desc">8 类硬边界、10 条禁则、26 项自检清单，具体到「正文不小于 14px、表格要定列宽」这种程度。整段发给 AI，让它改完照着清单自己查一遍。</p>
+            <span class="home-card__foot"><span>8 类硬边界 + 26 项自检</span><span class="home-card__go">去规则页 →</span></span>
+          </a>
         </div>
-        <div class="site-card" style="cursor:default">
-          <div class="site-card__body">
-            <p class="site-card__title">③ 查溯源</p>
-            <p class="site-card__desc">每个资源卡都显示来源与许可证：自研标 original、二创附原组件名与地址、教程转中文。开源非商用，二次开发放心用。</p>
+      </div>
+    </section>
+
+    <section class="home-section" style="padding-bottom: 24px">
+      <div class="site-container">
+        <div class="home-section__head">
+          <h2 class="home-section__title">怎么用</h2>
+          <span class="home-section__hint">不用学设计，也不用读框架文档</span>
+        </div>
+        <div class="home-grid">
+          <div class="home-card home-card--step">
+            <div class="home-step-n">第一步</div>
+            <h3 class="home-card__title">把规则发给 AI</h3>
+            <p class="home-card__desc">规则页可以整段复制审美规则，发给豆包或 Cursor。它按硬边界改你的页面，再对着 26 项清单逐项自查，不达标继续修。</p>
+          </div>
+          <div class="home-card home-card--step">
+            <div class="home-step-n">第二步</div>
+            <h3 class="home-card__title">让 AI 搬组件、换主题</h3>
+            <p class="home-card__desc">每个组件和主题都有「复制 AI 提示词」按钮，也有专属的 ai/ 网页链接。把链接发给 AI，它只生成你要的那一块；也可以复制成品 HTML，粘进项目里就跑。</p>
+          </div>
+          <div class="home-card home-card--step">
+            <div class="home-step-n">第三步</div>
+            <h3 class="home-card__title">查来源和许可证</h3>
+            <p class="home-card__desc">每个组件和主题都有 moh.json，登记了来源、原地址和许可证。绝大多数是 MIT，商用也没问题；唯一 Apache-2.0 的 tokyo-night 主题，该遵守的义务也写清了。</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="site-container">
-      灰墨 MoH_UI · MIT License · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a> · 素材溯源见 <a href="site/attributions.html">ATTRIBUTIONS</a>
+      灰墨 MoH_UI，MIT 开源，所有素材的来源和许可证都在 <a href="site/attributions.html">溯源页</a> · <a href="https://github.com/noii-y/moh-ui" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
 
   <script src="site/data.js"></script>
   <script>
-    var stats = document.getElementById("stats");
-    if (window.MOH_DATA) {
-      var d = window.MOH_DATA.stats;
-      var compN = document.getElementById("home-comp-n");
-      if (compN) compN.textContent = d.components + " 个组件";
-      var items = [
-        { n: d.themes, label: "套主题 · 整页案例" },
-        { n: d.components, label: "个组件 · 可直接搬运" },
-        { n: d.rules, label: "套规则包 · 硬边界+禁则" },
-        { n: d.resources, label: "个资源 · 全部可溯源" }
-      ];
-      stats.innerHTML = items.map(function (it) {
-        return '<div class="site-stat"><div class="site-stat__num">' + it.n + '</div><div class="site-stat__label">' + it.label + '</div></div>';
-      }).join("");
-    } else {
-      stats.innerHTML = '<div class="site-stat"><div class="site-stat__num">18</div><div class="site-stat__label">套主题</div></div>';
-    }
+    (function () {
+      var stats = document.getElementById("stats");
+      if (window.MOH_DATA && stats) {
+        var d = window.MOH_DATA.stats;
+        var items = [
+          { n: d.themes, label: "套主题 · 完整业务页面" },
+          { n: d.components, label: "个组件 · 现成可搬" },
+          { n: d.themes + d.components, label: "份 AI 指令 · 复制即发" },
+          { n: d.rules, label: "套规则 · 8 类硬边界" }
+        ];
+        stats.innerHTML = items.map(function (it) {
+          return '<div class="home-stat"><div class="home-stat__num">' + it.n +
+            '</div><div class="home-stat__label">' + it.label + '</div></div>';
+        }).join("");
+      }
+    })();
+
+    // 微 3D 倾斜：鼠标 / 触控位置驱动，不支持 hover 或开了减少动效就保持静态
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      if (window.matchMedia("(hover: none)").matches) return;
+      var cards = document.querySelectorAll(".home-tcard, .home-card");
+      cards.forEach(function (card) {
+        card.addEventListener("mousemove", function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width;
+          var py = (e.clientY - r.top) / r.height;
+          var ry = (px - 0.5) * 5;
+          var rx = (0.5 - py) * 5;
+          card.style.transform = "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) translateY(-3px)";
+          card.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+          card.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+        });
+        card.addEventListener("mouseleave", function () {
+          card.style.transform = "";
+        });
+      });
+    })();
   </script>
 </body>
 </html>
