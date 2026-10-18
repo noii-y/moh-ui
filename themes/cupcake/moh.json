@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "cupcake",
+  "type": "theme",
+  "title": "云朵甜（cupcake）",
+  "description": "完整页面案例：虚构烘焙店「云朵糖 CUPCAKE CLOUD 烘焙」整页。暖白底配薄荷青主按钮与粉紫奶油色点缀，大圆角、轻盈甜美；挂 daisyUI 官方主题 data-theme=\"cupcake\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["暖色", "圆润", "粉彩", "落地页"],
+  "base": "cupcake",
+  "aiNotes": [
+    "暖白底 base-100（oklch 97.8% 微暖黄），卡片用 base-200 奶油色，正文深紫棕 base-content（暖白/深紫棕实测对比 15.9:1）；甜系三色=薄荷青 primary、粉 secondary、奶黄 accent，只用于按钮、奶油裱花与樱桃红（error）点缀，绝不大面积铺粉。",
+    "cupcake 默认按钮全部达标可直接用：mint 底配 primary-content 深青字实测 5.21:1、粉底配 secondary-content 深粉字 5.8:1、奶黄底配 accent-content 实测 5.41:1；mint 底压白字实测仅 1.49:1，禁止白字压任何彩色实心底。",
+    "大圆角是本主题识别特征：radius-field 2rem、卡片 rounded-box 1rem，奶油感靠大圆角与 depth:1 的轻微投影，不要改成锐角、不要加厚重投影；边框默认 2px 别写死。",
+    "与咖啡类暖调页（caramellatte）明确区分：本页做甜品选购与到店自提，不做咖啡点单；整体更甜、更粉、更轻，文案围绕出炉时间、动物淡奶油、规格人数与取货时段写。",
+    "六枚甜品 SVG 必须轮廓可分辨：纸杯蛋糕（梯形杯+裱花+樱桃）、草莓挞（圆挞+草莓+叶）、马卡龙（双壳夹馅）、瑞士卷（螺旋截面）、焦糖布丁（杯+焦糖面）、黄油曲奇（圆饼+巧克力豆点）；奶油用 secondary 半透明填充、樱桃用 error 红，全部零照片、零 emoji、零渐变。",
+    "文案写真实动作（预订甜品、开始定制、查看自提门店、加入会员），规格写人数与胚体选择，价格写「¥168」，门店地址电话标注虚构；数字不加彩色高亮，彩色只留给按钮与 SVG。",
+    "390px 窄屏顶栏自然折行、六张甜品卡折列、定制三卡单列、自提三步纵向堆叠，不横向滚动。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=cupcake]；仅用 daisyUI 组件拼装一套烘焙店整页（demo.html：顶栏导航与预订甜品按钮 + 奶油裱花纸杯蛋糕 Hero 与双 CTA + 今日甜品六卡（纸杯蛋糕/草莓挞/马卡龙/瑞士卷/焦糖布丁/黄油曲奇）+ 蛋糕定制三规格（6寸/8寸/双层）+ 礼盒到店自提三步与查看自提门店 + 会员 CTA 与虚构门店页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

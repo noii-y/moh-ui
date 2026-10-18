@@ -1,0 +1,341 @@
+# 云朵甜（cupcake） · 灰墨 MoH_UI
+
+> 虚构烘焙店「云朵糖 CUPCAKE CLOUD 烘焙」整页。暖白底配薄荷青主按钮与粉紫奶油色点缀，大圆角、轻盈甜美；挂 daisyUI 官方主题 data-theme="cupcake" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/cupcake/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 暖白底 base-100（oklch 97.8% 微暖黄），卡片用 base-200 奶油色，正文深紫棕 base-content（暖白/深紫棕实测对比 15.9:1）；甜系三色=薄荷青 primary、粉 secondary、奶黄 accent，只用于按钮、奶油裱花与樱桃红（error）点缀，绝不大面积铺粉。
+- cupcake 默认按钮全部达标可直接用：mint 底配 primary-content 深青字实测 5.21:1、粉底配 secondary-content 深粉字 5.8:1、奶黄底配 accent-content 实测 5.41:1；mint 底压白字实测仅 1.49:1，禁止白字压任何彩色实心底。
+- 大圆角是本主题识别特征：radius-field 2rem、卡片 rounded-box 1rem，奶油感靠大圆角与 depth:1 的轻微投影，不要改成锐角、不要加厚重投影；边框默认 2px 别写死。
+- 与咖啡类暖调页（caramellatte）明确区分：本页做甜品选购与到店自提，不做咖啡点单；整体更甜、更粉、更轻，文案围绕出炉时间、动物淡奶油、规格人数与取货时段写。
+- 六枚甜品 SVG 必须轮廓可分辨：纸杯蛋糕（梯形杯+裱花+樱桃）、草莓挞（圆挞+草莓+叶）、马卡龙（双壳夹馅）、瑞士卷（螺旋截面）、焦糖布丁（杯+焦糖面）、黄油曲奇（圆饼+巧克力豆点）；奶油用 secondary 半透明填充、樱桃用 error 红，全部零照片、零 emoji、零渐变。
+- 文案写真实动作（预订甜品、开始定制、查看自提门店、加入会员），规格写人数与胚体选择，价格写「¥168」，门店地址电话标注虚构；数字不加彩色高亮，彩色只留给按钮与 SVG。
+- 390px 窄屏顶栏自然折行、六张甜品卡折列、定制三卡单列、自提三步纵向堆叠，不横向滚动。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cupcake">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今天，也想给你一点甜 · 云朵糖 CUPCAKE CLOUD 烘焙（cupcake 主题案例）</title>
+  <meta name="description" content="灰墨 cupcake 主题完整页面案例：虚构烘焙店整页。暖白底配薄荷青主按钮与粉紫奶油色点缀，大圆角、轻盈甜美。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .brand svg { width: 24px; height: 24px; }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head span { font-size: 12px; opacity: .5; }
+    /* Hero（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .hero-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }
+    .hero-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.25; letter-spacing: 1px; }
+    .hero-zone .lede { font-size: 13px; opacity: .65; max-width: 460px; margin: 0; line-height: 2; }
+    .hero-art { width: 260px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 今日甜品 */
+    .sweet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+    .sweet-art { height: 92px; display: flex; align-items: center; justify-content: center; }
+    .sweet-art svg { width: 64px; height: 64px; }
+    .sweet-name { font-size: 14px; font-weight: 700; }
+    .sweet-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    /* 蛋糕定制 */
+    .cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .cake-price { font-size: 18px; font-weight: 800; }
+    .cake-list { font-size: 12px; opacity: .65; margin: 0; padding-left: 18px; line-height: 2; }
+    /* 自提三步 */
+    .pickup-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 4px 0 8px; }
+    .pickup-num { width: 26px; height: 26px; border-radius: 9999px; background: var(--color-primary); color: var(--color-primary-content); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; }
+    .pickup-name { font-size: 14px; font-weight: 700; }
+    .pickup-desc { font-size: 12px; opacity: .6; margin: 0; line-height: 1.8; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-zone { padding: 24px 8px 20px; }
+      .hero-zone h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 11 h10 l-1.2 8 h-7.6 z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            <path d="M8.5 11 c0 -2 1.5 -3 3.5 -3 s3.5 1 3.5 3" fill="var(--color-secondary)" opacity=".55" />
+            <circle cx="12" cy="6.6" r="1.6" fill="var(--color-error)" opacity=".8" />
+          </svg>
+          云朵糖 <small>CUPCAKE CLOUD</small>
+        </div>
+        <ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 16%, transparent);--menu-active-fg:var(--color-base-content)">
+          <li><a class="menu-active">今日甜品</a></li>
+          <li><a>蛋糕定制</a></li>
+          <li><a>礼盒自提</a></li>
+          <li><a>会员</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm btn-primary" type="button">预订甜品</button>
+      </div>
+    </div>
+
+    <!-- Hero：奶油顶纸杯蛋糕 -->
+    <div class="hero-zone">
+      <span class="badge badge-soft badge-sm">每日现烤 · 下午两点出炉</span>
+      <h1>今天，也想给你一点甜</h1>
+      <p class="lede">云朵糖的烤箱每天开四次。草莓挞早上七点出炉，瑞士卷中午补一轮——甜分不过半，奶油是当天打的动物淡奶油。</p>
+      <svg class="hero-art" viewBox="0 0 240 210" role="img" aria-label="甜点线稿：一枚奶油顶纸杯蛋糕，粉色裱花与一颗红樱桃（示例插图）">
+        <!-- 纸杯 -->
+        <path d="M78 118 h84 l-10 66 h-64 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        <g stroke="currentColor" stroke-width="1.4">
+          <line x1="96" y1="126" x2="99" y2="176" /><line x1="120" y1="126" x2="120" y2="176" /><line x1="144" y1="126" x2="141" y2="176" />
+        </g>
+        <!-- 奶油裱花 -->
+        <path d="M84 118 q6 -22 22 -20 q4 -16 14 -16 q10 0 14 16 q16 -2 22 20 z" fill="var(--color-secondary)" opacity=".5" />
+        <!-- 樱桃 -->
+        <circle cx="120" cy="72" r="9" fill="var(--color-error)" opacity=".8" />
+        <path d="M120 64 q2 -8 8 -10" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button">预订甜品</button>
+        <button class="btn btn-ghost" type="button">查看自提门店</button>
+      </div>
+    </div>
+
+    <!-- 今日甜品：六张卡 -->
+    <div>
+      <div class="sect-head">
+        <h2>今日甜品</h2>
+        <span>六点开始补货 · 卖完不补烤</span>
+      </div>
+      <div class="sweet-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="纸杯蛋糕线稿（示例插图）">
+                <path d="M34 52 h28 l-4 24 h-20 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M37 52 c0 -10 7 -14 11 -14 s11 4 11 14" fill="var(--color-secondary)" opacity=".5" />
+                <circle cx="48" cy="34" r="4" fill="var(--color-error)" opacity=".8" />
+              </svg>
+            </div>
+            <span class="sweet-name">香草纸杯蛋糕</span>
+            <p class="sweet-desc">动物淡奶油裱花，当天现打。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="草莓挞线稿（示例插图）">
+                <circle cx="48" cy="52" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M48 34 c-8 6 -11 12 -8 18 q8 10 16 0 c3 -6 0 -12 -8 -18 z" fill="var(--color-error)" opacity=".55" />
+                <path d="M48 34 l-5 -4 M48 34 l5 -4" stroke="var(--color-primary)" stroke-width="1.8" stroke-linecap="round" fill="none" />
+              </svg>
+            </div>
+            <span class="sweet-name">草莓挞</span>
+            <p class="sweet-desc">凌晨现熬草莓酱，挞壳当日烤。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="马卡龙线稿（示例插图）">
+                <path d="M28 44 q20 -14 40 0 q2 6 -2 8 h-36 q-4 -2 -2 -8 z" fill="var(--color-secondary)" opacity=".55" />
+                <rect x="32" y="52" width="32" height="6" rx="3" fill="none" stroke="currentColor" stroke-width="1.8" />
+                <path d="M30 60 q18 12 36 0 q2 -5 -2 -7 h-32 q-2 2 -2 7 z" fill="var(--color-accent)" opacity=".7" />
+              </svg>
+            </div>
+            <span class="sweet-name">覆盆子马卡龙</span>
+            <p class="sweet-desc">壳脆芯糯，一盒六枚装。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="瑞士卷线稿（示例插图）">
+                <circle cx="48" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M48 50 m0 -4 a4 4 0 1 1 -4 4 a8 8 0 1 0 8 -8 a14 14 0 1 1 -14 14" fill="none" stroke="var(--color-secondary)" stroke-width="1.8" />
+                <circle cx="48" cy="50" r="4" fill="var(--color-error)" opacity=".6" />
+              </svg>
+            </div>
+            <span class="sweet-name">原味瑞士卷</span>
+            <p class="sweet-desc">戚风胚体软弹，奶油不抢味。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="焦糖布丁线稿（示例插图）">
+                <path d="M30 40 h36 l-5 32 h-26 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <ellipse cx="48" cy="40" rx="18" ry="6" fill="var(--color-accent)" opacity=".7" />
+                <path d="M40 36 q4 3 8 0" stroke="var(--color-base-content)" stroke-width="1.4" fill="none" opacity=".5" />
+              </svg>
+            </div>
+            <span class="sweet-name">焦糖布丁</span>
+            <p class="sweet-desc">隔水浴慢蒸四十分钟，抖着出杯。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="sweet-art">
+              <svg viewBox="0 0 96 96" role="img" aria-label="黄油曲奇线稿（示例插图）">
+                <circle cx="48" cy="50" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+                <g fill="var(--color-base-content)" opacity=".55">
+                  <circle cx="40" cy="44" r="2.6" /><circle cx="56" cy="42" r="2.6" /><circle cx="48" cy="56" r="2.6" /><circle cx="58" cy="58" r="2.6" /><circle cx="38" cy="58" r="2.6" />
+                </g>
+              </svg>
+            </div>
+            <span class="sweet-name">巧克力豆曲奇</span>
+            <p class="sweet-desc">外脆内软，凉了回烤三分钟更好吃。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 蛋糕定制：三个规格 -->
+    <div>
+      <div class="sect-head">
+        <h2>蛋糕定制</h2>
+        <span>提前 48 小时下单 · 当日新鲜制作</span>
+      </div>
+      <div class="cake-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">6 寸小蛋糕</span>
+              <span class="cake-price">¥168</span>
+            </div>
+            <ul class="cake-list">
+              <li>适合 2–3 人分享</li>
+              <li>四选一胚体：原味 / 巧克力 / 抹茶 / 芋泥</li>
+              <li>附赠写字蜡烛一套</li>
+            </ul>
+            <button class="btn btn-sm btn-secondary" type="button">开始定制</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">8 寸分享款</span>
+              <span class="cake-price">¥268</span>
+            </div>
+            <ul class="cake-list">
+              <li>适合 5–7 人聚会</li>
+              <li>可做双拼口味</li>
+              <li>免费插牌定制一句祝福</li>
+            </ul>
+            <button class="btn btn-sm btn-secondary" type="button">开始定制</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">双层庆典款</span>
+              <span class="cake-price">¥488</span>
+            </div>
+            <ul class="cake-list">
+              <li>适合 10 人以上宴席</li>
+              <li>含上门摆台一次（市区）</li>
+              <li>附配送保温箱与冰袋</li>
+            </ul>
+            <button class="btn btn-sm btn-secondary" type="button">开始定制</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 礼盒与到店自提 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:20px;gap:12px">
+        <div class="sect-head" style="margin-bottom:0">
+          <h2>礼盒与到店自提</h2>
+          <span>甜品礼盒当日包装 · 三店均可自提</span>
+        </div>
+        <div class="pickup-steps">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span class="pickup-num">1</span>
+            <span class="pickup-name">线上下单</span>
+            <p class="pickup-desc">选好甜品与礼盒规格，备注想要的取货时段。</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span class="pickup-num">2</span>
+            <span class="pickup-name">选择门店</span>
+            <p class="pickup-desc">云棠店 / 江岸店 / 光谷店三选一，做好后短信通知。</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span class="pickup-num">3</span>
+            <span class="pickup-name">到店自提</span>
+            <p class="pickup-desc">报取货码核销，建议两小时内食用，口感最佳。</p>
+          </div>
+        </div>
+        <div>
+          <button class="btn btn-primary" type="button">查看自提门店</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 会员 CTA -->
+    <div class="card rounded-box" style="padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <h2 style="font-size:21px;margin:0;letter-spacing:1px">每月会员日，甜品第二份半价</h2>
+      <p style="font-size:13px;opacity:.6;max-width:440px;margin:0;line-height:1.9">扫码成为云朵糖会员，定制蛋糕累计消费满 500 元送一枚 6 寸小蛋糕。</p>
+      <div style="display:flex;flex-direction:column;gap:2px;margin-top:2px">
+        <span style="font-size:13px;font-weight:700">云朵糖 · 云棠店</span>
+        <span style="font-size:12px;opacity:.6;line-height:1.8">江岸区云棠街 21 号（虚构）<br />027-8700-0000（虚构）</span>
+      </div>
+      <button class="btn btn-primary" type="button">加入会员</button>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">云朵糖 CUPCAKE CLOUD 烘焙为虚构品牌，甜品、价格、门店与会员权益均为示例数据，仅用于展示 cupcake 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="cupcake"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/cupcake/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt
