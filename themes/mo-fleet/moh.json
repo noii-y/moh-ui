@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "name": "mo-fleet",
+  "type": "theme",
+  "title": "驰途调度（浅色）",
+  "description": "完整页面案例：虚构物流配送调度台「驰途调度 CHITU DISPATCH · 城配调度中心」整页。高对比功能色（待取/配送中/签收/异常一目了然）、顶栏+左栏后台骨架、时效 KPI 行、网格实时地图态势、在岗骑手与运单双列表；挂 data-theme=\"mo-fleet\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "商务", "冷调", "数据看板"],
+  "base": "mo-fleet",
+  "aiNotes": [
+    "引入方式：项目已引 daisyUI 后，<link rel=\"stylesheet\" href=\"tokens.css\" /> 并在 <html data-theme=\"mo-fleet\"> 即整站换肤；本主题是浅色白底（--color-base-100 #FFFFFF），正文 --color-base-content #141A22，对比度已实测：正文白底 17.5:1、次级文字 --color-neutral #3A4450 白底 9.9:1，严禁用 opacity 压文字，需要浅一层就换成 --color-neutral。",
+    "状态语义色固定四色且全部加深：--color-info #173FA8（待取件/等待揽收，白字 9.1:1）、--color-primary #1C4F9E（配送中/主操作，白字 7.9:1）、--color-success #175A22（已签收/准时，白字 8.3:1）、--color-error #A01B1B（异常单，白字 7.9:1）；--color-warning #6B4400 只用于即将超时/定位异常的提醒（白字 8.6:1）。状态徽章一律 badge-soft + 中文文字，不许只靠颜色传达。",
+    "主色 #1C4F9E 只留给派单主按钮、当前导航（menu-active 左侧 3px 竖条 + 浅灰底）与关键数字；车队/班次用 --color-secondary #0F6A58 青绿做次级区分；加急件才用 --color-accent #8A5A00 琥珀棕；禁止大面积铺主色渐变。",
+    "信息密度优先的排版：KPI 用克制小卡（标签 13px 中性色 + 大数字 28px 加粗 + 12px 副说明），不是营销大卡；左栏菜单每项 18px 线性 SVG 图标 + 14px 文字；圆角走 --radius-box 0.5rem 方正档，细 1px 中性灰描边、零投影。",
+    "地图必须是成形 SVG：网格线 + 主干道 + 片区淡色块（语义色 8%~10% 透明）+ 骑手点位圆点（状态语义色实心 + 白底圆心）+ 虚线在途路线，底部一行图例配中文状态词；禁止放一个空灰块当地图占位，也禁止用 emoji 当点位。",
+    "动作按钮写真实业务动作：派发选中运单/一键派单/改派订单/联系骑手/导出运单，禁止写颜色名（Primary/Success）或营销词（立即抢购）。",
+    "与相近主题的差异：mo-gray 是客户资料型 CRM 中性灰、mo-classic 是普通通用后台——本主题核心是实时调度：地图态势 + 骑手位置 + 运单时效倒计时，不要做成客户列表或个人仪表盘。",
+    "390px 窄屏规则：后台骨架纵向堆叠（左栏菜单折行成横向 flex-wrap）、骑手/运单双栏变单列、KPI auto-fit、地图 SVG width:100% 等比缩；整页无 position:fixed 遮挡、无横向溢出。"
+  ],
+  "source": {
+    "origin": "original",
+    "upstream": null,
+    "url": null,
+    "license": "MIT",
+    "changes": "自写 daisyUI 5 主题变量（[data-theme=mo-fleet] 覆盖 --color-* 等，白底高对比功能色配色，文字对比度全部实测 ≥6:1），配虚构物流配送调度台整页案例（demo.html：品牌顶栏+班次/通知/调度员 + 左侧调度导航 + 时效 KPI 行 + 网格实时地图 SVG 态势 + 在岗骑手 5 行 + 待处理运单 6 行 + 派单/改派/联系骑手真实操作按钮 + 虚构数据声明页脚）。"
+  },
+  "dependencies": [],
+  "files": ["tokens.css", "demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}

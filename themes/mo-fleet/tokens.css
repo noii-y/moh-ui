@@ -1,0 +1,49 @@
+/*! 灰墨 mo-fleet · 驰途调度（浅色）—— 物流配送调度台高对比功能色主题
+   覆盖 daisyUI 5 主题变量（MIT，daisyUI © Pouya Saadeghi）。
+   用法：项目已引入 daisyUI 后，<link> 本文件，并在 <html data-theme="mo-fleet"> 即整站换肤。
+   设计目标：白底高对比功能色，状态语义一眼可读（待取/配送中/签收/异常），户外与办公双场景都看得清。 */
+
+[data-theme="mo-fleet"] {
+  color-scheme: light;
+
+  /* 底与纸：纯白 + 浅灰面板，细中性灰边框，层次靠明度与描边 */
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f3f5;
+  --color-base-300: #c3cad2;
+  --color-base-content: #141a22;
+
+  /* 主色：调度深蓝（白字 7.9:1），只留给派单主操作、当前导航与关键链接 */
+  --color-primary: #1c4f9e;
+  --color-primary-content: #ffffff;
+
+  /* 次色：配送青绿（白字 6.5:1），用于车队/班次等次级强调 */
+  --color-secondary: #0f6a58;
+  --color-secondary-content: #ffffff;
+
+  /* 强调：加急琥珀棕（白字 5.9:1），仅用于加急件与时限提醒 */
+  --color-accent: #8a5a00;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #3a4450;
+  --color-neutral-content: #ffffff;
+
+  /* 语义色：全部加深到白字 ≥6:1，状态同时配中文文字，不靠颜色单独传达 */
+  --color-info: #173fa8;      /* 待取 / 等待揽收 */
+  --color-info-content: #ffffff;
+  --color-success: #175a22;   /* 已签收 / 准时 */
+  --color-success-content: #ffffff;
+  --color-warning: #6b4400;    /* 即将超时 / 改派 */
+  --color-warning-content: #ffffff;
+  --color-error: #a01b1b;      /* 异常单 */
+  --color-error-content: #ffffff;
+
+  /* 圆角 / 尺寸 / 边框：调度台偏方正、细边框、无投影，信息密度优先 */
+  --radius-selector: 0.375rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
