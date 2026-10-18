@@ -17,6 +17,8 @@
 .flex-nowrap { flex-wrap: nowrap; }
 .flex-col { flex-direction: column; }
 .flex-row { flex-direction: row; }
+.flex-col-reverse { flex-direction: column-reverse; }
+.flex-row-reverse { flex-direction: row-reverse; }
 .justify-start { justify-content: flex-start; }
 .justify-center { justify-content: center; }
 .justify-end { justify-content: flex-end; }
@@ -173,6 +175,13 @@
 .line-through { text-decoration: line-through; }
 .whitespace-nowrap { white-space: nowrap; }
 
+/* ---------- 列表 ---------- */
+.list-none { list-style: none; }
+.list-disc { list-style-type: disc; }
+.list-decimal { list-style-type: decimal; }
+.list-inside { list-style-position: inside; }
+.list-outside { list-style-position: outside; }
+
 /* ---------- 内边距 ---------- */
 .p-0 { padding: 0; }
 .p-1 { padding: 0.25rem; }
@@ -205,6 +214,26 @@
 .pb-2 { padding-bottom: 0.5rem; }
 .pb-4 { padding-bottom: 1rem; }
 .pb-6 { padding-bottom: 1.5rem; }
+.pl-0 { padding-left: 0; }
+.pl-1 { padding-left: 0.25rem; }
+.pl-2 { padding-left: 0.5rem; }
+.pl-3 { padding-left: 0.75rem; }
+.pl-4 { padding-left: 1rem; }
+.pl-5 { padding-left: 1.25rem; }
+.pl-6 { padding-left: 1.5rem; }
+.pl-8 { padding-left: 2rem; }
+.pl-10 { padding-left: 2.5rem; }
+.pl-12 { padding-left: 3rem; }
+.pr-0 { padding-right: 0; }
+.pr-1 { padding-right: 0.25rem; }
+.pr-2 { padding-right: 0.5rem; }
+.pr-3 { padding-right: 0.75rem; }
+.pr-4 { padding-right: 1rem; }
+.pr-5 { padding-right: 1.25rem; }
+.pr-6 { padding-right: 1.5rem; }
+.pr-8 { padding-right: 2rem; }
+.pr-10 { padding-right: 2.5rem; }
+.pr-12 { padding-right: 3rem; }
 
 /* ---------- 外边距 ---------- */
 .m-0 { margin: 0; }
