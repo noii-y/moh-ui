@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "dim",
+  "type": "theme",
+  "title": "夜灰（dim）",
+  "description": "完整页面案例：虚构夜间阅读社区「夜读 DIMREAD」整页。柔和深灰底配浅灰白正文与一点柔光绿，长文排版宽松安静、无霓虹无大屏，适合长时间阅读；挂 daisyUI 官方主题 data-theme=\"dim\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "护眼", "专注", "落地页"],
+  "base": "dim",
+  "aiNotes": [
+    "底色用柔和深灰 base-100 / base-200（oklch 约 31% 明度，近中性带极轻蓝调），正文用浅灰白 base-content；禁止另写纯黑背景——纯黑屏幕在关灯房间里反而刺眼，这是 dim 与纯黑监控类深色主题（如 abyss）的分界线。",
+    "主色只允许出现一盏柔光绿（base-primary）：主按钮、阅读进度条、引用块边线、图标强调与激活菜单，绝不大面积铺绿、禁止霓虹发光与大面积色块；与 mo-dark（数据看板）、abyss（纯黑监控）、synthwave（霓虹复古）拉开，dim 是其中最安静、最适合长时间阅读的一套。",
+    "长文阅读是本页核心：正文 14px、行高 1.9~2.1、段落间留空，引用块只用一条 primary 55% 透明度的左边线，不加色块、不加重阴影；标题字距放宽 1~2px，不做粗重堆料。",
+    "默认 btn-primary 绿底配深色 primary-content 文字实测约 13:1，直接用即可、不要覆写加深；正文弱化文案（lede / 页脚 / 说明）保持 opacity 不低于 .55（实测约 4.8:1），.45 以下小字会跌破 4.5:1，页脚建议 .55 而非 .5。",
+    "所有插图只用 currentColor 单色线稿 SVG（新月、台灯、摊开的书、四种差异化书封：厚本 / 薄册诗集 / 译本 / 带书签笔记），绿色只做局部勾线（灯光射线、书签），不用彩色照片、不用 emoji、不用渐变、不用发光滤镜。",
+    "文案写真实动作与具体参数（开始今晚的阅读、阅读进度 62%、行高 1.9、定时提醒远眺 30 分钟），不写「尊贵夜间体验」这类空话；帖子数、书目、作者全部标注虚构 / 示例。",
+    "禁止 KPI 仪表盘 / 图表大屏 / 排行榜红点：社区页只放三张安静的讨论帖卡，不放数据墙；390px 窄屏顶栏自然折行、书单卡单列、阅读进度条不溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=dim]；仅用 daisyUI 组件拼装一套夜间阅读社区整页（demo.html：顶栏导航与开始阅读按钮 + 月下书桌线稿 Hero 与双 CTA + 一篇完整长文阅读样板含引用块 + 四张在读书籍卡与阅读进度条 + 夜间社区三个讨论帖 + 护眼参数四宫格 + 下载 App CTA 与虚构声明页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
