@@ -67,6 +67,11 @@
 - 禁用态明确（透明度 0.5 + `cursor: not-allowed`）；
 - 动效 ≤ 200ms，仅 hover / 过渡 / 展开用；**禁止闪烁、缩放、弹跳类动画**；
 - 加载与空态有反馈（骨架屏或 loading 文字），禁止无反馈卡顿。
+- 页面必须能只用键盘走完：Tab / Shift+Tab 的焦点顺序与视觉顺序一致，每个可操作元素都有清晰的 `:focus-visible` 描边，不能把 outline 关掉又不给替代。
+- 可点击、可点选控件的触控热区不小于 44×44px；控件本身可以小，用外层 label 或容器补足。
+- 弹层（对话框、抽屉、下拉菜单、大菜单）优先用浏览器原生能力，不要自己写焦点陷阱：对话框、抽屉用 `<dialog class="modal">` + `showModal()`，菜单类用 popover API（`popovertarget` + `[popover]`）。
+- 弹层打开后焦点进入弹层，Tab 只在弹层内循环、背景被锁定；按 Esc（菜单还包括点击外部）能关闭；关闭后焦点回到触发它的按钮。这些原生 dialog / popover 已提供，别重复造。
+- 弹层要有标题并用 `aria-labelledby` 关联，触发按钮用 `aria-expanded`、`aria-controls` 反映开合与指向；纯 hover 提示的 tooltip 不拦截焦点，不套这套属性。
 
 ## 8. 禁则（一票否决）
 

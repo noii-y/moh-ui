@@ -543,7 +543,10 @@ let compOnly = null;
 /* ---------- 主题 AI 页生成 ---------- */
 const themeRecords = [];
 {
-  const wanted = themeListAll.filter((t) => !themeOnly || t.name === themeOnly || t.slug === themeOnly);
+  // 单组件模式（compOnly）不重建任何主题，避免顺带重写全部主题文件
+  const wanted = compOnly
+    ? []
+    : themeListAll.filter((t) => !themeOnly || t.name === themeOnly || t.slug === themeOnly);
   if (themeOnly && wanted.length === 0) {
     console.error(`✗ 未找到主题：${themeOnly}（如 mo-dark、tokyo-night、silk）`);
     process.exit(1);
