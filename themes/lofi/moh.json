@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "lofi",
+  "type": "theme",
+  "title": "素白（lofi）",
+  "description": "完整页面案例：虚构极简笔记应用「素白笔记 BLANK NOTES」整页。纯白底纯黑字、发丝细线与大留白，克制文艺；挂 daisyUI 官方主题 data-theme=\"lofi\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "灰阶", "极简", "纸感", "落地页"],
+  "base": "lofi",
+  "aiNotes": [
+    "纯白底（base-100）配纯黑字（base-content），卡片用 97% 浅灰 base-200；全站只有黑白灰，禁止引入任何彩色——连点缀色都不要，连图标都是 currentColor 单色线稿。",
+    "主按钮直接用默认 btn-primary（近黑底白字，实测对比度约 21:1）；次要操作一律 btn-ghost；不要给按钮加阴影、渐变或彩色描边。",
+    "靠发丝线分隔而非色块：卡片之间用 1px、currentColor 12%~15% 透明度的细线，版块间大留白，宁可空着也不要塞满。",
+    "标题 17~34px、正文 12~13px、行距 1.9~2.1，标题加 2~3px 字距；字号克制，不做粗黑超大标题以外的花哨字重对比。",
+    "所有插图（纸与笔、功能图标、应用界面）只用 currentColor 单色线稿 SVG，线条 1.6~1.8px；界面简影里正文行用 currentColor 30% 透明度的细线表现，选中项用实心黑块，不用彩色高亮。",
+    "文案克制、像编辑室说话：按钮只写真实动作（免费下载、先读文章、查看全部平台），文章标题与摘要写具体小事，不写「极致体验、灵感生活」这类空话。",
+    "390px 窄屏顶栏自然折行、功能卡折成两列或单列、文章列表保持纵向单列不溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=lofi]；仅用 daisyUI 组件拼装一套极简笔记应用整页（demo.html：顶栏导航与黑色下载按钮 + 纸与笔线稿 Hero 与双 CTA + 四件事功能卡（极简编辑 / 离线书写 / 专注模式 / 导出）+ 四篇灰阶文章列表 + 应用界面线稿简影 + 下载 CTA 与虚构页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
