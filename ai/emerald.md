@@ -1,0 +1,339 @@
+# 翠盈（emerald） · 灰墨 MoH_UI
+
+> 虚构储蓄产品「翠盈储蓄 GREENWALLET」整页。纯白浅灰底配深蓝灰正文与一点翠绿，资产与计划克制呈现、数据全部标注示例；挂 daisyUI 官方主题 data-theme="emerald" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/emerald/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 白底 base-100 / 浅灰 base-200 卡片，正文一律用深蓝灰 base-content；翠绿主色只出现在实心主按钮、进度条填充、线性图标勾线与收益折线，绝不大面积铺绿、不做渐变绿光——绿色是信任色不是促销色。
+- contrast 铁律：翠绿 primary 直接当文字压白底实测仅约 2:1，禁止把余额 / 标题 / 说明写成绿色；绿色正向小标注（如「较上月 +2.6%」）必须 color-mix(in oklab, var(--color-success) 50%, var(--color-base-content)) 加深（实测约 4.8:1），不要直接用 success 色。
+- 默认 btn-primary 翠绿底配深绿 primary-content 文字实测约 5.9:1，达标，直接用、不要覆写加深；白底上的弱化文案（lede / 页脚 / 说明）opacity 不低于 .9（实测约 5.5:1），.65 仅约 2.4:1 会远不达标。
+- 金融数据克制呈现：余额用大字号深蓝灰加粗，不做花哨仪表盘 / 多图表 / 滚动数字；收益只放一条 currentColor 上升折线（面积填充 primary 12% 透明度），页面数据必须写「示例」「虚构」，年化区间标注随市场浮动。
+- 所有插图只用单色线稿 SVG：存钱罐、硬币、嫩芽（嫩芽用 primary 勾线）、加密锁 / 盾牌 / 存钱罐 / 时钟四个安全图标，轮廓可分辨、不用彩色照片、不用 emoji、不用渐变。
+- 文案写真实动作与具体信息（免费开户、选择计划、立即开户、本月存入 ¥8,200 共 12 笔），不写「极速财富」「高收益躺赚」这类话；保障说明标注「示例说明」，不写绝对化承诺。
+- 390px 窄屏顶栏自然折行、资产三格与计划卡单列、进度条 flex 收缩不溢出；菜单当前页每页只允许一个 menu-active。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="emerald">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>让每一笔，都稳稳生长 · 翠盈储蓄 GREENWALLET（emerald 主题案例）</title>
+  <meta name="description" content="灰墨 emerald 主题完整页面案例：虚构储蓄产品「翠盈储蓄 GREENWALLET」整页。纯白底配深灰蓝正文与一点翠绿，资产与计划克制呈现、数据全部标注示例。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .brand small { font-size: 10px; font-weight: 400; letter-spacing: 2px; opacity: .55; }
+    .brand svg { width: 22px; height: 22px; color: var(--color-primary); }
+    .menu-row { display: flex; flex-direction: row; flex-wrap: wrap; padding: 0; gap: 2px; margin: 0; }
+    .sect-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .sect-head h2 { font-size: 19px; margin: 0; letter-spacing: 1px; }
+    .sect-head span { font-size: 12px; opacity: .9; }
+    /* 首屏（自定义类名，避开 daisyUI 的 .hero 组件） */
+    .bank-zone { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 36px 16px 30px; }
+    .bank-zone h1 { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.3; letter-spacing: 1px; }
+    .bank-zone .lede { font-size: 13px; opacity: .9; max-width: 460px; margin: 0; line-height: 2; }
+    .bank-art { width: 320px; max-width: 100%; height: auto; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    /* 账户资产 */
+    .asset-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 4px; }
+    .asset-label { font-size: 12px; opacity: .9; }
+    .asset-num { font-size: 24px; font-weight: 800; letter-spacing: .5px; }
+    .asset-sub { font-size: 12px; line-height: 1.8; }
+    .gain { color: color-mix(in oklab, var(--color-success) 50%, var(--color-base-content)); font-weight: 700; }
+    .goal-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    /* 储蓄计划 */
+    .plan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .plan-rate { font-size: 20px; font-weight: 800; }
+    .plan-list { font-size: 12px; opacity: .9; margin: 0; padding-left: 18px; line-height: 2; }
+    /* 收益简影 */
+    .trend-art { width: 100%; height: auto; display: block; }
+    /* 安全保障 */
+    .safe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .safe-item { display: flex; align-items: center; gap: 12px; }
+    .safe-item svg { width: 26px; height: 26px; flex: none; color: var(--color-primary); }
+    .safe-name { font-size: 14px; font-weight: 700; }
+    .safe-desc { font-size: 12px; opacity: .9; margin: 0; line-height: 1.8; }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 18%, transparent); }
+    .foot { font-size: 12px; opacity: .9; text-align: center; padding-top: 6px; line-height: 1.8; margin: 0; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .bank-zone { padding: 24px 8px 20px; }
+      .bank-zone h1 { font-size: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21v-8" />
+            <path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z" />
+            <path d="M12 14c0-3-2.5-4.5-6-4.5 0 3 2.5 4.5 6 4.5z" />
+          </svg>
+          翠盈储蓄 <small>GREENWALLET</small>
+        </div>
+        <ul class="menu-row menu" style="--menu-active-bg:color-mix(in oklab, var(--color-primary) 16%, transparent);--menu-active-fg:var(--color-base-content)">
+          <li><a class="menu-active">账户</a></li>
+          <li><a>储蓄</a></li>
+          <li><a>收益</a></li>
+          <li><a>安全</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm btn-primary" type="button">免费开户</button>
+      </div>
+    </div>
+
+    <!-- 首屏：存钱罐与嫩芽 -->
+    <div class="bank-zone">
+      <span class="badge badge-soft badge-sm" style="--badge-color:var(--color-base-content)">存款保险保障 · 本页数据均为示例</span>
+      <h1>让每一笔，都稳稳生长</h1>
+      <p class="lede">翠盈储蓄把存钱这件事拆成三个计划：今天能存多少、下个月要留多少、一年后想达到多少。不追高、不喧哗，只稳稳地长大。</p>
+      <svg class="bank-art" viewBox="0 0 360 210" role="img" aria-label="存钱罐与嫩芽线稿：一只小猪存钱罐、旁边一株刚破土的幼苗、两枚硬币（示例插图）">
+        <!-- 存钱罐 -->
+        <g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="150" cy="140" rx="72" ry="44" />
+          <path d="M96 128 q-14 -2 -16 -12 M204 128 q14 -2 16 -12" />
+          <circle cx="128" cy="128" r="2.6" fill="currentColor" />
+          <line x1="140" y1="102" x2="172" y2="102" />
+          <path d="M126 184 v10 M174 184 v10" />
+        </g>
+        <!-- 硬币 -->
+        <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <ellipse cx="56" cy="186" rx="14" ry="5" />
+          <ellipse cx="252" cy="188" rx="12" ry="4.5" />
+        </g>
+        <!-- 幼苗 -->
+        <g stroke="var(--color-primary)" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="296" y1="190" x2="296" y2="128" />
+          <path d="M296 142c0-16 12-24 28-24 0 16-12 24-28 24z" />
+          <path d="M296 156c0-12-10-18-24-18 0 12 10 18 24 18z" />
+        </g>
+        <line x1="40" y1="192" x2="330" y2="192" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+      <div class="cta-row">
+        <button class="btn btn-primary" type="button">免费开户</button>
+        <button class="btn btn-ghost" type="button">看看储蓄计划</button>
+      </div>
+    </div>
+
+    <!-- 账户资产：克制呈现 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:22px;gap:14px">
+        <div class="sect-head" style="margin-bottom:0">
+          <h2>账户总览</h2>
+          <span>示例账户 · 每日结息</span>
+        </div>
+        <div class="asset-row">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span class="asset-label">可用余额</span>
+            <span class="asset-num">¥128,460.50</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span class="asset-label">累计收益</span>
+            <span class="asset-num">¥3,284.16</span>
+            <span class="asset-sub"><span class="gain">较上月 +2.6%</span> · 已分红 6 次（示例）</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span class="asset-label">本月存入</span>
+            <span class="asset-num">¥8,200</span>
+            <span class="asset-sub">共 12 笔自动转入（示例）</span>
+          </div>
+        </div>
+        <div class="goal-row" style="margin-top:6px">
+          <span style="font-size:12px;opacity:.9;white-space:nowrap">年度目标 ¥100,000</span>
+          <progress class="progress" value="68" max="100" style="color:var(--color-primary);flex:1;min-width:120px" aria-label="年度储蓄目标已达成 68%"></progress>
+          <span style="font-size:12px;opacity:.9;font-weight:700">68%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 储蓄计划：三张卡 -->
+    <div>
+      <div class="sect-head">
+        <h2>三个储蓄计划</h2>
+        <span>年化区间为示例数据 · 随市场浮动</span>
+      </div>
+      <div class="plan-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">稳健计划</span>
+              <span class="plan-rate">1.8%<span style="font-size:11px;font-weight:400;opacity:.9"> ~2.2%</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>随存随取，按日计息</li>
+              <li>适合放三个月内要用的钱</li>
+              <li>单笔最低存入 100 元</li>
+            </ul>
+            <button class="btn btn-sm btn-primary" type="button">选择计划</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">平衡计划</span>
+              <span class="plan-rate">2.6%<span style="font-size:11px;font-weight:400;opacity:.9"> ~3.4%</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>存满 180 天享约定利率</li>
+              <li>适合年终、旅行这类中期目标</li>
+              <li>提前支取按活期计息</li>
+            </ul>
+            <button class="btn btn-sm btn-primary" type="button">选择计划</button>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:18px;gap:10px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px">
+              <span style="font-size:15px;font-weight:700">成长计划</span>
+              <span class="plan-rate">3.5%<span style="font-size:11px;font-weight:400;opacity:.9"> ~4.8%</span></span>
+            </div>
+            <ul class="plan-list">
+              <li>每月自动定投一笔</li>
+              <li>适合三年以上的长远目标</li>
+              <li>可随时修改每月金额</li>
+            </ul>
+            <button class="btn btn-sm btn-primary" type="button">选择计划</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 收益简影：一条线 -->
+    <div class="card bg-base-200 rounded-box">
+      <div class="card-body" style="padding:22px;gap:12px">
+        <div class="sect-head" style="margin-bottom:0">
+          <h2>收益走势</h2>
+          <span>近六个月累计收益 · 示例数据</span>
+        </div>
+        <svg class="trend-art" viewBox="0 0 360 150" role="img" aria-label="近六个月累计收益缓慢上升的折线示意（示例数据）">
+          <line x1="20" y1="128" x2="344" y2="128" stroke="currentColor" stroke-width="1.2" opacity=".4" />
+          <path d="M28 118 L84 108 L140 96 L196 80 L252 62 L316 40 L316 128 L28 128 Z" fill="color-mix(in oklab, var(--color-primary) 12%, transparent)" stroke="none" />
+          <path d="M28 118 L84 108 L140 96 L196 80 L252 62 L316 40" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <g fill="var(--color-primary)">
+            <circle cx="28" cy="118" r="3" /><circle cx="84" cy="108" r="3" /><circle cx="140" cy="96" r="3" /><circle cx="196" cy="80" r="3" /><circle cx="252" cy="62" r="3" /><circle cx="316" cy="40" r="3" />
+          </g>
+        </svg>
+        <p style="font-size:12px;opacity:.9;margin:0;line-height:1.8">累计收益曲线只向上不夸张：每个月的结余都比上个月多一点，这就是翠盈想要的节奏。</p>
+      </div>
+    </div>
+
+    <!-- 安全保障 -->
+    <div>
+      <div class="sect-head">
+        <h2>安全保障</h2>
+        <span>四项基础能力 · 页内均为说明示例</span>
+      </div>
+      <div class="safe-grid">
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="safe-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="10" width="14" height="10" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              </svg>
+              <span class="safe-name">加密传输</span>
+            </div>
+            <p class="safe-desc">登录与转账全程加密，敏感信息不在明文里停留。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="safe-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" /><path d="M9 12l2 2 4-4" />
+              </svg>
+              <span class="safe-name">监管备案</span>
+            </div>
+            <p class="safe-desc">按要求完成备案，资金存管在持牌机构（示例说明）。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="safe-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <ellipse cx="12" cy="6" rx="7" ry="3" /><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" /><path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+              </svg>
+              <span class="safe-name">存款保障</span>
+            </div>
+            <p class="safe-desc">存款类产品按存款保险条例保障（示例说明）。</p>
+          </div>
+        </div>
+        <div class="card bg-base-200 rounded-box">
+          <div class="card-body" style="padding:14px;gap:8px">
+            <div class="safe-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 3" />
+              </svg>
+              <span class="safe-name">智能风控</span>
+            </div>
+            <p class="safe-desc">异常登录与大额转出实时提醒，可一键冻结账户。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 开户 CTA -->
+    <div class="card rounded-box" style="padding:28px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <h2 style="font-size:21px;margin:0;letter-spacing:1px">十分钟，开好第一个储蓄账户</h2>
+      <p style="font-size:13px;opacity:.9;max-width:440px;margin:0;line-height:1.9">身份证 + 常用手机号即可开户，不开任何看不见的收费项。翠盈储蓄为虚构产品。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:2px">
+        <button class="btn btn-primary" type="button">立即开户</button>
+        <button class="btn btn-ghost" type="button">看看常见问题</button>
+      </div>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">翠盈储蓄 GREENWALLET 为虚构产品，账户余额、收益、年化区间与保障说明均为示例数据，仅用于展示 emerald 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="emerald"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/emerald/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

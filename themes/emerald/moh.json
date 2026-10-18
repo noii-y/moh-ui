@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "emerald",
+  "type": "theme",
+  "title": "翠盈（emerald）",
+  "description": "完整页面案例：虚构储蓄产品「翠盈储蓄 GREENWALLET」整页。纯白浅灰底配深蓝灰正文与一点翠绿，资产与计划克制呈现、数据全部标注示例；挂 daisyUI 官方主题 data-theme=\"emerald\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["浅色", "商务", "品牌", "落地页"],
+  "base": "emerald",
+  "aiNotes": [
+    "白底 base-100 / 浅灰 base-200 卡片，正文一律用深蓝灰 base-content；翠绿主色只出现在实心主按钮、进度条填充、线性图标勾线与收益折线，绝不大面积铺绿、不做渐变绿光——绿色是信任色不是促销色。",
+    "contrast 铁律：翠绿 primary 直接当文字压白底实测仅约 2:1，禁止把余额 / 标题 / 说明写成绿色；绿色正向小标注（如「较上月 +2.6%」）必须 color-mix(in oklab, var(--color-success) 50%, var(--color-base-content)) 加深（实测约 4.8:1），不要直接用 success 色。",
+    "默认 btn-primary 翠绿底配深绿 primary-content 文字实测约 5.9:1，达标，直接用、不要覆写加深；白底上的弱化文案（lede / 页脚 / 说明）opacity 不低于 .9（实测约 5.5:1），.65 仅约 2.4:1 会远不达标。",
+    "金融数据克制呈现：余额用大字号深蓝灰加粗，不做花哨仪表盘 / 多图表 / 滚动数字；收益只放一条 currentColor 上升折线（面积填充 primary 12% 透明度），页面数据必须写「示例」「虚构」，年化区间标注随市场浮动。",
+    "所有插图只用单色线稿 SVG：存钱罐、硬币、嫩芽（嫩芽用 primary 勾线）、加密锁 / 盾牌 / 存钱罐 / 时钟四个安全图标，轮廓可分辨、不用彩色照片、不用 emoji、不用渐变。",
+    "文案写真实动作与具体信息（免费开户、选择计划、立即开户、本月存入 ¥8,200 共 12 笔），不写「极速财富」「高收益躺赚」这类话；保障说明标注「示例说明」，不写绝对化承诺。",
+    "390px 窄屏顶栏自然折行、资产三格与计划卡单列、进度条 flex 收缩不溢出；菜单当前页每页只允许一个 menu-active。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=emerald]；仅用 daisyUI 组件拼装一套储蓄产品整页（demo.html：顶栏导航与免费开户按钮 + 存钱罐与嫩芽线稿 Hero 与双 CTA + 账户资产三格与年度目标进度条 + 三个储蓄计划卡（稳健 / 平衡 / 成长）+ 一条上升收益折线 + 安全保障四项 + 开户 CTA 与虚构声明页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
