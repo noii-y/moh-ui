@@ -8,6 +8,8 @@ AI 写出来的页面功能都在，就是不好看：标题字号忽大忽小�
 
 在线展示站：**https://noii-y.github.io/moh-ui/** · 仓库：https://github.com/noii-y/moh-ui
 
+![灰墨 MoH_UI 主题墙：45 套完整业务页面案例的深色玻璃卡片墙](docs/screenshots/themes-wall.png)
+
 ---
 
 ## 目录里有什么
@@ -18,7 +20,7 @@ AI 写出来的页面功能都在，就是不好看：标题字号忽大忽小�
 
 - 主规则 `mo-rules-zh.md`：字号只在 12/13/14/16/20/24px 几档里取、间距按 8px 网格走、表格不许溢出、控件不小于 32px、颜色走变量、动效不超过 200ms
 - 场景细则 `scenarios/`：表格页、表单页、数据看板三套专属规则（如数字列右对齐、表单 label 绑定、图表空态）
-- 26 项自检清单 `selfcheck.md`：让 AI 改完逐项自查，不达标继续修
+- 35 项自检清单 `selfcheck.md`：除通用排版外，新增弹层键盘（焦点进入 / 陷阱内循环 / Esc 与点外部关闭 / 焦点返回 / aria 属性）、触控移动（可点热区 44×44、390px 不溢出、减弱动效）两组，让 AI 改完逐项自查，不达标继续修
 
 规则页（[site/rules.html](site/rules.html)）是一个装配器：选页面类型（通用 / 表格 / 表单 / 数据看板）→ 选主题（45 套，自动带上该主题的视觉红线）→ 勾选这页用到的组件 → 要不要自检清单，页面实时拼出一份专属规则，一键复制发给 AI。也可以直接用 URL 预选，例如：
 
@@ -27,6 +29,8 @@ site/rules.html?scene=form&theme=luxury&comps=button,input
 ```
 
 组件详情页的获取卡里还有「配套规则」入口，从组件一键反查到该场景的规则，不用自己判断该选哪类。
+
+![规则装配器：选页面类型、搭配主题、勾选组件，实时拼出一份可复制的排版规则](docs/screenshots/rules-builder.png)
 
 ### ② 主题库 —— 45 套完整业务页面，不是色块
 
@@ -58,6 +62,11 @@ site/rules.html?scene=form&theme=luxury&comps=button,input
 
 每套主题都是 `demo.html`（整页案例）+ `README.md`（中文说明）+ `moh.json`（溯源元数据）三件套；二创和收录主题多一个 `tokens.css`。入口：[主题墙](site/themes.html)。
 
+下面是四套风格反差很大的整页（黑金腕表、亮黄电竞、深色指挥大屏、暖白烘焙坊），全部是完整业务页面，不是几个色块：
+
+<img alt="luxury 黑金腕表整页" src="docs/screenshots/theme-luxury.png" width="49%"> <img alt="cyberpunk 亮黄电竞俱乐部整页" src="docs/screenshots/theme-cyberpunk.png" width="49%">
+<img alt="mo-command 深色指挥中心大屏" src="docs/screenshots/theme-command.png" width="49%"> <img alt="cupcake 暖白烘焙坊整页" src="docs/screenshots/theme-cupcake.png" width="49%">
+
 ### ③ 组件库 —— 68 个能搬进自己项目的组件
 
 每个组件是「提示词三件套」：`demo.html`（真实业务成品 + 中文教程）+ `README.md` + `moh.json`。
@@ -73,6 +82,8 @@ site/rules.html?scene=form&theme=luxury&comps=button,input
 ```
 
 入口：[组件集市](site/components.html)。
+
+![组件集市：68 个带真实业务成品的组件卡片，每个都能复制 AI 提示词或成品 HTML](docs/screenshots/components-grid.png)
 
 ### ④ AI 指令分发 —— 113 份 AI 指令，含整页源码
 
@@ -137,9 +148,9 @@ moh-ui/
 
 ## 路线图
 
-已完成：68 个组件三件套；45 套主题完整页面案例；113 份 AI 指令与 llms.txt；62 套主题可试的可视化选择器。
+已完成：68 个组件三件套（含弹层组件的键盘焦点管理）；45 套主题完整页面案例；113 份 AI 指令与 llms.txt；62 套主题可试的可视化选择器；35 项体验自检清单（含弹层键盘、触控移动两组）。
 
-后续候选：组件弹层的焦点陷阱统一处理、把体验检查清单制度化。
+后续候选：独立的 theme-controller 主题切换器（generator 已覆盖选择器核心，待评估是否单列）、calendar 组件（带依赖）、其余官方仅试玩主题（fantasy / acid / aqua / retro 等）是否做整页。
 
 ## License
 
