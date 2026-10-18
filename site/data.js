@@ -1,11 +1,11 @@
 /* 本文件由 scripts/build-site-data.mjs 自动生成，请勿手改；新增主题/组件后重跑脚本。 */
 window.MOH_DATA = {
-  "generatedAt": "2026-10-17",
+  "generatedAt": "2026-10-18",
   "stats": {
-    "themes": 30,
+    "themes": 45,
     "components": 68,
     "rules": 1,
-    "resources": 99
+    "resources": 114
   },
   "themes": [
     {
@@ -571,6 +571,73 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "business",
+      "title": "商办（business）",
+      "description": "完整页面案例：虚构企业 OA 审批后台「汇通办公 OA」整页。近黑蓝灰底配深蓝主按钮与流程节点，待办列表、审批状态、流程节点、公文与组织架构齐备；挂 daisyUI 官方主题 data-theme=\"business\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "商务",
+        "企业级",
+        "通用后台"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "business",
+      "entry": "demo.html"
+    },
+    {
+      "name": "cmyk",
+      "title": "叠色（cmyk）",
+      "description": "完整页面案例：虚构印刷工作室「叠彩印刷 DIE-CAI PRINT STUDIO」整页。纯白底配青品黄黑四色克制点缀与内联印刷线稿，干净、精准、有纸面感；挂 daisyUI 官方主题 data-theme=\"cmyk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "纸感",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "cmyk",
+      "entry": "demo.html"
+    },
+    {
+      "name": "coffee",
+      "title": "暖焙（coffee）",
+      "description": "完整页面案例：虚构烘焙坊品牌「暖炉烘焙坊 WARMSTONE」品牌故事与手作课程整页。深棕底配焦糖橙主按钮与暖线条烘焙 SVG，温润、有手工感；挂 daisyUI 官方主题 data-theme=\"coffee\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "暖色",
+        "品牌",
+        "手作",
+        "餐饮"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "coffee",
+      "entry": "demo.html"
+    },
+    {
       "name": "corporate",
       "title": "睿蓝（corporate）",
       "description": "完整页面案例：虚构咨询公司「衡屹咨询 HENGYI ADVISORY」官网前台整页。白底配深海军蓝文字与克制主蓝，细发丝线分隔、大留白、直角工整；挂 daisyUI 官方主题 data-theme=\"corporate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
@@ -591,6 +658,94 @@ window.MOH_DATA = {
       "inspiration": [],
       "palette": {},
       "slug": "corporate",
+      "entry": "demo.html"
+    },
+    {
+      "name": "cupcake",
+      "title": "云朵甜（cupcake）",
+      "description": "完整页面案例：虚构烘焙店「云朵糖 CUPCAKE CLOUD 烘焙」整页。暖白底配薄荷青主按钮与粉紫奶油色点缀，大圆角、轻盈甜美；挂 daisyUI 官方主题 data-theme=\"cupcake\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "暖色",
+        "圆润",
+        "粉彩",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "cupcake",
+      "entry": "demo.html"
+    },
+    {
+      "name": "cyberpunk",
+      "title": "赛博锋芒（cyberpunk）",
+      "description": "完整页面案例：虚构电竞俱乐部「极锋电竞 NEONEDGE」整页。荧光黄亮底配纯黑字与直角硬边，洋红主按钮与青/洋紫徽章点缀，深色海军蓝块压场；挂 daisyUI 官方主题 data-theme=\"cyberpunk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "撞色",
+        "硬朗",
+        "落地页",
+        "品牌"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "cyberpunk",
+      "entry": "demo.html"
+    },
+    {
+      "name": "dim",
+      "title": "夜灰（dim）",
+      "description": "完整页面案例：虚构夜间阅读社区「夜读 DIMREAD」整页。柔和深灰底配浅灰白正文与一点柔光绿，长文排版宽松安静、无霓虹无大屏，适合长时间阅读；挂 daisyUI 官方主题 data-theme=\"dim\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "护眼",
+        "专注",
+        "落地页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "dim",
+      "entry": "demo.html"
+    },
+    {
+      "name": "emerald",
+      "title": "翠盈（emerald）",
+      "description": "完整页面案例：虚构储蓄产品「翠盈储蓄 GREENWALLET」整页。纯白浅灰底配深蓝灰正文与一点翠绿，资产与计划克制呈现、数据全部标注示例；挂 daisyUI 官方主题 data-theme=\"emerald\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "商务",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "emerald",
       "entry": "demo.html"
     },
     {
@@ -642,6 +797,28 @@ window.MOH_DATA = {
       "inspiration": [],
       "palette": {},
       "slug": "forest",
+      "entry": "demo.html"
+    },
+    {
+      "name": "garden",
+      "title": "青园（garden）",
+      "description": "完整页面案例：虚构有机农场品牌「青禾农庄 QINGHE FARM」整页。浅暖米白底配鼠尾草绿主按钮与内联蔬菜线稿，新鲜克制、有土地感；挂 daisyUI 官方主题 data-theme=\"garden\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "柔和",
+        "品牌",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "garden",
       "entry": "demo.html"
     },
     {
@@ -732,6 +909,29 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "lofi",
+      "title": "素白（lofi）",
+      "description": "完整页面案例：虚构极简笔记应用「素白笔记 BLANK NOTES」整页。纯白底纯黑字、发丝细线与大留白，克制文艺；挂 daisyUI 官方主题 data-theme=\"lofi\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "灰阶",
+        "极简",
+        "纸感",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "lofi",
+      "entry": "demo.html"
+    },
+    {
       "name": "luxury",
       "title": "奢金（luxury）",
       "description": "完整页面案例：虚构高端腕表品牌「时计堂 HELIOS」整页。近黑底配金色衬线标题与内联线稿腕表，留白克制、层级清晰；挂 daisyUI 官方主题 data-theme=\"luxury\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
@@ -751,6 +951,64 @@ window.MOH_DATA = {
       "inspiration": [],
       "palette": {},
       "slug": "luxury",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-command",
+      "title": "穹览指挥中心（超深色）",
+      "description": "完整页面案例：虚构 16:9 数据指挥中心大屏「穹览 OVERVIEW COMMAND · 运营态势」整页。比常规后台更深的近黑底、大字号 KPI 带、巨幅 SVG 折线/地图热力/柱状/环形/雷达栅格与实时事件流，投屏远距离可读；挂 data-theme=\"mo-command\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "科技",
+        "数据看板",
+        "冷调"
+      ],
+      "dark": true,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "oklch(15% 0.015 245)",
+        "surface": "oklch(12.5% 0.014 245)",
+        "surface2": "oklch(18.5% 0.014 245)",
+        "primary": "oklch(76% 0.14 195)",
+        "secondary": "oklch(72% 0.12 255)",
+        "accent": "oklch(76% 0.13 160)"
+      },
+      "slug": "mo-command",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-fleet",
+      "title": "驰途调度（浅色）",
+      "description": "完整页面案例：虚构物流配送调度台「驰途调度 CHITU DISPATCH · 城配调度中心」整页。高对比功能色（待取/配送中/签收/异常一目了然）、顶栏+左栏后台骨架、时效 KPI 行、网格实时地图态势、在岗骑手与运单双列表；挂 data-theme=\"mo-fleet\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "商务",
+        "冷调",
+        "数据看板"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#ffffff",
+        "surface": "#f1f3f5",
+        "surface2": "#c3cad2",
+        "primary": "#1c4f9e",
+        "secondary": "#0f6a58",
+        "accent": "#8a5a00"
+      },
+      "slug": "mo-fleet",
       "entry": "demo.html"
     },
     {
@@ -812,6 +1070,66 @@ window.MOH_DATA = {
       "entry": "demo.html"
     },
     {
+      "name": "mo-kiosk",
+      "title": "暖茶点单（暖色）",
+      "description": "完整页面案例：虚构奶茶店堂食自助点单触控大屏「暖茶茶饮 WARM CHA」整页。暖奶油底 + 烤棕主色、超大触控按钮、左右三栏（分类 / 菜品网格 / 购物车），390px 下三栏退单列不溢出；挂 data-theme=\"mo-kiosk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "暖色",
+        "圆润",
+        "餐饮",
+        "手作",
+        "亲和"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#fbf4e6",
+        "surface": "#f4e7cf",
+        "surface2": "#e3d0ac",
+        "primary": "#8a4b1f",
+        "secondary": "#4c6b32",
+        "accent": "#96500a"
+      },
+      "slug": "mo-kiosk",
+      "entry": "demo.html"
+    },
+    {
+      "name": "mo-photo",
+      "title": "见山影集（浅色）",
+      "description": "完整页面案例：虚构摄影师个人作品集「见山摄影 · 林见山」整页。米白暖纸三层、衬线大标题、大留白、画廊式装裱作品框（框内为有构图的线稿：山水/人像/街景/建筑），与官方 black（纯黑影棚式）一浅一深；挂 data-theme=\"mo-photo\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "浅色",
+        "纸感",
+        "留白",
+        "品牌",
+        "手作"
+      ],
+      "dark": false,
+      "group": "二创",
+      "hasTokens": true,
+      "license": "MIT",
+      "origin": "original",
+      "upstream": null,
+      "url": null,
+      "inspiration": [],
+      "palette": {
+        "base": "#f6f1e7",
+        "surface": "#efe8d9",
+        "surface2": "#d8cdb6",
+        "primary": "#5f4229",
+        "secondary": "#4f5b66",
+        "accent": "#7c4f14"
+      },
+      "slug": "mo-photo",
+      "entry": "demo.html"
+    },
+    {
       "name": "mo-press",
       "title": "报刊（浅色）",
       "description": "完整页面案例：虚构日报「江城日报」头版整页。米白纸底配墨色衬线大字与一条克制的报头红，报头双线、双栏正文与竖发丝线分隔，密而不乱；挂 data-theme=\"mo-press\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
@@ -838,6 +1156,50 @@ window.MOH_DATA = {
         "accent": "oklch(42% 0.012 60)"
       },
       "slug": "mo-press",
+      "entry": "demo.html"
+    },
+    {
+      "name": "synthwave",
+      "title": "霓虹脉冲（synthwave）",
+      "description": "完整页面案例：虚构复古电子音乐厂牌「霓虹脉冲 NEON PULSE RECORDS」整页。深紫蓝底配霓虹粉青点缀，mask 镂空横纹的粉色落日与青色透视网格为记忆点，演出卡与三标签色黑胶卡成形；挂 daisyUI 官方主题 data-theme=\"synthwave\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "深色",
+        "霓虹",
+        "赛博",
+        "活动页"
+      ],
+      "dark": true,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "synthwave",
+      "entry": "demo.html"
+    },
+    {
+      "name": "wireframe",
+      "title": "框线（wireframe）",
+      "description": "完整页面案例：虚构线框原型交付工作室「框线原型 WIREFRAME KIT」整页。全站灰阶无配色，虚线框与占位横线为招牌，裸线框陈列按钮 / 输入框 / 卡片 / 表格 / 头像 / 进度条，并附一张完整网页三栏结构线框图；挂 daisyUI 官方主题 data-theme=\"wireframe\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+      "styleTags": [
+        "灰阶",
+        "无彩色",
+        "极简",
+        "落地页"
+      ],
+      "dark": false,
+      "group": "收录",
+      "hasTokens": false,
+      "license": "MIT",
+      "origin": "third-party",
+      "upstream": "daisyUI",
+      "url": "https://daisyui.com/components/themes/",
+      "inspiration": [],
+      "palette": {},
+      "slug": "wireframe",
       "entry": "demo.html"
     }
   ],
