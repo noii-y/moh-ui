@@ -634,7 +634,7 @@ L.push("");
 L.push("## Optional");
 L.push("");
 L.push(`- [素材溯源与许可证](${BASE}/site/attributions.html): 每个组件的上游名称、原版地址与许可证登记`);
-L.push(`- [AI 审美硬边界](${BASE}/site/rules.html): 组件背后的排版与审美规则`);
+L.push(`- [AI 排版规则装配器](${BASE}/site/rules.html): 按页面类型（通用 / 表格 / 表单 / 数据看板）+ 主题 + 所用组件，现场装配一份专属排版规则与自检清单，支持 URL 参数预选（?scene=&theme=&comps=）`);
 L.push("");
 fs.writeFileSync(path.join(root, "llms.txt"), L.join("\n"), "utf8");
 

@@ -5932,7 +5932,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 三层近黑冷灰靠明度分层：页面底 base-100（oklch 23% 0.012 253）、侧栏与卡片/顶栏用 base-200（20.5%）、分隔线与描边用 base-300（17.5%）；不画深色描边卡片，不加投影（--depth:1），层次越往上越亮。
+- 主色是克制靛蓝 primary（oklch 66% 0.17 255），只给主按钮、品牌方块、菜单选中态和 primary 徽章；绝不把主色铺成整段大色块，也不要换成亮紫或高饱和亮蓝。
+- 多段数据高亮用四个主题色轮换：分段进度条第一段 primary，其后依次 secondary 冷灰蓝、accent 青、neutral，让多段数据一眼可分但都不刺眼；不要给每段配新的彩色。
+- 涨跌与状态全部压成 badge-soft 软徽章：成功绿 / 处理中琥珀 / 退款中性灰，指标涨用 text-success、跌用 text-error；深色底上语义色已降饱和，不要再加深或加亮。
+- 圆角取中：卡片 --radius-box 0.625rem、输入框 0.375rem、选择器 0.5rem，统一细 1px 边框；排版密而克制——H1 20px 粗体、指标大数 26px、正文与表格 13px，行距紧凑，侧栏宽 220px。
+- 图表只画内联 SVG 线稿：折线用 currentColor（primary），网格线 8% 透明度、面积填充 12% 透明度、末端一个空心圆点；不用照片、不用彩色饼图、不引图表库。
+- 窄屏（≤900px）：侧栏从竖向退化为顶部横向换行菜单，图表双列变单列，表格包 overflow-x:auto 横滑，主区间距收到 16px 14px。
 
 ### 完整整页源码
 
@@ -6282,7 +6288,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 浅灰白三层：页面底 base-100 #f6f8fa、所有卡片与侧栏是 base-200 纯白、内嵌小盒（API 密钥盒、支付方式盒）再退回 base-100 并加 base-300 #f1f3f5 细边框；白卡浮在灰底上，不画重阴影（--depth:1）。
+- 主色 #2563eb 克制蓝，只给主按钮、「当前套餐/在用」徽章与当前套餐卡的 1px 主色描边；次要操作一律幽灵按钮，整页蓝不超过一两处。
+- 用量进度条多段轮换：API 调用用 primary、团队席位 secondary 蓝灰 #64748b、存储空间 accent 天蓝 #0ea5e9，每段 8px 细高，右侧对齐写「已用 / 总额」。
+- 金额、发票号与密钥用等宽字体（var(--font-mono)）：INV-2026-XXXX、sk-live-•••• 都走 .mono；正文无衬线系统字体，H1 20px 粗体，数字与编号不被比例字体拉开。
+- 圆角全页偏小：卡片 0.5rem、输入框 0.25rem，细 1px 边框；密度比数据看板略松（主区间距 16px），适合用户逐行核对账单与用量。
+- 语义色只做软徽章：已支付 success、待开票 warning、已退款 neutral，白底上实心配白字；支付品牌块（VISA 之类）用 neutral 深灰蓝底白字小字方块，不复制真实卡面渐变色。
+- 窄屏 ≤900px：侧栏退化为顶部横向换行菜单，套餐卡与用量卡 auto-fit 降为单列，账单表包 overflow-x:auto 横滑。
 
 ### 完整整页源码
 
@@ -6650,7 +6662,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 标志性结构：顶部一条通高 48px 的实心主色顶栏（直接铺 --color-primary #0b5ed7、白字），顶栏搜索框是半透明白 rgba(255,255,255,.15)、品牌方块 rgba(255,255,255,.18)；这是本主题区别于其它后台的识别点，换业务也要保留一条整宽实心深蓝顶栏。
+- 底下是经典灰蓝白三层：页面底 #f5f7fa、卡片纯白 #ffffff、分隔线 #eef1f5；卡片一律小圆角 0.375rem、细 1px 边，不做悬浮大阴影。
+- 侧栏按「概览 / 业务 / 系统」分组：每组一个灰色 menu-title 小标题，菜单项可挂数字徽章（如「用户管理 128」）；同一时刻只允许一个 menu-active 当前项。
+- 全页圆角最小一档（输入框/下拉 0.25rem、卡片 0.375rem），控件统一 input-sm，紧凑密度——主区间距 14px、表格 13px，AdminLTE / Tabler 的老式节奏，不做宽松 SaaS 留白。
+- 列表头像用 secondary 灰蓝、accent 青蓝、neutral 深灰、primary 深蓝四色轮换的圆形姓氏首字标，不出现真人照片；角色徽章 badge-soft 分级（管理员 primary / 运营 secondary / 普通成员 neutral）。
+- 行内操作一律文字链接而非小按钮：编辑 / 停用常规 link，删除用 text-error 红字；分页用 join 连接按钮组、当前页 btn-active 实心高亮。
+- 窄屏 ≤900px：顶栏搜索框掉成全宽一行，侧栏分组标题 menu-title 隐藏、菜单横向换行，新增用户表单两列变单列，表格 overflow-x:auto 横滑。
 
 ### 完整整页源码
 
@@ -7057,7 +7075,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 全页无彩色主色：primary 是金属深灰 #2b2b31（主按钮「新建客户」深灰底白字、品牌方块、菜单选中态），不是蓝也不是死黑；整站唯一带色相的是低饱和石墨蓝 accent #4a6fa5，只做头像与数据高亮的点缀。
+- 冷灰白三层：页面底 #f4f4f6、白卡 #ffffff、边框 #ececef；客户小卡一律白底 + 1px 灰边 + 0.45rem 圆角，不用投影、不用彩色底块，企业级克制。
+- 人物头像全用灰阶字标：secondary 中灰 #71717a、accent 石墨蓝、neutral 近深灰三种轮换的圆形姓氏首字，不出现真人照片与彩色卡通。
+- 优先级与阶段用语义软徽章分级：高优先级 error 红、中 warning 琥珀、低 / 交付中 neutral 灰、已成交 success 绿；其余正文信息一律灰阶，不新增别的彩色标签。
+- 销售漏斗用四段 progress 递进配色：primary 深灰 → secondary 中灰 → accent 石墨蓝 → neutral 近黑，每段右侧对齐百分比；不画彩色金字塔，纯横向进度条。
+- 跟进时间线用 daisyUI timeline 竖线节点，节点图标是 currentColor 14px 线性 SVG（电话 / 上门 / 邮件 / 会议），描边随文字色，零外链零彩色插画。
+- 窄屏 ≤900px：客户阶段看板整板（min-width 940px）保持横向滑动、不折成单列；两栏（时间线 + 漏斗）塌成单列，侧栏菜单横向换行。
 
 ### 完整整页源码
 
@@ -7530,7 +7554,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 微粉暖白三层底：base-100 #faf7f8 页面、base-200 #ffffff 侧栏与卡片、base-300 #f5f0f2 封面条与分隔线；正文文字用深莓褐 #45343d 而非纯黑，整体低饱和不刺眼。
+- 全库大圆角：--radius-box 1.25rem、--radius-field 0.75rem、--radius-selector 1rem，卡片、按钮、头像、输入框都要圆；禁止直角、厚黑边与硬阴影。
+- 深莓果主色 #8e3b5e 白字，只给主按钮、进度条（progress-primary）、菜单选中态与通知角标；淡紫 #8a63b8 与暖杏 #e8927c 只做点缀（封面图标色、头像底色），绝不大面积铺色。
+- 课程卡片封面固定为「低饱和 base-300 色块 + 居中 42px 线性图标」：图标 stroke 用 currentColor、按课程轮换 primary / secondary / accent 三个主题色；不用照片、不用渐变、不用 emoji。
+- 学生头像（圆形 .av）底色按 primary / secondary / accent / neutral 轮换、文字读对应 *-content 变量；保持圆润亲和，不要用方形或描边头像。
+- 语义色只在提醒处使用：success 绿报增长、warning 橙标「待批 / 未开始」、error 红表出错；日常正文保持莓褐与 0.65 灰，不要整页挂满彩色徽章。
+- ≤900px 侧栏退化为顶部横向换行菜单、排课表（min-width 760px）保持容器内横向滚动不折行，课程网格 auto-fill 自然降为单列，整页不横向溢出。
 
 ### 完整整页源码
 
@@ -7974,7 +8004,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 全页零色相：primary 是深炭 #262626（主按钮 / 品牌方块 / 右侧目录当前条），secondary / accent / neutral 全是纯灰阶（#737373 / #525252 / #1a1a1a），正文页面里不要出现蓝绿紫；业务需要品牌色时在项目里自行覆盖 --color-primary，不改主题文件本身。
+- 语义色是唯一例外：info 蓝 / warning 琥珀 / success 绿只给文档提示块 alert-info、alert-warning 用，绝不给按钮、徽章、链接上色。
+- 三栏阅读布局：左 220px 目录树（原生 details 分组折叠，零 JS）+ 正文 + 右 168px 本页目录；正文 max-width 1280px 居中，行高 1.7、正文 14px，H1 26px、H2 18px，正文 opacity .85——一切为长文阅读服务。
+- 目录选中态不用主色底：侧栏当前项用 base-300 #f0f0f0 灰底 + 加粗，右侧 toc 当前项用 2px 深炭左边条 + 实色不透明；未读链接 opacity .65。
+- 代码块用 base-300 浅灰底（#f0f0f0）+ 同色细边 + 等宽字体 var(--font-mono)、12.5px 行距 1.6，长行容器 overflow-x:auto；不做深色代码块（本主题是浅色纸质取向）。
+- 底色极浅三层：页面底 #f8f8f8、顶栏与卡片白 #ffffff、悬浮 / 代码块 #f0f0f0，层次几乎只靠明度差，边框 1px 极淡，圆角 0.5rem，不压阴影。
+- 窄屏 ≤900px：右侧 toc 整块隐藏、顶栏搜索框隐藏，左侧目录树折成一行 chip 式分组标签（summary 加灰边圆角），表格包 .tbl-wrap 横滑，正文 padding 收到 20px 14px。
 
 ### 完整整页源码
 
@@ -8303,7 +8339,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 深空近黑三层底色：base-100 #0f1117 页面、base-200 #151822 侧栏与卡片、base-300 #1b1f2b，层次只靠明度差、不靠描边；代码块还要比页面更暗一层（#0b0e16）。
+- 宇宙蓝主色 #4a63e0 白字，只留给主按钮、菜单选中态（menu-active）与通知角标，绝不大面积铺蓝；亮青 #38bdf8 是强调色，只给关键词、info 徽章与代码键名。
+- 代码高亮固定四色约定：键名亮青 #38bdf8、字符串绿 #34d399、数字黄 #fbbf24、注释灰 #8b93a8；等宽字写 font-family:var(--font-mono, ui-monospace, Menlo, Consolas, monospace)，不要去找 .font-mono 工具类（vendor 没有）。
+- 小圆角 + 细边：--radius-box 0.5rem / field 0.25rem、--border:1px，分隔线用 #262b3a 系低对比；控制台取向，禁止大圆角、厚边与明显投影。
+- 数据密度优先：表格单元格 padding 收窄到 5px 6px、日志行 12px，次级说明用 0.5~0.65 透明度的灰字，靠信息密度而非大留白撑气质。
+- 状态徽章统一 badge-soft：成功绿 #34d399、警告黄 #fbbf24、错误红 #f87171，content 用各自的深色变量保证对比，不要写死深色实底徽章。
+- ≤900px 侧栏从 220px 竖栏退化为顶部横向换行菜单（flex-direction:row、菜单项 nowrap），代码示例双栏塌成单栏，整页不横向溢出。
 
 ### 完整整页源码
 
@@ -8678,7 +8720,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 三层浅色底：base-100 #f7f7f7 页面、base-200 #ffffff 卡片、base-300 #ececec 区块底；所有层次一律靠 3px 纯黑边框（--border:3px、--radius-selector/field/box 全为 0 直角）分隔，禁止圆角、禁止 1px 细描边。
+- 硬阴影是灵魂：卡片与主按钮用 box-shadow:6px 6px 0 #111，小元素用 4px 4px 0 #111，零模糊、零透明度；禁止模糊投影、渐变、玻璃拟态与发光。
+- 海军蓝主色 #1e3a8a 白字只给实心主按钮；撞色红 #dc2626 只用于 hero 小徽章、kicker 小标题（12px / 字距 2px）与「推荐」角标；纯黑 #111 本身就是角色（推荐套餐卡、页脚黑底白字），不要随手把黑当普通背景铺。
+- 字体一律特粗黑体：hero 标题 58px / font-weight 900 / 字距 -2px，区块标题 30px / 900，导航与正文也至少 600~700；不要细字、不要衬线。
+- hero 标题里的关键词用白色衬底块（background:#fff、内联 padding 0 8~10px）盖住粗体文字，像印章盖在招牌上。
+- 功能图标一律 stroke #111、stroke-width 2.5 的粗线条性 SVG，放进「46px、3px 黑边、base-300 底」的方块；价格清单对勾用 #16a34a / #34d399 的 3px 粗线，不用 emoji。
+- ≤860px 三栏网格塌为单列、hero 标题缩到 40px；≤560px 订阅输入框与按钮占满整行，整页不横向溢出。
 
 ### 完整整页源码
 
@@ -9066,7 +9114,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 深空三层底：base-100 #0a0e14 页面、base-200 #111722 面板、base-300 #161d2b 图标盒；面板层次靠 1px 深青灰描边（#233043 分隔、#2f4057 图标盒）而非阴影，辅助文字统一 muted #8fa0b8。
+- 主按钮是深青实色 #0e7490 白字（不是亮青）；亮青 #22d3ee 是唯一霓虹色，只给 hero 关键词、kicker 小标题、幽灵按钮描边（透明底 + 1px 亮青边 + 亮青字）与徽章，徽章文字用深色 #04141a。
+- 发光极度克制：text-shadow:0 0 8px rgba(34,211,238,.55) 只用于 hero 里那一个关键词；box-shadow:0 0 0 1px #22d3ee, 0 0 12px rgba(34,211,238,.25) 只用于主 CTA 按钮、购票卡、倒计时秒格——整页发光元素不超过 5 处；禁止满屏霓虹、禁止多色霓虹、禁止紫粉赛博渐变。
+- hero 背景是 36px 细网格线（rgba(35,48,67,.32) 的 1px 横竖线），不是渐变底色；标题用无衬线黑体 800。
+- 倒计时用 daisyUI countdown 纯 CSS 静态渲染（--value:N、--digits:2、tabular-nums 38px），真实活动页必须 JS 每秒改 --value；四个数字格里只有「秒」格加亮青描边发光。
+- 小圆角（--radius-box 0.5rem / field 0.25rem）、1px 细边；图标盒 44px 深底 + 亮青 currentColor 线条 SVG；议程表 min-width 560px 放 overflow-x:auto 容器里窄屏横向滚动。
+- ≤860px 三栏亮点卡塌为单列、hero 标题缩到 36px；≤560px 倒计时格两列排布，整页不横向溢出。
 
 ### 完整整页源码
 
@@ -9463,7 +9517,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 米宣纸三层底：base-100 #f6f3ec 页面、base-200 #fffdf8 卡片与 hero 画框、base-300 #efe9dd 商品图区；正文墨褐 #3f3730、辅助字 muted #756a58；卡片分隔只用 1px 暖米色细线 #e0d8c6（hover 加深 #c9bda3），禁止粗边框、投影，圆角控制在 --radius-box 0.375rem 以内。
+- 品牌名、hero 大标题、区块标题与品牌故事正文用宋体衬线栈（"Songti SC","STSong","SimSun",serif）并加 2~4px 字距；导航、按钮、商品名等正文仍用无衬线；标题行距宽松（hero line-height 1.3、故事正文 2.4）。
+- 朱砂主色 #c23b22 白字只给主按钮、商品价格、kicker 小标题（13px / 字距 4px）与印章；茶褐 #8a6d4a 与青瓷 #6b8e7f 只做次色点缀，绝不大面积铺红。
+- 品牌印章是 30px 朱砂方块 + 白字衬线单字（border-radius 4px），出现在 logo 位与品牌故事收尾处；不用 emoji、不用英文花体 logo。
+- 所有插画一律墨褐 #756a58 单色、stroke-width 1.5~1.6 的线性 SVG（hero 远山茶舟圆日、商品区杯罐礼盒），画在米白或 base-300 底上；不用彩色照片、不用渐变、不用霓虹。
+- 品牌故事区靠留白撑气质：上下 80px 留白 + 一条 56px 长的 1px 米色细线 + 居中衬线大字，不堆色块。
+- ≤860px hero 双栏塌为单列、分类方块 5 列塌为 2 列；≤560px 顶栏搜索框与购物车整行堆叠（nav-right 占满宽度），整页不横向溢出。
 
 ### 完整整页源码
 
@@ -9906,7 +9966,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 深紫灰三层底：页面底 base-100 #282a36、侧栏与卡片用 base-200 #21222c、代码块与分隔线用 base-300 #191a21；霓虹紫 primary #bd93f9 只留给主按钮、文件树当前项、代码标签选中态，一律紫底配深字 primary-content #21222c，绝不大面积铺紫。
+- 代码语法高亮是本主题招牌，严格按 Dracula 官方语法色分工：粉 #ff79c6=关键字、黄 #f1fa8c=字符串、绿 #50fa7b=函数名、青 #8be9fd=类名、紫 #bd93f9=数字、蓝灰 #6272a4=注释；做开发者页面时这个色序不能乱换。
+- 代码、行号、PR/Issue 编号、版本号一律用等宽字体（var(--font-mono)），版本号 v2.4.1 用 accent 青 #8be9fd 着色；正文与界面文字用无衬线，不混排等宽。
+- 小圆角细边框的终端取向：radius-box .5rem、radius-field .25rem、radius-selector .375rem，边框 1px、--depth:1 无投影；卡片直接取 base-200 底，不另加色块与阴影。
+- 状态只用 badge-soft 语义色表达：绿=已合并、红=缺陷、黄=进行中、青=开放/文档、粉=优化标签；贡献者头像按紫→粉→青→中性四色循环，不用真人照片。
+- 图标全部 currentColor 线性 SVG；次要操作用幽灵按钮（关注）、中性动作用描边按钮（星标），主操作才用紫底 primary。
+- 窄屏（≤900px）侧栏退化为横排文件树、代码预览与 README 卡改单列、表格包 tbl-wrap 横向滚动，390px 不横向溢出。
 
 ### 完整整页源码
 
@@ -10277,7 +10343,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 软糯低饱和马卡龙：三层深底 base-100 #1e1e2e / base-200 #181825 / base-300 #11111b，界面彩色全部取淡色（mauve 紫、blue 蓝、green 绿、淡黄、淡粉），正文与辅助字用 opacity 0.6~0.75 柔化，禁止高饱和荧光色与强对比刺眼白字。
+- 淡紫 primary #cba6f7 只给主播放按钮、圆形播放键、进度条 progress-primary、brand-mark 与选中歌单 menu-active；「正在播放」行用 rgba(203,166,247,.12) 淡紫底高亮，不铺实心紫块；primary-content 配深底字 #181825。
+- 圆润 cozy 取向：radius-box .75rem、radius-field .5rem、radius-selector .5rem；专辑封面带柔和弥散阴影（0 12px 32px rgba(0,0,0,.35)），不用硬边阴影与描边。
+- 封面/配图只用马卡龙几何形（淡紫、淡蓝、淡绿圆点 + 浅黄、淡粉圆角条）压在 #11111b 深底上，opacity 0.85~0.9；不用真人照片、不用 emoji。
+- 语义色也是淡的：error 淡粉 #f38ba8 配深酒红内容字 #450a18、warning 浅黄 #f9e2af 配深褐字 #453a00，即浅彩底配深字，不要反过来用深字压淡色。
+- 底部播放条 sticky 贴底：base-200 底 + 顶部 1px base-300 分隔线，播放/切歌圆形按钮 ghost/primary 分明，进度条细 5~6px 淡紫。
+- 窄屏（≤900px）侧栏折成横排、隐藏分组标签与「本周已听」统计卡、封面缩到 120px、播放条 flex-wrap 换行，390px 不溢出。
 
 ### 完整整页源码
 
@@ -10618,7 +10690,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 极地冷灰蓝三层：页面底 base-100 #3b4252、侧栏与卡片用 base-200 #434c5e、base-300 #2e3440 是最深一层，只用作分隔线与细边框；全程冷蓝灰调，不出现暖橙、亮红等暖色。
+- 冰蓝 primary nord10 #5e81ac 只给「写邮件/回复」主按钮、brand-mark、menu-active 选中态，配浅蓝白字 primary-content #eceff4；当前选中邮件用左边框 3px 竖条指示（border-inline-start），不整行填色。
+- 未读邮件用淡蓝底 rgba(94,129,172,.14) + 发件人与主题加粗（font-weight 700）来区分，不靠红点角标或粗徽章。
+- Aurora 语义色全部低饱和、长时阅读不刺眼：success 鼠尾草绿 #a3be8c、warning 麦黄 #ebcb8b、error 柔和砖红 #bf616a（配浅字 #eceff4）；标签与分组用 secondary nord9 #81a1c1，中性元信息（头像、附件大小）用 nord3 #4c566a。
+- 阅读窗正文 line-height 1.9、opacity 0.9、字号 14px；效率工具取向，不加装饰性色块与渐变。
+- 中性小角圆角：radius-box .5rem、radius-field .375rem、radius-selector .375rem，细边框 1px、--depth:1 无投影；附件卡用反向嵌套——base-100 底 + 1px base-300 边框，从 base-200 卡片里再凹一层。
+- 窄屏（≤900px）三栏退化为纵向堆叠、收件箱列表通栏、搜索框与导航折行铺满，390px 不横向溢出。
 
 ### 完整整页源码
 
@@ -10960,7 +11038,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- A 股红涨绿跌是本主题的核心语义记忆点：上涨一律用霓虹粉红 #f7768e（对应语义 error 色）、下跌一律用嫩绿 #9ece6a（对应语义 success 色），不要按 daisyUI 默认把绿色当「成功/好消息」；涨跌幅、现价、K 线红柱全部沿用这两个颜色，不要换成红涨以外的配色。
+- 盘口半透明底强化买卖方向：买盘（涨方）行底 rgba(247,118,142,.08) 淡红、卖盘（跌方）行底 rgba(158,206,106,.08) 淡绿；中间用 1px base-300 分隔线夹出现价。
+- 深蓝紫三层底：页面 base-100 #1a1b26、卡片与侧栏 base-200 #292e42、最深 base-300 #16161e 只做分隔线与图表网格（currentColor 约 8% 透明度发丝线）；霓虹蓝 primary #7aa2f7 只给 brand-mark、menu-active 选中态与小徽章，配深字 #16161e，不大面积铺蓝。
+- 均线色是招牌分工：MA5 用品紫 secondary #bb9af7、MA10 用夜青 accent #7dcfff，图例同色短线标注；图表网格极淡，不抢 K 线。
+- 行情数字全部等宽 mono（var(--font-mono)）：指数大字 19px 加粗、股票表价格/代码/涨跌幅/成交量/成交额全 mono，数字不 proportionally 跳动；公司名加粗、代码灰一点。
+- 小圆角交易终端取向：radius-box .5rem、radius-field .25rem、radius-selector .375rem，1px 细边框、--depth:1 无投影；指数卡用 grid auto-fit minmax(170px,1fr) 随宽度自适应排列。
+- 窄屏（≤900px）侧栏折横排、自选股表与五档盘口改单列堆叠、表格 tbl-wrap 横向滚动，390px 不溢出。
 
 ### 完整整页源码
 
@@ -11331,7 +11415,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 底三层是暖紫暮色：base-100 #191724 页面底、base-200 #1f1d2e 吸顶头与卡片、base-300 #26233a 行内代码块与发丝分隔线；正文用 base-content #e0def4 暖白、约 .92 不透明度，明度差刻意压低、不刺眼。绝不能出现纯白 #fff 正文或高饱和亮紫亮粉硬色块。
+- 招牌主色是 iris 鸢尾紫 #c4a7e7（primary，配深字 #191724），只留给当前导航 menu-active、引用块左边 3px 竖线、主徽章；secondary 玫红 #eb6f92 与 accent 水青 #9ccfd8 只做小面积点缀，warning 金 #f6c177 在暮色里是月亮色。
+- 主按钮与徽章走 daisyUI 语义机制：primary 浅紫底自动配深字（primary-content 已配好），卡片一律 bg-base-200 rounded-box，不叠投影、不用实心重色块压人。
+- 长文杂志气质：正文行高 2、标题克制（文章小节 19px 粗 700），正文系统无衬线、行内代码用 base-300 底等宽小字；引用块只加左边线不加底色。
+- 插图只用 Rosé Pine 固定色板画扁平暮色风景：#1f1d2e 夜空底、#f6c177 圆月、#c4a7e7 远山、#eb6f92 近山、#e0def4 星点、#9ccfd8 水色，色块半透明叠加；不用照片、不用 emoji、不用光晕渐变。
+- 圆角杂志感：--radius-box .625rem、--radius-selector/field 各 .5rem 中等圆角；--border:1px、--depth:1、--noise:0，无阴影无颗粒。
+- 窄屏口径：≤900px 右侧 210px 目录栏退到正文下方通栏、站点头部导航折行、卡片单列，不横向溢出。
 
 ### 完整整页源码
 
@@ -11672,7 +11762,13 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 底三层是经典 Solarized 米纸：base-100 #fdf6e3（base3）页面底、base-200 #eee8d5（base2）侧栏与外卡片、base-300 #e3dccb 内卡描边与图标底；正文用 base02 深青墨 #073642，明度差刻意压低、长时间阅读不累眼。绝不能出现纯白 #fff 配纯黑 #000 的高对比组合。
+- 招牌主色是 Solarized 蓝 #268bd2（primary，配米纸字 #fdf6e3），只留给主操作按钮、选中态 menu-active、primary 徽章；辅助色固定 Solarized 六色：violet #6c71c4、cyan #2aa198、green #859900、yellow #b58900、red #dc322f，不要换成别的蓝绿。
+- 状态一律 badge-soft 浅盘 + 深字（各 *-content 已配好）：可约=绿、号源紧张=黄、已约=蓝、约满/休诊/取消=灰青 neutral #93a1a1；不做实心高饱和状态块。
+- 医疗后台信息密度：表格 13px、表头降到 .6 透明度弱化，外卡片 bg-base-200 rounded-box、内层科室卡用 bg-base-100 加 1px base-300 细描边；科室图标是 base-300 圆角方块底 + primary 蓝 currentColor 线性 SVG。
+- 图标全部 currentColor 单色线性 SVG（心电图、十字、笑脸、眼睛、牙齿、树叶轮廓），stroke 约 2，不用彩色插画、不用 emoji、不用照片。
+- 圆角比一般主题稍方：--radius-field .375rem、--radius-selector .5rem、--radius-box .625rem；--border:1px、--depth:1、--noise:0，细边无阴影。
+- 窄屏口径：≤900px 左侧 220px 栏退化为顶部横向菜单行（分隔线从竖边改横边），指标卡 auto-fit 折行，宽表 overflow-x 横滑，不硬塞不缩字。
 
 ### 完整整页源码
 
@@ -12075,7 +12171,14 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 底色三层是奶油拿铁：官方 oklch 98%/95%/90%、色相 70–75 微暖，页面最浅（base-100）、卡片稍深（base-200）、分隔更深一档（base-300）；正文是深棕墨（base-content 约 40% 明度棕），不是纯黑。绝不能出现冷调灰蓝底或高饱和亮橙。
+- 最大机制：主色 primary 是纯墨黑 oklch(0% 0 0) 配纯白字——堂食/加购/下单等主按钮一律墨黑底白字；不要因为叫焦糖拿铁就把主按钮做成棕色。
+- 焦糖棕 accent（官方约 46% 明度、色相 38 暖棕）是唯一暖强调色：商品线稿图标用 accent 色 currentColor、制作进度「出杯中」用 badge-accent；warning 金黄、error 砖红只在语义场景出现。
+- 圆角与边框是手作烘焙感：--radius-selector 2rem 大胶囊、--radius-box 1rem、--border 2px，比常规主题更圆、边更粗；--noise:1 带一点官方细颗粒质感。卡片统一 bg-base-200 rounded-box。
+- 商品图不用食物照片：用 base-200 圆角方块底 + accent 色 currentColor 线稿 SVG（咖啡杯、外带杯、可颂、蛋糕轮廓，统一线宽），一套图标同风格。
+- 菜单卡紧凑排版：padding 12px、gap 8px，品名与价格加粗同行，每个商品一个 btn-primary 小按钮；文案写真实点单动作（加购、下单 ¥56.00、取餐码 A-23、预计取餐时间）。
+- 引入方式：本套是 daisyUI 官方内置主题、目录无 tokens.css——项目里引 vendor/daisyui.css + vendor/daisyui-themes.css 两行，给 <html> 挂 data-theme="caramellatte" 即整站换肤，不需要第三个文件。
+- 窄屏口径：≤900px「菜单 + 右侧 300px 购物车」两栏塌成单列，购物车落到菜单下方，加减数量按钮组自然折行，不横向溢出。
 
 ### 完整整页源码
 
@@ -12329,7 +12432,14 @@ window.addEventListener("resize", () => chart.resize());</code></pre>
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 底色是几乎没有色相的暖米白三层：官方 oklch 97%/95%/90%、色度仅 .003–.008，base-content 是同色相同约 40% 明度的暖灰墨；分区靠留白而非色块，明度差极弱。绝不要给它加彩色背景或深灰大块底色。
+- 最大机制：primary / secondary / accent 在官方主题里是同一个色——低饱和墨蓝近黑（oklch 23.3%、色度 .025）；强调不靠彩色、靠字重与留白。主按钮墨底配浅豆绿字（primary-content 官方为 oklch 94.2% 浅豆绿），这是官方设定，不要擅自改成白字或棕字。
+- 语义色全是浅盘深字机制：info/success/warning/error 均为 80–84% 高明度浅底 + 各自深色字，用于 badge-soft 胶囊；neutral 是纯黑，只用于头像底这类极小面积。
+- 圆角大而平滑：--radius-selector 2rem 胶囊、--radius-box 1rem、--border 2px、--noise:0（无颗粒、无阴影，要的就是丝滑平整）；卡片统一 bg-base-200 rounded-box。
+- 插图全部 currentColor 单色线稿：hero 山景线条画（太阳、远山、小屋、草地）与房源房形图标，stroke 2 圆角端点、无填色无渐变；不用照片、不用彩色插画、不用 emoji。
+- 气质是留白与层级：hero 大标题 26px、描述文字降到 .65 透明度，房源评分用 badge-soft badge-primary 小胶囊，价格加粗写「¥680 / 晚」，账单明细两列对齐。
+- 引入方式：本套是 daisyUI 官方内置主题、目录无 tokens.css——项目里引 vendor/daisyui.css + vendor/daisyui-themes.css 两行，给 <html> 挂 data-theme="silk" 即整站换肤，不需要第三个文件。
+- 窄屏口径：≤900px hero 左右两栏塌成单列（线条画落到文案下方）、顶栏导航菜单折行、入住退房日期输入框自然堆叠，不横向溢出。
 
 ### 完整整页源码
 

@@ -12,7 +12,13 @@
 
 ### 换成你自己的业务时必须守住的视觉特征
 
-- 严格照整页源码的配色、字体、留白、圆角与组件结构来，不要自由发挥成另一种风格。
+- 底三层是经典 Solarized 米纸：base-100 #fdf6e3（base3）页面底、base-200 #eee8d5（base2）侧栏与外卡片、base-300 #e3dccb 内卡描边与图标底；正文用 base02 深青墨 #073642，明度差刻意压低、长时间阅读不累眼。绝不能出现纯白 #fff 配纯黑 #000 的高对比组合。
+- 招牌主色是 Solarized 蓝 #268bd2（primary，配米纸字 #fdf6e3），只留给主操作按钮、选中态 menu-active、primary 徽章；辅助色固定 Solarized 六色：violet #6c71c4、cyan #2aa198、green #859900、yellow #b58900、red #dc322f，不要换成别的蓝绿。
+- 状态一律 badge-soft 浅盘 + 深字（各 *-content 已配好）：可约=绿、号源紧张=黄、已约=蓝、约满/休诊/取消=灰青 neutral #93a1a1；不做实心高饱和状态块。
+- 医疗后台信息密度：表格 13px、表头降到 .6 透明度弱化，外卡片 bg-base-200 rounded-box、内层科室卡用 bg-base-100 加 1px base-300 细描边；科室图标是 base-300 圆角方块底 + primary 蓝 currentColor 线性 SVG。
+- 图标全部 currentColor 单色线性 SVG（心电图、十字、笑脸、眼睛、牙齿、树叶轮廓），stroke 约 2，不用彩色插画、不用 emoji、不用照片。
+- 圆角比一般主题稍方：--radius-field .375rem、--radius-selector .5rem、--radius-box .625rem；--border:1px、--depth:1、--noise:0，细边无阴影。
+- 窄屏口径：≤900px 左侧 220px 栏退化为顶部横向菜单行（分隔线从竖边改横边），指标卡 auto-fit 折行，宽表 overflow-x 横滑，不硬塞不缩字。
 
 ### 完整整页源码
 

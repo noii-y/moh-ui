@@ -141,4 +141,4 @@
 ## Optional
 
 - [素材溯源与许可证](https://noii-y.github.io/moh-ui/site/attributions.html): 每个组件的上游名称、原版地址与许可证登记
-- [AI 审美硬边界](https://noii-y.github.io/moh-ui/site/rules.html): 组件背后的排版与审美规则
+- [AI 排版规则装配器](https://noii-y.github.io/moh-ui/site/rules.html): 按页面类型（通用 / 表格 / 表单 / 数据看板）+ 主题 + 所用组件，现场装配一份专属排版规则与自检清单，支持 URL 参数预选（?scene=&theme=&comps=）
