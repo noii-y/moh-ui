@@ -35,6 +35,8 @@
 ## 使用要点（给 AI 与新手的提醒）
 
 - **id 必须一一对应**：按钮的 `popovertarget` 指向哪个 id，面板的 `id` 就是它；最多 10 个面板。
+- **aria 标注**：每个分类按钮写 `aria-haspopup="true" aria-controls="面板id"`，面板写 `role="group" aria-labelledby="按钮id"`；`aria-expanded` 用面板上一行 `toggle` 监听同步。静态展示的强制展开态不写 `aria-expanded`（那是演示态）。
+- **键盘行为**：分类按钮之间用 `←`/`→` 切换焦点（十几行脚本）；进面板后用 `Tab` 逐个走链接。原生 popover 负责点外部关闭、Esc 关闭、关闭后焦点回到触发按钮。**面板是链接集合，不要写成 `role="menu"`**（那才需要方向键 roving）。
 - 大菜单只用于**桌面端顶部导航**；手机上隐藏，换成按钮 + 抽屉。
 - 开合是原生 popover 行为，不要自己写 JS / fixed 弹层。
 - 详情页为了直接展示面板内容，把展开的那一面板写成了普通静态块（浏览器对 popover 的静态展开渲染支持不一致，这样最稳）；真实项目给外层 `div.megamenu` 和面板 `div` 补上 `popover` 属性，面板就恢复锚定弹出。

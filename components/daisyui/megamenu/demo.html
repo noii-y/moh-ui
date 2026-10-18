@@ -35,11 +35,11 @@
     <div class="doc-stage col" id="hero-stage" style="padding:0;overflow:hidden;align-items:stretch;">
       <div class="megamenu megamenu-wide p-2 border-b border-base-300" popover style="position:static!important;display:flex!important;flex-wrap:wrap;opacity:1!important;translate:none!important;scale:1!important;max-block-size:none!important;margin-top:0!important;">
         <span class="megamenu-active"></span>
-        <button popovertarget="hero-mm-female">女装</button>
-        <button popovertarget="hero-mm-male">男装</button>
-        <button popovertarget="hero-mm-digital">数码</button>
-        <button popovertarget="hero-mm-home">家电</button>
-        <div id="hero-mm-female" popover>
+        <button id="hero-mm-female-btn" popovertarget="hero-mm-female" aria-haspopup="true" aria-controls="hero-mm-female">女装</button>
+        <button id="hero-mm-male-btn" popovertarget="hero-mm-male" aria-haspopup="true" aria-controls="hero-mm-male">男装</button>
+        <button id="hero-mm-digital-btn" popovertarget="hero-mm-digital" aria-haspopup="true" aria-controls="hero-mm-digital">数码</button>
+        <button id="hero-mm-home-btn" popovertarget="hero-mm-home" aria-haspopup="true" aria-controls="hero-mm-home">家电</button>
+        <div id="hero-mm-female" popover role="group" aria-labelledby="hero-mm-female-btn">
           <ul class="menu menu-horizontal">
             <li><a>连衣裙</a></li>
             <li><a>上衣 T 恤</a></li>
@@ -47,14 +47,14 @@
             <li><a>裤装</a></li>
           </ul>
         </div>
-        <div id="hero-mm-male" popover>
+        <div id="hero-mm-male" popover role="group" aria-labelledby="hero-mm-male-btn">
           <ul class="menu menu-horizontal">
             <li><a>男士 T 恤</a></li>
             <li><a>休闲裤</a></li>
             <li><a>夹克</a></li>
           </ul>
         </div>
-        <div id="hero-mm-digital" popover style="position:static!important;display:block!important;opacity:100%!important;translate:none!important;scale:1!important;width:100%!important;max-height:none!important;background:transparent!important;border:none!important;">
+        <div id="hero-mm-digital" popover role="group" aria-labelledby="hero-mm-digital-btn" style="position:static!important;display:block!important;opacity:100%!important;translate:none!important;scale:1!important;width:100%!important;max-height:none!important;background:transparent!important;border:none!important;">
           <div class="flex flex-wrap items-start gap-6 p-4">
             <ul class="menu">
               <li class="menu-title">手机通讯</li>
@@ -87,7 +87,7 @@
             </div>
           </div>
         </div>
-        <div id="hero-mm-home" popover>
+        <div id="hero-mm-home" popover role="group" aria-labelledby="hero-mm-home-btn">
           <ul class="menu menu-horizontal">
             <li><a>大家电</a></li>
             <li><a>厨房小电</a></li>
@@ -164,6 +164,62 @@
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>真实可点：键盘操作演示</h2>
+    <p class="desc">这是官网顶部导航条：点「产品」展开一块多列巨幕面板。原生 popover 提供：点面板外面或按 <kbd>Esc</kbd> 关闭，关闭后焦点回到刚才的分类按钮。键盘上 <kbd>←</kbd>/<kbd>→</kbd> 在分类按钮之间切换并跟着切换面板；进面板后用 <kbd>Tab</kbd> 逐个走链接（巨幕是一组链接，不是菜单组件，不强制方向键）。静态截图里只看到按钮排（面板默认收起）。</p>
+    <div class="doc-stage col" style="padding:0;overflow:hidden;align-items:stretch;">
+      <div class="megamenu megamenu-wide p-2 border border-base-300">
+        <span class="megamenu-active"></span>
+        <button id="mm-live-product-btn" popovertarget="mm-live-product" aria-haspopup="true" aria-controls="mm-live-product" aria-expanded="false">产品</button>
+        <button id="mm-live-plan-btn" popovertarget="mm-live-plan" aria-haspopup="true" aria-controls="mm-live-plan" aria-expanded="false">解决方案</button>
+        <div id="mm-live-product" popover role="group" aria-labelledby="mm-live-product-btn">
+          <div class="flex flex-wrap items-start gap-6 p-4">
+            <ul class="menu">
+              <li class="menu-title">产品</li>
+              <li><a>在线协作</a></li>
+              <li><a>云文档</a></li>
+              <li><a>视频会议</a></li>
+            </ul>
+            <ul class="menu">
+              <li class="menu-title">开发者</li>
+              <li><a>API 文档</a></li>
+              <li><a>SDK 下载</a></li>
+              <li><a>更新日志</a></li>
+            </ul>
+            <div class="rounded-box border border-base-300 p-4 max-w-xs">
+              <p class="font-semibold">新手上路</p>
+              <p class="text-sm opacity-60 mt-1">10 分钟跑通第一个项目，附模板与示例</p>
+              <button class="btn btn-sm btn-primary mt-2">查看文档</button>
+            </div>
+          </div>
+        </div>
+        <div id="mm-live-plan" popover role="group" aria-labelledby="mm-live-plan-btn">
+          <ul class="menu menu-horizontal">
+            <li><a>企业方案</a></li>
+            <li><a>教育方案</a></li>
+            <li><a>行业定制</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var btns=['mm-live-product-btn','mm-live-plan-btn'].map(function(id){return document.getElementById(id);});
+      btns.forEach(function(b,i){
+        var p=document.getElementById(b.getAttribute('aria-controls'));
+        p.addEventListener('toggle',function(){
+          b.setAttribute('aria-expanded',String(p.matches(':popover-open')));
+        });
+        b.addEventListener('keydown',function(e){
+          var n=btns.length;
+          if(e.key==='ArrowRight'){e.preventDefault();btns[(i+1)%n].focus();}
+          else if(e.key==='ArrowLeft'){e.preventDefault();btns[(i-1+n)%n].focus();}
+        });
+      });
+    })();
+    </script>
+  </section>
+
   <!-- 使用指南 -->
   <section class="doc-guide">
     <h2>使用指南</h2>
@@ -177,6 +233,12 @@
     <p>详情页保留官方 <code>popover</code> 结构不变，只给外层和「数码」面板加了一行演示用的内联重置（<code>position:static</code>、<code>display:flex/block</code>、<code>opacity:1</code> 等），让面板直接落在带边框的舞台里完整展开。复制到真实项目时：去掉这一行内联 <code>style</code>，面板就恢复成「悬停 / 点击按钮时锚定弹出」的默认行为；面板内容、列数、链接写法完全不变。</p>
     <h3>可访问性</h3>
     <p>分类按钮要带真实文字（不要只用图标）；面板内链接用语义化 <code>a</code>；原生 popover 自带 Esc 关闭与焦点管理，不要额外覆盖。</p>
+    <h3>焦点落点与键盘行为</h3>
+    <p>分类按钮是一组普通 <code>button</code>：<kbd>←</kbd>/<kbd>→</kbd> 在它们之间切换（上面脚本十几行），点击 / 回车展开对应面板。进面板后用 <kbd>Tab</kbd> 逐个走链接；原生 popover 处理点外部关闭、<kbd>Esc</kbd> 关闭，关闭后焦点回到触发按钮。<strong>面板不要写成 <code>role="menu"</code></strong>——它是多组链接，不是带方向键的菜单组件。</p>
+    <h3>aria 怎么标</h3>
+    <p>每个分类按钮写 <code>aria-haspopup="true" aria-controls="面板id"</code>，面板写 <code>role="group" aria-labelledby="按钮id"</code>；<code>aria-expanded</code> 用面板上一行 <code>toggle</code> 监听同步。静态展示的成品里面板被内联样式强制展开，那是演示态，不写 <code>aria-expanded</code>；真实可点的变体里才同步它。</p>
+    <h3>为什么不自己写 JS 弹层</h3>
+    <p>开合、Esc、点外部关闭、焦点返回都由原生 popover 提供；自己写 fixed 定位加焦点圈定，很容易漏掉 Esc 与焦点返回。这里只补十几行同步 aria 与方向键，业务侧仍是零依赖。</p>
   </section>
 
 </main>
@@ -191,6 +253,8 @@
 【精确规格】
 - 分类名与链接写真实电商文案（连衣裙 / 笔记本 / 智能手表…），禁止出现 Primary / 主要 这类颜色名当文案。
 - 开合用浏览器原生 popover（popovertarget / popover 属性），零 JavaScript；不要自己写 fixed 定位或 JS 弹层逻辑。
+- 每个分类按钮写 <button popovertarget="面板id" id="按钮id" aria-haspopup="true" aria-controls="面板id">，面板写 <div id="面板id" popover role="group" aria-labelledby="按钮id">；原生 popover 自带点外部关闭、Esc 关闭、关闭后焦点回到触发按钮，不要手写焦点陷阱。
+- aria-expanded 用面板上一行 toggle 监听同步（p.matches(':popover-open')）；分类按钮之间用 ←/→ 切换焦点；面板是链接集合，里面用 Tab 逐项走，不要把面板写成 role="menu"。
 - 参考结构里那一行 position:static / display / opacity 演示内联 style 只用于详情页让面板静态展开，复制后删除。
 - 大菜单只用于桌面端顶部；面板多列在宽屏并排，窄屏自动换行，任何一列链接都不能溢出容器。
 - 用到的类全部真实存在：megamenu、megamenu-wide、megamenu-vertical、megamenu-active、menu、menu-horizontal、menu-title、border-base-300、rounded-box、text-sm、opacity-60、btn、btn-sm、btn-primary。

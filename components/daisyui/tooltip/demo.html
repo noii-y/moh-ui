@@ -12,7 +12,7 @@
 <body>
 <header class="doc-head">
   <h1>悬浮提示 <span class="en">Tooltip</span></h1>
-  <p>鼠标停在图标按钮上时冒出来的一句小字，用来解释它是什么、快捷键是多少。下面先给一个编辑器工具栏的成品，再列出四个方向、语义色和带图标提示供参考。</p>
+  <p>鼠标停在图标按钮上、或键盘把焦点移到按钮上时冒出来的一句小字，用来解释它是什么、快捷键是多少。它不拦截焦点、不是弹层。下面先给一个编辑器工具栏的成品，再列出四个方向、语义色和真实可点的形态供参考。</p>
 </header>
 
 <main class="doc-wrap">
@@ -117,13 +117,37 @@
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>真实可点：键盘 Tab 到按钮上试试</h2>
+    <p class="desc">上面的气泡是用 <code>tooltip-open</code> 强制展示的。真实用法里它们平时不出现：鼠标悬停在按钮上、或用键盘 <kbd>Tab</kbd> 把焦点移到按钮上，气泡才弹出（daisyUI 靠 <code>:has(:focus-visible)</code> 识别键盘聚焦）；鼠标移开、或 <kbd>Tab</kbd> 走到下一个元素，气泡立刻消失。<strong>它不是弹层：不拦截焦点、不用 Tab 圈定、按 <kbd>Esc</kbd> 也与它无关</strong>，焦点始终停在按钮本身。静态截图里只看到一排按钮，正是收起状态。</p>
+    <div class="doc-stage center" style="gap:1.5rem">
+      <div class="tooltip" data-tip="保存 (Ctrl+S)">
+        <button class="btn btn-square" aria-label="保存">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3h10l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 3v5h7V3M8 21v-7h8v7"/></svg>
+        </button>
+      </div>
+      <div class="tooltip" data-tip="加粗 (Ctrl+B)">
+        <button class="btn btn-square" aria-label="加粗">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6V4Zm0 8h9a4 4 0 0 1 0 8H6v-8Z"/></svg>
+        </button>
+      </div>
+      <div class="tooltip" data-tip="删除">
+        <button class="btn btn-square btn-ghost" aria-label="删除">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- 使用指南 -->
   <section class="doc-guide">
     <h2>使用指南</h2>
     <h3>一句话，别超过两行</h3>
     <p>提示只写「这是什么 + 快捷键 / 结果」，例如「保存 (Ctrl+S)」「删除后不可恢复」；不要放长段落、不要放链接（需要跳转就用下拉或弹窗）。</p>
     <h3>纯图标按钮必须有提示</h3>
-    <p>工具栏上只有图标、没有文字的按钮，<code>data-tip</code> 就是它的可读性来源；同时按钮本身加 <code>aria-label</code>，照顾读屏用户。</p>
+    <p>工具栏上只有图标、没有文字的按钮，<code>data-tip</code> 就是它给视力用户的说明；按钮本身还要加 <code>aria-label</code>，照顾读屏用户。注意 <code>data-tip</code> 的文字是 CSS 伪元素渲染的，<strong>读屏软件不会念它</strong>。两者分工：<code>aria-label</code> 只说动作（如「保存」），快捷键、结果这类补充留给气泡（如「保存 (Ctrl+S)」），<strong>不要求两者逐字一致</strong>。</p>
+    <h3>键盘能弹，而且不拦截焦点</h3>
+    <p>气泡在两种时机出现：鼠标 <code>:hover</code>，或键盘把焦点移到按钮上（daisyUI 用 <code>:has(:focus-visible)</code> 识别，点鼠标产生的焦点不触发）。移开 / 焦点走到别处，气泡立即消失。<strong>tooltip 不是弹层</strong>：焦点不被圈定、不用在气泡之间 Tab、<kbd>Esc</kbd> 与它无关——<strong>不要给它加 <code>role="tooltip"</code> 容器陷阱，也不要自己写键盘逻辑</strong>。只有当你确实希望读屏把气泡全文也念出来时，才把提示内容写成真实元素 <code>&lt;div class="tooltip-content" id="保存提示"&gt;</code>，再在触发元素上挂 <code>aria-describedby="保存提示"</code>（伪元素 <code>data-tip</code> 无法被指向）——这时才要求气泡文字与 <code>aria-label</code> 保持一致。</p>
     <h3>按边缘选方向</h3>
     <p>默认上方；按钮贴着页面顶部就用 <code>tooltip-bottom</code>，贴着左右边缘就用 <code>tooltip-left</code> / <code>tooltip-right</code>。静态展示时加 <code>tooltip-open</code> 强制显示，并在舞台四周留足内边距，避免气泡顶出容器。</p>
     <h3>颜色语义化</h3>
@@ -140,8 +164,10 @@
 - 相邻按钮一行排列；并排间距留 16px 以上（提示气泡通常比按钮宽，多个气泡同时露出时不能互相压住）。
 - 删除按钮用 btn-ghost 弱化外观，但 aria-label 仍写「删除」。
 【精确规格】
-- 真实交互：鼠标悬停在按钮上时气泡出现，移开即消失，零 JavaScript；静态预览（截图 / 文档）时给 tooltip 外层临时加 tooltip-open 强制显示，并在容器四周留出内边距，避免气泡顶出边界。
-- 用到的类全部真实存在：tooltip、tooltip-open、tooltip-bottom、tooltip-left、tooltip-right、tooltip-primary、tooltip-error、tooltip-content、btn、btn-square、btn-ghost、btn-error、aria-label；提示文字只写在 data-tip 属性里（如 data-tip="保存 (Ctrl+S)"），不要额外写元素。
+- 真实交互：鼠标悬停在按钮上时气泡出现，键盘 Tab 把焦点移到按钮上（:focus-visible）同样出现，移开 / 焦点移走即消失，零 JavaScript；静态预览（截图 / 文档）时给 tooltip 外层临时加 tooltip-open 强制显示，并在容器四周留出内边距，避免气泡顶出边界。
+- 焦点行为：tooltip 不是弹层——不拦截焦点、不用 Tab 圈定、Esc 无关；不要给它加 role="tooltip" 容器陷阱，也不要为此写任何键盘 JS。
+- 可访问性：data-tip 文字是 CSS 伪元素渲染、读屏不念，所以纯图标按钮必须自带 aria-label；aria-label 只说动作（如「保存」），快捷键说明留给 data-tip 气泡（如「保存 (Ctrl+S)」），两者不要求逐字一致；需要读屏读到气泡全文时，改用真实元素 div.tooltip-content 并加 id，触发元素挂 aria-describedby 指向它，此时两边文案才保持一致。
+- 用到的类全部真实存在：tooltip、tooltip-open、tooltip-bottom、tooltip-left、tooltip-right、tooltip-primary、tooltip-error、tooltip-content、btn、btn-square、btn-ghost、btn-error；提示文字只写在 data-tip 属性里（如 data-tip="保存 (Ctrl+S)"），不要额外写元素。
 - 提示文案写真实动作与快捷键（保存 (Ctrl+S) / 删除），禁止颜色名；气泡颜色全部走 daisyUI 主题变量，不要写死。</script>
 
 <script src="../../../assets/demo-doc.js"></script>

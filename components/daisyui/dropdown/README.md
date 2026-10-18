@@ -36,6 +36,8 @@
 ## 使用要点（给 AI 与新手的提醒）
 
 - **触发元素用 `<div tabindex="0" role="button">` 而不是 `<button>`**：Safari 对原生 button 聚焦有多年 bug，官方因此用 div 兜底，这样 Tab 键盘可达、失焦自动收起。
+- **键盘可用、要 Esc / 点外部关闭的菜单，用原生 popover 写法**：`<button popovertarget="菜单id" aria-haspopup="menu" aria-controls="菜单id">` + `<ul id="菜单id" popover role="menu" aria-labelledby="按钮id">`。原生白送点外部关闭、Esc 关闭、关闭后焦点回到触发按钮；`aria-expanded` 用一行 `toggle` 监听同步。菜单项写 `<a role="menuitem" tabindex="0">`（无 href 必须补 `tabindex="0"`），再配十几行 `↑/↓/Home/End` 键脚本。
+- **三种写法怎么选**：CSS focus（本页上方成品）最轻量，适合装饰性下拉；`<details>` 能展开但不会点外部收起、不还焦点；要真正的菜单键盘体验就上 popover，别在 CSS focus / details 上自己补焦点逻辑。
 - **静态展示时加 `dropdown-open`**，并给容器留出高度（内联 `min-height`），否则展开的菜单会被下一个元素裁切；上线前去掉 `dropdown-open`。
 - 靠近页面边缘的按钮要选对方向：靠近上边缘用 `dropdown-top`，靠近右边缘用 `dropdown-end` + `dropdown-left`。
 - 危险操作（退出登录）用 `text-error`；菜单项是真实功能名，一个菜单最多一个当前高亮项。
@@ -43,5 +45,6 @@
 
 ## 兼容性
 
-- 纯 CSS 实现，无 JavaScript、无框架依赖，HTML 直接可用。
+- CSS focus 写法纯 CSS 实现，无 JavaScript、无框架依赖，HTML 直接可用。
+- popover 写法需要支持原生 Popover API 的现代浏览器（Edge / Chrome 114+、Safari 17+）；Esc 关闭、点外部关闭、焦点返回均为浏览器原生行为。
 - 颜色走 `--color-*` 主题变量，深浅色主题、灰墨主题均自动适配。

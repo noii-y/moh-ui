@@ -29,16 +29,19 @@ FAB（Floating Action Button）是一个钉在屏幕角落的主按钮，聚焦�
 | 带文字标签的动作 | `<div>标签 <button …/></div>` |
 | 花瓣形圆弧展开 | 容器加 `fab-flower` |
 | 单个悬浮按钮 | 容器里只放一个圆形按钮 |
+| 可点可键盘开合版 | 用原生 `<details>` 当主按钮（点 / Enter / Space 开合），见 demo「真实可点」 |
 
 ## 使用要点（给 AI 与新手的提醒）
 
 - **主按钮用 `div[tabindex][role=button]` 而不是 `<button>`**：这是 daisyUI 为绕开 Safari 聚焦 bug 的标准写法，照抄即可。
 - **展开零 JS**：子按钮平时隐藏，主按钮 `:focus-within` 时纯 CSS 展开，不要为了展开自己写脚本。
+- **键盘与焦点**：纯 CSS 版下 `Tab` 聚焦主按钮即展开、继续 `Tab` 依次进入各动作、焦点移出整组自动收起；**没有 `Esc` 收起、鼠标点主按钮也不开关**。要「点一下开合 + 键盘开关 + 读屏自动播报状态」用原生 `<details>` 当主按钮；它收起时菜单项不进 `Tab` 序，但同样没有 `Esc`、没有点外部收起。想要 `Esc` / light-dismiss / 焦点自动返回，需要 HTML Popover（`popovertarget`）或 `<dialog>`，要额外 JS。
+- 主按钮加 `aria-haspopup="menu"` 与 `aria-controls`（指向外层菜单容器 id）；纯 CSS 开合无法自动更新 `aria-expanded`，静态演示写 `true` 仅对应当前画面。
 - 纯图标按钮必须加 `aria-label`；图标用 `h-6 w-6` 单色 SVG，不要用 emoji。
 - 一个页面通常只放一个 FAB，别和底部导航、主按钮职责重复。
 - 详情页里为了截图能看到子按钮加了一段「强制展开」的演示样式，**不要复制到你的项目**。
 
 ## 兼容性
 
-- 纯 CSS 实现（展开靠 `:focus-within`），无 JavaScript、无框架依赖。
+- 纯 CSS 实现（展开靠 `:focus-within`），无 JavaScript、无框架依赖；details 版开合为原生 HTML 能力。
 - 颜色全部走 daisyUI 主题变量，深浅色主题自动适配。

@@ -12,7 +12,7 @@
 <body>
 <header class="doc-head">
   <h1>抽屉侧栏 <span class="en">Drawer</span></h1>
-  <p>后台系统的左侧菜单：大屏时常驻在页面左侧，小屏时变成从侧边滑出的抽屉。用一个隐藏复选框加 label 就能开合，零 JavaScript。下面先给一个后台成品，再列出基础、右侧、响应式等形态。</p>
+  <p>后台系统的侧边导航：大屏时常驻在页面左侧，小屏或点按钮时从侧边滑出。常驻布局用纯 CSS 的 <code>drawer</code>；需要点按钮开合的浮层抽屉（导航、筛选）推荐用原生 <code>&lt;dialog&gt;</code>，自带焦点圈定、Esc 关闭、关闭后焦点返回。下面先给一个后台常驻侧栏成品，再看左侧滑出、右侧滑出、响应式与真实可点的键盘演示。</p>
 </header>
 
 <main class="doc-wrap">
@@ -23,15 +23,15 @@
     <ol class="doc-steps">
       <li data-n="1">在页面里引入两行样式：<code>daisyui.css</code> 和 <code>utilities-patch.css</code>（本项目都已打包，零依赖、无需构建）。</li>
       <li data-n="2">首选点<strong>「复制 AI 提示词」</strong>，整段发给你的 AI，它会结合你的项目直接生成；想自己粘贴代码，再用<strong>「复制成品 HTML」</strong>，保存成 <code>.html</code> 双击即可预览。</li>
-      <li data-n="3">换菜单项只改侧栏 <code>menu</code> 里的 <code>&lt;li&gt;</code>；小屏开合由复选框自动完成，不需要写 JS。</li>
+      <li data-n="3">常驻侧栏用 <code>lg:drawer-open</code>（大屏常显、窄屏收成抽屉）；点按钮开合的浮层抽屉用原生 <code>&lt;dialog&gt;</code> 加 <code>showModal()</code>，键盘行为原生可用，不需要写 JS 焦点陷阱。</li>
     </ol>
   </section>
 
-  <!-- 成品示例：后台可折叠侧栏（drawer-open 强制常显） -->
+  <!-- 成品示例：后台常驻侧栏（drawer-open 强制常显） -->
   <section class="doc-block doc-hero">
     <span class="doc-hero-badge">成品示例 · 拿来即用</span>
-    <h2>后台管理系统的左侧菜单</h2>
-    <p class="desc">侧栏常驻可见：带图标，「仪表盘」是当前页（active），「订单管理」带数字徽标，「商品管理」带子菜单，未开通的「数据报表」禁用置灰。成品用无条件 drawer-open，让卡片缩略图里也能直接看到侧栏；真实项目换成 lg:drawer-open（大屏常驻、窄屏自动收成抽屉）；本页为了在小舞台里完整展示，给侧栏加了限高（见下方指南）。</p>
+    <h2>后台管理系统的左侧常驻菜单</h2>
+    <p class="desc">侧栏常驻可见：带图标，「仪表盘」是当前页，「订单管理」带数字徽标，「商品管理」带子菜单，未开通的「数据报表」禁用置灰。成品用无条件 <code>drawer-open</code> 让卡片缩略图里也能直接看到侧栏；真实项目换成 <code>lg:drawer-open</code>（大屏常驻、窄屏自动收成抽屉）。这是常驻布局，不是浮层；点按钮开合的浮层抽屉见下方「真实可点」一节。</p>
     <div class="doc-stage col" id="hero-stage" style="padding:0;overflow:hidden;align-items:stretch;">
       <div class="drawer drawer-open" style="height:320px;">
         <input id="demo-hero-drawer" type="checkbox" class="drawer-toggle" />
@@ -46,10 +46,10 @@
             <p class="text-sm opacity-60">这里是后台主内容区：侧栏负责切换模块，内容区展示对应列表与图表。真实项目里侧栏铺满整页高度，内容区自适应剩余空间。</p>
           </div>
         </div>
-        <div class="drawer-side" style="height:100%;">
+        <div class="drawer-side" role="dialog" aria-modal="true" aria-labelledby="drawer-hero-title" style="height:100%;">
           <label for="demo-hero-drawer" aria-label="关闭侧栏" class="drawer-overlay" style="position:static;inset:auto;background:transparent;"></label>
           <ul class="menu bg-base-200 w-64 p-2" style="min-height:100%">
-            <li class="menu-title">工作台</li>
+            <li class="menu-title" id="drawer-hero-title">工作台</li>
             <li>
               <a class="menu-active">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75h6v6h-6v-6zm10.5 0h6v6h-6v-6zm-10.5 10.5h6v6h-6v-6zm10.5 0h6v6h-6v-6z" /></svg>
@@ -58,7 +58,7 @@
             </li>
             <li>
               <a>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z" /></svg>
                 订单管理
                 <span class="badge badge-sm">12</span>
               </a>
@@ -88,7 +88,7 @@
     </div>
     <div class="doc-hero-action">
       <div class="doc-hero-btns">
-        <button class="btn btn-primary" data-copy-prompt data-component="后台管理系统的左侧菜单抽屉（抽屉侧栏）">
+        <button class="btn btn-primary" data-copy-prompt data-component="后台管理系统的左侧常驻菜单抽屉（抽屉侧栏）">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"/></svg>
           复制 AI 提示词
         </button>
@@ -102,8 +102,8 @@
 
   <!-- 变体 -->
   <section class="doc-block">
-    <h2>基础用法：点按钮从左侧滑出</h2>
-    <p class="desc">一个隐藏复选框（<code>drawer-toggle</code>）控制开合：<code>label</code> 的 <code>for</code> 指向它，点按钮或点半透明遮罩就能开关。这里展示的是真实的收起态；点一下「打开侧栏」，菜单才从左侧滑出并带一层遮罩。</p>
+    <h2>基础用法：点按钮从左侧滑出（纯 CSS 演示态）</h2>
+    <p class="desc">一个隐藏复选框（<code>drawer-toggle</code>）控制开合：<code>label</code> 的 <code>for</code> 指向它，点按钮或点半透明遮罩就能开关。这里展示的是收起态；点一下「打开侧栏」，菜单才从左侧滑出并带一层遮罩。注意纯 CSS 复选框法不锁背景、不圈焦点、不支持 Esc，只适合无 JS 环境或静态展示；真实可点请用下面的 dialog 方案。</p>
     <div class="doc-stage col" style="padding:0;overflow:hidden;align-items:stretch;">
       <div class="drawer" style="height:160px;">
         <input id="demo-drawer-basic" type="checkbox" class="drawer-toggle" />
@@ -112,9 +112,10 @@
             <label for="demo-drawer-basic" class="btn drawer-button">打开侧栏</label>
           </div>
         </div>
-        <div class="drawer-side" style="height:100%;">
+        <div class="drawer-side" role="dialog" aria-modal="true" aria-labelledby="drawer-basic-title" style="height:100%;">
           <label for="demo-drawer-basic" aria-label="关闭侧栏" class="drawer-overlay" style="position:static;inset:auto;background:transparent;"></label>
           <ul class="menu bg-base-200 w-80 p-4" style="min-height:100%">
+            <li class="menu-title" id="drawer-basic-title">我的菜单</li>
             <li><a>客户列表</a></li>
             <li><a>我的收藏</a></li>
             <li><a>帮助文档</a></li>
@@ -135,9 +136,10 @@
             <label for="demo-drawer-end" class="btn drawer-button">打开筛选面板</label>
           </div>
         </div>
-        <div class="drawer-side" style="height:100%;">
+        <div class="drawer-side" role="dialog" aria-modal="true" aria-labelledby="drawer-end-title" style="height:100%;">
           <label for="demo-drawer-end" aria-label="关闭面板" class="drawer-overlay" style="position:static;inset:auto;background:transparent;"></label>
           <ul class="menu bg-base-200 w-80 p-4" style="min-height:100%">
+            <li class="menu-title" id="drawer-end-title">筛选条件</li>
             <li><a>价格区间</a></li>
             <li><a>品牌</a></li>
             <li><a>尺寸</a></li>
@@ -149,7 +151,7 @@
 
   <section class="doc-block">
     <h2>响应式：大屏常显，小屏抽屉</h2>
-    <p class="desc">加 <code>lg:drawer-open</code>：宽度 ≥1024px 时侧栏常驻，按钮自动隐藏；窄屏时收起为抽屉，汉堡按钮才出现。这是后台布局最常用的写法。</p>
+    <p class="desc">加 <code>lg:drawer-open</code>：宽度 ≥1024px 时侧栏常驻，按钮自动隐藏；窄屏时收起为抽屉，汉堡按钮才出现。这是后台常驻布局最常用的写法。</p>
     <div class="doc-stage col" style="padding:0;overflow:hidden;align-items:stretch;">
       <div class="drawer lg:drawer-open" style="height:260px;">
         <input id="demo-drawer-responsive" type="checkbox" class="drawer-toggle" />
@@ -164,10 +166,10 @@
             <p class="text-sm opacity-60">缩小窗口到 1024px 以下，左侧菜单会收起，左上角汉堡按钮才出现。</p>
           </div>
         </div>
-        <div class="drawer-side" style="height:100%;">
+        <div class="drawer-side" role="dialog" aria-modal="true" aria-labelledby="drawer-responsive-title" style="height:100%;">
           <label for="demo-drawer-responsive" aria-label="关闭菜单" class="drawer-overlay" style="position:static;inset:auto;background:transparent;"></label>
           <ul class="menu bg-base-200 w-64 p-2" style="min-height:100%">
-            <li class="menu-title">商品中心</li>
+            <li class="menu-title" id="drawer-responsive-title">商品中心</li>
             <li><a class="menu-active">全部商品</a></li>
             <li><a>库存管理</a></li>
             <li><a>评价回复</a></li>
@@ -177,36 +179,114 @@
     </div>
   </section>
 
+  <!-- 真实可点：原生 dialog + showModal()，键盘与焦点原生可用 -->
+  <section class="doc-block">
+    <h2>真实可点：键盘操作演示</h2>
+    <p class="desc">点「展开导航菜单」或「筛选条件」打开抽屉，然后试着不用鼠标：按 <kbd>Tab</kbd> 焦点只在抽屉内循环、跑不到背景内容；按 <kbd>Esc</kbd> 关闭；关闭后焦点自动回到刚才点的按钮。左边是导航抽屉，右边是订单筛选抽屉。这里用原生 <code>&lt;dialog&gt;</code> + <code>showModal()</code>，焦点圈定、背景锁定、Esc 关闭、关闭后焦点返回都由浏览器原生提供，不要自己写焦点陷阱。静态截图里只看到两个按钮（抽屉默认收起）。</p>
+    <div class="doc-stage">
+      <style>
+        dialog.drawer-m{position:fixed;inset:0 auto 0 0;margin:0;width:300px;max-width:85vw;height:100vh;max-height:100vh;border:0;border-radius:0;padding:0;color:var(--color-base-content);background:var(--color-base-100);box-shadow:0 0 40px rgba(0,0,0,.25);}
+        dialog.drawer-m-end{inset:0 0 0 auto;}
+        dialog.drawer-m::backdrop{background:rgba(0,0,0,.45);}
+        @keyframes drawerSlideIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+        @keyframes drawerSlideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+        dialog.drawer-m[open]{animation:drawerSlideIn .2s ease;}
+        dialog.drawer-m-end[open]{animation:drawerSlideInRight .2s ease;}
+        @media (prefers-reduced-motion:reduce){dialog.drawer-m[open],dialog.drawer-m-end[open]{animation:none;}}
+      </style>
+      <div class="flex flex-wrap gap-2">
+        <button type="button" class="btn" onclick="navDrawer.showModal();navDrawer.querySelector('.menu a').focus()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+          展开导航菜单
+        </button>
+        <button type="button" class="btn" onclick="filterDrawer.showModal();filterDrawer.querySelector('input[type=date]').focus()">筛选条件</button>
+      </div>
+
+      <dialog id="navDrawer" class="drawer-m" aria-labelledby="nav-drawer-title">
+        <div class="flex items-center justify-between border-b border-base-300 px-4 py-3">
+          <h2 id="nav-drawer-title" class="font-semibold">工作台</h2>
+          <form method="dialog"><button class="btn btn-sm btn-circle btn-ghost" aria-label="关闭导航菜单">✕</button></form>
+        </div>
+        <ul class="menu w-full p-2">
+          <li class="menu-title">销售</li>
+          <li><a class="menu-active">仪表盘</a></li>
+          <li><a>订单管理<span class="badge badge-sm">12</span></a></li>
+          <li><a>商品管理</a></li>
+          <li><a>客户列表</a></li>
+          <li class="menu-title">系统</li>
+          <li><a>数据报表</a></li>
+          <li><a>设置</a></li>
+        </ul>
+      </dialog>
+
+      <dialog id="filterDrawer" class="drawer-m drawer-m-end" aria-labelledby="filter-drawer-title">
+        <div class="flex items-center justify-between border-b border-base-300 px-4 py-3">
+          <h2 id="filter-drawer-title" class="font-semibold">筛选订单</h2>
+          <form method="dialog"><button class="btn btn-sm btn-circle btn-ghost" aria-label="关闭筛选面板">✕</button></form>
+        </div>
+        <div class="p-4 flex flex-col gap-4">
+          <div>
+            <label class="label" for="filter-start">下单时间</label>
+            <div class="flex flex-wrap items-center gap-2">
+              <input id="filter-start" type="date" class="input flex-1 min-w-0" />
+              <span class="text-sm">至</span>
+              <input id="filter-end" type="date" class="input flex-1 min-w-0" />
+            </div>
+          </div>
+          <div>
+            <span class="label">订单状态</span>
+            <div class="flex flex-col gap-2" style="padding-left:.25rem">
+              <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" /> 待付款</label>
+              <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" /> 待发货</label>
+              <label class="flex items-center gap-2"><input type="checkbox" class="checkbox" /> 已完成</label>
+            </div>
+          </div>
+          <div class="flex gap-2 pt-2">
+            <form method="dialog" class="flex flex-1 gap-2">
+              <button type="submit" class="btn flex-1">重置</button>
+              <button type="submit" class="btn btn-primary flex-1">应用筛选</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </div>
+  </section>
+
   <!-- 使用指南 -->
   <section class="doc-guide">
     <h2>使用指南</h2>
-    <h3>结构就三层</h3>
-    <p><code>.drawer</code> 是根：第一个孩子是隐藏复选框 <code>drawer-toggle</code>，第二个 <code>drawer-content</code> 是主内容，第三个 <code>drawer-side</code> 是侧栏。所有开合都靠 <code>label</code> 的 <code>for</code> 关联复选框，<strong>零 JavaScript</strong>。</p>
+    <h3>两种用法，先分清</h3>
+    <p><strong>常驻布局</strong>（后台整页左侧菜单）用纯 CSS 的 <code>.drawer</code>：结构三层——隐藏复选框 <code>drawer-toggle</code>、主内容 <code>drawer-content</code>、侧栏 <code>drawer-side</code>，配 <code>lg:drawer-open</code> 实现大屏常显、窄屏收成抽屉。<strong>点按钮开合的浮层抽屉</strong>（点「筛选」才从右侧滑出、点汉堡才出导航）推荐原生 <code>&lt;dialog&gt;</code>：键盘与焦点行为原生可用。</p>
+    <h3>真实可点：dialog + showModal()</h3>
+    <p>触发按钮 <code>onclick="导航.showModal()"</code>，抽屉是一个贴边的 <code>&lt;dialog class="drawer-m"&gt;</code>（右侧加 <code>drawer-m-end</code>）。打开后浏览器原生做到：焦点圈进抽屉（Tab 跑不到背景）、背景内容 inert、按 Esc 关闭、关闭后焦点回到触发按钮，<strong>不用自己写焦点陷阱</strong>。右上角 ✕ 与底部按钮都包一层 <code>&lt;form method="dialog"&gt;</code>，点任意一个自动关闭、无需 JS。</p>
+    <h3>焦点落点（容易漏）</h3>
+    <p><code>showModal()</code> 默认聚焦抽屉里第一个可聚焦元素；本页把右上角 ✕ 放在标题旁、是第一个可聚焦项，所以打开后在触发按钮里顺手再 <code>.focus()</code> 到第一个菜单项（导航抽屉）或第一个日期框（筛选抽屉），焦点一进来就在主内容上，而不是落在关闭 ✕ 上。<strong>危险操作（删除、清空、重置已填表单）不要加 <code>autofocus</code></strong>，免得误按回车直接触发。每个 <code>&lt;dialog&gt;</code> 用 <code>aria-labelledby</code> 指向抽屉标题，读屏会念出抽屉名。</p>
+    <h3>抽屉的定位与动画</h3>
+    <p><code>dialog.drawer-m</code> 用 <code>position:fixed;inset:0 auto 0 0</code> 贴左全高（右侧 <code>drawer-m-end</code> 改 <code>inset:0 0 0 auto</code>），宽 300px、窄屏 <code>max-width:85vw</code>。滑入动画 ≤200ms 属于用户触发的功能性状态动画，被审美硬边界允许；务必同时写 <code>@media (prefers-reduced-motion:reduce){…animation:none}</code>，给减弱动效偏好的用户关掉。</p>
+    <h3>纯 CSS 复选框法的局限</h3>
+    <p>常驻侧栏与上面的静态演示用复选框法：它零 JS，但<strong>不支持 Esc、不锁背景、不圈焦点</strong>，只适合无 JS 环境、纯展示或常驻布局。所以静态写法必须补 <code>role="dialog" aria-modal="true" aria-labelledby="标题id"</code>。需要键盘可达的浮层抽屉，一律换成上面的 dialog 方案，不要在复选框法上硬补 JS。</p>
     <h3>关于本页的限高演示</h3>
-    <p>详情页把抽屉放进了一个小舞台，并在 <code>.drawer</code> 与 <code>.drawer-side</code> 上加了演示用的内联高度约束（否则侧栏会按设计铺满整屏 100dvh）；成品用的是无条件 <code>drawer-open</code>，只是为了让卡片缩略图里也能直接看到侧栏。复制到真实项目时：去掉这些内联 <code>style</code>，把根上的 <code>drawer-open</code> 换成 <code>lg:drawer-open</code>（大屏常显、窄屏自动收起），<code>drawer-side</code> 本身就会按设计铺满整页高度。</p>
+    <p>详情页把常驻抽屉放进小舞台，并在 <code>.drawer</code> 与 <code>.drawer-side</code> 上加了演示用的内联高度约束（否则侧栏会按设计铺满整屏 100dvh）；常驻成品用无条件 <code>drawer-open</code> 只是为了让卡片缩略图里也能看到侧栏。复制到真实项目时：去掉这些内联 <code>style</code>，把根上的 <code>drawer-open</code> 换成 <code>lg:drawer-open</code>。</p>
     <h3>侧栏菜单怎么排</h3>
-    <p>侧栏里放 <code>menu</code>：当前页加 <code>menu-active</code>；带数量提示用 <code>badge badge-sm</code>；未开通的入口加 <code>menu-disabled</code>；子菜单直接在 <code>&lt;li&gt;</code> 里嵌套一个 <code>&lt;ul&gt;</code>。图标统一 <code>h-5 w-5</code> 单色 SVG。</p>
-    <h3>遮罩与可访问性</h3>
-    <p><code>drawer-overlay</code> 是半透明遮罩，点开抽屉时点它即可关闭，记得给它 <code>aria-label="关闭侧栏"</code>；触发按钮同样加 <code>aria-label</code>。抽屉不做页脚、不塞满广告链接，它是导航容器不是内容页。</p>
+    <p>侧栏里放 <code>menu</code>：当前页加 <code>menu-active</code>（同一时刻只一个）；带数量提示用 <code>badge badge-sm</code>；未开通的入口加 <code>menu-disabled</code>；子菜单直接在 <code>&lt;li&gt;</code> 里嵌套一个 <code>&lt;ul&gt;</code>。图标统一 <code>h-5 w-5</code> 单色 SVG。触发按钮加 <code>aria-label</code>，文案写真实动作（展开导航菜单 / 筛选条件）。</p>
   </section>
 
 </main>
 
 <!-- 组件特有提示词正文（复制「AI 提示词」时由 demo-doc.js 与参考结构、通用规则组装） -->
-<script type="text/plain" id="moh-prompt">【场景】一个后台管理系统的左侧菜单布局：侧栏常驻可见，带图标导航，主内容区在右侧自适应剩余宽度。
+<script type="text/plain" id="moh-prompt">【场景】后台管理系统的侧边导航：既要一个大屏常驻、窄屏收起的左侧菜单布局，也要一个点按钮从侧边滑出、可键盘操作的浮层抽屉（左侧导航抽屉、右侧订单筛选抽屉）。
 【怎么排】
-- 根容器用 div.drawer + drawer-open（详情页为了让缩略图也能看到侧栏用无条件 drawer-open；真实项目改成 lg:drawer-open 实现「大屏常显、小屏抽屉」，不要在根上加演示用的固定高度）；
-- 第一个孩子是隐藏复选框 input.drawer-toggle（id 唯一，如 demo-menu）；
-- 第二个孩子 div.drawer-content 放主内容：顶部一行标题栏（汉堡按钮 label + 当前页标题），下面放业务内容；
-- 第三个孩子 div.drawer-side 放侧栏：紧跟一个 label.drawer-overlay（aria-label="关闭侧栏"），再放 ul.menu（bg-base-200、w-64、p-2；宽屏可换 w-80）；
-- 菜单项写真实后台模块名：仪表盘（menu-active 当前页）、订单管理（文字后跟 badge badge-sm 数字徽标）、商品管理（li 内再嵌套 ul 放「在售商品 / 下架商品」）、设置、数据报表（menu-disabled 置灰）。
+- 常驻侧栏：根 div.drawer 加 lg:drawer-open（大屏常显、窄屏收成抽屉，不要在根上加演示用的固定高度）；第一个孩子隐藏复选框 input.drawer-toggle（id 唯一）；第二个 div.drawer-content 放主内容（顶部标题栏 + 业务内容）；第三个 div.drawer-side 放侧栏，紧跟 label.drawer-overlay（aria-label="关闭侧栏"），再放 ul.menu（bg-base-200、w-64、p-2）。
+- 浮层抽屉用原生 dialog：触发按钮 onclick="导航id.showModal();导航id.querySelector('.menu a').focus()" 打开；左侧 dialog 加 class="drawer-m"，右侧（筛选）加 class="drawer-m drawer-m-end"；右上角 ✕ 与底部按钮都包一层 form method="dialog"，点击自动关闭。
 【精确规格】
-- 菜单项图标统一 h-5 w-5 单色 SVG，文字写真实动作与模块名，禁止出现 Primary / 主要 这类颜色名当文案。
-- 开合完全靠 label 的 for 关联复选框，零 JavaScript；不要自己写 fixed 定位或遮罩逻辑。
-- 真实项目侧栏铺满整页高度、内容区不被侧栏遮挡；不要让侧栏盖住页面其它内容或按钮。
-- 参考结构里的舞台限高 height、overlay 静态化内联 style 只用于详情页演示，复制进真实项目后删除。
-- 用到的类全部真实存在：drawer、drawer-toggle、drawer-content、drawer-side、drawer-overlay、drawer-button、lg:drawer-open、menu、menu-active、menu-disabled、menu-title、badge、badge-sm。
-- 颜色全部走 daisyUI 主题变量，不要写死颜色。</script>
+- 浮层抽屉定位 CSS：dialog.drawer-m{position:fixed;inset:0 auto 0 0;margin:0;width:300px;max-width:85vw;height:100vh;max-height:100vh;border:0;border-radius:0;padding:0;color:var(--color-base-content);background:var(--color-base-100);box-shadow:0 0 40px rgba(0,0,0,.25);}；dialog.drawer-m-end{inset:0 0 0 auto;}；dialog.drawer-m::backdrop{background:rgba(0,0,0,.45);}；滑入动画 @keyframes drawerSlideIn（from translateX(-100%) to 0，右侧用 translateX(100%)），时长 .2s，并必须配 @media (prefers-reduced-motion:reduce) 关掉动画。
+- 每个 dialog 用 aria-labelledby 指向抽屉标题 id（如 nav-drawer-title / filter-drawer-title），让读屏器念出抽屉名；原生 showModal() 自动提供 aria-modal、焦点圈定、背景 inert、Esc 关闭、关闭后焦点回到触发按钮，不要手写焦点陷阱。
+- 焦点落点：showModal() 后把焦点移到主内容而不是关闭 ✕——导航抽屉 focus 第一个 .menu a，筛选抽屉 focus 第一个 input[type=date]；删除、清空、重置这类危险操作不要加 autofocus，避免误按回车直接触发。
+- 常驻菜单写真实后台模块名：仪表盘（menu-active 当前页，同一时刻只一个）、订单管理（文字后跟 badge badge-sm 数字徽标）、商品管理（li 内嵌套 ul 放在售商品/下架商品）、客户列表、数据报表、设置；图标统一 h-5 w-5 单色 SVG，禁止出现 Primary / 主要 这类颜色名当文案。
+- 纯 CSS 常驻布局用 label 的 for 关联复选框、零 JavaScript；但点按钮开合的浮层抽屉不要用复选框法硬补 JS，直接用上面的 dialog 方案（复选框法不锁背景、不圈焦点、不支持 Esc）。静态展示用的 drawer-side 要补 role="dialog" aria-modal="true" aria-labelledby="标题id"。
+- 参考结构里的舞台限高 height、overlay 静态化内联 style 只用于详情页演示，复制进真实项目后删除；常驻根把 drawer-open 换成 lg:drawer-open。
+- 用到的类全部真实存在：drawer、drawer-toggle、drawer-content、drawer-side、drawer-overlay、drawer-button、lg:drawer-open、drawer-open、drawer-end、menu、menu-active、menu-disabled、menu-title、badge、badge-sm、input、checkbox、label；自定义抽屉类 drawer-m / drawer-m-end 按上面 CSS 定义。
+- 颜色全部走 daisyUI 主题变量（--color-base-100 / --color-base-content），不要写死颜色。</script>
 
 <script src="../../../assets/demo-doc.js"></script>
 </body>

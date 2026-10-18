@@ -35,6 +35,7 @@
 ## 使用要点（给 AI 与新手的提醒）
 
 - **FAQ 一律用 `details/summary`**：原生支持点击切换、键盘操作，且展开后的文字能被浏览器搜索到。
+- **键盘行为**：details 版下 `summary` 自带焦点，`Tab` 走到它、`Enter` / `Space` 开合，读屏自动播报开合状态（**不用手写 `aria-expanded`**），收起的答案不进 `Tab` 序；div tabindex 版只是「焦点面板」（聚焦展开、失焦收起），`Enter` / `Space` 不切换，列表类场景不要用它。
 - **默认展开用 `open` 属性**，不要用 `collapse-open` 类作用在 `details` 上（官方说明：`collapse-open/close` 只对 div 焦点式折叠生效）。
 - 手风琴一次只展开一条；标题写完整问题（「怎么修改登录密码？」），别写「问题一」。
 - 多条之间留 8px 间距（`flex flex-col gap-2`），卡片用 `bg-base-100 border border-base-300`。

@@ -32,9 +32,9 @@
     <p class="desc">删除是不可恢复的操作，必须弹层让用户再确认一次：标题直接问要做什么，正文说清后果，底部「取消」退回、「确认删除」用红色提示风险。本页为了在小舞台里展示，给弹层加了内联 <code>position:static</code>（真实项目删掉就自动铺满全屏）。</p>
     <div class="doc-stage" id="hero-stage">
       <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-      <div class="modal" role="dialog" style="position:static;pointer-events:none">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-del-title" style="position:static;pointer-events:none">
         <div class="modal-box">
-          <h3 class="text-lg font-bold">确认删除这条收货地址？</h3>
+          <h3 class="text-lg font-bold" id="modal-del-title">确认删除这条收货地址？</h3>
           <p class="py-4">此操作不可撤销，删除后该地址将无法找回。</p>
           <div class="modal-action">
             <button class="btn">取消</button>
@@ -62,10 +62,10 @@
     <p class="desc">信息类弹窗右上角放一个圆形幽灵 ✕，让用户随时能关掉。这里是静态展示：真实项目里 ✕ 关闭的行为由 <code>showModal()</code> 方案的 <code>&lt;form method="dialog"&gt;</code> 提供，无需自己写 JS。</p>
     <div class="doc-stage">
       <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-      <div class="modal" role="dialog" style="position:static;pointer-events:none">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-export-title" style="position:static;pointer-events:none">
         <div class="modal-box" style="position:relative">
           <button class="btn btn-sm btn-circle btn-ghost" style="position:absolute;right:0.5rem;top:0.5rem" aria-label="关闭">✕</button>
-          <h3 class="text-lg font-bold">导出报表</h3>
+          <h3 class="text-lg font-bold" id="modal-export-title">导出报表</h3>
           <p class="py-4">报表将发送到你的注册邮箱，约 1 分钟后可查收。</p>
           <div class="modal-action">
             <button class="btn">知道了</button>
@@ -80,9 +80,9 @@
     <p class="desc">加 <code>modal-bottom</code>，弹窗从屏幕底部升起、顶部两个角是圆角，手机端选地址、选规格都用这种形态，手指够得着。本页给舞台加了固定高度来演示它贴底的样子。</p>
     <div class="doc-stage" style="height:260px">
       <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-      <div class="modal modal-bottom" role="dialog" style="position:static;pointer-events:none">
+      <div class="modal modal-bottom" role="dialog" aria-modal="true" aria-labelledby="modal-delivery-title" style="position:static;pointer-events:none">
         <div class="modal-box">
-          <h3 class="text-lg font-bold">选择配送方式</h3>
+          <h3 class="text-lg font-bold" id="modal-delivery-title">选择配送方式</h3>
           <p class="py-4">可以选快递送货上门，也可以到附近自提点自取。</p>
           <div class="modal-action">
             <button class="btn">取消</button>
@@ -98,9 +98,9 @@
     <p class="desc">默认弹窗宽度 <code>max-width:32rem</code>；描述文字多的场景（长表单说明、协议摘要）把 <code>modal-box</code> 加宽到 <code>max-width:42rem</code> 左右，别一上来铺满整屏。</p>
     <div class="doc-stage">
       <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-      <div class="modal" role="dialog" style="position:static;pointer-events:none">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-rule-title" style="position:static;pointer-events:none">
         <div class="modal-box" style="max-width:42rem;width:92%">
-          <h3 class="text-lg font-bold">编辑活动规则</h3>
+          <h3 class="text-lg font-bold" id="modal-rule-title">编辑活动规则</h3>
           <p class="py-4">这里放一段较长的说明文字：活动时间、参与门槛、奖品发放规则都写在这个弹窗里。宽弹窗适合描述文字多的场景，窄弹窗只放一句话加两个按钮。</p>
           <div class="modal-action">
             <button class="btn">取消</button>
@@ -116,9 +116,9 @@
     <p class="desc">不需要做不可逆决定时，主操作用主色按钮、次要操作弱化成幽灵按钮；只有删除、清空这类危险确认才用红色。</p>
     <div class="doc-stage">
       <input type="checkbox" checked class="modal-toggle" aria-hidden="true" tabindex="-1" />
-      <div class="modal" role="dialog" style="position:static;pointer-events:none">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-vip-title" style="position:static;pointer-events:none">
         <div class="modal-box">
-          <h3 class="text-lg font-bold">会员即将到期</h3>
+          <h3 class="text-lg font-bold" id="modal-vip-title">会员即将到期</h3>
           <p class="py-4">你的会员还有 7 天到期，续费后可继续使用批量导出功能。</p>
           <div class="modal-action">
             <button class="btn btn-ghost">稍后再说</button>
@@ -129,14 +129,36 @@
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>真实可点：键盘操作演示</h2>
+    <p class="desc">点下面的「删除」打开弹窗，然后试着不用鼠标：按 <kbd>Tab</kbd> 焦点只在弹窗内循环、跑不到背景；<kbd>Esc</kbd> 关闭；关闭后焦点自动回到刚才的「删除」按钮。静态截图里只看到一个按钮（弹窗默认收起），打开后的样子见上方成品。</p>
+    <div class="doc-stage">
+      <button type="button" class="btn btn-error" onclick="document.getElementById('modal-live-demo').showModal()">删除</button>
+      <dialog id="modal-live-demo" class="modal" aria-labelledby="modal-live-title">
+        <div class="modal-box">
+          <h3 class="text-lg font-bold" id="modal-live-title">确认删除这条收货地址？</h3>
+          <p class="py-4">此操作不可撤销，删除后该地址将无法找回。</p>
+          <div class="modal-action">
+            <form method="dialog">
+              <button type="submit" class="btn">取消</button>
+              <button type="submit" class="btn btn-error">确认删除</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+    </div>
+  </section>
+
   <section class="doc-guide">
     <h2>使用指南</h2>
     <h3>真实项目推荐：dialog + showModal()</h3>
-    <p>daisyUI 官方首推 HTML 原生 <code>&lt;dialog&gt;</code>：打开只需 <code>document.getElementById('弹窗id').showModal()</code>，按 Esc 关闭、自动锁定背景交互、焦点圈定都由浏览器原生提供。骨架如下：</p>
-    <p><code>&lt;button class="btn" onclick="地址删除确认.showModal()"&gt;删除&lt;/button&gt;</code><br />
-    <code>&lt;dialog id="地址删除确认" class="modal"&gt;</code> → 里面放 <code>div.modal-box</code> 与 <code>div.modal-action</code>；关闭按钮包一层 <code>&lt;form method="dialog"&gt;</code>，点它自动关闭，无需 JS。</p>
+    <p>daisyUI 官方首推 HTML 原生 <code>&lt;dialog&gt;</code>：打开只需 <code>document.getElementById('弹窗id').showModal()</code>，焦点圈定（Tab 不出框）、按 Esc 关闭、锁定背景交互、关闭后焦点回到触发按钮，这些都由浏览器原生提供，<strong>不用自己写焦点陷阱</strong>。骨架如下：</p>
+    <p><code>&lt;button class="btn" onclick="删除确认.showModal()"&gt;删除&lt;/button&gt;</code><br />
+    <code>&lt;dialog id="删除确认" class="modal" aria-labelledby="删除标题"&gt;</code> → 里面放 <code>div.modal-box</code> 与 <code>div.modal-action</code>；底部按钮包一层 <code>&lt;form method="dialog"&gt;</code>，点任意按钮自动关闭、无需 JS。标题 <code>&lt;h3&gt;</code> 加 <code>id</code>，dialog 用 <code>aria-labelledby</code> 指向它，读屏会念出弹窗标题。</p>
+    <h3>焦点落点（容易漏）</h3>
+    <p><code>showModal()</code> 打开时默认聚焦弹窗内第一个可聚焦元素；底部按钮按「取消 / 确认」顺序排，焦点自然落在取消上。<strong>删除、清空这类危险确认，不要给危险按钮加 <code>autofocus</code></strong>，免得用户误按回车直接删掉；填写类弹窗（如保存表单）想让主操作聚焦，再给主按钮加 <code>autofocus</code>。</p>
     <h3>本页为什么用复选框法</h3>
-    <p>详情页要静态展示弹窗长什么样，又不写 JavaScript，所以用隐藏复选框（<code>modal-toggle</code> 勾选状态）把弹窗撑开展示。它属于官方 Method 3（legacy）：不支持 Esc、不锁背景，只适合无 JS 环境或纯展示。每个弹窗的 id 必须唯一。</p>
+    <p>详情页要静态展示弹窗长什么样，又不写 JavaScript，所以用隐藏复选框（<code>modal-toggle</code> 勾选状态）把弹窗撑开展示。它属于官方 Method 3（legacy）：不支持 Esc、不锁背景、不圈焦点，只适合无 JS 环境或纯展示，所以这种静态写法必须补 <code>role="dialog" aria-modal="true" aria-labelledby="标题id"</code>。每个弹窗的 id 必须唯一。</p>
     <h3>关于本页的内联样式</h3>
     <p>详情页给 <code>.modal</code> 加了 <code>position:static;pointer-events:none</code>，只为在小舞台里排开展示、不盖住页面；复制进真实项目后删掉这行内联样式，弹窗会自动 fixed 铺满全屏并带半透明遮罩。</p>
     <h3>按钮与文案</h3>
@@ -148,8 +170,10 @@
 <script type="text/plain" id="moh-prompt">【场景】用户在收货地址列表点了「删除」后弹出的确认对话框：标题直接问是否确认，正文说清后果，底部两个按钮让用户决定。
 【怎么排】居中弹窗 modal-box：标题加粗一行，正文一句说明后果，底部 modal-action 按钮组自动右对齐——次要的「取消」用默认按钮，危险的「确认删除」用 btn-error；整层带半透明遮罩，真实项目里按 Esc 或点遮罩即可关闭。
 【精确规格】
-- 推荐实现：<dialog id="地址删除确认" class="modal">，用 document.getElementById('地址删除确认').showModal() 打开；Esc 关闭、背景锁定、焦点圈定由 dialog 原生提供；关闭按钮包一层 <form method="dialog">。
-- 本页静态展示用复选框法（无 JS）：<input type="checkbox" checked class="modal-toggle"> 必须紧跟 <div class="modal" role="dialog">，内部放 .modal-box（标题 h3.text-lg.font-bold + p.py-4 正文 + div.modal-action 按钮组）。
+- 推荐实现：<dialog id="地址删除确认" class="modal" aria-labelledby="删除标题id">，用 document.getElementById('地址删除确认').showModal() 打开；焦点圈定（Tab 只在弹窗内循环、跑不到背景）、Esc 关闭、背景锁定、关闭后焦点回到触发按钮，都由 dialog 原生提供，不要手写焦点陷阱；底部按钮包一层 <form method="dialog">，点击自动关闭。
+- 给标题 h3 加 id，dialog 用 aria-labelledby 指向它，让读屏器念出弹窗标题。
+- 焦点落点：showModal() 默认聚焦弹窗内第一个可聚焦元素，按钮按「取消 / 确认」顺序排，焦点自然落在取消上；删除、清空这类危险确认不要给危险按钮加 autofocus，避免用户误按回车直接删除；填写类弹窗（保存/提交）才给主按钮加 autofocus。
+- 本页静态展示用复选框法（无 JS）：<input type="checkbox" checked class="modal-toggle"> 必须紧跟 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="标题id">，内部放 .modal-box（标题 h3.text-lg.font-bold + p.py-4 正文 + div.modal-action 按钮组）。
 - 详情页给 .modal 加了内联 style="position:static;pointer-events:none"，仅为在小舞台内排开展示；复制进真实项目后删掉这两行内联样式，弹窗会自动 fixed 铺满全屏并带遮罩。
 - 文案写真实决策问题与后果（确认删除这条收货地址？此操作不可撤销，删除后该地址将无法找回），按钮写真实动作（取消 / 确认删除），禁止出现 Error / 红色 这类颜色名。
 - 只有删除、清空这类危险确认才用 btn-error；普通弹窗主操作用 btn-primary。

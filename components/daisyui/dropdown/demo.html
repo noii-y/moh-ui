@@ -35,7 +35,7 @@
     <div class="doc-stage" id="hero-stage">
       <div class="flex w-full justify-end">
         <div class="dropdown dropdown-end dropdown-open" style="min-height:19rem">
-          <div tabindex="0" role="button" class="btn btn-circle btn-primary">我</div>
+          <div tabindex="0" role="button" aria-haspopup="true" class="btn btn-circle btn-primary">我</div>
           <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box w-52 border border-base-300 p-2">
             <li><a>个人中心</a></li>
             <li><a>我的订单</a></li>
@@ -130,6 +130,47 @@
     </div>
   </section>
 
+  <section class="doc-block">
+    <h2>真实可点：键盘操作演示</h2>
+    <p class="desc">这是表格数据行末尾的「更多操作」按钮，基于浏览器原生 popover：点按钮展开操作菜单；按 <kbd>Esc</kbd> 或点菜单外面任意位置都会关闭，关闭后焦点自动回到「更多操作」按钮。键盘上，按钮聚焦时按 <kbd>↓</kbd> 展开并落到第一项，之后 <kbd>↑</kbd>/<kbd>↓</kbd> 在项间移动、<kbd>Home</kbd>/<kbd>End</kbd> 跳首尾，<kbd>Tab</kbd> 也能逐项进入。静态截图里只看到一个按钮（菜单默认收起），展开后的样子见上方成品。</p>
+    <div class="doc-stage" style="min-height:15rem">
+      <div class="dropdown dropdown-end">
+        <button type="button" class="btn btn-soft" id="dd-more-btn" popovertarget="dd-more-menu" aria-haspopup="menu" aria-controls="dd-more-menu" aria-expanded="false">更多操作</button>
+        <ul id="dd-more-menu" popover role="menu" aria-labelledby="dd-more-btn" class="dropdown-content menu bg-base-100 rounded-box w-52 border border-base-300 p-2">
+          <li><a role="menuitem" tabindex="0">编辑备注</a></li>
+          <li><a role="menuitem" tabindex="0">复制链接</a></li>
+          <li><a role="menuitem" tabindex="0">归档订单</a></li>
+          <li><hr class="divider" /></li>
+          <li><a role="menuitem" tabindex="0" class="text-error">删除订单</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+    (function(){
+      var btn=document.getElementById('dd-more-btn');
+      var menu=document.getElementById('dd-more-menu');
+      function items(){return Array.prototype.slice.call(menu.querySelectorAll('[role="menuitem"]'));}
+      btn.addEventListener('keydown',function(e){
+        if(e.key==='ArrowDown'){
+          e.preventDefault();
+          if(!menu.matches(':popover-open')&&menu.showPopover){menu.showPopover();}
+          var f=items()[0]; if(f){f.focus();}
+        }
+      });
+      menu.addEventListener('toggle',function(){
+        btn.setAttribute('aria-expanded',String(menu.matches(':popover-open')));
+      });
+      menu.addEventListener('keydown',function(e){
+        var it=items(),i=it.indexOf(document.activeElement);
+        if(e.key==='ArrowDown'){e.preventDefault();(it[i+1]||it[0]).focus();}
+        else if(e.key==='ArrowUp'){e.preventDefault();(it[i-1]||it[it.length-1]).focus();}
+        else if(e.key==='Home'){e.preventDefault();it[0].focus();}
+        else if(e.key==='End'){e.preventDefault();it[it.length-1].focus();}
+      });
+    })();
+    </script>
+  </section>
+
   <!-- 使用指南 -->
   <section class="doc-guide">
     <h2>使用指南</h2>
@@ -141,6 +182,12 @@
     <p>默认向下；靠近上边缘用 <code>dropdown-top</code>，靠近页面右边缘用 <code>dropdown-end</code> 让菜单与按钮右对齐、<code>dropdown-left</code> 侧向弹出。静态展示时加 <code>dropdown-open</code> 强制展开，并给容器留出足够高度，否则菜单会贴住下一个元素。</p>
     <h3>菜单项的规矩</h3>
     <p>菜单用 <code>&lt;ul class="menu"&gt;</code>，一项一个 <code>&lt;li&gt;&lt;a&gt;</code>；危险操作（退出登录）用 <code>text-error</code>；分组用 <code>menu-title</code>、分隔用 <code>&lt;hr class="divider"&gt;</code>；一个菜单里最多一个当前高亮项。</p>
+    <h3>推荐：popover 原生写法（焦点管理最完整）</h3>
+    <p>上面「真实可点」变体是键盘可用场景的推荐做法：触发 <code>&lt;button popovertarget="菜单id" aria-haspopup="menu" aria-controls="菜单id"&gt;</code>，菜单 <code>&lt;ul id="菜单id" popover role="menu" aria-labelledby="触发按钮id"&gt;</code>。原生 popover 白送三件事：点菜单外面关闭（light-dismiss）、按 Esc 关闭、关闭后焦点回到触发按钮，<strong>不用自己写焦点陷阱</strong>。<code>aria-expanded</code> 用菜单上一行 <code>toggle</code> 监听同步即可。</p>
+    <h3>焦点落点（容易漏）</h3>
+    <p>打开时焦点落在第一项菜单项；<kbd>↑</kbd>/<kbd>↓</kbd> 在菜单项间移动（就是上面那段十几行的键盘脚本），<kbd>Tab</kbd> 也能逐项走；关闭后焦点回到触发按钮。菜单项写 <code>&lt;a role="menuitem" tabindex="0"&gt;</code>——<code>a</code> 不带 <code>href</code> 时默认不可聚焦，<strong>必须补 <code>tabindex="0"</code></strong>，否则键盘进不去。</p>
+    <h3>popover 与 CSS focus / details 怎么选</h3>
+    <p>本页上方静态成品用的是零 JS 的 CSS focus 写法（<code>tabindex="0"</code> 聚焦展开、失焦收起）：它最轻，但不锁定背景、没有方向键，也不会在你点菜单外面时干净收起；<code>&lt;details&gt;</code> 能展开，却不会在点外部时收起、也不把焦点还给触发按钮。一旦菜单要求键盘可用、点外部关闭、Esc 关闭，就用 popover 写法，别在 CSS focus / details 上自己补焦点逻辑。</p>
   </section>
 
 </main>
@@ -157,8 +204,10 @@
 - 真实交互：用户点按 / Tab 聚焦触发元素时菜单展开，失焦自动收起，全程零 JavaScript；不要为下拉写业务 JS。
 - 如需鼠标悬停也展开，容器加 dropdown-hover；但移动端没有悬停，必须保留上面的点按 / 聚焦写法兜底，不能只靠 hover。
 - 静态预览：容器上临时加 dropdown-open 类强制展开（用于截图 / 文档展示），同时给容器内联 style="min-height:19rem" 之类的高度，让展开的菜单完整露出、不被下一个元素裁切；上线前去掉 dropdown-open。
-- 用到的类全部真实存在：dropdown、dropdown-end、dropdown-open、dropdown-content、menu、bg-base-100、rounded-box、w-52、w-48、border、border-base-300、p-2、btn、btn-circle、btn-primary、text-error、divider、menu-title；不要写不存在的 z-1 / shadow-sm。
-- 菜单文案写真实功能名（个人中心 / 退出登录），禁止出现 Primary / 成功 这类颜色名当文案；颜色全部走 daisyUI 主题变量。</script>
+- 键盘可用场景改用原生 popover：<button popovertarget="菜单id" aria-haspopup="menu" aria-controls="菜单id" aria-expanded="false">，菜单 <ul id="菜单id" popover role="menu" aria-labelledby="触发按钮id">；原生 popover 自带点外部关闭、Esc 关闭、关闭后焦点回到触发按钮，不要手写焦点陷阱；aria-expanded 用菜单上一行 toggle 监听同步。
+- popover 键盘：按钮聚焦按 ↓ 展开并聚焦第一项，菜单内 ↑/↓/Home/End 在菜单项间移动；菜单项写 <a role="menuitem" tabindex="0">（无 href 必须加 tabindex=0，否则键盘进不去）。
+- 用到的类全部真实存在：dropdown、dropdown-end、dropdown-open、dropdown-content、menu、bg-base-100、rounded-box、w-52、w-48、border、border-base-300、p-2、btn、btn-circle、btn-primary、btn-soft、text-error、divider、menu-title；不要写不存在的 z-1 / shadow-sm。
+- 菜单文案写真实功能名（个人中心 / 退出登录 / 编辑备注 / 删除订单），禁止出现 Primary / 成功 这类颜色名当文案；颜色全部走 daisyUI 主题变量。</script>
 
 <script src="../../../assets/demo-doc.js"></script>
 </body>

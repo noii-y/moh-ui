@@ -117,6 +117,9 @@
     <h2>使用指南</h2>
     <h3>FAQ 用 details，焦点面板用 div</h3>
     <p>帮助中心 FAQ 优先用 <code>&lt;details&gt;&lt;summary&gt;</code>：原生支持点击切换、键盘操作和浏览器搜索展开的文字；某一条默认展开就给它加 <code>open</code> 属性。焦点驱动的临时面板（点一下展开、失焦自动收起）则用 <code>&lt;div tabindex="0" class="collapse"&gt;</code>。</p>
+    <h3>键盘与焦点行为（两种实现都不同，别混）</h3>
+    <p><strong>details 版（推荐）</strong>：标题 <code>summary</code> 自己就是焦点元素，<kbd>Tab</kbd> 走到它、按 <kbd>Enter</kbd> 或 <kbd>Space</kbd> 开合，和点鼠标完全等效；<strong>读屏会自动播报「已展开 / 已收起」，不需要也不要手写 <code>aria-expanded</code></strong>；<strong>收起时答案内容不进 <kbd>Tab</kbd> 序</strong>（现代浏览器把关闭的 details 内容移出焦点顺序），键盘用户不会 Tab 进一条收起的答案里。</p>
+    <p><strong>div tabindex 版</strong>：没有开关语义，<kbd>Tab</kbd> 聚焦时展开、焦点移走时收起，按 <kbd>Enter</kbd> / <kbd>Space</kbd> 并不会切换（它是「焦点面板」不是「开关」）。因此它只适合临时性的说明浮层；要能开合、能被读屏播报状态的列表，一律用 details 版。不要给 summary 加 <code>cursor:pointer</code> 以外的特效，也不要去掉默认焦点描边。</p>
     <h3>一次只展开一条</h3>
     <p>手风琴场景建议同一时刻只展开一条，其余收起；想默认展示哪条，就给哪条的 <code>&lt;details&gt;</code> 加 <code>open</code>。标题写完整问题，别只写「点击展开」。</p>
     <h3>图标怎么选</h3>
@@ -136,6 +139,7 @@
 - 标题写完整的真实问题（如「怎么修改登录密码？」），禁止只写「问题一 / 点击展开」。
 【精确规格】
 - 交互方式：用户点击标题（summary）展开或收起；静态预览时给要展示答案的那条 details 加 open 属性强制展开，不要为展开写任何 JavaScript。
+- 键盘与焦点：summary 自带焦点与开关语义——Tab 走到它、Enter / Space 开合；读屏自动播报开合状态，不要手写 aria-expanded；收起时答案内容不进 Tab 序。div tabindex 版（焦点面板）是 Tab 聚焦展开、失焦收起，Enter / Space 不切换，不要混用。
 - 用到的类全部真实存在：collapse、collapse-arrow、collapse-title、collapse-content、bg-base-100、border、border-base-300、font-semibold、text-sm、flex、flex-col、gap-2、w-full；不要用 collapse-open / collapse-close 作用在 details 上（它们只对 div 焦点式折叠生效）。
 - 颜色全部走 daisyUI 主题变量，不要写死颜色，切换主题自动跟随。</script>
 
