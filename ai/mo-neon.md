@@ -137,6 +137,12 @@
 
     /* 议程表 */
     .tbl-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      .tbl-wrap {
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+      }
+    }
     .agenda { font-size: 14px; min-width: 560px; }
     .agenda th { font-size: 12px; color: #8fa0b8; font-weight: 600; }
     .speaker { display: flex; align-items: center; gap: 8px; }

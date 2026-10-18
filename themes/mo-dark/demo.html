@@ -22,6 +22,12 @@
     .seg-row { display: flex; align-items: center; gap: 10px; }
     .seg-label { width: 76px; flex: none; font-size: 13px; opacity: .65; }
     .tbl-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      .tbl-wrap {
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+      }
+    }
     .tbl-wrap .badge { white-space: nowrap; }
     .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
     .search { display: flex; align-items: center; gap: 8px; }

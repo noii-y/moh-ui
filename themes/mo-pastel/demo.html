@@ -20,6 +20,12 @@
     .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
     .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
     .tbl-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      .tbl-wrap {
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+      }
+    }
     .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
     /* 课程封面：柔和色块 + 线性图标 */
     .cover { height: 110px; display: flex; align-items: center; justify-content: center; background: var(--color-base-300); border-end-start-radius: 0; border-end-end-radius: 0; }

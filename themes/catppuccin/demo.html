@@ -23,6 +23,12 @@
     .hero-row { display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
     .cover { width: 160px; height: 160px; flex: none; box-shadow: 0 12px 32px rgba(0,0,0,.35); }
     .tbl-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      .tbl-wrap {
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+      }
+    }
     .tbl-wrap .badge { white-space: nowrap; }
     .now-row td { background: rgba(203,166,247,.12); }
     .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }

@@ -94,6 +94,12 @@
     .idx-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
     .trade-row { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 14px; align-items: start; }
     .tbl-wrap { overflow-x: auto; }
+    @media (max-width: 640px) {
+      .tbl-wrap {
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+      }
+    }
     .tbl-wrap .badge { white-space: nowrap; }
     .foot { font-size: 12px; opacity: .5; text-align: center; padding-top: 6px; }
     .mono { font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace); }

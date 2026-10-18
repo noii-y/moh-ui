@@ -63,7 +63,9 @@
     /* 窄屏：三栏退单列——分类横滑条、菜品两列、购物车在下 */
     @media (max-width: 860px) {
       .kbody { grid-template-columns: 1fr; }
-      .kcats { flex-direction: row; overflow-x: auto; gap: 10px; padding-bottom: 4px; }
+      .kcats { flex-direction: row; overflow-x: auto; gap: 10px; padding-bottom: 4px;
+        -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%);
+        mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 20px), transparent 100%); }
       .kcat { flex: none; min-height: 56px; padding: 8px 18px; font-size: 16px; }
       .kmenu { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .kdish { min-height: 150px; padding: 14px 8px 12px; }
