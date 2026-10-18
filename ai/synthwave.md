@@ -1,0 +1,301 @@
+# 霓虹脉冲（synthwave） · 灰墨 MoH_UI
+
+> 虚构复古电子音乐厂牌「霓虹脉冲 NEON PULSE RECORDS」整页。深紫蓝底配霓虹粉青点缀，mask 镂空横纹的粉色落日与青色透视网格为记忆点，演出卡与三标签色黑胶卡成形；挂 daisyUI 官方主题 data-theme="synthwave" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。
+
+来源：daisyUI 内置主题（MIT，无需额外文件）
+
+**在线整页案例：https://noii-y.github.io/moh-ui/themes/synthwave/demo.html**
+
+## 用法一：照着整页做一个同款（推荐，复现效果最接近）
+
+下面是该主题**完整、可直接运行的整页源码**（零依赖，保存为 .html 双击即可看）。让 AI 先 1:1 还原结构与视觉，再替换成你的业务内容；页面顶部「复制 AI 指令」会把含本源码的完整指令复制成纯文本，不联网也能复现。
+
+### 换成你自己的业务时必须守住的视觉特征
+
+- 底色永远是深紫蓝：页面基底取 var(--color-base-100/200/300)，Hero 层次用 color-mix 叠 primary 粉（约 24%）与 secondary 青（约 16%）的径向渐变，禁止写死任何深紫或霓虹十六进制。
+- 霓虹粉青只做点缀：primary 粉用于标题强调词、主按钮、落日太阳；secondary 青用于网格线、图标与徽章；accent 橙只留给黑胶标签这类极小面积。绝不大面积铺霓虹色，底色始终压深。
+- 落日网格是记忆点：内联 SVG 自包含——mask 镂空横条纹的粉色落日 + 青色调消失点透视网格 + 几颗星点；条纹镂空让 Hero 渐变直接透出来，不要用纯色块硬盖条纹。
+- 按钮文字对比必须达标：主按钮直接用主题默认 primary 底 + primary-content 深字（官方已配对，实测对比度约 5.4:1）；不要把霓虹色当大段文字铺在深底上，标题强调词限一词。
+- 演出卡与黑胶卡用 base-200 深底 + primary/secondary 约 22–25% 的细边框；图标全部 currentColor 单色线性 SVG（黑胶、合成器、均衡器、唱机），不用照片、不用 emoji、不用彩色插图。
+- 文案写真实动作（购票、选座购票、订阅更新），艺人名、排期、场地、唱片与邮箱均为虚构示例数据并在页脚声明，不写「极致视听盛宴」这类空话。
+- 390px 窄屏顶栏自然折行、卡片单列、订阅输入框与按钮折行堆叠，不横向溢出。
+
+### 完整整页源码
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="synthwave">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>回到霓虹之夜 · 霓虹脉冲 NEON PULSE RECORDS（synthwave 主题案例）</title>
+  <meta name="description" content="灰墨 synthwave 主题完整页面案例：虚构复古电子音乐厂牌整页。深紫蓝底配霓虹粉青点缀、落日网格记忆点、演出卡与黑胶卡。本页只依赖 daisyUI 官方主题。" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css" />
+  <link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css" />
+  <style>
+    /* 仅布局辅助：主题案例页不依赖任何工具类补丁，结构类自包含；颜色一律取主题语义变量 + color-mix */
+    html, body { margin: 0; }
+    body { background: var(--color-base-100); color: var(--color-base-content); font-family: ui-sans-serif, system-ui, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 18px 16px 44px; display: flex; flex-direction: column; gap: 22px; }
+    .brand { font-size: 16px; letter-spacing: 1.5px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap; font-weight: 700; }
+    .brand small { font-size: 10px; letter-spacing: 2.5px; opacity: .6; font-weight: 400; }
+    /* Hero：深紫蓝渐变底（全部来自主题变量） */
+    .hero-unit { position: relative; overflow: hidden; border-radius: 12px; padding: 42px 18px 36px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% -20%, color-mix(in oklab, var(--color-primary) 24%, transparent), transparent 62%),
+        radial-gradient(ellipse 60% 50% at 88% 112%, color-mix(in oklab, var(--color-secondary) 16%, transparent), transparent 60%),
+        linear-gradient(180deg, var(--color-base-300), var(--color-base-100)); }
+    .hero-unit h1 { font-size: 34px; font-weight: 800; margin: 0; letter-spacing: 3px; }
+    .neon-pink { color: var(--color-primary); }
+    .neon-cyan { color: var(--color-secondary); }
+    .hero-unit .sub { font-size: 13px; opacity: .8; max-width: 480px; margin: 0; line-height: 2; }
+    .sunset { width: min(420px, 92%); height: auto; }
+    /* 板块标题行 */
+    .sec-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+    .sec-head h2 { font-size: 19px; margin: 0; letter-spacing: 2px; }
+    .sec-head span { font-size: 12px; opacity: .55; }
+    /* 演出卡 */
+    .show-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .show-card { background: var(--color-base-200); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; border: 1px solid color-mix(in oklab, var(--color-primary) 25%, transparent); }
+    .show-icon { width: 36px; height: 36px; color: var(--color-secondary); }
+    .show-card h3 { font-size: 15px; margin: 0; letter-spacing: .5px; }
+    .meta { font-size: 12px; opacity: .75; line-height: 1.9; margin: 0; }
+    /* 黑胶卡 */
+    .vinyl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+    .vinyl-card { background: var(--color-base-200); border-radius: 12px; padding: 20px 18px; display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; border: 1px solid color-mix(in oklab, var(--color-secondary) 22%, transparent); }
+    .vinyl-disc { width: 128px; height: 128px; }
+    .vinyl-card h3 { font-size: 15px; margin: 0; letter-spacing: .5px; }
+    /* 订阅行 */
+    .sub-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .sub-row .input { flex: 1 1 220px; min-width: 0; background: var(--color-base-100); }
+    .hairline { border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent); }
+    .foot { font-size: 12px; opacity: .55; text-align: center; padding-top: 6px; line-height: 1.8; }
+    @media (max-width: 900px) {
+      .navbar { flex-wrap: wrap; row-gap: 8px; padding: 10px 14px; }
+      .navbar-start { width: 100%; }
+      .navbar-end { width: 100%; justify-content: flex-end; }
+      .hero-unit { padding: 28px 10px 24px; }
+      .hero-unit h1 { font-size: 26px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- 顶栏 -->
+    <div class="navbar rounded-box bg-base-200" style="padding:0 16px">
+      <div class="navbar-start">
+        <div class="brand">霓虹脉冲 <small>NEON PULSE RECORDS</small></div>
+        <ul class="menu" style="display:flex;flex-direction:row;flex-wrap:wrap;padding:0;gap:4px">
+          <li><a>演出</a></li>
+          <li><a>黑胶</a></li>
+          <li><a>派对</a></li>
+          <li><a>关于</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end" style="gap:10px">
+        <button class="btn btn-sm" type="button">购票</button>
+      </div>
+    </div>
+
+    <!-- Hero：深紫蓝渐变 + 落日网格 -->
+    <div class="hero-unit">
+      <span class="badge badge-soft badge-sm">11 月复古电子巡演</span>
+      <h1>回到<span class="neon-pink">霓虹</span>之夜</h1>
+      <p class="sub">霓虹脉冲厂牌十一月连开四场：合成器、磁带与黑胶，现场调回八十年代的地平线。</p>
+      <svg class="sunset" viewBox="0 0 400 220" role="img" aria-label="复古落日网格：镂空横纹的粉色落日、青色透视网格与星点（示例插图）">
+        <defs>
+          <mask id="sunmask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="220">
+            <rect x="0" y="0" width="400" height="220" fill="white" />
+            <rect x="140" y="132" width="120" height="3" fill="black" />
+            <rect x="140" y="143" width="120" height="3.5" fill="black" />
+            <rect x="140" y="155" width="120" height="4" fill="black" />
+            <rect x="140" y="168" width="120" height="4.5" fill="black" />
+          </mask>
+        </defs>
+        <!-- 星点 -->
+        <g fill="var(--color-base-content)">
+          <circle cx="52" cy="34" r="1.4" opacity=".5" />
+          <circle cx="118" cy="20" r="1" opacity=".4" />
+          <circle cx="330" cy="40" r="1.2" opacity=".5" />
+          <circle cx="286" cy="18" r=".9" opacity=".35" />
+          <circle cx="24" cy="80" r="1" opacity=".35" />
+          <circle cx="366" cy="92" r="1.2" opacity=".4" />
+        </g>
+        <!-- 落日（mask 镂空横条纹） -->
+        <circle cx="200" cy="118" r="58" fill="var(--color-primary)" mask="url(#sunmask)" />
+        <!-- 地平线 -->
+        <line x1="0" y1="186" x2="400" y2="186" stroke="var(--color-secondary)" stroke-width="1" opacity=".6" />
+        <!-- 网格地板：横向 -->
+        <line x1="0" y1="193" x2="400" y2="193" stroke="var(--color-secondary)" stroke-width="1" opacity=".32" />
+        <line x1="0" y1="202" x2="400" y2="202" stroke="var(--color-secondary)" stroke-width="1" opacity=".24" />
+        <line x1="0" y1="213" x2="400" y2="213" stroke="var(--color-secondary)" stroke-width="1" opacity=".16" />
+        <!-- 网格地板：透视斜线（消失点在地平线中央） -->
+        <g stroke="var(--color-secondary)" stroke-width="1" opacity=".3">
+          <line x1="200" y1="186" x2="-40" y2="220" />
+          <line x1="200" y1="186" x2="60" y2="220" />
+          <line x1="200" y1="186" x2="130" y2="220" />
+          <line x1="200" y1="186" x2="200" y2="220" />
+          <line x1="200" y1="186" x2="270" y2="220" />
+          <line x1="200" y1="186" x2="340" y2="220" />
+          <line x1="200" y1="186" x2="440" y2="220" />
+        </g>
+      </svg>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+        <button class="btn" type="button">立即购票</button>
+        <button class="btn btn-outline" type="button">回顾上一场</button>
+      </div>
+    </div>
+
+    <!-- 本月演出 -->
+    <div>
+      <div class="sec-head">
+        <h2>本月演出</h2>
+        <span>11 月 · 四场现场（虚构排期）</span>
+      </div>
+      <div class="show-grid">
+        <div class="show-card">
+          <svg class="show-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="3.5" />
+            <circle cx="12" cy="12" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          <h3>星尘漫游 <span class="neon-cyan" style="font-size:10px;letter-spacing:2px">STARDUST DRIFT</span></h3>
+          <p class="meta">11 月 07 日 周六 20:00<br />脉冲工厂 LIVEHOUSE（虚构）</p>
+          <div style="margin-top:auto;display:flex;justify-content:flex-end">
+            <button class="btn btn-ghost btn-sm" type="button">选座购票</button>
+          </div>
+        </div>
+        <div class="show-card">
+          <svg class="show-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="8" width="18" height="9" rx="2" />
+            <line x1="7" y1="17" x2="7" y2="20" />
+            <line x1="11" y1="17" x2="11" y2="21" />
+            <line x1="15" y1="17" x2="15" y2="20" />
+            <circle cx="18.5" cy="10.5" r="1" />
+          </svg>
+          <h3>磁带记忆 <span class="neon-cyan" style="font-size:10px;letter-spacing:2px">CASSETTE MEMORY</span></h3>
+          <p class="meta">11 月 14 日 周五 21:00<br />落日舞厅（虚构）</p>
+          <div style="margin-top:auto;display:flex;justify-content:flex-end">
+            <button class="btn btn-ghost btn-sm" type="button">选座购票</button>
+          </div>
+        </div>
+        <div class="show-card">
+          <svg class="show-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <line x1="5" y1="8" x2="5" y2="16" />
+            <line x1="9" y1="5" x2="9" y2="16" />
+            <line x1="13" y1="10" x2="13" y2="16" />
+            <line x1="17" y1="7" x2="17" y2="16" />
+            <line x1="3" y1="18.5" x2="19" y2="18.5" stroke-width="1.4" opacity=".6" />
+          </svg>
+          <h3>霓虹航道 <span class="neon-cyan" style="font-size:10px;letter-spacing:2px">NEON CHANNEL</span></h3>
+          <p class="meta">11 月 21 日 周六 20:30<br />脉冲工厂 LIVEHOUSE（虚构）</p>
+          <div style="margin-top:auto;display:flex;justify-content:flex-end">
+            <button class="btn btn-ghost btn-sm" type="button">选座购票</button>
+          </div>
+        </div>
+        <div class="show-card">
+          <svg class="show-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="13" r="6" />
+            <circle cx="10" cy="13" r="1.5" />
+            <line x1="15.4" y1="7.6" x2="19" y2="5" />
+            <line x1="15.4" y1="7.6" x2="17.5" y2="12.4" />
+          </svg>
+          <h3>午夜合成器 <span class="neon-cyan" style="font-size:10px;letter-spacing:2px">MIDNIGHT SYNTH</span></h3>
+          <p class="meta">11 月 28 日 周六 22:00<br />88 号仓库（虚构）</p>
+          <div style="margin-top:auto;display:flex;justify-content:flex-end">
+            <button class="btn btn-ghost btn-sm" type="button">选座购票</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 黑胶专区 -->
+    <div>
+      <div class="sec-head">
+        <h2>黑胶专区</h2>
+        <span>三张再版专辑 · 标签色各不同（虚构唱片）</span>
+      </div>
+      <div class="vinyl-grid">
+        <div class="vinyl-card">
+          <svg class="vinyl-disc" viewBox="0 0 132 132" role="img" aria-label="黑胶唱片简影，粉色中心标签（示例插图）">
+            <circle cx="66" cy="66" r="60" fill="var(--color-neutral)" />
+            <circle cx="66" cy="66" r="50" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="42" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="34" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="24" fill="var(--color-primary)" />
+            <circle cx="66" cy="66" r="4" fill="var(--color-base-100)" />
+          </svg>
+          <h3>《轨道星图 Star Chart》</h3>
+          <p class="meta">首张全长专辑，10 首复古电子曲，粉标签首版。</p>
+        </div>
+        <div class="vinyl-card">
+          <svg class="vinyl-disc" viewBox="0 0 132 132" role="img" aria-label="黑胶唱片简影，青色中心标签（示例插图）">
+            <circle cx="66" cy="66" r="60" fill="var(--color-neutral)" />
+            <circle cx="66" cy="66" r="50" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="42" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="34" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="24" fill="var(--color-secondary)" />
+            <circle cx="66" cy="66" r="4" fill="var(--color-base-100)" />
+          </svg>
+          <h3>《磁带雨声 Rain Tapes》</h3>
+          <p class="meta">低保真合成器氛围，现场磁带采样，青标签。</p>
+        </div>
+        <div class="vinyl-card">
+          <svg class="vinyl-disc" viewBox="0 0 132 132" role="img" aria-label="黑胶唱片简影，橙色中心标签（示例插图）">
+            <circle cx="66" cy="66" r="60" fill="var(--color-neutral)" />
+            <circle cx="66" cy="66" r="50" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="42" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="34" fill="none" style="stroke:color-mix(in oklab, var(--color-base-content) 22%, transparent)" />
+            <circle cx="66" cy="66" r="24" fill="var(--color-accent)" />
+            <circle cx="66" cy="66" r="4" fill="var(--color-base-100)" />
+          </svg>
+          <h3>《地平线广播 Horizon FM》</h3>
+          <p class="meta">两场现场实录双张，日落场录音，橙标签。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 派对预告 / 订阅 -->
+    <div class="card" style="background:var(--color-base-200);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:12px;border:1px solid color-mix(in oklab, var(--color-secondary) 22%, transparent)">
+      <h2 style="font-size:19px;margin:0;letter-spacing:2px">不错过下一场演出</h2>
+      <p class="meta">留下邮箱，巡演开票、黑胶补货与派对回放只发一封通知，不转发任何演出商广告。</p>
+      <div class="sub-row">
+        <input type="email" placeholder="输入邮箱地址" class="input" />
+        <button class="btn" type="button">订阅更新</button>
+      </div>
+      <p class="meta">厂牌地址：江岸区滨江道 88 号 3F（虚构）· 联系 hi@neon-pulse.example（虚构）</p>
+    </div>
+
+    <div class="hairline"></div>
+    <p class="foot">霓虹脉冲 NEON PULSE RECORDS 为虚构厂牌，艺人、排期、场地、唱片与联系方式均为示例数据，仅用于展示 synthwave 主题整页效果 · 灰墨 MoH_UI</p>
+  </div>
+</body>
+</html>
+```
+
+## 用法二：只给已有项目换肤
+
+① 在 `<head>` 引入 daisyUI 5 底座：
+
+```html
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui.css">
+<link rel="stylesheet" href="https://noii-y.github.io/moh-ui/vendor/daisyui-themes.css">
+```
+
+② 在 `<html>` 挂 `data-theme="synthwave"`，组件类名一行都不用改。本主题是 daisyUI 内置主题，变量已随 daisyui-themes.css 提供，无需额外文件。
+
+③ 本主题完整变量（要改颜色就覆盖这些变量，不要在组件里硬编码色值）：
+
+该主题变量在 daisyui-themes.css 内，无需复制。
+
+④ 组件全部走 daisyUI 语义类（`btn` / `card` / `table` / `input` 等），不要硬编码颜色。
+
+---
+
+## 更多
+
+- 完整整页案例（在线页面）：https://noii-y.github.io/moh-ui/themes/synthwave/demo.html
+- 素材溯源与许可证：https://noii-y.github.io/moh-ui/site/attributions.html
+- 主题库：https://noii-y.github.io/moh-ui/site/themes.html
+- 全站 AI 索引：https://noii-y.github.io/moh-ui/llms.txt

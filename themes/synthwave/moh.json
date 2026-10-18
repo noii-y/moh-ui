@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "name": "synthwave",
+  "type": "theme",
+  "title": "霓虹脉冲（synthwave）",
+  "description": "完整页面案例：虚构复古电子音乐厂牌「霓虹脉冲 NEON PULSE RECORDS」整页。深紫蓝底配霓虹粉青点缀，mask 镂空横纹的粉色落日与青色透视网格为记忆点，演出卡与三标签色黑胶卡成形；挂 daisyUI 官方主题 data-theme=\"synthwave\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
+  "styleTags": ["深色", "霓虹", "赛博", "活动页"],
+  "base": "synthwave",
+  "aiNotes": [
+    "底色永远是深紫蓝：页面基底取 var(--color-base-100/200/300)，Hero 层次用 color-mix 叠 primary 粉（约 24%）与 secondary 青（约 16%）的径向渐变，禁止写死任何深紫或霓虹十六进制。",
+    "霓虹粉青只做点缀：primary 粉用于标题强调词、主按钮、落日太阳；secondary 青用于网格线、图标与徽章；accent 橙只留给黑胶标签这类极小面积。绝不大面积铺霓虹色，底色始终压深。",
+    "落日网格是记忆点：内联 SVG 自包含——mask 镂空横条纹的粉色落日 + 青色调消失点透视网格 + 几颗星点；条纹镂空让 Hero 渐变直接透出来，不要用纯色块硬盖条纹。",
+    "按钮文字对比必须达标：主按钮直接用主题默认 primary 底 + primary-content 深字（官方已配对，实测对比度约 5.4:1）；不要把霓虹色当大段文字铺在深底上，标题强调词限一词。",
+    "演出卡与黑胶卡用 base-200 深底 + primary/secondary 约 22–25% 的细边框；图标全部 currentColor 单色线性 SVG（黑胶、合成器、均衡器、唱机），不用照片、不用 emoji、不用彩色插图。",
+    "文案写真实动作（购票、选座购票、订阅更新），艺人名、排期、场地、唱片与邮箱均为虚构示例数据并在页脚声明，不写「极致视听盛宴」这类空话。",
+    "390px 窄屏顶栏自然折行、卡片单列、订阅输入框与按钮折行堆叠，不横向溢出。"
+  ],
+  "source": {
+    "origin": "third-party",
+    "upstream": "daisyUI",
+    "url": "https://daisyui.com/components/themes/",
+    "license": "MIT",
+    "changes": "未改动官方变量，直接使用 vendor/daisyui-themes.css 中的 [data-theme=synthwave]；仅用 daisyUI 组件拼装一套复古电子音乐厂牌整页（demo.html：顶栏导航与购票按钮 + 深紫蓝渐变 Hero 与落日网格内联 SVG + 本月演出四卡（黑胶 / 合成器 / 均衡器 / 唱机图标）+ 黑胶专区三卡（粉 / 青 / 橙三种标签差异）+ 邮件订阅 CTA 与虚构厂牌页脚）。"
+  },
+  "dependencies": [],
+  "files": ["demo.html", "README.md"],
+  "audit": 100,
+  "verified": false
+}
