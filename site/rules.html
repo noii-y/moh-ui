@@ -3,10 +3,178 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>规则边界包 · 灰墨 MoH_UI</title>
-  <meta name="description" content="灰墨规则边界包：8 类硬边界 + 10 条禁则 + 26 项自检清单。把规则丢给 AI，让 AI 做用户不易察觉的审美整容——不换皮、守边界、可自查。" />
+  <title>规则装配器 · 灰墨 MoH_UI</title>
+  <meta name="description" content="灰墨规则不再是一份整包：选页面类型、选主题、选组件，自动装配出一份完整 AI 指令——场景规则、主题视觉红线、通用审美硬边界与自检清单一次到位。" />
   <link rel="stylesheet" href="../themes/mo-dark/tokens.css" />
   <link rel="stylesheet" href="assets/site.css" />
+  <script src="data.js"></script>
+  <style>
+    /* ===== 装配器专属样式（只作用于本页，site- 公共类不动） ===== */
+    .as-wrap { padding-bottom: 56px; }
+    .as-panel {
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--moh-surface, #1a1a20) 72%, transparent);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .as-step {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 12px;
+    }
+    .as-step__no {
+      flex: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--moh-primary, #5e6ad2);
+      color: #fff;
+      align-self: center;
+    }
+    .as-step__t { font-weight: 600; font-size: 15px; }
+    .as-step__d { color: var(--moh-muted, #8a8a96); font-size: 13px; }
+    .as-scene-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .as-scene {
+      text-align: left;
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 10px;
+      background: transparent;
+      color: var(--moh-ink, #f7f8f8);
+      padding: 12px 14px;
+      cursor: pointer;
+      font: inherit;
+      line-height: 1.5;
+      transition: border-color .15s, background .15s;
+    }
+    .as-scene:hover { border-color: var(--moh-primary, #5e6ad2); }
+    .as-scene--on {
+      border-color: var(--moh-primary, #5e6ad2);
+      background: color-mix(in srgb, var(--moh-primary, #5e6ad2) 14%, transparent);
+    }
+    .as-scene b { display: block; font-size: 14px; margin-bottom: 2px; }
+    .as-scene span { font-size: 12px; color: var(--moh-muted, #8a8a96); }
+    .as-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .as-select {
+      appearance: none;
+      background: var(--moh-surface, #1a1a20);
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 8px;
+      color: var(--moh-ink, #f7f8f8);
+      font: inherit;
+      font-size: 13px;
+      padding: 8px 32px 8px 12px;
+      min-width: 240px;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8a96' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+    .as-hint { font-size: 12px; color: var(--moh-muted, #8a8a96); }
+    .as-notes {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: var(--moh-muted, #b8b8c4);
+      border-left: 2px solid var(--moh-primary, #5e6ad2);
+      padding: 2px 0 2px 12px;
+    }
+    .as-notes ul { margin: 6px 0 0; padding-left: 18px; }
+    .as-notes li { margin: 3px 0; }
+    .as-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .as-chip {
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--moh-ink, #f7f8f8);
+      font: inherit;
+      font-size: 12.5px;
+      padding: 5px 12px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .as-chip:hover { border-color: var(--moh-primary, #5e6ad2); }
+    .as-chip--on {
+      border-color: var(--moh-primary, #5e6ad2);
+      background: color-mix(in srgb, var(--moh-primary, #5e6ad2) 16%, transparent);
+    }
+    .as-chip--core::after { content: " · 常用"; color: var(--moh-muted, #8a8a96); font-size: 11px; }
+    .as-chip--on.as-chip--core::after { content: ""; }
+    .as-chip__x { margin-left: 6px; opacity: .6; }
+    .as-chipgroup { margin-top: 10px; }
+    .as-chipgroup__label { font-size: 12px; color: var(--moh-muted, #8a8a96); margin: 0 0 6px; }
+    .as-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .as-toggle input { width: 16px; height: 16px; accent-color: var(--moh-primary, #5e6ad2); }
+    .as-out-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .as-out-head .as-hint { margin-left: auto; }
+    .as-out {
+      width: 100%;
+      min-height: 260px;
+      max-height: 460px;
+      overflow: auto;
+      resize: vertical;
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 10px;
+      background: var(--moh-canvas, #0f0f0f);
+      color: var(--moh-ink, #e8e8ee);
+      font-family: var(--moh-font-mono, ui-monospace, Menlo, Consolas, monospace);
+      font-size: 12.5px;
+      line-height: 1.65;
+      padding: 14px 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .as-warn {
+      font-size: 12.5px;
+      color: #f0c674;
+      margin-top: 8px;
+    }
+    .as-layers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .as-layer {
+      border: 1px solid var(--moh-border, #2a2a30);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .as-layer b { font-size: 13.5px; display: block; margin-bottom: 4px; }
+    .as-layer p { margin: 0; font-size: 12px; color: var(--moh-muted, #8a8a96); line-height: 1.6; }
+    .as-layer .as-layer__tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--moh-primary, #9aa2e8);
+      margin-bottom: 6px;
+    }
+    @media (max-width: 760px) {
+      .as-scene-grid { grid-template-columns: 1fr; }
+      .as-layers { grid-template-columns: 1fr; }
+      .as-select { min-width: 0; width: 100%; }
+      .as-panel { padding: 14px; }
+      .as-out-head .as-hint { margin-left: 0; width: 100%; }
+    }
+  </style>
 </head>
 <body>
   <nav class="site-nav">
@@ -29,46 +197,152 @@
     </div>
   </nav>
 
-  <div class="site-container">
+  <div class="site-container as-wrap">
     <div class="site-pagehead">
-      <h1>规则边界包</h1>
-      <p>给 AI 的「审美整容」规则：<b>8 类硬边界 + 10 条禁则一票否决 + 26 项自检清单</b>。把它丢给豆包 / Cursor，AI 按美学边界改你的项目——字号不许过大过小、表格不许溢出、排列整齐、符合美观条件，改完按清单自查闭环。</p>
+      <h1>规则装配器</h1>
+      <p>规则不是一整包丢给 AI。先告诉它<b>你要做什么页面、用哪套主题、用到哪些组件</b>，这里把场景规则、主题视觉红线、通用审美硬边界和自检清单装配成一份完整指令，复制即用。</p>
     </div>
 
     <div class="site-note">
       <span>📏</span>
-      <span>这不是换皮：换皮（黑白两色）你跟 AI 说一声就行。规则包管的是 AI 容易忽略的「整容级」细节，是灰墨的附带服务——主打的丰富主题和组件在隔壁两个集市。</span>
+      <span>规则是<b>边界</b>不是风格：不限定颜色和风格，只拦住 AI 容易忽略的排版问题——字号过大过小、表格溢出、间距混乱、对比度不足、动效花哨。主题决定长相，规则守住底线。</span>
     </div>
 
-    <div class="site-section" style="padding-top: 8px">
-      <h2 class="site-section__title">快速开始</h2>
-      <p class="site-section__desc">三种姿势，任选其一。</p>
+    <!-- ===== 装配器 ===== -->
+    <div class="site-section" style="padding-top: 12px">
+      <div class="as-panel">
+        <div class="as-step">
+          <span class="as-step__no">1</span>
+          <div>
+            <p class="as-step__t">页面类型</p>
+            <p class="as-step__d">不同页面有各自的细化规则，选一个最接近的。</p>
+          </div>
+        </div>
+        <div class="as-scene-grid" id="scene-grid"></div>
+      </div>
+
+      <div class="as-panel">
+        <div class="as-step">
+          <span class="as-step__no">2</span>
+          <div>
+            <p class="as-step__t">搭配主题（可跳过）</p>
+            <p class="as-step__d">选了主题，会把这套主题「换业务也必须守住」的视觉红线一起装进指令。</p>
+          </div>
+        </div>
+        <div class="as-row">
+          <select class="as-select" id="theme-select" aria-label="选择主题"></select>
+          <span class="as-hint" id="theme-status"></span>
+        </div>
+        <div class="as-notes" id="theme-notes" hidden></div>
+      </div>
+
+      <div class="as-panel">
+        <div class="as-step">
+          <span class="as-step__no">3</span>
+          <div>
+            <p class="as-step__t">用到的组件（可跳过）</p>
+            <p class="as-step__d">按页面类型推荐常用组件，勾选后指令里会附上每个组件的 AI 指令链接；也可以自己加。</p>
+          </div>
+        </div>
+        <div class="as-chips" id="core-chips"></div>
+        <div class="as-chipgroup" id="more-group" hidden>
+          <p class="as-chipgroup__label">配套组件（按需要再选）</p>
+          <div class="as-chips" id="more-chips"></div>
+        </div>
+        <div class="as-chipgroup" id="picked-group" hidden>
+          <p class="as-chipgroup__label">已选组件（点 × 移除）</p>
+          <div class="as-chips" id="picked-chips"></div>
+        </div>
+        <div class="as-row" style="margin-top: 10px">
+          <select class="as-select" id="comp-add" aria-label="添加其它组件">
+            <option value="">添加其它组件…</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="as-panel">
+        <div class="as-step">
+          <span class="as-step__no">4</span>
+          <div>
+            <p class="as-step__t">自检清单</p>
+            <p class="as-step__d">默认把 26 项自检清单附在指令末尾，让 AI 交付前逐项自查闭环。</p>
+          </div>
+        </div>
+        <label class="as-toggle">
+          <input type="checkbox" id="selfcheck-on" checked />
+          附上 26 项自检清单（未达标修复，最多 3 轮）
+        </label>
+      </div>
+
+      <div class="as-panel">
+        <div class="as-out-head">
+          <button class="site-btn site-btn--primary site-btn--sm" id="copy-all">复制装配好的指令</button>
+          <button class="site-btn site-btn--secondary site-btn--sm" id="reset-btn">重置</button>
+          <span class="as-hint" id="out-meta"></span>
+        </div>
+        <textarea class="as-out" id="output" readonly spellcheck="false" aria-label="装配好的指令"></textarea>
+        <p class="as-warn" id="file-warn" hidden>本地双击打开页面时浏览器可能禁止读取主题红线等文件，部分内容会用占位提示；在<a href="https://noii-y.github.io/moh-ui/site/rules.html">线上页面</a>使用可拿到完整内容。</p>
+      </div>
+    </div>
+
+    <!-- ===== 四层规则说明 ===== -->
+    <div class="site-section" style="padding-top: 4px">
+      <h2 class="site-section__title">规则是怎么和主题、组件联动的</h2>
+      <p class="site-section__desc">灰墨的规则分四层，装配器把它们按你的选择拼在一起；每个组件和每套主题的 AI 指令页也已经自动带了对应的层。</p>
+      <div class="as-layers">
+        <div class="as-layer">
+          <span class="as-layer__tag">L1 通用硬边界</span>
+          <b>所有页面都适用</b>
+          <p>字号、间距、对齐、对比度、动效、禁则。每个组件 AI 指令自动附带，装配器也默认拼入。</p>
+        </div>
+        <div class="as-layer">
+          <span class="as-layer__tag">L2 场景规则</span>
+          <b>按页面类型取用</b>
+          <p>表格、表单、数据看板各有一份细化规则，在通用硬边界之上执行。</p>
+        </div>
+        <div class="as-layer">
+          <span class="as-layer__tag">L3 主题视觉红线</span>
+          <b>每套主题一份</b>
+          <p>45 套主题各有 aiNotes：换业务也必须守住的视觉特征。主题 AI 页与装配器共用。</p>
+        </div>
+        <div class="as-layer">
+          <span class="as-layer__tag">L4 组件规格</span>
+          <b>每个组件自带</b>
+          <p>68 个组件的 AI 指令含精确规格、真实文案与参考结构，勾选后直接附链接。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 直接复制兜底 ===== -->
+    <div class="site-section" style="padding-top: 4px">
+      <h2 class="site-section__title">只想要原始文件</h2>
+      <p class="site-section__desc">不装配、整包复制，或者到仓库看规则原文。</p>
       <div class="site-grid">
         <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">① 复制完整规则包</p>
-            <p class="site-card__desc">把主规则文件（8 类硬边界 + 10 条禁则）整段复制给 AI，让 AI 按边界整改你的项目。</p>
+            <p class="site-card__title">完整规则包</p>
+            <p class="site-card__desc">8 类硬边界 + 10 条禁则整段复制，适合让 AI 整改一个已有项目。</p>
             <div class="site-card__actions">
-              <button class="site-btn site-btn--primary site-btn--sm" id="copy-main">复制规则包</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-main">复制规则包</button>
               <a class="site-btn site-btn--secondary site-btn--sm" href="https://github.com/noii-y/moh-ui/blob/master/rules/mo-rules-zh.md" target="_blank" rel="noopener">看原文</a>
             </div>
           </div>
         </div>
         <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">② 分场景规则</p>
-            <p class="site-card__desc">表格页 / 表单页 / 数据看板三种场景各有细化规则，按你当前的页面类型取一份。</p>
+            <p class="site-card__title">场景规则</p>
+            <p class="site-card__desc">表格 / 表单 / 看板三份细则，单独取一份。</p>
             <div class="site-card__actions">
-              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-table">表格场景</button>
-              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-form">表单场景</button>
-              <button class="site-btn site-btn--secondary site-btn--sm" id="copy-dashboard">看板场景</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" data-scene="table">表格</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" data-scene="form">表单</button>
+              <button class="site-btn site-btn--secondary site-btn--sm" data-scene="dashboard">看板</button>
             </div>
           </div>
         </div>
         <div class="site-card" style="cursor:default">
           <div class="site-card__body">
-            <p class="site-card__title">③ 自检清单</p>
-            <p class="site-card__desc">26 项勾选清单，AI 应用规则后逐项自查，达标才算交付。你也可自己拿着逐项核对。</p>
+            <p class="site-card__title">自检清单</p>
+            <p class="site-card__desc">26 项勾选清单，AI 应用规则后逐项自查，也可以自己拿着核对。</p>
             <div class="site-card__actions">
               <button class="site-btn site-btn--secondary site-btn--sm" id="copy-selfcheck">复制自检清单</button>
               <a class="site-btn site-btn--secondary site-btn--sm" href="https://github.com/noii-y/moh-ui/blob/master/rules/selfcheck.md" target="_blank" rel="noopener">看原文</a>
@@ -76,28 +350,9 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="site-section" style="padding-top: 0">
-      <h2 class="site-section__title">规则预览</h2>
-      <p class="site-section__desc">主规则文件节选：边界类别与禁则总览。</p>
-      <div class="site-details">
-        <summary>8 类硬边界（节选）</summary>
-        <pre class="site-pre" id="rules-preview">灰墨规则边界包（mo-rules-zh）· 8 类硬边界概览：
-1. 字号边界：仅用 12/13/14/16/20/24px 字号阶，禁止过大过小（如标题 96px、正文 9px）
-2. 间距边界：间距为 4 的倍数（8px 网格），禁止随机间距
-3. 表格边界：禁止溢出容器，列宽合理分配，数字列右对齐，表头与内容对齐
-4. 控件边界：控件最小高度 32px，触控友好，点击区域不小于 28×28
-5. 颜色边界：全部走 --moh-* 变量，禁止硬编码色值，正文对比度 ≥ 4.5:1
-6. 对齐边界：同类元素纵向对齐，卡片内容留白一致
-7. 圆角边界：圆角走变量阶（sm/md/lg），禁止混用不统一
-8. 动效边界：动效 ≤ 200ms，禁止无意义弹跳与长时间加载动画
-
-10 条禁则（一票否决）节选：禁止文字溢出裁切、禁止表格错位、禁止无焦点态、禁止对比度不足、禁止遮挡内容、禁止只改不改查……</pre>
-      </div>
-      <div class="site-note site-note--warn">
+      <div class="site-note site-note--warn" style="margin-top:14px">
         <span>⚠️</span>
-        <span>规则包给 AI 后必须带「自检」指令：应用完逐项自查、未达标继续修复（最多 3 轮），达标才交付——这是规则包闭环的关键，别只给规则不给自查。</span>
+        <span>规则给 AI 时必须带「自检」指令：应用完逐项自查、未达标继续修复（最多 3 轮），达标才交付。装配器默认已带上。</span>
       </div>
     </div>
   </div>
@@ -109,43 +364,380 @@
   </footer>
 
   <script>
-    var toast = document.getElementById("toast");
-    var toastTimer;
-    function showToast(text) {
-      toast.textContent = text;
-      toast.classList.add("site-toast--show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function () { toast.classList.remove("site-toast--show"); }, 1500);
-    }
-    function copyText(text, okText) {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(function () { showToast(okText); });
-      } else {
-        showToast("复制失败：请手动选择复制");
-      }
-    }
-    function fetchCopy(path, okText, prefix) {
-      fetch(path)
-        .then(function (r) { return r.text(); })
-        .then(function (md) { copyText((prefix || "") + md, okText); })
-        .catch(function () { showToast("复制失败：请到仓库取文件（rules/" + path.split("/").pop() + "）"); });
-    }
+    (function () {
+      "use strict";
+      var BASE = "https://noii-y.github.io/moh-ui";
+      var DATA = window.MOH_DATA || { themes: [], components: [] };
 
-    document.getElementById("copy-main").addEventListener("click", function () {
-      fetchCopy("../rules/mo-rules-zh.md", "规则包已复制 ✓", "请按以下规则整改当前项目，应用后逐项自检、未达标继续修复（最多 3 轮）：\n\n");
-    });
-    document.getElementById("copy-table").addEventListener("click", function () {
-      fetchCopy("../rules/scenarios/table.md", "表格场景规则已复制 ✓", "当前页面含表格，请按此规则整改并自查：\n\n");
-    });
-    document.getElementById("copy-form").addEventListener("click", function () {
-      fetchCopy("../rules/scenarios/form.md", "表单场景规则已复制 ✓", "当前页面含表单，请按此规则整改并自查：\n\n");
-    });
-    document.getElementById("copy-dashboard").addEventListener("click", function () {
-      fetchCopy("../rules/scenarios/dashboard.md", "看板场景规则已复制 ✓", "当前页面为数据看板，请按此规则整改并自查：\n\n");
-    });
-    document.getElementById("copy-selfcheck").addEventListener("click", function () {
-      fetchCopy("../rules/selfcheck.md", "自检清单已复制 ✓", "请按以下 26 项自检清单逐项核对当前项目，全部达标才算交付：\n\n");
-    });
+      /* 场景 → 推荐组件（短名与 ai/<短名>.html 对齐）；core 默认勾选，more 按需 */
+      var SCENES = {
+        generic:   { label: "通用", file: null, desc: "没有明确的表格/表单/看板，只守通用排版审美。", core: [], more: [] },
+        table:     { label: "表格页", file: "../rules/scenarios/table.md",
+                     desc: "列表、筛选、分页的管理页面。",
+                     core: ["table", "filter", "pagination", "date-range"],
+                     more: ["list", "stat", "badge", "empty", "card", "skeleton", "dropdown"] },
+        form:      { label: "表单页", file: "../rules/scenarios/form.md",
+                     desc: "录入、配置、设置类页面。",
+                     core: ["fieldset", "validator", "input", "select", "textarea", "checkbox", "radio", "toggle", "range", "button", "join", "date-range"],
+                     more: ["otp", "rating", "file-input", "alert", "tooltip", "loading"] },
+        dashboard: { label: "数据看板", file: "../rules/scenarios/dashboard.md",
+                     desc: "KPI、图表、监控大屏。",
+                     core: ["stat", "chart-card", "table", "card", "badge"],
+                     more: ["navbar", "menu", "drawer", "tab", "progress", "list", "avatar", "radial-progress", "timeline", "code-block"] }
+      };
+
+      /* 与 assets/demo-doc.js 同源的兜底副本（fetch 失败时用；正路是提取 demo-doc.js 原文） */
+      var FALLBACK_COMMON = [
+        "【灰墨审美硬边界（必须遵守）】",
+        "- 控件高度统一 32px，同组控件间距 8px，所有间距用 8px 网格（4/8/12/16/24）。",
+        "- 正文 14px，页面标题不超过 24px，同一屏字号不超过 5 级；数字/金额用等宽数字。",
+        "- 所有可点元素要有 hover 与 focus 态（focus 用 2px 主色描边）；禁用优先用 disabled 属性（透明度 0.5 + not-allowed）。",
+        "- 正文对比度 ≥ 4.5:1；主色全库唯一，状态色语义化（成功绿/警告橙/危险红）；不要大面积高饱和撞色、大面积渐变、多层阴影，不要用 emoji 当图标（用单色 SVG）。",
+        "- 动效不超过 200ms，不做装饰性的闪烁、缩放、弹跳入场动画；组件自带的功能性状态动画除外（loading 旋转、status 状态点 ping/bounce、toggle/swap 切换、collapse 展开等），保留官方默认即可。",
+        "- 颜色全部走 CSS 变量（daisyUI 主题变量），不要写死颜色。",
+        "",
+        "【交付要求】",
+        "- 给我能直接放进项目的完整 HTML（class 版、不依赖框架；外层标签可按我的项目结构调整）。",
+        "- 如果我的项目还没引入 daisyUI 5，请先告诉我需要在 <head> 里加一行 daisyui.css 的引用。",
+        "- 做完后在桌面 1280px 和手机 375px 两个宽度下自查：控件不溢出容器、不被裁切、不换行错位、文字不贴边、焦点可见。"
+      ].join("\n");
+
+      /* ---------- 状态 ---------- */
+      var state = { scene: "generic", theme: "", comps: {}, selfcheck: true };
+      var compByShort = {};
+      DATA.components.forEach(function (c) {
+        var short = c.slug.split("/").pop();
+        compByShort[short] = { short: short, title: c.title, category: c.category };
+      });
+
+      /* ---------- 小工具 ---------- */
+      var toastEl = document.getElementById("toast"), toastTimer;
+      function toast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add("site-toast--show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove("site-toast--show"); }, 1800);
+      }
+      function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(function () { toast("已复制 ✓"); }, function () { legacyCopy(text); });
+        } else { legacyCopy(text); }
+      }
+      function legacyCopy(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try { document.execCommand("copy"); toast("已复制 ✓"); }
+        catch (e) { toast("复制失败，请手动选择文本复制"); }
+        ta.remove();
+      }
+      var fileCache = {};
+      function fetchText(path) {
+        if (fileCache[path] !== undefined) return Promise.resolve(fileCache[path]);
+        return fetch(path).then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.text();
+        }).then(function (t) { fileCache[path] = t; return t; })
+          .catch(function () { fileCache[path] = null; return null; });
+      }
+      function stripMdHead(md) { /* 去掉首个 # 标题行、其后的空行与引用块，保留正文 */
+        return md.replace(/^# .*\n/, "").replace(/^\n+/, "").replace(/^>.*(\n>.*)*\n?/, "").trim();
+      }
+
+      /* ---------- 1. 场景卡片 ---------- */
+      var sceneGrid = document.getElementById("scene-grid");
+      Object.keys(SCENES).forEach(function (key) {
+        var s = SCENES[key];
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "as-scene";
+        btn.dataset.scene = key;
+        btn.innerHTML = "<b>" + s.label + "</b><span>" + s.desc + "</span>";
+        btn.addEventListener("click", function () { setScene(key); });
+        sceneGrid.appendChild(btn);
+      });
+      function setScene(key) {
+        state.scene = key;
+        document.querySelectorAll(".as-scene").forEach(function (b) {
+          b.classList.toggle("as-scene--on", b.dataset.scene === key);
+        });
+        /* 切换场景：推荐组件重置为该场景的 core，其余清空（手动添加的保留） */
+        var next = {};
+        SCENES[key].core.forEach(function (sh) { next[sh] = true; });
+        state.comps = next;
+        renderChips();
+        renderOutput();
+      }
+
+      /* ---------- 2. 主题下拉 ---------- */
+      var themeSelect = document.getElementById("theme-select");
+      var themeGroups = { "官方内置": [], "外部收录": [], "灰墨二创": [] };
+      DATA.themes.forEach(function (t) {
+        var g = t.group === "收录" ? "外部收录" : (t.group === "二创" ? "灰墨二创" : "官方内置");
+        themeGroups[g].push(t);
+      });
+      var opt0 = document.createElement("option");
+      opt0.value = ""; opt0.textContent = "不选主题（只要通用规则）";
+      themeSelect.appendChild(opt0);
+      Object.keys(themeGroups).forEach(function (g) {
+        var og = document.createElement("optgroup");
+        og.label = g + "（" + themeGroups[g].length + "）";
+        themeGroups[g].forEach(function (t) {
+          var o = document.createElement("option");
+          o.value = t.slug;
+          o.textContent = (t.title.indexOf(t.name) !== -1 ? t.title : t.title + "（" + t.name + "）") + (t.dark ? " · 深色" : " · 浅色");
+          og.appendChild(o);
+        });
+        themeSelect.appendChild(og);
+      });
+      themeSelect.addEventListener("change", function () {
+        state.theme = themeSelect.value;
+        renderThemeNotes();
+        renderOutput();
+      });
+      var themeNotesEl = document.getElementById("theme-notes");
+      var themeStatus = document.getElementById("theme-status");
+      function renderThemeNotes() {
+        if (!state.theme) { themeNotesEl.hidden = true; themeStatus.textContent = ""; return; }
+        var t = DATA.themes.find(function (x) { return x.slug === state.theme; });
+        themeStatus.textContent = "读取视觉红线中…";
+        fetchText("../themes/" + state.theme + "/moh.json").then(function (raw) {
+          var notes = [];
+          if (raw) { try { notes = JSON.parse(raw).aiNotes || []; } catch (e) { notes = []; } }
+          if (notes.length) {
+            themeStatus.textContent = "已读取 " + notes.length + " 条视觉红线";
+            themeNotesEl.hidden = false;
+            themeNotesEl.innerHTML = "<b>" + t.title + "</b> 必须守住的视觉红线：<ul>" +
+              notes.map(function (n) { return "<li>" + n.replace(/</g, "&lt;") + "</li>"; }).join("") + "</ul>";
+          } else {
+            themeStatus.textContent = "该主题暂无 aiNotes，指令中会引导到主题 AI 页";
+            themeNotesEl.hidden = true;
+          }
+          renderOutput();
+        });
+      }
+
+      /* ---------- 3. 组件 chips ---------- */
+      var coreChips = document.getElementById("core-chips");
+      var moreChips = document.getElementById("more-chips");
+      var moreGroup = document.getElementById("more-group");
+      var pickedGroup = document.getElementById("picked-group");
+      var pickedChips = document.getElementById("picked-chips");
+      var compAdd = document.getElementById("comp-add");
+
+      function chip(short, opts) {
+        var c = compByShort[short];
+        if (!c) return null;
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "as-chip" + (opts.core ? " as-chip--core" : "") + (opts.on ? " as-chip--on" : "");
+        b.textContent = c.title;
+        b.addEventListener("click", function () {
+          if (state.comps[short]) { delete state.comps[short]; } else { state.comps[short] = true; }
+          renderChips(); renderOutput();
+        });
+        return b;
+      }
+      function renderChips() {
+        var sc = SCENES[state.scene];
+        coreChips.innerHTML = "";
+        moreChips.innerHTML = "";
+        if (!sc.core.length) {
+          coreChips.innerHTML = '<span class="as-hint">通用场景没有推荐组件，从下面的下拉里挑你要的。</span>';
+        }
+        sc.core.forEach(function (sh) {
+          var el = chip(sh, { core: true, on: !!state.comps[sh] });
+          if (el) coreChips.appendChild(el);
+        });
+        if (sc.more.length) {
+          moreGroup.hidden = false;
+          sc.more.forEach(function (sh) {
+            var el = chip(sh, { core: false, on: !!state.comps[sh] });
+            if (el) moreChips.appendChild(el);
+          });
+        } else { moreGroup.hidden = true; }
+
+        /* 已选但不在本场景推荐里的（手动添加或从别的场景带来的） */
+        var recommended = {};
+        sc.core.concat(sc.more).forEach(function (sh) { recommended[sh] = true; });
+        var extras = Object.keys(state.comps).filter(function (sh) { return state.comps[sh] && !recommended[sh]; });
+        pickedChips.innerHTML = "";
+        extras.forEach(function (sh) {
+          var c = compByShort[sh]; if (!c) return;
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "as-chip as-chip--on";
+          b.innerHTML = c.title + '<span class="as-chip__x">×</span>';
+          b.addEventListener("click", function () { delete state.comps[sh]; renderChips(); renderOutput(); });
+          pickedChips.appendChild(b);
+        });
+        pickedGroup.hidden = !extras.length;
+      }
+      /* 全组件下拉（按分类分组） */
+      var cats = {};
+      DATA.components.forEach(function (c) {
+        var short = c.slug.split("/").pop();
+        (cats[c.category] = cats[c.category] || []).push({ short: short, title: c.title });
+      });
+      Object.keys(cats).forEach(function (cat) {
+        var og = document.createElement("optgroup");
+        og.label = cat;
+        cats[cat].forEach(function (x) {
+          var o = document.createElement("option");
+          o.value = x.short; o.textContent = x.title;
+          og.appendChild(o);
+        });
+        compAdd.appendChild(og);
+      });
+      compAdd.addEventListener("change", function () {
+        var sh = compAdd.value;
+        if (sh) { state.comps[sh] = true; compAdd.value = ""; renderChips(); renderOutput(); }
+      });
+
+      /* ---------- 4. 自检开关 ---------- */
+      document.getElementById("selfcheck-on").addEventListener("change", function (e) {
+        state.selfcheck = e.target.checked;
+        renderOutput();
+      });
+
+      /* ---------- 装配输出 ---------- */
+      var output = document.getElementById("output");
+      var outMeta = document.getElementById("out-meta");
+
+      function commonRules() {
+        return fetchText("../assets/demo-doc.js").then(function (src) {
+          if (src) {
+            var m = src.match(/var COMMON_RULES\s*=\s*(\[[\s\S]*?\])\.join\("\n"\);/);
+            if (m) { try { return eval(m[1]).join("\n"); } catch (e) { /* 落到兜底 */ } }
+          }
+          return FALLBACK_COMMON;
+        });
+      }
+      function themeSection(t) {
+        if (!t) return Promise.resolve("");
+        return fetchText("../themes/" + t.slug + "/moh.json").then(function (raw) {
+          var notes = [];
+          if (raw) { try { notes = JSON.parse(raw).aiNotes || []; } catch (e) { notes = []; } }
+          if (notes.length) {
+            return "【这套主题必须守住的视觉特征】（替换业务内容时一条都不能丢）\n" +
+              notes.map(function (n) { return "- " + n; }).join("\n") + "\n\n";
+          }
+          return "【这套主题必须守住的视觉特征】\n" +
+            "- 打开主题 AI 页，把其中「必须守住的视觉特征」逐条照做：" + BASE + "/ai/" + t.slug + ".html\n\n";
+        });
+      }
+      function sceneSection(key) {
+        var s = SCENES[key];
+        if (!s.file) return Promise.resolve("");
+        return fetchText(s.file).then(function (md) {
+          if (!md) return "【" + s.label + "场景规则】\n- 场景规则原文见 " + BASE + "/rules/scenarios/" + key + ".md，请照此执行。\n\n";
+          return "【" + s.label + "场景规则】（在满足通用硬边界的基础上执行）\n" + stripMdHead(md) + "\n\n";
+        });
+      }
+      function compSection() {
+        var picked = Object.keys(state.comps).filter(function (sh) { return state.comps[sh] && compByShort[sh]; });
+        if (!picked.length) return "";
+        var lines = picked.map(function (sh) {
+          return "- " + compByShort[sh].title + "：" + BASE + "/ai/" + sh + ".html";
+        });
+        return "【这个页面要用的组件】\n" +
+          "下面每个组件的 AI 指令都含精确规格与参考结构，逐个打开复制，按它们实现：\n" +
+          lines.join("\n") + "\n\n";
+      }
+      function build() {
+        var s = SCENES[state.scene];
+        var t = state.theme ? DATA.themes.find(function (x) { return x.slug === state.theme; }) : null;
+        var open = "请用 daisyUI 5（纯 CSS 类、class 版 HTML，不依赖框架、无需构建）帮我做一个【" + s.label + "】" +
+          (t ? "，使用【" + t.title + "】主题（data-theme=\"" + t.name + "\"）。" : "。") + "\n\n";
+        return Promise.all([
+          themeSection(t),
+          sceneSection(state.scene),
+          commonRules(),
+          state.selfcheck ? fetchText("../rules/selfcheck.md") : Promise.resolve(null)
+        ]).then(function (parts) {
+          var text = open + parts[0] + parts[1] + parts[2] + "\n\n" + compSection();
+          if (state.selfcheck) {
+            text += "\n【自检清单】\n" +
+              (parts[3] ? stripMdHead(parts[3]) : "26 项自检清单原文见 " + BASE + "/rules/selfcheck.md，逐项核对。") + "\n\n";
+          }
+          text += "按以上规则执行，改完逐项自检，未达标继续修复（最多 3 轮），全部达标才算交付。桌面 1280px 与手机 390px 两个宽度下都要无溢出、无裁切、无错位。";
+          output.value = text;
+          var n = text.length;
+          var nComps = Object.keys(state.comps).filter(function (sh) { return state.comps[sh]; }).length;
+          outMeta.textContent = "约 " + n + " 字 · 主题 " + (t ? t.title : "未选") + " · 组件 " + nComps + " 个 · 自检 " + (state.selfcheck ? "含" : "不含");
+        });
+      }
+      var renderTimer;
+      function renderOutput() {
+        clearTimeout(renderTimer);
+        renderTimer = setTimeout(build, 60);
+      }
+
+      /* ---------- 原始文件复制 ---------- */
+      function fetchCopy(path, okText, prefix) {
+        fetchText(path).then(function (md) {
+          if (md) { copyText((prefix || "") + md); }
+          else { toast("本地打开无法读取，请在仓库 rules/ 取文件"); }
+        });
+      }
+      document.getElementById("copy-main").addEventListener("click", function () {
+        fetchCopy("../rules/mo-rules-zh.md", "规则包已复制 ✓",
+          "请按以下规则整改当前项目，应用后逐项自检、未达标继续修复（最多 3 轮）：\n\n");
+      });
+      document.getElementById("copy-selfcheck").addEventListener("click", function () {
+        fetchCopy("../rules/selfcheck.md", "自检清单已复制 ✓",
+          "请按以下 26 项自检清单逐项核对当前项目，全部达标才算交付：\n\n");
+      });
+      document.querySelectorAll("[data-scene]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          var key = b.dataset.scene;
+          fetchCopy("../rules/scenarios/" + key + ".md", SCENES[key].label + "场景规则已复制 ✓",
+            "当前页面为" + SCENES[key].label + "，请在满足通用硬边界基础上按此规则整改并自查：\n\n");
+        });
+      });
+
+      /* ---------- 顶栏按钮 ---------- */
+      document.getElementById("copy-all").addEventListener("click", function () { copyText(output.value); });
+      document.getElementById("reset-btn").addEventListener("click", function () {
+        state.scene = "generic"; state.theme = ""; state.comps = {}; state.selfcheck = true;
+        themeSelect.value = "";
+        document.getElementById("selfcheck-on").checked = true;
+        document.querySelectorAll(".as-scene").forEach(function (b) {
+          b.classList.toggle("as-scene--on", b.dataset.scene === "generic");
+        });
+        themeNotesEl.hidden = true; themeStatus.textContent = "";
+        history.replaceState(null, "", "rules.html");
+        renderChips(); renderOutput();
+      });
+
+      /* ---------- URL 参数预选：rules.html?scene=table&theme=luxury&comps=table,filter&selfcheck=0 ---------- */
+      function initFromUrl() {
+        var q = new URLSearchParams(location.search);
+        var scene = SCENES[q.get("scene")] ? q.get("scene") : "generic";
+        state.scene = scene;
+        document.querySelectorAll(".as-scene").forEach(function (b) {
+          b.classList.toggle("as-scene--on", b.dataset.scene === scene);
+        });
+        var theme = q.get("theme");
+        if (theme && DATA.themes.some(function (x) { return x.slug === theme; })) {
+          state.theme = theme; themeSelect.value = theme;
+        }
+        state.comps = {};
+        SCENES[scene].core.forEach(function (sh) { state.comps[sh] = true; });
+        var comps = q.get("comps");
+        if (comps) { comps.split(",").forEach(function (sh) { sh = sh.trim(); if (compByShort[sh]) state.comps[sh] = true; }); }
+        var sc = q.get("selfcheck");
+        if (sc === "0") { state.selfcheck = false; document.getElementById("selfcheck-on").checked = false; }
+        renderChips();
+        if (state.theme) renderThemeNotes();
+        renderOutput();
+      }
+
+      /* file:// 下 fetch 多会失败，给出提示 */
+      if (location.protocol === "file:") document.getElementById("file-warn").hidden = false;
+
+      initFromUrl();
+    })();
   </script>
 </body>
 </html>

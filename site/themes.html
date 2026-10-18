@@ -113,6 +113,7 @@
       </div>
       <div class="site-modal__foot">
         <button class="site-btn site-btn--primary site-btn--sm" id="copy-ai">复制 AI 指令</button>
+        <a class="site-btn site-btn--secondary site-btn--sm" id="rule-link">配套规则</a>
         <button class="site-btn site-btn--secondary site-btn--sm t-btn" id="copy-tokens">复制 tokens.css</button>
         <a class="site-btn site-btn--secondary site-btn--sm" id="open-page" target="_blank" rel="noopener">新窗口打开整页</a>
         <a class="site-btn site-btn--secondary site-btn--sm" id="src-link" target="_blank" rel="noopener">查看源码</a>
@@ -252,6 +253,7 @@
       modalFrame.src = "../themes/" + t.slug + "/demo.html";
       document.getElementById("src-link").href = "https://github.com/noii-y/moh-ui/tree/master/themes/" + t.slug;
       document.getElementById("open-page").href = "../themes/" + t.slug + "/demo.html";
+      document.getElementById("rule-link").href = "rules.html?theme=" + t.slug;
       var copyTokensBtn = document.getElementById("copy-tokens");
       if (t.hasTokens) {
         copyTokensBtn.disabled = false;
