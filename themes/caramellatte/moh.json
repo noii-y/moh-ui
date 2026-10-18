@@ -6,6 +6,16 @@
   "description": "完整页面案例：社区咖啡店点单整页。奶油拿铁底色配深棕墨黑与焦糖强调色，圆角圆润、手作烘焙温暖感；挂 daisyUI 官方主题 data-theme=\"caramellatte\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["暖色", "圆润", "餐饮", "手作"],
   "base": "caramellatte",
+  "aiNotes": [
+    "底色三层是奶油拿铁：官方 oklch 98%/95%/90%、色相 70–75 微暖，页面最浅（base-100）、卡片稍深（base-200）、分隔更深一档（base-300）；正文是深棕墨（base-content 约 40% 明度棕），不是纯黑。绝不能出现冷调灰蓝底或高饱和亮橙。",
+    "最大机制：主色 primary 是纯墨黑 oklch(0% 0 0) 配纯白字——堂食/加购/下单等主按钮一律墨黑底白字；不要因为叫焦糖拿铁就把主按钮做成棕色。",
+    "焦糖棕 accent（官方约 46% 明度、色相 38 暖棕）是唯一暖强调色：商品线稿图标用 accent 色 currentColor、制作进度「出杯中」用 badge-accent；warning 金黄、error 砖红只在语义场景出现。",
+    "圆角与边框是手作烘焙感：--radius-selector 2rem 大胶囊、--radius-box 1rem、--border 2px，比常规主题更圆、边更粗；--noise:1 带一点官方细颗粒质感。卡片统一 bg-base-200 rounded-box。",
+    "商品图不用食物照片：用 base-200 圆角方块底 + accent 色 currentColor 线稿 SVG（咖啡杯、外带杯、可颂、蛋糕轮廓，统一线宽），一套图标同风格。",
+    "菜单卡紧凑排版：padding 12px、gap 8px，品名与价格加粗同行，每个商品一个 btn-primary 小按钮；文案写真实点单动作（加购、下单 ¥56.00、取餐码 A-23、预计取餐时间）。",
+    "引入方式：本套是 daisyUI 官方内置主题、目录无 tokens.css——项目里引 vendor/daisyui.css + vendor/daisyui-themes.css 两行，给 <html> 挂 data-theme=\"caramellatte\" 即整站换肤，不需要第三个文件。",
+    "窄屏口径：≤900px「菜单 + 右侧 300px 购物车」两栏塌成单列，购物车落到菜单下方，加减数量按钮组自然折行，不横向溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",

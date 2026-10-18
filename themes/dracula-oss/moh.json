@@ -6,6 +6,15 @@
   "description": "完整页面案例：开源代码协作平台整页（仓库头 + 文件树 + main.py 代码预览 + README 摘要 + PR/Issue 列表）。Dracula 完整 OSS 色板：深紫灰底 + 霓虹紫主色，挂 data-theme=\"dracula-oss\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "开发者", "科技"],
   "base": "dracula-oss",
+  "aiNotes": [
+    "深紫灰三层底：页面底 base-100 #282a36、侧栏与卡片用 base-200 #21222c、代码块与分隔线用 base-300 #191a21；霓虹紫 primary #bd93f9 只留给主按钮、文件树当前项、代码标签选中态，一律紫底配深字 primary-content #21222c，绝不大面积铺紫。",
+    "代码语法高亮是本主题招牌，严格按 Dracula 官方语法色分工：粉 #ff79c6=关键字、黄 #f1fa8c=字符串、绿 #50fa7b=函数名、青 #8be9fd=类名、紫 #bd93f9=数字、蓝灰 #6272a4=注释；做开发者页面时这个色序不能乱换。",
+    "代码、行号、PR/Issue 编号、版本号一律用等宽字体（var(--font-mono)），版本号 v2.4.1 用 accent 青 #8be9fd 着色；正文与界面文字用无衬线，不混排等宽。",
+    "小圆角细边框的终端取向：radius-box .5rem、radius-field .25rem、radius-selector .375rem，边框 1px、--depth:1 无投影；卡片直接取 base-200 底，不另加色块与阴影。",
+    "状态只用 badge-soft 语义色表达：绿=已合并、红=缺陷、黄=进行中、青=开放/文档、粉=优化标签；贡献者头像按紫→粉→青→中性四色循环，不用真人照片。",
+    "图标全部 currentColor 线性 SVG；次要操作用幽灵按钮（关注）、中性动作用描边按钮（星标），主操作才用紫底 primary。",
+    "窄屏（≤900px）侧栏退化为横排文件树、代码预览与 README 卡改单列、表格包 tbl-wrap 横向滚动，390px 不横向溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "Dracula Theme (dracula/dracula-theme)",

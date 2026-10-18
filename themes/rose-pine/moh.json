@@ -6,6 +6,15 @@
   "description": "完整页面案例：独立博客 / 长文杂志整页。暖紫暮色 + 鸢尾紫主色，站点头部、SVG 头图、长文排版（标题 / 引用 / 列表 / 行内代码）、右侧目录与相关文章卡；挂 data-theme=\"rose-pine\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "柔和", "极简"],
   "base": "rose-pine",
+  "aiNotes": [
+    "底三层是暖紫暮色：base-100 #191724 页面底、base-200 #1f1d2e 吸顶头与卡片、base-300 #26233a 行内代码块与发丝分隔线；正文用 base-content #e0def4 暖白、约 .92 不透明度，明度差刻意压低、不刺眼。绝不能出现纯白 #fff 正文或高饱和亮紫亮粉硬色块。",
+    "招牌主色是 iris 鸢尾紫 #c4a7e7（primary，配深字 #191724），只留给当前导航 menu-active、引用块左边 3px 竖线、主徽章；secondary 玫红 #eb6f92 与 accent 水青 #9ccfd8 只做小面积点缀，warning 金 #f6c177 在暮色里是月亮色。",
+    "主按钮与徽章走 daisyUI 语义机制：primary 浅紫底自动配深字（primary-content 已配好），卡片一律 bg-base-200 rounded-box，不叠投影、不用实心重色块压人。",
+    "长文杂志气质：正文行高 2、标题克制（文章小节 19px 粗 700），正文系统无衬线、行内代码用 base-300 底等宽小字；引用块只加左边线不加底色。",
+    "插图只用 Rosé Pine 固定色板画扁平暮色风景：#1f1d2e 夜空底、#f6c177 圆月、#c4a7e7 远山、#eb6f92 近山、#e0def4 星点、#9ccfd8 水色，色块半透明叠加；不用照片、不用 emoji、不用光晕渐变。",
+    "圆角杂志感：--radius-box .625rem、--radius-selector/field 各 .5rem 中等圆角；--border:1px、--depth:1、--noise:0，无阴影无颗粒。",
+    "窄屏口径：≤900px 右侧 210px 目录栏退到正文下方通栏、站点头部导航折行、卡片单列，不横向溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "Rosé Pine",

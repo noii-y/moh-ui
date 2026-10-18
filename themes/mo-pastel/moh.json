@@ -7,6 +7,15 @@
   "styleTags": ["粉彩", "柔和", "亲和", "圆润"],
   "inspiration": ["https://www.shadcn.io/theme/marshmallow"],
   "base": "mo-pastel",
+  "aiNotes": [
+    "微粉暖白三层底：base-100 #faf7f8 页面、base-200 #ffffff 侧栏与卡片、base-300 #f5f0f2 封面条与分隔线；正文文字用深莓褐 #45343d 而非纯黑，整体低饱和不刺眼。",
+    "全库大圆角：--radius-box 1.25rem、--radius-field 0.75rem、--radius-selector 1rem，卡片、按钮、头像、输入框都要圆；禁止直角、厚黑边与硬阴影。",
+    "深莓果主色 #8e3b5e 白字，只给主按钮、进度条（progress-primary）、菜单选中态与通知角标；淡紫 #8a63b8 与暖杏 #e8927c 只做点缀（封面图标色、头像底色），绝不大面积铺色。",
+    "课程卡片封面固定为「低饱和 base-300 色块 + 居中 42px 线性图标」：图标 stroke 用 currentColor、按课程轮换 primary / secondary / accent 三个主题色；不用照片、不用渐变、不用 emoji。",
+    "学生头像（圆形 .av）底色按 primary / secondary / accent / neutral 轮换、文字读对应 *-content 变量；保持圆润亲和，不要用方形或描边头像。",
+    "语义色只在提醒处使用：success 绿报增长、warning 橙标「待批 / 未开始」、error 红表出错；日常正文保持莓褐与 0.65 灰，不要整页挂满彩色徽章。",
+    "≤900px 侧栏退化为顶部横向换行菜单、排课表（min-width 760px）保持容器内横向滚动不折行，课程网格 auto-fill 自然降为单列，整页不横向溢出。"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,

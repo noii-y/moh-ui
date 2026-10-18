@@ -6,6 +6,15 @@
   "description": "完整页面案例：无彩色灰阶文档中心整页。浅灰白底 + 深炭文字，零色相专注阅读，适合文档站 / 帮助中心 / 写作效率类产品；挂 data-theme=\"mo-slate\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["灰阶", "极简", "无彩色", "专注"],
   "base": "mo-slate",
+  "aiNotes": [
+    "全页零色相：primary 是深炭 #262626（主按钮 / 品牌方块 / 右侧目录当前条），secondary / accent / neutral 全是纯灰阶（#737373 / #525252 / #1a1a1a），正文页面里不要出现蓝绿紫；业务需要品牌色时在项目里自行覆盖 --color-primary，不改主题文件本身。",
+    "语义色是唯一例外：info 蓝 / warning 琥珀 / success 绿只给文档提示块 alert-info、alert-warning 用，绝不给按钮、徽章、链接上色。",
+    "三栏阅读布局：左 220px 目录树（原生 details 分组折叠，零 JS）+ 正文 + 右 168px 本页目录；正文 max-width 1280px 居中，行高 1.7、正文 14px，H1 26px、H2 18px，正文 opacity .85——一切为长文阅读服务。",
+    "目录选中态不用主色底：侧栏当前项用 base-300 #f0f0f0 灰底 + 加粗，右侧 toc 当前项用 2px 深炭左边条 + 实色不透明；未读链接 opacity .65。",
+    "代码块用 base-300 浅灰底（#f0f0f0）+ 同色细边 + 等宽字体 var(--font-mono)、12.5px 行距 1.6，长行容器 overflow-x:auto；不做深色代码块（本主题是浅色纸质取向）。",
+    "底色极浅三层：页面底 #f8f8f8、顶栏与卡片白 #ffffff、悬浮 / 代码块 #f0f0f0，层次几乎只靠明度差，边框 1px 极淡，圆角 0.5rem，不压阴影。",
+    "窄屏 ≤900px：右侧 toc 整块隐藏、顶栏搜索框隐藏，左侧目录树折成一行 chip 式分组标签（summary 加灰边圆角），表格包 .tbl-wrap 横滑，正文 padding 收到 20px 14px。"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,

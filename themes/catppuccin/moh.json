@@ -6,6 +6,15 @@
   "description": "完整页面案例：桌面端音乐播放器。软糯马卡龙深色 + 淡紫主色，左侧歌单导航、中部专辑封面与播放队列、底部播放条；挂 data-theme=\"catppuccin\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "柔和", "圆润"],
   "base": "catppuccin",
+  "aiNotes": [
+    "软糯低饱和马卡龙：三层深底 base-100 #1e1e2e / base-200 #181825 / base-300 #11111b，界面彩色全部取淡色（mauve 紫、blue 蓝、green 绿、淡黄、淡粉），正文与辅助字用 opacity 0.6~0.75 柔化，禁止高饱和荧光色与强对比刺眼白字。",
+    "淡紫 primary #cba6f7 只给主播放按钮、圆形播放键、进度条 progress-primary、brand-mark 与选中歌单 menu-active；「正在播放」行用 rgba(203,166,247,.12) 淡紫底高亮，不铺实心紫块；primary-content 配深底字 #181825。",
+    "圆润 cozy 取向：radius-box .75rem、radius-field .5rem、radius-selector .5rem；专辑封面带柔和弥散阴影（0 12px 32px rgba(0,0,0,.35)），不用硬边阴影与描边。",
+    "封面/配图只用马卡龙几何形（淡紫、淡蓝、淡绿圆点 + 浅黄、淡粉圆角条）压在 #11111b 深底上，opacity 0.85~0.9；不用真人照片、不用 emoji。",
+    "语义色也是淡的：error 淡粉 #f38ba8 配深酒红内容字 #450a18、warning 浅黄 #f9e2af 配深褐字 #453a00，即浅彩底配深字，不要反过来用深字压淡色。",
+    "底部播放条 sticky 贴底：base-200 底 + 顶部 1px base-300 分隔线，播放/切歌圆形按钮 ghost/primary 分明，进度条细 5~6px 淡紫。",
+    "窄屏（≤900px）侧栏折成横排、隐藏分组标签与「本周已听」统计卡、封面缩到 120px、播放条 flex-wrap 换行，390px 不溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "Catppuccin",

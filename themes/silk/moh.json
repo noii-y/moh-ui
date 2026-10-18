@@ -6,6 +6,16 @@
   "description": "完整页面案例：精品民宿预订整页。暖米白底配墨蓝文字，留白舒展、雅致轻奢；挂 daisyUI 官方主题 data-theme=\"silk\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["浅色", "轻奢", "留白", "预订"],
   "base": "silk",
+  "aiNotes": [
+    "底色是几乎没有色相的暖米白三层：官方 oklch 97%/95%/90%、色度仅 .003–.008，base-content 是同色相同约 40% 明度的暖灰墨；分区靠留白而非色块，明度差极弱。绝不要给它加彩色背景或深灰大块底色。",
+    "最大机制：primary / secondary / accent 在官方主题里是同一个色——低饱和墨蓝近黑（oklch 23.3%、色度 .025）；强调不靠彩色、靠字重与留白。主按钮墨底配浅豆绿字（primary-content 官方为 oklch 94.2% 浅豆绿），这是官方设定，不要擅自改成白字或棕字。",
+    "语义色全是浅盘深字机制：info/success/warning/error 均为 80–84% 高明度浅底 + 各自深色字，用于 badge-soft 胶囊；neutral 是纯黑，只用于头像底这类极小面积。",
+    "圆角大而平滑：--radius-selector 2rem 胶囊、--radius-box 1rem、--border 2px、--noise:0（无颗粒、无阴影，要的就是丝滑平整）；卡片统一 bg-base-200 rounded-box。",
+    "插图全部 currentColor 单色线稿：hero 山景线条画（太阳、远山、小屋、草地）与房源房形图标，stroke 2 圆角端点、无填色无渐变；不用照片、不用彩色插画、不用 emoji。",
+    "气质是留白与层级：hero 大标题 26px、描述文字降到 .65 透明度，房源评分用 badge-soft badge-primary 小胶囊，价格加粗写「¥680 / 晚」，账单明细两列对齐。",
+    "引入方式：本套是 daisyUI 官方内置主题、目录无 tokens.css——项目里引 vendor/daisyui.css + vendor/daisyui-themes.css 两行，给 <html> 挂 data-theme=\"silk\" 即整站换肤，不需要第三个文件。",
+    "窄屏口径：≤900px hero 左右两栏塌成单列（线条画落到文案下方）、顶栏导航菜单折行、入住退房日期输入框自然堆叠，不横向溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "daisyUI",

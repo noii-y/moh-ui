@@ -6,6 +6,15 @@
   "description": "完整页面案例：邮件客户端三栏整页。极地冷灰蓝 + 冰蓝主色，左侧文件夹与标签、中部收件箱列表（未读加粗）、右侧邮件阅读窗；挂 data-theme=\"nord-dark\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "冷调", "专注"],
   "base": "nord-dark",
+  "aiNotes": [
+    "极地冷灰蓝三层：页面底 base-100 #3b4252、侧栏与卡片用 base-200 #434c5e、base-300 #2e3440 是最深一层，只用作分隔线与细边框；全程冷蓝灰调，不出现暖橙、亮红等暖色。",
+    "冰蓝 primary nord10 #5e81ac 只给「写邮件/回复」主按钮、brand-mark、menu-active 选中态，配浅蓝白字 primary-content #eceff4；当前选中邮件用左边框 3px 竖条指示（border-inline-start），不整行填色。",
+    "未读邮件用淡蓝底 rgba(94,129,172,.14) + 发件人与主题加粗（font-weight 700）来区分，不靠红点角标或粗徽章。",
+    "Aurora 语义色全部低饱和、长时阅读不刺眼：success 鼠尾草绿 #a3be8c、warning 麦黄 #ebcb8b、error 柔和砖红 #bf616a（配浅字 #eceff4）；标签与分组用 secondary nord9 #81a1c1，中性元信息（头像、附件大小）用 nord3 #4c566a。",
+    "阅读窗正文 line-height 1.9、opacity 0.9、字号 14px；效率工具取向，不加装饰性色块与渐变。",
+    "中性小角圆角：radius-box .5rem、radius-field .375rem、radius-selector .375rem，细边框 1px、--depth:1 无投影；附件卡用反向嵌套——base-100 底 + 1px base-300 边框，从 base-200 卡片里再凹一层。",
+    "窄屏（≤900px）三栏退化为纵向堆叠、收件箱列表通栏、搜索框与导航折行铺满，390px 不横向溢出。"
+  ],
   "source": {
     "origin": "third-party",
     "upstream": "Nord",

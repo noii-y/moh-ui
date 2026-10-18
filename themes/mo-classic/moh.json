@@ -7,6 +7,15 @@
   "styleTags": ["经典", "Bootstrap", "蓝", "通用后台"],
   "inspiration": ["https://github.com/tabler/tabler", "https://github.com/ColorlibHQ/AdminLTE"],
   "base": "mo-classic",
+  "aiNotes": [
+    "标志性结构：顶部一条通高 48px 的实心主色顶栏（直接铺 --color-primary #0b5ed7、白字），顶栏搜索框是半透明白 rgba(255,255,255,.15)、品牌方块 rgba(255,255,255,.18)；这是本主题区别于其它后台的识别点，换业务也要保留一条整宽实心深蓝顶栏。",
+    "底下是经典灰蓝白三层：页面底 #f5f7fa、卡片纯白 #ffffff、分隔线 #eef1f5；卡片一律小圆角 0.375rem、细 1px 边，不做悬浮大阴影。",
+    "侧栏按「概览 / 业务 / 系统」分组：每组一个灰色 menu-title 小标题，菜单项可挂数字徽章（如「用户管理 128」）；同一时刻只允许一个 menu-active 当前项。",
+    "全页圆角最小一档（输入框/下拉 0.25rem、卡片 0.375rem），控件统一 input-sm，紧凑密度——主区间距 14px、表格 13px，AdminLTE / Tabler 的老式节奏，不做宽松 SaaS 留白。",
+    "列表头像用 secondary 灰蓝、accent 青蓝、neutral 深灰、primary 深蓝四色轮换的圆形姓氏首字标，不出现真人照片；角色徽章 badge-soft 分级（管理员 primary / 运营 secondary / 普通成员 neutral）。",
+    "行内操作一律文字链接而非小按钮：编辑 / 停用常规 link，删除用 text-error 红字；分页用 join 连接按钮组、当前页 btn-active 实心高亮。",
+    "窄屏 ≤900px：顶栏搜索框掉成全宽一行，侧栏分组标题 menu-title 隐藏、菜单横向换行，新增用户表单两列变单列，表格 overflow-x:auto 横滑。"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,

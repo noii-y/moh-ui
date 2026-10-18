@@ -6,6 +6,15 @@
   "description": "完整页面案例：深空底宇宙蓝开发者 API 控制台整页。低光害深色三层底色 + 宇宙蓝主色，适合开发者工具 / 日志查看器 / 数据产品夜间模式；挂 data-theme=\"mo-mood\" 即整站换肤，页面全部使用 daisyUI 组件拼装、零依赖。",
   "styleTags": ["深色", "暗黑", "开发者", "宇宙蓝"],
   "base": "mo-mood",
+  "aiNotes": [
+    "深空近黑三层底色：base-100 #0f1117 页面、base-200 #151822 侧栏与卡片、base-300 #1b1f2b，层次只靠明度差、不靠描边；代码块还要比页面更暗一层（#0b0e16）。",
+    "宇宙蓝主色 #4a63e0 白字，只留给主按钮、菜单选中态（menu-active）与通知角标，绝不大面积铺蓝；亮青 #38bdf8 是强调色，只给关键词、info 徽章与代码键名。",
+    "代码高亮固定四色约定：键名亮青 #38bdf8、字符串绿 #34d399、数字黄 #fbbf24、注释灰 #8b93a8；等宽字写 font-family:var(--font-mono, ui-monospace, Menlo, Consolas, monospace)，不要去找 .font-mono 工具类（vendor 没有）。",
+    "小圆角 + 细边：--radius-box 0.5rem / field 0.25rem、--border:1px，分隔线用 #262b3a 系低对比；控制台取向，禁止大圆角、厚边与明显投影。",
+    "数据密度优先：表格单元格 padding 收窄到 5px 6px、日志行 12px，次级说明用 0.5~0.65 透明度的灰字，靠信息密度而非大留白撑气质。",
+    "状态徽章统一 badge-soft：成功绿 #34d399、警告黄 #fbbf24、错误红 #f87171，content 用各自的深色变量保证对比，不要写死深色实底徽章。",
+    "≤900px 侧栏从 220px 竖栏退化为顶部横向换行菜单（flex-direction:row、菜单项 nowrap），代码示例双栏塌成单栏，整页不横向溢出。"
+  ],
   "source": {
     "origin": "original",
     "upstream": null,
